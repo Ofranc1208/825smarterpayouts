@@ -1,0 +1,66 @@
+.mintPage {
+  background-color: #f9fafb;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+}
+
+.mintHeader {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  max-width: 500px;
+}
+
+.mintStatement {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+
+.mintSubtext {
+  font-size: 1rem;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+.mintCard {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  padding: 2rem;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+.mintTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.mintDivider {
+  width: 3rem;
+  height: 3px;
+  background-color: #09b44d;
+  border-radius: 1.5px;
+  margin: 0 auto 1.5rem auto;
+}
+
+.mintButtonGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+} 

@@ -1,0 +1,15 @@
+# robots.txt for SmarterPayouts
+
+User-agent: *
+Allow: /
+
+# Block Next.js internal and irrelevant paths (if present)
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+Disallow: /server/
+Disallow: /private/
+Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://smarterpayouts.com/sitemap.xml 

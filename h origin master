@@ -1,0 +1,4 @@
+[33m0d1fe5e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m Fix infinite render loops and restore lump sum functionality
+[33m1e589ff[m feat: Add prominent AI assistant sections to both calculators with consistent design - Add 'Need help?' sections after main titles in both Guaranteed and LCP calculators - Implement compact, centered design with 320px max width - Add pulsating 'Ask Mint' buttons with 25% larger size - Remove old assistant sections from bottom of calculators - Ensure consistent user experience across both calculators
+[33m2e12140[m feat: Complete LCP Calculator with Embedded AI Assistant
+[33m3719ad6[m Initial commit: Smarter Payouts structured settlement chatbot with calculator functionality

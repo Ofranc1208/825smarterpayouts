@@ -1,0 +1,47 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background: #fafbfc;
+  border-radius: 18px;
+  box-shadow: 0 1px 4px rgba(60,60,60,0.04);
+  padding: 8px 0;
+  margin-top: 22px;
+}
+
+.menuBtn {
+  width: 180px;
+  padding: 0.7em 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.08rem;
+  font-weight: 700; /* Make text bold */
+  color: #22b455;  /* Brand green */
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #e5e7eb;
+  cursor: pointer;
+  outline: none;
+  text-align: center;
+  transition: background 0.15s, color 0.15s;
+  text-decoration: underline;
+}
+
+.menuBtn:last-child {
+  border-bottom: none;
+}
+
+.menuBtn:hover,
+.menuBtn:focus {
+  background: #eafaf1;
+  color: #178a36; /* Slightly darker green on hover */
+}
+
+.menuBtn:disabled,
+.menuBtn[disabled] {
+  color: #bdbdbd;
+  background: transparent;
+  cursor: not-allowed;
+  text-decoration: none;
+} 
