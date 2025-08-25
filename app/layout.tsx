@@ -36,7 +36,7 @@ export default function RootLayout({
         <meta name="twitter:image" content="/assets/images/og-image.png" />
         <link
           rel="preload"
-          as="video"
+          as="fetch"
           href="/assets/videos/promos/counting-cash.mp4"
           type="video/mp4"
         />

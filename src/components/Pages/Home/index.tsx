@@ -1,35 +1,39 @@
 /**
  * Home Page Module
  * 
- * Complete homepage implementation moved from app/page.tsx
- * to maintain clean separation between routing (app/) and page logic (src/).
+ * Central export hub for the SmarterPayouts homepage implementation.
+ * Provides clean, modular architecture with enterprise-grade structure
+ * and optimal performance characteristics.
  * 
- * This module contains the full homepage with all sections:
- * - Hero section with video background and CTAs
- * - Why Choose SmarterPayouts section with feature cards
- * - How It Works 3-step process
- * - Testimonials preview section
- * - Final call-to-action section
- * - SEO optimization and structured data
+ * ## Module Structure
+ * ```
+ * Home/
+ * ├── HomePage.tsx          ← Main orchestrator component
+ * ├── components/           ← Modular section components
+ * │   ├── Hero/            ← Video hero with CTAs
+ * │   ├── WhyChoose/       ← Features and statistics
+ * │   ├── HowItWorks/      ← Process explanation
+ * │   ├── Testimonials/    ← Customer feedback
+ * │   ├── FinalCTA/        ← Final call-to-action
+ * │   └── SEOHead/         ← SEO and performance
+ * └── index.tsx            ← This export file
+ * ```
+ * 
+ * ## Usage
+ * ```tsx
+ * // Default import (recommended)
+ * import HomePage from '@/components/Pages/Home';
+ * 
+ * // Named import (alternative)
+ * import { HomePage } from '@/components/Pages/Home';
+ * ```
  * 
  * @module Home
  * @author SmarterPayouts Team
  * @since 2024
+ * @version 2.0.0
  */
 
-// Main home page component (modular version)
-export { default as HomePage } from './HomePage';
+// Main home page component export
 export { default } from './HomePage';
-
-// Legacy page component (to be removed after migration)
-export { default as HomePageLegacy } from './page';
-
-// Individual section components
-export {
-  SEOHead as HomeSEOHead,
-  HeroSection as HomeHeroSection,
-  WhyChooseSection as HomeWhyChooseSection,
-  HowItWorksSection as HomeHowItWorksSection,
-  TestimonialsSection as HomeTestimonialsSection,
-  FinalCTASection as HomeFinalCTASection
-} from './components';
+export { default as HomePage } from './HomePage';

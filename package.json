@@ -8,7 +8,25 @@
     "start": "next start",
     "lint": "next lint",
     "postbuild": "purgecss --css .next/static/css/*.css --content './app/**/*.{js,ts,jsx,tsx,html}' --output .next/static/css/",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:unit": "jest --testPathPattern=__tests__ --testPathPattern=\\.test\\. --coverage",
+    "test:integration": "jest --testPathPattern=integration --coverage",
+    "test:e2e": "playwright test",
+    "test:ci": "jest --ci --coverage --watchAll=false --maxWorkers=2",
+    "test:debug": "jest --detectOpenHandles --forceExit",
+    "test:performance": "jest --testPathPattern=performance --coverage",
+    "test:accessibility": "jest --testPathPattern=accessibility --coverage",
+    "lint:fix": "next lint --fix",
+    "type-check": "tsc --noEmit",
+    "build:analyze": "ANALYZE=true npm run build",
+    "build:staging": "NODE_ENV=staging npm run build",
+    "build:production": "NODE_ENV=production npm run build",
+    "deploy:staging": "vercel --prod=false",
+    "deploy:production": "vercel --prod",
+    "deploy:preview": "vercel",
+    "health-check": "curl -f $VERCEL_URL/api/health || exit 1"
   },
   "dependencies": {
     "axios": "^1.9.0",
@@ -44,6 +62,13 @@
     "purgecss": "^6.0.0",
     "tailwindcss": "^3.4.1",
     "ts-jest": "^29.4.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "web-vitals": "^3.5.2",
+    "jest-extended": "^4.0.2",
+    "jest-axe": "^8.0.0",
+    "jest-sonar-reporter": "^2.0.0",
+    "jest-watch-typeahead": "^2.2.2",
+    "@lhci/cli": "^0.12.0",
+    "playwright": "^1.42.1"
   }
 }

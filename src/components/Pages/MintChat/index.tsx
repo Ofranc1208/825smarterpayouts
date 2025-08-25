@@ -13,12 +13,10 @@ export { default } from './MintChatPage';
 export { default as MintChatPage } from './MintChatPage';
 
 // Export individual components for potential reuse
-export { default as HeroSection } from './components/HeroSection';
-export { default as ChatSection } from './components/ChatSection';
-export { default as IndustryProblemsSection } from './components/IndustryProblemsSection';
-export { default as SolutionSection } from './components/SolutionSection';
-export { default as BenefitsGrid } from './components/BenefitsGrid';
-export { default as MintBadge } from './components/MintBadge';
+export { HeroSection, ChatSection, IndustryProblemsSection, SolutionSection, BenefitsGrid } from './components';
+
+// Export modular Hero components for advanced usage
+export { MintBadgeComponent } from './components/Hero';
 
 // Note: Hooks are not exported to prevent server-side rendering issues
 // They are available for internal use within the module

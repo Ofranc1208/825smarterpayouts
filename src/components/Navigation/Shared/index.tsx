@@ -20,3 +20,4 @@ export { NavbarStyles } from './NavbarStyles';
 export { default as NavigationErrorBoundary } from './NavigationErrorBoundary';
 export { default as NavigationSkeleton } from './NavigationSkeleton';
 export { default as NavigationAnimations } from './NavigationAnimations';
+export { default as NavigationSEO } from './NavigationSEO';

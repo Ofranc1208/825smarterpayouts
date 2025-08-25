@@ -1,6 +1,6 @@
 "use client";
 import React, { Suspense } from 'react';
-import { NavbarLogo, NavbarStyles, NavigationErrorBoundary, NavigationSkeleton } from './Shared';
+import { NavbarLogo, NavbarStyles, NavigationErrorBoundary, NavigationSkeleton, NavigationSEO } from './Shared';
 import DesktopNavigation from './Desktop';
 import MobileNavigation from './Mobile';
 import { MobileMenuButton } from './Mobile';
@@ -101,6 +101,7 @@ export default function Navbar() {
 
   return (
     <NavigationErrorBoundary>
+      <NavigationSEO />
       <NavbarStyles />
       <NavigationAnimations />
       

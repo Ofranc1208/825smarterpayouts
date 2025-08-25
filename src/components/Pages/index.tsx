@@ -19,6 +19,8 @@ export { default as AboutPage } from './AboutUs';
 export { AboutPage as AboutUs } from './AboutUs';
 export { default as YouTubeChannelPage } from './youtube-channel';
 export { YouTubeChannelPage as YouTubeChannel } from './youtube-channel';
+export { default as ContactPage } from './contact';
+export { ContactPage as Contact } from './contact';
 
 // Re-export individual components for flexibility
 export {
@@ -27,5 +29,5 @@ export {
   IndustryProblemsSection as MintChatIndustryProblems,
   SolutionSection as MintChatSolution,
   BenefitsGrid as MintChatBenefits,
-  MintBadge as MintChatBadge
+  MintBadgeComponent as MintChatBadge
 } from './MintChat';
