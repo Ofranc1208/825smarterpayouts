@@ -5,6 +5,9 @@ import LCPStepper from '../../../src/components/calculator/lcpstep/LCPStepper';
 import { CalculatorProvider } from '../../../src/contexts/CalculatorContext';
 import { useAssistant, AssistantProvider } from '../../../src/contexts/AssistantContext';
 
+// Force dynamic rendering to prevent static generation issues
+export const dynamic = 'force-dynamic';
+
 const LCPCalculatorContent: React.FC = () => {
   const { openAssistant } = useAssistant();
   

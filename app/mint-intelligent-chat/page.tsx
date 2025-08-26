@@ -18,6 +18,13 @@ import { Metadata } from 'next';
  */
 
 // Enterprise-grade SEO metadata for App Router
+export const generateViewport = () => ({
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: '#059669',
+});
+
 export const metadata: Metadata = {
   title: 'Chat with Mint AI Assistant | SmarterPayouts - Instant Settlement Quotes',
   description: 'Get instant answers about your structured settlement with our AI-powered assistant. No personal information required - just ask and get expert guidance immediately.',
@@ -59,12 +66,6 @@ export const metadata: Metadata = {
     creator: '@SmarterPayouts',
     images: ['https://smarterpayouts.com/images/mint-ai-chat-preview.jpg'],
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
-  themeColor: '#059669',
   manifest: '/site.webmanifest',
   icons: {
     icon: '/favicon.ico',
