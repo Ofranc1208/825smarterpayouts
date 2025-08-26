@@ -19,6 +19,7 @@ interface WebVitalMetric {
   value: number;
   id: string;
   delta: number;
+  rating?: 'good' | 'needs-improvement' | 'poor';
 }
 
 export function useWebVitals() {
@@ -71,8 +72,8 @@ export function useWebVitals() {
       });
     }
 
-    // Send to custom analytics endpoint
-    if (typeof window !== 'undefined') {
+    // Send to custom analytics endpoint (only in production)
+    if (typeof window !== 'undefined' && process.env.NODE_ENV === 'production') {
       fetch('/api/analytics/web-vitals', {
         method: 'POST',
         headers: {
@@ -83,6 +84,7 @@ export function useWebVitals() {
           value: metric.value,
           id: metric.id,
           delta: metric.delta,
+          rating: getVitalRating(name, metric.value),
           page: 'home',
           timestamp: Date.now(),
           userAgent: navigator.userAgent,

@@ -102,7 +102,7 @@ export const useNavigationState = () => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Element;
       // Don't close if clicking within a dropdown
-      if (!target.closest('[data-dropdown]')) {
+      if (target && typeof target.closest === 'function' && !target.closest('[data-dropdown]')) {
         setActiveDropdown(null);
       }
     };
@@ -110,14 +110,14 @@ export const useNavigationState = () => {
     const handleMouseLeave = (event: MouseEvent) => {
       const target = event.target as Element;
       // Only close if mouse truly leaves the entire navbar area
-      if (!target.closest('nav')) {
+      if (target && typeof target.closest === 'function' && !target.closest('nav')) {
         setTimeout(() => {
           setActiveDropdown(null);
         }, 200);
       }
     };
     
-    if (activeDropdown) {
+    if (activeDropdown && typeof document !== 'undefined') {
       document.addEventListener('click', handleClickOutside);
       document.addEventListener('mouseleave', handleMouseLeave, true);
       return () => {

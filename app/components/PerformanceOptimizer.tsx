@@ -31,10 +31,13 @@ export default function PerformanceOptimizer({
 }: PerformanceOptimizerProps) {
   
   useEffect(() => {
+    // Only run on client-side
+    if (typeof window === 'undefined') return;
+
     // Defer non-critical optimizations to avoid blocking main thread
     const deferredOptimizations = () => {
       // Optimize resource loading
-      if (enableResourceHints) {
+      if (enableResourceHints && typeof document !== 'undefined') {
         // Prefetch critical pages with requestIdleCallback
         const criticalPages = [
           '/calculations/guaranteed',
@@ -68,7 +71,7 @@ export default function PerformanceOptimizer({
     setTimeout(deferredOptimizations, 0);
 
     // Optimize critical resource priority
-    if (enableCriticalResourcePriority) {
+    if (enableCriticalResourcePriority && typeof document !== 'undefined') {
       // Prioritize critical CSS
       const criticalStyles = document.querySelectorAll('style[data-critical="true"]');
       criticalStyles.forEach(style => {
@@ -84,20 +87,30 @@ export default function PerformanceOptimizer({
     }
 
     // Register service worker for caching
-    if (enableServiceWorker && 'serviceWorker' in navigator) {
+    if (enableServiceWorker && typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw.js')
         .then(registration => {
-          console.log('SW registered: ', registration);
+          if (process.env.NODE_ENV === 'development') {
+            console.log('SW registered: ', registration);
+          }
         })
         .catch(registrationError => {
-          console.log('SW registration failed: ', registrationError);
+          if (process.env.NODE_ENV === 'development') {
+            console.log('SW registration failed: ', registrationError);
+          }
         });
     }
 
-    // Optimize font loading
-    if (document.fonts) {
+    // Optimize font loading with error handling
+    if (typeof document !== 'undefined' && document.fonts) {
       document.fonts.ready.then(() => {
-        console.log('Fonts loaded');
+        if (process.env.NODE_ENV === 'development') {
+          console.log('Fonts loaded');
+        }
+      }).catch((error) => {
+        if (process.env.NODE_ENV === 'development') {
+          console.warn('Font loading error:', error);
+        }
       });
     }
 

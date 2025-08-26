@@ -15,6 +15,13 @@ import { YouTubeChannelPage } from '@/src/components/Pages';
 import { Metadata } from 'next';
 
 // Enterprise-grade SEO metadata for App Router
+export const generateViewport = () => ({
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: '#059669',
+});
+
 export const metadata: Metadata = {
   title: 'SmarterPayouts YouTube Channel - Educational Videos & Insights',
   description: 'Explore our comprehensive video library covering structured settlements, early payouts, and financial strategies. Learn from experts and make informed decisions about your settlement.',
@@ -56,12 +63,7 @@ export const metadata: Metadata = {
     creator: '@SmarterPayouts',
     images: ['https://smarterpayouts.com/assets/images/youtube-channel-og.jpg'],
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
-  themeColor: '#059669',
+
   manifest: '/site.webmanifest',
   icons: {
     icon: '/favicon.ico',

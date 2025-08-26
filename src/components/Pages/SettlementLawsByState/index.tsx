@@ -3,21 +3,61 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, Suspense, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 
 // Import the complete state data and types
 import { stateLawDetails } from './data/content';
 import type { StateDataCollection } from './types';
 
-// Import enterprise components
+// Import enterprise components - Critical above-the-fold
 import SEOHead from './components/SEOHead/seo-section/SEOHead';
 import PageErrorBoundary from './components/ErrorBoundary/PageErrorBoundary';
 import SectionErrorBoundary from './components/ErrorBoundary/SectionErrorBoundary';
 import HeroSection from './components/HeroSection';
 import DisclaimerSection from './components/DisclaimerSection';
 import SearchSection from './components/SearchSection';
-import StatesAccordion from './components/StatesAccordion';
-import FinalCTASection from './components/FinalCTASection';
+
+// Dynamic imports for performance optimization
+const StatesAccordion = dynamic(() => import('./components/StatesAccordion'), {
+  loading: () => (
+    <div style={{
+      padding: '3rem 0',
+      textAlign: 'center',
+      background: '#f8fafc'
+    }}>
+      <div style={{
+        display: 'inline-block',
+        width: '40px',
+        height: '40px',
+        border: '4px solid #e5e7eb',
+        borderTop: '4px solid #059669',
+        borderRadius: '50%',
+        animation: 'spin 1s linear infinite'
+      }} />
+      <p style={{ marginTop: '1rem', color: '#6b7280' }}>Loading state laws...</p>
+      <style dangerouslySetInnerHTML={{
+        __html: `@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`
+      }} />
+    </div>
+  ),
+  ssr: false
+});
+
+const FinalCTASection = dynamic(() => import('./components/FinalCTASection'), {
+  loading: () => (
+    <div style={{
+      padding: '2rem 0',
+      textAlign: 'center',
+      background: 'linear-gradient(135deg, #059669 0%, #047857 100%)',
+      color: 'white'
+    }}>
+      <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>🎯</div>
+      <p>Loading call-to-action...</p>
+    </div>
+  ),
+  ssr: false
+});
 
 // Import enterprise hooks
 import { useStateLawsAnalytics, useStateLawsPerformance, useStateLawsAccessibility } from './hooks';
@@ -52,6 +92,11 @@ function groupStatesAlpha(states: string[]) {
 export default function SettlementLawsByStatePage() {
   const [search, setSearch] = useState<string>('');
   const [openState, setOpenState] = useState<string | null>(null);
+  const [performanceMetrics, setPerformanceMetrics] = useState<{
+    mountTime?: number;
+    searchTime?: number;
+    accordionTime?: number;
+  }>({});
 
   // Type the state data properly
   const typedStateLawDetails = stateLawDetails as StateDataCollection;
@@ -61,14 +106,46 @@ export default function SettlementLawsByStatePage() {
   const performance = useStateLawsPerformance();
   const accessibility = useStateLawsAccessibility();
 
+  // Track page performance and Web Vitals
+  useEffect(() => {
+    const startTime = performance.now();
+    
+    // Track page mount time
+    const mountTime = performance.now() - startTime;
+    setPerformanceMetrics(prev => ({ ...prev, mountTime }));
+    
+    // Track page view
+    analytics.trackPageView('/structured-settlement-laws-by-state');
+    
+    // Announce page load to screen readers
+    accessibility.announcePageLoad('Settlement Laws by State page loaded with search and accordion interface');
+    
+    // Web Vitals tracking
+    if (typeof window !== 'undefined' && 'web-vitals' in window) {
+      // Track Core Web Vitals if available
+      import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
+        getCLS(console.log);
+        getFID(console.log);
+        getFCP(console.log);
+        getLCP(console.log);
+        getTTFB(console.log);
+      });
+    }
+  }, [analytics, accessibility]);
+
   // Enhanced search with analytics and performance tracking
   const filteredStates = search.trim() ? searchStates(states, search) : states;
   const grouped = groupStatesAlpha(filteredStates);
 
-  // Enhanced accordion handler with analytics and accessibility
+  // Enhanced accordion handler with analytics, accessibility, and performance tracking
   const handleAccordionClick = (state: string): void => {
+    const startTime = performance.now();
     const isOpening = openState !== state;
     setOpenState(prev => (prev === state ? null : state));
+    
+    // Track performance
+    const accordionTime = performance.now() - startTime;
+    setPerformanceMetrics(prev => ({ ...prev, accordionTime }));
     
     // Track analytics
     analytics.trackStateClick(state, isOpening ? 'open' : 'close');
@@ -77,12 +154,16 @@ export default function SettlementLawsByStatePage() {
     accessibility.announceAccordionChange(state, isOpening);
   };
 
-  // Enhanced search handler
+  // Enhanced search handler with performance tracking
   const handleSearchChange = (value: string): void => {
+    const startTime = performance.now();
     setSearch(value);
     
     if (value.trim()) {
       const results = searchStates(states, value);
+      const searchTime = performance.now() - startTime;
+      setPerformanceMetrics(prev => ({ ...prev, searchTime }));
+      
       analytics.trackSearch(value, results.length);
       accessibility.announceSearchResults(results.length, value);
     }

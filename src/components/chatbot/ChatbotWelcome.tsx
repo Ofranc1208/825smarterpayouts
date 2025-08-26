@@ -75,7 +75,7 @@ const ChatbotWelcome: React.FC<ChatbotWelcomeProps> = ({ onCalculate }) => {
       );
     } else if (step?.type === 'menu') {
       visibleMessages.push(
-        <ChatbotMenu key={i} onCalculate={onCalculate} />
+        <ChatbotMenu key={i} onCalculate={onCalculate} onChoice={() => {}} />
       );
     }
   }

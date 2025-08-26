@@ -68,47 +68,28 @@ const Button: React.FC<ButtonProps> = ({
     primary: {
       backgroundColor: '#059669',
       color: 'white',
-      '&:hover': !disabled && !loading ? {
-        backgroundColor: '#047857',
-        transform: 'translateY(-1px)',
-        boxShadow: '0 4px 12px rgba(5, 150, 105, 0.3)',
-      } : {},
+
     },
     secondary: {
       backgroundColor: '#6b7280',
       color: 'white',
-      '&:hover': !disabled && !loading ? {
-        backgroundColor: '#4b5563',
-        transform: 'translateY(-1px)',
-        boxShadow: '0 4px 12px rgba(107, 114, 128, 0.3)',
-      } : {},
+
     },
     outline: {
       backgroundColor: 'transparent',
       color: '#059669',
       border: '2px solid #059669',
-      '&:hover': !disabled && !loading ? {
-        backgroundColor: '#059669',
-        color: 'white',
-        transform: 'translateY(-1px)',
-      } : {},
+
     },
     ghost: {
       backgroundColor: 'transparent',
       color: '#059669',
-      '&:hover': !disabled && !loading ? {
-        backgroundColor: '#f0fdf4',
-        transform: 'translateY(-1px)',
-      } : {},
+
     },
     danger: {
       backgroundColor: '#dc2626',
       color: 'white',
-      '&:hover': !disabled && !loading ? {
-        backgroundColor: '#b91c1c',
-        transform: 'translateY(-1px)',
-        boxShadow: '0 4px 12px rgba(220, 38, 38, 0.3)',
-      } : {},
+
     },
   };
 

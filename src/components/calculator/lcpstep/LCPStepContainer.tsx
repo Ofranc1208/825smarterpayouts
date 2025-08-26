@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useAssistant } from '../../../contexts/AssistantContext';
@@ -13,7 +13,7 @@ interface LCPStepContainerProps {
   totalSteps: number;
 }
 
-const LCPStepContainer: React.FC<LCPStepContainerProps> = ({ title, children, currentStep, totalSteps }) => {
+const LCPStepContainerContent: React.FC<LCPStepContainerProps> = ({ title, children, currentStep, totalSteps }) => {
   const searchParams = useSearchParams();
   const sessionId = searchParams.get('sessionId');
   const { openAssistant } = useAssistant();
@@ -82,6 +82,31 @@ const LCPStepContainer: React.FC<LCPStepContainerProps> = ({ title, children, cu
       }}>{title}</h2>
       {children}
     </div>
+  );
+};
+
+const LCPStepContainer: React.FC<LCPStepContainerProps> = (props) => {
+  return (
+    <Suspense fallback={
+      <div style={{
+        maxWidth: '400px',
+        margin: '0 auto',
+        background: '#fff',
+        borderRadius: '16px',
+        boxShadow: '0 2px 16px rgba(0,0,0,0.07)',
+        padding: '0.5rem 0.75rem',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '0.5rem',
+        minHeight: '200px',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}>
+        <div style={{ color: '#666', fontSize: '0.9rem' }}>Loading...</div>
+      </div>
+    }>
+      <LCPStepContainerContent {...props} />
+    </Suspense>
   );
 };
 

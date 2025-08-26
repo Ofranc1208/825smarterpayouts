@@ -48,7 +48,7 @@ export default function CTAButtons({
 
     return {
       ...baseStyles,
-      ...sizeStyles[button.size || 'medium']
+      ...sizeStyles[(button.size as keyof typeof sizeStyles) || 'medium']
     };
   };
 

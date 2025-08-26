@@ -41,9 +41,7 @@ export default function CTASection({
     <CTABackground 
       background={ctaConfig.background}
       layout={ctaConfig.layout}
-      style={{ 
-        ...(className && { className })
-      }}
+      className={className}
     >
       <CTAHeader
         title={ctaConfig.title}
