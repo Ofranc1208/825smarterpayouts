@@ -156,7 +156,7 @@ export default function MetricCard({ metric, isLoading }: MetricCardProps) {
               fontWeight: '700',
               color: '#1f2937'
             }}>
-              {metric.value.toLocaleString()}
+              {typeof metric.value === 'number' ? metric.value.toLocaleString() : metric.value}
             </span>
             <span style={{
               fontSize: '0.875rem',
@@ -185,7 +185,7 @@ export default function MetricCard({ metric, isLoading }: MetricCardProps) {
               fontWeight: '500',
               textTransform: 'capitalize'
             }}>
-              {metric.status.replace('-', ' ')}
+              {typeof metric.status === 'string' ? metric.status.replace('-', ' ') : metric.status || 'unknown'}
             </span>
           </div>
         </div>

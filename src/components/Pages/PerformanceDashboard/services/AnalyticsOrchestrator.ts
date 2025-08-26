@@ -19,6 +19,7 @@ import {
 import { serviceCoordinator } from './orchestrator/core/ServiceCoordinator';
 import { configManager } from './orchestrator/config/ConfigManager';
 import { dataAggregator } from './orchestrator/data/DataAggregator';
+import { vercelAnalyticsService } from './vercel';
 
 export class AnalyticsOrchestrator {
   /**
@@ -33,6 +34,9 @@ export class AnalyticsOrchestrator {
     // Get environment-specific config
     const finalConfig = configManager.getEnvironmentConfig();
     
+    // Initialize Vercel Analytics first
+    await vercelAnalyticsService.initialize();
+    
     // Initialize services through coordinator
     await serviceCoordinator.initialize(finalConfig);
   }
@@ -41,21 +45,39 @@ export class AnalyticsOrchestrator {
    * Get comprehensive performance metrics
    */
   async getRealMetrics(timeRange: TimeRange = '24h'): Promise<RealMetrics> {
-    return dataAggregator.getRealMetrics(timeRange);
+    try {
+      // Try to get real data from Vercel Analytics first
+      return await vercelAnalyticsService.getRealMetrics(timeRange);
+    } catch (error) {
+      console.warn('Falling back to aggregated data:', error);
+      return dataAggregator.getRealMetrics(timeRange);
+    }
   }
 
   /**
    * Get real page performance data
    */
   async getRealPageData(timeRange: TimeRange = '24h'): Promise<RealPageData[]> {
-    return dataAggregator.getRealPageData(timeRange);
+    try {
+      // Try to get real data from Vercel Analytics first
+      return await vercelAnalyticsService.getRealPageData(timeRange);
+    } catch (error) {
+      console.warn('Falling back to aggregated data:', error);
+      return dataAggregator.getRealPageData(timeRange);
+    }
   }
 
   /**
    * Get real visitor data
    */
   async getRealVisitorData(timeRange: TimeRange = '24h'): Promise<VisitorData> {
-    return dataAggregator.getRealVisitorData(timeRange);
+    try {
+      // Try to get real data from Vercel Analytics first
+      return await vercelAnalyticsService.getRealVisitorData(timeRange);
+    } catch (error) {
+      console.warn('Falling back to aggregated data:', error);
+      return dataAggregator.getRealVisitorData(timeRange);
+    }
   }
 
   /**

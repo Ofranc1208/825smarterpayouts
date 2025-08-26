@@ -176,7 +176,7 @@ export default function PageCard({ page, isSelected, onSelect, isLoading }: Page
                 fontWeight: '500',
                 textTransform: 'capitalize'
               }}>
-                {page.status.replace('-', ' ')}
+                {typeof page.status === 'string' ? page.status.replace('-', ' ') : page.status || 'unknown'}
               </span>
             </div>
           </div>
@@ -218,7 +218,7 @@ export default function PageCard({ page, isSelected, onSelect, isLoading }: Page
             fontWeight: '600',
             color: '#1f2937'
           }}>
-            {page.metrics.visitors.toLocaleString()}
+            {typeof page.metrics.visitors === 'number' ? page.metrics.visitors.toLocaleString() : page.metrics.visitors || '0'}
           </div>
           <div style={{ fontSize: '0.75rem', color: '#6b7280' }}>Visitors</div>
         </div>

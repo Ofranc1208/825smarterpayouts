@@ -286,10 +286,20 @@ export function useDashboardData({ selectedPage, timeRange, realTime }: Dashboar
   // Enable real data after component mounts (client-side only)
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      // Small delay to ensure analytics service is ready
-      const timer = setTimeout(() => {
-        setIsRealDataEnabled(true);
-      }, 1000);
+      // Initialize analytics service and enable real data
+      const initializeAnalytics = async () => {
+        try {
+          await analyticsService.initialize();
+          console.log('🚀 Analytics service initialized');
+          setIsRealDataEnabled(true);
+        } catch (error) {
+          console.warn('⚠️ Analytics initialization failed, using enhanced mock data:', error);
+          setIsRealDataEnabled(true); // Still enable to show enhanced mock data
+        }
+      };
+      
+      // Small delay to ensure DOM is ready
+      const timer = setTimeout(initializeAnalytics, 1000);
       
       return () => clearTimeout(timer);
     }
