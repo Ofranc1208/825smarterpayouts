@@ -1,0 +1,16 @@
+# ADD THESE FIREBASE ENVIRONMENT VARIABLES TO YOUR .env.local FILE:
+
+# Firebase Configuration
+NEXT_PUBLIC_FIREBASE_API_KEY=AIzaSyDlJPUZ8u2PPKQeVuNWmDnmfKtSVFJ-m2E
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=smarter-payouts.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=smarter-payouts
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=smarter-payouts.appspot.com
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=870646148634
+NEXT_PUBLIC_FIREBASE_APP_ID=1:870646148634:web:92faf9c279fed8f9c66ba3
+NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=G-YT1PCCHLKR
+
+# INSTRUCTIONS:
+# 1. Open your .env.local file
+# 2. Add these Firebase variables at the end
+# 3. Save the file
+# 4. The firebase.ts file is now updated to use these environment variables
