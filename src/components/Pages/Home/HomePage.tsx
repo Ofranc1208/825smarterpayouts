@@ -1,20 +1,75 @@
 'use client';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 import {
   SEOHead,
   HeroSection,
   WhyChooseSection,
-  HowItWorksSection,
-  TestimonialsSection,
-  FinalCTASection,
   HomePageErrorBoundary,
   SectionErrorBoundary
 } from './components';
+
+// Lazy load below-the-fold sections for optimal performance
+const HowItWorksSection = dynamic(() => import('./components/HowItWorks'), {
+  loading: () => (
+    <div style={{ 
+      height: '500px', 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'center',
+      background: 'linear-gradient(135deg, #f8fffe 0%, #e8f5e8 100%)'
+    }}>
+      <div style={{ textAlign: 'center', color: '#2d5a27' }}>
+        <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>⚡</div>
+        <p>Loading How It Works...</p>
+      </div>
+    </div>
+  ),
+  ssr: false
+});
+
+const TestimonialsSection = dynamic(() => import('./components/Testimonials'), {
+  loading: () => (
+    <div style={{ 
+      height: '400px', 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'center',
+      backgroundColor: 'white'
+    }}>
+      <div style={{ textAlign: 'center', color: '#2d5a27' }}>
+        <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>💬</div>
+        <p>Loading Testimonials...</p>
+      </div>
+    </div>
+  ),
+  ssr: false
+});
+
+const FinalCTASection = dynamic(() => import('./components/FinalCTA'), {
+  loading: () => (
+    <div style={{ 
+      height: '300px', 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'center',
+      background: 'linear-gradient(135deg, #2d5a27 0%, #1a3d1a 100%)'
+    }}>
+      <div style={{ textAlign: 'center', color: 'white' }}>
+        <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>🎯</div>
+        <p>Loading Final CTA...</p>
+      </div>
+    </div>
+  ),
+  ssr: false
+});
 import {
   useHomeAnalytics,
   useHomePerformance,
   useHomeAccessibility
 } from './hooks';
+import { useIntersectionObserver } from './hooks/useIntersectionObserver';
+import { useWebVitals } from './hooks/useWebVitals';
 
 /**
  * Homepage Component
@@ -63,6 +118,14 @@ export default function HomePage() {
 
   const { reportWebVitals } = useHomePerformance();
   const { announceToScreenReader } = useHomeAccessibility();
+  
+  // Progressive loading with intersection observer
+  const howItWorksObserver = useIntersectionObserver({ rootMargin: '200px' });
+  const testimonialsObserver = useIntersectionObserver({ rootMargin: '150px' });
+  const finalCTAObserver = useIntersectionObserver({ rootMargin: '100px' });
+  
+  // Web Vitals tracking for performance optimization
+  useWebVitals();
 
   useEffect(() => {
     // Track page view on mount
@@ -102,6 +165,7 @@ export default function HomePage() {
       <main>
         <SEOHead />
         
+        {/* Critical above-the-fold content - loads immediately */}
         <SectionErrorBoundary sectionName="Hero">
           <HeroSection />
         </SectionErrorBoundary>
@@ -110,17 +174,30 @@ export default function HomePage() {
           <WhyChooseSection />
         </SectionErrorBoundary>
         
-        <SectionErrorBoundary sectionName="How It Works">
-          <HowItWorksSection />
-        </SectionErrorBoundary>
+        {/* Progressive loading for below-the-fold content */}
+        <div ref={howItWorksObserver.elementRef}>
+          {howItWorksObserver.isIntersecting && (
+            <SectionErrorBoundary sectionName="How It Works">
+              <HowItWorksSection />
+            </SectionErrorBoundary>
+          )}
+        </div>
         
-        <SectionErrorBoundary sectionName="Testimonials">
-          <TestimonialsSection />
-        </SectionErrorBoundary>
+        <div ref={testimonialsObserver.elementRef}>
+          {testimonialsObserver.isIntersecting && (
+            <SectionErrorBoundary sectionName="Testimonials">
+              <TestimonialsSection />
+            </SectionErrorBoundary>
+          )}
+        </div>
         
-        <SectionErrorBoundary sectionName="Final CTA">
-          <FinalCTASection />
-        </SectionErrorBoundary>
+        <div ref={finalCTAObserver.elementRef}>
+          {finalCTAObserver.isIntersecting && (
+            <SectionErrorBoundary sectionName="Final CTA">
+              <FinalCTASection />
+            </SectionErrorBoundary>
+          )}
+        </div>
       </main>
     </HomePageErrorBoundary>
   );

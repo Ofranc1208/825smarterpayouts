@@ -50,7 +50,7 @@ export function useCourtApprovalPerformance() {
       entries.forEach((entry) => {
         if (entry.entryType === 'navigation') {
           const navEntry = entry as PerformanceNavigationTiming;
-          const loadTime = navEntry.loadEventEnd - navEntry.navigationStart;
+          const loadTime = navEntry.loadEventEnd - (navEntry.fetchStart || 0);
           
           if (window.gtag) {
             window.gtag('event', 'page_load_time', {

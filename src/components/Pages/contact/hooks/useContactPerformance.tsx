@@ -22,7 +22,7 @@ export default function useContactPerformance(): UseContactPerformanceReturn {
       for (const entry of list.getEntries()) {
         if (entry.entryType === 'navigation') {
           const navEntry = entry as PerformanceNavigationTiming;
-          const pageLoadTime = navEntry.loadEventEnd - navEntry.navigationStart;
+          const pageLoadTime = navEntry.loadEventEnd - (navEntry.fetchStart || 0);
           
           console.log('Contact Page Load Time:', pageLoadTime);
           
@@ -68,7 +68,7 @@ export default function useContactPerformance(): UseContactPerformanceReturn {
       const clsObserver = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
           if (entry.entryType === 'layout-shift' && !(entry as any).hadRecentInput) {
-            console.log('Layout Shift detected:', entry.value);
+            console.log('Layout Shift detected:', (entry as any).value);
           }
         }
       });

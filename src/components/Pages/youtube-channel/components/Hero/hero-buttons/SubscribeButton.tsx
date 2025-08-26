@@ -58,7 +58,7 @@ export default function SubscribeButton({
   }, []);
 
   const buttonStyles: React.CSSProperties = {
-    display: "inline-block",
+    display: "inline-flex",
     background: isHovered 
       ? "linear-gradient(135deg, #b91c1c 0%, #991b1b 100%)"
       : "linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)",
@@ -73,7 +73,6 @@ export default function SubscribeButton({
     transition: "all 0.2s ease",
     transform: isHovered ? "translateY(-2px)" : "translateY(0)",
     boxShadow: isHovered ? "0 10px 15px -3px rgba(0, 0, 0, 0.1)" : "none",
-    display: "inline-flex",
     alignItems: "center",
     gap: "0.5rem"
   };

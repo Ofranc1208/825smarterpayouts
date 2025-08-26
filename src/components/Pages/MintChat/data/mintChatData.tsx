@@ -48,7 +48,7 @@ export const INDUSTRY_PROBLEMS: ProblemCard[] = [
     description: 'Paper forms, phone calls, and manual processes slow everything down in today\'s digital world.',
     icon: '📄',
     severity: 'medium',
-    category: 'technology'
+    category: 'process'
   }
 ];
 

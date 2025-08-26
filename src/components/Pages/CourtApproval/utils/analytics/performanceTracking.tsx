@@ -16,10 +16,10 @@ export const initializeAnalytics = (): (() => void) => {
             'performance',
             'load_time',
             'court_approval',
-            Math.round(perfData.loadEventEnd - perfData.navigationStart),
+            Math.round(perfData.loadEventEnd - (perfData.fetchStart || 0)),
             {
-              dom_content_loaded: Math.round(perfData.domContentLoadedEventEnd - perfData.navigationStart),
-              first_paint: Math.round(perfData.responseEnd - perfData.navigationStart),
+              dom_content_loaded: Math.round(perfData.domContentLoadedEventEnd - (perfData.fetchStart || 0)),
+              first_paint: Math.round(perfData.responseEnd - (perfData.fetchStart || 0)),
               page_size: document.documentElement.innerHTML.length
             }
           );

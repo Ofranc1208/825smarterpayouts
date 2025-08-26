@@ -58,7 +58,7 @@ export default function MintChatButton({
   }, []);
 
   const buttonStyles: React.CSSProperties = {
-    display: "inline-block",
+    display: "inline-flex",
     background: isHovered 
       ? "linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)"
       : "linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)",
@@ -73,7 +73,6 @@ export default function MintChatButton({
     transition: "all 0.2s ease",
     transform: isHovered ? "translateY(-2px)" : "translateY(0)",
     boxShadow: isHovered ? "0 10px 15px -3px rgba(0, 0, 0, 0.1)" : "none",
-    display: "inline-flex",
     alignItems: "center",
     gap: "0.5rem"
   };

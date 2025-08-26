@@ -21,8 +21,8 @@ export const trackEvent = (
   }
   
   // Facebook Pixel
-  if (typeof window !== 'undefined' && window.fbq) {
-    window.fbq('track', 'CustomEvent', {
+  if (typeof window !== 'undefined' && (window as any).fbq) {
+    (window as any).fbq('track', 'CustomEvent', {
       event_name: eventName,
       event_category: category,
       event_action: action,

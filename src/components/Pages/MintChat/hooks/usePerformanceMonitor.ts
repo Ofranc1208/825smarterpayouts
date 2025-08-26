@@ -72,7 +72,7 @@ export function usePerformanceMonitor(options: UsePerformanceMonitorOptions = {}
   } = options;
 
   const metricsRef = useRef<PerformanceMetrics>({});
-  const observersRef = useRef<PerformanceObserver[]>([]);
+  const observersRef = useRef<(PerformanceObserver | MutationObserver)[]>([]);
 
   // Track custom performance metrics
   const trackCustomMetric = useCallback((name: string, value: number, unit: string = 'ms') => {
@@ -103,34 +103,34 @@ export function usePerformanceMonitor(options: UsePerformanceMonitorOptions = {}
     const initWebVitals = async () => {
       try {
         // Dynamic import to avoid SSR issues
-        const { getCLS, getFID, getFCP, getLCP, getTTFB } = await import('web-vitals');
+        const { onCLS, onFID, onFCP, onLCP, onTTFB } = await import('web-vitals');
 
         // Track Cumulative Layout Shift
-        getCLS((metric) => {
+        onCLS((metric: any) => {
           metricsRef.current.cls = metric.value;
           trackCustomMetric('CLS', metric.value, '');
         });
 
         // Track First Input Delay
-        getFID((metric) => {
+        onFID((metric: any) => {
           metricsRef.current.fid = metric.value;
           trackCustomMetric('FID', metric.value, 'ms');
         });
 
         // Track First Contentful Paint
-        getFCP((metric) => {
+        onFCP((metric: any) => {
           metricsRef.current.fcp = metric.value;
           trackCustomMetric('FCP', metric.value, 'ms');
         });
 
         // Track Largest Contentful Paint
-        getLCP((metric) => {
+        onLCP((metric: any) => {
           metricsRef.current.lcp = metric.value;
           trackCustomMetric('LCP', metric.value, 'ms');
         });
 
         // Track Time to First Byte
-        getTTFB((metric) => {
+        onTTFB((metric: any) => {
           trackCustomMetric('TTFB', metric.value, 'ms');
         });
 

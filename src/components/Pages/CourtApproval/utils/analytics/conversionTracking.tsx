@@ -40,8 +40,8 @@ export const trackConversion = (
   }
   
   // Facebook Pixel Conversion
-  if (typeof window !== 'undefined' && window.fbq) {
-    window.fbq('track', 'Purchase', {
+  if (typeof window !== 'undefined' && (window as any).fbq) {
+    (window as any).fbq('track', 'Purchase', {
       value: value,
       currency: currency,
       content_type: 'service',
