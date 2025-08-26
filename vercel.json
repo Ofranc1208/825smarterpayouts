@@ -1,16 +1,6 @@
 {
   "version": 2,
   "name": "smarterpayouts-enterprise",
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ],
   "env": {
     "NODE_ENV": "production"
   },
