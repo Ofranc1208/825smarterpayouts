@@ -63,8 +63,8 @@ export default function MetricsOverview({ metrics, isLoading, timeRange }: Metri
 
   // Show loading state during hydration
   if (!isClient) {
-    return (
-      <section>
+  return (
+    <section>
         <MetricsHeader timeRange="Loading..." />
         <MetricsGrid 
           metrics={Array.from({ length: 8 }).map((_, index) => ({
@@ -77,9 +77,9 @@ export default function MetricsOverview({ metrics, isLoading, timeRange }: Metri
           }))}
           isLoading={true}
         />
-      </section>
-    );
-  }
+    </section>
+  );
+}
 
   return (
     <section>

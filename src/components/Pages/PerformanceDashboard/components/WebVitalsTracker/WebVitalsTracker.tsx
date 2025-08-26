@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { analyticsService } from '../../services';
+import { vercelService } from '../../services/vercel';
 
 /**
  * Web Vitals Tracker Component
@@ -22,8 +23,9 @@ export default function WebVitalsTracker() {
       if (isInitialized) return;
       
       try {
-        // Initialize the analytics service
+        // Initialize both analytics services
         await analyticsService.initialize();
+        await vercelService.initialize();
         isInitialized = true;
         
         console.log('📊 Performance tracking initialized');
