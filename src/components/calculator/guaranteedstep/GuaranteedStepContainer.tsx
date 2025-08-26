@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 // Guaranteed flow is self-contained and uses its own assistant panel/provider
@@ -14,7 +14,7 @@ interface GuaranteedStepContainerProps {
   totalSteps: number;
 }
 
-const GuaranteedStepContainer: React.FC<GuaranteedStepContainerProps> = ({ title, children, currentStep, totalSteps }) => {
+const GuaranteedStepContainerContent: React.FC<GuaranteedStepContainerProps> = ({ title, children, currentStep, totalSteps }) => {
   const searchParams = useSearchParams();
   const sessionId = searchParams.get('sessionId');
   // Assistant actions are handled by top-level "Need help?" button and `GuaranteedAssistantPanel`
@@ -92,6 +92,31 @@ const GuaranteedStepContainer: React.FC<GuaranteedStepContainerProps> = ({ title
       <h2 style={titleStyle}>{title}</h2>
       {children}
     </div>
+  );
+};
+
+const GuaranteedStepContainer: React.FC<GuaranteedStepContainerProps> = (props) => {
+  return (
+    <Suspense fallback={
+      <div style={{
+        maxWidth: 400,
+        margin: '0 auto',
+        background: '#fff',
+        borderRadius: 16,
+        boxShadow: '0 2px 16px rgba(0,0,0,0.07)',
+        padding: '0.5rem 0.75rem',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '0.5rem',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '200px'
+      }}>
+        <div style={{ color: '#666', fontSize: '0.9rem' }}>Loading...</div>
+      </div>
+    }>
+      <GuaranteedStepContainerContent {...props} />
+    </Suspense>
   );
 };
 

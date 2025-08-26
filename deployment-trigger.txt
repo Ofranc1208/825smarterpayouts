@@ -1,0 +1,4 @@
+# Deployment trigger to force Vercel sync
+# Created to ensure Vercel pulls the latest commit with build fixes
+# Commit: 2fbddc9 - Fix build errors: Add dynamic rendering to LCP page and clean up metadata warnings
+# Date: 2024-01-26
