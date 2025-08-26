@@ -233,7 +233,7 @@ export function getPerformanceHints() {
     ],
     preload: [
       {
-        href: '/assets/images/mint-mascot.png',
+        href: '/assets/images/mint-mascot.webp',
         as: 'image'
       }
     ]

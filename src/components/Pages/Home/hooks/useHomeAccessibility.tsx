@@ -85,7 +85,7 @@ export default function useHomeAccessibility(): UseHomeAccessibilityReturn {
   const checkColorContrast = useCallback(() => {
     // Basic color contrast checking for development
     if (process.env.NODE_ENV === 'development') {
-      console.log('Accessibility: Color contrast check initiated');
+      // Color contrast check initiated
       // In a real implementation, this would check WCAG contrast ratios
     }
   }, []);

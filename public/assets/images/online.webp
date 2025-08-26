@@ -1,0 +1,3 @@
+# WebP placeholder - In production, convert online.jpg to WebP format
+# Original: 5.7MB → Target: ~800KB-1MB WebP  
+# Command: cwebp -q 80 online.jpg -o online.webp

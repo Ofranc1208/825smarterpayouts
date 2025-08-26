@@ -100,11 +100,7 @@ export default function YouTubeChannelPage(): JSX.Element {
     enableKeyboardNav: true
   });
 
-  const { trackEvent, trackPageView } = useAnalytics({
-    componentName: 'YouTubeChannelPage',
-    enableBehavior: true,
-    enablePerformance: true
-  });
+  const analytics = useAnalytics();
 
   // Announce page load to screen readers
   React.useEffect(() => {
@@ -123,15 +119,7 @@ export default function YouTubeChannelPage(): JSX.Element {
     <ErrorBoundary
       onError={(error, errorInfo) => {
         // Track errors for monitoring
-        trackEvent({
-          action: 'page_error',
-          category: 'error',
-          label: error.message,
-          customParameters: {
-            error_stack: error.stack,
-            component_stack: errorInfo.componentStack
-          }
-        });
+        analytics.trackJSError(error, errorInfo);
       }}
     >
       <Suspense fallback={<PageLoading />}>
@@ -188,15 +176,7 @@ export default function YouTubeChannelPage(): JSX.Element {
             maxVideos={6}
             onVideoClick={(video) => {
               // Track video click
-              trackEvent({
-                action: 'video_click',
-                category: 'engagement',
-                label: video.title,
-                customParameters: {
-                  video_url: video.url,
-                  video_duration: video.duration
-                }
-              });
+              analytics.trackVideoPlay(video.url, video.title);
               // Open video in new tab
               window.open(video.url, '_blank', 'noopener,noreferrer');
             }}

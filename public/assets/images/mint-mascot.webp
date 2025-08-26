@@ -1,0 +1,3 @@
+# WebP placeholder - In production, convert mint-mascot.png to WebP format
+# Original: 1.5MB → Target: ~200-400KB WebP
+# Command: cwebp -q 85 mint-mascot.png -o mint-mascot.webp

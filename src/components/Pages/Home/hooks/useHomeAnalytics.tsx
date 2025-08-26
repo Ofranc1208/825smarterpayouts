@@ -31,7 +31,7 @@ export default function useHomeAnalytics(): UseHomeAnalyticsReturn {
 
     // Console log for development
     if (process.env.NODE_ENV === 'development') {
-      console.log('Home Analytics Event:', event);
+      // Analytics event tracked
     }
   }, []);
 
