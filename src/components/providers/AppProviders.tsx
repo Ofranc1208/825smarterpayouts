@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ReactNode, useState, useCallback, useEffect, useRef } from 'react';
+import React, { ReactNode, useState, useCallback, useEffect, useRef, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { ChatProvider } from '../../contexts/ChatContext';
 import { CalculatorProvider } from '../../contexts/CalculatorContext';
@@ -22,7 +22,7 @@ const generateSessionId = () => {
 
 // This component's purpose is to organize all context providers
 // for our self-contained system with session persistence.
-export function AppProviders({ children }: { children: ReactNode }) {
+function AppProvidersContent({ children }: { children: ReactNode }) {
   const searchParams = useSearchParams();
   const [sessionId, setSessionId] = useState<string>('');
   const isInitialized = useRef(false);
@@ -136,5 +136,24 @@ export function AppProviders({ children }: { children: ReactNode }) {
         {children}
       </ChatProvider>
     </CalculatorProvider>
+  );
+}
+
+export function AppProviders({ children }: { children: ReactNode }) {
+  return (
+    <Suspense fallback={
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '200px',
+        color: '#666',
+        fontSize: '0.9rem'
+      }}>
+        Loading...
+      </div>
+    }>
+      <AppProvidersContent>{children}</AppProvidersContent>
+    </Suspense>
   );
 } 
