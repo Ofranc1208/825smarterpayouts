@@ -76,10 +76,34 @@ export class MetricsCalculator {
         )
       },
       user: {
-        activeUsers: this.getActiveUsers(),
-        sessionsToday: this.getSessionsToday(),
-        avgSessionDuration: this.getAvgSessionDuration(),
-        bounceRate: this.getBounceRate()
+        activeUsers: this.createMetricData(
+          'Active Users',
+          this.getActiveUsers(),
+          '',
+          'good',
+          '👥'
+        ),
+        bounceRate: this.createMetricData(
+          'Bounce Rate',
+          this.getBounceRate(),
+          '%',
+          this.getBounceRate() < 40 ? 'good' : this.getBounceRate() < 60 ? 'needs-improvement' : 'poor',
+          '📊'
+        ),
+        sessionDuration: this.createMetricData(
+          'Session Duration',
+          this.getAvgSessionDuration(),
+          's',
+          this.getAvgSessionDuration() > 120 ? 'good' : 'needs-improvement',
+          '⏱️'
+        ),
+        pageViews: this.createMetricData(
+          'Page Views',
+          this.getSessionsToday() * 2, // Approximate page views from sessions
+          '',
+          'good',
+          '📄'
+        )
       }
     };
   }

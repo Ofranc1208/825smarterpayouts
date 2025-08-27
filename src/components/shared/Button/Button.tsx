@@ -10,7 +10,7 @@
  * @version 2.0.0
  */
 
-import React from 'react';
+import React, { CSSProperties } from 'react';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /** Button variant/style */
@@ -58,7 +58,7 @@ const Button: React.FC<ButtonProps> = ({
     cursor: disabled || loading ? 'not-allowed' : 'pointer',
     border: 'none',
     outline: 'none',
-    position: 'relative',
+    position: 'relative' as const,
     width: fullWidth ? '100%' : 'auto',
     opacity: disabled ? 0.6 : 1,
   };
@@ -118,7 +118,7 @@ const Button: React.FC<ButtonProps> = ({
   };
 
   // Combine all styles
-  const buttonStyles = {
+  const buttonStyles: CSSProperties = {
     ...baseStyles,
     ...variantStyles[variant],
     ...sizeStyles[size],

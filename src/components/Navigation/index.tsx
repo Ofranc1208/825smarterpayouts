@@ -1,57 +1,27 @@
 /**
- * Navigation Module Export
+ * Navigation - CSS-Free Navigation System
  * 
- * Central export for the complete folder-based modular navigation system.
- * This module provides a scalable, maintainable navigation architecture with:
+ * A completely self-contained navigation system with zero CSS dependencies.
+ * Built with pure React and inline styles for maximum reliability and portability.
  * 
- * **Folder Structure:**
- * - Desktop/ - Desktop-specific navigation components
- * - Mobile/ - Mobile-specific navigation components  
- * - Shared/ - Common components used across desktop and mobile
- * - hooks/ - Custom hooks for state and logic management
- * 
- * **Features:**
- * - Clean separation of concerns between desktop and mobile
- * - Modular sub-components for better organization
- * - Custom hooks for state and logic separation
- * - Responsive design with platform-specific optimizations
- * - Touch-friendly mobile interface
- * - Hover-optimized desktop interface
- * - Search functionality
- * - Dropdown menus with smooth interactions
+ * Features:
+ * - Zero CSS files or className dependencies
+ * - Pure inline styles with React state
+ * - Responsive desktop/mobile switching
+ * - Smooth dropdown functionality
+ * - All navigation items from original system
  * 
  * @module Navigation
  * @author SmarterPayouts Team
  * @since 2024
  */
 
-// Main navigation component
-export { default } from './Navbar';
-export { default as Navbar } from './Navbar';
+// Main navigation component export
+export { default } from './DualNavbar';
+export { default as Navbar } from './DualNavbar';
+export { default as DualNavbar } from './DualNavbar'; // Keep for backward compatibility
 
-// Desktop navigation module
-export { default as DesktopNavigation } from './Desktop';
-export * from './Desktop';
-
-// Mobile navigation module  
-export { default as MobileNavigation } from './Mobile';
-export * from './Mobile';
-
-// Shared navigation components
-export * from './Shared';
-
-// Custom hooks
-export { useNavigationState } from './hooks/useNavigationState';
-export { useNavigationHelpers } from './hooks/useNavigationHelpers';
-export { useKeyboardNavigation } from './hooks/useKeyboardNavigation';
-export { useNavigationI18n } from './hooks/useNavigationI18n';
-export { useNavigationABTest } from './hooks/useNavigationABTest';
-export { useNavigationAnalytics } from './hooks/useNavigationAnalytics';
-
-// Navigation data and types (re-exported for convenience)
-export { processRoutes, dropdownMenus, searchMap } from '../../data/navigation/menuData';
-export type { NavItem, DropdownMenus, NavbarProps } from '../../data/navigation/types';
-
-// Hook types (for external usage)
-export type { NavigationState, NavigationActions } from './hooks/useNavigationState';
-export type { NavigationHelpers } from './hooks/useNavigationHelpers';
+// Sub-components (for potential future use)
+export { default as DesktopNav } from './Desktop';
+export { default as MobileNav } from './Mobile';
+export { default as NavLink } from './Shared/NavLink';

@@ -1,73 +1,55 @@
+import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 /**
- * Shared Navigation Link Component
+ * NavLink Component - CSS-Free Navigation Link
  * 
- * A reusable navigation link component with consistent styling,
- * active states, and hover effects. Used across both desktop and mobile navigation
- * where shared link behavior is needed.
+ * A reusable navigation link component with active state detection
+ * and hover effects using pure inline styles.
  * 
- * @component NavLink
- * @author SmarterPayouts Team
- * @since 2024
+ * Shared between Desktop and Mobile navigation components.
  */
 
 interface NavLinkProps {
-  /** The URL path for the link */
   href: string;
-  /** The display text for the link */
   children: React.ReactNode;
-  /** Current pathname to determine active state */
-  pathname: string;
-  /** Optional icon to display before the text */
   icon?: string;
-  /** Optional click handler */
   onClick?: () => void;
-  /** Additional custom styles */
-  style?: React.CSSProperties;
-  /** Custom className for additional styling */
-  className?: string;
 }
 
-/**
- * Shared Navigation Link Component
- * 
- * Renders a navigation link with proper active states, hover effects,
- * and consistent styling that works across desktop and mobile contexts
- */
-const NavLink: React.FC<NavLinkProps> = ({
-  href,
-  children,
-  pathname,
-  icon,
-  onClick,
-  style = {},
-  className = ''
-}) => {
+const NavLink: React.FC<NavLinkProps> = ({ href, children, icon, onClick }) => {
+  const pathname = usePathname();
   const isActive = pathname === href;
+  const [isHovered, setIsHovered] = React.useState(false);
+
+  const linkStyle: React.CSSProperties = {
+    display: 'flex',
+    alignItems: 'center',
+    gap: icon ? '0.25rem' : '0',
+    padding: '0.5rem 0.75rem', // Reduced padding
+    textDecoration: 'none',
+    borderRadius: '6px',
+    fontSize: '0.875rem', // Smaller font size
+    fontWeight: isActive ? 600 : 500,
+    color: isActive ? '#09b44d' : (isHovered ? '#07a043' : '#374151'),
+    backgroundColor: isActive ? '#f0fdf4' : (isHovered ? '#f9fafb' : 'transparent'),
+    transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)', // Smoother transition
+    cursor: 'pointer',
+    whiteSpace: 'nowrap', // Prevent text wrapping
+    minWidth: 'fit-content', // Ensure full text is visible
+    transform: isHovered ? 'translateY(-1px)' : 'translateY(0)', // Subtle lift on hover
+  };
 
   return (
-    <Link 
+    <Link
       href={href}
+      style={linkStyle}
       onClick={onClick}
-      className={className}
-      style={{
-        fontSize: '0.95rem',
-        padding: '0.5rem 0.9rem',
-        display: 'flex',
-        alignItems: 'center',
-        gap: icon ? '0.4rem' : '0',
-        fontWeight: isActive ? 600 : 500,
-        borderRadius: '8px',
-        transition: 'all 0.2s ease',
-        letterSpacing: '-0.2px',
-        textDecoration: 'none',
-        color: isActive ? '#09b44d' : 'inherit',
-        background: isActive ? '#e9f9f1' : 'transparent',
-        ...style
-      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      {icon && <span>{icon}</span>}
+      {icon && <span style={{ fontSize: '1.1em' }}>{icon}</span>}
       {children}
     </Link>
   );

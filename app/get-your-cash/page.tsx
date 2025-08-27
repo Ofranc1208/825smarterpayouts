@@ -132,11 +132,7 @@ export default function GetYourCash() {
                     flexDirection: 'column',
                     justifyContent: 'center',
                     cursor: 'pointer',
-                    transition: 'all 0.2s ease',
-                    ':hover': {
-                      transform: 'scale(1.02)',
-                      boxShadow: '0 4px 12px rgba(5, 150, 105, 0.15)'
-                    }
+                    transition: 'all 0.2s ease'
                   }}
                   title="Click to see payment timing details">
                     <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#047857', lineHeight: '1' }}>24-72h</div>
@@ -156,11 +152,7 @@ export default function GetYourCash() {
                     flexDirection: 'column',
                     justifyContent: 'center',
                     cursor: 'pointer',
-                    transition: 'all 0.2s ease',
-                    ':hover': {
-                      transform: 'scale(1.02)',
-                      boxShadow: '0 4px 12px rgba(5, 150, 105, 0.15)'
-                    }
+                    transition: 'all 0.2s ease'
                   }}
                   title="Click to explore all payment options">
                     <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#047857', lineHeight: '1' }}>3</div>
@@ -183,11 +175,7 @@ export default function GetYourCash() {
                     border: '2px solid #bbf7d0',
                     cursor: 'pointer',
                     transition: 'all 0.2s ease',
-                    textAlign: 'center',
-                    ':hover': {
-                      transform: 'scale(1.02)',
-                      boxShadow: '0 4px 12px rgba(5, 150, 105, 0.15)'
-                    }
+                    textAlign: 'center'
                   }}
                   title={SITE_STATS.compliance.description}>
                     <div style={{ fontSize: '1.125rem', fontWeight: 700, color: '#047857', lineHeight: '1' }}>{SITE_STATS.compliance.value}</div>

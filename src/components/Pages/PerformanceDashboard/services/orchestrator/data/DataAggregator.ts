@@ -183,7 +183,7 @@ export class DataAggregator {
     const now = Date.now();
     let clearedCount = 0;
     
-    for (const [key, entry] of this.dataCache.entries()) {
+    for (const [key, entry] of Array.from(this.dataCache.entries())) {
       if (now - entry.timestamp > entry.ttl) {
         this.dataCache.delete(key);
         clearedCount++;
@@ -207,7 +207,7 @@ export class DataAggregator {
     const now = Date.now();
     let expiredCount = 0;
     
-    for (const entry of this.dataCache.values()) {
+    for (const entry of Array.from(this.dataCache.values())) {
       if (now - entry.timestamp > entry.ttl) {
         expiredCount++;
       }

@@ -11,7 +11,7 @@ import {onCall, HttpsError} from "firebase-functions/v2/https";
 import {onDocumentCreated} from "firebase-functions/v2/firestore";
 import * as logger from "firebase-functions/logger";
 import {defineSecret} from "firebase-functions/params";
-import {Twilio} from "twilio";
+const Twilio = require("twilio");
 
 // Define the secrets so the function knows about them.
 const twilioAccountSid = defineSecret("TWILIO_ACCOUNT_SID");
@@ -57,7 +57,7 @@ export const makePhoneCall = onCall({
  */
 export const notifyRepOnChatRequest = onDocumentCreated(
   "chat_requests/{requestId}",
-  async (event) => {
+  async (event: any) => {
     // Get the data from the new document
     const requestData = event.data?.data();
     const userName = requestData?.userName || "a new user";

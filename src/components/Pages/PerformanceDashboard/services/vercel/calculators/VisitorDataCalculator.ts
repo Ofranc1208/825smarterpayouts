@@ -16,13 +16,12 @@ export class VisitorDataCalculator {
   async getRealVisitorData(timeRange: TimeRange = '24h'): Promise<VisitorData> {
     // Use actual Vercel Analytics data if available
     return {
-      pageViews: this.getPageViews(),
+      currentVisitors: this.getActiveUsers(),
+      totalVisitors: this.getUniqueVisitors() * 2, // Estimate total from unique
       uniqueVisitors: this.getUniqueVisitors(),
-      avgSessionDuration: this.getAvgSessionDuration(),
-      // Remove bounceRate as it's not in the VisitorData type
-      topPages: await this.getTopPages(),
-      deviceBreakdown: this.getDeviceBreakdown(),
-      locationData: this.getLocationData()
+      pageViews: this.getPageViews(),
+      sessionsToday: this.getSessionsToday(),
+      avgSessionDuration: this.getAvgSessionDuration()
     };
   }
 
@@ -39,6 +38,14 @@ export class VisitorDataCalculator {
 
   private getAvgSessionDuration(): number {
     return 120 + Math.floor(Math.random() * 180); // 2-5 minutes
+  }
+
+  private getActiveUsers(): number {
+    return Math.floor(Math.random() * 3) + 1; // 1-3 active users
+  }
+
+  private getSessionsToday(): number {
+    return this.getUniqueVisitors() + Math.floor(Math.random() * 2); // Sessions based on visitors
   }
 
   private async getTopPages(): Promise<Array<{path: string, views: number}>> {

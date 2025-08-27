@@ -1,23 +1,8 @@
 /**
- * Shared Navigation Module Export
+ * Shared Navigation Components Exports
  * 
- * Central export for shared navigation components.
- * This module provides components that are used across both
- * desktop and mobile navigation contexts:
- * - Common navigation links
- * - Shared branding elements
- * - Global navigation styles
- * 
- * @module Shared Navigation
- * @author SmarterPayouts Team
- * @since 2024
+ * Components and utilities shared between Desktop and Mobile navigation
  */
 
-// Shared navigation components
 export { default as NavLink } from './NavLink';
-export { default as NavbarLogo } from './NavbarLogo';
-export { NavbarStyles } from './NavbarStyles';
-export { default as NavigationErrorBoundary } from './NavigationErrorBoundary';
-export { default as NavigationSkeleton } from './NavigationSkeleton';
-export { default as NavigationAnimations } from './NavigationAnimations';
-export { default as NavigationSEO } from './NavigationSEO';
+export * from './navigationData';

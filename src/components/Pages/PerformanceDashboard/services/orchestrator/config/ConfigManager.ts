@@ -70,7 +70,7 @@ export class ConfigManager {
     
     if (!this.isValidConfig(this.config)) {
       // Revert if invalid
-      this.config[key] = oldValue;
+      (this.config as any)[key] = oldValue;
       throw new Error(`Invalid value for ${key}: ${value}`);
     }
     

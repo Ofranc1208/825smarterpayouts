@@ -125,4 +125,6 @@ export interface CTABackgroundProps {
   children: React.ReactNode;
   /** Custom styles */
   style?: React.CSSProperties;
+  /** Custom CSS class */
+  className?: string;
 }

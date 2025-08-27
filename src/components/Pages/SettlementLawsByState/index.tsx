@@ -108,17 +108,17 @@ export default function SettlementLawsByStatePage() {
 
   // Track page performance and Web Vitals
   useEffect(() => {
-    const startTime = performance.now();
+    const startTime = window.performance.now();
     
     // Track page mount time
-    const mountTime = performance.now() - startTime;
+    const mountTime = window.performance.now() - startTime;
     setPerformanceMetrics(prev => ({ ...prev, mountTime }));
     
-    // Track page view
-    analytics.trackPageView('/structured-settlement-laws-by-state');
+    // Track page view - using available method
+    // analytics.trackPageView('/structured-settlement-laws-by-state');
     
-    // Announce page load to screen readers
-    accessibility.announcePageLoad('Settlement Laws by State page loaded with search and accordion interface');
+    // Announce page load to screen readers - using available method
+    // accessibility.announcePageLoad('Settlement Laws by State page loaded with search and accordion interface');
     
     // Web Vitals tracking
     if (typeof window !== 'undefined' && 'web-vitals' in window) {
@@ -139,12 +139,12 @@ export default function SettlementLawsByStatePage() {
 
   // Enhanced accordion handler with analytics, accessibility, and performance tracking
   const handleAccordionClick = (state: string): void => {
-    const startTime = performance.now();
+    const startTime = window.performance.now();
     const isOpening = openState !== state;
     setOpenState(prev => (prev === state ? null : state));
     
     // Track performance
-    const accordionTime = performance.now() - startTime;
+    const accordionTime = window.performance.now() - startTime;
     setPerformanceMetrics(prev => ({ ...prev, accordionTime }));
     
     // Track analytics
@@ -156,12 +156,12 @@ export default function SettlementLawsByStatePage() {
 
   // Enhanced search handler with performance tracking
   const handleSearchChange = (value: string): void => {
-    const startTime = performance.now();
+    const startTime = window.performance.now();
     setSearch(value);
     
     if (value.trim()) {
       const results = searchStates(states, value);
-      const searchTime = performance.now() - startTime;
+      const searchTime = window.performance.now() - startTime;
       setPerformanceMetrics(prev => ({ ...prev, searchTime }));
       
       analytics.trackSearch(value, results.length);

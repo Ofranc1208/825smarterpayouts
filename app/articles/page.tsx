@@ -162,7 +162,7 @@ function HeroSection() {
 }
 
 // Article Card Component
-function ArticleCard({ article }) {
+function ArticleCard({ article }: { article: any }) {
   return (
     <div>
       <article style={{
@@ -296,7 +296,7 @@ function TestimonialSection() {
 }
 
 // FAQ Item Component
-function FAQItem({ faq, isLast }) {
+function FAQItem({ faq, isLast }: { faq: any; isLast: boolean }) {
   return (
     <details style={{ marginBottom: isLast ? 0 : '1rem' }}>
       <summary style={{
@@ -334,13 +334,13 @@ function NewsletterSubscription() {
     return () => window.removeEventListener('resize', checkScreenWidth);
   }, []);
 
-  const handleSubscribe = (e) => {
+  const handleSubscribe = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const email = e.target.email.value;
+    const email = (e.target as HTMLFormElement).email.value;
     if (email) {
       // Here you would integrate with your email service provider
       alert('Thank you for subscribing! You\'ll receive updates about new articles and resources.');
-      e.target.reset();
+      (e.target as HTMLFormElement).reset();
     }
   };
 
