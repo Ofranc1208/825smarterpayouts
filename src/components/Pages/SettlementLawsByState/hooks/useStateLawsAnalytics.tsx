@@ -13,7 +13,7 @@ interface AnalyticsEvent {
 }
 
 export function useStateLawsAnalytics() {
-  // Track page view
+  // Track page view with Performance Dashboard integration
   useEffect(() => {
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('config', 'GA_MEASUREMENT_ID', {
@@ -21,6 +21,13 @@ export function useStateLawsAnalytics() {
         page_location: window.location.href
       });
     }
+    
+    // Report to Performance Dashboard
+    reportToPerformanceDashboard('pageView', {
+      page: 'Settlement Laws by State',
+      timestamp: Date.now(),
+      url: window.location.href
+    });
   }, []);
 
   // Track search events
@@ -113,6 +120,48 @@ export function useStateLawsAnalytics() {
     }
   }, []);
 
+  // Performance Dashboard reporting function
+  const reportToPerformanceDashboard = useCallback((
+    eventType: string,
+    eventData: Record<string, any>
+  ) => {
+    try {
+      // Report to Performance Dashboard if available
+      if (typeof window !== 'undefined' && (window as any).PerformanceDashboard) {
+        (window as any).PerformanceDashboard.reportEvent({
+          type: eventType,
+          component: 'SettlementLawsByState',
+          data: eventData,
+          timestamp: Date.now()
+        });
+      }
+
+      // Fallback: Store in sessionStorage for Performance Dashboard
+      const existingEvents = JSON.parse(
+        window.sessionStorage.getItem('performance-dashboard-events') || '[]'
+      );
+      
+      existingEvents.push({
+        type: eventType,
+        component: 'SettlementLawsByState',
+        data: eventData,
+        timestamp: Date.now()
+      });
+
+      // Keep only last 100 events to prevent memory issues
+      if (existingEvents.length > 100) {
+        existingEvents.splice(0, existingEvents.length - 100);
+      }
+
+      window.sessionStorage.setItem(
+        'performance-dashboard-events',
+        JSON.stringify(existingEvents)
+      );
+    } catch (error) {
+      console.warn('Failed to report to Performance Dashboard:', error);
+    }
+  }, []);
+
   return {
     trackSearch,
     trackStateClick,
@@ -121,6 +170,7 @@ export function useStateLawsAnalytics() {
     trackQuoteClick,
     trackChatClick,
     trackScrollDepth,
-    trackTimeOnPage
+    trackTimeOnPage,
+    reportToPerformanceDashboard
   };
 }

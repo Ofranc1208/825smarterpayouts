@@ -8,11 +8,10 @@ interface PageData {
   name: string;
   icon: string;
   metrics: {
-    fcp: number;
-    lcp: number;
-    cls: number;
     visitors: number;
     bounceRate: number;
+    pageViews: number;
+    avgSessionDuration: number;
   };
   status: 'good' | 'needs-improvement' | 'poor';
   lastUpdated: Date;

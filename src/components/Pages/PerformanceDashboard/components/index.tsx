@@ -19,5 +19,7 @@ export { default as AnalyticsCharts } from './AnalyticsCharts/AnalyticsCharts';
 // System Components
 export { default as SystemHealth } from './SystemHealth/SystemHealth';
 
+// Navigation Components removed - integrated into main dashboard
+
 // Error Boundary
 export { default as ErrorBoundary } from './ErrorBoundary/DashboardErrorBoundary';

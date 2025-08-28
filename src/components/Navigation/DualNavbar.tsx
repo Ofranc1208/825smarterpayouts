@@ -27,8 +27,6 @@ const DualNavbar: React.FC = () => {
 
   // Client-side hydration and responsive detection
   useEffect(() => {
-    setIsClient(true);
-    
     const checkIsMobile = () => {
       const width = window.innerWidth;
       
@@ -42,10 +40,20 @@ const DualNavbar: React.FC = () => {
         setIsMobile(false); // Desktop - only on very wide screens
       }
     };
+
+    // Force client-side rendering immediately
+    const timer = setTimeout(() => {
+      setIsClient(true);
+      checkIsMobile();
+      window.addEventListener('resize', checkIsMobile);
+    }, 100); // Small delay to ensure DOM is ready
     
-    checkIsMobile();
-    window.addEventListener('resize', checkIsMobile);
-    return () => window.removeEventListener('resize', checkIsMobile);
+    return () => {
+      clearTimeout(timer);
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', checkIsMobile);
+      }
+    };
   }, []);
 
   // Show loading state during SSR hydration
@@ -58,8 +66,7 @@ const DualNavbar: React.FC = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        position: 'sticky',
-        top: 0,
+        position: 'relative', // Changed from sticky to prevent layout shift
         zIndex: 1000,
       }}>
         <div style={{ color: '#9ca3af', fontSize: '0.875rem' }}>Loading navigation...</div>

@@ -29,7 +29,7 @@ The SmarterPayouts Performance Dashboard is an **enterprise-grade, real-time mon
 - ✅ **Time Range Analysis** (1h, 24h, 7d, 30d)
 - ✅ **Interactive Performance Insights**
 - ✅ **Exportable Reports**
-
+de
 ---
 
 ## 🏗️ Technical Architecture

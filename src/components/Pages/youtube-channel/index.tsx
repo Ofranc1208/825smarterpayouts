@@ -23,8 +23,8 @@
 export { default as YouTubeChannelPage } from './YouTubeChannelPage';
 export { default } from './YouTubeChannelPage';
 
-// Legacy page component (to be removed after migration)
-export { default as YouTubeChannelPageLegacy } from './page';
+// Legacy page component (DEPRECATED - disabled and safe to delete)
+// export { default as YouTubeChannelPageLegacy } from './page';
 
 // Individual section components for flexibility
 export {

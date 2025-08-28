@@ -142,9 +142,16 @@ export default function PerformanceOptimizer({
           -moz-osx-font-smoothing: grayscale;
         }
         
-        /* Prevent layout shift for navigation */
-        nav {
+        /* Prevent layout shift for navigation - only on non-homepage */
+        body:not([data-page="/"]) nav {
           height: 64px;
+        }
+        
+        /* Ensure no nav elements on homepage */
+        body[data-page="/"] nav {
+          display: none !important;
+          height: 0 !important;
+          visibility: hidden !important;
         }
         
         /* Optimize button rendering */

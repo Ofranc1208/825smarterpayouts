@@ -50,13 +50,7 @@ export default function PerformanceDashboardPage() {
     realTime: isRealTime
   });
 
-  // Auto-refresh every 30 seconds when real-time is enabled
-  useEffect(() => {
-    if (!isRealTime) return;
-    
-    const interval = setInterval(refreshData, 30000);
-    return () => clearInterval(interval);
-  }, [isRealTime, refreshData]);
+  // Auto-refresh is handled in useDashboardData hook
 
   if (error) {
     return (
@@ -125,6 +119,8 @@ export default function PerformanceDashboardPage() {
               isLoading={isLoading}
               timeRange={timeRange}
             />
+
+            {/* Navigation-specific view removed - metrics now integrated into main dashboard */}
 
             {/* Dashboard Grid */}
             <div style={{

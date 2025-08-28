@@ -18,17 +18,42 @@ interface MobileMenuProps {
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
 
+  // Handle escape key and prevent body scroll when menu is open
+  React.useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      // Prevent body scroll when menu is open
+      document.body.style.overflow = 'hidden';
+      document.addEventListener('keydown', handleEscape);
+    } else {
+      // Restore body scroll when menu is closed
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen, onClose]);
+
   const overlayStyle: React.CSSProperties = {
     position: 'fixed',
     top: 0,
     left: 0,
-    right: 0,
-    bottom: 0,
+    width: '100vw',
+    height: '100vh',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     zIndex: 999,
     opacity: isOpen ? 1 : 0,
     visibility: isOpen ? 'visible' : 'hidden',
     transition: 'all 0.3s ease',
+    // Ensure it covers everything and is clickable
+    pointerEvents: isOpen ? 'auto' : 'none',
   };
 
   const menuStyle: React.CSSProperties = {
@@ -77,13 +102,28 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
     setExpandedSection(expandedSection === sectionTitle ? null : sectionTitle);
   };
 
+  // Prevent menu panel clicks from bubbling to overlay
+  const handleMenuClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+  };
+
   return (
     <>
       {/* Overlay */}
-      <div style={overlayStyle} onClick={onClose} />
+      <div 
+        style={overlayStyle} 
+        onClick={onClose}
+        aria-hidden="true"
+      />
       
       {/* Menu Panel */}
-      <div style={menuStyle}>
+      <div 
+        style={menuStyle} 
+        onClick={handleMenuClick}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile navigation menu"
+      >
         {/* Header */}
         <div style={headerStyle}>
           <span style={{ fontWeight: 'bold', color: '#09b44d' }}>Navigation</span>

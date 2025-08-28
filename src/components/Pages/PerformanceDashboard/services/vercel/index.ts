@@ -8,7 +8,7 @@
  */
 
 // Core components
-export { VercelConnectionManager, vercelConnectionManager } from './core/VercelConnectionManager';
+export { PerformanceDataManager, performanceDataManager } from './core/VercelConnectionManager';
 export { WebVitalsCollector, webVitalsCollector } from './core/WebVitalsCollector';
 
 // Calculators

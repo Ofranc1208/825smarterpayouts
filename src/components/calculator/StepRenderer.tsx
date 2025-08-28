@@ -12,30 +12,32 @@ import LCPaymentResultsPage from './lcpstep/LCPaymentResultsPage';
 
 interface StepRendererProps {
   stepId: string;
+  currentStep?: number;
+  totalSteps?: number;
 }
 
-const StepRenderer: React.FC<StepRendererProps> = ({ stepId }) => {
+const StepRenderer: React.FC<StepRendererProps> = ({ stepId, currentStep = 1, totalSteps = 5 }) => {
   switch (stepId) {
     // Guaranteed flow steps
     case 'mode':
-      return <GuaranteedPaymentOverview onNext={() => {}} />;
+      return <GuaranteedPaymentOverview currentStep={currentStep} totalSteps={totalSteps} onNext={() => {}} />;
     case 'amount':
-      return <GuaranteedPaymentAmountOverview onNext={() => {}} />;
+      return <GuaranteedPaymentAmountOverview currentStep={currentStep} totalSteps={totalSteps} onNext={() => {}} />;
     case 'review':
-      return <GuaranteedReview paymentMode={''} paymentAmount={''} annualIncrease={0} startDate={''} endDate={''} onCalculate={() => {}} />;
+      return <GuaranteedReview currentStep={currentStep} totalSteps={totalSteps} paymentMode={''} paymentAmount={''} annualIncrease={0} startDate={''} endDate={''} onCalculate={() => {}} />;
     case 'offer':
-      return <GuaranteedOffer calculationResult={{ minOffer: 0, maxOffer: 0 }} />;
+      return <GuaranteedOffer currentStep={currentStep} totalSteps={totalSteps} calculationResult={{ minOffer: 0, maxOffer: 0 }} />;
     // LCP flow steps
     case 'lcp_payment':
-      return <LCPSettlementPaymentsOverview onNext={() => {}} />;
+      return <LCPSettlementPaymentsOverview currentStep={currentStep} totalSteps={totalSteps} onNext={() => {}} />;
     case 'lcp_profile':
-      return <LCPPhysicalProfileOverview onNext={() => {}} />;
+      return <LCPPhysicalProfileOverview currentStep={currentStep} totalSteps={totalSteps} onNext={() => {}} />;
     case 'lcp_health':
-      return <LCPHealthOverview onNext={() => {}} />;
+      return <LCPHealthOverview currentStep={currentStep} totalSteps={totalSteps} onNext={() => {}} />;
     case 'lcp_review':
-      return <LCPaymentReviewStep paymentData={{ paymentMode: '', amount: '' }} detailsData={{ annualIncrease: 0, startDate: '', endDate: '' }} profileData={{ ageRange: '', gender: '', bodyFrame: '' }} lifestyleData={{ weight: '' }} healthData={{ smoke: '', health: '', cardiac: '' }} onEdit={() => {}} onCalculate={() => {}} />;
+      return <LCPaymentReviewStep currentStep={currentStep} totalSteps={totalSteps} paymentData={{ paymentMode: '', amount: '' }} detailsData={{ annualIncrease: 0, startDate: '', endDate: '' }} profileData={{ ageRange: '', gender: '', bodyFrame: '' }} lifestyleData={{ weight: '' }} healthData={{ smoke: '', health: '', cardiac: '' }} onEdit={() => {}} onCalculate={() => {}} />;
     case 'lcp_results':
-      return <LCPaymentResultsPage result={null as any} onBack={() => {}} />;
+      return <LCPaymentResultsPage currentStep={currentStep} totalSteps={totalSteps} result={null as any} onBack={() => {}} />;
     default:
       return null;
   }

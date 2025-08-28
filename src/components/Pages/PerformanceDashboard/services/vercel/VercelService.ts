@@ -9,7 +9,7 @@
  */
 
 import { RealMetrics, RealPageData, VisitorData, TimeRange } from '../types';
-import { vercelConnectionManager } from './core/VercelConnectionManager';
+import { performanceDataManager } from './core/VercelConnectionManager';
 import { webVitalsCollector } from './core/WebVitalsCollector';
 import { metricsCalculator } from './calculators/MetricsCalculator';
 import { pageDataCalculator } from './calculators/PageDataCalculator';
@@ -17,23 +17,24 @@ import { visitorDataCalculator } from './calculators/VisitorDataCalculator';
 
 export class VercelService {
   /**
-   * Initialize the Vercel Analytics connection
+   * Initialize performance data collection
    */
   async initialize(): Promise<void> {
-    await vercelConnectionManager.initialize();
+    await performanceDataManager.initialize();
+    performanceDataManager.showTransparencyNotice();
   }
 
   /**
    * Get comprehensive performance metrics
    */
   async getRealMetrics(timeRange: TimeRange = '24h'): Promise<RealMetrics> {
-    if (!vercelConnectionManager.isConnected()) {
-      console.warn('Vercel Analytics not initialized, using fallback data');
+    if (!performanceDataManager.isReady()) {
+      console.warn('Performance Data Manager not ready, metrics may be incomplete');
     }
 
     // Get Web Vitals data from browser
     const webVitals = await webVitalsCollector.getWebVitals();
-    
+
     // Calculate and return formatted metrics
     return metricsCalculator.calculateRealMetrics(webVitals);
   }
@@ -53,10 +54,10 @@ export class VercelService {
   }
 
   /**
-   * Get connection status
+   * Get service status
    */
-  getConnectionStatus(): 'connected' | 'disconnected' | 'error' {
-    return vercelConnectionManager.getStatus();
+  getConnectionStatus(): 'ready' | 'initializing' | 'error' {
+    return performanceDataManager.getStatus();
   }
 
   /**

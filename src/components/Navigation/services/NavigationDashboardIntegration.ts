@@ -10,12 +10,12 @@
  * @version 1.0.0 - Enterprise Edition
  */
 
-import { analyticsOrchestrator } from '../../Pages/PerformanceDashboard/services/AnalyticsOrchestrator';
-import type { 
+import { unifiedAnalyticsOrchestrator } from '../../Pages/PerformanceDashboard/services/UnifiedAnalyticsOrchestrator';
+import type {
   NavigationDashboardMetrics,
   NavigationAnalyticsEvent,
   NavigationPerformanceMetrics
-} from '../types';
+} from '../types/index';
 
 interface NavigationMetricsData {
   analytics: NavigationAnalyticsEvent[];
@@ -45,12 +45,9 @@ export class NavigationDashboardIntegration {
     if (this.isInitialized) return;
 
     try {
-      // Ensure the analytics orchestrator is initialized
-      await analyticsOrchestrator.initialize({
-        enableNavigation: true,
-        navigationSampling: 1.0,
-        enableRealTimeNavigation: true
-      });
+      // BREAK CIRCULAR DEPENDENCY: Don't initialize unifiedAnalyticsOrchestrator here
+      // It will be initialized by the Performance Dashboard itself
+      console.log('🧭 Navigation Dashboard Integration initializing (standalone mode)');
 
       // Start periodic metrics collection
       this.startMetricsCollection();
@@ -156,14 +153,18 @@ export class NavigationDashboardIntegration {
       // Store in cache for dashboard retrieval
       this.metricsCache.set('dashboard_metrics', dashboardMetrics);
 
-      // Track navigation performance in the main analytics system
-      if (analyticsOrchestrator.isReady()) {
-        analyticsOrchestrator.trackPageView({
-          page: 'navigation_metrics',
-          metrics: dashboardMetrics,
-          timestamp: Date.now()
-        });
-      }
+      // Track navigation performance in the unified analytics system
+      unifiedAnalyticsOrchestrator.trackUnifiedEvent({
+        timestamp: Date.now(),
+        sessionId: 'navigation_system',
+        page: 'navigation_metrics',
+        eventType: 'page_view',
+        category: 'performance',
+        action: 'navigation_metrics_update',
+        label: 'Navigation Performance Update',
+        value: dashboardMetrics.performanceScore,
+        metadata: dashboardMetrics
+      });
     } catch (error) {
       console.error('Error sending navigation data to Performance Dashboard:', error);
     }

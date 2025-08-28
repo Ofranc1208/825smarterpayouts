@@ -102,6 +102,32 @@ export interface SystemHealthStatus {
 
 export type TimeRange = '1h' | '24h' | '7d' | '30d';
 
+// Page Analytics Types
+export interface PageAnalyticsEvent {
+  event: string;
+  category: string;
+  action: string;
+  label?: string;
+  value?: number;
+  timestamp: number;
+}
+
+export interface PagePerformanceMetrics {
+  loadTime: number;
+  renderTime: number;
+  interactionTime: number;
+  webVitalsScore: number;
+  memoryUsage: number;
+  errorCount: number;
+}
+
+export interface PageAccessibilityMetrics {
+  score: number;
+  lastAudit: Date | null;
+  compliance: 'AA' | 'A' | 'Non-compliant';
+  issues: string[];
+}
+
 export interface AnalyticsConfig {
   enableRealTimeTracking: boolean;
   refreshInterval: number;

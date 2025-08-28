@@ -34,12 +34,12 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         
-        {/* Preload critical resources */}
-        <link rel="preload" href="/assets/images/og-image.png" as="image" type="image/png" />
-        <link rel="preload" href="/assets/images/mint-mascot.webp" as="image" type="image/webp" />
+        {/* Remove unused preloads that are causing performance warnings */}
+        {/* <link rel="preload" href="/assets/images/og-image.png" as="image" type="image/png" /> */}
+        {/* <link rel="preload" href="/assets/images/mint-mascot.webp" as="image" type="image/webp" /> */}
 
-        <link rel="icon" href="/assets/images/favicon_without_text.ico" type="image/x-icon" />
-        <link rel="shortcut icon" href="/assets/images/favicon_without_text.ico" type="image/x-icon" />
+        <link rel="icon" href="/favicon_without_text.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="/favicon_without_text.ico" type="image/x-icon" />
         <title>Structured Settlement Early Payout Calculator | Smarter Payouts</title>
         <meta name="description" content="Instant, accurate, and private lump sum calculator. No calls, no salespeople, no personal data required. See the real value of your structured settlement — avoid flashy cash advance offers." />
         <meta property="og:title" content="SmarterPayouts – The First Real-Time Structured Settlement Calculator" />
@@ -54,17 +54,28 @@ export default function RootLayout({
         <style dangerouslySetInnerHTML={{
           __html: `
           /* Critical CSS for above-the-fold content */
-          .navbar {
+          /* Navbar styles - only apply when navbar is present (not on homepage) */
+          body:not([data-page="/"]) .navbar {
             display: block !important;
             visibility: visible !important;
             opacity: 1 !important;
             z-index: 1001 !important;
           }
           
-          /* Optimize font loading */
-          @font-face {
-            font-family: 'Inter';
-            font-display: swap;
+          /* AGGRESSIVE: Ensure homepage has NO navigation elements */
+          body[data-page="/"] .navbar,
+          body[data-page="/"] nav,
+          body[data-page="/"] header[role="navigation"],
+          body[data-page="/"] [role="navigation"] {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            height: 0 !important;
+            min-height: 0 !important;
+            max-height: 0 !important;
+            overflow: hidden !important;
+            position: absolute !important;
+            left: -9999px !important;
           }
           
           /* Prevent layout shift */
@@ -76,6 +87,12 @@ export default function RootLayout({
           /* Prevent layout shift for navigation */
           nav, header {
             min-height: 64px;
+          }
+          
+          /* Ensure navigation doesn't interfere with page content */
+          body:not([data-page="/"]) main {
+            position: relative;
+            z-index: 1;
           }
           
           /* Prevent flash of unstyled content */
@@ -101,7 +118,7 @@ export default function RootLayout({
           `
         }} />
       </head>
-      <body className={inter.className}>
+      <body className={inter.className} data-page="/">{/* data-page will be updated by ConditionalNavbar */}
         <PerformanceOptimizer 
           enableResourceHints={true}
           enableCriticalResourcePriority={true}

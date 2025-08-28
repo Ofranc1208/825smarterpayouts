@@ -54,11 +54,15 @@ export class PerformanceCalculator {
   async generatePagePerformanceData(timeRange: string): Promise<RealPageData[]> {
     const pages = [
       { id: 'home', name: 'Home Page', icon: '🏠', path: '/' },
-      { id: 'calculator', name: 'Calculator', icon: '🧮', path: '/pricing-calculator' },
+      { id: 'navigation', name: 'Navigation System', icon: '🧭', path: '/navigation' },
       { id: 'about', name: 'About Us', icon: 'ℹ️', path: '/about' },
       { id: 'contact', name: 'Contact', icon: '📞', path: '/contact' },
-      { id: 'blog', name: 'Blog', icon: '📝', path: '/blog' },
-      { id: 'faqs', name: 'FAQs', icon: '❓', path: '/faqs' }
+      { id: 'court-approval', name: 'Court Approval', icon: '⚖️', path: '/court-approval' },
+      { id: 'mint-chat', name: 'Mint Chat', icon: '🤖', path: '/mint-intelligent-chat' },
+      { id: 'settlement-laws-federal', name: 'Federal Laws', icon: '🏛️', path: '/structured-settlement-laws' },
+      { id: 'settlement-laws-state', name: 'State Laws', icon: '🗺️', path: '/structured-settlement-laws-by-state' },
+      { id: 'youtube', name: 'YouTube Channel', icon: '📺', path: '/youtube-channel' },
+      { id: 'calculator', name: 'Calculator', icon: '🧮', path: '/pricing-calculator' }
     ];
 
     const pageDataPromises = pages.map(async (page) => {

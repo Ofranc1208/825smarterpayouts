@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 
+// Review Offer Page - Standalone Component
 export default function ReviewOffer() {
   return (
     <>

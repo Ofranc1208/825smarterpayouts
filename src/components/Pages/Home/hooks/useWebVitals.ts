@@ -24,8 +24,10 @@ interface WebVitalMetric {
 
 export function useWebVitals() {
   useEffect(() => {
-    // Dynamic import to avoid SSR issues
-    import('web-vitals').then(({ onCLS, onFID, onFCP, onLCP, onTTFB }) => {
+    // Delay web vitals loading to prevent blocking initial render
+    const timer = setTimeout(() => {
+      // Dynamic import to avoid SSR issues and reduce initial bundle
+      import('web-vitals').then(({ onCLS, onFID, onFCP, onLCP, onTTFB }) => {
       // Track Cumulative Layout Shift
       onCLS((metric: WebVitalMetric) => {
         trackWebVital('CLS', metric);
@@ -54,6 +56,9 @@ export function useWebVitals() {
       // Graceful fallback if web-vitals fails to load
       console.warn('Web Vitals library not available');
     });
+    }, 2000); // Delay 2 seconds to not block initial render
+
+    return () => clearTimeout(timer);
   }, []);
 
   const trackWebVital = (name: string, metric: WebVitalMetric) => {

@@ -1,20 +1,19 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import Navbar from '@/src/components/Navigation';
+import { useState, useEffect } from 'react';
+import DualNavbar from '@/src/components/Navigation';
 
 /**
  * Conditional Navbar Bridge Component
  * 
- * A bridge component that connects Next.js App Router routing logic (app/) 
- * with the complex navigation system (src/). This component handles the 
- * simple routing concern of when to show/hide the navbar, while delegating 
- * all complex navigation functionality to the src/Navigation system.
+ * PURE BRIDGE - NO STYLING WHATSOEVER
  * 
- * Architecture Decision:
- * - Lives in app/components/NavigationBridge/ as it handles Next.js routing concerns
- * - Imports from src/components/Navigation for complex navigation logic
- * - Keeps clean separation between simple routing logic and complex UI systems
+ * This component ONLY handles routing logic:
+ * - Shows nothing on homepage (/)
+ * - Shows src/Navigation/DualNavbar on all other pages
+ * - Contains ZERO styling, ZERO inline styles, ZERO CSS
+ * - All navigation styling comes from src/Navigation system
  * 
  * @component ConditionalNavbar
  * @author SmarterPayouts Team
@@ -22,10 +21,29 @@ import Navbar from '@/src/components/Navigation';
  */
 export default function ConditionalNavbar() {
   const pathname = usePathname();
-  
+  const [isClient, setIsClient] = useState(false);
+
+  // Prevent hydration mismatch by ensuring client-side rendering
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  // Update body data-page attribute for CSS targeting
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.body.setAttribute('data-page', pathname);
+    }
+  }, [pathname]);
+
   // Don't show navbar on homepage (/) - this is intentional design
+  // Check this FIRST, before any rendering
   if (pathname === '/') return null;
   
+  // Show nothing during SSR/hydration - let src/Navigation handle everything
+  if (!isClient) {
+    return null;
+  }
+  
   // Show enhanced navbar on all other pages
-  return <Navbar />;
+  return <DualNavbar />;
 }

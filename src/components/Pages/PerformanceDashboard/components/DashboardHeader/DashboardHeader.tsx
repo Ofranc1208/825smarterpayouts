@@ -15,13 +15,15 @@ interface DashboardHeaderProps {
 
 const pages = [
   { id: 'overview', name: 'Overview', icon: '📊' },
+  { id: 'navigation', name: 'Navigation System', icon: '🧭' },
   { id: 'home', name: 'Home', icon: '🏠' },
   { id: 'about', name: 'About Us', icon: 'ℹ️' },
   { id: 'contact', name: 'Contact', icon: '📞' },
   { id: 'court-approval', name: 'Court Approval', icon: '⚖️' },
   { id: 'mint-chat', name: 'Mint Chat', icon: '🤖' },
-  { id: 'settlement-laws', name: 'Settlement Laws', icon: '📋' },
-  { id: 'youtube', name: 'YouTube', icon: '📺' }
+  { id: 'settlement-laws-federal', name: 'Federal Laws', icon: '🏛️' },
+  { id: 'settlement-laws-state', name: 'State Laws', icon: '🗺️' },
+  { id: 'youtube', name: 'YouTube Channel', icon: '📺' }
 ];
 
 /**

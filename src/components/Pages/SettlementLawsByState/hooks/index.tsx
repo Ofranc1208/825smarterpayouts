@@ -4,3 +4,5 @@
 export { useStateLawsAnalytics } from './useStateLawsAnalytics';
 export { useStateLawsPerformance } from './useStateLawsPerformance';
 export { useStateLawsAccessibility } from './useStateLawsAccessibility';
+export { useIntersectionObserver } from './useIntersectionObserver';
+export { useWebVitals } from './useWebVitals';

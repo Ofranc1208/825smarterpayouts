@@ -60,7 +60,13 @@ const FinalCTASection = dynamic(() => import('./components/FinalCTASection'), {
 });
 
 // Import enterprise hooks
-import { useStateLawsAnalytics, useStateLawsPerformance, useStateLawsAccessibility } from './hooks';
+import { 
+  useStateLawsAnalytics, 
+  useStateLawsPerformance, 
+  useStateLawsAccessibility,
+  useIntersectionObserver,
+  useWebVitals
+} from './hooks';
 
 // Import utilities
 import { searchStates } from './utils';
@@ -105,6 +111,13 @@ export default function SettlementLawsByStatePage() {
   const analytics = useStateLawsAnalytics();
   const performance = useStateLawsPerformance();
   const accessibility = useStateLawsAccessibility();
+  
+  // Initialize advanced performance hooks
+  const webVitals = useWebVitals();
+  const { isIntersecting: isMainContentVisible, ref: mainContentRef } = useIntersectionObserver({
+    threshold: 0.3,
+    freezeOnceVisible: true
+  });
 
   // Track page performance and Web Vitals
   useEffect(() => {
@@ -131,7 +144,7 @@ export default function SettlementLawsByStatePage() {
         getTTFB(console.log);
       });
     }
-  }, [analytics, accessibility]);
+  }, []); // Empty dependency array - this should only run once on mount
 
   // Enhanced search with analytics and performance tracking
   const filteredStates = search.trim() ? searchStates(states, search) : states;
@@ -183,7 +196,10 @@ export default function SettlementLawsByStatePage() {
           onChatClick={handleChatClick}
         />
 
-        <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 16px' }}>
+        <main 
+          ref={mainContentRef as React.RefObject<HTMLElement>}
+          style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 16px' }}
+        >
           <DisclaimerSection />
           
           <SearchSection 

@@ -1,68 +1,39 @@
 'use client';
 import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
+// Import only critical above-the-fold components
 import {
   SEOHead,
   HeroSection,
-  WhyChooseSection,
   HomePageErrorBoundary,
   SectionErrorBoundary
 } from './components';
 
+// Import lightweight loading component
+import LoadingFallback from './components/LoadingFallback';
+
+// Lazy load WhyChooseSection to reduce initial bundle
+const WhyChooseSection = dynamic(() => import('./components/WhyChoose'), {
+  loading: () => <LoadingFallback message="Loading Why Choose Us..." icon="🌟" />,
+  ssr: false
+});
+
 // Lazy load below-the-fold sections for optimal performance
 const HowItWorksSection = dynamic(() => import('./components/HowItWorks'), {
-  loading: () => (
-    <div style={{ 
-      height: '500px', 
-      display: 'flex', 
-      alignItems: 'center', 
-      justifyContent: 'center',
-      background: 'linear-gradient(135deg, #f8fffe 0%, #e8f5e8 100%)'
-    }}>
-      <div style={{ textAlign: 'center', color: '#2d5a27' }}>
-        <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>⚡</div>
-        <p>Loading How It Works...</p>
-      </div>
-    </div>
-  ),
+  loading: () => <LoadingFallback height="500px" message="Loading How It Works..." icon="⚡" />,
   ssr: false
 });
 
 const TestimonialsSection = dynamic(() => import('./components/Testimonials'), {
-  loading: () => (
-    <div style={{ 
-      height: '400px', 
-      display: 'flex', 
-      alignItems: 'center', 
-      justifyContent: 'center',
-      backgroundColor: 'white'
-    }}>
-      <div style={{ textAlign: 'center', color: '#2d5a27' }}>
-        <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>💬</div>
-        <p>Loading Testimonials...</p>
-      </div>
-    </div>
-  ),
+  loading: () => <LoadingFallback message="Loading Testimonials..." icon="💬" background="white" />,
   ssr: false
 });
 
 const FinalCTASection = dynamic(() => import('./components/FinalCTA'), {
-  loading: () => (
-    <div style={{ 
-      height: '300px', 
-      display: 'flex', 
-      alignItems: 'center', 
-      justifyContent: 'center',
-      background: 'linear-gradient(135deg, #2d5a27 0%, #1a3d1a 100%)'
-    }}>
-      <div style={{ textAlign: 'center', color: 'white' }}>
-        <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>🎯</div>
-        <p>Loading Final CTA...</p>
-      </div>
-    </div>
-  ),
+  loading: () => <LoadingFallback message="Loading Final CTA..." icon="🚀" background="linear-gradient(135deg, #22b455 0%, #1a9a47 100%)" />,
   ssr: false
 });
+
 import {
   useHomeAnalytics,
   useHomePerformance,

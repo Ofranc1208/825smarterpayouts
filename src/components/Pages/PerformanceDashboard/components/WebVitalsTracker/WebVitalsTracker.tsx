@@ -1,8 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { analyticsService } from '../../services';
-import { vercelService } from '../../services/vercel';
+import { getCLS, getFID, getFCP, getLCP, getTTFB } from 'web-vitals';
 
 /**
  * Web Vitals Tracker Component
@@ -15,63 +14,44 @@ import { vercelService } from '../../services/vercel';
  * @author SmarterPayouts Team
  * @since 2024
  */
+// Global flag to prevent multiple initializations across component re-mounts
+let globalWebVitalsInitialized = false;
+
 export default function WebVitalsTracker() {
   useEffect(() => {
-    let isInitialized = false;
-
-    const initializeTracking = async () => {
-      if (isInitialized) return;
+    // Prevent multiple initializations even in React StrictMode
+    if (globalWebVitalsInitialized) {
+      console.log('🎯 WebVitalsTracker: Already initialized, skipping...');
+      return;
+    }
+    
+    const initializeTracking = () => {
+      if (globalWebVitalsInitialized) return;
+      globalWebVitalsInitialized = true;
       
-      try {
-        // Initialize both analytics services
-        await analyticsService.initialize();
-        await vercelService.initialize();
-        isInitialized = true;
-        
-        console.log('📊 Performance tracking initialized');
-      } catch (error) {
-        console.error('Failed to initialize performance tracking:', error);
-      }
+      console.log('🎯 WebVitalsTracker: Starting simple tracking...');
+      
+      // Simple Web Vitals tracking - just log to console for now
+      const sendToConsole = (name: string, value: number) => {
+        console.log(`📊 Web Vital - ${name}: ${value}`);
+      };
+      
+      // Track Core Web Vitals
+      getCLS(({ value }) => sendToConsole('CLS', value));
+      getFID(({ value }) => sendToConsole('FID', value));
+      getFCP(({ value }) => sendToConsole('FCP', value));
+      getLCP(({ value }) => sendToConsole('LCP', value));
+      getTTFB(({ value }) => sendToConsole('TTFB', value));
     };
-
-    // Initialize tracking
-    initializeTracking();
-
-    // Track page visibility changes
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === 'visible') {
-        analyticsService.trackPageView({
-          type: 'visibility_change',
-          visible: true,
-          url: window.location.href,
-          pathname: window.location.pathname
-        });
-      }
-    };
-
-    // Track user interactions
-    const handleUserInteraction = (event: Event) => {
-      analyticsService.trackPageView({
-        type: 'user_interaction',
-        eventType: event.type,
-        url: window.location.href,
-        pathname: window.location.pathname
-      });
-    };
-
-    // Add event listeners
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    document.addEventListener('click', handleUserInteraction, { passive: true });
-    document.addEventListener('scroll', handleUserInteraction, { passive: true });
-
-    // Cleanup
+    
+    // Initialize after a short delay to prevent mounting issues
+    const timer = setTimeout(initializeTracking, 1000);
+    
     return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-      document.removeEventListener('click', handleUserInteraction);
-      document.removeEventListener('scroll', handleUserInteraction);
+      clearTimeout(timer);
     };
-  }, []);
-
+  }, []); // Empty dependency array - only run once per mount
+  
   // This component doesn't render anything visible
   return null;
 }

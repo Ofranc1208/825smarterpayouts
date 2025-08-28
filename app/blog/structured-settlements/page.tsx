@@ -15,9 +15,20 @@ export default function StructuredSettlements() {
         position: 'relative',
         overflow: 'hidden'
       }}>
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-lg-10">
+        <div style={{ 
+          width: '100%',
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '0 1rem'
+        }}>
+          <div style={{ 
+            display: 'flex',
+            justifyContent: 'center'
+          }}>
+            <div style={{ 
+              width: '100%',
+              maxWidth: '900px'
+            }}>
               <div style={{
                 background: 'rgba(255,255,255,0.95)',
                 backdropFilter: 'blur(10px)',
@@ -74,8 +85,14 @@ export default function StructuredSettlements() {
                   boxShadow: '0 4px 15px rgba(5, 150, 105, 0.3)',
                   transition: 'all 0.3s ease'
                 }}
-                onMouseEnter={(e)=>{e.currentTarget.style.transform='translateY(-2px)';e.currentTarget.style.boxShadow='0 8px 25px rgba(5,150,105,0.4)';}}
-                onMouseLeave={(e)=>{e.currentTarget.style.transform='translateY(0)';e.currentTarget.style.boxShadow='0 4px 15px rgba(5,150,105,0.3)';}}>
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 8px 25px rgba(5,150,105,0.4)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 4px 15px rgba(5,150,105,0.3)';
+                }}>
                   💰 See Your Settlement Value
                 </Link>
               </div>
@@ -85,38 +102,93 @@ export default function StructuredSettlements() {
       </section>
 
       {/* Article Content */}
-      <main className="container py-5">
-        <article className="mx-auto" style={{ maxWidth: '800px' }}>
+      <main style={{ 
+        width: '100%',
+        maxWidth: '1200px',
+        margin: '0 auto',
+        padding: '3rem 1rem',
+        marginTop: '1rem' // Add space to account for navigation
+      }}>
+        <article style={{ 
+          maxWidth: '800px',
+          margin: '0 auto'
+        }}>
           
           {/* Key Takeaways */}
-          <div className="bg-light p-4 rounded mb-4" style={{ background:'#f8fafc', border:'1px solid #f3f4f6' }}>
-            <h2 className="h5 fw-bold mb-3" style={{ color:'#059669' }}>Key Takeaways</h2>
-            <ul className="mb-0" style={{ color:'#4b5563', lineHeight:'1.6' }}>
-              <li>Structured settlements provide long-term, tax-free financial security for injury and lawsuit claimants.</li>
-              <li>Payments are funded by annuities and can be tailored to individual needs.</li>
-              <li>You can sell your future payments for cash, with court approval, if your needs change.</li>
-              <li>SmarterPayouts offers a transparent, fast, and secure process for accessing your funds.</li>
+          <div style={{ 
+            background: '#f8fafc', 
+            border: '1px solid #f3f4f6',
+            padding: '2rem',
+            borderRadius: '12px',
+            marginBottom: '2.5rem'
+          }}>
+            <h2 style={{ 
+              color: '#059669',
+              fontSize: '1.25rem',
+              fontWeight: 'bold',
+              marginBottom: '1.5rem'
+            }}>Key Takeaways</h2>
+            <ul style={{ 
+              color: '#4b5563', 
+              lineHeight: '1.6',
+              marginBottom: 0,
+              paddingLeft: '1.5rem'
+            }}>
+              <li style={{ marginBottom: '0.5rem' }}>Structured settlements provide long-term, tax-free financial security for injury and lawsuit claimants.</li>
+              <li style={{ marginBottom: '0.5rem' }}>Payments are funded by annuities and can be tailored to individual needs.</li>
+              <li style={{ marginBottom: '0.5rem' }}>You can sell your future payments for cash, with court approval, if your needs change.</li>
+              <li style={{ marginBottom: 0 }}>SmarterPayouts offers a transparent, fast, and secure process for accessing your funds.</li>
             </ul>
           </div>
 
           {/* Table of Contents */}
-          <nav aria-label="Table of contents" className="mb-4">
-            <h2 className="h5 fw-bold mb-3" style={{ color:'#1f2937' }}>Table of Contents</h2>
-            <ul className="list-unstyled" style={{ lineHeight:'1.8' }}>
-              <li><a href="#intro" className="text-success fw-semibold text-decoration-none">What Is a Structured Settlement?</a></li>
-              <li><a href="#history" className="text-success fw-semibold text-decoration-none">A Brief History</a></li>
-              <li><a href="#how-it-works" className="text-success fw-semibold text-decoration-none">How Structured Settlements Work</a></li>
-              <li><a href="#pros-cons" className="text-success fw-semibold text-decoration-none">Pros and Cons</a></li>
-              <li><a href="#tax" className="text-success fw-semibold text-decoration-none">Tax Implications</a></li>
-              <li><a href="#cash-out" className="text-success fw-semibold text-decoration-none">Why Cash Out?</a></li>
-              <li><a href="#how-to-sell" className="text-success fw-semibold text-decoration-none">How to Sell Your Payments</a></li>
-              <li><a href="#faq" className="text-success fw-semibold text-decoration-none">FAQ</a></li>
+          <nav aria-label="Table of contents" style={{ marginBottom: '2.5rem' }}>
+            <h2 style={{ 
+              color: '#1f2937',
+              fontSize: '1.25rem',
+              fontWeight: 'bold',
+              marginBottom: '1.5rem'
+            }}>Table of Contents</h2>
+            <ul style={{ 
+              listStyle: 'none',
+              padding: 0,
+              lineHeight: '1.8'
+            }}>
+              <li style={{ marginBottom: '0.5rem' }}>
+                <a href="#intro" style={{ color: '#059669', fontWeight: '600', textDecoration: 'none' }}>What Is a Structured Settlement?</a>
+              </li>
+              <li style={{ marginBottom: '0.5rem' }}>
+                <a href="#history" style={{ color: '#059669', fontWeight: '600', textDecoration: 'none' }}>A Brief History</a>
+              </li>
+              <li style={{ marginBottom: '0.5rem' }}>
+                <a href="#how-it-works" style={{ color: '#059669', fontWeight: '600', textDecoration: 'none' }}>How Structured Settlements Work</a>
+              </li>
+              <li style={{ marginBottom: '0.5rem' }}>
+                <a href="#pros-cons" style={{ color: '#059669', fontWeight: '600', textDecoration: 'none' }}>Pros and Cons</a>
+              </li>
+              <li style={{ marginBottom: '0.5rem' }}>
+                <a href="#tax" style={{ color: '#059669', fontWeight: '600', textDecoration: 'none' }}>Tax Implications</a>
+              </li>
+              <li style={{ marginBottom: '0.5rem' }}>
+                <a href="#cash-out" style={{ color: '#059669', fontWeight: '600', textDecoration: 'none' }}>Why Cash Out?</a>
+              </li>
+              <li style={{ marginBottom: '0.5rem' }}>
+                <a href="#how-to-sell" style={{ color: '#059669', fontWeight: '600', textDecoration: 'none' }}>How to Sell Your Payments</a>
+              </li>
+              <li style={{ marginBottom: 0 }}>
+                <a href="#faq" style={{ color: '#059669', fontWeight: '600', textDecoration: 'none' }}>FAQ</a>
+              </li>
             </ul>
           </nav>
 
           {/* Article Introduction */}
-          <section id="intro" className="mb-5">
-            <h2 className="h3 fw-bold mb-4" style={{ color: '#1f2937' }}>
+          <section id="intro" style={{ marginBottom: '3rem' }}>
+            <h2 style={{ 
+              color: '#1f2937',
+              fontSize: '1.75rem',
+              fontWeight: 'bold',
+              marginBottom: '1.5rem'
+            }}>
               💼 What Is a Structured Settlement?
             </h2>
             <p style={{ color: '#4b5563', lineHeight: '1.7', fontSize: '1.125rem' }}>
@@ -132,7 +204,7 @@ export default function StructuredSettlements() {
           </section>
 
           {/* History Section */}
-          <section id="history" className="mb-5">
+          <section id="history" style={{ marginBottom: '3rem' }}>
             <div style={{
               background: 'linear-gradient(135deg, #fef3c7 0%, #fef08a 100%)',
               padding: '2rem',
@@ -140,7 +212,12 @@ export default function StructuredSettlements() {
               border: '1px solid #fde047',
               marginBottom: '2rem'
             }}>
-              <h2 className="h3 fw-bold mb-4" style={{ color: '#92400e' }}>
+              <h2 style={{ 
+                color: '#92400e',
+                fontSize: '1.75rem',
+                fontWeight: 'bold',
+                marginBottom: '1.5rem'
+              }}>
                 📜 A Brief History of Structured Settlements
               </h2>
               <p style={{ color: '#4b5563', lineHeight: '1.7', marginBottom: '1rem' }}>
@@ -161,12 +238,22 @@ export default function StructuredSettlements() {
           </section>
 
           {/* How It Works */}
-          <section id="how-it-works" className="mb-5">
-            <h2 className="h3 fw-bold mb-4" style={{ color: '#1f2937' }}>
+          <section id="how-it-works" style={{ marginBottom: '3rem' }}>
+            <h2 style={{ 
+              color: '#1f2937',
+              fontSize: '1.75rem',
+              fontWeight: 'bold',
+              marginBottom: '1.5rem'
+            }}>
               ⚙️ How Structured Settlements Work
             </h2>
-            <div className="row g-4">
-              <div className="col-md-6">
+            <div style={{ 
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gap: '1.5rem',
+              marginBottom: '2rem'
+            }}>
+              <div>
                 <div style={{
                   background: '#ffffff',
                   padding: '1.5rem',
@@ -186,7 +273,12 @@ export default function StructuredSettlements() {
                   }}>
                     <span style={{ fontSize: '1.5rem' }}>🏢</span>
                   </div>
-                  <h3 className="h5 fw-semibold mb-3" style={{ color: '#1f2937' }}>Annuity Purchase</h3>
+                  <h3 style={{ 
+                    color: '#1f2937',
+                    fontSize: '1.125rem',
+                    fontWeight: '600',
+                    marginBottom: '1rem'
+                  }}>Annuity Purchase</h3>
                   <p style={{ color: '#6b7280', lineHeight: '1.6', marginBottom: 0 }}>
                     The defendant or their insurer purchases an annuity from a reputable insurance company 
                     to fund your payment schedule.
@@ -194,7 +286,7 @@ export default function StructuredSettlements() {
                 </div>
               </div>
 
-              <div className="col-md-6">
+              <div>
                 <div style={{
                   background: '#ffffff',
                   padding: '1.5rem',
@@ -214,7 +306,12 @@ export default function StructuredSettlements() {
                   }}>
                     <span style={{ fontSize: '1.5rem' }}>📅</span>
                   </div>
-                  <h3 className="h5 fw-semibold mb-3" style={{ color: '#1f2937' }}>Custom Schedule</h3>
+                  <h3 style={{ 
+                    color: '#1f2937',
+                    fontSize: '1.125rem',
+                    fontWeight: '600',
+                    marginBottom: '1rem'
+                  }}>Custom Schedule</h3>
                   <p style={{ color: '#6b7280', lineHeight: '1.6', marginBottom: 0 }}>
                     Payments can be customized—monthly, quarterly, annually, or even as future 
                     lump sums for major expenses.
@@ -222,7 +319,7 @@ export default function StructuredSettlements() {
                 </div>
               </div>
 
-              <div className="col-md-6">
+              <div>
                 <div style={{
                   background: '#ffffff',
                   padding: '1.5rem',
@@ -242,7 +339,12 @@ export default function StructuredSettlements() {
                   }}>
                     <span style={{ fontSize: '1.5rem' }}>🛡️</span>
                   </div>
-                  <h3 className="h5 fw-semibold mb-3" style={{ color: '#1f2937' }}>Protection</h3>
+                  <h3 style={{ 
+                    color: '#1f2937',
+                    fontSize: '1.125rem',
+                    fontWeight: '600',
+                    marginBottom: '1rem'
+                  }}>Protection</h3>
                   <p style={{ color: '#6b7280', lineHeight: '1.6', marginBottom: 0 }}>
                     The insurance company assumes investment risk, so you don't worry about 
                     market fluctuations or outliving your funds.
@@ -250,7 +352,7 @@ export default function StructuredSettlements() {
                 </div>
               </div>
 
-              <div className="col-md-6">
+              <div>
                 <div style={{
                   background: '#ffffff',
                   padding: '1.5rem',
@@ -270,7 +372,12 @@ export default function StructuredSettlements() {
                   }}>
                     <span style={{ fontSize: '1.5rem' }}>💸</span>
                   </div>
-                  <h3 className="h5 fw-semibold mb-3" style={{ color: '#1f2937' }}>Tax-Free</h3>
+                  <h3 style={{ 
+                    color: '#1f2937',
+                    fontSize: '1.125rem',
+                    fontWeight: '600',
+                    marginBottom: '1rem'
+                  }}>Tax-Free</h3>
                   <p style={{ color: '#6b7280', lineHeight: '1.6', marginBottom: 0 }}>
                     Recipients benefit from guaranteed, tax-free payments for the duration 
                     of the agreement, often for life.
@@ -281,14 +388,24 @@ export default function StructuredSettlements() {
           </section>
 
           {/* Pros and Cons */}
-          <section id="pros-cons" className="mb-5">
-            <h2 className="h3 fw-bold mb-4" style={{ color: '#1f2937' }}>
+          <section id="pros-cons" style={{ marginBottom: '3rem' }}>
+            <h2 style={{ 
+              color: '#1f2937',
+              fontSize: '1.75rem',
+              fontWeight: 'bold',
+              marginBottom: '1.5rem'
+            }}>
               ⚖️ Pros and Cons of Structured Settlements
             </h2>
             
-            <div className="row g-4">
+            <div style={{ 
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gap: '1.5rem',
+              marginBottom: '2rem'
+            }}>
               {/* Benefits */}
-              <div className="col-md-6">
+              <div>
                 <div style={{
                   background: 'linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%)',
                   padding: '2rem',
@@ -296,7 +413,12 @@ export default function StructuredSettlements() {
                   border: '1px solid #bbf7d0',
                   height: '100%'
                 }}>
-                  <h3 className="h4 fw-bold mb-3" style={{ color: '#059669' }}>
+                  <h3 style={{ 
+                    color: '#059669',
+                    fontSize: '1.25rem',
+                    fontWeight: 'bold',
+                    marginBottom: '1rem'
+                  }}>
                     ✅ Benefits
                   </h3>
                   <ul style={{ color: '#4b5563', lineHeight: '1.6', marginBottom: 0 }}>
@@ -310,7 +432,7 @@ export default function StructuredSettlements() {
               </div>
 
               {/* Drawbacks */}
-              <div className="col-md-6">
+              <div>
                 <div style={{
                   background: 'linear-gradient(135deg, #fef2f2 0%, #fef7f7 100%)',
                   padding: '2rem',
@@ -318,7 +440,12 @@ export default function StructuredSettlements() {
                   border: '1px solid #fecaca',
                   height: '100%'
                 }}>
-                  <h3 className="h4 fw-bold mb-3" style={{ color: '#dc2626' }}>
+                  <h3 style={{ 
+                    color: '#dc2626',
+                    fontSize: '1.25rem',
+                    fontWeight: 'bold',
+                    marginBottom: '1rem'
+                  }}>
                     ⚠️ Drawbacks
                   </h3>
                   <p style={{ color: '#4b5563', lineHeight: '1.6', marginBottom: '1rem' }}>
@@ -335,14 +462,19 @@ export default function StructuredSettlements() {
           </section>
 
           {/* Tax Implications */}
-          <section id="tax" className="mb-5">
+          <section id="tax" style={{ marginBottom: '3rem' }}>
             <div style={{
               background: 'linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%)',
               padding: '2rem',
               borderRadius: '16px',
               border: '1px solid #bae6fd'
             }}>
-              <h2 className="h3 fw-bold mb-4" style={{ color: '#0369a1' }}>
+              <h2 style={{ 
+                color: '#0369a1',
+                fontSize: '1.75rem',
+                fontWeight: 'bold',
+                marginBottom: '1.5rem'
+              }}>
                 🧾 Tax Implications of Structured Settlements
               </h2>
               <p style={{ color: '#4b5563', lineHeight: '1.7', marginBottom: '1rem' }}>
@@ -366,8 +498,13 @@ export default function StructuredSettlements() {
           </section>
 
           {/* Why Cash Out */}
-          <section id="cash-out" className="mb-5">
-            <h2 className="h3 fw-bold mb-4" style={{ color: '#1f2937' }}>
+          <section id="cash-out" style={{ marginBottom: '3rem' }}>
+            <h2 style={{ 
+              color: '#1f2937',
+              fontSize: '1.75rem',
+              fontWeight: 'bold',
+              marginBottom: '1.5rem'
+            }}>
               💰 Why Cash Out Your Structured Settlement?
             </h2>
             <p style={{ color: '#4b5563', lineHeight: '1.7', fontSize: '1.125rem', marginBottom: '1.5rem' }}>
@@ -375,14 +512,19 @@ export default function StructuredSettlements() {
               or investment opportunities. In these situations, waiting years for your payments may not be practical.
             </p>
             
-            <div className="row g-4 mb-4">
+            <div style={{ 
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gap: '1.5rem',
+              marginBottom: '2rem'
+            }}>
               {[
                 { icon: '🏥', title: 'Medical Emergencies', desc: 'Unexpected health expenses not covered by insurance' },
                 { icon: '🎓', title: 'Education', desc: 'Invest in your future with immediate educational funding' },
                 { icon: '🏠', title: 'Real Estate', desc: 'Purchase a home or investment property opportunity' },
                 { icon: '💼', title: 'Business', desc: 'Start or expand a business with immediate capital' }
               ].map((item, index) => (
-                <div key={index} className="col-md-6">
+                <div key={index}>
                   <div style={{
                     background: '#ffffff',
                     padding: '1.5rem',
@@ -394,7 +536,12 @@ export default function StructuredSettlements() {
                   }}>
                     <div style={{ fontSize: '2rem', flexShrink: 0 }}>{item.icon}</div>
                     <div>
-                      <h3 className="h6 fw-semibold mb-2" style={{ color: '#1f2937' }}>{item.title}</h3>
+                      <h3 style={{ 
+                        color: '#1f2937',
+                        fontSize: '1rem',
+                        fontWeight: '600',
+                        marginBottom: '0.5rem'
+                      }}>{item.title}</h3>
                       <p style={{ color: '#6b7280', lineHeight: '1.6', marginBottom: 0, fontSize: '0.95rem' }}>
                         {item.desc}
                       </p>
@@ -412,11 +559,21 @@ export default function StructuredSettlements() {
           </section>
 
           {/* How to Sell */}
-          <section id="how-to-sell" className="mb-5">
-            <h2 className="h3 fw-bold mb-4" style={{ color: '#1f2937' }}>
+          <section id="how-to-sell" style={{ marginBottom: '3rem' }}>
+            <h2 style={{ 
+              color: '#1f2937',
+              fontSize: '1.75rem',
+              fontWeight: 'bold',
+              marginBottom: '1.5rem'
+            }}>
               📋 How to Sell Your Structured Settlement Payments
             </h2>
-            <div className="row g-4">
+            <div style={{ 
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gap: '1.5rem',
+              marginBottom: '2rem'
+            }}>
               {[
                 { num: '1', title: 'Get Free Quote', desc: 'Use our Early Payout Calculator for an instant, no-obligation estimate of your settlement value.' },
                 { num: '2', title: 'Review & Ask', desc: 'Review your personalized offer and ask questions—our expert team is here to help you understand every detail.' },
@@ -424,7 +581,7 @@ export default function StructuredSettlements() {
                 { num: '4', title: 'Court Approval', desc: 'We handle the entire court approval process for you, ensuring everything meets legal requirements.' },
                 { num: '5', title: 'Get Your Cash', desc: 'Once approved, receive your funds by direct deposit, check, or in-person delivery.' }
               ].map((step, index) => (
-                <div key={index} className="col-md-6">
+                <div key={index}>
                   <div style={{
                     background: '#ffffff',
                     padding: '1.5rem',
@@ -449,7 +606,12 @@ export default function StructuredSettlements() {
                       {step.num}
                     </div>
                     <div>
-                      <h3 className="h6 fw-semibold mb-2" style={{ color: '#1f2937' }}>{step.title}</h3>
+                      <h3 style={{ 
+                        color: '#1f2937',
+                        fontSize: '1rem',
+                        fontWeight: '600',
+                        marginBottom: '0.5rem'
+                      }}>{step.title}</h3>
                       <p style={{ color: '#6b7280', lineHeight: '1.6', marginBottom: 0, fontSize: '0.95rem' }}>
                         {step.desc}
                       </p>
@@ -461,11 +623,16 @@ export default function StructuredSettlements() {
           </section>
 
           {/* FAQ Section */}
-          <section id="faq" className="mb-5">
-            <h2 className="h3 fw-bold mb-4" style={{ color: '#1f2937' }}>
+          <section id="faq" style={{ marginBottom: '3rem' }}>
+            <h2 style={{ 
+              color: '#1f2937',
+              fontSize: '1.75rem',
+              fontWeight: 'bold',
+              marginBottom: '1.5rem'
+            }}>
               ❓ Frequently Asked Questions
             </h2>
-            <div className="accordion" id="faqAccordion">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               {[
                 {
                   id: 'faq1',
@@ -493,27 +660,32 @@ export default function StructuredSettlements() {
                   answer: 'We offer transparent quotes, fast service, and a customer-first approach. Our experienced team guides you every step of the way, ensuring you understand the process and feel confident in your decision.'
                 }
               ].map((faq, index) => (
-                <div key={index} className="accordion-item mb-3" style={{ border: '1px solid #e5e7eb', borderRadius: '12px', overflow: 'hidden' }}>
-                  <h3 className="accordion-header">
-                    <button 
-                      className="accordion-button collapsed fw-semibold" 
-                      type="button" 
-                      data-bs-toggle="collapse" 
-                      data-bs-target={`#${faq.id}`}
-                      style={{ 
-                        background: '#f9fafb',
-                        border: 'none',
-                        color: '#1f2937',
-                        fontSize: '1.1rem'
-                      }}
-                    >
+                <div key={index} style={{ 
+                  border: '1px solid #e5e7eb', 
+                  borderRadius: '12px', 
+                  overflow: 'hidden',
+                  marginBottom: '1rem'
+                }}>
+                  <div style={{ 
+                    background: '#f9fafb',
+                    padding: '1.5rem',
+                    borderBottom: '1px solid #e5e7eb'
+                  }}>
+                    <h3 style={{ 
+                      color: '#1f2937',
+                      fontSize: '1.1rem',
+                      fontWeight: '600',
+                      margin: 0
+                    }}>
                       {faq.question}
-                    </button>
-                  </h3>
-                  <div id={faq.id} className="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                    <div className="accordion-body" style={{ color: '#4b5563', lineHeight: '1.6' }}>
-                      {faq.answer}
-                    </div>
+                    </h3>
+                  </div>
+                  <div style={{ 
+                    padding: '1.5rem',
+                    color: '#4b5563', 
+                    lineHeight: '1.6' 
+                  }}>
+                    {faq.answer}
                   </div>
                 </div>
               ))}
@@ -529,7 +701,12 @@ export default function StructuredSettlements() {
             border: '1px solid #bbf7d0',
             marginTop: '3rem'
           }}>
-            <h2 className="h3 fw-bold mb-3" style={{ color: '#059669' }}>
+            <h2 style={{ 
+              color: '#059669',
+              fontSize: '1.75rem',
+              fontWeight: 'bold',
+              marginBottom: '1.5rem'
+            }}>
               See What Your Settlement Is Worth
             </h2>
             <p style={{ color: '#4b5563', fontSize: '1.125rem', marginBottom: '2rem', maxWidth: '600px', margin: '0 auto 2rem' }}>
@@ -551,8 +728,14 @@ export default function StructuredSettlements() {
                 boxShadow: '0 4px 15px rgba(5, 150, 105, 0.3)',
                 transition: 'all 0.3s ease'
               }}
-              onMouseEnter={(e)=>{e.currentTarget.style.transform='translateY(-2px)';e.currentTarget.style.boxShadow='0 8px 25px rgba(5,150,105,0.4)';}}
-              onMouseLeave={(e)=>{e.currentTarget.style.transform='translateY(0)';e.currentTarget.style.boxShadow='0 4px 15px rgba(5,150,105,0.3)';}}>
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 8px 25px rgba(5,150,105,0.4)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 15px rgba(5,150,105,0.3)';
+              }}>
                 💰 Get Your Instant Offer
               </Link>
               
@@ -570,8 +753,14 @@ export default function StructuredSettlements() {
                 border: '2px solid #059669',
                 transition: 'all 0.3s ease'
               }}
-              onMouseEnter={(e)=>{e.currentTarget.style.background='#059669';e.currentTarget.style.color='#ffffff';}}
-              onMouseLeave={(e)=>{e.currentTarget.style.background='rgba(255,255,255,0.9)';e.currentTarget.style.color='#059669';}}>
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = '#059669';
+                e.currentTarget.style.color = '#ffffff';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'rgba(255,255,255,0.9)';
+                e.currentTarget.style.color = '#059669';
+              }}>
                 🤖 Chat with Mint AI
               </Link>
             </div>

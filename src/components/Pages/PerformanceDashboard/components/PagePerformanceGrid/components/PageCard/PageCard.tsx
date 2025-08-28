@@ -7,11 +7,10 @@ interface PageData {
   name: string;
   icon: string;
   metrics: {
-    fcp: number;
-    lcp: number;
-    cls: number;
     visitors: number;
     bounceRate: number;
+    pageViews: number;
+    avgSessionDuration: number;
   };
   status: 'good' | 'needs-improvement' | 'poor';
   lastUpdated: Date;
@@ -196,9 +195,9 @@ export default function PageCard({ page, isSelected, onSelect, isLoading }: Page
             fontWeight: '600',
             color: '#1f2937'
           }}>
-            {page.metrics.fcp}ms
+            {page.metrics.pageViews || 0}
           </div>
-          <div style={{ fontSize: '0.75rem', color: '#6b7280' }}>FCP</div>
+          <div style={{ fontSize: '0.75rem', color: '#6b7280' }}>Page Views</div>
         </div>
         
         <div style={{ textAlign: 'center' }}>
@@ -207,9 +206,9 @@ export default function PageCard({ page, isSelected, onSelect, isLoading }: Page
             fontWeight: '600',
             color: '#1f2937'
           }}>
-            {page.metrics.lcp}ms
+            {page.metrics.avgSessionDuration || 0}s
           </div>
-          <div style={{ fontSize: '0.75rem', color: '#6b7280' }}>LCP</div>
+          <div style={{ fontSize: '0.75rem', color: '#6b7280' }}>Avg Session</div>
         </div>
         
         <div style={{ textAlign: 'center' }}>
