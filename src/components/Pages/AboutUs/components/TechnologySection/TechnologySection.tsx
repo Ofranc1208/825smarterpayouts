@@ -143,8 +143,8 @@ export default function TechnologySection({
             text={TECHNOLOGY_CONFIG.ctaText}
             primaryButtonText={TECHNOLOGY_CONFIG.ctaButtonText}
             primaryButtonLink={TECHNOLOGY_CONFIG.ctaButtonLink}
-            secondaryButtonText="Chat with Mint AI"
-            secondaryButtonLink="/mint-intelligent-chat"
+            secondaryButtonText="Check Your State Laws"
+            secondaryButtonLink="/structured-settlement-laws-by-state"
             theme="gradient"
           />
         )}

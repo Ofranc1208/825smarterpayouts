@@ -28,7 +28,6 @@ export const processRoutes = [
  */
 export const dropdownMenus: DropdownMenus = {
   whyUs: [
-    { href: '/blog', label: 'Blog', icon: '📝' },
     { href: '/youtube-channel', label: 'YouTube', icon: '📺' },
   ],
   company: [
@@ -53,7 +52,6 @@ export const dropdownMenus: DropdownMenus = {
     { href: '/get-your-cash', label: 'Get Your Cash', icon: '💰' },
   ],
   legal: [
-    { href: '/blog/how-fast-payout', label: 'How Fast?', icon: '⚡' },
     { href: '/state-laws-overview', label: 'State Laws Overview', icon: '📜' },
     { href: '/terms', label: 'Terms', icon: '📋' },
     { href: '/privacy', label: 'Privacy', icon: '🔒' },
@@ -81,15 +79,8 @@ export const searchMap: { [key: string]: string } = {
   'offer': '/review-offer',
   'court': '/court-approval',
   'cash': '/get-your-cash',
-  'blog': '/blog',
   'articles': '/articles',
   'youtube': '/youtube-channel',
-  'fast': '/blog/how-fast-payout',
-  'how fast': '/blog/how-fast-payout',
-  'speed': '/blog/how-fast-payout',
-  'timing': '/blog/how-fast-payout',
-  'timeline': '/blog/how-fast-payout',
-  'how long': '/blog/how-fast-payout',
   'state laws': '/state-laws-overview',
   'laws': '/state-laws-overview',
   'knowledge hub': '/structured-settlement-info-hub',

@@ -1,0 +1,482 @@
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│              GET-A-QUOTE PAGE - CONSISTENCY REFACTOR ROADMAP                     │
+│                    Progress Tracker & Implementation Guide                       │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+🎯 CRITICAL DESIGN PRINCIPLE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+GetAQuote page MUST look and feel IDENTICAL to Main page in terms of:
+✓ Visual styling (colors, typography, spacing, shadows, border radius)
+✓ Card designs and hover effects
+✓ Button appearance and animations
+✓ Overall design language and polish
+
+📍 ONLY THE CONTENT/DATA SHOULD DIFFER - NOT THE VISUAL DESIGN
+
+Main page is the reference. GetAQuote should feel like the SAME application.
+This creates a cohesive, professional brand experience across all pages.
+
+═══════════════════════════════════════════════════════════════════════════════════
+                           📊 CURRENT STATE AUDIT
+═══════════════════════════════════════════════════════════════════════════════════
+
+🔍 ISSUES IDENTIFIED (Same problems Main page had before refactoring):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. BUTTONS - NOT USING SHARED COMPONENT (CRITICAL)
+   ❌ ALL buttons are hardcoded <Link> or <a> tags with inline styles
+   ❌ Buttons in HeroSection: 2 buttons (Calculator, Mint AI)
+   ❌ Buttons in ChooseMethod: 2 card links (AI Calculator, Talk to Expert)
+   ❌ Buttons in FAQSection: 2 buttons (Ask Mint AI, View All FAQs)
+   ❌ Buttons in FinalCTA: 3 buttons (Calculator, Mint AI, Phone)
+   ❌ No hover effects, no animations, no consistency
+   ❌ Emojis hardcoded in button text instead of icon prop
+
+2. TYPOGRAPHY - COMPLETELY HARDCODED (CRITICAL)
+   ❌ All font sizes hardcoded: "clamp(2rem, 5vw, 3.5rem)", "2rem", "1.125rem", etc.
+   ❌ All font weights hardcoded: "700", "600"
+   ❌ Line heights hardcoded: "1.2", "1.5", "1.6"
+   ❌ Letter spacing hardcoded: "1px"
+   ❌ No typography constants or design tokens
+
+3. COLORS - COMPLETELY HARDCODED (CRITICAL)
+   ❌ ALL colors hardcoded: "#1f2937", "#6b7280", "#059669", etc.
+   ❌ Gradients hardcoded throughout
+   ❌ No color constants or theme system
+   ❌ Uses different colors than Main page (needs consistency)
+
+4. SPACING - ALL INLINE (HIGH PRIORITY)
+   ❌ Section padding hardcoded: "48px 16px", "2rem 0 3rem"
+   ❌ Margins hardcoded: "0 auto 2rem", "1.5rem", "2.5rem"
+   ❌ Gaps hardcoded: "1rem", "2rem"
+   ❌ No spacing constants or system
+
+5. CARD STYLES - INCONSISTENT (HIGH PRIORITY)
+   ❌ Border radius hardcoded: "24px", "20px", "16px", "12px", "8px"
+   ❌ Box shadows hardcoded in multiple places
+   ❌ Card background colors hardcoded
+   ❌ No card style utilities
+
+6. NO SHARED UTILITIES AT ALL (CRITICAL)
+   ❌ No shared/ folder
+   ❌ No design tokens
+   ❌ No reusable utilities
+   ❌ Everything is duplicated and hardcoded
+
+═══════════════════════════════════════════════════════════════════════════════════
+                        📋 REFACTORING PHASES & CHECKLIST
+═══════════════════════════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│ PHASE 1: IMPORT GLOBAL SHARED DESIGN SYSTEM (Foundation)        ✅ COMPLETE    │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+✅ ARCHITECTURAL DECISION: Use Global Shared Styles (Not Page-Specific)
+
+All design tokens are now in: src/components/shared/styles/
+- Main page uses these (via re-exports for backwards compatibility)
+- GetAQuote will import directly from global location
+- ALL future pages will use the same system
+
+Global Design System Location:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ src/components/shared/styles/typography.ts      - All font sizes, weights, line heights
+✅ src/components/shared/styles/colorThemes.ts     - All colors, gradients, shadows
+✅ src/components/shared/styles/spacing.ts         - All padding, margins, gaps
+✅ src/components/shared/styles/cardStyles.ts      - All border radius, box shadows, card utilities
+✅ src/components/shared/styles/hoverEffects.ts    - All hover animations and effects
+✅ src/components/shared/styles/index.ts           - Barrel export for easy imports
+
+Tasks for GetAQuote:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[X] 1.1 Global design system created ✅ DONE
+        - typography.ts moved to global ✅
+        - colorThemes.ts moved to global ✅
+        - spacing.ts moved to global ✅
+        - cardStyles.ts moved to global ✅
+        - hoverEffects.ts moved to global ✅
+        - Barrel export (index.ts) created ✅
+
+[X] 1.2 Update all GetAQuote components to import from global styles ✅ DONE
+        
+        🎯 GOAL: Make GetAQuote VISUALLY IDENTICAL to Main page
+        ✓ Same colors (greens, purples, grays)
+        ✓ Same typography scale (h1, h2, body sizes)
+        ✓ Same spacing rhythm (padding, margins, gaps)
+        ✓ Same card styles (border radius, shadows, backgrounds)
+        ✓ Design tokens imported and applied
+        
+        Files updated:
+        ✅ src/components/Pages/GetAQuote/components/HeroSection.tsx
+        ✅ src/components/Pages/GetAQuote/components/ChooseMethod.tsx
+        ✅ src/components/Pages/GetAQuote/components/FAQSection.tsx
+        ✅ src/components/Pages/GetAQuote/components/FinalCTA.tsx
+        
+        All imports added:
+        import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
+        
+        ALL hardcoded values replaced with design tokens! ✅
+        
+        📊 RESULT: GetAQuote now uses same visual system as Main page
+
+Expected Outcome:
+✓ All GetAQuote components import from global shared design system
+✓ No more hardcoded colors, typography, or spacing
+✓ 100% consistency with Main page
+✓ Foundation ready for Phase 2 (Button replacement)
+
+
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│ PHASE 2: REPLACE ALL BUTTONS WITH SHARED COMPONENT                   ⏳ PENDING │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+Goal: Replace all hardcoded buttons with shared Button component, keeping emojis
+
+Current Buttons (9 total):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📍 HeroSection.tsx (2 buttons):
+   ❌ "💰 Get Your Instant Quote" → /pricing-calculator (green gradient)
+   ❌ "💬 Chat with Mint AI" → /mint-intelligent-chat (purple gradient)
+
+📍 ChooseMethod.tsx (2 card links - convert to buttons):
+   ❌ AI Calculator Card → /pricing-calculator (green theme)
+   ❌ Talk to Expert Card → tel:+19547649750 (amber/orange theme)
+
+📍 FAQSection.tsx (2 buttons):
+   ❌ "💬 Ask Mint AI" → /mint-intelligent-chat (purple gradient)
+   ❌ "📖 View All FAQs" → /faqs (green gradient)
+
+📍 FinalCTA.tsx (3 buttons):
+   ❌ "🤖 Use AI Calculator" → /pricing-calculator (white bg, green text)
+   ❌ "💬 Chat with Mint AI" → /mint-intelligent-chat (purple gradient)
+   ❌ "📞 Call (954) 764-9750" → tel:+19547649750 (outline white)
+
+Tasks:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[ ] 2.1 Update HeroSection.tsx
+        - Import Button from '@/src/components/shared/Button'
+        - Replace "Get Your Instant Quote" button:
+          • variant: 'technology-primary'
+          • size: 'lg'
+          • icon: '💰' (or remove emoji, use text only)
+          • href: '/pricing-calculator'
+        - Replace "Chat with Mint AI" button:
+          • Create new variant: 'technology-purple' (purple gradient)
+          • size: 'lg'
+          • icon: '💬'
+          • href: '/mint-intelligent-chat'
+
+[ ] 2.2 Update ChooseMethod.tsx
+        - Keep the cards but make them clickable Button wrappers
+        - Or convert to large Button components with custom styling
+        - Maintain the visual design but use Button underneath
+
+[ ] 2.3 Update FAQSection.tsx
+        - Replace "Ask Mint AI" button:
+          • variant: 'technology-purple' (new variant)
+          • size: 'sm'
+          • icon: '💬'
+        - Replace "View All FAQs" button:
+          • variant: 'technology-primary'
+          • size: 'lg'
+          • icon: '📖'
+
+[ ] 2.4 Update FinalCTA.tsx
+        - Replace "Use AI Calculator":
+          • Custom variant or override styles (white bg, green text)
+          • size: 'lg'
+          • icon: '🤖'
+        - Replace "Chat with Mint AI":
+          • variant: 'technology-purple'
+          • size: 'lg'
+          • icon: '💬'
+        - Replace "Call" button:
+          • variant: 'outline' with custom white border
+          • size: 'lg'
+          • icon: '📞'
+          • as: 'a', href: 'tel:+19547649750'
+
+[ ] 2.5 Create new Button variant if needed
+        - Add 'technology-purple' variant to Button/styles.ts
+        - Gradient: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)
+        - Ensure it matches Main page purple buttons
+
+Expected Outcome:
+✓ ALL buttons use shared Button component
+✓ Emojis preserved as icons
+✓ Consistent hover effects and animations
+✓ Proper sizing and spacing
+✓ ~100+ lines of duplicated button code removed
+
+
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│ PHASE 3: APPLY TYPOGRAPHY SYSTEM                                     ⏳ PENDING │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+Goal: Replace all hardcoded font sizes/weights with typography constants
+
+Components to Update (4 files):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📍 HeroSection.tsx:
+   ❌ h1: "clamp(2rem, 5vw, 3.5rem)" → TYPOGRAPHY.fontSize.heading.h1
+   ❌ Badge: "0.875rem", "600" → TYPOGRAPHY.fontSize.body.small, fontWeight.semibold
+   ❌ Subtitle: "1.125rem" → TYPOGRAPHY.fontSize.body.large
+   ❌ Benefits text: "0.875rem" → TYPOGRAPHY.fontSize.body.small
+
+📍 ChooseMethod.tsx:
+   ❌ h2: "2rem", "700" → TEXT_PRESETS.sectionTitle
+   ❌ Description: "1.125rem" → TYPOGRAPHY.fontSize.body.large
+   ❌ Card h3: "1.25rem", "700" → TYPOGRAPHY.fontSize.heading.h5, fontWeight.bold
+   ❌ Card text: "0.875rem" → TYPOGRAPHY.fontSize.body.small
+   ❌ Small badges: "0.75rem", "600" → TYPOGRAPHY.fontSize.body.xsmall, fontWeight.semibold
+
+📍 FAQSection.tsx:
+   ❌ h2: "2rem", "700" → TEXT_PRESETS.sectionTitle
+   ❌ Question text: "1rem", "600" → TEXT_PRESETS.faqQuestion
+   ❌ Answer text: "0.875rem" → TEXT_PRESETS.faqAnswer
+   ❌ Button text sizes already handled by Button component
+
+📍 FinalCTA.tsx:
+   ❌ h2: "2rem", "700" → TEXT_PRESETS.sectionTitle
+   ❌ Description: "1.125rem" → TYPOGRAPHY.fontSize.body.large
+   ❌ Help text: "0.875rem" → TYPOGRAPHY.fontSize.body.small
+
+Tasks:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[ ] 3.1 Update HeroSection.tsx
+        - Import: { TYPOGRAPHY, TEXT_PRESETS } from '../shared/styles/typography'
+        - Replace all hardcoded fontSize, fontWeight, lineHeight
+        - Use TEXT_PRESETS.heroTitle for h1
+        - Use TEXT_PRESETS.heroSubtitle for description
+
+[ ] 3.2 Update ChooseMethod.tsx
+        - Import typography constants
+        - Replace section h2 with TEXT_PRESETS.sectionTitle
+        - Use consistent card title and text sizes
+
+[ ] 3.3 Update FAQSection.tsx
+        - Import typography constants
+        - Use TEXT_PRESETS.sectionTitle for h2
+        - Use TEXT_PRESETS.faqQuestion and faqAnswer
+        - Or use SectionHeader component for the title
+
+[ ] 3.4 Update FinalCTA.tsx
+        - Import typography constants
+        - Apply consistent font sizes throughout
+
+Expected Outcome:
+✓ Zero hardcoded font sizes remaining
+✓ All typography uses design tokens
+✓ Perfect consistency with Main page
+✓ ~50-80 lines of code improved
+
+
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│ PHASE 4: APPLY COLOR SYSTEM                                          ⏳ PENDING │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+Goal: Replace all hardcoded colors with COLORS constants
+
+Current Hardcoded Colors (needs replacement):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+❌ Text colors: #1f2937, #6b7280, #ffffff
+❌ Primary colors: #059669, #047857, #09b44d
+❌ Purple: #8b5cf6, #7c3aed
+❌ Amber/Orange: #f59e0b, #d97706, #fbbf24
+❌ Background gradients: Multiple variations
+❌ Border colors: #bbf7d0, rgba(5, 150, 105, 0.1)
+
+Tasks:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[ ] 4.1 Update HeroSection.tsx
+        - Import: { COLORS } from '../shared/styles/colorThemes'
+        - background gradient → COLORS.backgrounds.heroGradient (or create)
+        - text colors → COLORS.text.primary, COLORS.text.secondary
+        - button colors → handled by Button component
+
+[ ] 4.2 Update ChooseMethod.tsx
+        - Background → COLORS.backgrounds.lightGray
+        - Card backgrounds → COLORS.backgrounds.greenLight, amberLight (create if needed)
+        - Border colors → COLORS.borders.green, amber
+        - Icon backgrounds → COLORS.primary.gradient, amber gradient
+
+[ ] 4.3 Update FAQSection.tsx
+        - Background → COLORS.backgrounds.white
+        - Card background → COLORS.backgrounds.greenLight
+        - Border → COLORS.borders.green
+        - Text colors → COLORS.text.primary, secondary
+
+[ ] 4.4 Update FinalCTA.tsx
+        - Background gradient → COLORS.primary.gradient
+        - Text → COLORS.text.white
+        - Transparency overlay → rgba values from COLORS
+
+Expected Outcome:
+✓ 95%+ hardcoded colors eliminated
+✓ Perfect color consistency with Main page
+✓ Easy to update color scheme globally
+✓ ~60-100 lines improved
+
+
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│ PHASE 5: APPLY SPACING & CARD STYLES                                 ⏳ PENDING │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+Goal: Standardize all spacing and card styles
+
+Tasks:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[ ] 5.1 Update all section padding
+        - Import: { SPACING_PRESETS } from '../shared/styles/spacing'
+        - Replace hardcoded section padding with SPACING_PRESETS.section
+        - Use SPACING_PRESETS.sectionContainer for max-width containers
+
+[ ] 5.2 Update all margins and gaps
+        - Replace hardcoded margins with SPACING.stack values
+        - Replace hardcoded gaps with SPACING.grid values
+        - Use SPACING.inline for horizontal spacing
+
+[ ] 5.3 Update all card styles
+        - Import: { BORDER_RADIUS, BOX_SHADOWS } from '../shared/styles/cardStyles'
+        - Replace hardcoded borderRadius with BORDER_RADIUS constants
+        - Replace hardcoded boxShadow with BOX_SHADOWS constants
+
+[ ] 5.4 Apply card utility functions
+        - Use getBaseCardStyles() for FAQ cards
+        - Use consistent card padding from SPACING.card
+
+Expected Outcome:
+✓ All spacing follows 8px grid system
+✓ Border radius standardized
+✓ Box shadows consistent
+✓ ~40-60 lines improved
+
+
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│ PHASE 6: USE SECTIONHEADER COMPONENT                                 ⏳ PENDING │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+Goal: Replace hardcoded section headers with SectionHeader component
+
+Sections to Update:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📍 ChooseMethod.tsx: "Choose Your Quote Method" + subtitle
+📍 FAQSection.tsx: "Frequently Asked Questions" (or keep custom with emoji)
+📍 FinalCTA.tsx: "Ready to Get Your Free Quote?" + subtitle
+
+Tasks:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[ ] 6.1 Update ChooseMethod.tsx
+        - Import SectionHeader
+        - Replace h2 + p with <SectionHeader title="..." subtitle="..." />
+        - Remove hardcoded header styles
+
+[ ] 6.2 Update FAQSection.tsx (optional)
+        - Keep custom header if emoji is important
+        - Or use SectionHeader with custom emoji in title
+
+[ ] 6.3 Update FinalCTA.tsx
+        - Replace h2 + p with SectionHeader
+        - Adjust colors for dark background (pass custom colors)
+
+Expected Outcome:
+✓ Consistent section headers
+✓ Less code duplication
+✓ Easier to maintain
+
+
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│ PHASE 7: FINAL CLEANUP & DOCUMENTATION                               ⏳ PENDING │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+Goal: Final polish and create documentation
+
+Tasks:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[ ] 7.1 Remove all remaining hardcoded values
+        - Do a final audit of all 4 component files
+        - Replace any missed hardcoded values
+
+[ ] 7.2 Create tree.txt file
+        - Document the new structure
+        - List all components and dependencies
+        - Include shared utilities documentation
+
+[ ] 7.3 Create README.md (optional)
+        - Document the design system
+        - Include usage examples
+
+[ ] 7.4 Test all pages
+        - Verify all buttons work
+        - Check responsive behavior
+        - Ensure no visual regressions
+
+Expected Outcome:
+✓ 100% consistency achieved
+✓ Zero hardcoded values
+✓ Clean, maintainable codebase
+✓ Proper documentation
+
+
+═══════════════════════════════════════════════════════════════════════════════════
+                              📈 IMPACT SUMMARY
+═══════════════════════════════════════════════════════════════════════════════════
+
+ESTIMATED CODE CHANGES:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Phase 1: Create shared utilities       → ~1500 lines of new utilities (copy from Main)
+Phase 2: Replace buttons                → ~150 lines improved, 9 buttons refactored
+Phase 3: Apply typography               → ~80 lines improved across 4 files
+Phase 4: Apply colors                   → ~100 lines improved across 4 files
+Phase 5: Apply spacing & cards          → ~60 lines improved across 4 files
+Phase 6: Use SectionHeader              → ~40 lines reduced
+Phase 7: Final cleanup                  → Documentation + testing
+
+TOTAL IMPACT:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✓ ~1500 lines of shared utilities added
+✓ ~430 lines of code improved/simplified
+✓ 9 buttons converted to shared component
+✓ 100% design token usage
+✓ Zero hardcoded values remaining
+✓ Perfect consistency with Main page
+
+
+BENEFITS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✓ Professional, cohesive visual appearance
+✓ Easy global updates (change once, apply everywhere)
+✓ Consistent user experience across pages
+✓ Faster development for new features
+✓ Reduced code duplication
+✓ Better maintainability
+✓ Design system ready for scaling
+
+
+NEXT STEPS AFTER COMPLETION:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. Apply same pattern to other pages (mint-intelligent-chat, etc.)
+2. Consider creating a global shared/ folder at src/components/shared/styles/
+3. Document the design system in a central location
+4. Create Storybook or component library documentation
+
+
+═══════════════════════════════════════════════════════════════════════════════════
+
+EXECUTION STRATEGY:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. Execute Phase 1 → User reviews → Mark complete
+2. Execute Phase 2 → User reviews → Mark complete
+3. Execute Phase 3 → User reviews → Mark complete
+4. Execute Phase 4 → User reviews → Mark complete
+5. Execute Phase 5 → User reviews → Mark complete
+6. Execute Phase 6 → User reviews → Mark complete
+7. Execute Phase 7 → User reviews → Mark complete
+8. Update this file with final completion status
+
+STATUS: ⏳ READY TO BEGIN | AWAITING USER APPROVAL TO START PHASE 1
+
+═══════════════════════════════════════════════════════════════════════════════════
+

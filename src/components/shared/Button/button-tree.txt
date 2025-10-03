@@ -1,0 +1,265 @@
+================================================================================
+BUTTON COMPONENT ARCHITECTURE - SMARTERPAYOUTS
+================================================================================
+Last Updated: October 2, 2025
+Purpose: Document all button usage across the website, particularly for About Us page
+
+================================================================================
+SHARED BUTTON COMPONENT
+================================================================================
+Location: src/components/shared/Button/Button.tsx
+Status: ✅ Active - Enterprise-grade reusable component
+
+Variants Available:
+  - primary: Green (#059669)
+  - secondary: Gray (#6b7280)
+  - outline: Transparent with green border
+  - ghost: Transparent, no border
+  - danger: Red (#dc2626)
+  - cta: Custom gradient (default green)
+  - golden: Golden gradient (#fbc233 → #f59e0b)
+  - technology-primary: Green gradient with cream text (#fef3c7)
+  - technology-secondary: Golden gradient with dark chocolate text (#92400e)
+
+Sizes Available:
+  - sm: Small (0.875rem)
+  - md: Medium (1rem) - default
+  - lg: Large (1.125rem)
+  - xl: Extra Large (1.25rem)
+
+Features:
+  ✓ Loading states
+  ✓ Icon support (left/right)
+  ✓ Enhanced hover animations
+  ✓ Shimmer effects
+  ✓ Custom gradients
+  ✓ Accessibility support
+  ✓ Can render as <button> or <a> (link)
+  ✓ Inline styling (no external CSS)
+
+================================================================================
+ABOUT US PAGE - BUTTON USAGE ANALYSIS
+================================================================================
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ 1. TECHNOLOGY SECTION CTA                                               │
+│ Location: src/components/Pages/AboutUs/components/TechnologySection/   │
+│           TechnologyCTA.tsx                                             │
+│ Status: ✅ USING SHARED BUTTON COMPONENT                                │
+└─────────────────────────────────────────────────────────────────────────┘
+
+Current Buttons:
+  Button 1:
+    - Text: "See Our Process"
+    - Link: /get-a-quote
+    - Variant: technology-primary
+    - Size: lg
+    - Features: enhancedHover, shimmer
+    - Import: Uses shared Button component ✅
+
+  Button 2:
+    - Text: "Check Your State Laws"
+    - Link: /structured-settlement-laws-by-state
+    - Variant: technology-secondary
+    - Size: lg
+    - Features: enhancedHover, shimmer (delayed)
+    - Import: Uses shared Button component ✅
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ 2. HERO SECTION CTA                                                     │
+│ Location: src/components/Pages/AboutUs/components/HeroSection/         │
+│           HeroCTA.tsx                                                   │
+│ Status: ⚠️ CUSTOM IMPLEMENTATION (NOT USING SHARED BUTTON)             │
+└─────────────────────────────────────────────────────────────────────────┘
+
+Current Buttons:
+  Button 1:
+    - Text: "Get Your Instant Offer"
+    - Link: /pricing-calculator
+    - Gradient: linear-gradient(135deg, #09b44d 0%, #047857 100%)
+    - Color: #fef3c7 (cream)
+    - Features: Custom inline styles, shimmer animation
+    - Import: Uses Next.js Link with custom styling ⚠️
+
+  Button 2:
+    - Text: "Chat with Mint AI"
+    - Link: /mint-intelligent-chat
+    - Gradient: linear-gradient(135deg, #fbc233 0%, #f59e0b 100%)
+    - Color: #92400e (dark chocolate)
+    - Features: Custom inline styles, shimmer (delayed)
+    - Import: Uses Next.js Link with custom styling ⚠️
+
+Data Source: src/components/Pages/AboutUs/components/HeroSection/data.ts
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ 3. CTA SECTION (Bottom of Page)                                        │
+│ Location: src/components/Pages/AboutUs/components/CTASection/          │
+│           CTAButtons.tsx                                                │
+│ Status: ⚠️ CUSTOM IMPLEMENTATION (NOT USING SHARED BUTTON)             │
+└─────────────────────────────────────────────────────────────────────────┘
+
+Current Buttons:
+  Button 1:
+    - Text: "Get Your Instant Offer"
+    - Link: /pricing-calculator
+    - Gradient: linear-gradient(135deg, #09b44d 0%, #059669 100%)
+    - Color: #fef3c7 (cream)
+    - Features: Custom inline styles, shimmer animation
+    - Import: Uses Next.js Link with custom styling ⚠️
+
+  Button 2:
+    - Text: "Chat with Mint AI"
+    - Link: /mint-intelligent-chat
+    - Gradient: linear-gradient(135deg, #fbc233 0%, #f59e0b 100%)
+    - Color: #92400e (dark chocolate)
+    - Features: Custom inline styles, shimmer (delayed)
+    - Import: Uses Next.js Link with custom styling ⚠️
+
+Data Source: src/components/Pages/AboutUs/components/CTASection/data.ts
+
+================================================================================
+ISSUES & CONFLICTS IDENTIFIED
+================================================================================
+
+🔴 ISSUE #1: Code Duplication
+   Problem: HeroCTA.tsx and CTAButtons.tsx have nearly identical button 
+            implementations with duplicated styling logic
+   Impact: Maintenance burden, inconsistency risk
+   Files Affected:
+   - src/components/Pages/AboutUs/components/HeroSection/HeroCTA.tsx
+   - src/components/Pages/AboutUs/components/CTASection/CTAButtons.tsx
+
+🔴 ISSUE #2: Not Using Shared Button Component
+   Problem: Hero and CTA sections create custom button implementations instead
+            of using the shared Button component
+   Impact: Inconsistent behavior, duplicated code, harder to maintain
+   Files Affected:
+   - src/components/Pages/AboutUs/components/HeroSection/HeroCTA.tsx
+   - src/components/Pages/AboutUs/components/CTASection/CTAButtons.tsx
+
+🔴 ISSUE #3: Inline Style Duplication
+   Problem: Same shimmer animations, hover effects, and styles defined in
+            multiple places
+   Impact: Updates require changes in multiple locations
+   Files Affected:
+   - HeroCTA.tsx (lines 112-126: shimmer keyframes)
+   - CTAButtons.tsx (lines 122-136: shimmer keyframes)
+   - Button.tsx (lines 284-302: shimmer keyframes)
+
+🟡 ISSUE #4: Slight Gradient Variations
+   Problem: Green gradient differs between Hero (#09b44d → #047857) and 
+            CTA (#09b44d → #059669)
+   Impact: Inconsistent brand colors
+   Files Affected:
+   - HeroCTA.tsx data (line 42)
+   - CTAButtons.tsx data (line 42)
+
+================================================================================
+USER'S REQUESTED BUTTONS FOR ABOUT US PAGE
+================================================================================
+
+Button 1: "See Our Process"
+  - Current Location: TechnologySection (TechnologyCTA.tsx)
+  - Status: ✅ Already using shared Button component
+  - Variant: technology-primary
+
+Button 2: "Check Your State Laws"
+  - Current Location: TechnologySection (TechnologyCTA.tsx)
+  - Status: ✅ Already using shared Button component
+  - Variant: technology-secondary
+
+Button 3: "Get Your Instant Offer With Mint AI"
+  - Current Locations: HeroSection & CTASection (as "Get Your Instant Offer")
+  - Status: ⚠️ Using custom implementation, needs refactoring
+  - Desired: Should use shared Button component
+
+================================================================================
+RECOMMENDATION FOR REFACTORING
+================================================================================
+
+Priority 1: ✅ TechnologySection Buttons
+  - Already using shared Button component
+  - No changes needed
+  - Buttons work correctly
+
+Priority 2: 🔧 Refactor HeroCTA.tsx
+  - Replace custom Link implementation with shared Button component
+  - Use variant="technology-primary" for green button
+  - Use variant="technology-secondary" for golden button
+  - Benefits: Consistency, less code, easier maintenance
+
+Priority 3: 🔧 Refactor CTAButtons.tsx
+  - Replace custom Link implementation with shared Button component
+  - Use variant="technology-primary" for green button
+  - Use variant="technology-secondary" for golden button
+  - Benefits: Eliminate code duplication
+
+Priority 4: 🎨 Standardize Gradients
+  - Decide on single green gradient
+  - Update data files to use consistent colors
+  - Ensure brand consistency
+
+================================================================================
+BUTTON COMPONENT COMPATIBILITY CHECK
+================================================================================
+
+Shared Button Component Can Handle:
+  ✅ All variants needed for About Us page
+  ✅ Shimmer animations (built-in)
+  ✅ Enhanced hover effects (built-in)
+  ✅ Custom gradients (supported)
+  ✅ Render as anchor links (as="a" prop)
+  ✅ All sizes (sm, md, lg, xl)
+  ✅ Accessibility features (built-in)
+  ✅ Inline styling (no CSS conflicts)
+
+Migration Path:
+  HeroCTA/CTAButtons → Shared Button Component
+  
+  BEFORE (Custom):
+    <Link href={href} style={{...100 lines of styles...}}>
+      {/* shimmer div */}
+      {text}
+    </Link>
+
+  AFTER (Shared):
+    <Button
+      as="a"
+      href={href}
+      variant="technology-primary"
+      size="lg"
+      enhancedHover={true}
+      shimmer={true}
+    >
+      {text}
+    </Button>
+
+  Lines of Code Reduction: ~100 lines per file
+
+================================================================================
+SUMMARY
+================================================================================
+
+Total Button Usage in About Us Page: 6 button instances across 3 sections
+  ✅ Using Shared Button: 2 (TechnologySection)
+  ⚠️ Custom Implementation: 4 (HeroSection: 2, CTASection: 2)
+
+Recommended Action:
+  1. Refactor HeroCTA.tsx to use shared Button component
+  2. Refactor CTAButtons.tsx to use shared Button component
+  3. Standardize gradient colors in data files
+  4. Test all buttons maintain same visual appearance and behavior
+  5. Remove duplicate shimmer animation definitions
+
+Benefits After Refactoring:
+  ✓ Single source of truth for button styling
+  ✓ Consistent behavior across all buttons
+  ✓ Easier maintenance and updates
+  ✓ ~200 lines of code reduction
+  ✓ Better accessibility
+  ✓ No CSS conflicts (inline styling only)
+
+================================================================================
+END OF BUTTON TREE DOCUMENTATION
+================================================================================
+

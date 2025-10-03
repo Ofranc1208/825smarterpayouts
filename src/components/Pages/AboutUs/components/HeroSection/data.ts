@@ -44,12 +44,12 @@ export const HERO_CTA_BUTTONS: HeroCTAButton[] = [
   },
   {
     id: 'mint-ai',
-    text: '💬 Meet Mint AI',
+    text: 'Chat with Mint AI',
     href: '/mint-intelligent-chat',
     ariaLabel: 'Chat with Mint AI assistant for structured settlement help',
     variant: 'secondary',
-    gradient: "linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%)",
-    icon: '💬'
+    gradient: "linear-gradient(135deg, #fbc233 0%, #f59e0b 100%)",
+    icon: null
   }
 ];
 

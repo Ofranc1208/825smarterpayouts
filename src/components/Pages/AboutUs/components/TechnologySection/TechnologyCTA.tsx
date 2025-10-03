@@ -11,7 +11,8 @@
  */
 
 'use client';
-import { useState, useCallback } from 'react';
+import { useCallback } from 'react';
+import Button from '../../../../shared/Button/Button';
 
 /**
  * Props for TechnologyCTA component
@@ -39,21 +40,13 @@ interface TechnologyCTAProps {
  */
 export default function TechnologyCTA({
   text = "Experience the difference technology makes in your settlement journey.",
-  primaryButtonText = "Explore Our Platform",
+  primaryButtonText = "See Our Process",
   primaryButtonLink = "/get-a-quote",
-  secondaryButtonText = "Chat with Mint AI",
-  secondaryButtonLink = "/mint-intelligent-chat",
+  secondaryButtonText = "Check Your State Laws",
+  secondaryButtonLink = "/structured-settlement-laws-by-state",
   theme = 'gradient'
 }: TechnologyCTAProps): JSX.Element {
-  const [hoveredButton, setHoveredButton] = useState<string | null>(null);
-
-  /**
-   * Handle button hover state
-   */
-  const handleButtonHover = useCallback((buttonId: string | null) => {
-    setHoveredButton(buttonId);
-  }, []);
-
+  
   /**
    * Get theme styles
    */
@@ -136,69 +129,28 @@ export default function TechnologyCTA({
           justifyContent: 'center',
           flexWrap: 'wrap'
         }}>
-          {/* Primary Button */}
-          <a
+          <Button
+            variant="facebook-blue"
+            size="lg"
+            enhancedHover={true}
+            shimmer={true}
+            as="a"
             href={primaryButtonLink}
-            style={{
-              background: hoveredButton === 'primary' 
-                ? 'linear-gradient(135deg, #047857 0%, #065f46 100%)'
-                : 'linear-gradient(135deg, #059669 0%, #047857 100%)',
-              color: 'white',
-              padding: '0.875rem 2rem',
-              borderRadius: '8px',
-              textDecoration: 'none',
-              fontWeight: '600',
-              fontSize: '1rem',
-              transition: 'all 0.2s ease',
-              transform: hoveredButton === 'primary' ? 'translateY(-2px)' : 'translateY(0)',
-              boxShadow: hoveredButton === 'primary' 
-                ? '0 10px 15px -3px rgba(5, 150, 105, 0.3)'
-                : '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.5rem'
-            }}
-            onMouseEnter={() => handleButtonHover('primary')}
-            onMouseLeave={() => handleButtonHover(null)}
-            onFocus={() => handleButtonHover('primary')}
-            onBlur={() => handleButtonHover(null)}
-            aria-label={`${primaryButtonText} - Start your settlement journey`}
           >
-            <span role="img" aria-hidden="true">🎯</span>
             {primaryButtonText}
-          </a>
-
-          {/* Secondary Button - Mint AI */}
-          <a
+          </Button>
+          
+          <Button
+            variant="professional-teal"
+            size="lg"
+            enhancedHover={true}
+            shimmer={true}
+            shimmerDelay={1}
+            as="a"
             href={secondaryButtonLink}
-            style={{
-              background: hoveredButton === 'secondary'
-                ? 'linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)'
-                : 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
-              color: 'white',
-              padding: '0.875rem 2rem',
-              borderRadius: '8px',
-              textDecoration: 'none',
-              fontWeight: '600',
-              fontSize: '1rem',
-              transition: 'all 0.2s ease',
-              transform: hoveredButton === 'secondary' ? 'translateY(-2px)' : 'translateY(0)',
-              boxShadow: hoveredButton === 'secondary'
-                ? '0 10px 15px -3px rgba(139, 92, 246, 0.3)'
-                : '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.5rem'
-            }}
-            onMouseEnter={() => handleButtonHover('secondary')}
-            onMouseLeave={() => handleButtonHover(null)}
-            onFocus={() => handleButtonHover('secondary')}
-            onBlur={() => handleButtonHover(null)}
-            aria-label={`${secondaryButtonText} - Get AI-powered assistance`}
           >
-            <span role="img" aria-hidden="true">💬</span>
             {secondaryButtonText}
-          </a>
+          </Button>
         </div>
 
         {/* Additional Info */}

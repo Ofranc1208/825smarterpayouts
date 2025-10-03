@@ -86,7 +86,8 @@ export default function Footer() {
               gap: "0.5rem"
             }}>
               {[
-                { href: "/pricing-calculator", label: "Get Quote" },
+                { href: "/get-a-quote", label: "Get a Quote" },
+                { href: "/get-your-cash", label: "Get Your Cash" },
                 { href: "/about", label: "About Us" },
                 { href: "/faqs", label: "FAQs" },
                 { href: "/testimonials", label: "Reviews" }
@@ -122,8 +123,8 @@ export default function Footer() {
             }}>
               {[
                 { href: "/articles", label: "Articles" },
-                { href: "/blog", label: "Blog" },
                 { href: "/structured-settlement-info-hub", label: "Info Hub" },
+                { href: "/youtube-channel", label: "YouTube" },
                 { href: "/contact", label: "Contact" }
               ].map((link) => (
                 <Link key={link.href} href={link.href} style={{
@@ -158,7 +159,8 @@ export default function Footer() {
               {[
                 { href: "/privacy", label: "Privacy Policy" },
                 { href: "/terms", label: "Terms of Service" },
-                { href: "/structured-settlement-laws", label: "State Laws" },
+                { href: "/structured-settlement-laws", label: "Federal Law" },
+                { href: "/structured-settlement-laws-by-state", label: "Laws by State" },
                 { href: "/credentials", label: "Credentials" }
               ].map((link) => (
                 <Link key={link.href} href={link.href} style={{

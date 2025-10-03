@@ -60,6 +60,6 @@ export const TECHNOLOGY_CONFIG = {
   subtitle: "Leading the Industry with Cutting-Edge Solutions",
   description: "We've revolutionized the structured settlement industry with innovative technology that puts you in control. Our platform combines artificial intelligence, real-time data processing, and user-centric design to deliver the fastest, most accurate settlement valuations in the market.",
   ctaText: "Experience the difference technology makes in your settlement journey.",
-  ctaButtonText: "Explore Our Platform",
+  ctaButtonText: "See Our Process",
   ctaButtonLink: "/get-a-quote"
 } as const;

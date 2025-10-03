@@ -574,7 +574,6 @@ function BottomCTA() {
     </div>
   );
 }
-
 // Main Articles Page Component
 export default function Articles() {
   return (

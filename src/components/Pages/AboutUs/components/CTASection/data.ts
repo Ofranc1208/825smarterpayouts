@@ -45,13 +45,13 @@ export const CTA_BUTTONS: CTAButton[] = [
   },
   {
     id: 'mint-ai-chat',
-    text: '💬 Chat with Mint AI',
+    text: 'Chat with Mint AI',
     href: '/mint-intelligent-chat',
     ariaLabel: 'Chat with Mint AI assistant for immediate assistance',
     variant: 'secondary',
-    gradient: "linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)",
+    gradient: "linear-gradient(135deg, #fbc233 0%, #f59e0b 100%)",
     size: 'large',
-    icon: '💬'
+    icon: null
   }
 ];
 

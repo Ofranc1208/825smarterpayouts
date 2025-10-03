@@ -2,8 +2,7 @@
  * CTA Buttons Component
  * 
  * Reusable call-to-action buttons component for the CTA section.
- * Features hover animations, accessibility enhancements, and
- * flexible layout options.
+ * Uses the shared Button component for consistency across the application.
  * 
  * @component CTAButtons
  * @author SmarterPayouts Team
@@ -11,7 +10,7 @@
  */
 
 'use client';
-import Link from 'next/link';
+import Button from '../../../../shared/Button/Button';
 import type { CTAButtonsProps } from './types';
 
 /**
@@ -29,39 +28,6 @@ export default function CTAButtons({
   const justifyContent = align === 'center' ? 'center' : align === 'right' ? 'flex-end' : 'flex-start';
   const flexDirection = layout === 'vertical' ? 'column' : 'row';
 
-  const getButtonStyles = (button: any) => {
-    const baseStyles = {
-      display: "inline-block",
-      background: button.gradient,
-      color: "white",
-      borderRadius: "8px",
-      textDecoration: "none",
-      fontWeight: "600",
-      transition: "all 0.2s ease"
-    };
-
-    const sizeStyles = {
-      small: { padding: "0.5rem 1rem", fontSize: "0.875rem" },
-      medium: { padding: "0.625rem 1.5rem", fontSize: "1rem" },
-      large: { padding: "0.75rem 2rem", fontSize: "1.1rem" }
-    };
-
-    return {
-      ...baseStyles,
-      ...sizeStyles[(button.size as keyof typeof sizeStyles) || 'medium']
-    };
-  };
-
-  const handleMouseEnter = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.currentTarget.style.transform = "translateY(-2px)";
-    e.currentTarget.style.boxShadow = "0 10px 15px -3px rgba(0, 0, 0, 0.1)";
-  };
-
-  const handleMouseLeave = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.currentTarget.style.transform = "translateY(0)";
-    e.currentTarget.style.boxShadow = "none";
-  };
-
   return (
     <div style={{
       display: "flex",
@@ -71,16 +37,18 @@ export default function CTAButtons({
       flexDirection
     }}>
       {buttons.map((button) => (
-        <Link 
+        <Button
           key={button.id}
+          as="a"
           href={button.href}
-          aria-label={button.ariaLabel}
-          style={getButtonStyles(button)}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
+          variant={button.id === 'instant-offer' ? 'technology-primary' : 'technology-secondary'}
+          size="lg"
+          enhancedHover={true}
+          shimmer={true}
+          shimmerDelay={button.id === 'instant-offer' ? 0 : 1}
         >
           {button.text}
-        </Link>
+        </Button>
       ))}
     </div>
   );
