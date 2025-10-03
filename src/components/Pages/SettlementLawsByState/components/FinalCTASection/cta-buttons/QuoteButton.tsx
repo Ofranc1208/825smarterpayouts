@@ -1,20 +1,19 @@
 // Quote button component - under 50 lines per complexity rule
-// Simple presentational component with inline styling
+// Simple presentational component with shared Button
+
+import Button from '@/src/components/shared/Button';
 
 export default function QuoteButton() {
   return (
-    <a href="/pricing-calculator" style={{
-      display: 'inline-block',
-      background: 'linear-gradient(135deg, #09b44d 0%, #059669 100%)',
-      color: 'white',
-      padding: '1rem 2rem',
-      borderRadius: '2rem',
-      textDecoration: 'none',
-      fontWeight: '600',
-      fontSize: '1.125rem',
-      boxShadow: '0 4px 15px rgba(9, 180, 77, 0.3)'
-    }}>
+    <Button
+      as="a"
+      href="/pricing-calculator"
+      variant="technology-primary"
+      size="lg"
+      enhancedHover={true}
+      shimmer={true}
+    >
       💰 Get Your Instant Quote
-    </a>
+    </Button>
   );
 }

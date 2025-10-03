@@ -47,7 +47,7 @@ export const dropdownSections: DropdownSection = {
     { href: '/get-your-cash', label: 'Get Your Cash', icon: '💰' },
   ],
   'Legal': [
-    { href: '/blog/how-fast-payout', label: 'How Fast?', icon: '⚡' },
+    { href: '/how-fast-can-i-get-my-money', label: 'How Fast?', icon: '⚡' },
     { href: '/state-laws-overview', label: 'State Laws Overview', icon: '📜' },
     { href: '/terms', label: 'Terms', icon: '📋' },
     { href: '/privacy', label: 'Privacy', icon: '🔒' },

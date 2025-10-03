@@ -1,0 +1,63 @@
+warning: in the working copy of 'app/articles/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/credentials/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/how-fast-can-i-get-my-money/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/privacy/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/resources/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/review-offer/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/social-media/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/structured-settlement-info-hub/court-approval-process/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/structured-settlement-info-hub/faq/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/structured-settlement-info-hub/glossary-of-structured-settlement-terms/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/structured-settlement-info-hub/how-to-sell-structured-settlement/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/structured-settlement-info-hub/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/structured-settlement-info-hub/pros-cons-selling-structured-settlement/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/structured-settlement-info-hub/state-laws/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/structured-settlement-info-hub/what-is-a-structured-settlement/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app/terms/page.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/Pages/Main/components/HeroSection/HeroButtons.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/Pages/index.tsx', LF will be replaced by CRLF the next time Git touches it
+ CRM                                                |   0
+ app/articles/page.tsx                              | 619 [32m+[m[31m------------[m
+ app/credentials/page.tsx                           | 508 [32m+[m[31m----------[m
+ app/how-fast-can-i-get-my-money/page.tsx           | 987 [32m++[m[31m-------------------[m
+ app/privacy/page.tsx                               | 629 [32m+[m[31m------------[m
+ app/resources/page.tsx                             | 871 [32m+[m[31m-----------------[m
+ app/review-offer/page.tsx                          | 657 [32m+[m[31m-------------[m
+ app/social-media/page.tsx                          | 471 [32m+[m[31m---------[m
+ app/state-laws-overview/page.tsx                   | 896 [32m+[m[31m------------------[m
+ .../KnowledgeHub.module.css                        | 164 [31m----[m
+ .../after-you-sell-structured-settlement/page.tsx  | 228 [32m+[m[31m----[m
+ .../page.tsx                                       | 228 [32m+[m[31m----[m
+ .../page.tsx                                       | 195 [32m+[m[31m---[m
+ .../court-approval-process/page.tsx                | 193 [32m+[m[31m---[m
+ app/structured-settlement-info-hub/faq/page.tsx    | 266 [32m+[m[31m-----[m
+ .../page.tsx                                       | 281 [32m+[m[31m-----[m
+ .../how-to-choose-best-company/page.tsx            | 187 [32m+[m[31m---[m
+ .../how-to-sell-structured-settlement/page.tsx     | 402 [32m+[m[31m--------[m
+ .../page.tsx                                       | 234 [32m+[m[31m----[m
+ app/structured-settlement-info-hub/page.tsx        | 656 [32m+[m[31m-------------[m
+ .../page.tsx                                       | 261 [32m+[m[31m-----[m
+ .../state-laws/page.tsx                            | 312 [32m+[m[31m------[m
+ .../what-is-a-structured-settlement/page.tsx       | 290 [32m+[m[31m-----[m
+ app/terms/page.tsx                                 | 728 [32m+[m[31m--------------[m
+ src/components/Navigation/Shared/navigationData.ts |   2 [32m+[m[31m-[m
+ .../disclaimer-container/DisclaimerContainer.tsx   |   6 [32m+[m[31m-[m
+ .../disclaimer-content/DisclaimerText.tsx          |   4 [32m+[m[31m-[m
+ .../disclaimer-section/DisclaimerSection.tsx       |  40 [32m+[m[31m-[m
+ .../FinalCTASection/cta-buttons/ChatButton.tsx     |  27 [32m+[m[31m-[m
+ .../FinalCTASection/cta-buttons/QuoteButton.tsx    |  25 [32m+[m[31m-[m
+ .../FinalCTASection/cta-header/CTADescription.tsx  |  24 [32m+[m[31m-[m
+ .../FinalCTASection/cta-header/CTATitle.tsx        |  24 [32m+[m[31m-[m
+ .../HeroSection/hero-background/HeroBackground.tsx |  33 [32m+[m[31m-[m
+ .../HeroSection/hero-cta/PhoneButton.tsx           |  24 [32m+[m[31m-[m
+ .../HeroSection/hero-header/HeroBadge.tsx          |  32 [32m+[m[31m-[m
+ .../HeroSection/hero-header/HeroDescription.tsx    |  26 [32m+[m[31m-[m
+ .../HeroSection/hero-header/HeroTitle.tsx          |  26 [32m+[m[31m-[m
+ .../search-header/SearchDescription.tsx            |  25 [32m+[m[31m-[m
+ .../SearchSection/search-header/SearchTitle.tsx    |  26 [32m+[m[31m-[m
+ .../SearchSection/search-input/SearchInput.tsx     |  34 [32m+[m[31m-[m
+ .../accordion-button/AccordionButton.tsx           |  38 [32m+[m[31m-[m
+ src/components/Pages/index.tsx                     |   2 [32m+[m
+ test pages.docx                                    | Bin [31m78513[m -> [32m79305[m bytes
+ ~$st pages.docx                                    | Bin [31m162[m -> [32m0[m bytes
+ 44 files changed, 579 insertions(+), 10102 deletions(-)
