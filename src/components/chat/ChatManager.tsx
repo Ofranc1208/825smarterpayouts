@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useSearchParams } from 'next/navigation';
 import WelcomeScreen from './WelcomeScreen';
 import ChatController from './ChatController';
@@ -21,30 +22,22 @@ const ChatManager: React.FC = () => {
     }
   }, [searchParams]);
 
-  // Prevent body scroll when modal is open
+  // Prevent body scroll when modal is open (safe, non-jumpy)
   useEffect(() => {
     if (isChatOpen) {
-      // Save current scroll position
-      const scrollY = window.scrollY;
-      
-      // Prevent body scroll
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = '100%';
-      document.body.style.overflowY = 'scroll'; // Prevent layout shift from scrollbar disappearing
-      
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
       return () => {
-        // Restore body scroll
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.width = '';
-        document.body.style.overflowY = '';
-        
-        // Restore scroll position
-        window.scrollTo(0, scrollY);
+        document.body.style.overflow = originalOverflow;
       };
     }
   }, [isChatOpen]);
+
+  // Ensure portal only runs on client
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const handleStartChat = (choice: ChatChoice) => {
     console.log('[ChatManager] Button clicked! Opening modal with choice:', choice);
@@ -58,55 +51,55 @@ const ChatManager: React.FC = () => {
     setActiveScreen(null);
   };
 
+  // Prepare modal content for portal
+  const modalContent = (
+    <div 
+      className={`${styles.chatModalOverlay} ${isChatOpen ? styles.open : ''}`}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) handleCloseChat();
+      }}
+    >
+      <div className={styles.chatModalContainer}>
+        {/* Close button */}
+        <button
+          onClick={handleCloseChat}
+          style={{
+            position: 'absolute',
+            top: '1rem',
+            right: '1rem',
+            background: 'rgba(255, 255, 255, 0.9)',
+            border: 'none',
+            borderRadius: '50%',
+            width: '40px',
+            height: '40px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            zIndex: 1001,
+            fontSize: '18px',
+            color: '#666'
+          }}
+          aria-label="Close chat"
+        >
+          ✕
+        </button>
+
+        {isChatOpen && (
+          <ChatController 
+            onClose={handleCloseChat} 
+            closeIcon={closeIcon} 
+            activeScreen={activeScreen} 
+          />
+        )}
+      </div>
+    </div>
+  );
+
   return (
     <>
       <WelcomeScreen onStartChat={handleStartChat} />
-
-      {/* Chat Modal Overlay */}
-      <div 
-        className={`${styles.chatModalOverlay} ${isChatOpen ? styles.open : ''}`}
-        onClick={(e) => {
-          // Close modal when clicking the backdrop
-          if (e.target === e.currentTarget) {
-            handleCloseChat();
-          }
-        }}
-      >
-        <div className={styles.chatModalContainer}>
-          {/* Close button */}
-          <button
-            onClick={handleCloseChat}
-            style={{
-              position: 'absolute',
-              top: '1rem',
-              right: '1rem',
-              background: 'rgba(255, 255, 255, 0.9)',
-              border: 'none',
-              borderRadius: '50%',
-              width: '40px',
-              height: '40px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer',
-              zIndex: 1001,
-              fontSize: '18px',
-              color: '#666'
-            }}
-            aria-label="Close chat"
-          >
-            ✕
-          </button>
-          
-          {isChatOpen && (
-            <ChatController 
-              onClose={handleCloseChat} 
-              closeIcon={closeIcon} 
-              activeScreen={activeScreen} 
-            />
-          )}
-        </div>
-      </div>
+      {isMounted && isChatOpen && createPortal(modalContent, document.body)}
     </>
   );
 };
