@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 import MintChatActivePage from './MintChatActivePage';
 
 /**
@@ -17,12 +17,14 @@ export const metadata: Metadata = {
     index: false, // Don't index active chat sessions
     follow: false,
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    viewportFit: 'cover', // Enable safe area support
-    userScalable: false, // Prevent zoom for better chat experience
-  },
+};
+
+// Viewport configuration (separate export per Next.js 14 requirements)
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover', // Enable safe area support
+  userScalable: false, // Prevent zoom for better chat experience
 };
 
 export default MintChatActivePage;

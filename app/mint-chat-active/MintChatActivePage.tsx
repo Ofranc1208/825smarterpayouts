@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import ChatController from '@/src/components/chat/ChatController';
 import { closeIcon } from '@/src/components/chat/icons';
@@ -9,23 +9,10 @@ import type { ChatChoice } from '@/src/components/chat/types';
 import styles from './MintChatActivePage.module.css';
 
 /**
- * Mint Chat Active Page Component
- * 
- * Dedicated full-page chat experience without navigation distractions.
- * Provides an immersive chat environment with proper mobile optimization.
- * 
- * Features:
- * - Full-page chat interface
- * - No navigation bar (clean, focused experience)
- * - Mobile-optimized layout
- * - Safe area support for modern devices
- * - Proper return navigation to main chat page
- * 
- * @component MintChatActivePage
- * @author SmarterPayouts Team
- * @since 2024
+ * Chat Content Component (wrapped in Suspense)
+ * Handles search params and chat logic
  */
-const MintChatActivePage: React.FC = () => {
+const ChatContent: React.FC = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [isClient, setIsClient] = React.useState(false);
@@ -99,6 +86,46 @@ const MintChatActivePage: React.FC = () => {
         </div>
       </div>
     </AppProviders>
+  );
+};
+
+/**
+ * Mint Chat Active Page Component
+ * 
+ * Dedicated full-page chat experience without navigation distractions.
+ * Provides an immersive chat environment with proper mobile optimization.
+ * 
+ * Features:
+ * - Full-page chat interface
+ * - No navigation bar (clean, focused experience)
+ * - Mobile-optimized layout
+ * - Safe area support for modern devices
+ * - Proper return navigation to main chat page
+ * 
+ * @component MintChatActivePage
+ * @author SmarterPayouts Team
+ * @since 2024
+ */
+const MintChatActivePage: React.FC = () => {
+  return (
+    <Suspense fallback={
+      <div className={styles.activeChatContainer}>
+        <div className={styles.chatWrapper}>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '100vh',
+            fontSize: '1.125rem',
+            color: '#6b7280'
+          }}>
+            🤖 Loading Mint AI Assistant...
+          </div>
+        </div>
+      </div>
+    }>
+      <ChatContent />
+    </Suspense>
   );
 };
 
