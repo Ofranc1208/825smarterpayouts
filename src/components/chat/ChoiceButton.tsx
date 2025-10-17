@@ -44,22 +44,36 @@ const ChoiceButton: React.FC<ChoiceButtonProps> = ({ icon, text, onClick, classN
   const [isPressed, setIsPressed] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  // Simplified click handler with error handling
+  // Enhanced click handler with comprehensive debugging for deployment
   const handleClick = () => {
     try {
+      console.log('[ChoiceButton DEPLOYMENT DEBUG] === BUTTON CLICK DETECTED ===');
+      console.log('[ChoiceButton] Button text:', text);
+      console.log('[ChoiceButton] onClick handler exists:', !!onClick);
+      console.log('[ChoiceButton] Button ref:', buttonRef.current);
+      console.log('[ChoiceButton] Window location:', typeof window !== 'undefined' ? window.location.href : 'SSR');
+      
       setIsPressed(true);
       setTimeout(() => setIsPressed(false), 150);
 
       if (onClick) {
-        console.log('[ChoiceButton] Executing onClick handler');
+        console.log('[ChoiceButton] 🚀 Executing onClick handler now...');
         onClick();
+        console.log('[ChoiceButton] ✅ onClick handler executed successfully');
+      } else {
+        console.warn('[ChoiceButton] ⚠️ WARNING: onClick handler is undefined!');
       }
     } catch (error) {
-      console.error('[ChoiceButton] Click handler error:', error);
+      console.error('[ChoiceButton] ❌ CRITICAL ERROR in click handler:', error);
+      console.error('[ChoiceButton] Error stack:', error instanceof Error ? error.stack : 'No stack trace');
+      // Show user-friendly error
+      if (typeof window !== 'undefined') {
+        window.alert('Button click failed. Please refresh the page and try again.');
+      }
     }
   };
 
-  // Simplified mouse handlers - removed complex DOM manipulation
+  // Enhanced mouse handlers with deployment debugging
   const handleMouseEnter = () => {
     try {
       console.log('[ChoiceButton] Mouse enter - hover state activated');

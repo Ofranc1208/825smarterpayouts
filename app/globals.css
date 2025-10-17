@@ -52,12 +52,20 @@ a {
 
 /* === Navigation Styles (only for navbar) === */
 .nav-link.active {
-  color: var(--color-primary) !important;
+  color: var(--color-primary);
   font-weight: 600;
 }
 
 .dropdown-item.active {
-  background-color: transparent !important;
-  color: var(--color-primary) !important;
+  background-color: transparent;
+  color: var(--color-primary);
   font-weight: 600;
+}
+
+/* === Ensure Modal Overlays Are Not Affected by Global Resets === */
+/* Preserve modal and chat functionality */
+[class*="chatModal"],
+[class*="Modal"],
+[data-modal="true"] {
+  all: revert-layer;
 }

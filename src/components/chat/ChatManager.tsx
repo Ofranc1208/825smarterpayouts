@@ -49,8 +49,13 @@ const ChatManager: React.FC = () => {
 
   // Check for chat=open query parameter and auto-open chat
   useEffect(() => {
+    console.log('[ChatManager DEPLOYMENT DEBUG] === INITIALIZATION ===');
+    console.log('[ChatManager] isChatOpen:', isChatOpen);
+    console.log('[ChatManager] activeScreen:', activeScreen);
+    
     const chatParam = searchParams.get('chat');
     if (chatParam === 'open') {
+      console.log('[ChatManager] Auto-opening chat from URL parameter');
       setIsChatOpen(true);
       setActiveScreen('calculate');
     }
@@ -59,24 +64,46 @@ const ChatManager: React.FC = () => {
   // Simplified body scroll management - only when modal is open
   useEffect(() => {
     if (isChatOpen) {
+      console.log('[ChatManager] Chat opened - preventing body scroll');
       const originalOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
 
       return () => {
+        console.log('[ChatManager] Chat closed - restoring body scroll');
         document.body.style.overflow = originalOverflow;
       };
     }
   }, [isChatOpen]);
 
   const handleStartChat = (choice: ChatChoice) => {
-    setActiveScreen(choice);
-    setIsChatOpen(true);
+    console.log('[ChatManager DEPLOYMENT DEBUG] === HANDLE START CHAT ===');
+    console.log('[ChatManager] Choice selected:', choice);
+    console.log('[ChatManager] Previous isChatOpen:', isChatOpen);
+    console.log('[ChatManager] Previous activeScreen:', activeScreen);
+    
+    try {
+      setActiveScreen(choice);
+      setIsChatOpen(true);
+      
+      console.log('[ChatManager] ✅ State updated successfully');
+      console.log('[ChatManager] New isChatOpen: true');
+      console.log('[ChatManager] New activeScreen:', choice);
+    } catch (error) {
+      console.error('[ChatManager] ❌ CRITICAL ERROR setting chat state:', error);
+      console.error('[ChatManager] Error details:', error instanceof Error ? error.message : 'Unknown error');
+    }
   };
 
   const handleCloseChat = () => {
+    console.log('[ChatManager] Closing chat');
     setIsChatOpen(false);
     setActiveScreen(null);
   };
+
+  // Log render cycles for debugging
+  console.log('[ChatManager] === RENDER CYCLE ===');
+  console.log('[ChatManager] Rendering with isChatOpen:', isChatOpen);
+  console.log('[ChatManager] Rendering with activeScreen:', activeScreen);
 
   return (
     <div className={styles.chatManagerWrapper}>
@@ -90,7 +117,10 @@ const ChatManager: React.FC = () => {
         <div
           className={`${styles.chatModalOverlay} ${isChatOpen ? styles.open : ''}`}
           onClick={(e) => {
-            if (e.target === e.currentTarget) handleCloseChat();
+            if (e.target === e.currentTarget) {
+              console.log('[ChatManager] Overlay clicked - closing modal');
+              handleCloseChat();
+            }
           }}
         >
           <div className={styles.chatModalContainer}>

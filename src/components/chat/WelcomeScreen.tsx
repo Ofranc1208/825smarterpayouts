@@ -8,6 +8,29 @@ interface WelcomeScreenProps {
 }
 
 const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartChat }) => {
+  console.log('[WelcomeScreen DEPLOYMENT DEBUG] === COMPONENT RENDER ===');
+  console.log('[WelcomeScreen] onStartChat function exists:', !!onStartChat);
+  console.log('[WelcomeScreen] onStartChat type:', typeof onStartChat);
+  
+  // Enhanced wrapper for onStartChat with deployment debugging
+  const handleStartChat = (choice: ChatChoice) => {
+    console.log('[WelcomeScreen] === BUTTON CLICKED ===');
+    console.log('[WelcomeScreen] Choice:', choice);
+    console.log('[WelcomeScreen] Calling parent onStartChat...');
+    
+    try {
+      if (onStartChat && typeof onStartChat === 'function') {
+        onStartChat(choice);
+        console.log('[WelcomeScreen] ✅ Parent onStartChat called successfully');
+      } else {
+        console.error('[WelcomeScreen] ❌ onStartChat is not a function!', onStartChat);
+      }
+    } catch (error) {
+      console.error('[WelcomeScreen] ❌ ERROR calling onStartChat:', error);
+      console.error('[WelcomeScreen] Error stack:', error instanceof Error ? error.stack : 'No stack');
+    }
+  };
+
   return (
     <div style={{
       background: "transparent",
@@ -89,7 +112,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartChat }) => {
             icon={payoutIcon} 
             text="Calculate Your Payout Instantly" 
             description="Get your exact settlement value in seconds - no waiting, no personal info required"
-            onClick={() => onStartChat('calculate')}
+            onClick={() => handleStartChat('calculate')}
             index={0}
           />
           
@@ -127,7 +150,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartChat }) => {
               icon={specialistIcon} 
               text="Connect with a Specialist" 
               description="Chat live or schedule a call with our settlement experts - completely free"
-              onClick={() => onStartChat('specialist')}
+              onClick={() => handleStartChat('specialist')}
               index={1}
             />
           </div>
@@ -136,7 +159,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartChat }) => {
             icon={processIcon} 
             text="Learn About Our Process" 
             description="Understand your options, timeline, and maximize your settlement value"
-            onClick={() => onStartChat('process')}
+            onClick={() => handleStartChat('process')}
             index={2}
           />
         </div>
