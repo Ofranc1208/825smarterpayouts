@@ -101,18 +101,10 @@ export const ChatProvider = ({ children, visibleMessages, setVisibleMessages, lo
     setIsTyping(welcomeScript.isTyping);
   }, [welcomeScript.isTyping]);
 
-  // 🎯 Add calculation link to chat when LCP flow is activated
+  // 🎯 Add calculation link to chat when LCP flow is activated (no duplicate message - useConversationalForm handles this)
   const addedLCPLinkRef = useRef(false);
   React.useEffect(() => {
     if (currentStep && currentStep.startsWith('lcp_') && !addedLCPLinkRef.current) {
-      // Add bot message first
-      const botMessage: TextMessage = {
-        id: generateUniqueId(),
-        type: 'text',
-        text: "Perfect! We'll ask you a few basic health questions for your assessment. No personal information required. 🔒",
-        sender: 'bot'
-      };
-
       // Create a serializable component message for the calculation link
       const calculationLinkMessage: ComponentMessage = {
         id: generateUniqueId(),
@@ -142,15 +134,12 @@ export const ChatProvider = ({ children, visibleMessages, setVisibleMessages, lo
         }
       };
 
-      // Add both messages to chat
-      setVisibleMessages(prev => [...prev, 
-        botMessage,
-        calculationLinkMessage
-      ]);
+      // Only add the calculation link (useConversationalForm already added the response message)
+      setVisibleMessages(prev => [...prev, calculationLinkMessage]);
 
       addedLCPLinkRef.current = true;
     }
-  }, [currentStep, setVisibleMessages]);
+  }, [currentStep, setVisibleMessages, sessionId]);
 
   // 🎯 Add calculation link to chat when Guaranteed flow is activated
   const addedGuaranteedLinkRef = useRef(false);

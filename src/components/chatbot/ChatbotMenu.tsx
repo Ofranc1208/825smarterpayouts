@@ -34,7 +34,10 @@ const ChatbotMenu: React.FC<ChatbotMenuProps> = ({ onCalculate, onChoice }) => {
       >
         Compare An Offer
       </button>
-      <button className={`${styles.menuBtn} ${styles.disabled}`}>
+      <button
+        className={`${styles.menuBtn} ${isClicked ? styles.disabled : ''}`}
+        disabled={isClicked}
+      >
         Our Process
       </button>
     </div>

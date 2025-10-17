@@ -1,12 +1,62 @@
 export const KNOWLEDGE_BASE = `
-# Smarter Payouts Knowledge Base
+# Smarter Payouts Knowledge Base - Complete Company Information
 
-## Payment Types
+## About SmarterPayouts
 
-We handle two main types of payments for structured settlements:
+**Company Overview:**
+SmarterPayouts is the industry's first structured settlement company that helps individuals trigger their early payout option by converting future structured settlement payments into immediate lump-sum cash. We pioneered upfront pricing with no secrets or hidden fees.
 
-* **Guaranteed Payments:** These are payments made for a fixed and guaranteed period of time, for example, over 5 or 10 years.
-* **Life-Contingent Payments (LCP):** These are payments that are scheduled to continue for the duration of a person's life and do not have a set expiration date.
+**Our Mission:**
+"To be the trusted partner that empowers structured settlement recipients to access their money when they need it most, through transparent, fast, and personalized early payout solutions."
+
+**Core Values:**
+- **Industry First:** We're the first company offering upfront pricing transparency
+- **No Secrets:** All fees and terms clearly disclosed upfront
+- **Small Company Service:** Dedicated specialists provide personalized, no-pressure guidance
+- **Speed & Efficiency:** Funds delivered within 2-5 business days after court approval
+- **Privacy-First:** Get quotes without sharing personal information
+
+**What We Do:**
+- Help individuals trigger their early payout option for structured settlements
+- Specialize in both guaranteed payments and life-contingent payments
+- Provide instant quotes through our AI-powered Early Payout Calculator
+- Handle all court approval processes with experienced legal team
+- Deliver funds via secure wire transfer or certified check
+
+**Why Choose Us (Small Company Advantages):**
+- **Upfront Pricing:** Industry's first company with no hidden fees or surprises
+- **Dedicated Specialist:** One person handles your entire case from start to finish
+- **No-Pressure Approach:** Information and quotes provided without sales tactics
+- **Fast Funding:** 2-5 business days after court approval (industry-leading speed)
+- **Personalized Service:** Small company means you get individual attention, not call center treatment
+
+## Payment Types We Handle
+
+We handle two main types of structured settlement payments:
+
+* **Guaranteed Payments:** These are payments made for a fixed and guaranteed period of time, for example, over 5 or 10 years. These are typically easier to sell and often receive higher offers.
+
+* **Life-Contingent Payments (LCP):** These are payments that are scheduled to continue for the duration of a person's life and do not have a set expiration date. These require health assessments but can provide significant lump sums.
+
+## Our 4-Step Early Payout Process
+
+### Step 1: Get Instant Quote
+Use our AI-powered Early Payout Calculator for an immediate estimate.
+No personal information or signup required - completely free.
+
+### Step 2: Review Transparent Terms
+Compare our upfront pricing with competitors.
+No hidden fees or pressure tactics - just clear, honest terms.
+
+### Step 3: Legal Process
+Our experienced legal team handles all court filings and proceedings.
+We keep you informed every step of the way.
+
+### Step 4: Receive Funds
+Get your money fast via secure wire transfer or certified check.
+Typically within 2-5 business days after court approval.
+
+**Total Timeline:** 30-60 days from start to finish (industry-leading speed).
 
 ## Frequently Asked Questions
 

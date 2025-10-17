@@ -109,7 +109,7 @@ export const useConversationalForm = ({ setVisibleMessages, sessionId }: UseConv
     if (type === 'guaranteed') {
       confirmationText = 'Perfect! You have guaranteed payments.';
     } else if (type === 'life-contingent') {
-      confirmationText = 'Perfect! We\'ll ask you a few basic health questions for your assessment.';
+      confirmationText = 'Perfect! We\'ll ask you a few basic health questions for your assessment.\n\nNo personal information required. 🔒';
     } else {
       confirmationText = 'Okay, no worries. I can still help you give me some details about your payments.';
     }
