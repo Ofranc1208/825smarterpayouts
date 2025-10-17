@@ -47,6 +47,7 @@ const ChatManager: React.FC = () => {
   }, [isChatOpen]);
 
   const handleStartChat = (choice: ChatChoice) => {
+    console.log('[ChatManager] handleStartChat called with choice:', choice);
     setActiveScreen(choice);
     setIsChatOpen(true);
   };
