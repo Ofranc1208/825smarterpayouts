@@ -20,7 +20,7 @@ export default function HeroCTAButtons({ onCTAClick }: HeroCTAButtonsProps) {
       flexWrap: "wrap"
     }}>
       <Link 
-        href="/pricing-calculator" 
+        href="/mint-chat-active?type=calculate&source=contact-hero" 
         style={{
           display: "inline-block",
           background: "linear-gradient(135deg, #09b44d 0%, #059669 100%)",

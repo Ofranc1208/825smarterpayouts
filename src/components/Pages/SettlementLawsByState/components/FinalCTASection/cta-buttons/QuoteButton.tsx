@@ -7,7 +7,7 @@ export default function QuoteButton() {
   return (
     <Button
       as="a"
-      href="/pricing-calculator"
+      href="/mint-chat-active?type=calculate&source=laws-by-state-cta"
       variant="technology-primary"
       size="lg"
       enhancedHover={true}

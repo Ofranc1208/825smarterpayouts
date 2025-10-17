@@ -248,7 +248,7 @@ const FAQPage: React.FC = () => {
                 }}>
                   Get your instant quote now. See multiple scenarios and payment options in less than 60 seconds.
                 </p>
-                <Link href="/pricing-calculator" style={{
+                <Link href="/mint-chat-active?type=calculate" style={{
                   display: 'inline-block',
                   background: 'white',
                   color: COLORS.primary.main,
@@ -311,7 +311,7 @@ const FAQPage: React.FC = () => {
                     💬 Chat with Mint AI
                   </a>
                   <a
-                    href="/pricing-calculator"
+                    href="/mint-chat-active?type=calculate"
                     style={{
                       display: 'inline-block',
                       background: 'linear-gradient(135deg, #09b44d 0%, #059669 100%)',

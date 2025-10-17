@@ -20,7 +20,7 @@ export default function StepsGrid() {
       stepNumber: 1,
       title: "Get Your Quote",
       description: "Use our calculator to see what your settlement is worth. No phone calls or personal data required.",
-      linkHref: "/pricing-calculator",
+      linkHref: "/mint-chat-active?type=calculate",
       linkText: "Try Calculator"
     },
     {
@@ -68,7 +68,7 @@ export default function StepsGrid() {
           linkText={step.linkText}
           onClick={() => {
             if (step.stepNumber === 1) {
-              router.push('/pricing-calculator');
+              router.push('/mint-chat-active?type=calculate');
             }
           }}
         />

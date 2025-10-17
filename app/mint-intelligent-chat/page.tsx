@@ -18,6 +18,12 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    viewportFit: 'cover', // Enable safe area support
+    userScalable: false, // Prevent zoom for better chat experience
+  },
   openGraph: {
     title: 'Chat with Mint | SmarterPayouts',
     description: 'Get a 100% guaranteed upfront offer estimate - zero games, just real numbers. No personal info required.',

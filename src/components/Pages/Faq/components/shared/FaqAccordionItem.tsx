@@ -79,7 +79,7 @@ export function FaqAccordionItem({ faq, isOpen, onToggle }: FaqAccordionItemProp
         <>
           Use our{' '}
           <Link
-            href="/pricing-calculator"
+            href="/mint-chat-active?type=calculate&source=faq"
             style={styles.calculatorLink}
           >
             structured settlement calculator

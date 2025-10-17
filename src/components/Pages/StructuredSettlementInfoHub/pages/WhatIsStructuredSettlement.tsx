@@ -301,7 +301,7 @@ const WhatIsStructuredSettlement: React.FC = () => {
                 }}>
                   Get an instant, no-obligation quote to see what your payments are worth today. Takes less than 60 seconds.
                 </p>
-                <Link href="/pricing-calculator" style={{
+                <Link href="/mint-chat-active?type=calculate" style={{
                   display: 'inline-block',
                   background: 'white',
                   color: COLORS.primary.main,

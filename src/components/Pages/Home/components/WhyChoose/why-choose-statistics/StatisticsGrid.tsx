@@ -64,7 +64,7 @@ export default function StatisticsGrid() {
         </div>
         
         <div style={{marginTop: '16px'}}>
-          <Link href="/pricing-calculator" style={{
+          <Link href="/mint-chat-active?type=calculate" style={{
             display: 'inline-block',
             padding: '10px 20px',
             fontSize: '1rem',

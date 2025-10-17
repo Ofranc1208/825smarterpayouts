@@ -47,15 +47,19 @@ const ChatManager: React.FC = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [activeScreen, setActiveScreen] = useState<ChatChoice | null>(null);
 
-  // Check for chat=open query parameter and auto-open chat on client side only
+  // Check for chat=open query parameter and redirect to dedicated page
   useEffect(() => {
     const chatParam = searchParams.get('chat');
     const shouldAutoOpen = chatParam === 'open';
     
     if (shouldAutoOpen) {
-      console.log('[ChatManager] Chat auto-opened from URL parameter');
-      setIsChatOpen(true);
-      setActiveScreen('calculate');
+      console.log('[ChatManager] Chat auto-open detected, redirecting to dedicated page');
+      
+      // Check if we're on client side
+      if (typeof window !== 'undefined') {
+        window.location.href = '/mint-chat-active?type=calculate';
+      }
+      return;
     }
   }, [searchParams]);
 
@@ -96,6 +100,10 @@ const ChatManager: React.FC = () => {
     console.log('[ChatManager] Closing chat');
     setIsChatOpen(false);
     setActiveScreen(null);
+    
+    // Optional: Provide navigation options when closing
+    // For now, just close the modal and return to welcome screen
+    // Users can use the "← SmarterPayouts" button to navigate back to main site
   };
 
   // Log render cycles for debugging

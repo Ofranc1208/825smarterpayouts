@@ -15,7 +15,7 @@ export const HERO_CONTENT: HeroContent = {
     {
       id: 'secondary-cta',
       text: 'Get Free Quote',
-      href: '/pricing-calculator',
+      href: '/mint-chat-active?type=calculate&source=home-data-secondary',
       type: 'secondary'
     }
   ]

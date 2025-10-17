@@ -23,7 +23,7 @@ export { default as ContactPage } from './contact';
 export { ContactPage as Contact } from './contact';
 export { default as TestimonialsPage } from './Testimonials/page';
 export { TestimonialsPage as Testimonials } from './Testimonials/page';
-export { default as StructuredSettlementInfoHubPage } from './StructuredSettlementInfoHub';
+export { StructuredSettlementInfoHubPage } from './StructuredSettlementInfoHub';
 export { StructuredSettlementInfoHubPage as StructuredSettlementInfoHub } from './StructuredSettlementInfoHub';
 
 // Re-export individual components for flexibility

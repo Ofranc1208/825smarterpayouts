@@ -13,7 +13,7 @@ import Link from 'next/link';
  */
 export default function SecondaryButton() {
   return (
-    <Link href="/pricing-calculator" style={{
+    <Link href="/mint-chat-active?type=calculate&source=home-hero-secondary" style={{
       fontWeight: '600',
       fontSize: 'clamp(1rem, 2.5vw, 1.1rem)',
       borderRadius: '24px',

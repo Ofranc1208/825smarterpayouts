@@ -276,7 +276,7 @@ const ProsConsSelling: React.FC = () => {
                 }}>
                   Get an instant, no-obligation quote in 60 seconds. See multiple scenarios and compare your options.
                 </p>
-                <Link href="/pricing-calculator" style={{
+                <Link href="/mint-chat-active?type=calculate" style={{
                   display: 'inline-block',
                   background: 'white',
                   color: COLORS.primary.main,

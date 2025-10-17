@@ -161,7 +161,7 @@ const CommonMistakes: React.FC = () => {
               <p style={{ fontSize: '1.0625rem', lineHeight: '1.7', marginBottom: '1.5rem', opacity: 0.95 }}>
                 Compare offers from top-rated companies. See who gives you the best deal in 60 seconds.
               </p>
-              <Link href="/pricing-calculator" style={{
+              <Link href="/mint-chat-active?type=calculate&source=info-hub-mistakes" style={{
                 display: 'inline-block',
                 background: 'white',
                 color: COLORS.primary.main,

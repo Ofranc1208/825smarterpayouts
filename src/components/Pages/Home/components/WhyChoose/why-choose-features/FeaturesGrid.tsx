@@ -18,7 +18,7 @@ export default function FeaturesGrid() {
       title: 'AI-Powered Calculator',
       description: 'Get your quote in seconds with Mint, our AI assistant. No personal information required to see your settlement value.',
       linkText: 'Try Calculator →',
-      linkUrl: '/pricing-calculator'
+      linkUrl: '/mint-chat-active?type=calculate'
     },
     {
       icon: '🛡️',

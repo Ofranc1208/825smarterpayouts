@@ -284,7 +284,7 @@ const HowToSellStructuredSettlement: React.FC = () => {
                 }}>
                   Begin the process with an instant quote. No personal information required, no obligation, just see what your settlement is worth.
                 </p>
-                <Link href="/pricing-calculator" style={{
+                <Link href="/mint-chat-active?type=calculate&source=info-hub-sell" style={{
                   display: 'inline-block',
                   background: 'white',
                   color: COLORS.primary.main,

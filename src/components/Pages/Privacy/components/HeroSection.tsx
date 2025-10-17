@@ -101,7 +101,7 @@ export default function HeroSection() {
             }}>
               <Button
                 as="a"
-                href="/pricing-calculator"
+                href="/mint-chat-active?type=calculate&source=privacy-hero"
                 variant="technology-primary"
                 size="lg"
                 enhancedHover={true}

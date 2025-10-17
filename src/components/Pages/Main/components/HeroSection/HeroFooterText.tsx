@@ -11,7 +11,7 @@ export default function HeroFooterText() {
       margin: "0 auto 0 auto"
     }}>
       Get your{' '}
-      <Link href="/pricing-calculator" style={{
+      <Link href="/mint-chat-active?type=calculate&source=main-hero-footer" style={{
         color: COLORS.primary.dark,
         textDecoration: "underline",
         fontWeight: TYPOGRAPHY.fontWeight.medium

@@ -67,7 +67,7 @@ const MaximizeOffer: React.FC = () => {
             <div style={{ background: 'linear-gradient(135deg, #059669 0%, #047857 100%)', padding: '2.5rem', borderRadius: '16px', marginBottom: '2rem', textAlign: 'center', color: 'white' }}>
               <h3 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '1rem' }}>Start with Strategy #1: Get Multiple Quotes</h3>
               <p style={{ fontSize: '1.0625rem', lineHeight: '1.7', marginBottom: '1.5rem', opacity: 0.95 }}>The most effective way to maximize: compare companies. Get competitive quotes now.</p>
-              <Link href="/pricing-calculator" style={{ display: 'inline-block', background: 'white', color: COLORS.primary.main, padding: '1rem 2.5rem', borderRadius: '12px', textDecoration: 'none', fontWeight: '700', fontSize: '1.125rem', boxShadow: '0 6px 20px rgba(0,0,0,0.15)' }}>💸 Compare Quotes →</Link>
+              <Link href="/mint-chat-active?type=calculate" style={{ display: 'inline-block', background: 'white', color: COLORS.primary.main, padding: '1rem 2.5rem', borderRadius: '12px', textDecoration: 'none', fontWeight: '700', fontSize: '1.125rem', boxShadow: '0 6px 20px rgba(0,0,0,0.15)' }}>💸 Compare Quotes →</Link>
             </div>
 
             <section style={{ background: 'white', borderRadius: '16px', padding: '2.5rem', marginBottom: '2rem', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>

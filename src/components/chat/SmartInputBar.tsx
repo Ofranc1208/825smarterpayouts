@@ -1,19 +1,21 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useChat } from '../../contexts/ChatContext';
 import styles from './SmartInputBar.module.css';
 
 /**
- * Smart input bar component for chat messaging interface
+ * Smart input bar component for chat messaging interface - Mobile-First Edition
  *
  * Features:
+ * - Mobile-first responsive design with dynamic positioning
+ * - Keyboard-aware behavior for optimal mobile experience
+ * - Enhanced touch targets (44px minimum) for accessibility
  * - Real-time message input with Enter key support
  * - Send button with hover animations and disabled states
  * - Loading state handling during message processing
- * - Responsive flexbox layout with proper spacing
- * - Focus states with brand color highlighting
- * - CSS modules for proper styling architecture
+ * - Safe area support for modern mobile devices
+ * - Auto-focus management and viewport handling
  *
  * @component
  * @example
@@ -28,9 +30,51 @@ import styles from './SmartInputBar.module.css';
 export const SmartInputBar = () => {
   // Local state for input text management
   const [text, setText] = useState('');
+  const [isMobile, setIsMobile] = useState(false);
+  const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
+  
+  // Refs for DOM manipulation
+  const inputRef = useRef<HTMLInputElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   // Chat context integration for message handling
   const { sendMessage, isLoading } = useChat();
+
+  // Detect mobile device and keyboard visibility
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+    };
+
+    const handleResize = () => {
+      checkMobile();
+      
+      // Detect keyboard visibility on mobile
+      if (isMobile) {
+        const viewport = window.visualViewport;
+        if (viewport) {
+          const keyboardVisible = viewport.height < window.innerHeight * 0.75;
+          setIsKeyboardVisible(keyboardVisible);
+        }
+      }
+    };
+
+    // Initial check
+    checkMobile();
+    
+    // Listen for resize events
+    window.addEventListener('resize', handleResize);
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', handleResize);
+    }
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener('resize', handleResize);
+      }
+    };
+  }, [isMobile]);
 
   /**
    * Handles message sending with validation
@@ -53,25 +97,55 @@ export const SmartInputBar = () => {
     }
   };
 
+  // Dynamic class names based on device and state
+  const containerClasses = [
+    styles.inputContainer,
+    isMobile ? styles.mobileContainer : styles.desktopContainer,
+    isKeyboardVisible ? styles.keyboardVisible : '',
+    isLoading ? styles.loading : ''
+  ].filter(Boolean).join(' ');
+
+  const inputClasses = [
+    styles.inputField,
+    isMobile ? styles.mobileInput : styles.desktopInput
+  ].filter(Boolean).join(' ');
+
+  const buttonClasses = [
+    styles.sendButton,
+    isMobile ? styles.mobileButton : styles.desktopButton
+  ].filter(Boolean).join(' ');
+
   return (
-    <div className={styles.inputContainer}>
+    <div 
+      ref={containerRef}
+      className={containerClasses}
+      data-mobile={isMobile}
+      data-keyboard-visible={isKeyboardVisible}
+    >
       <input
+        ref={inputRef}
         type="text"
-        className={styles.inputField}
+        className={inputClasses}
         value={text}
         onChange={(e) => setText(e.target.value)}
         onKeyPress={handleKeyPress}
         placeholder="Type your message..."
         disabled={isLoading}
         data-testid="chat-input"
+        // Mobile-specific attributes
+        autoComplete="off"
+        autoCorrect="off"
+        autoCapitalize="sentences"
+        spellCheck="true"
       />
       <button
-        className={styles.sendButton}
+        className={buttonClasses}
         onClick={handleSend}
         disabled={isLoading || !text.trim()}
         data-testid="send-button"
+        aria-label="Send message"
       >
-        Send
+        {isLoading ? '...' : 'Send'}
       </button>
     </div>
   );

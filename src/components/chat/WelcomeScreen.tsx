@@ -20,22 +20,31 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartChat }) => {
   console.log('[WelcomeScreen] onStartChat function exists:', !!onStartChat);
   console.log('[WelcomeScreen] onStartChat type:', typeof onStartChat);
   
-  // Enhanced wrapper for onStartChat with deployment debugging
+  // Navigate to dedicated chat page
   const handleStartChat = (choice: ChatChoice) => {
     console.log('[WelcomeScreen] === BUTTON CLICKED ===');
     console.log('[WelcomeScreen] Choice:', choice);
-    console.log('[WelcomeScreen] Calling parent onStartChat...');
+    console.log('[WelcomeScreen] Navigating to dedicated chat page...');
     
     try {
-      if (onStartChat && typeof onStartChat === 'function') {
-        onStartChat(choice);
-        console.log('[WelcomeScreen] ✅ Parent onStartChat called successfully');
-      } else {
-        console.error('[WelcomeScreen] ❌ onStartChat is not a function!', onStartChat);
+      // Check if we're on client side
+      if (typeof window === 'undefined') {
+        console.log('[WelcomeScreen] SSR detected, skipping navigation');
+        return;
       }
+      
+      // Navigate to dedicated chat page with chat type parameter
+      window.location.href = `/mint-chat-active?type=${choice}`;
+      console.log('[WelcomeScreen] ✅ Navigation initiated successfully');
     } catch (error) {
-      console.error('[WelcomeScreen] ❌ ERROR calling onStartChat:', error);
+      console.error('[WelcomeScreen] ❌ ERROR navigating to chat page:', error);
       console.error('[WelcomeScreen] Error stack:', error instanceof Error ? error.stack : 'No stack');
+      
+      // Fallback: try the old modal approach
+      if (onStartChat && typeof onStartChat === 'function') {
+        console.log('[WelcomeScreen] Falling back to modal approach...');
+        onStartChat(choice);
+      }
     }
   };
 
@@ -58,6 +67,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartChat }) => {
   const closePrivacyModal = () => {
     setShowPrivacyModal(false);
   };
+
 
   return (
     <div className={styles.welcomeContainer}>

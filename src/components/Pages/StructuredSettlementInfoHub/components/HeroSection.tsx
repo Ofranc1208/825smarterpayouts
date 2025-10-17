@@ -74,7 +74,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             justifyContent: "center",
             flexWrap: "wrap"
           }}>
-            <Link href="/pricing-calculator" style={{
+            <Link href="/mint-chat-active?type=calculate&source=info-hub-hero" style={{
               display: "inline-block",
               background: "linear-gradient(135deg, #09b44d 0%, #059669 100%)",
               color: "white",

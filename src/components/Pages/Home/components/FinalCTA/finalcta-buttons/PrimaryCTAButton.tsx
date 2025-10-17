@@ -14,7 +14,7 @@ import Link from 'next/link';
 export default function PrimaryCTAButton() {
   return (
     <Link 
-      href="/pricing-calculator" 
+      href="/mint-chat-active?type=calculate&source=home-final-cta" 
       style={{
         display: 'inline-block',
         padding: '12px 48px',

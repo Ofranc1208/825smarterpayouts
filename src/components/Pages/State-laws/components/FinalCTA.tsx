@@ -64,7 +64,7 @@ export default function FinalCTA() {
           }}>
             <Button
               as="a"
-              href="/pricing-calculator"
+              href="/mint-chat-active?type=calculate&source=state-laws-cta"
               variant="technology-primary"
               size="xl"
               enhancedHover={true}

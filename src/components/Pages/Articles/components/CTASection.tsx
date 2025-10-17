@@ -30,7 +30,7 @@ export default function CTASection() {
       >
         <Button
           as="a"
-          href="/pricing-calculator"
+          href="/mint-chat-active?type=calculate&source=articles-cta"
           variant="technology-primary"
           size="lg"
           enhancedHover={true}

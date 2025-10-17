@@ -226,7 +226,7 @@ const StateLaws: React.FC = () => {
                   }}>
                     See what your structured settlement is worth in your state. Free quote, no obligation.
                   </p>
-                  <Link href="/pricing-calculator" style={{
+                  <Link href="/mint-chat-active?type=calculate" style={{
                     display: 'inline-block',
                     background: 'white',
                     color: COLORS.primary.main,

@@ -1,0 +1,114 @@
+/*
+ * MintChatActivePage.module.css - Full-Page Chat Experience
+ * ========================================================
+ * Dedicated styles for the immersive chat page experience
+ * Mobile-first design with safe area support
+ */
+
+/* Main container - Full viewport experience */
+.activeChatContainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #fafafa;
+  overflow: hidden;
+  position: relative;
+  
+  /* Safe area support for devices with notches */
+  padding-top: env(safe-area-inset-top);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Chat wrapper - Contains the actual chat interface */
+.chatWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .activeChatContainer {
+    /* Ensure full mobile coverage */
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+  }
+  
+  .chatWrapper {
+    border-radius: 0;
+    height: 100vh;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  /* Tablet optimizations */
+  .activeChatContainer {
+    background: #f5f5f5;
+  }
+  
+  .chatWrapper {
+    margin: 0;
+    border-radius: 0;
+  }
+}
+
+@media (min-width: 769px) {
+  /* Desktop - centered experience */
+  .activeChatContainer {
+    background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
+  
+  .chatWrapper {
+    max-width: 800px;
+    max-height: 90vh;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    border: 1px solid #e5e7eb;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .activeChatContainer {
+    background: #ffffff;
+  }
+  
+  .chatWrapper {
+    border: 2px solid #000000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .chatWrapper {
+    transition: none;
+  }
+}
+
+/* Dark mode support (for future theming) */
+@media (prefers-color-scheme: dark) {
+  .activeChatContainer {
+    background: #1a1a1a;
+  }
+  
+  .chatWrapper {
+    background: #2a2a2a;
+    border-color: #404040;
+  }
+}

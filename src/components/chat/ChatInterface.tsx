@@ -32,8 +32,11 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
     }
     
     // Redirect to fresh chat page (no URL parameters)
-    window.location.href = '/mint-intelligent-chat';
+    if (typeof window !== 'undefined') {
+      window.location.href = '/mint-intelligent-chat';
+    }
   };
+
 
   // Example onSend handler (replace with your actual logic)
   const handleSend = (message: string) => {

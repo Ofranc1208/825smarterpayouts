@@ -33,7 +33,7 @@ export default function PreloadLinks() {
 
       {/* Prefetch likely navigation targets */}
       <link rel="prefetch" href="/structured-settlement-laws-by-state" />
-      <link rel="prefetch" href="/pricing-calculator" />
+      <link rel="prefetch" href="/mint-chat-active" />
       <link rel="prefetch" href="/mint-intelligent-chat" />
       <link rel="prefetch" href="/court-approval" />
 

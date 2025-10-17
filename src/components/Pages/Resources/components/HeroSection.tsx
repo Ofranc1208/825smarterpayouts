@@ -88,7 +88,7 @@ export default function HeroSection() {
           }}>
             <Button
               as="a"
-              href="/pricing-calculator"
+              href="/mint-chat-active?type=calculate&source=resources-hero"
               variant="technology-primary"
               size="md"
               enhancedHover={true}

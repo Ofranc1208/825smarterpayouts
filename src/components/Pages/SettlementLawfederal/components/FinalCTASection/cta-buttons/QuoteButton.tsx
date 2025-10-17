@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function QuoteButton() {
   return (
-    <Link href="/mint-intelligent-chat" style={{
+    <Link href="/mint-chat-active?type=calculate&source=federal-law-cta" style={{
       display: 'inline-block',
       background: 'linear-gradient(135deg, #09b44d 0%, #059669 100%)',
       color: 'white',

@@ -245,7 +245,7 @@ const AlternativesToSelling: React.FC = () => {
               <p style={{ fontSize: '1.0625rem', lineHeight: '1.7', marginBottom: '1.5rem', opacity: 0.95 }}>
                 If selling makes the most sense, find out what you can get. Free quote, no obligation.
               </p>
-              <Link href="/pricing-calculator" style={{
+              <Link href="/mint-chat-active?type=calculate&source=info-hub-alternatives" style={{
                 display: 'inline-block',
                 background: 'white',
                 color: COLORS.primary.main,
