@@ -8,6 +8,7 @@
 
 'use client';
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { COLORS } from '@/src/components/shared/styles';
 import {
   HeroSection,
