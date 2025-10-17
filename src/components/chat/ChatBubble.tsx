@@ -1,24 +1,28 @@
 "use client";
 
 import React from 'react';
+import { formatMessageText } from '../../utils/parsing';
+import styles from './ChatBubble.module.css';
 
 /**
  * Chat bubble component for displaying messages from different senders
- * 
+ *
  * Features:
  * - Conditional styling based on sender type (user/bot/system)
- * - Smooth fade-in animation on render
+ * - Smooth fade-in animation on render using CSS modules
  * - Responsive design with proper text wrapping
  * - Consistent visual hierarchy across chat interface
- * 
+ * - CSS modules for proper styling architecture
+ * - Markdown support for bold text (**text**)
+ *
  * @component
  * @example
  * // User message
  * <ChatBubble sender="user">Hello, I need help with my payments</ChatBubble>
- * 
- * // Bot response
- * <ChatBubble sender="bot">I'd be happy to help you with that!</ChatBubble>
- * 
+ *
+ * // Bot response with bold text
+ * <ChatBubble sender="bot">Let's explore your **Early Payout Options**</ChatBubble>
+ *
  * // System notification
  * <ChatBubble sender="system">Calculation completed successfully</ChatBubble>
  */
@@ -32,72 +36,45 @@ interface ChatBubbleProps {
 }
 
 const ChatBubble: React.FC<ChatBubbleProps> = ({ sender, children, className }) => {
-  // Base styles applied to all chat bubbles
-  const baseStyles: React.CSSProperties = {
-    maxWidth: '80%',
-    minWidth: '60px',
-    padding: '10px 14px',
-    marginBottom: '8px',
-    fontSize: '0.98rem',
-    borderRadius: '16px',
-    boxShadow: '0 1px 4px rgba(0,0,0,0.06)',
-    textAlign: 'left',
-    wordBreak: 'break-word',
-    animation: 'fadeIn 0.5s ease-in-out'
+  // Build CSS classes using CSS modules approach
+  const bubbleClasses = [
+    styles.chatBubble,           // Base bubble styles
+    styles[`chatBubble--${sender}`], // Sender-specific styles
+    className                    // Additional custom classes
+  ].filter(Boolean).join(' ');
+
+  // Render text with markdown formatting support
+  const renderTextWithFormatting = (text: string) => {
+    const { text: cleanText, hasBold } = formatMessageText(text);
+
+    if (!hasBold) {
+      return text;
+    }
+
+    // Split by bold markers and render with formatting
+    const parts = text.split(/(\*\*[^*]+\*\*)/g);
+    return parts.map((part, index) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        // Remove the ** markers and make it bold
+        const boldText = part.slice(2, -2);
+        return <strong key={index}>{boldText}</strong>;
+      }
+      return part;
+    });
   };
 
-  // Conditional styles based on sender type
-  const senderStyles: React.CSSProperties = {
-    ...(sender === 'user' && {
-      background: '#22b455',
-      color: '#fff',
-      alignSelf: 'flex-end',
-      border: '1px solid #22b455'
-    }),
-    ...(sender === 'bot' && {
-      background: '#f1f3f4',
-      color: '#222',
-      alignSelf: 'flex-start',
-      border: '1px solid #ececec'
-    }),
-    ...(sender === 'system' && {
-      background: '#e6f4ea',
-      color: '#1976d2',
-      fontWeight: '600',
-      alignSelf: 'flex-start',
-      border: '1px solid #b6f2d2'
-    })
-  };
-
-  // Combine base styles with sender-specific styles
-  const combinedStyles: React.CSSProperties = {
-    ...baseStyles,
-    ...senderStyles
+  // Handle both string and React element children
+  const renderChildren = () => {
+    if (typeof children === 'string') {
+      return renderTextWithFormatting(children);
+    }
+    return children;
   };
 
   return (
-    <>
-      {/* Preserve CSS animations using styled-jsx */}
-      <style jsx>{`
-        @keyframes fadeIn {
-          from { 
-            opacity: 0; 
-            transform: translateY(10px); 
-          }
-          to { 
-            opacity: 1; 
-            transform: translateY(0); 
-          }
-        }
-      `}</style>
-      
-      <div 
-        style={combinedStyles}
-        className={className}
-      >
-        {children}
-      </div>
-    </>
+    <div className={bubbleClasses}>
+      {renderChildren()}
+    </div>
   );
 };
 

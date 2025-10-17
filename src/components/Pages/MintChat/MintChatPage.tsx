@@ -76,31 +76,14 @@ const MintChatPage: React.FC = () => {
     enableCustomMetrics: true
   });
 
-  // Fix auto-scroll issue - ensure page loads at ChatSection, not Problems
+  // Initialize page functionality
   useEffect(() => {
     // Track page view
     analytics.trackPageView('/mint-intelligent-chat', 'Chat with Mint AI Assistant');
-    
+
     // Announce page load to screen readers
     announceToScreenReader('Mint AI Assistant page loaded. Press slash to focus chat input.');
-    
-    // Fix auto-scroll issue - scroll to chat section on load
-    const scrollToChat = () => {
-      const chatSection = document.querySelector('[data-section="chat"]');
-      if (chatSection) {
-        chatSection.scrollIntoView({ 
-          behavior: 'smooth', 
-          block: 'start' 
-        });
-        trackCustomMetric('Auto-scroll to Chat', performance.now(), 'ms');
-      }
-    };
-
-    // Delay scroll to ensure all components are rendered
-    const scrollTimeout = setTimeout(scrollToChat, 500);
-    
-    return () => clearTimeout(scrollTimeout);
-  }, [announceToScreenReader, trackCustomMetric]);
+  }, [announceToScreenReader]);
   return (
     <ErrorBoundary>
       <Suspense fallback={
@@ -119,18 +102,21 @@ const MintChatPage: React.FC = () => {
         <SEOHead />
 
         {/* Hero Section with Mint AI branding */}
-        <HeroSection />
+        <div style={{ marginBottom: "2.5rem" }}>
+          <HeroSection />
+        </div>
 
         {/* Main Chat Interface - Fixed auto-scroll target */}
-        <div data-section="chat">
+        <div data-section="chat" style={{ marginBottom: "1rem" }}>
           <ChatSection />
         </div>
 
         {/* SEO and Educational Content */}
         <section style={{
           background: "linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)",
-          padding: "4rem 0",
-          borderTop: "1px solid #e5e7eb"
+          padding: "2rem 0 3rem",
+          borderTop: "1px solid #e5e7eb",
+          marginTop: "0"
         }}>
           <div style={{
             maxWidth: "1200px",
@@ -138,10 +124,14 @@ const MintChatPage: React.FC = () => {
             padding: "0 1rem"
           }}>
             {/* Industry Problems */}
-            <IndustryProblemsSection />
+            <div style={{ marginBottom: "2rem" }}>
+              <IndustryProblemsSection />
+            </div>
 
             {/* Solution Introduction */}
-            <SolutionSection />
+            <div style={{ marginBottom: "2rem" }}>
+              <SolutionSection />
+            </div>
 
             {/* Benefits Grid */}
             <BenefitsGrid />

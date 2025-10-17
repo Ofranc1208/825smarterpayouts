@@ -24,27 +24,21 @@ export const useWelcomeScript = ({ onCalculate, onChoice, initialMessages }: Use
     {
       id: generateUniqueId(),
       type: 'text',
-      text: "Hi 👋 I’m Mint. Ready to skip the Sales Pitch and take control of your Structured Settlement Payments",
+      text: "Hi 👋 I'm Mint, ready to skip the sales pitch. Let's explore your settlement **Early Payout Options**.",
       sender: 'bot',
     },
     {
       id: generateUniqueId(),
       type: 'text',
-      text: 'Let’s explore your settlement Early Payout Options.',
-      sender: 'bot',
-    },
-    {
-      id: generateUniqueId(),
-      type: 'text',
-      text: 'I can help you with these topics',
+      text: 'I can help you with these topics and much more.',
       sender: 'bot',
     },
     {
       id: generateUniqueId(),
       type: 'component',
-      component: React.createElement(ChatbotMenu, { 
+      component: React.createElement(ChatbotMenu, {
         onCalculate,
-        onChoice: onChoice || (() => {}) 
+        onChoice: onChoice || (() => {})
       }),
     },
   ];

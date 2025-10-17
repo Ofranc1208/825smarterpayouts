@@ -7,18 +7,18 @@ export default function HeroFooterText() {
     <p style={{
       ...getBodyStyles('medium', 'regular'),
       color: COLORS.neutral.gray500,
-      maxWidth: "680px",
+      maxWidth: "500px",
       margin: "0 auto 0 auto"
     }}>
-      Our{' '}
+      Get your{' '}
       <Link href="/pricing-calculator" style={{
         color: COLORS.primary.dark,
         textDecoration: "underline",
         fontWeight: TYPOGRAPHY.fontWeight.medium
       }}>
-        Early Payout Calculator
+        instant quote
       </Link>{' '}
-      gives you a private, instant quote. No calls, no sales pressure, and no personal data required.
+      in 2 minutes. <strong>Private, secure, no personal data required.</strong>
     </p>
   );
 }

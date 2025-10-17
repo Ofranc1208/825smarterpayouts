@@ -12,17 +12,10 @@
 }
 
 .bubble {
-  background: #fff;
-  color: #222;
-  border-radius: 18px 18px 18px 6px;
-  box-shadow: 0 2px 8px rgba(34,180,85,0.07);
-  padding: 14px 18px;
+  animation: fadeIn 0.5s ease-in-out;
+  opacity: 0;
+  animation-fill-mode: forwards;
   margin-bottom: 10px;
-  font-size: 1.08rem;
-  max-width: 85%;
-  min-width: 80px;
-  text-align: left;
-  animation: fadeIn 0.5s;
 }
 
 .bubbleMint {
@@ -68,6 +61,12 @@
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+.menuWrapper {
+  animation: fadeIn 0.5s ease-in-out;
+  opacity: 0;
+  animation-fill-mode: forwards;
 }
 
 .menu {

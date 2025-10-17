@@ -3,45 +3,151 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  background: #fafbfc;
-  border-radius: 18px;
-  box-shadow: 0 1px 4px rgba(60,60,60,0.04);
-  padding: 8px 0;
-  margin-top: 22px;
+  gap: 16px; /* Increased space between buttons for better visual separation */
+  margin-top: 24px;
+  padding: 16px; /* More generous padding around the button group */
+  background: rgba(34, 180, 77, 0.02); /* Very subtle green tint */
+  border-radius: 20px; /* Rounded container for modern look */
+  border: 1px solid rgba(34, 180, 77, 0.08); /* Subtle border */
 }
 
 .menuBtn {
-  width: 180px;
-  padding: 0.7em 0;
+  width: 100%;
+  max-width: 220px; /* Slightly wider for better readability */
+  padding: 16px 24px; /* More generous padding */
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 1.08rem;
-  font-weight: 700; /* Make text bold */
-  color: #22b455;  /* Brand green */
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  border-bottom: 1px solid #e5e7eb;
+  font-size: 1rem; /* Optimal size for readability */
+  font-weight: 700; /* Bold for emphasis */
+  color: #047857; /* Bold dark green text */
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); /* Very light mint green - 50% lighter */
+  border: 2px solid #059669; /* Dark green border */
+  border-radius: 14px; /* Rounded for modern feel */
   cursor: pointer;
   outline: none;
   text-align: center;
-  transition: background 0.15s, color 0.15s;
-  text-decoration: underline;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth animation */
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.15); /* Subtle shadow */
+  position: relative;
+  overflow: hidden;
+  /* GPU acceleration for better performance */
+  will-change: transform;
+  /* Continuous shimmer animation */
+  animation: gentleGlow 3s ease-in-out infinite;
 }
 
-.menuBtn:last-child {
-  border-bottom: none;
+/* Lightweight shimmer effect */
+.menuBtn:before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    110deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 60%
+  );
+  /* Quick shimmer that appears occasionally */
+  animation: shimmerSweep 1.2s linear 0s 2;
+  pointer-events: none;
 }
 
-.menuBtn:hover,
-.menuBtn:focus {
-  background: #eafaf1;
-  color: #178a36; /* Slightly darker green on hover */
+/* Sequential wave animation for each button - Extremely subtle */
+.menuBtn:nth-child(1) {
+  animation: gentleGlow 3s ease-in-out infinite, floatUp 8s ease-in-out infinite;
+  animation-delay: 0s, 0s;
+}
+
+.menuBtn:nth-child(2) {
+  animation: gentleGlow 3s ease-in-out infinite, floatUp 8s ease-in-out infinite;
+  animation-delay: 0.5s, 0.5s;
+}
+
+.menuBtn:nth-child(3) {
+  animation: gentleGlow 3s ease-in-out infinite, floatUp 8s ease-in-out infinite;
+  animation-delay: 1s, 1s;
+}
+
+/* Shimmer sweep animation - GPU optimized */
+@keyframes shimmerSweep {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+/* Gentle glow effect */
+@keyframes gentleGlow {
+  0%, 100% {
+    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.15);
+  }
+  50% {
+    box-shadow: 0 4px 16px rgba(5, 150, 105, 0.3), 0 0 20px rgba(16, 185, 129, 0.2);
+  }
+}
+
+/* Subtle floating motion */
+@keyframes floatUp {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.menuBtn:hover {
+  background: linear-gradient(135deg, #a7f3d0 0%, #6ee7b7 100%); /* Brighter on hover */
+  border-color: #047857; /* Darker border on hover */
+  transform: translateY(-4px) scale(1.02); /* Enhanced lift */
+  box-shadow: 0 8px 24px rgba(5, 150, 105, 0.3); /* Dramatic shadow */
+  animation: none; /* Pause automatic animations on hover */
+}
+
+.menuBtn:active {
+  transform: translateY(-1px) scale(0.98); /* Press feedback */
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.2);
+  transition: all 0.1s ease; /* Quick response */
 }
 
 .menuBtn:disabled,
 .menuBtn[disabled] {
-  color: #bdbdbd;
-  background: transparent;
+  background: #e5e7eb; /* Light gray for disabled */
+  color: #9ca3af;
   cursor: not-allowed;
-  text-decoration: none;
+  transform: none;
+  box-shadow: none;
+  animation: none; /* Stop animations for disabled state */
+  border-color: #d1d5db;
+}
+
+.menuBtn:disabled:hover,
+.menuBtn[disabled]:hover {
+  background: #e5e7eb;
+  transform: none;
+  box-shadow: none;
+  border-color: #d1d5db;
+}
+
+/* Performance optimization: Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .menuBtn,
+  .menuBtn:before,
+  .menuBtn:nth-child(1),
+  .menuBtn:nth-child(2),
+  .menuBtn:nth-child(3) {
+    animation: none !important;
+  }
+  
+  .menuBtn {
+    transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .menuBtn:hover {
+    transform: none;
+  }
 } 

@@ -20,22 +20,22 @@ const ChatbotMenu: React.FC<ChatbotMenuProps> = ({ onCalculate, onChoice }) => {
 
   return (
     <div className={styles.menu}>
-      <button 
+      <button
         className={`${styles.menuBtn} ${isClicked ? styles.disabled : ''}`}
         onClick={() => handleChoiceClick('New Quote')}
         disabled={isClicked}
       >
         New Quote
       </button>
-      <button 
+      <button
         className={`${styles.menuBtn} ${isClicked ? styles.disabled : ''}`}
-                            onClick={() => handleChoiceClick('Compare An Offer')}
-                    disabled={isClicked}
-                  >
-                    Compare An Offer
+        onClick={() => handleChoiceClick('Compare An Offer')}
+        disabled={isClicked}
+      >
+        Compare An Offer
       </button>
-      <button className={styles.menuBtn} disabled>
-        Our process
+      <button className={`${styles.menuBtn} ${styles.disabled}`}>
+        Our Process
       </button>
     </div>
   );

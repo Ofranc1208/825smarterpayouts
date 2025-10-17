@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import LCPStepContainer from './LCPStepContainer';
+import React, { useEffect, useState } from 'react';
 import { LCPCalculationResult } from '../../../types';
-import { validateOfferThreshold, formatCurrency } from '../../../../app/utils/validationHelpers';
+import styles from './LCPaymentResultsPage.module.css';
+import { OfferLoadingAnimation } from './results-components';
 
 interface Props {
   result: LCPCalculationResult;
@@ -12,160 +12,92 @@ interface Props {
   totalSteps: number;
 }
 
+/**
+ * ============================================================================
+ * LCP PAYMENT RESULTS PAGE
+ * ============================================================================
+ * The most exciting page in the calculator - shows loading animation first,
+ * then reveals the professional contract-style offer display
+ */
 const LCPaymentResultsPage: React.FC<Props> = ({ result, onBack, currentStep, totalSteps }) => {
-  const [showDetails, setShowDetails] = useState(false);
-  const [showConfetti, setShowConfetti] = useState(false);
+  const [showLoading, setShowLoading] = useState(true);
+  const [showResults, setShowResults] = useState(false);
 
-  // Scroll to top and trigger confetti animation when component mounts
+  // Scroll to top when component mounts
   useEffect(() => {
-    // Scroll to top of page smoothly to show the results
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    
-    // Slight delay before showing confetti to allow scroll to complete
-    const confettiTimer = setTimeout(() => {
-      setShowConfetti(true);
-    }, 300);
-    
-    // Hide confetti after 3 seconds
-    const hideTimer = setTimeout(() => setShowConfetti(false), 3300);
-    
-    return () => {
-      clearTimeout(confettiTimer);
-      clearTimeout(hideTimer);
-    };
   }, []);
 
-  return (
-    <LCPStepContainer title="Congratulations! Here's Your Early Payout Offer" currentStep={currentStep} totalSteps={totalSteps}>
-      {/* Confetti Animation */}
-      {showConfetti && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          pointerEvents: 'none',
-          zIndex: 1000,
-          overflow: 'hidden'
-        }}>
-          {[...Array(50)].map((_, i) => (
-            <div
-              key={i}
-              style={{
-                position: 'absolute',
-                width: '12px',
-                height: '12px',
-                background: 'linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3, #ff6b9d, #a8e6cf, #ffd93d, #6c5ce7)',
-                borderRadius: '50%',
-                animation: 'confettiFall linear infinite',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
-                opacity: 0.9,
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 2}s`,
-                animationDuration: `${2 + Math.random() * 2}s`
-              }}
-            />
-          ))}
-        </div>
-      )}
-      
-      <div style={{
-        width: '100%',
-        marginBottom: '1.5rem',
-        marginTop: '0.5rem',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center'
-      }}>
-        {result.minPayout !== undefined && (
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            marginBottom: '1.5rem',
-            padding: '0.5rem 0'
-          }}>
-            <span style={{
-              color: '#666',
-              fontWeight: 600,
-              fontSize: '0.98rem',
-              marginBottom: '0.3rem'
-            }}>Minimum Payout</span>
-            <span style={{
-              color: '#15803d',
-              fontSize: '1.365rem',
-              fontWeight: 800,
-              letterSpacing: '0.01em',
-              textAlign: 'center'
-            }}>${result.minPayout?.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
-          </div>
-        )}
-        {result.maxPayout !== undefined && (
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            marginBottom: '1.5rem',
-            padding: '0.5rem 0'
-          }}>
-            <span style={{
-              color: '#666',
-              fontWeight: 600,
-              fontSize: '0.98rem',
-              marginBottom: '0.3rem'
-            }}>Maximum Payout</span>
-            <span style={{
-              color: '#15803d',
-              fontSize: '1.89rem',
-              fontWeight: 800,
-              letterSpacing: '0.01em',
-              textAlign: 'center'
-            }}>${result.maxPayout?.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
-          </div>
-        )}
-        {result.familyProtectionNPV !== undefined && (
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            marginBottom: '1.5rem',
-            padding: '0.5rem 0'
-          }}>
-            <span style={{
-              color: '#666',
-              fontWeight: 600,
-              fontSize: '0.98rem',
-              marginBottom: '0.3rem'
-            }}>Family Protection Value</span>
-            <span style={{
-              color: '#15803d',
-              fontSize: '1.365rem',
-              fontWeight: 800,
-              letterSpacing: '0.01em',
-              textAlign: 'center'
-            }}>${result.familyProtectionNPV?.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
-          </div>
-        )}
-      </div>
+  const handleLoadingComplete = () => {
+    setShowLoading(false);
+    setShowResults(true);
+  };
 
-      {/* CSS Animation Keyframes - needs to be added to global styles */}
-      <style jsx>{`
-        @keyframes confettiFall {
-          0% {
-            transform: translateY(-100vh) rotate(0deg) scale(1);
-            opacity: 1;
-          }
-          50% {
-            opacity: 0.9;
-          }
-          100% {
-            transform: translateY(100vh) rotate(720deg) scale(0.8);
-            opacity: 0;
-          }
-        }
-      `}</style>
-    </LCPStepContainer>
+  // Format currency
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(amount);
+  };
+
+  // Show loading animation first
+  if (showLoading) {
+    return <OfferLoadingAnimation onComplete={handleLoadingComplete} />;
+  }
+
+  // Then show the results
+  return (
+    <div className={styles.pageContainer}>
+      {/* Contract-Inspired Document */}
+      <div className={styles.documentCard}>
+        {/* Decorative Border Corners */}
+        <div className={styles.cornerTopLeft} />
+        <div className={styles.cornerTopRight} />
+        <div className={styles.cornerBottomLeft} />
+        <div className={styles.cornerBottomRight} />
+
+        {/* Header */}
+        <div className={styles.header}>
+          <h1 className={styles.title}>Early Payout Offer</h1>
+          <p className={styles.subtitle}>STRUCTURED SETTLEMENT VALUATION</p>
+        </div>
+
+        {/* Minimum Payout - Top, Smaller, Center-Aligned */}
+        {result.minPayout !== undefined && (
+          <div className={styles.minimumPayoutContainer}>
+            <p className={styles.minimumLabel}>Minimum Payout</p>
+            <p className={styles.minimumAmount}>{formatCurrency(result.minPayout)}</p>
+          </div>
+        )}
+
+        {/* Maximum Payout - Center & Largest with Shimmer */}
+        {result.maxPayout !== undefined && (
+          <div className={styles.maximumPayoutContainer}>
+            <p className={styles.maximumLabel}>Maximum Payout</p>
+            <p className={styles.maximumAmount}>{formatCurrency(result.maxPayout)}</p>
+          </div>
+        )}
+
+        {/* Family Protection Value - Bottom, Center-Aligned */}
+        {result.familyProtectionNPV !== undefined && (
+          <div className={styles.familyProtectionContainer}>
+            <p className={styles.familyLabel}>Family Protection Value</p>
+            <p className={styles.familyAmount}>{formatCurrency(result.familyProtectionNPV)}</p>
+          </div>
+        )}
+
+        {/* Footer Note */}
+        <div className={styles.footer}>
+          <p className={styles.disclaimer}>
+            This offer is based on the information you provided and represents an estimated range.<br />
+            Final terms subject to verification and approval.
+          </p>
+        </div>
+      </div>
+    </div>
   );
 };
 

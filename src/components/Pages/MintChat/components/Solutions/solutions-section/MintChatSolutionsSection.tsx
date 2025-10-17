@@ -53,8 +53,13 @@ import SolutionsHeaderContainer from '../solutions-header/SolutionsHeaderContain
 export default function MintChatSolutionsSection() {
   return (
     <div style={{
+      background: "linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%)",
+      padding: "3rem 2.5rem",
+      borderRadius: "20px",
+      border: "1px solid #bbf7d0",
       textAlign: "center",
-      marginBottom: "3rem"
+      boxShadow: "0 4px 20px rgba(5, 150, 105, 0.1)",
+      position: "relative"
     }}>
       <SolutionsHeaderContainer />
     </div>

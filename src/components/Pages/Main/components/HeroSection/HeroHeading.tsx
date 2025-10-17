@@ -9,16 +9,16 @@ export default function HeroHeading() {
         color: COLORS.primary.dark,
         marginBottom: "1rem"
       }}>
-        Revolutionize Your Financial Future
+        Unlock Your Settlement's Hidden Value Today
       </h1>
       
       <p style={{
         ...TEXT_PRESETS.heroSubtitle,
         color: COLORS.neutral.gray700,
-        maxWidth: "700px",
+        maxWidth: "600px",
         margin: "0 auto 1.5rem"
       }}>
-        Turn your future structured settlement payments into fast, upfront cash — with zero out-of-pocket cost and a fully court-approved process.
+        <strong>Court-approved process</strong> with zero upfront costs. No need to speak to a salesperson — <strong>do it yourself</strong> in seconds.     
       </p>
     </>
   );

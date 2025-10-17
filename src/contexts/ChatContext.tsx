@@ -109,7 +109,7 @@ export const ChatProvider = ({ children, visibleMessages, setVisibleMessages, lo
       const botMessage: TextMessage = {
         id: generateUniqueId(),
         type: 'text',
-        text: "Perfect! Let's calculate your life-contingent payment options. I'll take you to our dedicated calculator where you can complete the process step-by-step.",
+        text: "Got it! Life Payments. We'll ask you just a few basic health questions to get your assessment. Don't worry — no personal information required. 🔒",
         sender: 'bot'
       };
 
@@ -119,20 +119,25 @@ export const ChatProvider = ({ children, visibleMessages, setVisibleMessages, lo
         type: 'component',
         componentType: 'CalculationLink',
         componentData: {
-          text: '🧮 Start Your Calculation →',
+          text: 'Start Your Calculation →',
           href: `/calculations/lcp?sessionId=${sessionId}`,
           style: {
-            padding: '12px 16px',
-            backgroundColor: '#10B981',
-            color: 'white',
-            borderRadius: '8px',
+            display: 'inline-block',
+            maxWidth: '280px',
+            width: '100%',
+            padding: '16px 24px',
+            background: 'linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%)',
+            color: '#047857',
+            border: '2px solid #059669',
+            borderRadius: '14px',
             textAlign: 'center',
-            margin: '8px 0',
+            margin: '8px auto',
             cursor: 'pointer',
             textDecoration: 'none',
-            fontWeight: '500',
-            border: 'none',
-            fontSize: '14px'
+            fontWeight: '700',
+            fontSize: '0.95rem',
+            boxShadow: '0 4px 12px rgba(5, 150, 105, 0.15)',
+            transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)'
           }
         }
       };
@@ -155,7 +160,7 @@ export const ChatProvider = ({ children, visibleMessages, setVisibleMessages, lo
       const botMessage: TextMessage = {
         id: generateUniqueId(),
         type: 'text',
-        text: "Excellent! Let's calculate your guaranteed payment options. I'll take you to our dedicated calculator where you can complete the process step-by-step.",
+        text: "Perfect! Guaranteed Payments. Let's get your exact payout value — quick and simple. 🔒",
         sender: 'bot'
       };
 
@@ -165,20 +170,25 @@ export const ChatProvider = ({ children, visibleMessages, setVisibleMessages, lo
         type: 'component',
         componentType: 'CalculationLink',
         componentData: {
-          text: '🧮 Start Your Calculation →',
+          text: 'Start Your Calculation →',
           href: `/calculations/guaranteed?sessionId=${sessionId}`,
           style: {
-            padding: '12px 16px',
-            backgroundColor: '#10B981',
-            color: 'white',
-            borderRadius: '8px',
+            display: 'inline-block',
+            maxWidth: '280px',
+            width: '100%',
+            padding: '16px 24px',
+            background: 'linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%)',
+            color: '#047857',
+            border: '2px solid #059669',
+            borderRadius: '14px',
             textAlign: 'center',
-            margin: '8px 0',
+            margin: '8px auto',
             cursor: 'pointer',
             textDecoration: 'none',
-            fontWeight: '500',
-            border: 'none',
-            fontSize: '14px'
+            fontWeight: '700',
+            fontSize: '0.95rem',
+            boxShadow: '0 4px 12px rgba(5, 150, 105, 0.15)',
+            transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)'
           }
         }
       };

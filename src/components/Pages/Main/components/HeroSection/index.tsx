@@ -23,6 +23,7 @@ export default function HeroSection() {
   return (
     <section aria-labelledby="hero-heading" style={{
       ...SPACING_PRESETS.heroSection,
+      paddingTop: "1.5rem", // Reduced from default hero spacing to move closer to nav
       background: "linear-gradient(135deg, #f8fafc 0%, #e9f9f1 50%, #f0fdf4 100%)"
     }}>
       {/* Background Pattern */}

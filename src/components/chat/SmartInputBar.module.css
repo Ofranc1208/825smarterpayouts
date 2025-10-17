@@ -1,17 +1,176 @@
 /* 
- * ===================================================================
- * SmartInputBar.module.css - DEPRECATED
- * ===================================================================
- * This file has been converted to inline styles in SmartInputBar.tsx
- * All styling is now handled via React style props with state management
- * This file can be safely deleted after testing confirms stability
- * 
- * Conversion completed: [Current Date]
- * Components affected: SmartInputBar.tsx
- * Features converted:
- * - Input field focus states with brand color highlighting
- * - Send button hover animations and disabled states
- * - Responsive flexbox container layout
- * - Loading state visual feedback
- * ===================================================================
- */ 
+ * SmartInputBar.module.css - Chat Input Bar Styles
+ * ================================================
+ * Responsive input bar with sophisticated state management
+ * Converted from inline styles to CSS modules for maintainability
+ *
+ * Note: CSS Modules don't support :root selectors, so design tokens
+ * are implemented as direct values in component classes for this single component.
+ * For multi-component design systems, consider using CSS-in-JS or a different approach.
+ */
+
+/* Main container - flexbox layout */
+.inputContainer {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Input field - base styles */
+.inputField {
+  flex: 1;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  padding: 12px 16px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s ease;
+  background-color: #f8f9fa;
+  cursor: text;
+  width: 100%;
+}
+
+/* Input field - focus state */
+.inputField:focus {
+  border-color: #09b44d;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(9, 180, 77, 0.1);
+}
+
+/* Input field - disabled state */
+.inputField:disabled {
+  background-color: #f2f2f2;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Send button - base styles */
+.sendButton {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 20px;
+  background-color: #09b44d;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 80px;
+  box-shadow: 0 2px 8px rgba(9, 180, 77, 0.15);
+}
+
+/* Send button - hover state */
+.sendButton:hover {
+  background-color: #07923d;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(9, 180, 77, 0.3);
+}
+
+/* Send button - disabled state */
+.sendButton:disabled {
+  background-color: #a5d8b9;
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: none;
+  box-shadow: 0 2px 8px rgba(9, 180, 77, 0.1);
+}
+
+/* Responsive Design Breakpoints */
+@media (max-width: 480px) {
+  /* Mobile - smaller padding and font sizes */
+  .inputContainer {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .inputField {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .sendButton {
+    padding: 10px 16px;
+    font-size: 13px;
+    min-width: 70px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  /* Tablet - medium adjustments */
+  .inputField {
+    font-size: 13.5px;
+  }
+
+  .sendButton {
+    font-size: 13.5px;
+    min-width: 75px;
+  }
+}
+
+@media (min-width: 769px) {
+  /* Desktop - no changes needed, uses base styles */
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .inputField {
+    border-width: 2px;
+  }
+
+  .inputField:focus {
+    border-color: #000;
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .sendButton {
+    border: 2px solid transparent;
+  }
+
+  .sendButton:hover {
+    border-color: #fff;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .inputField,
+  .sendButton {
+    transition: none;
+  }
+
+  .sendButton:hover {
+    transform: none;
+  }
+}
+
+/* Focus visible for better accessibility */
+.inputField:focus-visible {
+  outline: 2px solid #09b44d;
+  outline-offset: 2px;
+}
+
+/* Dark mode support (if needed in future) */
+@media (prefers-color-scheme: dark) {
+  .inputContainer {
+    background-color: #1a1a1a;
+    border-top-color: #333;
+  }
+
+  .inputField {
+    background-color: #2a2a2a;
+    border-color: #444;
+    color: #fff;
+  }
+
+  .inputField:focus {
+    background-color: #1a1a1a;
+    border-color: #09b44d;
+  }
+
+  .inputField::placeholder {
+    color: #888;
+  }
+}

@@ -56,12 +56,12 @@ export default function MintChatProblemsSection() {
   return (
     <div style={{
       background: "linear-gradient(135deg, #ffffff 0%, #fafafa 100%)",
-      padding: "2.5rem 2rem",
-      borderRadius: "16px",
-      border: "1px solid #e5e5e5",
+      padding: "3rem 2.5rem",
+      borderRadius: "20px",
+      border: "1px solid #e5e7eb",
       textAlign: "center",
-      marginBottom: "4rem",
-      boxShadow: "0 2px 12px rgba(0, 0, 0, 0.05)"
+      boxShadow: "0 4px 20px rgba(0, 0, 0, 0.08)",
+      position: "relative"
     }}>
       <ProblemsHeaderContainer />
       <ProblemsGrid />

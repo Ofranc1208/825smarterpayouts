@@ -1,22 +1,48 @@
 "use client";
 
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { useChat } from '../../contexts/ChatContext';
 import { Message } from '../../hooks/useConversationalForm';
 import ChatBubble from './ChatBubble';
 import ChatbotTyping from '../../components/chatbot/ChatbotTyping';
-import { useAutoScroll } from '../../hooks/useAutoScroll';
-import { parseAIResponse } from '../../utils/parsing';
+// import { parseAIResponse } from '../../utils/parsing'; // No longer needed for text messages
 
 const ChatMessages = () => {
   const { visibleMessages, isTyping } = useChat();
   const containerRef = useRef<HTMLDivElement>(null);
+  const autoScrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   
   // Safety check: ensure visibleMessages is always an array
   const messages = Array.isArray(visibleMessages) ? visibleMessages : [];
 
-  // Use robust auto-scroll hook with MutationObserver and smart scroll targeting
-  useAutoScroll(containerRef, messages, [messages]);
+  // Auto-scroll to bottom when new messages arrive (always)
+  useEffect(() => {
+    if (!containerRef.current) return;
+    
+    const container = containerRef.current.parentElement;
+    if (!container) return;
+
+    // Clear any pending auto-scroll
+    if (autoScrollTimeoutRef.current) {
+      clearTimeout(autoScrollTimeoutRef.current);
+    }
+
+    // Always scroll to bottom when new messages arrive
+    autoScrollTimeoutRef.current = setTimeout(() => {
+      if (container) {
+        container.scrollTo({
+          top: container.scrollHeight,
+          behavior: 'smooth'
+        });
+      }
+    }, 100);
+
+    return () => {
+      if (autoScrollTimeoutRef.current) {
+        clearTimeout(autoScrollTimeoutRef.current);
+      }
+    };
+  }, [messages, isTyping]);
 
   // Component hydrator - converts serializable component data back to JSX
   const hydrateComponent = (componentType: string, componentData: Record<string, any>) => {
@@ -80,7 +106,7 @@ const ChatMessages = () => {
       case 'text':
         return (
           <ChatBubble key={msg.id} sender={msg.sender}>
-            {parseAIResponse(msg.text)}
+            {msg.text}
           </ChatBubble>
         );
       case 'component':
@@ -101,9 +127,16 @@ const ChatMessages = () => {
   };
 
   return (
-    <div 
+    <div
       ref={containerRef}
-      style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 8, padding: '16px' }}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 8,
+        padding: '16px',
+        height: '100%', // Fill available space from CSS Grid parent
+        overflow: 'visible' // Remove scrollbar, let parent handle layout
+      }}
     >
       {messages.map(renderMessage)}
       {isTyping && <ChatbotTyping />}

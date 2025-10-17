@@ -31,68 +31,95 @@
   flex-direction: column;
   gap: 0.75rem;
   width: 100%;
-  max-width: 320px;
+  max-width: 280px; /* Optimal width for better balance */
 }
 
-/* Independent Select Type Button Styles */
+/* Independent Select Type Button Styles - Ultra light mint design */
 .selectTypeButton {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem 1.25rem;
+  padding: 16px 24px;
   width: 100%;
   position: relative;
-  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-  border: 2px solid #e5e7eb;
-  border-radius: 12px;
+  background: linear-gradient(135deg, #f8fafc 0%, #ecfdf5 100%); /* Ultra light mint green - even lighter */
+  border: 2px solid #6ee7b7; /* Very light green border */
+  border-radius: 14px;
   cursor: pointer;
   text-align: center;
   font-family: inherit;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #09b44d; /* Brand green text */
-  box-shadow: 
-    0 2px 4px rgba(0, 0, 0, 0.05),
-    0 1px 2px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 1rem;
+  font-weight: 500; /* Normal weight */
+  color: #065f46; /* Darker green text for better contrast */
+  box-shadow: 0 1px 4px rgba(110, 231, 183, 0.1); /* Ultra subtle shadow */
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0);
-  animation: subtlePulse 4s ease-in-out infinite;
   min-height: 50px;
+  overflow: hidden;
+  /* GPU acceleration for better performance */
+  will-change: transform;
+  /* Continuous animations - matching chatbot buttons */
+  animation: gentleGlow 3s ease-in-out infinite, floatUp 8s ease-in-out infinite;
+}
+
+/* Add shimmer effect before the button */
+.selectTypeButton:before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    110deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 60%
+  );
+  /* Quick shimmer that appears occasionally */
+  animation: shimmerSweep 1.2s linear 0s 2;
+  pointer-events: none;
+}
+
+/* Stagger animations for each button */
+.selectTypeButton:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.selectTypeButton:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.selectTypeButton:nth-child(3) {
+  animation-delay: 1s;
 }
 
 .selectTypeButton:hover:not(.unselected) {
-  transform: translateY(-4px);
-  border-color: #09b44d;
-  background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
-  box-shadow:
-    0 10px 25px rgba(9, 180, 77, 0.15),
-    0 4px 10px rgba(0, 0, 0, 0.1),
-    0 2px 4px rgba(0, 0, 0, 0.06);
-  animation: none;
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); /* Slightly brighter on hover - ultra light mint */
+  border-color: #34d399; /* Light green border on hover */
+  transform: translateY(-4px) scale(1.02); /* Enhanced lift */
+  box-shadow: 0 4px 16px rgba(110, 231, 183, 0.15); /* Very subtle shadow */
+  animation: none; /* Pause automatic animations on hover */
 }
 
 .selectTypeButton:active:not(.unselected) {
-  transform: translateY(-2px);
-  transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(-1px) scale(0.98); /* Press feedback */
+  box-shadow: 0 1px 4px rgba(110, 231, 183, 0.12);
+  transition: all 0.1s ease; /* Quick response */
 }
 
 .selectTypeButton:focus {
   outline: none;
-  border-color: #09b44d;
-  box-shadow:
-    0 0 0 3px rgba(9, 180, 77, 0.1),
-    0 2px 4px rgba(0, 0, 0, 0.05);
+  border-color: #34d399;
+  box-shadow: 0 0 0 3px rgba(110, 231, 183, 0.2), 0 1px 4px rgba(110, 231, 183, 0.1);
 }
 
-/* Selected state */
+/* Selected state - ultra light mint design */
 .selectTypeButton.selected {
-  transform: translateY(-4px);
-  border-color: #09b44d;
-  background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
-  box-shadow:
-    0 10px 25px rgba(9, 180, 77, 0.15),
-    0 4px 10px rgba(0, 0, 0, 0.1),
-    0 2px 4px rgba(0, 0, 0, 0.06);
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); /* Ultra light mint when selected */
+  border-color: #34d399; /* Light green border when selected */
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 4px 16px rgba(110, 231, 183, 0.15);
   animation: none;
 }
 
@@ -104,20 +131,55 @@
   cursor: not-allowed;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   background: #f9fafb;
-  border-color: #e5e7eb;
+  border-color: #d1d5db;
   color: #9ca3af;
 }
 
-/* Subtle pulse animation for engagement */
-@keyframes subtlePulse {
+/* Shimmer sweep animation - GPU optimized */
+@keyframes shimmerSweep {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+/* Gentle glow effect */
+@keyframes gentleGlow {
   0%, 100% {
-    box-shadow:
-      0 2px 4px rgba(0, 0, 0, 0.05),
-      0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 4px rgba(110, 231, 183, 0.1);
   }
   50% {
-    box-shadow:
-      0 3px 6px rgba(0, 0, 0, 0.08),
-      0 2px 4px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 1px 6px rgba(110, 231, 183, 0.18), 0 0 12px rgba(52, 211, 153, 0.12);
+  }
+}
+
+/* Subtle floating motion */
+@keyframes floatUp {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+/* Performance optimization: Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .selectTypeButton,
+  .selectTypeButton:before,
+  .selectTypeButton:nth-child(1),
+  .selectTypeButton:nth-child(2),
+  .selectTypeButton:nth-child(3) {
+    animation: none !important;
+  }
+  
+  .selectTypeButton {
+    transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .selectTypeButton:hover {
+    transform: none;
   }
 } 

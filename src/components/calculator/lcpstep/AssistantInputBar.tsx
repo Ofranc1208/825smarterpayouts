@@ -23,23 +23,30 @@ export const AssistantInputBar = () => {
   };
 
   return (
-    <div className={styles.inputContainer}>
-      <input
-        type="text"
-        className={styles.inputField}
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        onKeyPress={handleKeyPress}
-        placeholder="Type your message..."
-        disabled={isTyping}
-      />
-      <button
-        className={styles.sendButton}
-        onClick={handleSend}
-        disabled={isTyping || !text.trim()}
-      >
-        Send
-      </button>
+    <div style={{
+      padding: '16px 20px',
+      borderTop: '1px solid #e0e0e0',
+      backgroundColor: '#ffffff',
+      flexShrink: 0
+    }}>
+      <div className={styles.inputContainer}>
+        <input
+          type="text"
+          className={styles.inputField}
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          onKeyPress={handleKeyPress}
+          placeholder="Type your message..."
+          disabled={isTyping}
+        />
+        <button
+          className={styles.sendButton}
+          onClick={handleSend}
+          disabled={isTyping || !text.trim()}
+        >
+          Send
+        </button>
+      </div>
     </div>
   );
 }; 

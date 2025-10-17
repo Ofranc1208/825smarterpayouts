@@ -1,0 +1,140 @@
+/*
+ * ChatBubble.module.css - Chat Message Bubble Styles
+ * =================================================
+ * Responsive chat bubble component with proper CSS architecture
+ * Converted from inline styles to CSS modules for maintainability
+ *
+ * Note: CSS Modules don't support :root selectors, so design tokens
+ * are implemented as CSS custom properties on component classes
+ */
+
+/* Base chat bubble styles */
+.chatBubble {
+  max-width: 80%;
+  min-width: 60px;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  font-size: 0.98rem;
+  line-height: 1.4;
+  border-radius: 16px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  text-align: left;
+  word-break: break-word;
+  animation: chatBubbleFadeIn 0.5s ease-in-out;
+  position: relative;
+}
+
+/* User message styles (right-aligned) */
+.chatBubble--user {
+  background: #22b455;
+  color: #fff;
+  align-self: flex-end;
+  border: 1px solid #22b455;
+  margin-left: auto;
+}
+
+/* Bot message styles (left-aligned) */
+.chatBubble--bot {
+  background: #f1f3f4;
+  color: #222;
+  align-self: flex-start;
+  border: 1px solid #ececec;
+}
+
+/* System message styles (left-aligned, prominent) */
+.chatBubble--system {
+  background: #e6f4ea;
+  color: #1976d2;
+  font-weight: 600;
+  align-self: flex-start;
+  border: 1px solid #b6f2d2;
+}
+
+/* Animation keyframes */
+@keyframes chatBubbleFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design Breakpoints */
+@media (max-width: 768px) {
+  /* Mobile adjustments */
+  .chatBubble {
+    max-width: 90%;
+    min-width: 50px;
+    font-size: 0.95rem;
+    padding: 8px 12px;
+  }
+
+  /* Adjust margins for mobile */
+  .chatBubble--user {
+    margin-right: 8px;
+  }
+
+  .chatBubble--bot,
+  .chatBubble--system {
+    margin-left: 8px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  /* Tablet adjustments */
+  .chatBubble {
+    max-width: 85%;
+    font-size: 0.97rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Desktop - no changes needed, uses base styles */
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .chatBubble {
+    border-width: 2px;
+  }
+
+  .chatBubble--user {
+    border-color: #000;
+  }
+
+  .chatBubble--bot {
+    border-color: #666;
+  }
+
+  .chatBubble--system {
+    border-color: #1976d2;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .chatBubble {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* Focus states for accessibility */
+.chatBubble:focus {
+  outline: 2px solid #007acc;
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  .chatBubble {
+    background: transparent !important;
+    color: #000 !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+    animation: none !important;
+  }
+}

@@ -95,7 +95,7 @@ export default function BenefitsGrid() {
       display: "grid",
       gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))",
       gap: "2rem",
-      marginBottom: "3rem"
+      marginBottom: "0"
     }}>
       {benefits.map((benefit, index) => (
         <BenefitCard

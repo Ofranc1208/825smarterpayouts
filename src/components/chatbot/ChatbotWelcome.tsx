@@ -63,19 +63,23 @@ const ChatbotWelcome: React.FC<ChatbotWelcomeProps> = ({ onCalculate }) => {
     };
   }, []);
 
-  // Gather all previous messages
+  // Gather all previous messages with proper styling
   const visibleMessages = [];
   for (let i = 0; i < currentStep; i++) {
     const step = SEQUENCE[i];
     if (step?.type === 'message') {
       visibleMessages.push(
-        <ChatBubble key={i} sender="bot">
-          {step.content}
-        </ChatBubble>
+        <div key={i} className={styles.bubble} style={{ animationDelay: `${i * 0.1}s` }}>
+          <ChatBubble sender="bot">
+            {step.content}
+          </ChatBubble>
+        </div>
       );
     } else if (step?.type === 'menu') {
       visibleMessages.push(
-        <ChatbotMenu key={i} onCalculate={onCalculate} onChoice={() => {}} />
+        <div key={i} className={styles.menuWrapper} style={{ animationDelay: `${i * 0.1}s` }}>
+          <ChatbotMenu onCalculate={onCalculate} onChoice={() => {}} />
+        </div>
       );
     }
   }

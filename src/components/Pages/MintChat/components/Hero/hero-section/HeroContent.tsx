@@ -1,5 +1,4 @@
 import React from 'react';
-import HeroBadgeContainer from '../hero-badge/HeroBadgeContainer';
 import HeroHeaderContainer from '../hero-header/HeroHeaderContainer';
 
 /**
@@ -37,7 +36,6 @@ export default function HeroContent() {
           maxWidth: '800px',
           textAlign: 'center'
         }}>
-          <HeroBadgeContainer />
           <HeroHeaderContainer />
         </div>
       </div>

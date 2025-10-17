@@ -34,16 +34,7 @@ export default function ClientProviders({ children }: ClientProvidersProps) {
   return (
     <AssistantProvider>
       <CalculatorProvider logUserChoiceAsMessage={logUserChoiceAsMessage}>
-        {/* Calculator Content */}
-        <main className="main-content" style={{ minHeight: 'calc(100vh - 200px)', padding: '1rem 0' }}>
-          <div className="container">
-            {children}
-          </div>
-        </main>
-        
-
-        
-        {/* Assistant Panel - Lower z-index to not cover navbar */}
+        {children}
         <AssistantPanel />
       </CalculatorProvider>
     </AssistantProvider>

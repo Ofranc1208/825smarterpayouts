@@ -14,12 +14,14 @@ export default function HeroBadge() {
       border: "1px solid #cbd5e1",
       borderRadius: BORDER_RADIUS.large,
       padding: `${SPACING.unit.xxs} ${SPACING.unit.md}`,
-      marginTop: SPACING.unit.md,
-      marginBottom: SPACING.unit.lg,
+      marginTop: "0", // Remove top margin to move closer to navigation
+      marginBottom: SPACING.unit.sm, // Reduced bottom margin
       fontSize: "0.75rem",
       fontWeight: "600",
       color: COLORS.neutral.gray600,
-      boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.7)"
+      boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.7)",
+      position: "relative",
+      top: "-1rem" // Move up more to get closer to navigation
     }}>
       <div style={{
         width: ICON_SIZES.xsmall,

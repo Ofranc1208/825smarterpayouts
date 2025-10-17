@@ -7,7 +7,7 @@
 export const VALIDATION_RULES = {
   PAYMENT_AMOUNT: {
     MIN: 100,                    // $100 minimum
-    MAX: 10_000_000,            // $10M maximum
+    MAX: 1_000_000,             // $1M maximum (7 digits)
     MAX_DECIMAL_PLACES: 2,       // $123.45 format
   },
   OFFER_THRESHOLDS: {
@@ -15,7 +15,7 @@ export const VALIDATION_RULES = {
   },
   DATE_RULES: {
     MIN_PERIOD_MONTHS: 6,        // 6 months minimum between start and end
-    MAX_PERIOD_YEARS: 30,        // 30 years maximum
+    MAX_PERIOD_YEARS: 35,        // 35 years maximum from today
     MIN_START_MONTHS_FUTURE: 3,  // Start date must be 3+ months from today
     MIN_END_MONTHS_FROM_START: 6, // End date must be 6+ months from start
   },
@@ -98,6 +98,15 @@ export function validatePaymentAmount(value: string): PaymentValidationResult {
     };
   }
 
+  // Check for maximum 7 digits before decimal point
+  const wholePart = decimalParts[0];
+  if (wholePart.length > 7) {
+    return {
+      isValid: false,
+      error: 'Payment amount cannot exceed 7 digits'
+    };
+  }
+
   // Sanitize and format the value
   const sanitizedValue = numValue.toFixed(2);
 
@@ -171,7 +180,7 @@ export function validateDateRange(startDate: string, endDate: string): DateValid
   if (start < minStartDate) {
     return { 
       isValid: false, 
-      error: `Start date must be at least ${VALIDATION_RULES.DATE_RULES.MIN_START_MONTHS_FUTURE} months in the future` 
+      error: `Payment dates must be at least ${VALIDATION_RULES.DATE_RULES.MIN_START_MONTHS_FUTURE} months in the future. This processing timeframe ensures your transaction is completed properly.` 
     };
   }
 
@@ -182,17 +191,18 @@ export function validateDateRange(startDate: string, endDate: string): DateValid
   if (end < minEndDate) {
     return { 
       isValid: false, 
-      error: `End date must be at least ${VALIDATION_RULES.DATE_RULES.MIN_END_MONTHS_FROM_START} months after the start date` 
+      error: `End date must be at least ${VALIDATION_RULES.DATE_RULES.MIN_END_MONTHS_FROM_START} months after the start date to qualify for an early payout option.` 
     };
   }
 
-  // Check maximum period (30 years) - keeping existing logic
-  const monthsDiff = (end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24 * 30.44); // Average days per month
-  const yearsDiff = monthsDiff / 12;
-  if (yearsDiff > VALIDATION_RULES.DATE_RULES.MAX_PERIOD_YEARS) {
+  // Check maximum period (35 years from today for end date)
+  const maxEndDate = new Date(today);
+  maxEndDate.setFullYear(maxEndDate.getFullYear() + VALIDATION_RULES.DATE_RULES.MAX_PERIOD_YEARS);
+  
+  if (end > maxEndDate) {
     return { 
       isValid: false, 
-      error: `Payment period cannot exceed ${VALIDATION_RULES.DATE_RULES.MAX_PERIOD_YEARS} years` 
+      error: `End date cannot be more than ${VALIDATION_RULES.DATE_RULES.MAX_PERIOD_YEARS} years in the future. Please select a date within the eligible timeframe.` 
     };
   }
 

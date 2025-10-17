@@ -1,7 +1,11 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import LCPStepContainer from './LCPStepContainer';
+import { LCPButton, LCPSection, LCPNavigationButton } from './shared';
+import layout from './utils/LCPLayout.module.css';
+import utilities from './utils/LCPUtilities.module.css';
+import styles from './LCPPhysicalProfileOverview.module.css';
 
 const AGES = ['18–25', '26–35', '36–45', '46–50', '51–56', '57–65'];
 const GENDERS = ['Male', 'Female', 'Other'];
@@ -22,16 +26,22 @@ interface Props {
     weight?: string;
   };
   onNext: (data: { ageRange: string; gender: string; bodyFrame: string; weight: string }) => void;
+  onBack?: () => void;
   currentStep: number;
   totalSteps: number;
 }
 
-const LCPPhysicalProfileOverview: React.FC<Props> = ({ initialData, onNext, currentStep, totalSteps }) => {
+const LCPPhysicalProfileOverview: React.FC<Props> = ({ initialData, onNext, onBack, currentStep, totalSteps }) => {
   const [ageRange, setAgeRange] = useState(initialData?.ageRange || '');
   const [gender, setGender] = useState(initialData?.gender || '');
   const [bodyFrame, setBodyFrame] = useState(initialData?.bodyFrame || '');
   const [weight, setWeight] = useState(initialData?.weight || '');
   const [touched, setTouched] = useState(false);
+  
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const genderSectionRef = useRef<HTMLDivElement>(null);
+  const bodyFrameSectionRef = useRef<HTMLDivElement>(null);
+  const weightSectionRef = useRef<HTMLDivElement>(null);
 
   // Update state when initialData changes (for edit functionality)
   React.useEffect(() => {
@@ -40,6 +50,25 @@ const LCPPhysicalProfileOverview: React.FC<Props> = ({ initialData, onNext, curr
     if (initialData?.bodyFrame) setBodyFrame(initialData.bodyFrame);
     if (initialData?.weight) setWeight(initialData.weight);
   }, [initialData]);
+
+  // Auto-scroll to next section when a field is filled
+  useEffect(() => {
+    if (ageRange && genderSectionRef.current) {
+      genderSectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [ageRange]);
+
+  useEffect(() => {
+    if (gender && bodyFrameSectionRef.current) {
+      bodyFrameSectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [gender]);
+
+  useEffect(() => {
+    if (bodyFrame && weightSectionRef.current) {
+      weightSectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [bodyFrame]);
 
   const isValid = ageRange && gender && bodyFrame && weight;
 
@@ -57,339 +86,89 @@ const LCPPhysicalProfileOverview: React.FC<Props> = ({ initialData, onNext, curr
 
   return (
     <LCPStepContainer title="Physical Profile Overview" currentStep={currentStep} totalSteps={totalSteps}>
-      <form onSubmit={handleSubmit}>
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '0.4rem',
-          marginBottom: '0.5rem',
-          position: 'relative'
-        }}>
-          <label style={{
-            fontSize: '0.83rem',
-            fontWeight: '700',
-            textAlign: 'center',
-            margin: '1rem 0 0.5rem 0'
-          }}>Age</label>
-          <div style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '0.4rem',
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginBottom: '0.1rem'
-          }}>
+      <div className={styles.scrollContainer} ref={scrollContainerRef}>
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <LCPSection label="Age">
             {AGES.map((age) => (
-              <button
-                type="button"
+              <LCPButton
                 key={age}
-                style={ageRange === age ? {
-                  border: '2px solid #22c55e',
-                  background: '#e0fce2',
-                  color: '#15803d',
-                  borderRadius: '20px',
-                  padding: '0.45rem 1.6rem',
-                  fontSize: '0.78rem',
-                  minWidth: '110px',
-                  minHeight: '2.1rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: 'pointer',
-                  transition: 'background 0.15s, border 0.15s',
-                  fontWeight: '600'
-                } : {
-                  border: '1.5px solid #d1d5db',
-                  background: '#f9fafb',
-                  color: '#222',
-                  borderRadius: '20px',
-                  padding: '0.45rem 1.6rem',
-                  fontSize: '0.78rem',
-                  minWidth: '110px',
-                  minHeight: '2.1rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: 'pointer',
-                  transition: 'background 0.15s, border 0.15s',
-                  fontWeight: '500'
-                }}
+                variant="option"
+                selected={ageRange === age}
                 onClick={() => setAgeRange(age)}
               >
                 {age}
-              </button>
+              </LCPButton>
             ))}
+          </LCPSection>
+
+          <div ref={genderSectionRef}>
+            <LCPSection label="Gender">
+              {GENDERS.map((g) => (
+                <LCPButton
+                  key={g}
+                  variant="option"
+                  selected={gender === g}
+                  onClick={() => setGender(g)}
+                >
+                  {g}
+                </LCPButton>
+              ))}
+            </LCPSection>
           </div>
-        </div>
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '0.4rem',
-          marginBottom: '0.5rem',
-          position: 'relative'
-        }}>
-          <label style={{
-            fontSize: '0.83rem',
-            fontWeight: '700',
-            textAlign: 'center',
-            margin: '1rem 0 0.5rem 0'
-          }}>Gender</label>
-          <div style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '0.4rem',
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginBottom: '0.1rem'
-          }}>
-            {GENDERS.map((g) => (
-              <button
-                type="button"
-                key={g}
-                style={gender === g ? {
-                  border: '2px solid #22c55e',
-                  background: '#e0fce2',
-                  color: '#15803d',
-                  borderRadius: '20px',
-                  padding: '0.45rem 1.6rem',
-                  fontSize: '0.78rem',
-                  minWidth: '110px',
-                  minHeight: '2.1rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: 'pointer',
-                  transition: 'background 0.15s, border 0.15s',
-                  fontWeight: '600'
-                } : {
-                  border: '1.5px solid #d1d5db',
-                  background: '#f9fafb',
-                  color: '#222',
-                  borderRadius: '20px',
-                  padding: '0.45rem 1.6rem',
-                  fontSize: '0.78rem',
-                  minWidth: '110px',
-                  minHeight: '2.1rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: 'pointer',
-                  transition: 'background 0.15s, border 0.15s',
-                  fontWeight: '500'
-                }}
-                onClick={() => setGender(g)}
-              >
-                {g}
-              </button>
-            ))}
+
+          <div ref={bodyFrameSectionRef}>
+            <LCPSection label="Body Frame">
+              {BODY_FRAMES.map((frame) => (
+                <LCPButton
+                  key={frame}
+                  variant="option"
+                  selected={bodyFrame === frame}
+                  onClick={() => setBodyFrame(frame)}
+                >
+                  {frame}
+                </LCPButton>
+              ))}
+            </LCPSection>
           </div>
-        </div>
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '0.4rem',
-          marginBottom: '0.5rem',
-          position: 'relative'
-        }}>
-          <label style={{
-            fontSize: '0.83rem',
-            fontWeight: '700',
-            textAlign: 'center',
-            margin: '1rem 0 0.5rem 0'
-          }}>Body Frame</label>
-          <div style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '0.4rem',
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginBottom: '0.1rem'
-          }}>
-            {BODY_FRAMES.map((frame) => (
-              <button
-                type="button"
-                key={frame}
-                style={bodyFrame === frame ? {
-                  border: '2px solid #22c55e',
-                  background: '#e0fce2',
-                  color: '#15803d',
-                  borderRadius: '20px',
-                  padding: '0.45rem 1.6rem',
-                  fontSize: '0.78rem',
-                  minWidth: '110px',
-                  minHeight: '2.1rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: 'pointer',
-                  transition: 'background 0.15s, border 0.15s',
-                  fontWeight: '600'
-                } : {
-                  border: '1.5px solid #d1d5db',
-                  background: '#f9fafb',
-                  color: '#222',
-                  borderRadius: '20px',
-                  padding: '0.45rem 1.6rem',
-                  fontSize: '0.78rem',
-                  minWidth: '110px',
-                  minHeight: '2.1rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: 'pointer',
-                  transition: 'background 0.15s, border 0.15s',
-                  fontWeight: '500'
-                }}
-                onClick={() => setBodyFrame(frame)}
-              >
-                {frame}
-              </button>
-            ))}
+
+          <div ref={weightSectionRef}>
+            <LCPSection label="Weight">
+              {WEIGHTS.map((w) => (
+                <LCPButton
+                  key={w.full}
+                  variant="option"
+                  selected={weight === w.full}
+                  onClick={() => handleWeightSelect(w.full)}
+                >
+                  {w.short}
+                </LCPButton>
+              ))}
+            </LCPSection>
           </div>
-        </div>
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '0.4rem',
-          marginBottom: '0.5rem',
-          position: 'relative'
-        }}>
-          <label style={{
-            fontSize: '0.83rem',
-            fontWeight: '700',
-            textAlign: 'center',
-            margin: '1rem 0 0.5rem 0'
-          }}>Weight</label>
-          <div style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '0.4rem',
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginBottom: '0.1rem'
-          }}>
-            {WEIGHTS.map((w) => (
-              <button
-                type="button"
-                key={w.full}
-                style={weight === w.full ? {
-                  border: '2px solid #22c55e',
-                  background: '#e0fce2',
-                  color: '#15803d',
-                  borderRadius: '20px',
-                  padding: '0.45rem 1.6rem',
-                  fontSize: '0.78rem',
-                  minWidth: '110px',
-                  minHeight: '2.1rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: 'pointer',
-                  transition: 'background 0.15s, border 0.15s',
-                  fontWeight: '600'
-                } : {
-                  border: '1.5px solid #d1d5db',
-                  background: '#f9fafb',
-                  color: '#222',
-                  borderRadius: '20px',
-                  padding: '0.45rem 1.6rem',
-                  fontSize: '0.78rem',
-                  minWidth: '110px',
-                  minHeight: '2.1rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: 'pointer',
-                  transition: 'background 0.15s, border 0.15s',
-                  fontWeight: '500'
-                }}
-                onClick={() => handleWeightSelect(w.full)}
-              >
-                {w.short}
-              </button>
-            ))}
+
+          <div className={layout.actionRow} style={{ display: 'flex', gap: '1rem', justifyContent: 'center', alignItems: 'center' }}>
+            <LCPNavigationButton
+              direction="back"
+              disabled={!onBack}
+              onClick={onBack}
+              type="button"
+              aria-label="Back to previous step"
+            />
+            <LCPNavigationButton
+              direction="next"
+              disabled={!isValid}
+              type="submit"
+              aria-label="Continue to next step"
+            />
           </div>
-        </div>
-        <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginTop: '1rem',
-          padding: '0.5rem 0'
-        }}>
-          <button
-            style={!isValid ? {
-              background: '#bbf7d0',
-              color: '#fff',
-              border: 'none',
-              borderRadius: '50%',
-              width: '3rem',
-              height: '3rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '1.4rem',
-              cursor: 'not-allowed',
-              transition: 'all 0.2s ease',
-              boxShadow: '0 4px 12px rgba(34, 197, 94, 0.3)',
-              fontWeight: '600'
-            } : {
-              background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
-              color: '#fff',
-              border: 'none',
-              borderRadius: '50%',
-              width: '3rem',
-              height: '3rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '1.4rem',
-              cursor: 'pointer',
-              transition: 'all 0.2s ease',
-              boxShadow: '0 4px 12px rgba(34, 197, 94, 0.3)',
-              fontWeight: '600'
-            }}
-            type="submit"
-            disabled={!isValid}
-            aria-label="Next"
-            onMouseEnter={(e) => {
-              if (!e.currentTarget.disabled) {
-                e.currentTarget.style.background = 'linear-gradient(135deg, #16a34a 0%, #15803d 100%)';
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 6px 16px rgba(34, 197, 94, 0.4)';
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (!e.currentTarget.disabled) {
-                e.currentTarget.style.background = 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)';
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 12px rgba(34, 197, 94, 0.3)';
-              }
-            }}
-            onMouseDown={(e) => {
-              if (!e.currentTarget.disabled) {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 12px rgba(34, 197, 94, 0.3)';
-              }
-            }}
-          >
-            <span style={{
-              fontSize: '1.2rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}>&#8594;</span>
-          </button>
-        </div>
-        {touched && !isValid && (
-          <div style={{
-            color: '#ef4444',
-            fontSize: '0.93rem',
-            marginTop: '0.18rem',
-            textAlign: 'left'
-          }}>Please answer all questions.</div>
-        )}
-      </form>
+
+          {touched && !isValid && (
+            <p className={utilities.error} style={{ textAlign: 'center' }}>
+              Please answer all questions.
+            </p>
+          )}
+        </form>
+      </div>
     </LCPStepContainer>
   );
 };

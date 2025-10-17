@@ -21,6 +21,31 @@ const ChatManager: React.FC = () => {
     }
   }, [searchParams]);
 
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (isChatOpen) {
+      // Save current scroll position
+      const scrollY = window.scrollY;
+      
+      // Prevent body scroll
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      document.body.style.overflowY = 'scroll'; // Prevent layout shift from scrollbar disappearing
+      
+      return () => {
+        // Restore body scroll
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        document.body.style.overflowY = '';
+        
+        // Restore scroll position
+        window.scrollTo(0, scrollY);
+      };
+    }
+  }, [isChatOpen]);
+
   const handleStartChat = (choice: ChatChoice) => {
     setActiveScreen(choice);
     setIsChatOpen(true);
