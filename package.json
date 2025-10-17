@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint --dir app --dir src/components/chat --dir src/components/Pages/Main",
-    "postbuild": "purgecss --css .next/static/css/*.css --content './app/**/*.{js,ts,jsx,tsx,html}' --output .next/static/css/",
+    "postbuild": "purgecss --css .next/static/css/*.css --content './app/**/*.{js,ts,jsx,tsx,html}' './src/**/*.{js,ts,jsx,tsx}' --output .next/static/css/",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
