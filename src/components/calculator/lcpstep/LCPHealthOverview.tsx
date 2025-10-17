@@ -2,13 +2,13 @@
 
 import React, { useState } from 'react';
 import LCPStepContainer from './LCPStepContainer';
-import { LCPButton, LCPSection, LCPNavigationButton } from './shared';
+import { LCPButton, LCPSection, LCPNavigationButton, QuickHelpBadge } from './shared';
 import layout from './utils/LCPLayout.module.css';
 import utilities from './utils/LCPUtilities.module.css';
 
 const SMOKE_OPTIONS = ['Yes', 'No'];
-const HEALTH_OPTIONS = ['Great', 'Normal', 'Fair', 'Below Fair'];
-const CARDIAC_OPTIONS = ['Normal', 'Medicated', 'High', 'Not Sure'];
+const HEALTH_OPTIONS = ['Great', 'Normal', 'Fair', 'Below'];
+const CARDIAC_OPTIONS = ['Normal', 'Medicated', 'High', 'Unsure'];
 
 interface Props {
   initialData?: {
@@ -47,6 +47,8 @@ const LCPHealthOverview: React.FC<Props> = ({ initialData, onNext, onBack, curre
 
   return (
     <LCPStepContainer title="Lifestyle Overview" currentStep={currentStep} totalSteps={totalSteps}>
+      <QuickHelpBadge />
+      
       <form onSubmit={handleSubmit}>
         <LCPSection label="Do You Smoke?">
           {SMOKE_OPTIONS.map((opt) => (
@@ -87,7 +89,7 @@ const LCPHealthOverview: React.FC<Props> = ({ initialData, onNext, onBack, curre
           ))}
         </LCPSection>
 
-        <div className={layout.actionRow} style={{ display: 'flex', gap: '1rem', justifyContent: 'center', alignItems: 'center' }}>
+        <div className={layout.actionRow}>
           <LCPNavigationButton
             direction="back"
             disabled={!onBack}

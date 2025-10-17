@@ -229,7 +229,6 @@ const LCPStepper: React.FC = () => {
   return (
     <div style={{ paddingBottom: '2rem' }}>
       {renderCurrentStep()}
-      <AssistantPrompt />
       <AssistantPanel />
     </div>
   );

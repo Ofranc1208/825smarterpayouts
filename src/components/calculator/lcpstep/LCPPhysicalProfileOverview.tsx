@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import LCPStepContainer from './LCPStepContainer';
-import { LCPButton, LCPSection, LCPNavigationButton } from './shared';
+import { LCPButton, LCPSection, LCPNavigationButton, QuickHelpBadge } from './shared';
 import layout from './utils/LCPLayout.module.css';
 import utilities from './utils/LCPUtilities.module.css';
 import styles from './LCPPhysicalProfileOverview.module.css';
@@ -86,6 +86,8 @@ const LCPPhysicalProfileOverview: React.FC<Props> = ({ initialData, onNext, onBa
 
   return (
     <LCPStepContainer title="Physical Profile Overview" currentStep={currentStep} totalSteps={totalSteps}>
+      <QuickHelpBadge />
+      
       <div className={styles.scrollContainer} ref={scrollContainerRef}>
         <form onSubmit={handleSubmit} className={styles.form}>
           <LCPSection label="Age">
@@ -146,7 +148,7 @@ const LCPPhysicalProfileOverview: React.FC<Props> = ({ initialData, onNext, onBa
             </LCPSection>
           </div>
 
-          <div className={layout.actionRow} style={{ display: 'flex', gap: '1rem', justifyContent: 'center', alignItems: 'center' }}>
+          <div className={layout.actionRow}>
             <LCPNavigationButton
               direction="back"
               disabled={!onBack}
@@ -173,4 +175,4 @@ const LCPPhysicalProfileOverview: React.FC<Props> = ({ initialData, onNext, onBa
   );
 };
 
-export default LCPPhysicalProfileOverview; 
+export default LCPPhysicalProfileOverview;

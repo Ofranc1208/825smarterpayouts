@@ -1,9 +1,8 @@
 "use client";
 
 import React, { useState } from 'react';
-import { useAssistant } from '../../../contexts/AssistantContext';
 import LCPStepContainer from './LCPStepContainer';
-import { LCPButton, LCPSection, LCPNavigationButton } from './shared';
+import { LCPButton, LCPSection, LCPNavigationButton, QuickHelpBadge } from './shared';
 import layout from './utils/LCPLayout.module.css';
 
 const FREQUENCIES = ['Monthly', 'Quarterly', 'Semi', 'Lump Sum'];
@@ -20,7 +19,6 @@ interface Props {
 }
 
 const LCPSettlementPaymentsOverview: React.FC<Props> = ({ initialData, onNext, currentStep, totalSteps }) => {
-  const { openAssistant } = useAssistant();
   const [paymentMode, setPaymentMode] = useState(initialData?.paymentMode || 'Monthly');
   const [annualIncrease, setAnnualIncrease] = useState<number>(
     initialData?.annualIncrease ?? 0
@@ -43,47 +41,7 @@ const LCPSettlementPaymentsOverview: React.FC<Props> = ({ initialData, onNext, c
 
   return (
     <LCPStepContainer title="Settlement Payments Overview" currentStep={currentStep} totalSteps={totalSteps}>
-      {/* Quick Help Badge - Compact Info Style */}
-      <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        marginBottom: '1rem'
-      }}>
-        <button
-          style={{
-            background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)',
-            border: '1px solid #f59e0b',
-            borderRadius: '20px',
-            padding: '0.4rem 0.8rem',
-            fontSize: '0.75rem',
-            fontWeight: '500',
-            color: '#92400e',
-            cursor: 'pointer',
-            transition: 'all 0.2s ease',
-            boxShadow: '0 1px 3px rgba(245, 158, 11, 0.2)',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.3rem',
-            minWidth: 'auto'
-          }}
-          onClick={openAssistant}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)';
-            e.currentTarget.style.color = '#ffffff';
-            e.currentTarget.style.transform = 'translateY(-1px)';
-            e.currentTarget.style.boxShadow = '0 2px 6px rgba(245, 158, 11, 0.3)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)';
-            e.currentTarget.style.color = '#92400e';
-            e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = '0 1px 3px rgba(245, 158, 11, 0.2)';
-          }}
-        >
-          <span style={{ fontSize: '0.7rem' }}>💡</span>
-          Quick Help
-        </button>
-      </div>
+      <QuickHelpBadge />
 
       <form onSubmit={handleSubmit}>
         <LCPSection label="How often do you receive your payments?">
@@ -112,7 +70,7 @@ const LCPSettlementPaymentsOverview: React.FC<Props> = ({ initialData, onNext, c
           ))}
         </LCPSection>
 
-        <div className={layout.actionRow} style={{ display: 'flex', gap: '1rem', justifyContent: 'center', alignItems: 'center' }}>
+        <div className={layout.actionRow}>
           <LCPNavigationButton
             direction="back"
             disabled={true}

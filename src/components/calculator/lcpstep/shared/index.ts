@@ -16,6 +16,7 @@ export { default as LCPButton } from './LCPButton';
 export { default as LCPSection } from './LCPSection';
 export { default as LCPFormInput } from './LCPFormInput';
 export { default as LCPNavigationButton } from './LCPNavigationButton';
+export { default as QuickHelpBadge } from './QuickHelpBadge';
 
 // TypeScript types are exported directly from component files
 

@@ -52,6 +52,7 @@
   padding: 0.6rem 1.2rem; /* 20% smaller padding */
   font-size: 1rem; /* Bigger text */
   min-width: 110px; /* 20% smaller */
+  max-width: 130px; /* Prevent buttons from getting too wide */
   min-height: 38px; /* 20% smaller */
   display: flex;
   align-items: center;
@@ -59,6 +60,7 @@
   font-weight: 600; /* Slightly bolder for better readability */
   border-radius: 12px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  flex: 0 0 auto; /* Prevent flex from stretching buttons */
 }
 
 /* Selected state - enhanced visual feedback */
@@ -157,9 +159,10 @@
 
 @media (max-width: 768px) {
   .optionButton {
-    min-width: 85px; /* Slightly smaller for mobile */
+    min-width: 95px; /* Slightly smaller for mobile */
+    max-width: 120px; /* Adjusted for mobile screens */
     padding: 0.5rem 1rem; /* Adjusted for better mobile touch */
-    font-size: 0.875rem; /* Slightly smaller but still readable */
+    font-size: 0.9rem; /* Slightly smaller but still readable */
   }
 
   .nextButton {
@@ -171,9 +174,10 @@
 
 @media (max-width: 480px) {
   .optionButton {
-    min-width: 75px; /* Even smaller for very small screens */
-    padding: 0.4rem 0.8rem; /* Compact padding for mobile */
-    font-size: 0.8rem; /* Readable but compact */
+    min-width: 85px; /* Even smaller for very small screens */
+    max-width: 105px; /* Compact for small screens */
+    padding: 0.45rem 0.9rem; /* Compact padding for mobile */
+    font-size: 0.85rem; /* Readable but compact */
   }
 
   .nextButton {

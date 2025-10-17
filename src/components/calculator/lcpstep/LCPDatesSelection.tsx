@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import LCPStepContainer from './LCPStepContainer';
-import { LCPButton, LCPSection, LCPFormInput, LCPNavigationButton } from './shared';
+import { LCPButton, LCPSection, LCPFormInput, LCPNavigationButton, QuickHelpBadge } from './shared';
 import { validatePaymentAmount, validateDateRange, sanitizeNumericInput } from './utils/validationHelpers';
 import layout from './utils/LCPLayout.module.css';
 import utilities from './utils/LCPUtilities.module.css';
@@ -116,6 +116,8 @@ const LCPDatesSelection: React.FC<Props> = ({ initialData, onNext, onBack, curre
 
   return (
     <LCPStepContainer title="Select Payment Dates to Exchange for an Early Payout Option" currentStep={currentStep} totalSteps={totalSteps}>
+      <QuickHelpBadge />
+      
       <form onSubmit={handleSubmit}>
         <LCPSection 
           label="Payment Amount"
@@ -155,7 +157,7 @@ const LCPDatesSelection: React.FC<Props> = ({ initialData, onNext, onBack, curre
           />
         </LCPSection>
 
-        <div className={layout.actionRow} style={{ display: 'flex', gap: '1rem', justifyContent: 'center', alignItems: 'center' }}>
+        <div className={layout.actionRow}>
           <LCPNavigationButton
             direction="back"
             disabled={!onBack}

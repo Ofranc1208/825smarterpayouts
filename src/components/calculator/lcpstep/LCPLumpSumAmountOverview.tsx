@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import LCPStepContainer from './LCPStepContainer';
-import { LCPButton, LCPNavigationButton } from './shared';
+import { LCPButton, LCPNavigationButton, QuickHelpBadge } from './shared';
 import { NumberOfPaymentsInput, PaymentCard, Payment } from './lump-sum-components';
 import layout from './utils/LCPLayout.module.css';
 
@@ -108,6 +108,8 @@ const LCPLumpSumAmountOverview: React.FC<LCPLumpSumAmountOverviewProps> = ({
 
   return (
     <LCPStepContainer title="LCP Lump Sum Payment Details" currentStep={currentStep} totalSteps={totalSteps}>
+      <QuickHelpBadge />
+      
       <form onSubmit={handleSubmit}>
         <NumberOfPaymentsInput
             value={numberOfPayments}
@@ -129,7 +131,7 @@ const LCPLumpSumAmountOverview: React.FC<LCPLumpSumAmountOverviewProps> = ({
           </div>
         )}
 
-        <div className={layout.actionRow} style={{ display: 'flex', gap: '1rem', justifyContent: 'center', alignItems: 'center' }}>
+        <div className={layout.actionRow}>
           <LCPNavigationButton
             direction="back"
             disabled={!onBack}
