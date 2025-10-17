@@ -1,7 +1,7 @@
 import React from 'react';
 import NavLink from '../../Shared/NavLink';
 import DropdownMenu from './DropdownMenu';
-import { mainNavLinks, dropdownSections } from '../../Shared/navigationData';
+import { mainNavLinks, dropdownSections } from '../data/navigationData';
 
 /**
  * NavigationItems Component - Desktop Navigation Items Renderer

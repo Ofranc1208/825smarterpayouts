@@ -1,6 +1,5 @@
 'use client';
 
-import HeroBadge from './HeroBadge';
 import HeroHeading from './HeroHeading';
 import HeroButtons from './HeroButtons';
 import HeroFooterText from './HeroFooterText';
@@ -38,7 +37,6 @@ export default function HeroSection() {
       }}></div>
       
       <div style={SPACING_PRESETS.sectionContainer}>
-        <HeroBadge />
         <HeroHeading />
         <HeroButtons />
         <HeroFooterText />

@@ -53,14 +53,7 @@ import BenefitsGrid from '../benefits-cards/BenefitsGrid';
  */
 export default function MintChatBenefitsSection() {
   return (
-    <div style={{
-      background: "linear-gradient(135deg, #fef7ff 0%, #faf5ff 100%)",
-      padding: "3rem 2.5rem",
-      borderRadius: "20px",
-      border: "1px solid #e9d5ff",
-      boxShadow: "0 4px 20px rgba(139, 92, 246, 0.1)",
-      position: "relative"
-    }}>
+    <div>
       <BenefitsGrid />
     </div>
   );

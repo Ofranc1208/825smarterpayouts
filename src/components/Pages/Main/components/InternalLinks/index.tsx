@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import SectionHeader from '../../shared/components/SectionHeader';
-import MintAIFeaturedCard from './MintAIFeaturedCard';
+// MintAIFeaturedCard removed - not needed on main page
 import ResourceCards from './ResourceCards';
 import { COLORS } from '../../shared/styles/colorThemes';
 import { SPACING_PRESETS } from '../../shared/styles/spacing';
@@ -12,7 +12,6 @@ import { SPACING_PRESETS } from '../../shared/styles/spacing';
  * 
  * Thin orchestrator that composes sub-components:
  * - InternalLinksHeader: "Expert Resources" section header
- * - MintAIFeaturedCard: Featured Mint AI assistant card
  * - ResourceCards: Two smaller resource link cards
  * 
  * Manages mobile state for responsive layout adjustments.
@@ -66,9 +65,8 @@ export default function InternalLinks() {
           title="Everything You Need to Know"
           titleGradientFrom={COLORS.neutral.gray800}
           titleGradientTo={COLORS.accent.blue}
-          subtitle="From legal insights to AI-powered tools, explore our comprehensive knowledge center"
+          subtitle="From legal insights to comprehensive guides, explore our knowledge center"
         />
-        <MintAIFeaturedCard isMobile={isMobile} />
         <ResourceCards />
       </div>
     </section>

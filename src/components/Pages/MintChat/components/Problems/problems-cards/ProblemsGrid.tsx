@@ -63,8 +63,9 @@ export default function ProblemsGrid() {
   return (
     <div style={{
       display: "grid",
-      gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-      gap: "1.25rem"
+      gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+      gap: "1rem",
+      marginTop: "1rem"
     }}>
       {problems.map((problem, index) => (
         <ProblemCard

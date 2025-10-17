@@ -37,12 +37,12 @@ export default function MetaTags() {
   
   React.useEffect(() => {
     // Update document title dynamically
-    document.title = "Chat with Mint AI Assistant | SmarterPayouts - Instant Settlement Quotes";
+    document.title = "Chat with Mint | SmarterPayouts - Guaranteed Upfront Offer Estimates";
     
     // Update meta description if needed
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Get instant answers about your structured settlement with our AI-powered assistant. No personal information required - just ask and get expert guidance immediately.');
+      metaDescription.setAttribute('content', 'Get a 100% guaranteed upfront offer estimate - zero games, just real numbers. No personal info required.');
     }
   }, []);
 

@@ -40,18 +40,18 @@ export default function SolutionsBadge() {
     <div style={{
       display: "inline-flex",
       alignItems: "center",
-      gap: "0.5rem",
-      background: "linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%)",
-      padding: "0.5rem 1rem",
-      borderRadius: "24px",
-      marginBottom: "1.5rem",
+      gap: "0.375rem",
+      background: "#ecfdf5",
+      padding: "0.375rem 0.75rem",
+      borderRadius: "16px",
+      marginBottom: "1rem",
       border: "1px solid #bbf7d0"
     }}>
-      <span style={{ fontSize: "1rem" }}>✅</span>
-      <span style={{ 
-        color: "#047857", 
-        fontWeight: "600", 
-        fontSize: "0.875rem" 
+      <span style={{ fontSize: "0.875rem" }}>✅</span>
+      <span style={{
+        color: "#047857",
+        fontWeight: "600",
+        fontSize: "0.75rem"
       }}>
         THE SMARTERPAYOUTS SOLUTION
       </span>

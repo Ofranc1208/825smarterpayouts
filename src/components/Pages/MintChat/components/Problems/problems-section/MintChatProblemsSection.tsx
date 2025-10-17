@@ -54,15 +54,7 @@ import ProblemsGrid from '../problems-cards/ProblemsGrid';
  */
 export default function MintChatProblemsSection() {
   return (
-    <div style={{
-      background: "linear-gradient(135deg, #ffffff 0%, #fafafa 100%)",
-      padding: "3rem 2.5rem",
-      borderRadius: "20px",
-      border: "1px solid #e5e7eb",
-      textAlign: "center",
-      boxShadow: "0 4px 20px rgba(0, 0, 0, 0.08)",
-      position: "relative"
-    }}>
+    <div>
       <ProblemsHeaderContainer />
       <ProblemsGrid />
     </div>

@@ -1,20 +1,19 @@
-import Link from 'next/link';
+'use client';
+
+import Button from '@/src/components/shared/Button/Button';
 
 export default function PrimaryCTAButton() {
   return (
-    <Link href="/pricing-calculator" style={{
-      display: "inline-block",
-      background: "linear-gradient(135deg, #09b44d 0%, #059669 100%)",
-      color: "white",
-      padding: "0.75rem 1.5rem",
-      borderRadius: "8px",
-      textDecoration: "none",
-      fontWeight: "600",
-      transition: "all 0.2s ease",
-      minWidth: "200px",
-      textAlign: "center"
-    }}>
+    <Button
+      as="a"
+      href="/pricing-calculator"
+      variant="technology-primary"
+      size="lg"
+      enhancedHover={true}
+      shimmer={true}
+      aria-label="Get your instant structured settlement quote"
+    >
       💰 Get Your Instant Offer
-    </Link>
+    </Button>
   );
 }

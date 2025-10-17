@@ -1,6 +1,5 @@
 import { HeroHeaderContainer } from '../hero-header';
 import { HeroCTAContainer } from '../hero-cta';
-import { HeroStatsContainer } from '../hero-stats';
 
 export default function HeroContent() {
   return (
@@ -24,7 +23,6 @@ export default function HeroContent() {
         }}>
           <HeroHeaderContainer />
           <HeroCTAContainer />
-          <HeroStatsContainer />
         </div>
       </div>
     </div>

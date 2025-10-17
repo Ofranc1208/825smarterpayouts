@@ -90,46 +90,47 @@ export default function BenefitCard({
   return (
     <div style={{
       background: backgroundColor,
-      padding: "2rem",
-      borderRadius: "16px",
+      padding: "1.5rem",
+      borderRadius: "12px",
       border: `1px solid ${borderColor}`,
-      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)"
+      boxShadow: "0 2px 8px rgba(0, 0, 0, 0.04)"
     }}>
       <div style={{
-        width: "48px",
-        height: "48px",
-        borderRadius: "12px",
+        width: "40px",
+        height: "40px",
+        borderRadius: "10px",
         background: iconBackground,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        marginBottom: "1.5rem"
-      }}>
-        <span style={{ fontSize: "1.5rem", color: "white" }}>{icon}</span>
-      </div>
-      
-      <h3 style={{
-        fontSize: "1.25rem",
-        fontWeight: "700",
-        color: "#1f2937",
         marginBottom: "1rem"
+      }}>
+        <span style={{ fontSize: "1.25rem", color: "white" }}>{icon}</span>
+      </div>
+
+      <h3 style={{
+        fontSize: "1.125rem",
+        fontWeight: "600",
+        color: "#1f2937",
+        marginBottom: "0.75rem"
       }}>
         {title}
       </h3>
-      
+
       <p style={{
         color: "#374151",
-        lineHeight: "1.6",
-        marginBottom: "1rem"
+        lineHeight: "1.5",
+        marginBottom: "0.75rem",
+        fontSize: "0.875rem"
       }}>
         {description}
       </p>
-      
+
       <div style={{
-        padding: "1rem",
+        padding: "0.75rem",
         background: highlightBackground,
-        borderRadius: "8px",
-        fontSize: "0.875rem",
+        borderRadius: "6px",
+        fontSize: "0.8rem",
         color: highlightColor,
         fontWeight: "500"
       }}>

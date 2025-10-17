@@ -1,21 +1,19 @@
-import Link from 'next/link';
+'use client';
+
+import Button from '@/src/components/shared/Button/Button';
 
 export default function GetOfferButton() {
   return (
-    <Link href="/pricing-calculator" style={{
-      background: '#ffffff',
-      color: '#047857',
-      padding: '0.75rem 1.5rem',
-      borderRadius: '8px',
-      fontSize: '1rem',
-      fontWeight: '600',
-      textDecoration: 'none',
-      display: 'inline-block',
-      transition: 'all 0.2s ease',
-      minWidth: '200px',
-      textAlign: 'center'
-    }}>
+    <Button
+      as="a"
+      href="/pricing-calculator"
+      variant="technology-primary"
+      size="lg"
+      enhancedHover={true}
+      shimmer={true}
+      aria-label="Get your instant structured settlement quote"
+    >
       💰 Get Your Instant Offer
-    </Link>
+    </Button>
   );
 }

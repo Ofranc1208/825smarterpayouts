@@ -21,14 +21,14 @@ import React from 'react';
 export default function HeroSubtitle() {
   return (
     <div style={{
-      fontSize: "0.75rem",
+      fontSize: "0.875rem",
       fontWeight: "600",
       color: "#059669",
       textTransform: "uppercase",
-      letterSpacing: "1px",
-      marginBottom: "0.25rem"
+      letterSpacing: "0.5px",
+      marginBottom: "0.5rem"
     }}>
-      AI-Powered Assistant
+      Industry's First AI Settlement Calculator
     </div>
   );
 }

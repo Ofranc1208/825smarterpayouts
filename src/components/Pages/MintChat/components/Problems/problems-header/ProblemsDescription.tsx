@@ -38,13 +38,13 @@ import React from 'react';
 export default function ProblemsDescription() {
   return (
     <p style={{
-      fontSize: "1.125rem",
+      fontSize: "1rem",
       color: "#6b7280",
-      maxWidth: "700px",
-      margin: "0 auto 2rem",
-      lineHeight: "1.6"
+      maxWidth: "600px",
+      margin: "0 auto 1.5rem",
+      lineHeight: "1.5"
     }}>
-      Most companies hide their pricing to maximize profits at your expense. 
+      Most companies hide their pricing to maximize profits at your expense.
       Here's exactly why they don't want you to see upfront costs:
     </p>
   );

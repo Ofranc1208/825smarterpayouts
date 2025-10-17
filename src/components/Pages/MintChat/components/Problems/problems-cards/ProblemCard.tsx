@@ -55,30 +55,32 @@ interface ProblemCardProps {
 export default function ProblemCard({ icon, title, description }: ProblemCardProps) {
   return (
     <div style={{
-      padding: "1.25rem",
-      background: "linear-gradient(135deg, #ffffff 0%, #fafafa 100%)",
-      borderRadius: "12px",
-      border: "1px solid #e5e5e5",
-      boxShadow: "0 1px 6px rgba(0, 0, 0, 0.06)"
+      padding: "1rem",
+      background: "#ffffff",
+      borderRadius: "8px",
+      border: "1px solid #e5e7eb",
+      boxShadow: "0 1px 4px rgba(0, 0, 0, 0.04)",
+      textAlign: "center"
     }}>
       <div style={{
-        fontSize: "1.75rem",
-        marginBottom: "0.75rem"
+        fontSize: "1.5rem",
+        marginBottom: "0.5rem"
       }}>
         {icon}
       </div>
       <h4 style={{
-        fontSize: "1rem",
-        fontWeight: "700",
+        fontSize: "0.875rem",
+        fontWeight: "600",
         color: "#dc2626",
-        marginBottom: "0.5rem"
+        marginBottom: "0.25rem"
       }}>
         {title}
       </h4>
       <p style={{
-        fontSize: "0.875rem",
+        fontSize: "0.75rem",
         color: "#6b7280",
-        lineHeight: "1.5"
+        lineHeight: "1.4",
+        margin: 0
       }}>
         {description}
       </p>

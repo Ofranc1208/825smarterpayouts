@@ -1,25 +1,26 @@
 /**
- * Navigation Hooks - Enterprise Edition
- * 
- * Centralized exports for all navigation-related custom hooks
- * 
+ * Navigation Hooks - Optimized Edition
+ *
+ * Lazy-loadable navigation hooks for optimal bundle size
+ * Only load hooks when explicitly needed for advanced features
+ *
  * @module NavigationHooks
  * @author SmarterPayouts Team
  * @since 2024
- * @version 1.0.0 - Enterprise Edition
+ * @version 2.0.0 - Optimized Edition
  */
 
-// Core navigation hooks
-export { useNavigationAnalytics, default as useNavigationAnalyticsDefault } from './useNavigationAnalytics';
-export { useNavigationPerformance, default as useNavigationPerformanceDefault } from './useNavigationPerformance';
-export { useNavigationAccessibility, default as useNavigationAccessibilityDefault } from './useNavigationAccessibility';
+// Lazy-loaded hook factories - reduces bundle size
+export const createNavigationAnalytics = () => import('./useNavigationAnalytics').then(m => m.useNavigationAnalytics);
+export const createNavigationPerformance = () => import('./useNavigationPerformance').then(m => m.useNavigationPerformance);
+export const createNavigationAccessibility = () => import('./useNavigationAccessibility').then(m => m.useNavigationAccessibility);
 
-// Hook types
+// Hook types (still exported for TypeScript)
 export type {
   UseNavigationAnalytics,
   UseNavigationPerformance,
   UseNavigationAccessibility
 } from '../types';
 
-// Main navigation hook - now modular architecture
+// Core navigation hook (always needed for basic functionality)
 export { useNavigation } from './useNavigation';

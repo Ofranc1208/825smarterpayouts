@@ -10,24 +10,24 @@ import { Metadata } from 'next';
 
 // Essential SEO metadata for the Mint Chat page
 export const metadata: Metadata = {
-  title: 'Chat with Mint AI Assistant | SmarterPayouts',
-  description: 'Get instant answers about your structured settlement with our AI-powered assistant. Available 24/7 for questions and quotes.',
-  keywords: 'AI assistant, structured settlement chat, instant quotes, settlement questions, Mint AI',
+  title: 'Chat with Mint | SmarterPayouts',
+  description: 'Get a 100% guaranteed upfront offer estimate - zero games, just real numbers. No personal info required.',
+  keywords: 'structured settlement, upfront offer, guaranteed quote, settlement estimate, Mint',
   authors: [{ name: 'SmarterPayouts Team' }],
   robots: {
     index: true,
     follow: true,
   },
   openGraph: {
-    title: 'Chat with Mint AI Assistant | SmarterPayouts',
-    description: 'Get instant answers about your structured settlement with our AI-powered assistant.',
+    title: 'Chat with Mint | SmarterPayouts',
+    description: 'Get a 100% guaranteed upfront offer estimate - zero games, just real numbers. No personal info required.',
     type: 'website',
     url: 'https://smarterpayouts.com/mint-intelligent-chat',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Chat with Mint AI Assistant | SmarterPayouts',
-    description: 'Get instant answers about your structured settlement with our AI-powered assistant.',
+    title: 'Chat with Mint | SmarterPayouts',
+    description: 'Get a 100% guaranteed upfront offer estimate - zero games, just real numbers. No personal info required.',
   },
 };
 

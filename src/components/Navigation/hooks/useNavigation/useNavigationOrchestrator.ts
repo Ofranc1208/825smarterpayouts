@@ -9,15 +9,13 @@
  * @since 2024
  */
 
-import { useEffect, useCallback } from 'react';
-import { useNavigationAnalytics } from '../useNavigationAnalytics';
-import { useNavigationPerformance } from '../useNavigationPerformance';
-import { useNavigationAccessibility } from '../useNavigationAccessibility';
+import { useEffect, useCallback, useState } from 'react';
 import { navigationDashboardIntegration } from '../../services/NavigationDashboardIntegration';
 import type { NavigationItem, NavigationConfig } from '../../types';
 import { useNavigationEventHandlers } from './useNavigationEventHandlers';
 import { useNavigationHealthMonitor } from './useNavigationHealthMonitor';
 import { useNavigationMetricsCollector } from './useNavigationMetricsCollector';
+import { createNavigationAnalytics, createNavigationPerformance, createNavigationAccessibility } from '../index';
 
 interface NavigationHookConfig {
   enableAnalytics?: boolean;
@@ -38,45 +36,46 @@ export function useNavigation(config: NavigationHookConfig = {}) {
     enableDashboardIntegration = true
   } = config;
 
-  // Initialize core hooks
-  const analytics = useNavigationAnalytics({
-    enableVercelAnalytics: enableAnalytics,
-    enableCustomEvents: enableAnalytics
-  });
+  // Lazy-load optional hooks to reduce bundle size
+  const [analytics, setAnalytics] = useState<any>(null);
+  const [performance, setPerformance] = useState<any>(null);
+  const [accessibility, setAccessibility] = useState<any>(null);
 
-  const performance = useNavigationPerformance({
-    enableCoreWebVitals: enablePerformance,
-    enableCustomMetrics: enablePerformance
-  });
+  // Initialize hooks on demand
+  useEffect(() => {
+    if (enableAnalytics && !analytics) {
+      createNavigationAnalytics().then(hook => setAnalytics(hook));
+    }
+    if (enablePerformance && !performance) {
+      createNavigationPerformance().then(hook => setPerformance(hook));
+    }
+    if (enableAccessibility && !accessibility) {
+      createNavigationAccessibility().then(hook => setAccessibility(hook));
+    }
+  }, [enableAnalytics, enablePerformance, enableAccessibility, analytics, performance, accessibility]);
 
-  const accessibility = useNavigationAccessibility({
-    enableScreenReader: enableAccessibility,
-    enableKeyboardNavigation: enableAccessibility,
-    enableFocusManagement: enableAccessibility
-  });
-
-  // Initialize modular hooks
+  // Initialize modular hooks (only when dependencies are available)
   const eventHandlers = useNavigationEventHandlers({
-    analytics,
-    performance,
-    accessibility
+    analytics: analytics || {},
+    performance: performance || {},
+    accessibility: accessibility || {}
   });
 
   const healthMonitor = useNavigationHealthMonitor({
-    performance,
-    accessibility
+    performance: performance || {},
+    accessibility: accessibility || {}
   });
 
   const metricsCollector = useNavigationMetricsCollector({
-    analytics,
-    performance,
-    accessibility,
+    analytics: analytics || {},
+    performance: performance || {},
+    accessibility: accessibility || {},
     enableDashboardIntegration
   });
 
-  // Dashboard integration effect
+  // Dashboard integration effect (only run when hooks are loaded)
   useEffect(() => {
-    if (enableDashboardIntegration) {
+    if (enableDashboardIntegration && analytics && performance && accessibility) {
       navigationDashboardIntegration.initialize().catch((error: any) => {
         console.warn('Failed to initialize navigation dashboard integration:', error);
       });
@@ -87,13 +86,13 @@ export function useNavigation(config: NavigationHookConfig = {}) {
         navigationDashboardIntegration.destroy();
       }
     };
-  }, [enableDashboardIntegration]);
+  }, [enableDashboardIntegration, analytics, performance, accessibility]);
 
   return {
-    // Core functionality
-    analytics,
-    performance,
-    accessibility,
+    // Core functionality (lazy-loaded)
+    analytics: analytics || {},
+    performance: performance || {},
+    accessibility: accessibility || {},
 
     // Event handlers
     handleNavClick: eventHandlers.handleNavClick,
@@ -105,7 +104,7 @@ export function useNavigation(config: NavigationHookConfig = {}) {
     getNavigationMetrics: metricsCollector.getNavigationMetrics,
     resetNavigationMetrics: metricsCollector.resetNavigationMetrics,
 
-    // Dashboard integration
-    dashboardIntegration: enableDashboardIntegration ? navigationDashboardIntegration : null
+    // Dashboard integration (only available when hooks are loaded)
+    dashboardIntegration: (enableDashboardIntegration && analytics && performance && accessibility) ? navigationDashboardIntegration : null
   };
 }

@@ -38,11 +38,11 @@ import React from 'react';
 export default function SolutionsTitle() {
   return (
     <h2 style={{
-      fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
+      fontSize: "clamp(1.5rem, 3vw, 2rem)",
       fontWeight: "700",
       color: "#1f2937",
-      marginBottom: "1rem",
-      lineHeight: "1.2"
+      marginBottom: "0.75rem",
+      lineHeight: "1.3"
     }}>
       Why Upfront Pricing is the New Industry Standard
     </h2>

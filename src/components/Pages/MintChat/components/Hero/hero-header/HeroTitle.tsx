@@ -3,7 +3,7 @@ import React from 'react';
 /**
  * Hero Title Component for MintChat
  * 
- * Displays the main "Chat with Mint AI Assistant" title with
+ * Displays the main "Chat with Mint" title with
  * responsive typography and optimal readability.
  * 
  * @component HeroTitle
@@ -27,7 +27,7 @@ export default function HeroTitle() {
       marginBottom: "0.5rem",
       lineHeight: "1.2"
     }}>
-      Chat with Mint AI Assistant
+      Skip the Sales Pitch
     </h1>
   );
 }

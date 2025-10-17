@@ -40,18 +40,18 @@ export default function ProblemsBadge() {
     <div style={{
       display: "inline-flex",
       alignItems: "center",
-      gap: "0.5rem",
-      background: "linear-gradient(135deg, #fef9f9 0%, #fef2f2 100%)",
-      padding: "0.5rem 1rem",
-      borderRadius: "20px",
-      marginBottom: "1.25rem",
-      border: "1px solid #f5b5b5"
+      gap: "0.375rem",
+      background: "#fef2f2",
+      padding: "0.375rem 0.75rem",
+      borderRadius: "16px",
+      marginBottom: "1rem",
+      border: "1px solid #fecaca"
     }}>
-      <span style={{ fontSize: "1rem" }}>⚠️</span>
-      <span style={{ 
-        color: "#dc2626", 
-        fontWeight: "600", 
-        fontSize: "0.875rem" 
+      <span style={{ fontSize: "0.875rem" }}>⚠️</span>
+      <span style={{
+        color: "#dc2626",
+        fontWeight: "600",
+        fontSize: "0.75rem"
       }}>
         INDUSTRY PROBLEM
       </span>

@@ -38,13 +38,13 @@ import React from 'react';
 export default function SolutionsDescription() {
   return (
     <p style={{
-      fontSize: "1.125rem",
+      fontSize: "1rem",
       color: "#6b7280",
-      maxWidth: "700px",
-      margin: "0 auto",
-      lineHeight: "1.6"
+      maxWidth: "600px",
+      margin: "0 auto 1rem",
+      lineHeight: "1.5"
     }}>
-      Get transparent, market-based pricing before you commit. Compare offers 
+      Get transparent, market-based pricing before you commit. Compare offers
       intelligently and make informed decisions about your structured settlement.
     </p>
   );

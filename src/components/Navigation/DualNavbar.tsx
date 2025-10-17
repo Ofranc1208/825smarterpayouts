@@ -29,27 +29,23 @@ const DualNavbar: React.FC = () => {
   useEffect(() => {
     const checkIsMobile = () => {
       const width = window.innerWidth;
-      
-      // Aggressive responsive breakpoints to prevent ANY text cutoff:
-      // User reported "Legal" cuts off between 1288px-1082px
-      // So we switch to mobile at 1300px to be safe
-      
-      if (width < 1300) {
-        setIsMobile(true); // Switch to hamburger menu early to prevent cutoff
+
+      // Standard responsive breakpoint (768px) for better layout stability
+      // This prevents frequent layout shifts and improves user experience
+
+      if (width < 768) {
+        setIsMobile(true); // Mobile - hamburger menu for small screens
       } else {
-        setIsMobile(false); // Desktop - only on very wide screens
+        setIsMobile(false); // Desktop - horizontal navigation for larger screens
       }
     };
 
-    // Force client-side rendering immediately
-    const timer = setTimeout(() => {
-      setIsClient(true);
-      checkIsMobile();
-      window.addEventListener('resize', checkIsMobile);
-    }, 100); // Small delay to ensure DOM is ready
-    
+    // Immediate client-side rendering - no delays
+    setIsClient(true);
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+
     return () => {
-      clearTimeout(timer);
       if (typeof window !== 'undefined') {
         window.removeEventListener('resize', checkIsMobile);
       }
@@ -57,27 +53,34 @@ const DualNavbar: React.FC = () => {
   }, []);
 
   // Show loading state during SSR hydration
+  // Use CSS variable for consistent height with layout.tsx
   if (!isClient) {
     return (
       <nav style={{
         backgroundColor: '#ffffff',
         borderBottom: '1px solid #e5e7eb',
-        minHeight: '64px',
+        height: 'var(--navbar-height, 54px)', // Use CSS variable with fallback
+        minHeight: 'var(--navbar-height, 54px)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         position: 'relative', // Changed from sticky to prevent layout shift
         zIndex: 1000,
-      }}>
+      }} className="navbar-container">
         <div style={{ color: '#9ca3af', fontSize: '0.875rem' }}>Loading navigation...</div>
       </nav>
     );
   }
 
+  // Responsive heights: 54px for mobile (15% thinner), 64px for desktop
+  const navbarHeight = isMobile ? '54px' : '64px';
+
   const navbarStyle: React.CSSProperties = {
     backgroundColor: '#ffffff',
     borderBottom: '1px solid #e5e7eb',
-    minHeight: '64px',
+    height: navbarHeight, // Explicit height to match container
+    minHeight: navbarHeight,
+    maxHeight: navbarHeight, // Prevent CSS from overriding
     boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
     position: 'sticky',
     top: 0,
@@ -90,25 +93,25 @@ const DualNavbar: React.FC = () => {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-start', // Let components control their own positioning
-    padding: '0 1rem',
-    minHeight: '64px',
+    padding: isMobile ? '0 0.75rem' : '0 1rem', // Reduced padding for mobile
+    minHeight: navbarHeight,
   };
 
   const logoStyle: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
-    gap: '0.5rem',
+    gap: isMobile ? '0.375rem' : '0.5rem', // Smaller gap on mobile
     textDecoration: 'none',
     color: '#1f2937',
     fontWeight: 700,
-    fontSize: '1rem', // Reduced font size
+    fontSize: isMobile ? '0.875rem' : '1rem', // Smaller font on mobile
     whiteSpace: 'nowrap',
     flexShrink: 0, // Prevent logo from shrinking
   };
 
   const logoIconStyle: React.CSSProperties = {
-    width: '28px', // Slightly smaller
-    height: '28px',
+    width: isMobile ? '24px' : '28px', // Smaller icon on mobile
+    height: isMobile ? '24px' : '28px',
     borderRadius: '6px',
     display: 'flex',
     alignItems: 'center',
@@ -116,7 +119,7 @@ const DualNavbar: React.FC = () => {
   };
 
   return (
-    <nav style={navbarStyle}>
+    <nav style={navbarStyle} className="navbar-container">
       <div ref={navRef} style={containerStyle}>
         {/* Logo */}
         <a href="/main" style={logoStyle}>
@@ -125,7 +128,7 @@ const DualNavbar: React.FC = () => {
             alt="Smarter Payouts Logo"
             style={logoIconStyle}
           />
-          <span style={{ fontSize: '1rem', fontWeight: 700 }}>
+          <span style={{ fontSize: isMobile ? '0.875rem' : '1rem', fontWeight: 700 }}>
             Smarter Payouts
           </span>
         </a>

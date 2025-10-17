@@ -38,11 +38,11 @@ import React from 'react';
 export default function ProblemsTitle() {
   return (
     <h2 style={{
-      fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
+      fontSize: "clamp(1.5rem, 3vw, 2rem)",
       fontWeight: "700",
       color: "#b91c1c",
-      marginBottom: "1.5rem",
-      lineHeight: "1.2"
+      marginBottom: "1rem",
+      lineHeight: "1.3"
     }}>
       Why Traditional Settlement Companies Don't Offer Upfront Pricing
     </h2>

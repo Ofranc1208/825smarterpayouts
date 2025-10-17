@@ -1,32 +1,26 @@
-import { SITE_STATS } from '../../../../../../../app/config/siteConfig';
-import StatCard from './StatCard';
-
 export default function StatsGrid() {
   return (
     <div style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-      gap: '1rem',
-      marginTop: '1rem'
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+      gap: '1.5rem',
+      marginTop: '1.5rem',
+      fontSize: '0.875rem',
+      color: '#6b7280'
     }}>
-      <StatCard
-        value={SITE_STATS.compliance.value}
-        label="Legal Compliance Rate"
-        link={SITE_STATS.compliance.link}
-        description={SITE_STATS.compliance.description}
-      />
-      <StatCard
-        value={SITE_STATS.statesCovered.value}
-        label="States We Serve"
-        link={SITE_STATS.statesCovered.link}
-        description={SITE_STATS.statesCovered.description}
-      />
-      <StatCard
-        value={SITE_STATS.avgDays.value}
-        label="Average Process Days"
-        link={SITE_STATS.avgDays.link}
-        description={SITE_STATS.avgDays.description}
-      />
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <span style={{ fontSize: '1.25rem' }}>✅</span>
+        <span>100% Compliant with All Laws</span>
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <span style={{ fontSize: '1.25rem' }}>🗺️</span>
+        <span>Serving All 50 States</span>
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <span style={{ fontSize: '1.25rem' }}>⏱️</span>
+        <span>15-50 Days Average Approval</span>
+      </div>
     </div>
   );
 }

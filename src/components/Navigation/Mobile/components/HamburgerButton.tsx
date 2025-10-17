@@ -13,21 +13,22 @@ interface HamburgerButtonProps {
 }
 
 const HamburgerButton: React.FC<HamburgerButtonProps> = ({ isOpen, onClick }) => {
+  // 15% smaller for thinner mobile navbar: 44px -> 37px
   const buttonStyle: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '44px',
-    height: '44px',
+    width: '37px',
+    height: '37px',
     backgroundColor: 'transparent',
     border: '2px solid #10b981', // Green border
     cursor: 'pointer',
-    borderRadius: '8px',
+    borderRadius: '6px', // Slightly smaller border radius
     transition: 'all 0.2s ease',
   };
 
   const lineStyle: React.CSSProperties = {
-    width: '24px',
+    width: '20px', // 15% smaller: 24px -> 20px
     height: '2px',
     backgroundColor: '#374151', // Dark gray lines
     transition: 'all 0.3s ease',
@@ -36,19 +37,19 @@ const HamburgerButton: React.FC<HamburgerButtonProps> = ({ isOpen, onClick }) =>
 
   const topLineStyle: React.CSSProperties = {
     ...lineStyle,
-    transform: isOpen ? 'rotate(45deg) translateY(6px)' : 'rotate(0deg) translateY(0px)',
-    marginBottom: '4px',
+    transform: isOpen ? 'rotate(45deg) translateY(5px)' : 'rotate(0deg) translateY(0px)', // Adjusted translation
+    marginBottom: '3px', // Reduced spacing
   };
 
   const middleLineStyle: React.CSSProperties = {
     ...lineStyle,
     opacity: isOpen ? 0 : 1,
-    marginBottom: '4px',
+    marginBottom: '3px', // Reduced spacing
   };
 
   const bottomLineStyle: React.CSSProperties = {
     ...lineStyle,
-    transform: isOpen ? 'rotate(-45deg) translateY(-6px)' : 'rotate(0deg) translateY(0px)',
+    transform: isOpen ? 'rotate(-45deg) translateY(-5px)' : 'rotate(0deg) translateY(0px)', // Adjusted translation
   };
 
   return (

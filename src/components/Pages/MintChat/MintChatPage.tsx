@@ -79,10 +79,10 @@ const MintChatPage: React.FC = () => {
   // Initialize page functionality
   useEffect(() => {
     // Track page view
-    analytics.trackPageView('/mint-intelligent-chat', 'Chat with Mint AI Assistant');
+    analytics.trackPageView('/mint-intelligent-chat', 'Chat with Mint');
 
     // Announce page load to screen readers
-    announceToScreenReader('Mint AI Assistant page loaded. Press slash to focus chat input.');
+    announceToScreenReader('Mint Chat page loaded. Press slash to focus chat input.');
   }, [announceToScreenReader]);
   return (
     <ErrorBoundary>
@@ -111,32 +111,52 @@ const MintChatPage: React.FC = () => {
           <ChatSection />
         </div>
 
-        {/* SEO and Educational Content */}
-        <section style={{
-          background: "linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)",
-          padding: "2rem 0 3rem",
-          borderTop: "1px solid #e5e7eb",
-          marginTop: "0"
+        {/* Educational Content - Simplified Layout */}
+        <div style={{
+          background: "#ffffff",
+          padding: "2rem 0",
+          marginTop: "1rem"
         }}>
           <div style={{
-            maxWidth: "1200px",
+            maxWidth: "1000px",
             margin: "0 auto",
             padding: "0 1rem"
           }}>
-            {/* Industry Problems */}
-            <div style={{ marginBottom: "2rem" }}>
+            {/* Industry Problems - Clean Section */}
+            <div style={{
+              background: "linear-gradient(135deg, #ffffff 0%, #fafafa 100%)",
+              padding: "2rem",
+              borderRadius: "16px",
+              border: "1px solid #e5e7eb",
+              marginBottom: "1.5rem",
+              textAlign: "center"
+            }}>
               <IndustryProblemsSection />
             </div>
 
-            {/* Solution Introduction */}
-            <div style={{ marginBottom: "2rem" }}>
+            {/* Solution Introduction - Clean Section */}
+            <div style={{
+              background: "linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%)",
+              padding: "2rem",
+              borderRadius: "16px",
+              border: "1px solid #bbf7d0",
+              marginBottom: "1.5rem",
+              textAlign: "center"
+            }}>
               <SolutionSection />
             </div>
 
-            {/* Benefits Grid */}
-            <BenefitsGrid />
+            {/* Benefits Grid - Clean Section */}
+            <div style={{
+              background: "linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)",
+              padding: "2rem",
+              borderRadius: "16px",
+              border: "1px solid #e2e8f0"
+            }}>
+              <BenefitsGrid />
+            </div>
           </div>
-        </section>
+        </div>
 
         {/* Dynamic Components */}
         {/* Floating Action Button - disabled for now */}

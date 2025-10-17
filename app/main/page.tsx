@@ -13,7 +13,6 @@ export default function Main() {
   return (
     <>
       <MainPage />
-      <LazyChatManager />
       <LazyFABSpeedDial />
     </>
   );

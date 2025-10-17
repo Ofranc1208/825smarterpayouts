@@ -61,7 +61,7 @@ export default function RootLayout({
             opacity: 1 !important;
             z-index: 1001 !important;
           }
-          
+
           /* AGGRESSIVE: Ensure homepage has NO navigation elements */
           body[data-page="/"] .navbar,
           body[data-page="/"] nav,
@@ -77,29 +77,45 @@ export default function RootLayout({
             position: absolute !important;
             left: -9999px !important;
           }
-          
+
+          /* NAVBAR HEIGHT PRE-CALCULATION - Prevent layout shift */
+          /* Responsive heights: 54px for mobile, 64px for desktop */
+          :root {
+            --navbar-height: 54px; /* Mobile default */
+          }
+
+          /* Desktop navbar height */
+          @media (min-width: 768px) {
+            :root {
+              --navbar-height: 64px;
+            }
+          }
+
+          /* Reserve navbar space BEFORE it loads to prevent layout shift */
+          body:not([data-page="/"]) {
+            padding-top: var(--navbar-height);
+          }
+
+          /* Navbar container - height controlled by inline styles in DualNavbar.tsx */
+          /* CSS variable is only used for body padding-top */
+
           /* Prevent layout shift */
           img, video {
             max-width: 100%;
             height: auto;
           }
-          
-          /* Prevent layout shift for navigation */
-          nav, header {
-            min-height: 64px;
-          }
-          
+
           /* Ensure navigation doesn't interfere with page content */
           body:not([data-page="/"]) main {
             position: relative;
             z-index: 1;
           }
-          
+
           /* Prevent flash of unstyled content */
           * {
             box-sizing: border-box;
           }
-          
+
           /* Optimize initial render */
           body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -107,7 +123,7 @@ export default function RootLayout({
             padding: 0;
             line-height: 1.6;
           }
-          
+
           /* Prevent content jump during loading */
           .loading-placeholder {
             min-height: 200px;

@@ -11,7 +11,7 @@
 'use client';
 
 import React, { useMemo } from 'react';
-import { dropdownSections } from '../../../Shared/navigationData';
+import { dropdownSections } from '../../../Desktop/data/navigationData';
 import { useBreadcrumbs } from './BreadcrumbManager';
 
 interface StructuredDataManagerProps {

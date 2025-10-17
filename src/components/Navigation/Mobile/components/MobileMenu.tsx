@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import NavLink from '../../Shared/NavLink';
 import MobileDropdown from './MobileDropdown';
-import { mainNavLinks, dropdownSections } from '../../Shared/navigationData';
+import { mainNavLinks, dropdownSections } from '../../Desktop/data/navigationData';
 
 /**
  * MobileMenu Component - Mobile Slide-out Menu

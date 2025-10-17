@@ -19,15 +19,5 @@ import React from 'react';
  * and constrained width for optimal reading experience.
  */
 export default function HeroDescription() {
-  return (
-    <p style={{
-      fontSize: "0.875rem",
-      color: "#6b7280",
-      maxWidth: "450px",
-      margin: "0 auto 0.5rem",
-      lineHeight: "1.4"
-    }}>
-      Get instant answers about your structured settlement. No personal information required.
-    </p>
-  );
+  return null;
 }
