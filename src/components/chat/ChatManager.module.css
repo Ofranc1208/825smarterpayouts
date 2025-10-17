@@ -1,38 +1,44 @@
 .chatModalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: rgba(0, 0, 0, 0.6) !important;
   backdrop-filter: blur(4px);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  z-index: 999999 !important; /* Very high z-index */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   opacity: 0;
   visibility: hidden;
+  pointer-events: none; /* Don't block clicks when hidden */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .chatModalOverlay.open {
-  opacity: 1;
-  visibility: visible;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important; /* Allow clicks when open */
 }
 
 .chatModalContainer {
-  background: #ffffff;
+  background: #ffffff !important;
   border-radius: 20px;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  width: 90%;
-  max-width: 500px;
-  height: 85vh;
-  max-height: 85vh;
+  width: 90% !important;
+  max-width: 500px !important;
+  height: 85vh !important;
+  max-height: 85vh !important;
   transform: scale(0.9) translateY(20px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  flex-direction: column !important;
+  position: relative !important;
+  z-index: 1000000 !important;
 }
 
 .chatModalOverlay.open .chatModalContainer {

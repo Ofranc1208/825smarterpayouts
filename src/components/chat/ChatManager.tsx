@@ -47,9 +47,10 @@ const ChatManager: React.FC = () => {
   }, [isChatOpen]);
 
   const handleStartChat = (choice: ChatChoice) => {
-    console.log('[ChatManager] handleStartChat called with choice:', choice);
+    console.log('[ChatManager] Button clicked! Opening modal with choice:', choice);
     setActiveScreen(choice);
     setIsChatOpen(true);
+    console.log('[ChatManager] Modal should now be open. isChatOpen will be:', true);
   };
 
   const handleCloseChat = () => {
@@ -62,8 +63,41 @@ const ChatManager: React.FC = () => {
       <WelcomeScreen onStartChat={handleStartChat} />
 
       {/* Chat Modal Overlay */}
-      <div className={`${styles.chatModalOverlay} ${isChatOpen ? styles.open : ''}`}>
+      <div 
+        className={`${styles.chatModalOverlay} ${isChatOpen ? styles.open : ''}`}
+        onClick={(e) => {
+          // Close modal when clicking the backdrop
+          if (e.target === e.currentTarget) {
+            handleCloseChat();
+          }
+        }}
+      >
         <div className={styles.chatModalContainer}>
+          {/* Close button */}
+          <button
+            onClick={handleCloseChat}
+            style={{
+              position: 'absolute',
+              top: '1rem',
+              right: '1rem',
+              background: 'rgba(255, 255, 255, 0.9)',
+              border: 'none',
+              borderRadius: '50%',
+              width: '40px',
+              height: '40px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              zIndex: 1001,
+              fontSize: '18px',
+              color: '#666'
+            }}
+            aria-label="Close chat"
+          >
+            ✕
+          </button>
+          
           {isChatOpen && (
             <ChatController 
               onClose={handleCloseChat} 
