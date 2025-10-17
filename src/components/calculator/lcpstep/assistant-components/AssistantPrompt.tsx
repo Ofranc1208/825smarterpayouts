@@ -33,9 +33,9 @@ const AssistantPrompt: React.FC = () => {
     <div className={styles.container}>
       <div className={styles.content}>
         <div className={styles.textContainer}>
-          <strong className={styles.title}>Have questions?</strong>
+          <strong className={styles.title}>Need help?</strong>
           <span className={styles.subtitle}>
-            Get instant help from our AI assistant
+            Ask Mint AI instantly
           </span>
         </div>
         <button 

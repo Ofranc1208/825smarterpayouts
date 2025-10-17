@@ -45,18 +45,18 @@
  */
 
 .optionButton {
-  /* Default state (unselected) - increased padding by 15% */
+  /* Default state (unselected) - 20% smaller with bigger text */
   border: 2px solid #e5e7eb;
   background: #ffffff;
   color: #374151;
-  padding: 0.86rem 1.73rem;
-  font-size: 0.875rem;
-  min-width: 138px;
-  min-height: 48px;
+  padding: 0.6rem 1.2rem; /* 20% smaller padding */
+  font-size: 1rem; /* Bigger text */
+  min-width: 110px; /* 20% smaller */
+  min-height: 38px; /* 20% smaller */
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 500;
+  font-weight: 600; /* Slightly bolder for better readability */
   border-radius: 12px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
@@ -157,9 +157,9 @@
 
 @media (max-width: 768px) {
   .optionButton {
-    min-width: 90px;
-    padding: 0.4rem 1.2rem;
-    font-size: 0.75rem;
+    min-width: 85px; /* Slightly smaller for mobile */
+    padding: 0.5rem 1rem; /* Adjusted for better mobile touch */
+    font-size: 0.875rem; /* Slightly smaller but still readable */
   }
 
   .nextButton {
@@ -171,9 +171,9 @@
 
 @media (max-width: 480px) {
   .optionButton {
-    min-width: 80px;
-    padding: 0.35rem 1rem;
-    font-size: 0.7rem;
+    min-width: 75px; /* Even smaller for very small screens */
+    padding: 0.4rem 0.8rem; /* Compact padding for mobile */
+    font-size: 0.8rem; /* Readable but compact */
   }
 
   .nextButton {
