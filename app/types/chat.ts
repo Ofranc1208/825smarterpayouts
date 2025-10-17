@@ -5,10 +5,12 @@
  * DO NOT USE - This file will be deleted after system stability is confirmed.
  */
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface ChatSessionState {
   // Deprecated - moved to src/
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface SessionState {
   // Deprecated - moved to src/
 } 
