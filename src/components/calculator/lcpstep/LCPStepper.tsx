@@ -105,8 +105,12 @@ const LCPStepper: React.FC = () => {
     if (!currentStep) {
       startLCPFlow();
     }
+  }, [startLCPFlow, currentStep]);
+
+  // Set flow type only once when component mounts
+  React.useEffect(() => {
     setFlowType('lcp');
-  }, [startLCPFlow, currentStep, setFlowType]);
+  }, [setFlowType]);
 
   // ============================================================================
   // DYNAMIC HANDLER CREATION

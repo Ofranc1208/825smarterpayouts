@@ -109,7 +109,7 @@ export const ChatProvider = ({ children, visibleMessages, setVisibleMessages, lo
       const botMessage: TextMessage = {
         id: generateUniqueId(),
         type: 'text',
-        text: "Got it! Life Payments. We'll ask you just a few basic health questions to get your assessment. Don't worry — no personal information required. 🔒",
+        text: "Perfect! We'll ask you a few basic health questions for your assessment. No personal information required. 🔒",
         sender: 'bot'
       };
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import GuaranteedStepContainer from './GuaranteedStepContainer';
-import { validateOfferThreshold, formatCurrency } from '../../../../app/utils/validationHelpers';
+import { validateOfferThreshold, formatCurrency } from './utils/validationHelpers';
 import { useGuaranteedAssistant } from '../../../contexts/GuaranteedAssistantContext';
 
 interface GuaranteedOfferProps {

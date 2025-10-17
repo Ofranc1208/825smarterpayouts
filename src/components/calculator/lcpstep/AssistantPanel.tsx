@@ -7,7 +7,7 @@ import { AssistantInputBar } from './AssistantInputBar';
 import styles from './AssistantPanel.module.css';
 
 const AssistantPanel: React.FC = () => {
-  const { isOpen, closeAssistant, messages, isTyping, setIsTyping, addWelcomeMessage } = useAssistant();
+  const { isOpen, closeAssistant, messages, isTyping, setIsTyping, addWelcomeMessage, clearMessages } = useAssistant();
   const [isLoading, setIsLoading] = useState(true);
   const [hasShownInitialAnimation, setHasShownInitialAnimation] = useState(false);
 
@@ -23,6 +23,7 @@ const AssistantPanel: React.FC = () => {
   // Handle initial animation sequence when panel opens for the first time
   useEffect(() => {
     if (isOpen && !hasShownInitialAnimation && messages.length === 0) {
+      console.log('[AssistantPanel] Starting initial animation sequence');
       setHasShownInitialAnimation(true);
       
       // Step 1: Show typing animation
@@ -30,6 +31,7 @@ const AssistantPanel: React.FC = () => {
       
       // Step 2: After 1.5 seconds, hide typing and add welcome message
       setTimeout(() => {
+        console.log('[AssistantPanel] Adding welcome message after animation');
         setIsTyping(false);
         addWelcomeMessage();
       }, 1500);
@@ -73,14 +75,25 @@ const AssistantPanel: React.FC = () => {
         {/* Header with original green styling */}
         <div className={styles.header}>
           <h3 className={styles.title}>Help Assistant</h3>
-          <button
-            className={styles.closeButton}
-            onClick={closeAssistant}
-            aria-label="Close assistant"
-            type="button"
-          >
-            ×
-          </button>
+          <div className={styles.headerButtons}>
+            <button
+              className={styles.resetButton}
+              onClick={clearMessages}
+              aria-label="Reset chat session"
+              title="Reset chat session"
+              type="button"
+            >
+              ↻
+            </button>
+            <button
+              className={styles.closeButton}
+              onClick={closeAssistant}
+              aria-label="Close assistant"
+              type="button"
+            >
+              ×
+            </button>
+          </div>
         </div>
         
         {/* Message Display Area */}

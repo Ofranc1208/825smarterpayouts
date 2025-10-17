@@ -13,7 +13,7 @@ import '@testing-library/jest-dom';
 import GuaranteedPaymentAmountOverview from './GuaranteedPaymentAmountOverview';
 
 // Mock validation helpers
-jest.mock('../../../../app/utils/validationHelpers', () => ({
+jest.mock('./utils/validationHelpers', () => ({
   validatePaymentAmount: jest.fn(() => ({ isValid: true })),
   validateDateRange: jest.fn(() => ({ isValid: true })),
   sanitizeNumericInput: jest.fn((input: string) => input.replace(/[^\d.]/g, '')),
@@ -52,7 +52,7 @@ describe.skip('GuaranteedPaymentAmountOverview', () => {
     });
 
     it('should not trigger validation during render', () => {
-      const { validatePaymentAmount } = require('../../../../app/utils/validationHelpers');
+      const { validatePaymentAmount } = require('./utils/validationHelpers');
       
       render(<GuaranteedPaymentAmountOverview {...defaultProps} />);
       
@@ -142,7 +142,7 @@ describe.skip('GuaranteedPaymentAmountOverview', () => {
     });
 
     it('should sanitize numeric input', () => {
-      const { sanitizeNumericInput } = require('../../../../app/utils/validationHelpers');
+      const { sanitizeNumericInput } = require('./utils/validationHelpers');
       sanitizeNumericInput.mockReturnValue('1000');
       
       render(<GuaranteedPaymentAmountOverview {...defaultProps} />);
@@ -180,7 +180,7 @@ describe.skip('GuaranteedPaymentAmountOverview', () => {
     });
 
     it('should show validation errors when validation fails', () => {
-      const { validatePaymentAmount } = require('../../../../app/utils/validationHelpers');
+      const { validatePaymentAmount } = require('./utils/validationHelpers');
       validatePaymentAmount.mockReturnValue({ 
         isValid: false, 
         error: 'Payment amount is too low' 
@@ -226,7 +226,7 @@ describe.skip('GuaranteedPaymentAmountOverview', () => {
     });
 
     it('should not submit when validation fails', () => {
-      const { validatePaymentAmount } = require('../../../../app/utils/validationHelpers');
+      const { validatePaymentAmount } = require('./utils/validationHelpers');
       validatePaymentAmount.mockReturnValue({ isValid: false, error: 'Invalid' });
       
       render(<GuaranteedPaymentAmountOverview {...defaultProps} />);

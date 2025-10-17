@@ -58,6 +58,36 @@
   color: #ffffff;
 }
 
+/* Header buttons container */
+.headerButtons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Reset button - base styles */
+.resetButton {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+/* Reset button - hover state */
+.resetButton:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
 /* Close button - base styles */
 .closeButton {
   background: none;

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import LCPStepContainer from './LCPStepContainer';
 import { LCPButton, LCPSection, LCPFormInput, LCPNavigationButton } from './shared';
-import { validatePaymentAmount, validateDateRange, sanitizeNumericInput } from '../../../../app/utils/validationHelpers';
+import { validatePaymentAmount, validateDateRange, sanitizeNumericInput } from './utils/validationHelpers';
 import layout from './utils/LCPLayout.module.css';
 import utilities from './utils/LCPUtilities.module.css';
 

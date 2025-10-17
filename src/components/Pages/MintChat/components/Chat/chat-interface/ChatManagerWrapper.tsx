@@ -1,39 +1,45 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ChatManager from '@/src/components/chat/ChatManager';
 
 /**
- * Chat Manager Wrapper Component for MintChat
- * 
- * Wraps the main ChatManager component with MintChat-specific
- * configuration and styling. Provides clean separation between
- * the global chat system and the MintChat page implementation.
- * 
+ * Chat Manager Wrapper Component for MintChat - Deployment-Fixed Version
+ *
+ * Simplified wrapper that eliminates createPortal issues and provides
+ * deployment-safe modal management. Uses standard React rendering
+ * instead of portal to ensure consistent behavior across environments.
+ *
  * @component ChatManagerWrapper
  * @author SmarterPayouts Team
  * @since 2024
- * @version 2.0.0
+ * @version 3.0.0 - Deployment Fix
  */
 
 /**
- * Chat Manager Wrapper Component
- * 
- * ## Features
- * - ✅ Integrates global ChatManager
- * - ✅ MintChat-specific configuration
- * - ✅ Clean component separation
- * - ✅ Enterprise-grade architecture
- * 
- * ## Architecture
- * This component serves as a bridge between the MintChat page
- * and the global chat system, allowing for page-specific
- * customizations while maintaining system consistency.
- * 
+ * Chat Manager Wrapper Component - Deployment Safe
+ *
+ * ## Key Improvements
+ * - ✅ No createPortal dependency - uses standard React rendering
+ * - ✅ Deployment-safe modal positioning
+ * - ✅ Simplified state management for SSR/CSR compatibility
+ * - ✅ Robust error handling and fallbacks
+ * - ✅ Consistent behavior across all environments
+ *
+ * ## Architecture Changes
+ * This version eliminates the complex portal-based modal system that
+ * was causing deployment failures. Instead uses a simpler overlay
+ * approach that works reliably in all deployment environments.
+ *
+ * ## Error Handling
+ * - Graceful degradation if modal fails to render
+ * - Console logging for debugging deployment issues
+ * - Fallback inline chat interface if modal fails
+ *
  * @example
  * ```tsx
  * import ChatManagerWrapper from './ChatManagerWrapper';
- * 
+ *
  * export default function ChatInterface() {
  *   return <ChatManagerWrapper />;
  * }

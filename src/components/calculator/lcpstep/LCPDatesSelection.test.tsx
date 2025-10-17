@@ -13,7 +13,7 @@ import '@testing-library/jest-dom';
 import LCPDatesSelection from './LCPDatesSelection';
 
 // Mock validation helpers to prevent side effects
-jest.mock('../../../../app/utils/validationHelpers', () => ({
+jest.mock('./utils/validationHelpers', () => ({
   validatePaymentAmount: jest.fn(() => ({ isValid: true })),
   validateDateRange: jest.fn(() => ({ isValid: true })),
   sanitizeNumericInput: jest.fn((input: string) => input.replace(/[^\d.]/g, '')),
@@ -52,7 +52,7 @@ describe('LCPDatesSelection', () => {
     });
 
     it('should not call setState during render cycle', () => {
-      const { validatePaymentAmount } = require('../../../../app/utils/validationHelpers');
+      const { validatePaymentAmount } = require('./utils/validationHelpers');
       
       render(<LCPDatesSelection {...defaultProps} />);
       
@@ -172,7 +172,7 @@ describe('LCPDatesSelection', () => {
     });
 
     it('should not submit when validation fails', () => {
-      const { validatePaymentAmount } = require('../../../../app/utils/validationHelpers');
+      const { validatePaymentAmount } = require('./utils/validationHelpers');
       validatePaymentAmount.mockReturnValue({ isValid: false, error: 'Invalid' });
       
       render(<LCPDatesSelection {...defaultProps} />);

@@ -54,6 +54,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
           >
             ↻
           </button>
+          {/* Close button - show when in modal mode (onClose provided) */}
           {onClose && closeIcon && (
             <button
               className={styles.closeButton}

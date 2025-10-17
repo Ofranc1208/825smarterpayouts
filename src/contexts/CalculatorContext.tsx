@@ -1,79 +1,37 @@
 "use client";
-import React, { createContext, useContext, ReactNode, useState } from 'react';
+
+import React, { createContext, useContext, ReactNode, useState, useCallback } from 'react';
 import { useGuaranteedFlow } from '../hooks/useGuaranteedFlow';
-// LCP flow is now self-contained in lcpstep/hooks/useLCPFlow.ts
 import { 
-  CalculatorFormData, 
-  GuaranteedFormData, 
+  CalculatorOrchestrator,
+  CalculatorContextType,
+  CalculatorState,
+  FlowType,
+  GuaranteedFlowHandler,
+  LCPFlowHandler,
+  CompareOfferFlowHandler
+} from './system/calculator';
+import { 
   LCPFormData, 
-  LCPCalculationResult, 
-  GuaranteedCalculationResult,
-  LCPPaymentData,
-  LCPDetailsData,
-  LCPProfileData,
-  LCPLifestyleData,
-  LCPHealthData,
-  GuaranteedReviewData,
-  CalculatorStep,
-  GuaranteedStep,
   LCPStep,
-  CompareOfferStep,
-  CalculationError
+  CompareOfferStep
 } from '../types';
 
-// ============================================================================
-// CONTEXT INTERFACE
-// ============================================================================
+const CalculatorContext = createContext<CalculatorContextType | undefined>(undefined);
+
+// Export the context for direct access (needed by some hooks)
+export { CalculatorContext };
+
+export const useCalculator = () => {
+  const context = useContext(CalculatorContext);
+  if (context === undefined) {
+    throw new Error('useCalculator must be used within a CalculatorProvider');
+  }
+  return context;
+};
 
 // ============================================================================
-// CONTEXT INTERFACE
-// ============================================================================
-
-export interface CalculatorContextType {
-  // State
-  currentStep: CalculatorStep | null;
-  formData: CalculatorFormData;
-  
-  // Step Management
-  startCalculator: () => void;
-  handleFlowSelect: (flow: 'guaranteed' | 'lcp' | 'compare-offer') => void;
-  goToNextStep: (step: CalculatorStep) => void;
-  updateFormData: (data: Partial<CalculatorFormData>) => void;
-  
-  // Guaranteed Flow Handlers
-  handleGuaranteedModeSelect: (mode: string) => void;
-  handleIncreaseSelect: (rate: number) => void;
-  handleAmountNext: () => void;
-  handleDatesNext: () => void;
-  handleReviewCalculate: () => void;
-  
-  // LCP Flow Handlers
-  handleLcpPaymentNext: (data: LCPPaymentData) => void;
-  handleLcpDetailsNext: (data: LCPDetailsData) => void;
-  handleLcpProfileNext: (data: LCPProfileData) => void;
-  handleLcpLifestyleNext: (data: LCPLifestyleData) => void;
-  handleLcpHealthNext: (data: LCPHealthData) => void;
-  
-  // LCP Calculation Results
-  lcpResult: LCPCalculationResult | null;
-  lcpError: CalculationError | undefined;
-  lcpShowResults: boolean;
-  handleLcpCalculate: (data: Partial<LCPFormData>) => void;
-  handleLcpBackToReview: () => void;
-
-  // Reprompt signal
-  repromptCounter: number;
-  triggerReprompt: () => void;
-}
-
-// ============================================================================
-// CONTEXT CREATION
-// ============================================================================
-
-export const CalculatorContext = createContext<CalculatorContextType | null>(null);
-
-// ============================================================================
-// PROVIDER COMPONENT
+// PROVIDER IMPLEMENTATION - ORCHESTRATED
 // ============================================================================
 
 interface CalculatorProviderProps {
@@ -82,204 +40,86 @@ interface CalculatorProviderProps {
 }
 
 export const CalculatorProvider: React.FC<CalculatorProviderProps> = ({ children, logUserChoiceAsMessage }) => {
-  // Use flow-specific hooks
-  const guaranteedFlow = useGuaranteedFlow();
+  // Initialize state using orchestrator
+  const initialState = CalculatorOrchestrator.initializeState();
   
-  // LCP flow state - minimal implementation for navigation
+  // Use flow-specific hooks and state
+  const guaranteedFlow = useGuaranteedFlow();
   const [lcpFormData, setLcpFormData] = useState<LCPFormData>({});
   const [lcpCurrentStep, setLcpCurrentStep] = useState<LCPStep | null>(null);
-
-  // New: reprompt signal state
-  const [repromptCounter, setRepromptCounter] = useState(0);
-  const triggerReprompt = () => setRepromptCounter(c => c + 1);
-
-  // Compare offer flow state (simple state until we create a hook)
   const [compareOfferStep, setCompareOfferStep] = useState<CompareOfferStep | null>(null);
+  const [repromptCounter, setRepromptCounter] = useState(initialState.repromptCounter);
 
-  // Determine current step and form data based on active flow
-  // Prioritize compare offer, then LCP flow if it has a step, otherwise use guaranteed flow
-  const currentStep = compareOfferStep || lcpCurrentStep || guaranteedFlow.currentStep;
-  const formData: CalculatorFormData = {
-    guaranteedData: guaranteedFlow.formData,
-    lcpData: lcpFormData
+  // Create flow handlers
+  const flowHandlers = {
+    guaranteed: new GuaranteedFlowHandler(guaranteedFlow, logUserChoiceAsMessage),
+    lcp: new LCPFlowHandler(lcpFormData, lcpCurrentStep, setLcpFormData, setLcpCurrentStep, logUserChoiceAsMessage),
+    compareOffer: new CompareOfferFlowHandler(compareOfferStep, setCompareOfferStep, logUserChoiceAsMessage)
   };
 
-  // LCP calculation results - now handled by self-contained LCP system
-  const lcpResult = null;
-  const lcpError = undefined;
-  const lcpShowResults = false;
-  const handleLcpBackToReview = () => {};
-
-  // ============================================================================
-  // PURE STATE MANAGEMENT FUNCTIONS
-  // ============================================================================
-
-  // Start calculator - sets initial step to 'select_type'
-  const startCalculator = () => {
-    guaranteedFlow.startCalculator();
-  };
-
-  // Handle flow selection - routes to appropriate starting step
-  const handleFlowSelect = (flow: 'guaranteed' | 'lcp' | 'compare-offer') => {
-    if (flow === 'guaranteed') {
-      guaranteedFlow.goToNextStep('mode');
-    } else if (flow === 'lcp') {
-      setLcpCurrentStep('lcp_payment');
-    } else if (flow === 'compare-offer') {
-      // Set the compare offer flow step directly
-      // Since we don't have a specific hook yet, we'll use goToNextStep
-      goToNextStep('compare-offer-choice');
-    }
-  };
-
-  // Navigate to specific step
-  const goToNextStep = (step: CalculatorStep) => {
-    if (step.startsWith('lcp_')) {
-      setLcpCurrentStep(step as LCPStep);
-    } else if (step.startsWith('compare-offer')) {
-      // Set the compare offer step state
-      setCompareOfferStep(step as CompareOfferStep);
-    } else {
-      guaranteedFlow.goToNextStep(step as GuaranteedStep);
-    }
-  };
-
-  // Update form data
-  const updateFormData = (data: Partial<CalculatorFormData>) => {
-    if (data.guaranteedData) {
-      guaranteedFlow.updateFormData(data.guaranteedData);
-    }
-    if (data.lcpData) {
-      // Update local LCP form data
-      setLcpFormData(prev => ({ ...prev, ...data.lcpData }));
-    }
-  };
-
-  // ============================================================================
-  // GUARANTEED FLOW STATE HANDLERS
-  // ============================================================================
-
-  const handleGuaranteedModeSelect = (mode: string) => {
-    const displayText = mode.charAt(0).toUpperCase() + mode.slice(1);
-    logUserChoiceAsMessage(displayText);
-    
-    guaranteedFlow.handleModeSelect(mode);
-  };
-
-  const handleIncreaseSelect = (rate: number) => {
-    logUserChoiceAsMessage(`${rate}% annual increase`);
-    
-    guaranteedFlow.handleIncreaseSelect(rate);
-  };
-
-  const handleAmountNext = () => {
-    const amount = guaranteedFlow.formData.paymentAmount;
-    if (amount) {
-      logUserChoiceAsMessage(`Payment amount: $${amount}`);
-    }
-    
-    guaranteedFlow.handleAmountNext();
-  };
-
-  const handleDatesNext = () => {
-    const { startDate, endDate } = guaranteedFlow.formData;
-    if (startDate && endDate) {
-      logUserChoiceAsMessage(`Payment period: ${startDate} to ${endDate}`);
-    }
-    
-    guaranteedFlow.handleDatesNext();
-  };
-
-  const handleReviewCalculate = () => {
-    logUserChoiceAsMessage('Calculate my offer');
-    
-    guaranteedFlow.handleReviewCalculate();
-  };
-
-  // ============================================================================
-  // LCP FLOW STATE HANDLERS
-  // ============================================================================
-
-  const handleLcpPaymentNext = (data: { paymentMode: string; amount: string }) => {
-    logUserChoiceAsMessage(`${data.paymentMode}: $${data.amount}`);
-  };
-
-  const handleLcpDetailsNext = (data: LCPDetailsData) => {
-    logUserChoiceAsMessage('Details provided');
-  };
-
-  const handleLcpProfileNext = (data: LCPProfileData) => {
-    logUserChoiceAsMessage('Profile information provided');
-  };
-
-  const handleLcpLifestyleNext = (data: LCPLifestyleData) => {
-    logUserChoiceAsMessage('Lifestyle information provided');
-  };
-
-  const handleLcpHealthNext = (data: LCPHealthData) => {
-    logUserChoiceAsMessage('Health information provided');
-  };
-
-  const handleLcpCalculate = (data: Partial<LCPFormData>) => {
-    logUserChoiceAsMessage('Calculate LCP offer');
-  };
-
-  // ============================================================================
-  // CONTEXT VALUE
-  // ============================================================================
+  // Get current state from orchestrator
+  const orchestratorState = CalculatorOrchestrator.getCurrentState(flowHandlers);
   
-  const value: CalculatorContextType = {
-    // State
-    currentStep,
-    formData,
-    
-    // Step Management
-    startCalculator,
-    handleFlowSelect,
-    goToNextStep,
-    updateFormData,
-    
-    // Guaranteed Flow Handlers
-    handleGuaranteedModeSelect,
-    handleIncreaseSelect,
-    handleAmountNext,
-    handleDatesNext,
-    handleReviewCalculate,
-    
-    // LCP Flow Handlers
-    handleLcpPaymentNext,
-    handleLcpDetailsNext,
-    handleLcpProfileNext,
-    handleLcpLifestyleNext,
-    handleLcpHealthNext,
-    
-    // LCP Calculation Results
-    lcpResult,
-    lcpError,
-    lcpShowResults,
-    handleLcpCalculate,
-    handleLcpBackToReview,
+  // State update helper
+  const updateState = useCallback((updates: Partial<CalculatorState>) => {
+    if (updates.repromptCounter !== undefined) {
+      setRepromptCounter(updates.repromptCounter);
+    }
+  }, []);
 
+  // Create orchestrated actions with current state getter
+  const getState = useCallback((): CalculatorState => ({
+    currentStep: orchestratorState.currentStep || null,
+    formData: orchestratorState.formData || { guaranteedData: {}, lcpData: {} },
+    lcpResult: null, // Handled by self-contained LCP system
+    lcpError: undefined,
+    lcpShowResults: false,
+    repromptCounter
+  }), [orchestratorState, repromptCounter]);
+
+  const actions = CalculatorOrchestrator.createActions(
+    getState,
+    updateState,
+    flowHandlers
+  );
+
+  // Create context value with orchestrated actions
+  const contextValue: CalculatorContextType = {
+    // State from orchestrator
+    currentStep: orchestratorState.currentStep || null,
+    formData: orchestratorState.formData || { guaranteedData: {}, lcpData: {} },
+    
+    // LCP Calculation Results (handled by self-contained LCP system)
+    lcpResult: null,
+    lcpError: undefined,
+    lcpShowResults: false,
+    
     // Reprompt signal
     repromptCounter,
-    triggerReprompt,
+    
+    // All actions from orchestrator
+    startCalculator: actions.startCalculator,
+    handleFlowSelect: actions.handleFlowSelect,
+    goToNextStep: actions.goToNextStep,
+    updateFormData: actions.updateFormData,
+    handleGuaranteedModeSelect: actions.handleGuaranteedModeSelect,
+    handleIncreaseSelect: actions.handleIncreaseSelect,
+    handleAmountNext: actions.handleAmountNext,
+    handleDatesNext: actions.handleDatesNext,
+    handleReviewCalculate: actions.handleReviewCalculate,
+    handleLcpPaymentNext: actions.handleLcpPaymentNext,
+    handleLcpDetailsNext: actions.handleLcpDetailsNext,
+    handleLcpProfileNext: actions.handleLcpProfileNext,
+    handleLcpLifestyleNext: actions.handleLcpLifestyleNext,
+    handleLcpHealthNext: actions.handleLcpHealthNext,
+    handleLcpCalculate: actions.handleLcpCalculate,
+    handleLcpBackToReview: actions.handleLcpBackToReview,
+    triggerReprompt: actions.triggerReprompt
   };
 
   return (
-    <CalculatorContext.Provider value={value}>
+    <CalculatorContext.Provider value={contextValue}>
       {children}
     </CalculatorContext.Provider>
   );
-};
-
-// ============================================================================
-// CUSTOM HOOK
-// ============================================================================
-
-export const useCalculator = () => {
-  const context = useContext(CalculatorContext);
-  if (!context) {
-    throw new Error('useCalculator must be used within a CalculatorProvider');
-  }
-  return context;
 }; 

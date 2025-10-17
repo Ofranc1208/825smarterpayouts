@@ -13,7 +13,7 @@ import '@testing-library/jest-dom';
 import GuaranteedLumpSumAmountOverview from './GuaranteedLumpSumAmountOverview';
 
 // Mock validation helpers
-jest.mock('../../../../app/utils/validationHelpers', () => ({
+jest.mock('./utils/validationHelpers', () => ({
   validatePaymentAmount: jest.fn(() => ({ isValid: true })),
   sanitizeNumericInput: jest.fn((input: string) => input.replace(/[^\d.]/g, '')),
   VALIDATION_RULES: {
@@ -206,7 +206,7 @@ describe.skip('GuaranteedLumpSumAmountOverview', () => {
     });
 
     it('should show validation errors for invalid payment amounts', () => {
-      const { validatePaymentAmount } = require('../../../../app/utils/validationHelpers');
+      const { validatePaymentAmount } = require('./utils/validationHelpers');
       validatePaymentAmount.mockReturnValue({ 
         isValid: false, 
         error: 'Payment amount is too low' 
@@ -227,7 +227,7 @@ describe.skip('GuaranteedLumpSumAmountOverview', () => {
     });
 
     it('should not submit when validation fails', () => {
-      const { validatePaymentAmount } = require('../../../../app/utils/validationHelpers');
+      const { validatePaymentAmount } = require('./utils/validationHelpers');
       validatePaymentAmount.mockReturnValue({ 
         isValid: false, 
         error: 'Invalid amount' 

@@ -51,8 +51,8 @@ const LCPaymentReviewStep: React.FC<Props> = ({
   totalSteps,
 }) => {
   return (
-    <div style={{ 
-      padding: '2rem 1rem',
+    <div style={{
+      padding: '1rem 1rem',
       maxWidth: '600px',
       margin: '0 auto',
       position: 'relative'
@@ -60,13 +60,13 @@ const LCPaymentReviewStep: React.FC<Props> = ({
       {/* Review Header - No Step Indicator */}
       <div style={{
         textAlign: 'center',
-        marginBottom: '1.5rem'
+        marginBottom: '1rem'
       }}>
         <h1 style={{
           fontSize: '1.5rem',
           fontWeight: 700,
           color: '#22b455',
-          marginBottom: '0.5rem',
+          marginBottom: '0.25rem',
           letterSpacing: '-0.02em'
         }}>
           Review & Calculate
@@ -84,11 +84,11 @@ const LCPaymentReviewStep: React.FC<Props> = ({
         background: '#fff',
         borderRadius: '20px',
         boxShadow: '0 4px 24px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04)',
-        padding: '1.5rem',
+        padding: '1rem',
       }}>
         {/* Edit Form Button at Top */}
         {onEdit && (
-          <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+          <div style={{ textAlign: 'center', marginBottom: '0.75rem' }}>
             <button 
               onClick={() => onEdit(1)}
               type="button"
@@ -120,11 +120,11 @@ const LCPaymentReviewStep: React.FC<Props> = ({
 
         {/* Scrollable Review Sections Container */}
         <div style={{
-          maxHeight: '400px',
+          maxHeight: '420px',
           overflowY: 'auto',
           overflowX: 'hidden',
-          padding: '0.5rem',
-          marginBottom: '1.5rem',
+          padding: '0.25rem',
+          marginBottom: '1rem',
           border: '1px solid #e5e7eb',
           borderRadius: '12px',
           background: '#fafafa',
@@ -159,7 +159,7 @@ const LCPaymentReviewStep: React.FC<Props> = ({
         </div>
 
         {/* Calculate Button at Bottom */}
-        <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: '0.5rem' }}>
           <button 
             onClick={onCalculate}
             type="button"

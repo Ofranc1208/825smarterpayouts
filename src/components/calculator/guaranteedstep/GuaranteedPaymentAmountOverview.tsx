@@ -2,7 +2,7 @@
 
 import React, { useState, useRef } from 'react';
 import GuaranteedStepContainer from './GuaranteedStepContainer';
-import { validatePaymentAmount, validateDateRange, sanitizeNumericInput } from '../../../../app/utils/validationHelpers';
+import { validatePaymentAmount, validateDateRange, sanitizeNumericInput } from './utils/validationHelpers';
 import { GuaranteedFormData } from './types/guaranteed.types';
 
 interface GuaranteedPaymentAmountOverviewProps {
