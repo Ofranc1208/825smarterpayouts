@@ -26,19 +26,20 @@ const NavLink: React.FC<NavLinkProps> = ({ href, children, icon, onClick }) => {
   const linkStyle: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
-    gap: icon ? '0.25rem' : '0',
-    padding: '0.5rem 0.75rem', // Reduced padding
+    gap: icon ? '0.625rem' : '0', // More generous gap for icons
+    padding: '0.75rem 1rem', // Better padding for touch targets
     textDecoration: 'none',
-    borderRadius: '6px',
-    fontSize: '0.875rem', // Smaller font size
+    borderRadius: '8px', // Slightly larger border radius
+    fontSize: '0.9375rem', // Comfortable reading size
     fontWeight: isActive ? 600 : 500,
-    color: isActive ? '#09b44d' : (isHovered ? '#07a043' : '#374151'),
+    color: isActive ? '#059669' : (isHovered ? '#047857' : '#374151'),
     backgroundColor: isActive ? '#f0fdf4' : (isHovered ? '#f9fafb' : 'transparent'),
-    transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)', // Smoother transition
+    transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
     cursor: 'pointer',
-    whiteSpace: 'nowrap', // Prevent text wrapping
-    minWidth: 'fit-content', // Ensure full text is visible
-    transform: isHovered ? 'translateY(-1px)' : 'translateY(0)', // Subtle lift on hover
+    whiteSpace: 'nowrap',
+    minWidth: 'fit-content',
+    transform: isHovered ? 'translateX(2px)' : 'translateX(0)', // Subtle slide on hover
+    boxShadow: isActive ? '0 1px 3px rgba(5, 150, 105, 0.1)' : 'none', // Subtle shadow for active state
   };
 
   return (

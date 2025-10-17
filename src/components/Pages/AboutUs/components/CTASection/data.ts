@@ -36,7 +36,7 @@ export const CTA_BUTTONS: CTAButton[] = [
   {
     id: 'instant-offer',
     text: 'Get Your Instant Offer',
-    href: '/pricing-calculator',
+    href: '/mint-intelligent-chat',
     ariaLabel: 'Get your instant structured settlement quote',
     variant: 'primary',
     gradient: "linear-gradient(135deg, #09b44d 0%, #059669 100%)",
@@ -46,7 +46,7 @@ export const CTA_BUTTONS: CTAButton[] = [
   {
     id: 'mint-ai-chat',
     text: 'Chat with Mint AI',
-    href: '/mint-intelligent-chat',
+    href: '/mint-intelligent-chat?chat=open&feature=calculator',
     ariaLabel: 'Chat with Mint AI assistant for immediate assistance',
     variant: 'secondary',
     gradient: "linear-gradient(135deg, #fbc233 0%, #f59e0b 100%)",

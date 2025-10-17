@@ -6,7 +6,7 @@ export default function PrimaryCTAButton() {
   return (
     <Button
       as="a"
-      href="/pricing-calculator"
+      href="/mint-intelligent-chat"
       variant="technology-primary"
       size="lg"
       enhancedHover={true}

@@ -43,19 +43,17 @@ import type { ChatChoice } from './types';
  * - User-friendly error messages with recovery options
  */
 const ChatManager: React.FC = () => {
+  const searchParams = useSearchParams();
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [activeScreen, setActiveScreen] = useState<ChatChoice | null>(null);
-  const searchParams = useSearchParams();
 
-  // Check for chat=open query parameter and auto-open chat
+  // Check for chat=open query parameter and auto-open chat on client side only
   useEffect(() => {
-    console.log('[ChatManager DEPLOYMENT DEBUG] === INITIALIZATION ===');
-    console.log('[ChatManager] isChatOpen:', isChatOpen);
-    console.log('[ChatManager] activeScreen:', activeScreen);
-    
     const chatParam = searchParams.get('chat');
-    if (chatParam === 'open') {
-      console.log('[ChatManager] Auto-opening chat from URL parameter');
+    const shouldAutoOpen = chatParam === 'open';
+    
+    if (shouldAutoOpen) {
+      console.log('[ChatManager] Chat auto-opened from URL parameter');
       setIsChatOpen(true);
       setActiveScreen('calculate');
     }

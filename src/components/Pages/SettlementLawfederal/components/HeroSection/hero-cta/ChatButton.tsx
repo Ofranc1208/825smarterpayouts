@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function ChatButton() {
   return (
-    <Link href="/mint-intelligent-chat" style={{
+    <Link href="/mint-intelligent-chat?chat=open&feature=calculator" style={{
       display: "inline-block",
       background: "linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)",
       color: "white",

@@ -199,8 +199,8 @@ export const settlementLawPageData: SettlementLawPageData = {
     subtitle: 'Legal Information',
     description: 'Understanding the key federal laws, tax rules, and court approval processes governing structured settlements in the United States.',
     ctaButtons: {
-      primary: { text: '💰 Get Your Quote', href: '/pricing-calculator' },
-      secondary: { text: '💬 Chat with Mint AI', href: '/mint-intelligent-chat' }
+      primary: { text: '💰 Get Your Quote', href: '/mint-intelligent-chat' },
+      secondary: { text: '💬 Chat with Mint AI', href: '/mint-intelligent-chat?chat=open&feature=calculator' }
     }
   },
   federalLaws: federalLawsData,

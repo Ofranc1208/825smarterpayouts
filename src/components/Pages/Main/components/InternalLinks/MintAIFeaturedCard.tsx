@@ -13,7 +13,7 @@ interface MintAIFeaturedCardProps {
 export default function MintAIFeaturedCard({ isMobile }: MintAIFeaturedCardProps) {
   return (
     <div style={{ marginBottom: SPACING.stack.xxl }}>
-      <Link href="/mint-intelligent-chat" style={{ textDecoration: "none", color: "inherit" }}>
+      <Link href="/mint-intelligent-chat?chat=open&feature=calculator" style={{ textDecoration: "none", color: "inherit" }}>
         <div style={{
           background: "linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)",
           borderRadius: BORDER_RADIUS.xlarge,

@@ -47,12 +47,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
     left: 0,
     width: '100vw',
     height: '100vh',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)', // Slightly darker overlay
+    backdropFilter: 'blur(2px)', // Modern blur effect
     zIndex: 999,
     opacity: isOpen ? 1 : 0,
     visibility: isOpen ? 'visible' : 'hidden',
-    transition: 'all 0.3s ease',
-    // Ensure it covers everything and is clickable
+    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)', // Smoother easing
     pointerEvents: isOpen ? 'auto' : 'none',
   };
 
@@ -60,42 +60,57 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
     position: 'fixed',
     top: 0,
     right: 0,
-    width: '300px',
+    width: '320px', // Slightly wider for better spacing
+    maxWidth: '85vw', // Responsive on very small screens
     height: '100vh',
     backgroundColor: 'white',
-    boxShadow: '-4px 0 12px rgba(0, 0, 0, 0.15)',
+    boxShadow: '-8px 0 24px rgba(0, 0, 0, 0.12)', // Softer, larger shadow
     transform: isOpen ? 'translateX(0)' : 'translateX(100%)',
-    transition: 'transform 0.3s ease',
+    transition: 'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)', // Smoother slide
     zIndex: 1000,
     overflowY: 'auto',
+    overflowX: 'hidden',
+    // Modern scrollbar styling
+    scrollbarWidth: 'thin',
+    scrollbarColor: '#d1d5db #f3f4f6',
   };
 
   const headerStyle: React.CSSProperties = {
-    padding: '1rem',
-    borderBottom: '2px solid #09b44d',
-    backgroundColor: '#f0fdf4',
+    padding: '1.25rem 1.5rem', // More generous padding
+    borderBottom: '1px solid #e5e7eb', // Subtle border
+    background: 'linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%)', // Subtle gradient
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
+    position: 'sticky',
+    top: 0,
+    zIndex: 10,
+    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)', // Subtle shadow for depth
   };
 
   const closeButtonStyle: React.CSSProperties = {
-    background: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '36px',
+    height: '36px',
+    background: 'rgba(5, 150, 105, 0.08)', // Light green background
     border: 'none',
+    borderRadius: '8px',
     fontSize: '1.5rem',
     cursor: 'pointer',
-    color: '#374151',
-    padding: '0.25rem',
+    color: '#059669',
+    transition: 'all 0.2s ease',
   };
 
   const mainLinksStyle: React.CSSProperties = {
-    padding: '1rem 0',
-    borderBottom: '1px solid #e5e7eb',
+    padding: '1.5rem 0', // More vertical spacing
+    borderBottom: '1px solid #f3f4f6',
   };
 
   const mainLinkItemStyle: React.CSSProperties = {
-    padding: '0.75rem 1rem',
-    borderBottom: '1px solid #f3f4f6',
+    padding: '0.5rem 1.25rem', // Better horizontal padding
+    marginBottom: '0.25rem', // Space between items
   };
 
   const handleSectionToggle = (sectionTitle: string) => {
@@ -126,9 +141,28 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
       >
         {/* Header */}
         <div style={headerStyle}>
-          <span style={{ fontWeight: 'bold', color: '#09b44d' }}>Navigation</span>
-          <button style={closeButtonStyle} onClick={onClose}>
-            ×
+          <span style={{ 
+            fontWeight: 700, 
+            fontSize: '1.125rem',
+            color: '#059669',
+            letterSpacing: '-0.01em'
+          }}>
+            Menu
+          </span>
+          <button 
+            style={closeButtonStyle} 
+            onClick={onClose}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(5, 150, 105, 0.15)';
+              e.currentTarget.style.transform = 'scale(1.05)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'rgba(5, 150, 105, 0.08)';
+              e.currentTarget.style.transform = 'scale(1)';
+            }}
+            aria-label="Close navigation menu"
+          >
+            ✕
           </button>
         </div>
 
@@ -151,6 +185,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
             items={items}
             isExpanded={expandedSection === title}
             onToggle={() => handleSectionToggle(title)}
+            onItemClick={onClose}
           />
         ))}
       </div>

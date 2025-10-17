@@ -17,8 +17,8 @@ export interface DropdownSection {
 // Main navigation links (always visible)
 export const mainNavLinks: NavigationItem[] = [
   { href: '/main', label: 'Home', icon: '🏠' },
-  { href: '/mint-intelligent-chat', label: 'Mint AI Chat', icon: '🤖' },
-  { href: '/pricing-calculator', label: 'Early Payout Calculator', icon: '🧮' }
+  { href: '/mint-intelligent-chat', label: 'Get Instant Offer', icon: '💰' },
+  { href: '/mint-intelligent-chat?chat=open&feature=calculator', label: 'Chat with Mint AI', icon: '💬' }
 ];
 
 // Dropdown sections

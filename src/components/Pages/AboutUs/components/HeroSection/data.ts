@@ -36,7 +36,7 @@ export const HERO_CTA_BUTTONS: HeroCTAButton[] = [
   {
     id: 'instant-offer',
     text: 'Get Your Instant Offer',
-    href: '/pricing-calculator',
+    href: '/mint-intelligent-chat',
     ariaLabel: 'Get your instant structured settlement quote',
     variant: 'primary',
     gradient: "linear-gradient(135deg, #09b44d 0%, #047857 100%)",
@@ -45,7 +45,7 @@ export const HERO_CTA_BUTTONS: HeroCTAButton[] = [
   {
     id: 'mint-ai',
     text: 'Chat with Mint AI',
-    href: '/mint-intelligent-chat',
+    href: '/mint-intelligent-chat?chat=open&feature=calculator',
     ariaLabel: 'Chat with Mint AI assistant for structured settlement help',
     variant: 'secondary',
     gradient: "linear-gradient(135deg, #fbc233 0%, #f59e0b 100%)",
