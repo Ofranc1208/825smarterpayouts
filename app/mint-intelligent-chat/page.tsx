@@ -1,5 +1,5 @@
 import MintChatPage from '@/src/components/Pages/MintChat';
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 
 /**
  * Mint Chat Page Route
@@ -18,12 +18,6 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    viewportFit: 'cover', // Enable safe area support
-    userScalable: false, // Prevent zoom for better chat experience
-  },
   openGraph: {
     title: 'Chat with Mint | SmarterPayouts',
     description: 'Get a 100% guaranteed upfront offer estimate - zero games, just real numbers. No personal info required.',
@@ -35,6 +29,14 @@ export const metadata: Metadata = {
     title: 'Chat with Mint | SmarterPayouts',
     description: 'Get a 100% guaranteed upfront offer estimate - zero games, just real numbers. No personal info required.',
   },
+};
+
+// Viewport configuration (separate export per Next.js 14 requirements)
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover', // Enable safe area support
+  userScalable: false, // Prevent zoom for better chat experience
 };
 
 export default MintChatPage; 
