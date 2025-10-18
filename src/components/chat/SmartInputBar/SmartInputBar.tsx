@@ -66,13 +66,16 @@ export const SmartInputBar: React.FC<SmartInputBarProps> = ({
       windowWidth: window.innerWidth
     });
     
-    // Log file input attributes for debugging iOS camera issues
+    // Log file input attributes for debugging iOS picker
     if (fileInputRef.current) {
-      console.log('📷 [SmartInputBar] File input attributes:', {
+      console.log('📷 [SmartInputBar] File input config:', {
         accept: fileInputRef.current.getAttribute('accept'),
-        capture: fileInputRef.current.getAttribute('capture'),
+        capture: fileInputRef.current.getAttribute('capture') || 'none (shows iOS action sheet)',
         multiple: fileInputRef.current.hasAttribute('multiple'),
-        isMobile
+        isMobile,
+        expectedBehavior: isMobile 
+          ? 'iOS action sheet: Take Photo / Photo Library / Browse'
+          : 'Desktop file picker with multiple selection'
       });
     }
   }, [isMobile]);
@@ -182,15 +185,12 @@ export const SmartInputBar: React.FC<SmartInputBarProps> = ({
 
   return (
     <>
-      {/* Hidden file input - optimized for mobile camera access */}
-      {/* On iOS, capture only works with accept="image/*" and without multiple */}
+      {/* Hidden file input - iOS native picker (Take Photo / Photo Library / Browse) */}
+      {/* Remove capture attribute to show iOS action sheet instead of forcing camera */}
       <input
         ref={fileInputRef}
         type="file"
         accept={isMobile ? "image/*" : "image/*,.pdf,.doc,.docx,.txt"}
-        {...(isMobile && { 
-          capture: 'environment',
-        })}
         {...(!isMobile && { multiple: true })}
         onChange={handleFileSelect}
         style={{ display: 'none' }}
