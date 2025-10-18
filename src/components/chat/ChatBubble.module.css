@@ -128,6 +128,79 @@
   outline-offset: 2px;
 }
 
+/* File message styles - Upload confirmation with thumbnail preview */
+.fileMessage {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(34, 197, 94, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  max-width: 300px;
+}
+
+.filePreviewContainer {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.documentThumbnail {
+  width: 100%;
+  display: block;
+}
+
+.fileIcon {
+  font-size: 28px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.fileInfo {
+  flex: 1;
+  min-width: 0;
+  padding: 0 4px;
+}
+
+.fileName {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 4px;
+  color: inherit;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.fileName strong {
+  color: #16a34a;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.fileMeta {
+  font-size: 11px;
+  opacity: 0.9;
+  color: #16a34a;
+  font-weight: 500;
+}
+
+/* Dark mode support for file messages */
+@media (prefers-color-scheme: dark) {
+  .fileDownload {
+    background: rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.2);
+  }
+
+  .fileDownload:hover {
+    background: rgba(0, 0, 0, 0.2);
+  }
+}
+
 /* Print styles */
 @media print {
   .chatBubble {

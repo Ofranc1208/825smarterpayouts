@@ -55,6 +55,16 @@ const nextConfig = {
         },
       };
     }
+
+    // Handle PDF.js worker properly for Next.js 14
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        path: false,
+      };
+    }
+
     return config;
   },
   // Enhanced image optimization

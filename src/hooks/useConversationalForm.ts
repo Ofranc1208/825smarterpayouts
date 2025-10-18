@@ -9,12 +9,25 @@ import { GuaranteedReviewData, GuaranteedCalculationResult } from '../types';
 // --- Message Type Definitions ---
 interface BaseMessage {
   id: string;
+  createdAt?: string;
+  sender?: 'user' | 'bot' | 'assistant';
 }
 
 export interface TextMessage extends BaseMessage {
   type: 'text';
   text: string;
   sender: 'user' | 'bot';
+}
+
+export interface FileMessage extends BaseMessage {
+  type: 'file';
+  content: {
+    name: string;
+    url: string;
+    mime: string;
+    size: number;
+  };
+  sender: 'user' | 'assistant';
 }
 
 export interface ComponentMessage extends BaseMessage {
@@ -24,7 +37,10 @@ export interface ComponentMessage extends BaseMessage {
   componentData?: Record<string, any>; // New: Serializable component data
 }
 
-export type Message = TextMessage | ComponentMessage;
+export type Message = TextMessage | FileMessage | ComponentMessage;
+
+// Export individual types for use in other components
+export type { FileMessage, TextMessage, ComponentMessage };
 
 interface UseConversationalFormProps {
   setVisibleMessages: React.Dispatch<React.SetStateAction<Message[]>>;

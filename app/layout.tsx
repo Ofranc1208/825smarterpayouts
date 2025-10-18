@@ -92,7 +92,8 @@ export default function RootLayout({
           }
 
           /* Reserve navbar space BEFORE it loads to prevent layout shift */
-          body:not([data-page="/"]) {
+          /* Exclude chat page from navbar padding */
+          body:not([data-page="/"]):not([data-page="/mint-chat-active"]) {
             padding-top: var(--navbar-height);
           }
 
@@ -109,6 +110,19 @@ export default function RootLayout({
           body:not([data-page="/"]) main {
             position: relative;
             z-index: 1;
+          }
+
+          /* Chat page specific styles - prevent scrolling and ensure fixed layout */
+          body[data-page="/mint-chat-active"] {
+            overflow: hidden;
+            height: 100vh;
+            padding: 0 !important;
+            margin: 0 !important;
+          }
+
+          body[data-page="/mint-chat-active"] main {
+            height: 100vh;
+            overflow: hidden;
           }
 
           /* Prevent flash of unstyled content */

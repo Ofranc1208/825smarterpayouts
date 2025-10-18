@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useAssistant } from '../../../contexts/AssistantContext';
-import styles from '../../chat/SmartInputBar.module.css'; // Reuse existing styles
+import styles from '../../chat/SmartInputBar/SmartInputBar.module.css'; // Reuse existing styles
 
 // Adapter component that reuses SmartInputBar's logic and styling
 export const AssistantInputBar = () => {

@@ -15,6 +15,8 @@ export { default as HomePage } from './Home';
 export { HomePage as Home } from './Home';
 export { default as MintChatPage } from './MintChat';
 export { MintChatPage as MintChat } from './MintChat';
+export { default as MintChatActivePage } from './MintChatActivePage';
+export { MintChatActivePage as MintChatActive } from './MintChatActivePage';
 export { default as AboutPage } from './AboutUs';
 export { AboutPage as AboutUs } from './AboutUs';
 export { default as YouTubeChannelPage } from './youtube-channel';

@@ -1,9 +1,16 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Footer() {
+  const pathname = usePathname();
+  
+  // Don't show footer on dedicated chat page
+  if (pathname === '/mint-chat-active') {
+    return null;
+  }
   return (
     <footer style={{
       background: "linear-gradient(135deg, #1f2937 0%, #111827 100%)",

@@ -45,7 +45,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ relatedArticles = [] }) => {
         }}>
           Find out how much your structured settlement is worth today.
         </p>
-        <Link href="/mint-chat-active?type=calculate&source=info-hub-sidebar" style={{
+        <Link href="/pricing-calculator" style={{
           display: 'block',
           background: 'linear-gradient(135deg, #09b44d 0%, #059669 100%)',
           color: 'white',

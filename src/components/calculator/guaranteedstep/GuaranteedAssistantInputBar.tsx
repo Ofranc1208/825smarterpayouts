@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useGuaranteedAssistant } from '../../../contexts/GuaranteedAssistantContext';
-import styles from '../../chat/SmartInputBar.module.css'; // Reuse existing styles
+import styles from '../../chat/SmartInputBar/SmartInputBar.module.css'; // Reuse existing styles
 
 // Guaranteed-specific input bar component
 export const GuaranteedAssistantInputBar = () => {

@@ -5,6 +5,8 @@ import { useChat } from '../../contexts/ChatContext';
 import { Message } from '../../hooks/useConversationalForm';
 import ChatBubble from './ChatBubble';
 import ChatbotTyping from '../../components/chatbot/ChatbotTyping';
+import DocumentPreview from './DocumentPreview';
+import styles from './ChatBubble.module.css';
 // import { parseAIResponse } from '../../utils/parsing'; // No longer needed for text messages
 
 const ChatMessages = () => {
@@ -109,6 +111,35 @@ const ChatMessages = () => {
             {msg.text}
           </ChatBubble>
         );
+      case 'file':
+        // Map file message sender to ChatBubble compatible sender
+        const fileSender = msg.sender === 'assistant' ? 'bot' : msg.sender as 'user' | 'bot' | 'system';
+
+        return (
+          <ChatBubble key={msg.id} sender={fileSender}>
+            <div className={styles.fileMessage}>
+              {/* Document thumbnail preview */}
+              <div className={styles.filePreviewContainer}>
+                <DocumentPreview
+                  fileUrl={msg.content.url}
+                  fileName={msg.content.name}
+                  mimeType={msg.content.mime}
+                  className={styles.documentThumbnail}
+                />
+              </div>
+              
+              {/* File info below preview */}
+              <div className={styles.fileInfo}>
+                <div className={styles.fileName}>
+                  <strong>Document uploaded:</strong> {msg.content.name}
+                </div>
+                <div className={styles.fileMeta}>
+                  {(msg.content.size / 1024).toFixed(1)} KB • Uploaded successfully ✓
+                </div>
+              </div>
+            </div>
+          </ChatBubble>
+        );
       case 'component':
         // Handle both legacy JSX components and new serializable components
         if (msg.component) {
@@ -134,12 +165,15 @@ const ChatMessages = () => {
         flexDirection: 'column',
         gap: 8,
         padding: '16px',
+        paddingBottom: '32px', // Add extra bottom spacing to prevent sticking to input bar
         height: '100%', // Fill available space from CSS Grid parent
         overflow: 'visible' // Remove scrollbar, let parent handle layout
       }}
     >
       {messages.map(renderMessage)}
       {isTyping && <ChatbotTyping />}
+      {/* Add extra spacing at the bottom for better visual separation */}
+      <div style={{ height: '20px', flexShrink: 0 }} />
     </div>
   );
 };
