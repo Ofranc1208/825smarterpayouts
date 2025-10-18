@@ -15,35 +15,32 @@ import styles from './MintChatActivePage.module.css';
 const ChatContent: React.FC = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const [isClient, setIsClient] = React.useState(false);
   
   // Get chat type and source from URL parameters
   const chatType = searchParams.get('type') as ChatChoice || 'calculate';
   const source = searchParams.get('source') || 'direct';
   
-  // Ensure client-side rendering
+  // Log source for analytics (only once)
   useEffect(() => {
-    setIsClient(true);
-    
-    // Log source for analytics
     if (source && source !== 'direct') {
       console.log(`[MintChatActivePage] Chat started from source: ${source}`);
     }
   }, [source]);
   
-  // Handle chat close - return to main chat page
+  // Handle chat close - ALWAYS return to mint-intelligent-chat welcome page
   const handleCloseChat = () => {
-    console.log('[MintChatActivePage] Closing chat, returning to main page');
-    router.push('/mint-intelligent-chat');
+    console.log('[MintChatActivePage] Closing chat, returning to welcome page');
+    // Use replace instead of push to avoid adding to history
+    router.replace('/mint-intelligent-chat');
   };
 
-  // Handle browser back button
+  // Handle browser back button - ALWAYS go to mint-intelligent-chat
   useEffect(() => {
-    // Only run on client side
     if (typeof window === 'undefined') return;
     
-    const handlePopState = () => {
-      // If user hits back button, redirect to main chat page
+    const handlePopState = (e: PopStateEvent) => {
+      e.preventDefault();
+      console.log('[MintChatActivePage] Back button pressed, redirecting to welcome page');
       router.replace('/mint-intelligent-chat');
     };
 
@@ -54,26 +51,7 @@ const ChatContent: React.FC = () => {
     };
   }, [router]);
 
-  // Show loading state during SSR
-  if (!isClient) {
-    return (
-      <div className={styles.activeChatContainer}>
-        <div className={styles.chatWrapper}>
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '100vh',
-            fontSize: '1.125rem',
-            color: '#6b7280'
-          }}>
-            🤖 Loading Mint AI Assistant...
-          </div>
-        </div>
-      </div>
-    );
-  }
-
+  // Render immediately - no loading state needed
   return (
     <AppProviders>
       <div className={styles.activeChatContainer}>
@@ -111,15 +89,14 @@ const MintChatActivePage: React.FC = () => {
     <Suspense fallback={
       <div className={styles.activeChatContainer}>
         <div className={styles.chatWrapper}>
+          {/* Minimal loading indicator - no text to avoid flash */}
           <div style={{
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            height: '100vh',
-            fontSize: '1.125rem',
-            color: '#6b7280'
+            height: '100vh'
           }}>
-            🤖 Loading Mint AI Assistant...
+            {/* Empty - renders instantly */}
           </div>
         </div>
       </div>
