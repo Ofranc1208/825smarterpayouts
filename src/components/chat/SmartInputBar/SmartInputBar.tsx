@@ -58,13 +58,23 @@ export const SmartInputBar: React.FC<SmartInputBarProps> = ({
   // Custom hooks for separation of concerns
   const { isMobile, isKeyboardVisible } = useDeviceDetection();
   
-  // Debug: Log mobile detection
+  // Debug: Log mobile detection and file input configuration
   React.useEffect(() => {
     console.log('📱 [SmartInputBar] Device detection:', {
       isMobile,
       userAgent: navigator.userAgent,
       windowWidth: window.innerWidth
     });
+    
+    // Log file input attributes for debugging iOS camera issues
+    if (fileInputRef.current) {
+      console.log('📷 [SmartInputBar] File input attributes:', {
+        accept: fileInputRef.current.getAttribute('accept'),
+        capture: fileInputRef.current.getAttribute('capture'),
+        multiple: fileInputRef.current.hasAttribute('multiple'),
+        isMobile
+      });
+    }
   }, [isMobile]);
   
   // Handle file upload completion - send to chat and analyze PDFs
@@ -172,13 +182,16 @@ export const SmartInputBar: React.FC<SmartInputBarProps> = ({
 
   return (
     <>
-      {/* Hidden file input with camera support on mobile */}
+      {/* Hidden file input - optimized for mobile camera access */}
+      {/* On iOS, capture only works with accept="image/*" and without multiple */}
       <input
         ref={fileInputRef}
         type="file"
-        multiple
-        accept="image/*,.pdf,.doc,.docx,.txt"
-        {...(isMobile && { capture: 'environment' })}
+        accept={isMobile ? "image/*" : "image/*,.pdf,.doc,.docx,.txt"}
+        {...(isMobile && { 
+          capture: 'environment',
+        })}
+        {...(!isMobile && { multiple: true })}
         onChange={handleFileSelect}
         style={{ display: 'none' }}
         aria-label="File upload input"
