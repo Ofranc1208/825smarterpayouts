@@ -113,8 +113,8 @@ export const SmartInputBar: React.FC<SmartInputBarProps> = ({
         url: uploadResult.url,
         mime: mimeType,
         size: uploadResult.size,
-        // Store the actual file for analysis (PDFs only)
-        ...(file && mimeType === 'application/pdf' && { _file: file })
+        // Store the actual file for analysis (PDFs and images for preprocessing)
+        ...(file && (mimeType === 'application/pdf' || mimeType.startsWith('image/')) && { _file: file })
       },
       sender: 'user',
       createdAt: new Date().toISOString(),

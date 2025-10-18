@@ -184,9 +184,11 @@ export class FileMessageProcessor {
   private async processImageFile(message: FileMessage): Promise<void> {
     const { setVisibleMessages, setIsTyping, setIsLoading } = this.config;
 
-    // Import pre-screening utilities
+    // Import pre-screening and preprocessing utilities
     const { generateImageCacheKey, getCachedAnalysis, cacheAnalysis, quickSettlementCheck } = 
       await import('../../components/chat/SmartInputBar/utils/imagePreScreener');
+    const { preprocessImage, blobToBase64: preprocessBlobToBase64, getOptimalOptions } = 
+      await import('../../components/chat/SmartInputBar/utils/imagePreprocessor');
 
     // Quick check based on filename
     const quickCheck = quickSettlementCheck(message.content.name);
@@ -231,16 +233,38 @@ export class FileMessageProcessor {
 
         console.log('💰 [API] No cache found - will consume API credits');
 
-        // Convert blob URL to base64 for API consumption
+        // Preprocess image for better OCR/Vision API performance
         let imageBase64 = null;
         if (message.content.url.startsWith('blob:')) {
           try {
+            console.log('🔧 [ImagePreprocessor] Starting image optimization...');
             const response = await fetch(message.content.url);
-            const blob = await response.blob();
-            const base64 = await this.blobToBase64(blob);
-            imageBase64 = base64.split(',')[1]; // Remove data:image/jpeg;base64, prefix
+            const originalBlob = await response.blob();
+            
+            // Get the original File object if available (from message content)
+            const fileContent = (message.content as any)._file;
+            const fileToProcess = fileContent || new File([originalBlob], message.content.name, { type: originalBlob.type });
+            
+            // Preprocess: resize, compress, enhance contrast
+            const options = getOptimalOptions(fileToProcess);
+            const optimizedBlob = await preprocessImage(fileToProcess, options);
+            
+            // Convert optimized image to base64
+            const base64 = await preprocessBlobToBase64(optimizedBlob);
+            imageBase64 = base64; // Already without prefix from preprocessor
+            
+            console.log('✅ [ImagePreprocessor] Image optimization complete');
           } catch (error) {
-            console.warn('Failed to convert blob to base64:', error);
+            console.warn('⚠️ [ImagePreprocessor] Preprocessing failed, using original:', error);
+            // Fallback to original image if preprocessing fails
+            try {
+              const response = await fetch(message.content.url);
+              const blob = await response.blob();
+              const base64 = await this.blobToBase64(blob);
+              imageBase64 = base64.split(',')[1]; // Remove data:image/jpeg;base64, prefix
+            } catch (fallbackError) {
+              console.error('❌ Failed to process image:', fallbackError);
+            }
           }
         }
 
