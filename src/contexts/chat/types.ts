@@ -6,6 +6,7 @@
 
 import { ReactNode } from 'react';
 import { Message, TextMessage, FileMessage } from '../../hooks/useConversationalForm';
+import type { SpecialistProfile } from '../../../services/chat';
 
 export interface ChatContextType {
   // Core message state
@@ -23,6 +24,12 @@ export interface ChatContextType {
 
   // Utility functions
   logUserChoiceAsMessage: (text: string) => void;
+
+  // Live chat specific (optional for backward compatibility)
+  liveChatMode?: boolean;
+  specialist?: SpecialistProfile | null;
+  liveChatStatus?: 'disconnected' | 'connecting' | 'connected' | 'error';
+  endLiveChat?: () => Promise<void>;
 }
 
 export interface ChatProviderProps {
@@ -31,6 +38,7 @@ export interface ChatProviderProps {
   setVisibleMessages: React.Dispatch<React.SetStateAction<Message[]>>;
   logUserChoiceAsMessage: (text: string) => void;
   sessionId: string;
+  mode?: 'calculate' | 'specialist'; // Chat mode: regular or specialist
 }
 
 export interface MessageProcessorConfig {

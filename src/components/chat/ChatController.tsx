@@ -10,8 +10,11 @@ interface ChatControllerProps {
 }
 
 const ChatController: React.FC<ChatControllerProps> = ({ onClose, closeIcon, activeScreen }) => {
+  // Determine mode based on activeScreen
+  const mode = activeScreen === 'specialist' ? 'specialist' : 'calculate';
+  
   return (
-    <AppProviders>
+    <AppProviders mode={mode}>
       <ChatInterface onClose={onClose} closeIcon={closeIcon} activeScreen={activeScreen} />
     </AppProviders>
   );

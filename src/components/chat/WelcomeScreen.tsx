@@ -24,6 +24,8 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartChat }) => {
   const handleStartChat = (choice: ChatChoice) => {
     console.log('[WelcomeScreen] === BUTTON CLICKED ===');
     console.log('[WelcomeScreen] Choice:', choice);
+    console.log('[WelcomeScreen] Choice type:', typeof choice);
+    console.log('[WelcomeScreen] Is specialist?', choice === 'specialist');
     console.log('[WelcomeScreen] Navigating to dedicated chat page...');
     
     try {
@@ -33,9 +35,18 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartChat }) => {
         return;
       }
       
-      // Navigate to dedicated chat page with chat type parameter
-      window.location.href = `/mint-chat-active?type=${choice}`;
-      console.log('[WelcomeScreen] ✅ Navigation initiated successfully');
+      // Route to specialist page for specialist choice, otherwise use main chat
+      if (choice === 'specialist') {
+        const specialistUrl = `/connect-with-specialist?type=${choice}`;
+        console.log('[WelcomeScreen] 🎯 SPECIALIST ROUTE - Navigating to:', specialistUrl);
+        window.location.href = specialistUrl;
+        console.log('[WelcomeScreen] ✅ Navigation to specialist page initiated');
+      } else {
+        const chatUrl = `/mint-chat-active?type=${choice}`;
+        console.log('[WelcomeScreen] 💬 REGULAR CHAT ROUTE - Navigating to:', chatUrl);
+        window.location.href = chatUrl;
+        console.log('[WelcomeScreen] ✅ Navigation to chat page initiated');
+      }
     } catch (error) {
       console.error('[WelcomeScreen] ❌ ERROR navigating to chat page:', error);
       console.error('[WelcomeScreen] Error stack:', error instanceof Error ? error.stack : 'No stack');

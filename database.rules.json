@@ -1,0 +1,29 @@
+{
+  "rules": {
+    "chat-sessions": {
+      "$sessionId": {
+        ".read": "auth != null && (auth.uid == data.child('userId').val() || data.child('specialistId').val() == auth.uid)",
+        ".write": "auth != null && (auth.uid == data.child('userId').val() || data.child('specialistId').val() == auth.uid || auth.token.admin == true)",
+        "messages": {
+          ".read": "auth != null",
+          ".write": "auth != null && (auth.uid == data.child('senderId').val() || auth.token.admin == true)",
+          ".indexOn": ["timestamp", "sessionId"]
+        },
+        "metadata": {
+          ".read": "auth != null",
+          ".write": "auth != null && auth.token.admin == true"
+        }
+      }
+    },
+    "specialists": {
+      "$specialistId": {
+        ".read": "auth != null && (auth.uid == $specialistId || auth.token.admin == true)",
+        ".write": "auth != null && (auth.uid == $specialistId || auth.token.admin == true)"
+      }
+    },
+    "chat-queue": {
+      ".read": "auth != null && auth.token.admin == true",
+      ".write": "auth != null && auth.token.admin == true"
+    }
+  }
+}

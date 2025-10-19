@@ -25,7 +25,7 @@ export default function HomeHeroSection() {
     <section style={{
       position: 'relative',
       width: '100%',
-      minHeight: '100vh',
+      minHeight: '80vh',
       backgroundColor: '#000',
       display: 'flex',
       justifyContent: 'center',

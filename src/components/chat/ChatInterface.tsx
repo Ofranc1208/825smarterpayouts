@@ -5,9 +5,7 @@ import styles from './ChatInterface.module.css';
 import type { ChatChoice } from './types';
 import { SmartInputBar } from './SmartInputBar';
 import ChatMessages from './ChatMessages';
-// Removed: import { useCalculator } from '../../contexts/CalculatorContext';
-// Removed: import Step1SelectType from '../calculator/steps/Step1SelectType';
-// Removed: import { InputBarController } from '../InputBar';
+import { useChat } from '../../contexts/ChatContext';
 
 interface ChatInterfaceProps {
   onClose?: () => void;
@@ -21,6 +19,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
   activeScreen
 }) => {
   const searchParams = useSearchParams();
+  const { liveChatMode, specialist, liveChatStatus, endLiveChat } = useChat();
 
   // Reset Chat Handler - clears session and redirects to fresh chat
   const handleResetChat = () => {
@@ -46,8 +45,28 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
   return (
     <div className={styles.chatContainer}>
       <header className={styles.chatHeader}>
-        <span className={styles.headerTitle}>Mint</span>
+        <div className={styles.headerLeft}>
+          <span className={styles.headerTitle}>
+            {liveChatMode && specialist ? specialist.name : 'Mint'}
+          </span>
+          {liveChatMode && (
+            <span className={styles.liveChatBadge}>
+              {liveChatStatus === 'connected' ? '🟢 Live' : '🟡 Connecting...'}
+            </span>
+          )}
+        </div>
         <div className={styles.headerButtons}>
+          {liveChatMode && endLiveChat && (
+            <button
+              className={styles.endChatButton}
+              onClick={endLiveChat}
+              aria-label="End live chat"
+              title="End live chat"
+              type="button"
+            >
+              End Chat
+            </button>
+          )}
           <button
             className={styles.resetButton}
             onClick={handleResetChat}

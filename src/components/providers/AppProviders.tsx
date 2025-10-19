@@ -22,7 +22,7 @@ const generateSessionId = () => {
 
 // This component's purpose is to organize all context providers
 // for our self-contained system with session persistence.
-function AppProvidersContent({ children }: { children: ReactNode }) {
+function AppProvidersContent({ children, mode }: { children: ReactNode; mode?: 'calculate' | 'specialist' }) {
   const searchParams = useSearchParams();
   const [sessionId, setSessionId] = useState<string>('');
   const isInitialized = useRef(false);
@@ -132,6 +132,7 @@ function AppProvidersContent({ children }: { children: ReactNode }) {
         setVisibleMessages={setVisibleMessages} 
         logUserChoiceAsMessage={logUserChoiceAsMessage}
         sessionId={sessionId}
+        mode={mode}
       >
         {children}
       </ChatProvider>
@@ -139,7 +140,7 @@ function AppProvidersContent({ children }: { children: ReactNode }) {
   );
 }
 
-export function AppProviders({ children }: { children: ReactNode }) {
+export function AppProviders({ children, mode }: { children: ReactNode; mode?: 'calculate' | 'specialist' }) {
   return (
     <Suspense fallback={
       <div style={{
@@ -153,7 +154,7 @@ export function AppProviders({ children }: { children: ReactNode }) {
         Loading...
       </div>
     }>
-      <AppProvidersContent>{children}</AppProvidersContent>
+      <AppProvidersContent mode={mode}>{children}</AppProvidersContent>
     </Suspense>
   );
 } 

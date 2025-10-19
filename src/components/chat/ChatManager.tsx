@@ -50,7 +50,14 @@ const ChatManager: React.FC = () => {
   // Check for chat=open query parameter and redirect to dedicated page
   useEffect(() => {
     const chatParam = searchParams.get('chat');
+    const typeParam = searchParams.get('type') as ChatChoice;
     const shouldAutoOpen = chatParam === 'open';
+    
+    // Set active screen based on URL parameter
+    if (typeParam) {
+      console.log('[ChatManager] Type parameter detected:', typeParam);
+      setActiveScreen(typeParam);
+    }
     
     if (shouldAutoOpen) {
       console.log('[ChatManager] Chat auto-open detected, redirecting to dedicated page');
@@ -77,19 +84,29 @@ const ChatManager: React.FC = () => {
     }
   }, [isChatOpen]);
 
-  const handleStartChat = (choice: ChatChoice) => {
+  const handleStartChat = (choice: ChatChoice | 'live_chat' | 'sms' | 'phone_call' | 'appointment') => {
     console.log('[ChatManager DEPLOYMENT DEBUG] === HANDLE START CHAT ===');
     console.log('[ChatManager] Choice selected:', choice);
     console.log('[ChatManager] Previous isChatOpen:', isChatOpen);
     console.log('[ChatManager] Previous activeScreen:', activeScreen);
-    
+
     try {
-      setActiveScreen(choice);
+      // For specialist contact methods, map them to appropriate ChatChoice
+      let mappedChoice: ChatChoice;
+      if (choice === 'live_chat' || choice === 'sms' || choice === 'phone_call' || choice === 'appointment') {
+        // For now, treat all specialist methods as 'specialist' choice
+        // In Phase 2, we'll differentiate these
+        mappedChoice = 'specialist';
+      } else {
+        mappedChoice = choice;
+      }
+
+      setActiveScreen(mappedChoice);
       setIsChatOpen(true);
-      
+
       console.log('[ChatManager] ✅ State updated successfully');
       console.log('[ChatManager] New isChatOpen: true');
-      console.log('[ChatManager] New activeScreen:', choice);
+      console.log('[ChatManager] New activeScreen:', mappedChoice);
     } catch (error) {
       console.error('[ChatManager] ❌ CRITICAL ERROR setting chat state:', error);
       console.error('[ChatManager] Error details:', error instanceof Error ? error.message : 'Unknown error');
