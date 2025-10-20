@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Message } from './useConversationalForm';
-import SpecialistMenu from '../components/chat/SpecialistChat/SpecialistMenu';
+import { SpecialistMenu } from '../components/chat/SpecialistChat';
 
 interface UseSpecialistWelcomeScriptProps {
   onChoice: (choice: 'live_chat' | 'sms' | 'phone_call' | 'appointment') => void;

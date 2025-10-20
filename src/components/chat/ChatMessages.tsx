@@ -1,16 +1,17 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { useChat } from '../../contexts/ChatContext';
 import { Message } from '../../hooks/useConversationalForm';
 import ChatBubble from './ChatBubble';
 import ChatbotTyping from '../../components/chatbot/ChatbotTyping';
 import DocumentPreview from './DocumentPreview';
+import { LiveChatQueue } from './SpecialistChat/LiveChatQueue';
 import styles from './ChatBubble.module.css';
 // import { parseAIResponse } from '../../utils/parsing'; // No longer needed for text messages
 
 const ChatMessages = () => {
-  const { visibleMessages, isTyping } = useChat();
+  const { visibleMessages, isTyping, initializeLiveChat, setVisibleMessages } = useChat();
   const containerRef = useRef<HTMLDivElement>(null);
   const autoScrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   
@@ -102,9 +103,30 @@ const ChatMessages = () => {
     }
   };
 
+  // Handle queue specialist assignment
+  const handleSpecialistAssigned = useCallback(async (specialistName: string) => {
+    console.log('[ChatMessages] Specialist assigned from queue:', specialistName);
+    
+    // Initialize live chat connection
+    if (initializeLiveChat) {
+      await initializeLiveChat();
+    }
+  }, [initializeLiveChat]);
+
   // Master renderer for all message types
   const renderMessage = (msg: Message) => {
     switch (msg.type) {
+      case 'queue':
+        // Render the premium queue experience
+        return (
+          <div key={msg.id} style={{ marginBottom: '1rem' }}>
+                 <LiveChatQueue
+                   onAssigned={handleSpecialistAssigned}
+                   initialQueuePosition={4}
+                   initialWaitTime={210}
+                 />
+          </div>
+        );
       case 'text':
         return (
           <ChatBubble key={msg.id} sender={msg.sender}>

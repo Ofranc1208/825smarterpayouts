@@ -89,14 +89,40 @@ const MintChatActivePage: React.FC = () => {
     <Suspense fallback={
       <div className={styles.activeChatContainer}>
         <div className={styles.chatWrapper}>
-          {/* Minimal loading indicator - no text to avoid flash */}
+          {/* Professional loading screen matching SmarterPayouts design */}
           <div style={{
             display: 'flex',
+            flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            height: '100vh'
+            height: '100vh',
+            background: 'linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%)',
+            gap: '1.5rem'
           }}>
-            {/* Empty - renders instantly */}
+            {/* Animated spinner */}
+            <div style={{
+              width: '48px',
+              height: '48px',
+              border: '4px solid #e5e7eb',
+              borderTop: '4px solid #22c55e',
+              borderRadius: '50%',
+              animation: 'spin 1s linear infinite'
+            }} />
+            <div style={{
+              fontSize: '1.125rem',
+              fontWeight: '500',
+              color: '#374151',
+              textAlign: 'center'
+            }}>
+              Connecting you with a specialist...
+            </div>
+            {/* Add keyframe animation */}
+            <style>{`
+              @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+              }
+            `}</style>
           </div>
         </div>
       </div>

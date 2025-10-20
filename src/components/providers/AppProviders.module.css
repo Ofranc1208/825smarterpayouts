@@ -1,0 +1,27 @@
+/**
+ * AppProviders.module.css - Styles for the AppProviders component
+ * 
+ * Extracted from inline styles for better performance and maintainability.
+ * Uses CSS modules for scoped styling.
+ */
+
+.suspenseFallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .suspenseFallback {
+    min-height: 150px;
+    font-size: 0.8rem;
+    padding: 1rem;
+  }
+}
+
+/* Note: Global motion preferences are handled in the global CSS file */
+/* CSS modules don't support global selectors like * */

@@ -35,9 +35,9 @@ export default function ConditionalNavbar() {
     }
   }, [pathname]);
 
-  // Don't show navbar on homepage (/) or active chat page - these are standalone experiences
+  // Don't show navbar on homepage (/) or chat pages - these are standalone experiences
   // Check this FIRST, before any rendering
-  if (pathname === '/' || pathname === '/mint-chat-active') return null;
+  if (pathname === '/' || pathname === '/mint-chat-active' || pathname.startsWith('/connect-with-specialist')) return null;
   
   // Show nothing during SSR/hydration - let src/Navigation handle everything
   if (!isClient) {

@@ -1,29 +1,32 @@
 {
   "rules": {
     "chat-sessions": {
+      ".indexOn": ["status", "specialistId"],
       "$sessionId": {
-        ".read": "auth != null && (auth.uid == data.child('userId').val() || data.child('specialistId').val() == auth.uid)",
-        ".write": "auth != null && (auth.uid == data.child('userId').val() || data.child('specialistId').val() == auth.uid || auth.token.admin == true)",
+        ".read": true,
+        ".write": true,
         "messages": {
-          ".read": "auth != null",
-          ".write": "auth != null && (auth.uid == data.child('senderId').val() || auth.token.admin == true)",
-          ".indexOn": ["timestamp", "sessionId"]
+          ".read": true,
+          ".write": true,
+          ".indexOn": "timestamp"
         },
         "metadata": {
-          ".read": "auth != null",
-          ".write": "auth != null && auth.token.admin == true"
+          ".read": true,
+          ".write": true
         }
       }
     },
     "specialists": {
+      ".read": true,
+      ".write": true,
       "$specialistId": {
-        ".read": "auth != null && (auth.uid == $specialistId || auth.token.admin == true)",
-        ".write": "auth != null && (auth.uid == $specialistId || auth.token.admin == true)"
+        ".read": true,
+        ".write": true
       }
     },
     "chat-queue": {
-      ".read": "auth != null && auth.token.admin == true",
-      ".write": "auth != null && auth.token.admin == true"
+      ".read": true,
+      ".write": true
     }
   }
 }

@@ -30,6 +30,7 @@ export interface ChatContextType {
   specialist?: SpecialistProfile | null;
   liveChatStatus?: 'disconnected' | 'connecting' | 'connected' | 'error';
   endLiveChat?: () => Promise<void>;
+  initializeLiveChat?: () => Promise<void>;
 }
 
 export interface ChatProviderProps {

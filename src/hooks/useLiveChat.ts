@@ -31,6 +31,7 @@ interface UseLiveChatOptions {
   onMessage?: (message: LiveChatMessage) => void;
   onSpecialistAssigned?: (specialist: SpecialistProfile) => void;
   onSessionEnd?: () => void;
+  customerId?: string;
 }
 
 interface UseLiveChatReturn {
@@ -57,7 +58,8 @@ export const useLiveChat = (options: UseLiveChatOptions): UseLiveChatReturn => {
     userInfo,
     onMessage,
     onSpecialistAssigned,
-    onSessionEnd
+    onSessionEnd,
+    customerId
   } = options;
 
   // State
@@ -75,6 +77,10 @@ export const useLiveChat = (options: UseLiveChatOptions): UseLiveChatReturn => {
   // Cleanup refs
   const messageUnsubscribe = useRef<(() => void) | null>(null);
   const sessionUnsubscribe = useRef<(() => void) | null>(null);
+  // Track the actual live chat session id created on initialization
+  const liveSessionIdRef = useRef<string | null>(null);
+  // Track which specialist we've already notified about to prevent duplicates
+  const notifiedSpecialistId = useRef<string | null>(null);
 
   /**
    * Initialize live chat session
@@ -84,6 +90,7 @@ export const useLiveChat = (options: UseLiveChatOptions): UseLiveChatReturn => {
       setIsConnecting(true);
       setConnectionStatus('connecting');
       setError(null);
+      notifiedSpecialistId.current = null; // Reset notification tracking
 
       console.log('[useLiveChat] 🚀 Initializing live chat...', { sessionId, userId });
 
@@ -104,29 +111,29 @@ export const useLiveChat = (options: UseLiveChatOptions): UseLiveChatReturn => {
         {
           botTranscript: [], // Will be populated from existing chat context
           priority: 'medium'
-        }
+        },
+        customerId ?? userId // Pass customerId, fallback to userId
       );
 
       console.log('[useLiveChat] ✅ Live chat session created:', createdSessionId);
+      // Persist created session id for subsequent actions
+      liveSessionIdRef.current = createdSessionId;
 
       // Set up real-time message listener
       messageUnsubscribe.current = liveChatService.current.onMessage(
         createdSessionId,
-        (messages) => {
-          console.log('[useLiveChat] 📨 New messages received:', messages);
+        (message) => {
+          console.log('[useLiveChat] 📨 New message received:', message);
           
-          // Process each message
-          messages.forEach(message => {
-            // Handle typing indicators
-            if (message.senderType === 'specialist') {
-              setIsSpecialistTyping(false);
-            }
-            
-            // Call the onMessage callback
-            if (onMessage) {
-              onMessage(message);
-            }
-          });
+          // Handle typing indicators
+          if (message.senderType === 'specialist') {
+            setIsSpecialistTyping(false);
+          }
+          
+          // Call the onMessage callback
+          if (onMessage) {
+            onMessage(message);
+          }
         }
       );
 
@@ -136,14 +143,15 @@ export const useLiveChat = (options: UseLiveChatOptions): UseLiveChatReturn => {
         async (updatedSession) => {
           console.log('[useLiveChat] 🔄 Session updated:', updatedSession);
 
-          // Check if specialist was assigned
-          if (updatedSession.specialistId && !specialist) {
+          // Check if specialist was assigned (prevent duplicate notifications)
+          if (updatedSession.specialistId && updatedSession.specialistId !== notifiedSpecialistId.current) {
             const assignedSpecialist = await specialistService.current!.getSpecialist(
               updatedSession.specialistId
             );
             
             if (assignedSpecialist) {
               setSpecialist(assignedSpecialist);
+              notifiedSpecialistId.current = updatedSession.specialistId;
               console.log('[useLiveChat] 👤 Specialist assigned:', assignedSpecialist);
               
               if (onSpecialistAssigned) {
@@ -190,7 +198,7 @@ export const useLiveChat = (options: UseLiveChatOptions): UseLiveChatReturn => {
       setConnectionStatus('error');
       setIsConnecting(false);
     }
-  }, [sessionId, userId, userInfo, onMessage, onSpecialistAssigned, onSessionEnd, specialist]);
+  }, [sessionId, userId, userInfo, onMessage, onSpecialistAssigned, onSessionEnd, specialist, customerId]);
 
   /**
    * Send a message to the specialist
@@ -204,7 +212,8 @@ export const useLiveChat = (options: UseLiveChatOptions): UseLiveChatReturn => {
     try {
       console.log('[useLiveChat] 📤 Sending message:', content);
       
-      await liveChatService.current.sendMessage(sessionId, content, userId, 'user');
+      const sid = liveSessionIdRef.current ?? sessionId;
+      await liveChatService.current.sendMessage(sid, content, userId, 'user');
 
       console.log('[useLiveChat] ✅ Message sent successfully');
     } catch (err) {
@@ -224,11 +233,13 @@ export const useLiveChat = (options: UseLiveChatOptions): UseLiveChatReturn => {
     try {
       console.log('[useLiveChat] 🛑 Ending live chat session...');
       
-      await liveChatService.current.endLiveChatSession(sessionId, 'user_ended');
+      const sid = liveSessionIdRef.current ?? sessionId;
+      await liveChatService.current.endLiveChatSession(sid, 'user_ended');
       
       setIsLiveChatActive(false);
       setSpecialist(null);
       setConnectionStatus('disconnected');
+      notifiedSpecialistId.current = null;
       
       console.log('[useLiveChat] ✅ Live chat ended successfully');
       
@@ -255,6 +266,8 @@ export const useLiveChat = (options: UseLiveChatOptions): UseLiveChatReturn => {
       if (sessionUnsubscribe.current) {
         sessionUnsubscribe.current();
       }
+      // Reset created session id reference
+      liveSessionIdRef.current = null;
     };
   }, []);
 

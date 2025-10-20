@@ -37,7 +37,13 @@ export interface ComponentMessage extends BaseMessage {
   componentData?: Record<string, any>; // New: Serializable component data
 }
 
-export type Message = TextMessage | FileMessage | ComponentMessage;
+export interface QueueMessage extends BaseMessage {
+  type: 'queue';
+  text?: string; // Optional, not used for queue rendering
+  sender: 'bot';
+}
+
+export type Message = TextMessage | FileMessage | ComponentMessage | QueueMessage;
 
 // Export individual types for use in other components
 export type { FileMessage, TextMessage, ComponentMessage };

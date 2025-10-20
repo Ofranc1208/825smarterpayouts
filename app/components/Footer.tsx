@@ -7,8 +7,8 @@ import Link from 'next/link';
 export default function Footer() {
   const pathname = usePathname();
   
-  // Don't show footer on dedicated chat page
-  if (pathname === '/mint-chat-active') {
+  // Don't show footer on dedicated chat pages and specialist dashboard
+  if (pathname === '/mint-chat-active' || pathname.startsWith('/connect-with-specialist') || pathname.startsWith('/specialist/dashboard')) {
     return null;
   }
   return (

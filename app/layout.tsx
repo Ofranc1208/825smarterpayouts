@@ -92,8 +92,8 @@ export default function RootLayout({
           }
 
           /* Reserve navbar space BEFORE it loads to prevent layout shift */
-          /* Exclude chat page from navbar padding */
-          body:not([data-page="/"]):not([data-page="/mint-chat-active"]) {
+          /* Exclude chat pages from navbar padding */
+          body:not([data-page="/"]):not([data-page="/mint-chat-active"]):not([data-page^="/connect-with-specialist"]) {
             padding-top: var(--navbar-height);
           }
 
