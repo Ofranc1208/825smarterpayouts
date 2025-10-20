@@ -7,6 +7,7 @@ import ChatBubble from './ChatBubble';
 import ChatbotTyping from '../../components/chatbot/ChatbotTyping';
 import DocumentPreview from './DocumentPreview';
 import { LiveChatQueue } from './SpecialistChat/LiveChatQueue';
+import GuaranteedCalculationLink from '../calculator/guaranteedstep/shared/GuaranteedCalculationLink';
 import styles from './ChatBubble.module.css';
 // import { parseAIResponse } from '../../utils/parsing'; // No longer needed for text messages
 
@@ -63,38 +64,11 @@ const ChatMessages = () => {
         );
       case 'GuaranteedCalculationLink':
         return (
-          <div
-            style={{
-              ...componentData.style,
-              background: '#09b44d',
-              color: 'white',
-              padding: '12px 20px',
-              borderRadius: '8px',
-              cursor: 'pointer',
-              textAlign: 'center',
-              fontWeight: '600',
-              margin: '8px 0',
-              boxShadow: '0 2px 8px rgba(9, 180, 77, 0.3)',
-              transition: 'all 0.2s ease'
-            }}
-            onClick={() => {
-              const url = componentData.sessionId 
-                ? `${componentData.href}?sessionId=${componentData.sessionId}`
-                : componentData.href;
-              console.log('[GuaranteedCalculationLink] 🔍 Navigating with sessionId:', componentData.sessionId, 'URL:', url);
-              window.location.href = url;
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-1px)';
-              e.currentTarget.style.boxShadow = '0 4px 12px rgba(9, 180, 77, 0.4)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 2px 8px rgba(9, 180, 77, 0.3)';
-            }}
-          >
-            {componentData.text}
-          </div>
+          <GuaranteedCalculationLink
+            text={componentData.text}
+            href={componentData.href}
+            sessionId={componentData.sessionId}
+          />
         );
       // Add more component types here as needed
       default:

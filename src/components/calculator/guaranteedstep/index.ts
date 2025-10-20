@@ -16,6 +16,9 @@ export { default as GuaranteedLumpSumAmountOverview } from './GuaranteedLumpSumA
 export { default as GuaranteedReview } from './GuaranteedReview';
 export { default as GuaranteedOffer } from './GuaranteedOffer';
 
+// Shared Components
+export { default as GuaranteedCalculationLink } from './shared/GuaranteedCalculationLink';
+
 // Hooks
 export { useGuaranteedStorage } from './hooks/useGuaranteedStorage';
 
