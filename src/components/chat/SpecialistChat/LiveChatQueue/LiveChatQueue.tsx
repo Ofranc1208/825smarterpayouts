@@ -11,23 +11,27 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { realtimeManager } from '../../../../../services/chat';
 import styles from './LiveChatQueue.module.css';
 
 interface LiveChatQueueProps {
   onAssigned: (specialistName: string) => void;
   initialQueuePosition?: number;
   initialWaitTime?: number; // in seconds
+  sessionId?: string; // Session ID to monitor for real-time status changes
 }
 
 export const LiveChatQueue: React.FC<LiveChatQueueProps> = ({
   onAssigned,
   initialQueuePosition = 4,
-  initialWaitTime = 210, // 3.5 minutes default
+  initialWaitTime = 420, // 7 minutes default - proper notification window for sales reps
+  sessionId,
 }) => {
   console.log('[LiveChatQueue] 🚀 Component mounted with props:', { 
     onAssigned: typeof onAssigned, 
     initialQueuePosition, 
-    initialWaitTime 
+    initialWaitTime,
+    sessionId: sessionId || 'MISSING - THIS IS THE PROBLEM!'
   });
   
   const [queuePosition, setQueuePosition] = useState(initialQueuePosition);
@@ -52,41 +56,83 @@ export const LiveChatQueue: React.FC<LiveChatQueueProps> = ({
     return () => clearInterval(interval);
   }, [stage, waitTime]);
 
-  // Simulate queue progression
+  // Monitor real-time session status changes
+  useEffect(() => {
+    if (!sessionId) {
+      console.log('[LiveChatQueue] ⚠️ No sessionId provided, skipping real-time monitoring');
+      return;
+    }
+
+    console.log('[LiveChatQueue] 👀 Setting up real-time monitoring for session:', sessionId);
+
+    // Set up real-time listener for session status changes
+    const unsubscribe = realtimeManager.onSessionsUpdate((sessions) => {
+      const session = sessions[sessionId];
+      
+      if (!session) {
+        console.log('[LiveChatQueue] ⚠️ Session not found:', sessionId);
+        return;
+      }
+
+      console.log('[LiveChatQueue] 📊 Session status:', session.status, 'Specialist:', session.specialistId, 'Current stage:', stage);
+
+      // If session ended or closed, do nothing further (support extra backend statuses defensively)
+      const statusStr = String((session as any).status);
+      if (statusStr === 'completed' || statusStr === 'closed' || statusStr === 'cancelled') {
+        console.log('[LiveChatQueue] ⏹ Session ended/closed; keeping queue UI static.');
+        return;
+      }
+
+      // When specialist accepts the chat (status becomes 'active')
+      // Only transition if we're still in queue stage (prevent duplicate transitions)
+      if (session.status === 'active' && session.specialistId && stage === 'queue') {
+        console.log('[LiveChatQueue] ✅ Specialist accepted! Moving to connecting stage...');
+        setStage('connecting');
+      } else if (session.status === 'active' && session.specialistId && stage !== 'queue') {
+        console.log('[LiveChatQueue] ⏭️ Already past queue stage, ignoring status update');
+      }
+    });
+
+    return () => {
+      console.log('[LiveChatQueue] 🧹 Cleaning up real-time listener...');
+      unsubscribe();
+    };
+  }, [sessionId]);
+
+  // Visual queue progression (UI only - not tied to actual connection)
   useEffect(() => {
     if (stage !== 'queue') return;
 
-    console.log('[LiveChatQueue] 🎬 Starting queue progression...');
+    console.log('[LiveChatQueue] 🎬 Starting visual queue progression...');
 
+    // Progress bar updates based on 7-minute wait time
     const progressInterval = setInterval(() => {
       setProgress(prev => {
-        const newProgress = prev + (100 / 210); // Use fixed value to avoid dependency issues
+        const newProgress = prev + (100 / 420); // 7 minutes = 420 seconds
         return Math.min(newProgress, 95); // Cap at 95% until actually assigned
       });
     }, 1000);
 
-    // Reduce queue position periodically - use faster timing for demo
+    // Visual queue position updates (slower for 7-minute wait)
+    // Reduce position every ~105 seconds (420/4 = 105)
     const queueInterval = setInterval(() => {
       setQueuePosition(prev => {
-        console.log('[LiveChatQueue] 📊 Queue position:', prev);
+        console.log('[LiveChatQueue] 📊 Visual queue position:', prev);
         if (prev <= 1) {
-          console.log('[LiveChatQueue] 🎯 Queue position reached 1, moving to connecting stage...');
-          clearInterval(queueInterval);
-          setStage('connecting');
-          return 0;
+          return 1; // Stay at position 1 until specialist accepts
         }
         return prev - 1;
       });
-    }, 2000); // 2 seconds per position for demo (8 seconds total)
+    }, 105000); // ~1.75 minutes per position
 
     return () => {
-      console.log('[LiveChatQueue] 🧹 Cleaning up queue progression...');
+      console.log('[LiveChatQueue] 🧹 Cleaning up visual progression...');
       clearInterval(progressInterval);
       clearInterval(queueInterval);
     };
-  }, [stage]); // Only depend on stage to avoid re-render loops
+  }, [stage]);
 
-  // Handle connecting stage
+  // Handle connecting stage (triggered when specialist accepts)
   useEffect(() => {
     if (stage !== 'connecting') return;
 
@@ -94,21 +140,14 @@ export const LiveChatQueue: React.FC<LiveChatQueueProps> = ({
     setProgress(95);
     
     const timer = setTimeout(() => {
-      console.log('[LiveChatQueue] ✅ Assignment complete, calling onAssigned...');
+      console.log('[LiveChatQueue] ✅ Connection established, calling onAssigned...');
       setProgress(100);
       setStage('assigned');
       
-      // Simulate specialist assignment
-      const specialists = [
-        'Sarah Johnson',
-        'Michael Chen',
-        'Emily Rodriguez'
-      ];
-      const randomSpecialist = specialists[Math.floor(Math.random() * specialists.length)];
-      
+      // Get specialist name from session (will be available from real-time update)
       setTimeout(() => {
-        console.log('[LiveChatQueue] 📞 Calling onAssigned with specialist:', randomSpecialist);
-        onAssigned(randomSpecialist);
+        console.log('[LiveChatQueue] 📞 Calling onAssigned callback...');
+        onAssigned('Specialist'); // The actual specialist name will be in the session
       }, 800);
     }, 2000);
 

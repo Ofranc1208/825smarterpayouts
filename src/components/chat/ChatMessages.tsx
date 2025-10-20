@@ -81,11 +81,10 @@ const ChatMessages = () => {
   const handleSpecialistAssigned = useCallback(async (specialistName: string) => {
     console.log('[ChatMessages] Specialist assigned from queue:', specialistName);
     
-    // Initialize live chat connection
-    if (initializeLiveChat) {
-      await initializeLiveChat();
-    }
-  }, [initializeLiveChat]);
+    // Session is already initialized in ChatContext - no need to call again
+    // The real-time listener in useLiveChat will handle the specialist assignment
+    console.log('[ChatMessages] ✅ Specialist connection established via real-time listener');
+  }, []);
 
   // Master renderer for all message types
   const renderMessage = (msg: Message) => {
@@ -93,11 +92,12 @@ const ChatMessages = () => {
       case 'queue':
         // Render the premium queue experience
         return (
-          <div key={msg.id} style={{ marginBottom: '1rem' }}>
+          <div key={msg.id} style={{ marginBottom: '0.5rem' }}> {/* 50% smaller from 1rem */}
                  <LiveChatQueue
                    onAssigned={handleSpecialistAssigned}
                    initialQueuePosition={4}
-                   initialWaitTime={210}
+                   initialWaitTime={420}
+                   sessionId={msg.sessionId}
                  />
           </div>
         );

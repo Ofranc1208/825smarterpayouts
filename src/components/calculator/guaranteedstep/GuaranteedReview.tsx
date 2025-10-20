@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import styles from './GuaranteedReview.module.css';
 
@@ -36,10 +38,18 @@ const GuaranteedReview: React.FC<GuaranteedReviewProps> = ({
 }) => {
   return (
     <div className={styles.container}>
+      {/* Review Header - Match LCP exactly */}
+      <div className={styles.header}>
+        <h1 className={styles.mainTitle}>Review & Calculate</h1>
+        <p className={styles.subtitle}>
+          Review your information before calculating your offer
+        </p>
+      </div>
+
       <div className={styles.card}>
-        <h2 className={styles.title}>Review & Calculate</h2>
-        {onEdit && (
-          <div className={styles.editButtonSection}>
+        {/* Action Buttons - Edit Form (secondary) and Calculate (primary) */}
+        <div className={styles.buttonGroup}>
+          {onEdit && (
             <button
               className={styles.editButton}
               onClick={() => onEdit(1)}
@@ -47,68 +57,109 @@ const GuaranteedReview: React.FC<GuaranteedReviewProps> = ({
             >
               ✏️ Edit Form
             </button>
-          </div>
-        )}
-        <div className={styles.summarySection}>
-          <div className={styles.row}>
-            <span className={styles.label}>Payment Mode:</span>
-            <span className={styles.value}>{paymentMode}</span>
-          </div>
-          {paymentMode === 'Lump Sum' && payments ? (
-            <>
-              <div className={styles.row}>
-                <span className={styles.label}>Number of Payments:</span>
-                <span className={styles.value}>{payments.length}</span>
-              </div>
-              <div className={styles.row}>
-                <span className={styles.label}>Total Amount:</span>
-                <span className={styles.value}>
-                  ${payments.reduce((sum, payment) => sum + Number(payment.amount), 0).toLocaleString()}
-                </span>
-              </div>
-              {payments.map((payment, index) => (
-                <div key={index} className={styles.paymentRow}>
-                  <div className={styles.row}>
-                    <span className={styles.label}>Payment {index + 1}:</span>
-                    <span className={styles.value}>${Number(payment.amount).toLocaleString()}</span>
-                  </div>
-                  <div className={styles.row}>
-                    <span className={styles.label}>Date:</span>
-                    <span className={styles.value}>{formatDate(payment.lumpSumDate)}</span>
-                  </div>
-                </div>
-              ))}
-            </>
-          ) : (
-            <>
-              <div className={styles.row}>
-                <span className={styles.label}>Payment Amount:</span>
-                <span className={styles.value}>${Number(paymentAmount).toLocaleString()}</span>
-              </div>
-              <div className={styles.row}>
-                <span className={styles.label}>Start Date:</span>
-                <span className={styles.value}>{formatDate(startDate)}</span>
-              </div>
-              <div className={styles.row}>
-                <span className={styles.label}>End Date:</span>
-                <span className={styles.value}>{formatDate(endDate)}</span>
-              </div>
-            </>
           )}
-          <div className={styles.row}>
-            <span className={styles.label}>Annual Increase:</span>
-            <span className={styles.value}>{annualIncrease}%</span>
-          </div>
-        </div>
-        <div className={styles.calculateButtonSection}>
+          
           <button
             className={styles.calculateButton}
             onClick={onCalculate}
             type="button"
           >
-            Start Calculation
+            Calculate
           </button>
         </div>
+
+        {/* Scrollable Review Sections Container */}
+        <div className={styles.scrollContainer}>
+          {/* Payment Section */}
+          <div className={styles.section}>
+            <div className={styles.sectionHeader}>
+              <span className={styles.sectionTitle}>Payment</span>
+            </div>
+            <div className={styles.sectionContent}>
+              <ul className={styles.list}>
+                <li className={styles.listItem}>
+                  <span className={styles.label}>Payment Mode:</span>
+                  <span className={styles.value}>{paymentMode}</span>
+                </li>
+                
+                {paymentMode === 'Lump Sum' && payments ? (
+                  <>
+                    <li className={styles.listItem}>
+                      <span className={styles.label}>Number of Payments:</span>
+                      <span className={styles.value}>{payments.length}</span>
+                    </li>
+                    <li className={styles.listItem}>
+                      <span className={styles.label}>Total Amount:</span>
+                      <span className={styles.value}>
+                        ${payments.reduce((sum, payment) => sum + Number(payment.amount), 0).toLocaleString()}
+                      </span>
+                    </li>
+                    <li className={styles.listItem}>
+                      <span className={styles.label}>Annual Increase:</span>
+                      <span className={styles.value}>{annualIncrease}%</span>
+                    </li>
+                    
+                    {/* Show individual payments */}
+                    {payments.map((payment, index) => (
+                      <li key={index} className={styles.lumpSumPayment}>
+                        <div className={styles.paymentDetails}>
+                          <div className={styles.paymentRow}>
+                            <span className={styles.paymentLabel}>Payment {index + 1}:</span>
+                            <span className={styles.paymentValue}>
+                              ${Number(payment.amount).toLocaleString()}
+                            </span>
+                          </div>
+                          <div className={styles.paymentRow}>
+                            <span className={styles.paymentLabel}>Date:</span>
+                            <span className={styles.paymentValue}>
+                              {formatDate(payment.lumpSumDate)}
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                  </>
+                ) : (
+                  <>
+                    <li className={styles.listItem}>
+                      <span className={styles.label}>Amount:</span>
+                      <span className={styles.value}>
+                        ${Number(paymentAmount).toLocaleString()}
+                      </span>
+                    </li>
+                    <li className={styles.listItem}>
+                      <span className={styles.label}>Annual Increase:</span>
+                      <span className={styles.value}>{annualIncrease}%</span>
+                    </li>
+                  </>
+                )}
+              </ul>
+            </div>
+          </div>
+
+          {/* Details Section - Only show for non-lump sum payments */}
+          {paymentMode !== 'Lump Sum' && (
+            <div className={styles.section}>
+              <div className={styles.sectionHeader}>
+                <span className={styles.sectionTitle}>Details</span>
+              </div>
+              <div className={styles.sectionContent}>
+                <ul className={styles.list}>
+                  <li className={styles.listItem}>
+                    <span className={styles.label}>Start Date:</span>
+                    <span className={styles.value}>{formatDate(startDate)}</span>
+                  </li>
+                  <li className={styles.listItem}>
+                    <span className={styles.label}>End Date:</span>
+                    <span className={styles.value}>{formatDate(endDate)}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Error Display */}
         {error && (
           <div className={styles.error}>
             {error}

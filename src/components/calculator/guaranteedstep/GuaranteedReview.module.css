@@ -1,109 +1,82 @@
 /* ========================================
-   GUARANTEED REVIEW
-   Review step before calculation
+   GUARANTEED REVIEW - Match LCP exactly
+   Clean, modern review page design
    ======================================== */
 
+/* Main Container */
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  min-height: auto;
-  padding: 0;
-  width: 100%;
+  padding: 1rem 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
 }
 
-.card {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
-  padding: 1rem 0.75rem;
-  width: 100%;
-  max-width: 400px;
-  margin-top: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.title {
-  font-size: 1.15rem;
-  font-weight: 600;
-  margin-bottom: 18px;
+/* Review Header */
+.header {
   text-align: center;
-}
-
-/* Edit Button Section */
-.editButtonSection {
-  display: flex;
-  justify-content: center;
   margin-bottom: 1rem;
 }
 
-.editButton {
-  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  padding: 0.65rem 1.5rem;
-  font-size: 0.95rem;
+.mainTitle {
+  font-size: 1.5rem;
   font-weight: 700;
+  color: #22b455;
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #6b7280;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Card Container */
+.card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 1rem;
+}
+
+/* Button Group - Edit Form (secondary) and Calculate (primary) */
+.buttonGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* Edit Button - Secondary style */
+.editButton {
+  background: transparent;
+  color: #6b7280;
+  border: 1.5px solid #d1d5db;
+  border-radius: 10px;
+  padding: 0.4rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 3px 10px rgba(34, 197, 94, 0.3);
-  flex: 1;
-  min-width: 130px;
-  max-width: 200px;
+  min-width: 100px;
+  max-width: 140px;
+  font-family: inherit;
 }
 
 .editButton:hover {
-  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+  background: #f9fafb;
+  border-color: #9ca3af;
+  color: #374151;
 }
 
 .editButton:active {
-  transform: translateY(0);
-  box-shadow: 0 3px 10px rgba(34, 197, 94, 0.3);
+  transform: scale(0.98);
 }
 
-/* Summary Section */
-.summarySection {
-  width: 100%;
-  margin-bottom: 18px;
-}
-
-.row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.label {
-  font-weight: 500;
-  color: #333;
-}
-
-.value {
-  font-weight: 600;
-  color: #1976d2;
-}
-
-/* Payment Details */
-.paymentRow {
-  border-top: 1px solid #f0f0f0;
-  padding-top: 0.5rem;
-  margin-top: 0.5rem;
-}
-
-/* Calculate Button Section */
-.calculateButtonSection {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
+/* Calculate Button - Primary style */
 .calculateButton {
   background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
   color: #fff;
@@ -113,11 +86,12 @@
   font-size: 0.95rem;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.2s ease;
   box-shadow: 0 3px 10px rgba(34, 197, 94, 0.3);
+  transition: all 0.2s ease;
   flex: 1;
   min-width: 130px;
   max-width: 200px;
+  font-family: inherit;
 }
 
 .calculateButton:hover {
@@ -131,34 +105,245 @@
   box-shadow: 0 3px 10px rgba(34, 197, 94, 0.3);
 }
 
+/* Scrollable Review Sections Container */
+.scrollContainer {
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0.25rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fafafa;
+  scroll-behavior: smooth;
+}
+
+/* Custom Green Scrollbar */
+.scrollContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollContainer::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 10px;
+}
+
+.scrollContainer::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  border-radius: 10px;
+  transition: background 0.2s ease;
+}
+
+.scrollContainer::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+}
+
+.scrollContainer::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(135deg, #15803d 0%, #14532d 100%);
+}
+
+/* Section Styles */
+.section {
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 0.5rem 0.75rem 0.4rem 0.75rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+  margin-bottom: 0.75rem;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.2rem;
+}
+
+.sectionTitle {
+  font-size: 0.93rem;
+  font-weight: 700;
+  color: #222;
+}
+
+.sectionContent {
+  /* Content container - flexible for different content types */
+}
+
+/* List Styles */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.listItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.93rem;
+  padding: 0.1rem 0;
+}
+
+.label {
+  color: #666;
+  font-weight: 500;
+  margin-right: 0.5rem;
+}
+
+.value {
+  color: #222;
+  font-weight: 600;
+}
+
+/* Lump Sum Payment Styles */
+.lumpSumPayment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.93rem;
+  padding: 0.1rem 0;
+}
+
+.paymentDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.3rem 0;
+  border-top: 1px solid #f0f0f0;
+  margin-top: 0.3rem;
+  width: 100%;
+}
+
+.paymentRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.paymentLabel {
+  color: #666;
+  font-weight: 500;
+  margin-right: 0.5rem;
+}
+
+.paymentValue {
+  color: #222;
+  font-weight: 600;
+}
+
 /* Error Message */
 .error {
   color: #b91c1c;
-  margin-top: 12px;
+  margin-top: 0.5rem;
   font-weight: 600;
   text-align: center;
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  background: #fef2f2;
+  border-radius: 8px;
+  border: 1px solid #fecaca;
 }
 
 /* Responsive Design */
 @media (max-width: 640px) {
+  .container {
+    padding: 0.75rem 0.75rem;
+  }
+
+  .header {
+    margin-bottom: 0.75rem;
+  }
+
+  .mainTitle {
+    font-size: 1.25rem;
+  }
+
+  .subtitle {
+    font-size: 0.875rem;
+  }
+
   .card {
-    padding: 0.85rem 0.6rem;
-    max-width: 100%;
+    padding: 0.85rem;
+    border-radius: 16px;
   }
-  
-  .title {
-    font-size: 1.05rem;
+
+  .buttonGroup {
+    gap: 0.5rem;
+    margin-bottom: 0.6rem;
   }
-  
-  .editButton,
+
+  .editButton {
+    padding: 0.35rem 0.85rem;
+    font-size: 0.75rem;
+    min-width: 90px;
+    max-width: 120px;
+  }
+
   .calculateButton {
     padding: 0.55rem 1.2rem;
     font-size: 0.9rem;
     min-width: 110px;
+    max-width: 180px;
   }
-  
-  .row {
+
+  .scrollContainer {
+    max-height: 400px;
+    padding: 0.2rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .section {
+    padding: 0.4rem 0.6rem 0.3rem 0.6rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .sectionTitle {
     font-size: 0.9rem;
+  }
+
+  .listItem,
+  .paymentRow {
+    font-size: 0.9rem;
+  }
+
+  .paymentDetails {
+    padding: 0.2rem 0;
+    margin-top: 0.2rem;
+  }
+
+  .error {
+    font-size: 0.85rem;
+    padding: 0.4rem;
   }
 }
 
+@media (max-width: 480px) {
+  .container {
+    padding: 0.5rem 0.5rem;
+  }
+
+  .mainTitle {
+    font-size: 1.15rem;
+  }
+
+  .subtitle {
+    font-size: 0.8rem;
+  }
+
+  .card {
+    padding: 0.75rem;
+  }
+
+  .editButton {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.75rem;
+  }
+
+  .calculateButton {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
+}

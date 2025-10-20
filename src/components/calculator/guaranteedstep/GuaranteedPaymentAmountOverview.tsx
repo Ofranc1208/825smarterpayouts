@@ -2,19 +2,21 @@
 
 import React, { useState, useRef } from 'react';
 import GuaranteedStepContainer from './GuaranteedStepContainer';
-import { QuickHelpBadge, GuaranteedInstructionButton, GuaranteedInstructionModal, GuaranteedNavigationButton } from './shared';
+import { GuaranteedSection, GuaranteedFormInput, GuaranteedNavigationButton, GuaranteedInstructionModal } from './shared';
+import layout from './utils/GuaranteedLayout.module.css';
 import { validatePaymentAmount, validateDateRange, sanitizeNumericInput } from './utils/validationHelpers';
 import { GuaranteedFormData } from './utils/guaranteedTypes';
 import styles from './GuaranteedPaymentAmountOverview.module.css';
 
 interface GuaranteedPaymentAmountOverviewProps {
   onNext: (data: { paymentAmount: string; startDate: string; endDate: string }) => void;
+  onBack?: () => void;
   currentStep: number;
   totalSteps: number;
   initialData?: GuaranteedFormData;
 }
 
-const GuaranteedPaymentAmountOverview: React.FC<GuaranteedPaymentAmountOverviewProps> = ({ onNext, currentStep, totalSteps, initialData }) => {
+const GuaranteedPaymentAmountOverview: React.FC<GuaranteedPaymentAmountOverviewProps> = ({ onNext, onBack, currentStep, totalSteps, initialData }) => {
   const [paymentAmount, setPaymentAmount] = useState<string>(initialData?.paymentAmount?.toString() || '');
   const [startDate, setStartDate] = useState<string>(initialData?.startDate || '');
   const [endDate, setEndDate] = useState<string>(initialData?.endDate || '');
@@ -62,48 +64,116 @@ const GuaranteedPaymentAmountOverview: React.FC<GuaranteedPaymentAmountOverviewP
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const sanitized = sanitizeNumericInput(e.target.value);
+  const handleAmountChange = (value: string) => {
+    const sanitized = sanitizeNumericInput(value);
     setPaymentAmount(sanitized);
     if (errors.paymentAmount) {
       setErrors(prev => ({ ...prev, paymentAmount: '' }));
     }
   };
 
-  const handleStartDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+  const handleStartDateChange = (value: string) => {
     setStartDate(value);
     if (errors.startDate || errors.dates) {
       setErrors(prev => ({ ...prev, startDate: '', dates: '' }));
     }
   };
 
-  const handleEndDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+  const handleEndDateChange = (value: string) => {
     setEndDate(value);
     if (errors.endDate || errors.dates) {
       setErrors(prev => ({ ...prev, endDate: '', dates: '' }));
     }
   };
 
-  const handleNext = () => {
-    if (!validateAndSetErrors()) {
-      return;
-    }
-
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (validateAndSetErrors()) {
     onNext({
       paymentAmount: paymentAmount.trim(),
       startDate,
       endDate
     });
+    }
   };
 
+  const isValid = checkFormValidity();
+  const touched = true;
+
   return (
-    <GuaranteedStepContainer title="Payment Amount Overview" currentStep={currentStep} totalSteps={totalSteps}>
-      {/* Help and Instructions */}
-      <div className={styles.helpSection}>
-        <QuickHelpBadge />
-        <GuaranteedInstructionButton onClick={() => setShowInstructions(true)} />
+    <GuaranteedStepContainer title="Select Payment Date and Amount to be Exchanged for an Early Payout" currentStep={currentStep} totalSteps={totalSteps}>
+      {/* Help and Instructions - Centered like LCP */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
+        <button
+          type="button"
+          style={{
+            background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)',
+            border: '1px solid #f59e0b',
+            borderRadius: '20px',
+            padding: '0.3rem 0.7rem',
+            fontSize: '0.7rem',
+            fontWeight: '500',
+            color: '#92400e',
+            cursor: 'pointer',
+            transition: 'all 0.2s ease',
+            boxShadow: '0 1px 3px rgba(245, 158, 11, 0.2)',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.25rem',
+            userSelect: 'none',
+            fontFamily: 'inherit'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)';
+            e.currentTarget.style.color = '#ffffff';
+            e.currentTarget.style.transform = 'translateY(-1px)';
+            e.currentTarget.style.boxShadow = '0 2px 6px rgba(245, 158, 11, 0.3)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)';
+            e.currentTarget.style.color = '#92400e';
+            e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget.style.boxShadow = '0 1px 3px rgba(245, 158, 11, 0.2)';
+          }}
+        >
+          <span style={{ fontSize: '0.65rem' }}>💡</span>
+          Quick AI Help
+        </button>
+        <button
+          type="button"
+          onClick={() => setShowInstructions(true)}
+          style={{
+            background: 'linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)',
+            border: '1px solid #3b82f6',
+            borderRadius: '20px',
+            padding: '0.3rem 0.7rem',
+            fontSize: '0.7rem',
+            fontWeight: '500',
+            color: '#1e3a8a',
+            cursor: 'pointer',
+            transition: 'all 0.2s ease',
+            boxShadow: '0 1px 3px rgba(59, 130, 246, 0.2)',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.25rem',
+            userSelect: 'none',
+            fontFamily: 'inherit'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = 'linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%)';
+            e.currentTarget.style.color = '#ffffff';
+            e.currentTarget.style.transform = 'translateY(-1px)';
+            e.currentTarget.style.boxShadow = '0 2px 6px rgba(59, 130, 246, 0.3)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = 'linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)';
+            e.currentTarget.style.color = '#1e3a8a';
+            e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget.style.boxShadow = '0 1px 3px rgba(59, 130, 246, 0.2)';
+          }}
+        >
+          Instructions
+        </button>
       </div>
 
       {/* Instructions Modal */}
@@ -123,101 +193,67 @@ const GuaranteedPaymentAmountOverview: React.FC<GuaranteedPaymentAmountOverviewP
         </p>
       </GuaranteedInstructionModal>
 
-      <form className={styles.form} onSubmit={(e) => { e.preventDefault(); handleNext(); }}>
-        {/* Payment Amount Section */}
-        <div className={styles.paymentAmountSection}>
-          <label className={styles.paymentAmountLabel}>What's the amount of payments you're going to exchange for a lump sum?</label>
-          <div className={styles.paymentAmountInputContainer}>
-            <input
-              ref={amountInputRef}
-              id="paymentAmount"
-              className={`${styles.paymentAmountInput} ${errors.paymentAmount ? 'error' : ''}`}
+      <form onSubmit={handleSubmit}>
+        <GuaranteedSection
+          label="Payment Amount"
+          tooltip="Enter the amount of your future structured settlement payments that you want to exchange for a lump sum. For example, if your monthly payments are $1,250, enter $1,250. This is the payment amount you want to convert into immediate cash today."
+        >
+          <GuaranteedFormInput
               type="text"
-              placeholder="Enter amount (min $100)"
               value={paymentAmount}
               onChange={handleAmountChange}
-            />
-            {errors.paymentAmount && (
-              <span className={styles.paymentAmountError}>{errors.paymentAmount}</span>
-            )}
-          </div>
-        </div>
+            placeholder="$ 0.00"
+            error={errors.paymentAmount}
+            isValid={paymentAmount ? validatePaymentAmount(paymentAmount).isValid : undefined}
+          />
+        </GuaranteedSection>
 
-        {/* Payment Dates Section */}
-        <div className={styles.paymentDatesSection}>
-          <label className={styles.paymentDatesLabel}>Select Payment Period</label>
-
-          <div className={styles.dateInputsContainer}>
-            <div className={styles.dateInputGroup}>
-              <label className={styles.dateLabel} htmlFor="startDate">
-                Start Date
-                <span
-                  className={styles.tooltipButton}
-                  onClick={() => setShowStartTooltip(!showStartTooltip)}
-                >
-                  ?
-                </span>
-              </label>
-              {showStartTooltip && (
-                <div className={styles.tooltip} onClick={() => setShowStartTooltip(false)}>
-                  <div className={styles.tooltipContent}>
-                    First payment date you want to trade for a lump sum.
-                  </div>
-                </div>
-              )}
-              <input
-                ref={startDateRef}
-                id="startDate"
-                className={`${styles.dateInput} ${(errors.startDate || errors.dates) ? 'error' : ''}`}
+        <GuaranteedSection
+          label="First Payment Date"
+          tooltip="When would you like to start exchanging your future payments for a lump sum? Select the date of the first payment you want to exchange. For example, if you want to start exchanging payments beginning March 1st, 2025, select 03/01/2025. Important: This date must be at least 3 months in the future from today to allow proper processing time."
+        >
+          <GuaranteedFormInput
                 type="date"
                 value={startDate}
                 onChange={handleStartDateChange}
-              />
-              {(errors.startDate || errors.dates) && (
-                <span className={styles.dateError}>{errors.startDate || errors.dates}</span>
-              )}
-            </div>
+            error={errors.dates}
+          />
+        </GuaranteedSection>
 
-            <div className={styles.dateInputGroup}>
-              <label className={styles.dateLabel} htmlFor="endDate">
-                End Date
-                <span
-                  className={styles.tooltipButton}
-                  onClick={() => setShowEndTooltip(!showEndTooltip)}
-                >
-                  ?
-                </span>
-              </label>
-              {showEndTooltip && (
-                <div className={styles.tooltip} onClick={() => setShowEndTooltip(false)}>
-                  <div className={styles.tooltipContent}>
-                    The last payment you want to exchange for a lump sum. After this date, your regular payments will resume back to you.
-                  </div>
-                </div>
-              )}
-              <input
-                ref={endDateRef}
-                id="endDate"
-                className={`${styles.dateInput} ${(errors.endDate || errors.dates) ? 'error' : ''}`}
+        <GuaranteedSection
+          label="Last Payment Date"
+          tooltip="When would you like to stop exchanging your future payments? Select the date of the last payment you want to exchange for a lump sum. For example, if you want to exchange payments through December 31st, 2030, select 12/31/2030. All payments up to and including this date will be converted to a lump sum. After this date, your regular structured settlement payments will continue as scheduled."
+        >
+          <GuaranteedFormInput
                 type="date"
                 value={endDate}
                 onChange={handleEndDateChange}
-              />
-              {(errors.endDate || errors.dates) && (
-                <span className={styles.dateError}>{errors.endDate || errors.dates}</span>
-              )}
-            </div>
-          </div>
-        </div>
+            error={errors.dates}
+          />
+        </GuaranteedSection>
 
-        <div className={styles.navigationSection}>
+        <div className={layout.actionRow}>
+          {onBack && (
+            <GuaranteedNavigationButton
+              direction="back"
+              onClick={onBack}
+              type="button"
+              aria-label="Back to previous step"
+            />
+          )}
           <GuaranteedNavigationButton
             direction="next"
-            disabled={!checkFormValidity()}
+            disabled={!isValid}
             type="submit"
             aria-label="Continue to next step"
           />
         </div>
+
+        {touched && errors.dates && (
+          <p style={{ textAlign: 'center', color: '#dc2626', fontSize: '0.875rem', marginTop: '0.5rem' }}>
+            {errors.dates}
+          </p>
+        )}
       </form>
     </GuaranteedStepContainer>
   );

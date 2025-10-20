@@ -43,7 +43,7 @@ interface UseLiveChatReturn {
   error: string | null;
   
   // Actions
-  initializeLiveChat: () => Promise<void>;
+  initializeLiveChat: () => Promise<string>;
   sendLiveMessage: (content: string) => Promise<void>;
   endLiveChat: () => Promise<void>;
   
@@ -172,31 +172,26 @@ export const useLiveChat = (options: UseLiveChatOptions): UseLiveChatReturn => {
         }
       );
 
-      // Assign a specialist
-      console.log('[useLiveChat] 🔍 Finding available specialist...');
-      const assignedSpecialistId = await liveChatService.current.assignSpecialist(createdSessionId);
-      
-      if (assignedSpecialistId) {
-        const assignedSpecialist = await specialistService.current.getSpecialist(assignedSpecialistId);
-        setSpecialist(assignedSpecialist);
-        
-        if (onSpecialistAssigned && assignedSpecialist) {
-          onSpecialistAssigned(assignedSpecialist);
-        }
-      }
+      // DO NOT auto-assign specialist - wait for manual acceptance from dashboard
+      // The specialist will be assigned when they accept the chat from the IncomingChatAlert
+      console.log('[useLiveChat] ⏳ Session created, waiting for specialist to accept...');
 
-      // Mark as active
+      // Mark as active (session is active, waiting for specialist)
       setIsLiveChatActive(true);
       setConnectionStatus('connected');
       setIsConnecting(false);
 
       console.log('[useLiveChat] ✅ Live chat initialized successfully');
+      
+      // Return the sessionId so it can be used by the queue component
+      return createdSessionId;
 
     } catch (err) {
       console.error('[useLiveChat] ❌ Failed to initialize live chat:', err);
       setError(err instanceof Error ? err.message : 'Failed to initialize live chat');
       setConnectionStatus('error');
       setIsConnecting(false);
+      throw err; // Re-throw so caller can handle
     }
   }, [sessionId, userId, userInfo, onMessage, onSpecialistAssigned, onSessionEnd, specialist, customerId]);
 

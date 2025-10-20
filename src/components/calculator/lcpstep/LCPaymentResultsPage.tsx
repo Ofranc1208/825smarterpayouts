@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { LCPCalculationResult } from '../../../types';
 import styles from './LCPaymentResultsPage.module.css';
 import { OfferLoadingAnimation } from './results-components';
+import { validateOfferThreshold, formatCurrency } from './utils/validationHelpers';
 
 interface Props {
   result: LCPCalculationResult;
@@ -33,19 +34,44 @@ const LCPaymentResultsPage: React.FC<Props> = ({ result, onBack, currentStep, to
     setShowResults(true);
   };
 
-  // Format currency
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2
-    }).format(amount);
-  };
+  // Validate offer threshold - check if MAXIMUM payout is below $10,000
+  const offerValidation = validateOfferThreshold(result.maxPayout || 0);
+  
+  console.log('🔍 [LCPaymentResultsPage] Offer validation:', {
+    maxPayout: result.maxPayout,
+    isValid: offerValidation.isValid,
+    error: offerValidation.error
+  });
 
   // Show loading animation first
   if (showLoading) {
     return <OfferLoadingAnimation onComplete={handleLoadingComplete} />;
+  }
+
+  // If maximum offer is below $10,000 threshold, show "No Offers Available" message
+  if (!offerValidation.isValid) {
+    console.log('⚠️ [LCPaymentResultsPage] Maximum offer below threshold, showing no offers message');
+    
+    return (
+      <div className={styles.pageContainer}>
+        <div className={styles.noOffersCard}>
+          <h3 className={styles.noOffersTitle}>No Offers Available</h3>
+          <p className={styles.noOffersMessage}>{offerValidation.error}</p>
+          <div className={styles.suggestionsContainer}>
+            <h4 className={styles.suggestionsTitle}>Suggestions to get an offer:</h4>
+            <ul className={styles.suggestionsList}>
+              <li className={styles.suggestionItem}>Increase your payment amount</li>
+              <li className={styles.suggestionItem}>Extend your date range</li>
+              <li className={styles.suggestionItem}>Consider including more payments</li>
+              <li className={styles.suggestionItem}>Contact our specialists for assistance</li>
+            </ul>
+          </div>
+          <button onClick={onBack} className={styles.contactButton}>
+            Go Back to Edit
+          </button>
+        </div>
+      </div>
+    );
   }
 
   // Then show the results

@@ -1,0 +1,54 @@
+/*
+ * ============================================================================
+ * GUARANTEED LAYOUT UTILITIES - SHARED STYLES
+ * ============================================================================
+ *
+ * Centralized layout utilities for Guaranteed calculator steps.
+ * Replaces inline styles with consistent CSS modules.
+ *
+ * Features:
+ * - Action row for navigation buttons
+ * - Form section spacing
+ * - Responsive breakpoints
+ * - Consistent spacing patterns
+ */
+
+/* Action row for navigation buttons - Match LCP exactly */
+.actionRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  padding: 0.5rem 0;
+}
+
+/* Form section spacing */
+.formSection {
+  margin-bottom: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .actionRow {
+    gap: 1.125rem;
+    margin-top: 0.75rem;
+    padding: 0.4rem 0;
+  }
+
+  .formSection {
+    margin-bottom: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .actionRow {
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+    padding: 0.4rem 0;
+  }
+
+  .formSection {
+    margin-bottom: 1rem;
+  }
+}

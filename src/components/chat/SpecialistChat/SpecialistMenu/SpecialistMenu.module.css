@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  gap: 16px;
+  gap: 12.8px; /* 20% smaller from 16px - matching LCP sizing pattern */
   margin-top: 24px;
   padding: 16px;
   background: rgba(34, 180, 77, 0.02);
@@ -15,10 +15,10 @@
 
 .menuBtn {
   width: 100%;
-  max-width: 280px; /* Slightly wider for specialist options */
-  padding: 16px 24px;
+  max-width: 224px; /* 20% smaller from 280px - matching LCP sizing pattern */
+  padding: 12.8px 19.2px; /* 20% smaller from 16px 24px - matching LCP sizing pattern */
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 1rem;
+  font-size: 0.8rem; /* 20% smaller from 1rem - matching LCP sizing pattern */
   font-weight: 700;
   color: #047857;
   background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);

@@ -442,6 +442,85 @@
 }
 
 /* ============================================================================
+ * NO OFFERS STATE
+ * ============================================================================
+ */
+
+.noOffersCard {
+  text-align: center;
+  max-width: 500px;
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+}
+
+.noOffersTitle {
+  color: #856404;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.noOffersMessage {
+  color: #664d03;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+.suggestionsContainer {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.suggestionsTitle {
+  color: #856404;
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.suggestionsList {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+}
+
+.suggestionItem {
+  color: #664d03;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  font-size: 0.95rem;
+}
+
+.contactButton {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 10px rgba(34, 197, 94, 0.3);
+  font-family: inherit;
+}
+
+.contactButton:hover {
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+}
+
+.contactButton:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(34, 197, 94, 0.3);
+}
+
+/* ============================================================================
  * PRINT STYLES
  * ============================================================================
  */

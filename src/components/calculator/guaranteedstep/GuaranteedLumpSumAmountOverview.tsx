@@ -3,26 +3,31 @@
 import React, { useState, useRef } from 'react';
 import GuaranteedStepContainer from './GuaranteedStepContainer';
 import { GuaranteedNavigationButton } from './shared';
+import { useGuaranteedAssistant } from '../../../contexts/GuaranteedAssistantContext';
+import { GuaranteedNumberOfPaymentsInput, GuaranteedPaymentCard } from './lump-sum-components';
 import { RATE_SPREADS, AMOUNT_ADJUSTMENTS, BASE_DISCOUNT_RATE } from '../../../../app/utils/npvConfig';
 import { GuaranteedFormData, LumpSumPayment } from './utils/guaranteedTypes';
 import { safeStringify } from './utils/typeUtils';
+import layout from './utils/GuaranteedLayout.module.css';
 import styles from './GuaranteedLumpSumAmountOverview.module.css';
 
 interface GuaranteedLumpSumAmountOverviewProps {
   onNext: (data: { payments: LumpSumPayment[] }) => void;
+  onBack?: () => void;
   currentStep: number;
   totalSteps: number;
   initialData?: GuaranteedFormData;
 }
 
-const GuaranteedLumpSumAmountOverview: React.FC<GuaranteedLumpSumAmountOverviewProps> = ({ 
-  onNext, 
-  currentStep, 
+const GuaranteedLumpSumAmountOverview: React.FC<GuaranteedLumpSumAmountOverviewProps> = ({
+  onNext,
+  onBack,
+  currentStep,
   totalSteps,
   initialData
 }) => {
+  const { openAssistant } = useGuaranteedAssistant();
   const [numberOfPayments, setNumberOfPayments] = useState<number | ''>('');
-  const [showGuidance, setShowGuidance] = useState(false);
   const [payments, setPayments] = useState<LumpSumPayment[]>(initialData?.payments && initialData.payments.length > 0 ? initialData.payments : [{ amount: '', lumpSumDate: '' }]);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
@@ -107,81 +112,117 @@ const GuaranteedLumpSumAmountOverview: React.FC<GuaranteedLumpSumAmountOverviewP
   };
 
   return (
-    <GuaranteedStepContainer title="Lump Sum Payment Details" currentStep={currentStep} totalSteps={totalSteps}>
+    <GuaranteedStepContainer title="Select Payment Date and Amount to be Exchanged for an Early Payout" currentStep={currentStep} totalSteps={totalSteps}>
+      {/* Help and Instructions - Centered like LCP */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
+        <button
+          type="button"
+          style={{
+            background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)',
+            border: '1px solid #f59e0b',
+            borderRadius: '20px',
+            padding: '0.3rem 0.7rem',
+            fontSize: '0.7rem',
+            fontWeight: '500',
+            color: '#92400e',
+            cursor: 'pointer',
+            transition: 'all 0.2s ease',
+            boxShadow: '0 1px 3px rgba(245, 158, 11, 0.2)',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.25rem',
+            userSelect: 'none',
+            fontFamily: 'inherit'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)';
+            e.currentTarget.style.color = '#ffffff';
+            e.currentTarget.style.transform = 'translateY(-1px)';
+            e.currentTarget.style.boxShadow = '0 2px 6px rgba(245, 158, 11, 0.3)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)';
+            e.currentTarget.style.color = '#92400e';
+            e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget.style.boxShadow = '0 1px 3px rgba(245, 158, 11, 0.2)';
+          }}
+        >
+          <span style={{ fontSize: '0.65rem' }}>💡</span>
+          Quick AI Help
+        </button>
+        <button
+          type="button"
+          style={{
+            background: 'linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)',
+            border: '1px solid #3b82f6',
+            borderRadius: '20px',
+            padding: '0.3rem 0.7rem',
+            fontSize: '0.7rem',
+            fontWeight: '500',
+            color: '#1e3a8a',
+            cursor: 'pointer',
+            transition: 'all 0.2s ease',
+            boxShadow: '0 1px 3px rgba(59, 130, 246, 0.2)',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.25rem',
+            userSelect: 'none',
+            fontFamily: 'inherit'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = 'linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%)';
+            e.currentTarget.style.color = '#ffffff';
+            e.currentTarget.style.transform = 'translateY(-1px)';
+            e.currentTarget.style.boxShadow = '0 2px 6px rgba(59, 130, 246, 0.3)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = 'linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)';
+            e.currentTarget.style.color = '#1e3a8a';
+            e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget.style.boxShadow = '0 1px 3px rgba(59, 130, 246, 0.2)';
+          }}
+        >
+          Instructions
+        </button>
+      </div>
+
       <form onSubmit={handleSubmit}>
-        <div className={styles.section}>
-          <label className={styles.label}>Number of Lump Sum Payments (1–10)</label>
-          <input
-            type="number"
-            value={numberOfPayments}
-            onChange={(e) => {
-              const value = parseInt(e.target.value);
-              if (!isNaN(value) && value >= 1 && value <= 10) {
-                setNumberOfPayments(value);
-                setShowGuidance(false);
-              } else if (e.target.value === '') {
-                setNumberOfPayments('');
-              }
-            }}
-            className={`${styles.numberInput} ${errors['numberOfPayments'] ? styles.error : ''}`}
-            onFocus={() => setShowGuidance(true)}
-            onBlur={() => setTimeout(() => setShowGuidance(false), 200)}
-            min={1}
-            max={10}
-            placeholder="Click to enter number (1-10)"
-          />
-          {showGuidance && (
-            <div className={styles.guidanceMessage}>
-              <span className={styles.guidanceText}>💡 You can add up to 10 lump sum payments</span>
-            </div>
-          )}
-          {errors['numberOfPayments'] && (
-            <span className={styles.errorMessage}>{errors['numberOfPayments']}</span>
-          )}
-        </div>
+        <GuaranteedNumberOfPaymentsInput
+          value={numberOfPayments}
+          onChange={(value) => {
+            const numValue = parseInt(value);
+            if (!isNaN(numValue) && numValue >= 1 && numValue <= 10) {
+              setNumberOfPayments(numValue);
+            } else if (value === '') {
+              setNumberOfPayments('');
+            }
+          }}
+          error={errors['numberOfPayments']}
+        />
 
         {typeof numberOfPayments === 'number' && numberOfPayments > 0 && (
           <div className={styles.paymentsContainer}>
             {payments.map((payment, index) => (
-              <div key={index} className={styles.paymentCard}>
-                <h6 className={styles.paymentCardTitle}>Payment {index + 1}</h6>
-                
-                <div className={styles.section}>
-                  <label className={styles.label}>Payment Amount ($)</label>
-                  <div className={styles.amountInputWrapper}>
-                    <span className={styles.dollarSign}>$</span>
-                    <input
-                      type="text"
-                      inputMode="decimal"
-                      className={`${styles.amountInput} ${errors[`payment-${index}-amount`] ? styles.error : ''}`}
-                      value={payment.amount}
-                      onChange={(e) => handlePaymentChange(index, 'amount', e.target.value)}
-                      placeholder="Enter amount"
-                    />
-                  </div>
-                  {errors[`payment-${index}-amount`] && (
-                    <span className={styles.errorMessage}>{errors[`payment-${index}-amount`]}</span>
-                  )}
-                </div>
-
-                <div className={styles.section}>
-                  <label className={styles.label}>Payment Date</label>
-                  <input
-                    type="date"
-                    className={`${styles.dateInput} ${errors[`payment-${index}-date`] ? styles.error : ''}`}
-                    value={payment.lumpSumDate}
-                    onChange={(e) => handlePaymentChange(index, 'lumpSumDate', e.target.value)}
-                  />
-                  {errors[`payment-${index}-date`] && (
-                    <span className={styles.errorMessage}>{errors[`payment-${index}-date`]}</span>
-                  )}
-                </div>
-              </div>
+              <GuaranteedPaymentCard
+                key={index}
+                payment={payment}
+                index={index}
+                errors={errors}
+                onPaymentChange={handlePaymentChange}
+              />
             ))}
           </div>
         )}
 
-        <div className={styles.navigationSection}>
+        <div className={layout.actionRow}>
+          {onBack && (
+            <GuaranteedNavigationButton
+              direction="back"
+              onClick={onBack}
+              type="button"
+              aria-label="Back to previous step"
+            />
+          )}
           <GuaranteedNavigationButton
             direction="next"
             disabled={numberOfPayments === '' || !numberOfPayments || (typeof numberOfPayments === 'number' && (numberOfPayments < 1 || numberOfPayments > 10))}

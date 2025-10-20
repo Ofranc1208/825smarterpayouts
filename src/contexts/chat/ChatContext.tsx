@@ -99,19 +99,25 @@ export const ChatProvider = ({
       // Log user's choice
       logUserChoiceAsMessage('💬 Live Chat');
       
-      // Add queue component message (special type that will render the queue UI)
-      setVisibleMessages(prev => [...prev, {
-        id: `queue-${Date.now()}`,
-        type: 'queue' as any, // Special type for queue component
-        text: '', // Not used for queue type
-        sender: 'bot'
-      }]);
+      // Initialize live chat session first to get sessionId
+      const sessionId = await liveChatIntegration.initializeLiveChat();
+      
+      // Add queue component message with sessionId for real-time monitoring
+      // Guard: ensure we only add ONE queue message
+      setVisibleMessages(prev => {
+        const alreadyHasQueue = prev.some(m => (m as any).type === 'queue');
+        if (alreadyHasQueue) return prev;
+        return [...prev, {
+          id: `queue-${Date.now()}`,
+          type: 'queue' as any, // Special type for queue component
+          text: '', // Not used for queue type
+          sender: 'bot',
+          sessionId: sessionId // Pass sessionId for real-time monitoring
+        }];
+      });
       
       // Activate live chat mode
       liveChatIntegration.activateLiveChatMode();
-      
-      // Initialize live chat (this will happen after queue animation)
-      // The queue component will call initializeLiveChat when ready
     } else {
       // For other options, just log for now
       logUserChoiceAsMessage(`Selected: ${choice}`);

@@ -35,11 +35,13 @@ export const useChatActions = (
     try {
       console.log('[useChatActions] ❌ Declining chat:', sessionId);
       
-      // For now, just dismiss the alert
-      // In production, you might want to reassign to another specialist
+      // Update session status to 'cancelled' so it doesn't keep appearing
+      await liveChatService.endLiveChatSession(sessionId, 'cancelled');
+      
+      // Dismiss the alert
       onChatDeclined();
       
-      console.log('[useChatActions] Chat declined');
+      console.log('[useChatActions] ✅ Chat declined and session cancelled');
     } catch (err) {
       console.error('[useChatActions] Failed to decline chat:', err);
       throw new Error('Failed to decline chat. Please try again.');

@@ -26,71 +26,18 @@
 .cardContent {
   display: flex;
   align-items: flex-start;
-  padding: 1.25rem 1.5rem;
-  gap: 1.25rem;
+  padding: 0.75rem 1rem; /* 40% smaller from 1.25rem 1.5rem */
+  gap: 0.75rem;
 }
 
-/* Icon Section */
-.iconSection {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.pulseIcon {
-  position: relative;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.pulseRing {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border: 2px solid #22c55e;
-  border-radius: 50%;
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  opacity: 0.6;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.6;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 0.1;
-  }
-}
-
-.icon {
-  width: 24px;
-  height: 24px;
-  color: #22c55e;
-  z-index: 1;
-  animation: iconFloat 3s ease-in-out infinite;
-}
-
-@keyframes iconFloat {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-2px);
-  }
-}
+/* Icon Section - Removed for compactness */
 
 /* Info Section */
 .infoSection {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.5rem; /* 33% smaller from 0.75rem */
   min-width: 0; /* Prevents flex overflow */
 }
 
@@ -110,11 +57,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
-  padding: 0.75rem 0;
+  gap: 1.5rem; /* 25% smaller from 2rem */
+  padding: 0.5rem 0; /* 33% smaller from 0.75rem 0 */
   background: #f8fafc;
   border-radius: 8px;
-  margin: 0.5rem 0;
+  margin: 0.25rem 0; /* 50% smaller from 0.5rem 0 */
 }
 
 .queueInfo {
@@ -167,7 +114,7 @@
 .tipsSection {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.25rem; /* 50% smaller from 0.5rem */
 }
 
 .tipRow {
@@ -180,11 +127,11 @@
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
-  padding: 0.75rem;
+  padding: 0.5rem; /* 33% smaller from 0.75rem */
   background: #fef3c7;
   border: 1px solid #fbbf24;
   border-radius: 8px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem; /* 50% smaller from 0.5rem */
 }
 
 .tipIcon {
@@ -210,22 +157,22 @@
 
 /* Alternatives Section */
 .alternativesSection {
-  margin-top: 0.5rem;
-  padding-top: 0.75rem;
+  margin-top: 0.25rem; /* 50% smaller from 0.5rem */
+  padding-top: 0.5rem; /* 33% smaller from 0.75rem */
   border-top: 1px solid #f3f4f6;
 }
 
 .alternativesTitle {
-  font-size: 0.8rem;
+  font-size: 0.75rem; /* Slightly smaller */
   font-weight: 600;
   color: #374151;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem; /* 50% smaller from 0.5rem */
 }
 
 .alternativesOptions {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.5rem; /* 33% smaller from 0.75rem */
 }
 
 .alternativeOption {
@@ -354,24 +301,10 @@
   }
 
   .cardContent {
-    padding: 1rem;
-    gap: 1rem;
+    padding: 0.5rem 0.75rem; /* Even more compact on mobile */
+    gap: 0.5rem;
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  .iconSection {
-    align-self: center;
-  }
-
-  .pulseIcon {
-    width: 44px;
-    height: 44px;
-  }
-
-  .icon {
-    width: 22px;
-    height: 22px;
   }
 
   .infoSection {
@@ -383,8 +316,8 @@
   }
 
   .statsRow {
-    gap: 1.5rem;
-    padding: 0.5rem 0;
+    gap: 1rem; /* More compact on mobile */
+    padding: 0.25rem 0;
   }
 
   .queueNumber {
@@ -400,20 +333,25 @@
     font-size: 0.7rem;
   }
 
-  .tipText {
-    font-size: 0.75rem;
+  .tipsSection {
+    gap: 0.125rem; /* Very compact on mobile */
   }
 
   .privacyRow {
-    padding: 0.5rem;
+    padding: 0.25rem;
   }
 
   .privacyText {
     font-size: 0.85rem;
   }
 
+  .alternativesSection {
+    margin-top: 0.125rem;
+    padding-top: 0.25rem;
+  }
+
   .alternativesOptions {
-    gap: 0.5rem;
+    gap: 0.25rem;
   }
 
   .optionText {
@@ -422,12 +360,6 @@
 
   .optionText strong {
     font-size: 0.85rem;
-  }
-
-  .spinner,
-  .checkmark {
-    width: 44px;
-    height: 44px;
   }
 }
 

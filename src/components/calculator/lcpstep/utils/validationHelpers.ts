@@ -16,6 +16,7 @@ export interface ValidationRules {
     MAX_PERIOD_YEARS: number;
     MIN_FUTURE_MONTHS: number;
   };
+  OFFER_THRESHOLD: number;
 }
 
 // Validation rules constants
@@ -28,7 +29,8 @@ export const VALIDATION_RULES: ValidationRules = {
     MIN_PERIOD_MONTHS: 6,
     MAX_PERIOD_YEARS: 30,
     MIN_FUTURE_MONTHS: 3 // Minimum 3 months in the future
-  }
+  },
+  OFFER_THRESHOLD: 10000 // Minimum $10,000 for offers
 };
 
 /**
@@ -158,4 +160,31 @@ export function getValidationClass(isValid: boolean, hasError: boolean): string 
     return 'valid-border';
   }
   return '';
+}
+
+/**
+ * Validate offer threshold (for LCP calculator)
+ * Checks if the maximum payout is at least $10,000
+ */
+export function validateOfferThreshold(amount: number, threshold: number = VALIDATION_RULES.OFFER_THRESHOLD): ValidationResult {
+  if (amount < threshold) {
+    return {
+      isValid: false,
+      error: `Offer amount must be at least $${threshold.toLocaleString()} to proceed`
+    };
+  }
+
+  return { isValid: true };
+}
+
+/**
+ * Format currency for display
+ */
+export function formatCurrency(amount: number): string {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(amount);
 }

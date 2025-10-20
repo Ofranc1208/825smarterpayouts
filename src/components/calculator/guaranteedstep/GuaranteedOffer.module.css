@@ -1,16 +1,304 @@
-/* ========================================
-   GUARANTEED OFFER
-   Offer display component styling
-   ======================================== */
+/* ============================================================================
+ * GUARANTEED OFFER - PROFESSIONAL CONTRACT STYLE
+ * ============================================================================
+ * Matches LCP design exactly with contract-inspired styling
+ */
 
-/* Main container for no offers state */
-.noOffersContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 300px;
-  padding: 2rem;
+/* ============================================================================
+ * CONTAINER & LAYOUT
+ * ============================================================================
+ */
+
+.pageContainer {
+  padding: 1rem 0.75rem;
+  max-width: 520px;
+  margin: 0 auto;
+  position: relative;
+  animation: fadeIn 0.6s ease-out;
 }
+
+.documentCard {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 2rem 1.5rem;
+  border: 1px solid #e5e7eb;
+  position: relative;
+  animation: slideUp 0.8s ease-out;
+}
+
+/* ============================================================================
+ * DECORATIVE CORNER BORDERS
+ * ============================================================================
+ */
+
+.cornerTopLeft {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  width: 30px;
+  height: 30px;
+  border-top: 2px solid #22c55e;
+  border-left: 2px solid #22c55e;
+  animation: drawCorner 0.8s ease-out 0.3s both;
+}
+
+.cornerTopRight {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 30px;
+  height: 30px;
+  border-top: 2px solid #22c55e;
+  border-right: 2px solid #22c55e;
+  animation: drawCorner 0.8s ease-out 0.4s both;
+}
+
+.cornerBottomLeft {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0.75rem;
+  width: 30px;
+  height: 30px;
+  border-bottom: 2px solid #22c55e;
+  border-left: 2px solid #22c55e;
+  animation: drawCorner 0.8s ease-out 0.5s both;
+}
+
+.cornerBottomRight {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  width: 30px;
+  height: 30px;
+  border-bottom: 2px solid #22c55e;
+  border-right: 2px solid #22c55e;
+  animation: drawCorner 0.8s ease-out 0.6s both;
+}
+
+/* ============================================================================
+ * HEADER SECTION
+ * ============================================================================
+ */
+
+.header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 1rem;
+  animation: fadeInDown 0.6s ease-out 0.2s both;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0 0 0.25rem 0;
+}
+
+.subtitle {
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+/* ============================================================================
+ * MINIMUM PAYOUT - TOP
+ * ============================================================================
+ */
+
+.minimumPayoutContainer {
+  margin-bottom: 1.25rem;
+  padding: 0.875rem 1rem;
+  background: #f9fafb;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  text-align: center;
+  animation: fadeInUp 0.6s ease-out 0.4s both;
+  transition: all 0.3s ease;
+}
+
+.minimumPayoutContainer:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.minimumLabel {
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.minimumAmount {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #4b5563;
+  margin: 0;
+}
+
+/* ============================================================================
+ * MAXIMUM PAYOUT - CENTER & LARGEST (MOST IMPORTANT)
+ * ============================================================================
+ */
+
+.maximumPayoutContainer {
+  text-align: center;
+  margin-bottom: 1.25rem;
+  padding: 1.5rem 1.25rem;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border-radius: 10px;
+  border: 2px solid #22c55e;
+  animation: fadeInScale 0.8s ease-out 0.5s both;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.maximumPayoutContainer::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 70%
+  );
+  animation: shimmer 3s infinite;
+}
+
+.maximumPayoutContainer:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.3);
+  border-color: #16a34a;
+}
+
+.maximumLabel {
+  font-size: 0.75rem;
+  color: #15803d;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+
+.maximumAmount {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #15803d;
+  margin: 0;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 4px rgba(21, 128, 61, 0.1);
+}
+
+/* ============================================================================
+ * FOOTER DISCLAIMER
+ * ============================================================================
+ */
+
+.footer {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 2px solid #e5e7eb;
+  text-align: center;
+  animation: fadeIn 0.6s ease-out 0.8s both;
+}
+
+.disclaimer {
+  font-size: 0.65rem;
+  color: #9ca3af;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ============================================================================
+ * ACTION BUTTONS
+ * ============================================================================
+ */
+
+.actionButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  align-items: center;
+}
+
+.primaryButton {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  min-width: 250px;
+  text-align: center;
+  font-family: inherit;
+  box-shadow: 0 3px 10px rgba(34, 197, 94, 0.3);
+}
+
+.primaryButton:hover {
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 14px rgba(34, 197, 94, 0.4);
+}
+
+.primaryButton:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(34, 197, 94, 0.3);
+}
+
+.secondaryButton {
+  background: transparent;
+  color: #6b7280;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 0.75rem 2rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  min-width: 250px;
+  text-align: center;
+  font-family: inherit;
+}
+
+.secondaryButton:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+  color: #374151;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.secondaryButton:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* ============================================================================
+ * NO OFFERS STATE
+ * ============================================================================
+ */
 
 .noOffersCard {
   text-align: center;
@@ -20,6 +308,7 @@
   border-radius: 12px;
   padding: 2rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
 }
 
 .noOffersTitle {
@@ -36,7 +325,7 @@
   font-size: 1rem;
 }
 
-.suggestionsSection {
+.suggestionsContainer {
   text-align: left;
   margin-bottom: 1.5rem;
 }
@@ -71,6 +360,7 @@
   cursor: pointer;
   transition: all 0.2s ease;
   box-shadow: 0 3px 10px rgba(34, 197, 94, 0.3);
+  font-family: inherit;
 }
 
 .contactButton:hover {
@@ -84,151 +374,224 @@
   box-shadow: 0 3px 10px rgba(34, 197, 94, 0.3);
 }
 
-/* Offer display styles */
-.offerContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  padding: 1rem;
-  max-width: 600px;
-  margin: 0 auto;
+/* ============================================================================
+ * ANIMATIONS & KEYFRAMES
+ * ============================================================================
+ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.offerCard {
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  padding: 2rem;
-  border: 1px solid #e5e7eb;
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.offerTitle {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: #1e293b;
-  margin-bottom: 0.5rem;
-  text-align: center;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.offerSubtitle {
-  font-size: 1rem;
-  color: #64748b;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  line-height: 1.5;
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.offerAmount {
-  font-size: 3rem;
-  font-weight: 800;
-  color: #22c55e;
-  text-align: center;
-  margin-bottom: 1rem;
-  text-shadow: 0 2px 4px rgba(34, 197, 94, 0.2);
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-.offerDetails {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+@keyframes drawCorner {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-.detailItem {
-  text-align: center;
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
 }
 
-.detailLabel {
-  font-size: 0.875rem;
-  color: #64748b;
-  margin-bottom: 0.25rem;
-  font-weight: 500;
-}
+/* ============================================================================
+ * RESPONSIVE DESIGN
+ * ============================================================================
+ */
 
-.detailValue {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #1e293b;
-}
+@media (max-width: 768px) {
+  .pageContainer {
+    padding: 0.75rem 0.5rem;
+  }
 
-.disclaimer {
-  font-size: 0.875rem;
-  color: #64748b;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  line-height: 1.4;
-  background: #f8fafc;
-  padding: 1rem;
-  border-radius: 8px;
-  border-left: 4px solid #22c55e;
-}
+  .documentCard {
+    padding: 1.5rem 1.25rem;
+  }
 
-.actionButtons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 1rem;
-}
+  .title {
+    font-size: 1.125rem;
+  }
 
-.actionButton {
-  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 0.75rem 1.5rem;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 3px 10px rgba(34, 197, 94, 0.3);
-  flex: 1;
-  max-width: 150px;
-}
+  .subtitle {
+    font-size: 0.7rem;
+  }
 
-.actionButton:hover {
-  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
-}
+  .maximumAmount {
+    font-size: 2rem;
+  }
 
-.actionButton:active {
-  transform: translateY(0);
-  box-shadow: 0 3px 10px rgba(34, 197, 94, 0.3);
-}
+  .minimumAmount {
+    font-size: 1rem;
+  }
 
-/* Responsive Design */
-@media (max-width: 640px) {
+  .primaryButton,
+  .secondaryButton {
+    min-width: 220px;
+    padding: 0.75rem 1.5rem;
+  }
+
   .noOffersCard {
     padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .pageContainer {
+    padding: 0.5rem 0.25rem;
+  }
+
+  .documentCard {
+    padding: 1.25rem 1rem;
+  }
+
+  .title {
+    font-size: 1rem;
+  }
+
+  .maximumAmount {
+    font-size: 1.75rem;
+  }
+
+  .minimumAmount {
+    font-size: 0.9rem;
+  }
+
+  .cornerTopLeft,
+  .cornerTopRight,
+  .cornerBottomLeft,
+  .cornerBottomRight {
+    width: 25px;
+    height: 25px;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    min-width: 200px;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  .noOffersCard {
+    padding: 1.25rem;
   }
 
   .noOffersTitle {
     font-size: 1.3rem;
   }
+}
 
-  .offerCard {
-    padding: 1.5rem;
+/* ============================================================================
+ * ACCESSIBILITY
+ * ============================================================================
+ */
+
+@media (prefers-reduced-motion: reduce) {
+  .pageContainer,
+  .documentCard,
+  .header,
+  .minimumPayoutContainer,
+  .maximumPayoutContainer,
+  .footer,
+  .cornerTopLeft,
+  .cornerTopRight,
+  .cornerBottomLeft,
+  .cornerBottomRight {
+    animation: none;
   }
 
-  .offerTitle {
-    font-size: 1.5rem;
+  .maximumPayoutContainer::before {
+    animation: none;
   }
 
-  .offerAmount {
-    font-size: 2.5rem;
-  }
-
-  .offerDetails {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-  }
-
-  .actionButtons {
-    flex-direction: column;
-  }
-
-  .actionButton {
-    max-width: 100%;
+  .minimumPayoutContainer:hover,
+  .maximumPayoutContainer:hover {
+    transform: none;
   }
 }
 
+/* ============================================================================
+ * PRINT STYLES
+ * ============================================================================
+ */
+
+@media print {
+  .pageContainer {
+    padding: 0;
+  }
+
+  .documentCard {
+    box-shadow: none;
+    border: 2px solid #000;
+  }
+
+  .maximumPayoutContainer {
+    background: #f0fdf4;
+    border-color: #000;
+  }
+
+  .maximumPayoutContainer::before {
+    display: none;
+  }
+
+  .actionButtons {
+    display: none;
+  }
+}

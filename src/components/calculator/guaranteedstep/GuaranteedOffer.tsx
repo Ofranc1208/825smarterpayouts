@@ -1,7 +1,8 @@
+"use client";
+
 import React, { useState, useEffect } from 'react';
-import GuaranteedStepContainer from './GuaranteedStepContainer';
-import { validateOfferThreshold, formatCurrency } from './utils/validationHelpers';
-import { useGuaranteedAssistant } from '../../../contexts/GuaranteedAssistantContext';
+import { GuaranteedOfferLoadingAnimation } from './results-components';
+import { formatCurrency, validateOfferThreshold } from './utils/validationHelpers';
 import styles from './GuaranteedOffer.module.css';
 
 interface GuaranteedOfferProps {
@@ -14,285 +15,131 @@ interface GuaranteedOfferProps {
   totalSteps: number;
 }
 
-const GuaranteedOffer: React.FC<GuaranteedOfferProps> = ({ calculationResult, onBack, currentStep, totalSteps }) => {
-  const [showConfetti, setShowConfetti] = useState(false);
-  const { handoffToMainChat } = useGuaranteedAssistant();
+/**
+ * ============================================================================
+ * GUARANTEED OFFER - PROFESSIONAL CONTRACT STYLE
+ * ============================================================================
+ * Shows loading animation first, then reveals the professional offer display
+ * Matches LCP design exactly
+ */
+const GuaranteedOffer: React.FC<GuaranteedOfferProps> = ({ 
+  calculationResult, 
+  onBack 
+}) => {
+  const [showLoading, setShowLoading] = useState(true);
+  const [showResults, setShowResults] = useState(false);
 
-  // Validate offer threshold
-  const offerValidation = validateOfferThreshold(calculationResult.minOffer, calculationResult.maxOffer);
+  console.log('🎯 [GuaranteedOffer] Rendering with calculationResult:', calculationResult);
+  console.log('🎯 [GuaranteedOffer] minOffer:', calculationResult.minOffer);
+  console.log('🎯 [GuaranteedOffer] maxOffer:', calculationResult.maxOffer);
+  console.log('🎯 [GuaranteedOffer] showLoading:', showLoading);
+  console.log('🎯 [GuaranteedOffer] showResults:', showResults);
 
-  // Trigger confetti animation when component mounts (only if offer is valid)
+  // Scroll to top when component mounts
   useEffect(() => {
-    if (offerValidation.isValid) {
-      setShowConfetti(true);
-      // Hide confetti after 3 seconds
-      const timer = setTimeout(() => setShowConfetti(false), 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [offerValidation.isValid]);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
-  // If offer is below threshold, show message instead of offer
+  const handleLoadingComplete = () => {
+    console.log('✅ [GuaranteedOffer] Loading complete, showing results');
+    console.log('✅ [GuaranteedOffer] About to show results with data:', calculationResult);
+    setShowLoading(false);
+    setShowResults(true);
+  };
+
+  // Validate offer threshold - check if MAXIMUM payout is below $10,000
+  const offerValidation = validateOfferThreshold(calculationResult.maxOffer);
+  
+  console.log('🔍 [GuaranteedOffer] Offer validation:', {
+    maxOffer: calculationResult.maxOffer,
+    isValid: offerValidation.isValid,
+    error: offerValidation.error
+  });
+
+  // Show loading animation first
+  if (showLoading) {
+    console.log('🔄 [GuaranteedOffer] Showing loading animation');
+    return <GuaranteedOfferLoadingAnimation onComplete={handleLoadingComplete} />;
+  }
+
+  console.log('🎨 [GuaranteedOffer] Past loading, checking validation...');
+
+  // If maximum offer is below $10,000 threshold, show "No Offers Available" message
   if (!offerValidation.isValid) {
+    console.log('⚠️ [GuaranteedOffer] Maximum offer below threshold, showing no offers message');
+    
     return (
-      <GuaranteedStepContainer title="Offer Information" currentStep={currentStep} totalSteps={totalSteps}>
-        <div className={styles.noOffersContainer}>
-          <div className={styles.noOffersCard}>
-            <h3 style={{
-              color: '#856404',
-              marginBottom: '1rem',
-              fontSize: '1.5rem',
-              fontWeight: '600'
-            }}>No Offers Available</h3>
-            <p style={{
-              color: '#664d03',
-              marginBottom: '1.5rem',
-              lineHeight: '1.5',
-              fontSize: '1rem'
-            }}>{offerValidation.error}</p>
-            <div style={{
-              textAlign: 'left',
-              marginBottom: '1.5rem'
-            }}>
-              <h4 style={{
-                color: '#856404',
-                marginBottom: '0.75rem',
-                fontSize: '1.1rem',
-                fontWeight: '600'
-              }}>Suggestions to get an offer:</h4>
-              <ul style={{
-                listStyleType: 'disc',
-                marginLeft: '1.5rem'
-              }}>
-                <li style={{
-                  color: '#664d03',
-                  marginBottom: '0.5rem',
-                  lineHeight: '1.4'
-                }}>Increase your payment amount</li>
-                <li style={{
-                  color: '#664d03',
-                  marginBottom: '0.5rem',
-                  lineHeight: '1.4'
-                }}>Extend your date range</li>
-                <li style={{
-                  color: '#664d03',
-                  marginBottom: '0.5rem',
-                  lineHeight: '1.4'
-                }}>Consider including more payments</li>
-                <li style={{
-                  color: '#664d03',
-                  marginBottom: '0.5rem',
-                  lineHeight: '1.4'
-                }}>Contact our specialists for assistance</li>
-              </ul>
-            </div>
-            {onBack && (
-              <button onClick={onBack} style={{
-                background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
-                color: 'white',
-                border: 'none',
-                borderRadius: '8px',
-                padding: '0.75rem 1.5rem',
-                fontSize: '1rem',
-                fontWeight: '600',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease',
-                boxShadow: '0 2px 8px rgba(34, 197, 94, 0.2)'
-              }}
-              onMouseEnter={(e) => {
-                const target = e.target as HTMLButtonElement;
-                target.style.background = 'linear-gradient(135deg, #16a34a 0%, #15803d 100%)';
-                target.style.transform = 'translateY(-1px)';
-                target.style.boxShadow = '0 4px 12px rgba(34, 197, 94, 0.3)';
-              }}
-              onMouseLeave={(e) => {
-                const target = e.target as HTMLButtonElement;
-                target.style.background = 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)';
-                target.style.transform = 'translateY(0)';
-                target.style.boxShadow = '0 2px 8px rgba(34, 197, 94, 0.2)';
-              }}>
-                Go Back to Edit
-              </button>
-            )}
+      <div className={styles.pageContainer}>
+        <div className={styles.noOffersCard}>
+          <h3 className={styles.noOffersTitle}>No Offers Available</h3>
+          <p className={styles.noOffersMessage}>{offerValidation.error}</p>
+          <div className={styles.suggestionsContainer}>
+            <h4 className={styles.suggestionsTitle}>Suggestions to get an offer:</h4>
+            <ul className={styles.suggestionsList}>
+              <li className={styles.suggestionItem}>Increase your payment amount</li>
+              <li className={styles.suggestionItem}>Extend your date range</li>
+              <li className={styles.suggestionItem}>Consider including more payments</li>
+              <li className={styles.suggestionItem}>Contact our specialists for assistance</li>
+            </ul>
           </div>
+          {onBack && (
+            <button onClick={onBack} className={styles.contactButton}>
+              Go Back to Edit
+            </button>
+          )}
         </div>
-      </GuaranteedStepContainer>
+      </div>
     );
   }
 
+  console.log('✅ [GuaranteedOffer] Validation passed, ready to show results');
+
+  // Show the professional contract-style results
+  console.log('✨ [GuaranteedOffer] Rendering offer display with values:', {
+    minOffer: calculationResult.minOffer,
+    maxOffer: calculationResult.maxOffer,
+    formattedMin: formatCurrency(calculationResult.minOffer),
+    formattedMax: formatCurrency(calculationResult.maxOffer)
+  });
+
   return (
-    <GuaranteedStepContainer title="Congratulations! Here's Your Early Payout Offer" currentStep={currentStep} totalSteps={totalSteps}>
-      {/* Confetti Animation */}
-      {showConfetti && (
-        <div style={{
-          position: 'fixed',
-          top: '0',
-          left: '0',
-          width: '100%',
-          height: '100%',
-          pointerEvents: 'none',
-          zIndex: '1000',
-          overflow: 'hidden'
-        }}>
-          {[...Array(50)].map((_, i) => (
-            <div
-              key={i}
-              style={{
-                position: 'absolute',
-                width: '12px',
-                height: '12px',
-                background: 'linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3, #ff6b9d, #a8e6cf, #ffd93d, #6c5ce7)',
-                borderRadius: '50%',
-                animation: `confettiFall linear infinite`,
-                boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
-                opacity: '0.9',
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 2}s`,
-                animationDuration: `${2 + Math.random() * 2}s`
-              }}
-            />
-          ))}
+    <div className={styles.pageContainer}>
+      {/* Contract-Inspired Document */}
+      <div className={styles.documentCard}>
+        {/* Decorative Border Corners */}
+        <div className={styles.cornerTopLeft} />
+        <div className={styles.cornerTopRight} />
+        <div className={styles.cornerBottomLeft} />
+        <div className={styles.cornerBottomRight} />
+
+        {/* Header */}
+        <div className={styles.header}>
+          <h1 className={styles.title}>Early Payout Offer</h1>
+          <p className={styles.subtitle}>STRUCTURED SETTLEMENT VALUATION</p>
         </div>
-      )}
-      
-      <div style={{
-        width: '100%',
-        marginBottom: '1.5rem',
-        marginTop: '0.5rem',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center'
-      }}>
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          marginBottom: '1.5rem',
-          padding: '0.5rem 0'
-        }}>
-          <span style={{
-            color: '#666',
-            fontWeight: '600',
-            fontSize: '0.98rem',
-            marginBottom: '0.3rem'
-          }}>Minimum Offer</span>
-          <span style={{
-            color: '#15803d',
-            fontSize: '1.365rem',
-            fontWeight: '800',
-            letterSpacing: '0.01em',
-            textAlign: 'center'
-          }}>{formatCurrency(calculationResult.minOffer)}</span>
+
+        {/* Minimum Payout - Top, Smaller, Center-Aligned */}
+        <div className={styles.minimumPayoutContainer}>
+          <p className={styles.minimumLabel}>Minimum Payout</p>
+          <p className={styles.minimumAmount}>{formatCurrency(calculationResult.minOffer)}</p>
         </div>
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          marginBottom: '1.5rem',
-          padding: '0.5rem 0'
-        }}>
-          <span style={{
-            color: '#666',
-            fontWeight: '600',
-            fontSize: '0.98rem',
-            marginBottom: '0.3rem'
-          }}>Maximum Offer</span>
-          <span style={{
-            color: '#15803d',
-            fontSize: '1.89rem',
-            fontWeight: '800',
-            letterSpacing: '0.01em',
-            textAlign: 'center'
-          }}>{formatCurrency(calculationResult.maxOffer)}</span>
+
+        {/* Maximum Payout - Center & Largest with Shimmer */}
+        <div className={styles.maximumPayoutContainer}>
+          <p className={styles.maximumLabel}>Maximum Payout</p>
+          <p className={styles.maximumAmount}>{formatCurrency(calculationResult.maxOffer)}</p>
+        </div>
+
+        {/* Footer Note */}
+        <div className={styles.footer}>
+          <p className={styles.disclaimer}>
+            This offer is based on the information you provided and represents an estimated range.<br />
+            Final terms subject to verification and approval.
+          </p>
         </div>
       </div>
-
-      {/* Action Buttons */}
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: '1rem',
-        marginTop: '2rem'
-      }}>
-        <button
-          onClick={handoffToMainChat}
-          style={{
-            background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
-            color: 'white',
-            border: 'none',
-            borderRadius: '12px',
-            padding: '1rem 2rem',
-            fontSize: '1.1rem',
-            fontWeight: '600',
-            cursor: 'pointer',
-            transition: 'all 0.2s ease',
-            boxShadow: '0 4px 12px rgba(34, 197, 94, 0.3)',
-            minWidth: '200px'
-          }}
-          onMouseEnter={(e) => {
-            const target = e.target as HTMLButtonElement;
-            target.style.background = 'linear-gradient(135deg, #16a34a 0%, #15803d 100%)';
-            target.style.transform = 'translateY(-2px)';
-            target.style.boxShadow = '0 6px 16px rgba(34, 197, 94, 0.4)';
-          }}
-          onMouseLeave={(e) => {
-            const target = e.target as HTMLButtonElement;
-            target.style.background = 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)';
-            target.style.transform = 'translateY(0)';
-            target.style.boxShadow = '0 4px 12px rgba(34, 197, 94, 0.3)';
-          }}
-        >
-          💬 Continue in Main Chat
-        </button>
-        
-        {onBack && (
-          <button
-            onClick={onBack}
-            style={{
-              background: 'transparent',
-              color: '#6b7280',
-              border: '2px solid #e5e7eb',
-              borderRadius: '12px',
-              padding: '0.75rem 1.5rem',
-              fontSize: '1rem',
-              fontWeight: '500',
-              cursor: 'pointer',
-              transition: 'all 0.2s ease'
-            }}
-            onMouseEnter={(e) => {
-              const target = e.target as HTMLButtonElement;
-              target.style.borderColor = '#9ca3af';
-              target.style.color = '#374151';
-            }}
-            onMouseLeave={(e) => {
-              const target = e.target as HTMLButtonElement;
-              target.style.borderColor = '#e5e7eb';
-              target.style.color = '#6b7280';
-            }}
-          >
-            ← Back to Review
-          </button>
-        )}
-      </div>
-
-      {/* CSS Animation for confetti */}
-      <style jsx>{`
-        @keyframes confettiFall {
-          0% {
-            transform: translateY(-100vh) rotate(0deg) scale(1);
-            opacity: 1;
-          }
-          50% {
-            opacity: 0.9;
-          }
-          100% {
-            transform: translateY(100vh) rotate(720deg) scale(0.8);
-            opacity: 0;
-          }
-        }
-      `}</style>
-    </GuaranteedStepContainer>
+    </div>
   );
 };
 
-export default GuaranteedOffer; 
+export default GuaranteedOffer;

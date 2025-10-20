@@ -41,6 +41,7 @@ export interface QueueMessage extends BaseMessage {
   type: 'queue';
   text?: string; // Optional, not used for queue rendering
   sender: 'bot';
+  sessionId?: string; // Session ID for real-time monitoring
 }
 
 export type Message = TextMessage | FileMessage | ComponentMessage | QueueMessage;
