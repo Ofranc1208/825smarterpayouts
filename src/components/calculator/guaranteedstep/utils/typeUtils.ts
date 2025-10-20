@@ -3,7 +3,7 @@
 // ============================================================================
 // Utilities for converting between old and new type systems
 
-import { GuaranteedFormData } from '../types/guaranteed.types';
+import { GuaranteedFormData } from './guaranteedTypes';
 
 /**
  * 🔄 Converts old global GuaranteedFormData to new self-contained type

@@ -1,0 +1,85 @@
+/* ========================================
+   GUARANTEED PAYMENT OVERVIEW
+   First step: Payment mode and annual increase selection
+   ======================================== */
+
+/* Help Section */
+.helpSection {
+  display: flex;
+  align-items: center;
+  justifyContent: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Form Section */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.3rem;
+}
+
+.label {
+  font-size: 0.83rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 0.75rem 0 0.4rem 0;
+}
+
+/* Button Group */
+.buttonGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.1rem;
+}
+
+/* Navigation Section */
+.navigationSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.75rem;
+  padding: 0.4rem 0;
+}
+
+/* Instruction Modal Content */
+.instructionDescription {
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.instructionsList {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.instructionsListItem {
+  margin-bottom: 0.5rem;
+}
+
+.instructionsTip {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .helpSection {
+    gap: 0.4rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  .label {
+    font-size: 0.78rem;
+  }
+  
+  .buttonGroup {
+    gap: 0.3rem;
+  }
+}
+

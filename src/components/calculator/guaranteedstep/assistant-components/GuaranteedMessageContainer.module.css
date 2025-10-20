@@ -1,0 +1,98 @@
+/*
+ * ============================================================================
+ * GUARANTEED MESSAGE CONTAINER STYLES - SHARED COMPONENT
+ * ============================================================================
+ *
+ * Message container styling for Guaranteed assistant panel.
+ * Handles message display with auto-scroll functionality.
+ */
+
+/* Container styling */
+.container {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 16px;
+  scroll-behavior: smooth;
+  min-height: 0;
+  position: relative;
+}
+
+/* Custom scrollbar styling for webkit browsers */
+.container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* ============================================================================
+ * RESPONSIVE DESIGN
+ * ============================================================================
+ * Ensure message container works well on all screen sizes
+ */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+}
+
+/* ============================================================================
+ * ACCESSIBILITY ENHANCEMENTS
+ * ============================================================================
+ * High contrast mode support
+ */
+
+@media (prefers-contrast: high) {
+  .container::-webkit-scrollbar-thumb {
+    background: #666;
+  }
+
+  .container::-webkit-scrollbar-thumb:hover {
+    background: #333;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .container {
+    scroll-behavior: auto;
+  }
+}
+
+/* ============================================================================
+ * PRINT STYLES
+ * ============================================================================
+ * Ensure message container is visible in print
+ */
+
+@media print {
+  .container {
+    overflow: visible;
+    padding: 8px;
+    background: #fff;
+    border: 1px solid #000;
+  }
+
+  .container::-webkit-scrollbar {
+    display: none;
+  }
+}

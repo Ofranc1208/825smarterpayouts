@@ -3,9 +3,9 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  gap: 16px; /* Increased space between buttons for better visual separation */
-  margin-top: 24px;
-  padding: 16px; /* More generous padding around the button group */
+  gap: 13.6px; /* 15% smaller spacing between buttons */
+  margin-top: 20.4px;
+  padding: 13.6px; /* 15% smaller padding around the button group */
   background: rgba(34, 180, 77, 0.02); /* Very subtle green tint */
   border-radius: 20px; /* Rounded container for modern look */
   border: 1px solid rgba(34, 180, 77, 0.08); /* Subtle border */
@@ -13,10 +13,10 @@
 
 .menuBtn {
   width: 100%;
-  max-width: 220px; /* Slightly wider for better readability */
-  padding: 16px 24px; /* More generous padding */
+  max-width: 187px; /* 15% smaller for better layout */
+  padding: 13.6px 20.4px; /* 15% smaller padding */
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 1rem; /* Optimal size for readability */
+  font-size: 0.85rem; /* 15% smaller size */
   font-weight: 700; /* Bold for emphasis */
   color: #047857; /* Bold dark green text */
   background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); /* Very light mint green - 50% lighter */

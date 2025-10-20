@@ -1,0 +1,158 @@
+/*
+ * ============================================================================
+ * GUARANTEED ASSISTANT HEADER STYLES - SHARED COMPONENT
+ * ============================================================================
+ *
+ * Header styling for Guaranteed assistant panel.
+ * Contains title and close button with consistent styling.
+ */
+
+/* Header container */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  background: linear-gradient(135deg, #22b455 0%, #1a9a47 100%);
+  flex-shrink: 0;
+  border-radius: 16px 16px 0 0;
+  position: relative;
+}
+
+/* Title styling */
+.title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.4;
+}
+
+/* Close button styling */
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+/* Close button hover state */
+.closeButton:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Close button focus state for accessibility */
+.closeButton:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* ============================================================================
+ * RESPONSIVE DESIGN
+ * ============================================================================
+ * Ensure header works well on all screen sizes
+ */
+
+@media (max-width: 768px) {
+  .header {
+    padding: 10px 12px;
+  }
+
+  .title {
+    font-size: 15px;
+    gap: 6px;
+  }
+
+  .closeButton {
+    width: 28px;
+    height: 28px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 8px 10px;
+  }
+
+  .title {
+    font-size: 14px;
+    gap: 4px;
+  }
+
+  .closeButton {
+    width: 24px;
+    height: 24px;
+    font-size: 18px;
+  }
+}
+
+/* ============================================================================
+ * ACCESSIBILITY ENHANCEMENTS
+ * ============================================================================
+ * High contrast mode support
+ */
+
+@media (prefers-contrast: high) {
+  .header {
+    border-bottom: 2px solid #ffffff;
+  }
+
+  .title {
+    font-weight: bold;
+  }
+
+  .closeButton {
+    border: 1px solid #ffffff;
+  }
+
+  .closeButton:focus-visible {
+    outline-width: 3px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .closeButton {
+    transition: none;
+  }
+}
+
+/* ============================================================================
+ * PRINT STYLES
+ * ============================================================================
+ * Ensure header is visible in print
+ */
+
+@media print {
+  .header {
+    background: #22b455 !important;
+    border-bottom: 2px solid #000;
+    color: #fff;
+  }
+
+  .title {
+    color: #fff;
+    font-weight: bold;
+  }
+
+  .closeButton {
+    color: #fff;
+    border: 1px solid #fff;
+  }
+}

@@ -1,0 +1,88 @@
+/*
+ * ============================================================================
+ * GUARANTEED ASSISTANT BACKDROP STYLES - SHARED COMPONENT
+ * ============================================================================
+ *
+ * Backdrop overlay styling for Guaranteed assistant panel.
+ * Provides click-to-close functionality and visual depth.
+ */
+
+/* Backdrop styling */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  backdrop-filter: blur(2px);
+  cursor: pointer;
+  animation: backdropFadeIn 0.2s ease-out;
+}
+
+/* ============================================================================
+ * ANIMATION KEYFRAMES
+ * ============================================================================
+ */
+
+@keyframes backdropFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ============================================================================
+ * RESPONSIVE DESIGN
+ * ============================================================================
+ * Ensure backdrop works well on all screen sizes
+ */
+
+@media (max-width: 768px) {
+  .backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(1px);
+  }
+}
+
+@media (max-width: 480px) {
+  .backdrop {
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: none;
+  }
+}
+
+/* ============================================================================
+ * ACCESSIBILITY ENHANCEMENTS
+ * ============================================================================
+ * High contrast mode support
+ */
+
+@media (prefers-contrast: high) {
+  .backdrop {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 2px solid #fff;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .backdrop {
+    animation: none;
+  }
+}
+
+/* ============================================================================
+ * PRINT STYLES
+ * ============================================================================
+ * Ensure backdrop is hidden in print
+ */
+
+@media print {
+  .backdrop {
+    display: none;
+  }
+}

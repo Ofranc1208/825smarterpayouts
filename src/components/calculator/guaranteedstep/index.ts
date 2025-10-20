@@ -37,7 +37,7 @@ export type {
   Message,
   CalculationResult,
   Step
-} from './types/guaranteed.types';
+} from './utils/guaranteedTypes';
 
 // Prompts and Utilities
 export {
@@ -45,4 +45,4 @@ export {
   generateHandoffSummary,
   STEP_GUIDANCE_PROMPTS,
   GUARANTEED_ASSISTANT_SYSTEM_PROMPT
-} from './prompts/guaranteedStepPrompts';
+} from './utils/guaranteedPrompts';

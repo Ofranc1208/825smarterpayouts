@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import GuaranteedStepContainer from './GuaranteedStepContainer';
 import { validateOfferThreshold, formatCurrency } from './utils/validationHelpers';
 import { useGuaranteedAssistant } from '../../../contexts/GuaranteedAssistantContext';
+import styles from './GuaranteedOffer.module.css';
 
 interface GuaranteedOfferProps {
   calculationResult: {
@@ -22,34 +23,20 @@ const GuaranteedOffer: React.FC<GuaranteedOfferProps> = ({ calculationResult, on
 
   // Trigger confetti animation when component mounts (only if offer is valid)
   useEffect(() => {
-    if (offerValidation.shouldShowOffer) {
+    if (offerValidation.isValid) {
       setShowConfetti(true);
       // Hide confetti after 3 seconds
       const timer = setTimeout(() => setShowConfetti(false), 3000);
       return () => clearTimeout(timer);
     }
-  }, [offerValidation.shouldShowOffer]);
+  }, [offerValidation.isValid]);
 
   // If offer is below threshold, show message instead of offer
-  if (!offerValidation.shouldShowOffer) {
+  if (!offerValidation.isValid) {
     return (
       <GuaranteedStepContainer title="Offer Information" currentStep={currentStep} totalSteps={totalSteps}>
-        <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          minHeight: '300px',
-          padding: '2rem'
-        }}>
-          <div style={{
-            textAlign: 'center',
-            maxWidth: '500px',
-            background: '#fff3cd',
-            border: '1px solid #ffeaa7',
-            borderRadius: '12px',
-            padding: '2rem',
-            boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-          }}>
+        <div className={styles.noOffersContainer}>
+          <div className={styles.noOffersCard}>
             <h3 style={{
               color: '#856404',
               marginBottom: '1rem',
@@ -61,7 +48,7 @@ const GuaranteedOffer: React.FC<GuaranteedOfferProps> = ({ calculationResult, on
               marginBottom: '1.5rem',
               lineHeight: '1.5',
               fontSize: '1rem'
-            }}>{offerValidation.message}</p>
+            }}>{offerValidation.error}</p>
             <div style={{
               textAlign: 'left',
               marginBottom: '1.5rem'

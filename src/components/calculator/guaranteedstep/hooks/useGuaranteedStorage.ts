@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from 'react';
-import { GuaranteedMessage } from '../types/guaranteed.types';
+import { GuaranteedMessage } from '../utils/guaranteedTypes';
 
 // Generate unique ID for messages
 const generateUniqueId = (): string => {

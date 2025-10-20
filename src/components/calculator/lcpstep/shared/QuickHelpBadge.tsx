@@ -27,17 +27,15 @@ const QuickHelpBadge: React.FC<QuickHelpBadgeProps> = ({ className }) => {
   const { openAssistant } = useAssistant();
 
   return (
-    <div className={`${styles.container} ${className || ''}`}>
-      <button
-        className={styles.badge}
-        onClick={openAssistant}
-        type="button"
-        aria-label="Open Quick Help Assistant"
-      >
-        <span className={styles.icon}>💡</span>
-        Quick Help
-      </button>
-    </div>
+    <button
+      className={`${styles.badge} ${className || ''}`}
+      onClick={openAssistant}
+      type="button"
+      aria-label="Open Quick AI Help Assistant"
+    >
+      <span className={styles.icon}>💡</span>
+      Quick AI Help
+    </button>
   );
 };
 

@@ -1,0 +1,153 @@
+/*
+ * ============================================================================
+ * GUARANTEED RESULT CARD STYLES - SHARED COMPONENT
+ * ============================================================================
+ *
+ * Individual result display card styling for Guaranteed calculator.
+ * Shows payout amounts with consistent styling and formatting.
+ */
+
+/* Card container */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 1rem;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f1f5f9;
+  min-width: 160px;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+/* Label styling */
+.label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #64748b;
+  margin-bottom: 0.75rem;
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* Amount styling */
+.amount {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 800;
+  text-align: center;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* Minimum offer amount styling */
+.amountMinimum {
+  font-size: 1.5rem;
+  color: #15803d;
+}
+
+/* Maximum offer amount styling */
+.amountMaximum {
+  font-size: 2rem;
+  color: #15803d;
+}
+
+/* ============================================================================
+ * RESPONSIVE DESIGN
+ * ============================================================================
+ * Ensure cards work well on all screen sizes
+ */
+
+@media (max-width: 768px) {
+  .card {
+    padding: 1.25rem 0.875rem;
+    min-width: 140px;
+  }
+
+  .label {
+    font-size: 0.8rem;
+    margin-bottom: 0.625rem;
+  }
+
+  .amountMinimum {
+    font-size: 1.35rem;
+  }
+
+  .amountMaximum {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 1rem 0.75rem;
+    min-width: 120px;
+  }
+
+  .label {
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .amountMinimum {
+    font-size: 1.2rem;
+  }
+
+  .amountMaximum {
+    font-size: 1.5rem;
+  }
+}
+
+/* ============================================================================
+ * ACCESSIBILITY ENHANCEMENTS
+ * ============================================================================
+ * High contrast mode support
+ */
+
+@media (prefers-contrast: high) {
+  .card {
+    border: 2px solid #1e293b;
+    background: #fff;
+  }
+
+  .label {
+    font-weight: bold;
+  }
+
+  .amount {
+    font-weight: 900;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}
+
+/* ============================================================================
+ * PRINT STYLES
+ * ============================================================================
+ * Ensure cards are visible in print
+ */
+
+@media print {
+  .card {
+    border: 2px solid #000;
+    background: #fff;
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  .label {
+    color: #000;
+    font-weight: bold;
+  }
+
+  .amount {
+    color: #000;
+    font-weight: bold;
+  }
+}

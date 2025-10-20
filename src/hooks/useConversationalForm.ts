@@ -45,9 +45,6 @@ export interface QueueMessage extends BaseMessage {
 
 export type Message = TextMessage | FileMessage | ComponentMessage | QueueMessage;
 
-// Export individual types for use in other components
-export type { FileMessage, TextMessage, ComponentMessage };
-
 interface UseConversationalFormProps {
   setVisibleMessages: React.Dispatch<React.SetStateAction<Message[]>>;
   sessionId?: string;
@@ -152,7 +149,7 @@ export const useConversationalForm = ({ setVisibleMessages, sessionId }: UseConv
         type: 'component',
         componentType: 'GuaranteedCalculationLink',
         componentData: {
-          text: 'Start Guaranteed Calculation →',
+          text: 'Start Calculation →',
           href: '/calculations/guaranteed',
           sessionId: sessionId // Pass sessionId for persistence
         }

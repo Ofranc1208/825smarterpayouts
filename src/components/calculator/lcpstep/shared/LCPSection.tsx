@@ -51,14 +51,6 @@ const LCPSection: React.FC<LCPSectionProps> = ({
               role="button"
               tabIndex={0}
               aria-label={`Show tooltip for ${label}`}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = '#16a34a';
-                e.currentTarget.style.transform = 'scale(1.1)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = '#22c55e';
-                e.currentTarget.style.transform = 'scale(1)';
-              }}
             >
               ?
             </span>

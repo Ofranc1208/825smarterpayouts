@@ -86,50 +86,115 @@ const LCPaymentReviewStep: React.FC<Props> = ({
         boxShadow: '0 4px 24px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04)',
         padding: '1rem',
       }}>
-        {/* Edit Form Button at Top */}
-        {onEdit && (
-          <div style={{ textAlign: 'center', marginBottom: '0.75rem' }}>
+        {/* Edit Form (secondary) and Calculate (primary) Buttons - 2025 best practices */}
+        <div style={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'center', 
+          gap: '0.75rem', 
+          marginBottom: '0.75rem',
+          flexWrap: 'wrap'
+        }}>
+          {onEdit && (
             <button 
               onClick={() => onEdit(1)}
               type="button"
               style={{
-                background: 'linear-gradient(135deg, #6b7280 0%, #4b5563 100%)',
-                color: '#fff',
-                border: 'none',
+                background: 'transparent',
+                color: '#6b7280',
+                border: '1.5px solid #d1d5db',
                 borderRadius: '10px',
-                padding: '0.5rem 1.5rem',
-                fontSize: '0.875rem',
-                fontWeight: 600,
+                padding: '0.4rem 1rem',
+                fontSize: '0.8rem',
+                fontWeight: 500,
                 cursor: 'pointer',
-                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
-                transition: 'all 0.2s ease'
+                transition: 'all 0.2s ease',
+                minWidth: '100px',
+                maxWidth: '140px'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'linear-gradient(135deg, #4b5563 0%, #374151 100%)';
-                e.currentTarget.style.transform = 'translateY(-1px)';
+                e.currentTarget.style.background = '#f9fafb';
+                e.currentTarget.style.borderColor = '#9ca3af';
+                e.currentTarget.style.color = '#374151';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'linear-gradient(135deg, #6b7280 0%, #4b5563 100%)';
-                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.background = 'transparent';
+                e.currentTarget.style.borderColor = '#d1d5db';
+                e.currentTarget.style.color = '#6b7280';
               }}
             >
               ✏️ Edit Form
             </button>
-          </div>
-        )}
+          )}
+          
+          <button 
+            onClick={onCalculate}
+            type="button"
+            style={{
+              background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
+              color: '#fff',
+              border: 'none',
+              borderRadius: '10px',
+              padding: '0.65rem 1.5rem',
+              fontSize: '0.95rem',
+              fontWeight: 700,
+              cursor: 'pointer',
+              boxShadow: '0 3px 10px rgba(34, 197, 94, 0.3)',
+              transition: 'all 0.2s ease',
+              flex: '1',
+              minWidth: '130px',
+              maxWidth: '200px'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'linear-gradient(135deg, #16a34a 0%, #15803d 100%)';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 5px 14px rgba(34, 197, 94, 0.4)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)';
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 3px 10px rgba(34, 197, 94, 0.3)';
+            }}
+          >
+            Calculate
+          </button>
+        </div>
 
-        {/* Scrollable Review Sections Container */}
-        <div style={{
-          maxHeight: '420px',
-          overflowY: 'auto',
-          overflowX: 'hidden',
-          padding: '0.25rem',
-          marginBottom: '1rem',
-          border: '1px solid #e5e7eb',
-          borderRadius: '12px',
-          background: '#fafafa',
-          scrollBehavior: 'smooth'
-        }}>
+        {/* Scrollable Review Sections Container - More space now */}
+        <div 
+          className="custom-green-scrollbar"
+          style={{
+            maxHeight: '500px',
+            overflowY: 'auto',
+            overflowX: 'hidden',
+            padding: '0.25rem',
+            marginBottom: '0.5rem',
+            border: '1px solid #e5e7eb',
+            borderRadius: '12px',
+            background: '#fafafa',
+            scrollBehavior: 'smooth'
+          }}
+        >
+          <style>{`
+            .custom-green-scrollbar::-webkit-scrollbar {
+              width: 6px;
+            }
+            .custom-green-scrollbar::-webkit-scrollbar-track {
+              background: #f1f5f9;
+              border-radius: 10px;
+            }
+            .custom-green-scrollbar::-webkit-scrollbar-thumb {
+              background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+              border-radius: 10px;
+              transition: background 0.2s ease;
+            }
+            .custom-green-scrollbar::-webkit-scrollbar-thumb:hover {
+              background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+            }
+            .custom-green-scrollbar::-webkit-scrollbar-thumb:active {
+              background: linear-gradient(135deg, #15803d 0%, #14532d 100%);
+            }
+          `}</style>
           <div className={layout.formContainer}>
             {/* Payment Section */}
             <PaymentSection
@@ -156,40 +221,6 @@ const LCPaymentReviewStep: React.FC<Props> = ({
             {/* Health Section */}
             <HealthSection healthData={healthData} />
           </div>
-        </div>
-
-        {/* Calculate Button at Bottom */}
-        <div style={{ textAlign: 'center', marginBottom: '0.5rem' }}>
-          <button 
-            onClick={onCalculate}
-            type="button"
-            style={{
-              background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
-              color: '#fff',
-              border: 'none',
-              borderRadius: '12px',
-              padding: '0.875rem 3rem',
-              fontSize: '1.125rem',
-              fontWeight: 700,
-              cursor: 'pointer',
-              boxShadow: '0 4px 12px rgba(34, 197, 94, 0.3)',
-              transition: 'all 0.2s ease',
-              width: '100%',
-              maxWidth: '300px'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'linear-gradient(135deg, #16a34a 0%, #15803d 100%)';
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 6px 16px rgba(34, 197, 94, 0.4)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)';
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 4px 12px rgba(34, 197, 94, 0.3)';
-            }}
-          >
-            Calculate
-          </button>
         </div>
 
         {/* Results Display */}

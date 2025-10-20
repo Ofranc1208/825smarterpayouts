@@ -52,7 +52,7 @@
   padding: 0.6rem 1.2rem; /* 20% smaller padding */
   font-size: 1rem; /* Bigger text */
   min-width: 110px; /* 20% smaller */
-  max-width: 130px; /* Prevent buttons from getting too wide */
+  max-width: 160px; /* Allow longer text like "Lump Sum" to fit on one line */
   min-height: 38px; /* 20% smaller */
   display: flex;
   align-items: center;
@@ -160,7 +160,7 @@
 @media (max-width: 768px) {
   .optionButton {
     min-width: 95px; /* Slightly smaller for mobile */
-    max-width: 120px; /* Adjusted for mobile screens */
+    max-width: 150px; /* Adjusted for mobile screens to fit "Lump Sum" */
     padding: 0.5rem 1rem; /* Adjusted for better mobile touch */
     font-size: 0.9rem; /* Slightly smaller but still readable */
   }
@@ -175,7 +175,7 @@
 @media (max-width: 480px) {
   .optionButton {
     min-width: 85px; /* Even smaller for very small screens */
-    max-width: 105px; /* Compact for small screens */
+    max-width: 140px; /* Compact for small screens but fits "Lump Sum" */
     padding: 0.45rem 0.9rem; /* Compact padding for mobile */
     font-size: 0.85rem; /* Readable but compact */
   }

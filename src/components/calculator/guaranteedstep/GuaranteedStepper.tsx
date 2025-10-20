@@ -3,11 +3,12 @@ import React, { useCallback } from 'react';
 import { useCalculator, CalculatorContext } from '../../../contexts/CalculatorContext';
 import { useGuaranteedAssistant } from '../../../contexts/GuaranteedAssistantContext';
 import { CalculationService } from '../../../services/calculationService';
-import { GuaranteedFormData, LumpSumPayment } from './types/guaranteed.types';
+import { GuaranteedFormData, LumpSumPayment } from './utils/guaranteedTypes';
 import { convertToSelfContainedFormData } from './utils/typeUtils';
 import GuaranteedPaymentOverview from './GuaranteedPaymentOverview';
 import GuaranteedPaymentAmountOverview from './GuaranteedPaymentAmountOverview';
 import GuaranteedLumpSumAmountOverview from './GuaranteedLumpSumAmountOverview';
+import styles from './GuaranteedStepper.module.css';
 import GuaranteedReview from './GuaranteedReview';
 import GuaranteedOffer from './GuaranteedOffer';
 import GuaranteedAssistantPanel from './GuaranteedAssistantPanel';
@@ -256,9 +257,9 @@ const GuaranteedStepper: React.FC = () => {
              default:
                console.log('❌ No step matched, currentStep:', currentStep);
                return (
-                 <div style={{ padding: '2rem', textAlign: 'center' }}>
-                   <h3>Loading...</h3>
-                   <p>Current step: {currentStep}</p>
+                 <div className={styles.loadingContainer}>
+                   <h3 className={styles.loadingTitle}>Loading...</h3>
+                   <p className={styles.loadingText}>Current step: {currentStep}</p>
                  </div>
                );
            }
@@ -269,11 +270,7 @@ const GuaranteedStepper: React.FC = () => {
          
          return (
            <>
-             <div style={{ 
-               maxWidth: '600px', 
-               margin: '0 auto',
-               padding: '0.5rem'
-             }}>
+             <div className={styles.stepperContainer}>
                {renderCurrentStep()}
              </div>
                          {/* Guaranteed Assistant Panel */}

@@ -2,15 +2,15 @@
 
 import React, { createContext, useContext, useState, useEffect, ReactNode, useCallback } from 'react';
 import { useGuaranteedStorage } from '../components/calculator/guaranteedstep/hooks/useGuaranteedStorage';
-import { GuaranteedMessage, GuaranteedFormData } from '../components/calculator/guaranteedstep/types/guaranteed.types';
+import { GuaranteedMessage, GuaranteedFormData } from '../components/calculator/guaranteedstep/utils/guaranteedTypes';
 import { convertToSelfContainedFormData } from '../components/calculator/guaranteedstep/utils/typeUtils';
 import { useCalculator } from './CalculatorContext';
-import { 
-  generateContextualResponse, 
+import {
+  generateContextualResponse,
   generateHandoffSummary,
   STEP_GUIDANCE_PROMPTS,
-  GUARANTEED_ASSISTANT_SYSTEM_PROMPT 
-} from '../components/calculator/guaranteedstep/prompts/guaranteedStepPrompts';
+  GUARANTEED_ASSISTANT_SYSTEM_PROMPT
+} from '../components/calculator/guaranteedstep/utils/guaranteedPrompts';
 
 // ============================================================================
 // MESSAGE INTERFACE - Using isolated storage types

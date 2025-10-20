@@ -2,9 +2,11 @@
 
 import React, { useState, useRef } from 'react';
 import GuaranteedStepContainer from './GuaranteedStepContainer';
+import { GuaranteedNavigationButton } from './shared';
 import { RATE_SPREADS, AMOUNT_ADJUSTMENTS, BASE_DISCOUNT_RATE } from '../../../../app/utils/npvConfig';
-import { GuaranteedFormData, LumpSumPayment } from './types/guaranteed.types';
+import { GuaranteedFormData, LumpSumPayment } from './utils/guaranteedTypes';
 import { safeStringify } from './utils/typeUtils';
+import styles from './GuaranteedLumpSumAmountOverview.module.css';
 
 interface GuaranteedLumpSumAmountOverviewProps {
   onNext: (data: { payments: LumpSumPayment[] }) => void;
@@ -107,18 +109,8 @@ const GuaranteedLumpSumAmountOverview: React.FC<GuaranteedLumpSumAmountOverviewP
   return (
     <GuaranteedStepContainer title="Lump Sum Payment Details" currentStep={currentStep} totalSteps={totalSteps}>
       <form onSubmit={handleSubmit}>
-                <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '0.4rem',
-          marginBottom: '0.3rem'
-        }}>
-          <label style={{
-            fontSize: '0.83rem',
-            fontWeight: '700',
-            textAlign: 'center',
-            margin: '0.75rem 0 0.4rem 0'
-          }}>Number of Lump Sum Payments (1–10)</label>
+        <div className={styles.section}>
+          <label className={styles.label}>Number of Lump Sum Payments (1–10)</label>
           <input
             type="number"
             value={numberOfPayments}
@@ -131,224 +123,57 @@ const GuaranteedLumpSumAmountOverview: React.FC<GuaranteedLumpSumAmountOverviewP
                 setNumberOfPayments('');
               }
             }}
-            style={{
-              border: errors['numberOfPayments'] ? '1.5px solid #ef4444' : '1.5px solid #d1d5db',
-              background: '#f9fafb',
-              color: '#222',
-              borderRadius: '8px',
-              padding: '0.45rem 0.75rem',
-              fontSize: '0.78rem',
-              minHeight: '2.1rem',
-              width: '100%',
-              textAlign: 'center',
-              transition: 'border 0.15s ease',
-              cursor: 'pointer',
-              boxShadow: errors['numberOfPayments'] ? '0 0 0 2px rgba(239, 68, 68, 0.1)' : 'none'
-            }}
-            onMouseEnter={(e) => {
-              const target = e.target as HTMLInputElement;
-              if (!errors['numberOfPayments']) {
-                target.style.borderColor = '#9ca3af';
-              }
-            }}
-            onMouseLeave={(e) => {
-              const target = e.target as HTMLInputElement;
-              if (!errors['numberOfPayments']) {
-                target.style.borderColor = '#d1d5db';
-              }
-            }}
-            onFocus={(e) => {
-              setShowGuidance(true);
-              const target = e.target as HTMLInputElement;
-              if (!errors['numberOfPayments']) {
-                target.style.outline = 'none';
-                target.style.borderColor = '#22c55e';
-                target.style.boxShadow = '0 0 0 2px rgba(34, 197, 94, 0.1)';
-              }
-            }}
-            onBlur={(e) => {
-              setTimeout(() => setShowGuidance(false), 200);
-              const target = e.target as HTMLInputElement;
-              if (!errors['numberOfPayments']) {
-                target.style.borderColor = '#d1d5db';
-                target.style.boxShadow = 'none';
-              }
-            }}
+            className={`${styles.numberInput} ${errors['numberOfPayments'] ? styles.error : ''}`}
+            onFocus={() => setShowGuidance(true)}
+            onBlur={() => setTimeout(() => setShowGuidance(false), 200)}
             min={1}
             max={10}
             placeholder="Click to enter number (1-10)"
           />
           {showGuidance && (
-            <div style={{
-              marginTop: '0.3rem',
-              textAlign: 'center',
-              padding: '0.5rem',
-              background: '#f0f9ff',
-              border: '1px solid #0ea5e9',
-              borderRadius: '6px',
-              animation: 'fadeIn 0.3s ease-in'
-            }}>
-              <span style={{
-                fontSize: '0.7rem',
-                color: '#6b7280',
-                fontStyle: 'italic'
-              }}>💡 You can add up to 10 lump sum payments</span>
+            <div className={styles.guidanceMessage}>
+              <span className={styles.guidanceText}>💡 You can add up to 10 lump sum payments</span>
             </div>
           )}
           {errors['numberOfPayments'] && (
-            <span style={{
-              color: '#ef4444',
-              fontSize: '0.7rem',
-              marginTop: '0.2rem',
-              display: 'block'
-            }}>{errors['numberOfPayments']}</span>
+            <span className={styles.errorMessage}>{errors['numberOfPayments']}</span>
           )}
         </div>
 
         {typeof numberOfPayments === 'number' && numberOfPayments > 0 && (
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '0.75rem',
-            marginBottom: '0.5rem'
-          }}>
+          <div className={styles.paymentsContainer}>
             {payments.map((payment, index) => (
-              <div key={index} style={{
-                background: '#f8f9fa',
-                border: '1px solid #e9ecef',
-                borderRadius: '12px',
-                padding: '0.75rem',
-                marginBottom: '0.5rem'
-              }}>
-                <h6 style={{
-                  fontSize: '0.8rem',
-                  fontWeight: '600',
-                  color: '#495057',
-                  marginBottom: '0.5rem',
-                  textAlign: 'center'
-                }}>Payment {index + 1}</h6>
+              <div key={index} className={styles.paymentCard}>
+                <h6 className={styles.paymentCardTitle}>Payment {index + 1}</h6>
                 
-                <div style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '0.4rem',
-                  marginBottom: '0.3rem'
-                }}>
-                  <label style={{
-                    fontSize: '0.83rem',
-                    fontWeight: '700',
-                    textAlign: 'center',
-                    margin: '0.75rem 0 0.4rem 0'
-                  }}>Payment Amount ($)</label>
-                  <div style={{
-                    position: 'relative',
-                    display: 'flex',
-                    alignItems: 'center'
-                  }}>
-                    <span style={{
-                      position: 'absolute',
-                      left: '0.75rem',
-                      color: '#6b7280',
-                      fontSize: '0.78rem',
-                      fontWeight: '500',
-                      zIndex: '1'
-                    }}>$</span>
+                <div className={styles.section}>
+                  <label className={styles.label}>Payment Amount ($)</label>
+                  <div className={styles.amountInputWrapper}>
+                    <span className={styles.dollarSign}>$</span>
                     <input
                       type="text"
                       inputMode="decimal"
-                      style={{
-                        border: errors[`payment-${index}-amount`] ? '1.5px solid #ef4444' : '1.5px solid #d1d5db',
-                        background: '#f9fafb',
-                        color: '#222',
-                        borderRadius: '8px',
-                        padding: '0.45rem 0.75rem 0.45rem 1.5rem',
-                        fontSize: '0.78rem',
-                        minHeight: '2.1rem',
-                        width: '100%',
-                        transition: 'border 0.15s ease',
-                        boxShadow: errors[`payment-${index}-amount`] ? '0 0 0 2px rgba(239, 68, 68, 0.1)' : 'none'
-                      }}
-                      onFocus={(e) => {
-                        const target = e.target as HTMLInputElement;
-                        if (!errors[`payment-${index}-amount`]) {
-                          target.style.outline = 'none';
-                          target.style.borderColor = '#22c55e';
-                          target.style.boxShadow = '0 0 0 2px rgba(34, 197, 94, 0.1)';
-                        }
-                      }}
-                      onBlur={(e) => {
-                        const target = e.target as HTMLInputElement;
-                        if (!errors[`payment-${index}-amount`]) {
-                          target.style.borderColor = '#d1d5db';
-                          target.style.boxShadow = 'none';
-                        }
-                      }}
+                      className={`${styles.amountInput} ${errors[`payment-${index}-amount`] ? styles.error : ''}`}
                       value={payment.amount}
                       onChange={(e) => handlePaymentChange(index, 'amount', e.target.value)}
                       placeholder="Enter amount"
                     />
                   </div>
                   {errors[`payment-${index}-amount`] && (
-                    <span style={{
-                      color: '#ef4444',
-                      fontSize: '0.7rem',
-                      marginTop: '0.2rem',
-                      display: 'block'
-                    }}>{errors[`payment-${index}-amount`]}</span>
+                    <span className={styles.errorMessage}>{errors[`payment-${index}-amount`]}</span>
                   )}
                 </div>
 
-                <div style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '0.4rem',
-                  marginBottom: '0.3rem'
-                }}>
-                  <label style={{
-                    fontSize: '0.83rem',
-                    fontWeight: '700',
-                    textAlign: 'center',
-                    margin: '0.75rem 0 0.4rem 0'
-                  }}>Payment Date</label>
+                <div className={styles.section}>
+                  <label className={styles.label}>Payment Date</label>
                   <input
                     type="date"
-                    style={{
-                      border: errors[`payment-${index}-date`] ? '1.5px solid #ef4444' : '1.5px solid #d1d5db',
-                      background: '#f9fafb',
-                      color: '#222',
-                      borderRadius: '8px',
-                      padding: '0.45rem 0.75rem',
-                      fontSize: '0.78rem',
-                      minHeight: '2.1rem',
-                      width: '100%',
-                      transition: 'border 0.15s ease',
-                      boxShadow: errors[`payment-${index}-date`] ? '0 0 0 2px rgba(239, 68, 68, 0.1)' : 'none'
-                    }}
-                    onFocus={(e) => {
-                      const target = e.target as HTMLInputElement;
-                      if (!errors[`payment-${index}-date`]) {
-                        target.style.outline = 'none';
-                        target.style.borderColor = '#22c55e';
-                        target.style.boxShadow = '0 0 0 2px rgba(34, 197, 94, 0.1)';
-                      }
-                    }}
-                    onBlur={(e) => {
-                      const target = e.target as HTMLInputElement;
-                      if (!errors[`payment-${index}-date`]) {
-                        target.style.borderColor = '#d1d5db';
-                        target.style.boxShadow = 'none';
-                      }
-                    }}
+                    className={`${styles.dateInput} ${errors[`payment-${index}-date`] ? styles.error : ''}`}
                     value={payment.lumpSumDate}
                     onChange={(e) => handlePaymentChange(index, 'lumpSumDate', e.target.value)}
                   />
                   {errors[`payment-${index}-date`] && (
-                    <span style={{
-                      color: '#ef4444',
-                      fontSize: '0.7rem',
-                      marginTop: '0.2rem',
-                      display: 'block'
-                    }}>{errors[`payment-${index}-date`]}</span>
+                    <span className={styles.errorMessage}>{errors[`payment-${index}-date`]}</span>
                   )}
                 </div>
               </div>
@@ -356,84 +181,15 @@ const GuaranteedLumpSumAmountOverview: React.FC<GuaranteedLumpSumAmountOverviewP
           </div>
         )}
 
-        <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginTop: '0.75rem',
-          padding: '0.4rem 0'
-        }}>
-          <button
-            style={{
-              background: (numberOfPayments === '' || !numberOfPayments || (typeof numberOfPayments === 'number' && (numberOfPayments < 1 || numberOfPayments > 10))) 
-                ? '#bbf7d0' 
-                : 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
-              color: '#fff',
-              border: 'none',
-              borderRadius: '50%',
-              width: '3rem',
-              height: '3rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '1.4rem',
-              cursor: (numberOfPayments === '' || !numberOfPayments || (typeof numberOfPayments === 'number' && (numberOfPayments < 1 || numberOfPayments > 10))) 
-                ? 'not-allowed' 
-                : 'pointer',
-              transition: 'all 0.2s ease',
-              boxShadow: '0 4px 12px rgba(34, 197, 94, 0.3)',
-              fontWeight: '600'
-            }}
-            onMouseEnter={(e) => {
-              const target = e.target as HTMLButtonElement;
-              if (!target.disabled) {
-                target.style.background = 'linear-gradient(135deg, #16a34a 0%, #15803d 100%)';
-                target.style.transform = 'translateY(-2px)';
-                target.style.boxShadow = '0 6px 16px rgba(34, 197, 94, 0.4)';
-              }
-            }}
-            onMouseLeave={(e) => {
-              const target = e.target as HTMLButtonElement;
-              if (!target.disabled) {
-                target.style.background = 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)';
-                target.style.transform = 'translateY(0)';
-                target.style.boxShadow = '0 4px 12px rgba(34, 197, 94, 0.3)';
-              }
-            }}
-            onMouseDown={(e) => {
-              const target = e.target as HTMLButtonElement;
-              if (!target.disabled) {
-                target.style.transform = 'translateY(0)';
-                target.style.boxShadow = '0 4px 12px rgba(34, 197, 94, 0.3)';
-              }
-            }}
-            type="submit"
+        <div className={styles.navigationSection}>
+          <GuaranteedNavigationButton
+            direction="next"
             disabled={numberOfPayments === '' || !numberOfPayments || (typeof numberOfPayments === 'number' && (numberOfPayments < 1 || numberOfPayments > 10))}
-            aria-label="Next"
-          >
-            <span style={{
-              fontSize: '1.2rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}>&#8594;</span>
-          </button>
+            type="submit"
+            aria-label="Continue to next step"
+          />
         </div>
       </form>
-
-      {/* CSS Animation for fadeIn guidance message */}
-      <style jsx>{`
-        @keyframes fadeIn {
-          from { 
-            opacity: 0; 
-            transform: translateY(-5px); 
-          }
-          to { 
-            opacity: 1; 
-            transform: translateY(0); 
-          }
-        }
-      `}</style>
     </GuaranteedStepContainer>
   );
 };

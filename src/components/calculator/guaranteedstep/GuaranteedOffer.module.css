@@ -1,0 +1,234 @@
+/* ========================================
+   GUARANTEED OFFER
+   Offer display component styling
+   ======================================== */
+
+/* Main container for no offers state */
+.noOffersContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  padding: 2rem;
+}
+
+.noOffersCard {
+  text-align: center;
+  max-width: 500px;
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.noOffersTitle {
+  color: #856404;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.noOffersMessage {
+  color: #664d03;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+.suggestionsSection {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.suggestionsTitle {
+  color: #856404;
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.suggestionsList {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+}
+
+.suggestionItem {
+  color: #664d03;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  font-size: 0.95rem;
+}
+
+.contactButton {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 10px rgba(34, 197, 94, 0.3);
+}
+
+.contactButton:hover {
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+}
+
+.contactButton:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(34, 197, 94, 0.3);
+}
+
+/* Offer display styles */
+.offerContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.offerCard {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  border: 1px solid #e5e7eb;
+}
+
+.offerTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.offerSubtitle {
+  font-size: 1rem;
+  color: #64748b;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.offerAmount {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #22c55e;
+  text-align: center;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(34, 197, 94, 0.2);
+}
+
+.offerDetails {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.detailItem {
+  text-align: center;
+}
+
+.detailLabel {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+.detailValue {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.disclaimer {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  line-height: 1.4;
+  background: #f8fafc;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #22c55e;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.actionButton {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 10px rgba(34, 197, 94, 0.3);
+  flex: 1;
+  max-width: 150px;
+}
+
+.actionButton:hover {
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+}
+
+.actionButton:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(34, 197, 94, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .noOffersCard {
+    padding: 1.5rem;
+  }
+
+  .noOffersTitle {
+    font-size: 1.3rem;
+  }
+
+  .offerCard {
+    padding: 1.5rem;
+  }
+
+  .offerTitle {
+    font-size: 1.5rem;
+  }
+
+  .offerAmount {
+    font-size: 2.5rem;
+  }
+
+  .offerDetails {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .actionButtons {
+    flex-direction: column;
+  }
+
+  .actionButton {
+    max-width: 100%;
+  }
+}
+

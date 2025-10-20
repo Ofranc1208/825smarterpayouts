@@ -63,10 +63,10 @@ export class CalculationLinkManager {
 
   private getCalculationLinkStyle() {
     return {
-      display: 'inline-block',
-      maxWidth: '280px',
+      display: 'block',
+      maxWidth: '224px',
       width: '100%',
-      padding: '16px 24px',
+      padding: '12.8px 19.2px',
       background: 'linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%)',
       color: '#047857',
       border: '2px solid #059669',
@@ -76,7 +76,7 @@ export class CalculationLinkManager {
       cursor: 'pointer',
       textDecoration: 'none',
       fontWeight: '700',
-      fontSize: '0.95rem',
+      fontSize: '0.76rem',
       boxShadow: '0 4px 12px rgba(5, 150, 105, 0.15)',
       transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)'
     };

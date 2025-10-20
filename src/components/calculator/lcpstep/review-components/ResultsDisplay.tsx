@@ -73,11 +73,11 @@ const ResultsDisplay: React.FC<ResultsDisplayProps> = ({
           </div>
         )}
         
-        {/* Family Protection Value */}
+        {/* Family Protection Value - Emphasized */}
         {result.familyProtectionNPV !== undefined && (
-          <div className={styles.resultRow}>
-            <span className={styles.resultLabel}>Family Protection Value:</span>
-            <span className={styles.resultSecondary}>
+          <div className={styles.familyProtectionRow}>
+            <span className={styles.familyProtectionLabel}>FAMILY PROTECTION VALUE</span>
+            <span className={styles.familyProtectionValue}>
               ${result.familyProtectionNPV?.toLocaleString(undefined, {
                 minimumFractionDigits: 2, 
                 maximumFractionDigits: 2

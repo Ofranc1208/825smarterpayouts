@@ -1,0 +1,440 @@
+/* GuaranteedPaymentAmountOverview - Clean, maintainable styles */
+
+/* Main container styles */
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Help and Instructions Section */
+.helpSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.quickHelpBadge {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border: 1px solid #f59e0b;
+  border-radius: 20px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #92400e;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(245, 158, 11, 0.2);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  user-select: none;
+}
+
+.quickHelpIcon {
+  font-size: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.instructionsButton {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  border: 1px solid #3b82f6;
+  border-radius: 20px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #1e3a8a;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(59, 130, 246, 0.2);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  user-select: none;
+  font-family: inherit;
+}
+
+.instructionsIcon {
+  font-size: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Instructions Modal */
+.instructionsModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.instructionsModalContent {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.instructionsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.instructionsTitle {
+  margin: 0;
+  color: #0369a1;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.instructionsCloseButton {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 0;
+  line-height: 1;
+}
+
+.instructionsBody {
+  color: #374151;
+  line-height: 1.6;
+}
+
+.instructionsDescription {
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.instructionsList {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.instructionsListItem {
+  margin-bottom: 0.5rem;
+}
+
+.instructionsTip {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Form Styles */
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Payment Amount Section */
+.paymentAmountSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.3rem;
+}
+
+.paymentAmountLabel {
+  font-size: 0.83rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 0.75rem 0 0.4rem 0;
+}
+
+.paymentAmountInputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.paymentAmountInput {
+  padding: 0.45rem 1.1rem;
+  border: 1.5px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 0.98rem;
+  background: #f9fafb;
+  width: 100%;
+  max-width: 220px;
+  margin: 0 auto;
+  text-align: center;
+  color: #333;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  box-shadow: none;
+}
+
+.paymentAmountInput:focus {
+  outline: none;
+  border-color: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+}
+
+.paymentAmountInput.error {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+.paymentAmountError {
+  display: block;
+  color: #dc3545;
+  font-size: 0.85rem;
+  margin-top: 6px;
+  text-align: center;
+}
+
+/* Payment Dates Section */
+.paymentDatesSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.3rem;
+}
+
+.paymentDatesLabel {
+  font-size: 0.83rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 0.75rem 0 0.4rem 0;
+}
+
+.dateInputsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.dateInputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.dateLabel {
+  font-size: 0.83rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 1rem 0 0.5rem 0;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.tooltipButton {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: #22c55e;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 18px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.tooltipButton:hover {
+  background: #16a34a;
+  transform: scale(1.1);
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  color: #333;
+  padding: 0;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  max-width: 300px;
+  z-index: 1000;
+  margin-bottom: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
+  animation: tooltipFadeIn 0.2s ease-out;
+  cursor: pointer;
+}
+
+.tooltipContent {
+  padding: 16px 20px;
+  position: relative;
+}
+
+.dateInput {
+  padding: 0.45rem 1.1rem;
+  border: 1.5px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 0.98rem;
+  background: #f9fafb;
+  width: 100%;
+  max-width: 220px;
+  margin: 0 auto;
+  text-align: center;
+  color: #333;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  box-shadow: none;
+}
+
+.dateInput:focus {
+  outline: none;
+  border-color: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+}
+
+.dateInput.error {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+.dateError {
+  display: block;
+  color: #dc3545;
+  font-size: 0.85rem;
+  margin-top: 6px;
+  text-align: center;
+}
+
+/* Navigation Button */
+.navigationSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.75rem;
+  padding: 0.4rem 0;
+}
+
+.nextButton {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+  font-weight: 600;
+}
+
+.nextButton:disabled {
+  background: #bbf7d0;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.nextButtonIcon {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .helpSection {
+    gap: 0.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .quickHelpBadge,
+  .instructionsButton {
+    padding: 0.25rem 0.6rem;
+    font-size: 0.65rem;
+  }
+
+  .paymentAmountInput,
+  .dateInput {
+    max-width: 200px;
+  }
+
+  .nextButton {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.2rem;
+  }
+
+  .nextButtonIcon {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .helpSection {
+    gap: 0.25rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .quickHelpBadge,
+  .instructionsButton {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.6rem;
+  }
+
+  .paymentAmountInput,
+  .dateInput {
+    max-width: 180px;
+    padding: 0.4rem 1rem;
+  }
+
+  .nextButton {
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: 1rem;
+  }
+
+  .nextButtonIcon {
+    font-size: 0.9rem;
+  }
+}
+
+/* Animations */
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}

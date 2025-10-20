@@ -2,8 +2,10 @@
 
 import React, { useState, useRef } from 'react';
 import GuaranteedStepContainer from './GuaranteedStepContainer';
+import { QuickHelpBadge, GuaranteedInstructionButton, GuaranteedInstructionModal, GuaranteedNavigationButton } from './shared';
 import { validatePaymentAmount, validateDateRange, sanitizeNumericInput } from './utils/validationHelpers';
-import { GuaranteedFormData } from './types/guaranteed.types';
+import { GuaranteedFormData } from './utils/guaranteedTypes';
+import styles from './GuaranteedPaymentAmountOverview.module.css';
 
 interface GuaranteedPaymentAmountOverviewProps {
   onNext: (data: { paymentAmount: string; startDate: string; endDate: string }) => void;
@@ -17,6 +19,7 @@ const GuaranteedPaymentAmountOverview: React.FC<GuaranteedPaymentAmountOverviewP
   const [startDate, setStartDate] = useState<string>(initialData?.startDate || '');
   const [endDate, setEndDate] = useState<string>(initialData?.endDate || '');
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const [showInstructions, setShowInstructions] = useState(false);
   const [showStartTooltip, setShowStartTooltip] = useState(false);
   const [showEndTooltip, setShowEndTooltip] = useState(false);
 
@@ -97,78 +100,67 @@ const GuaranteedPaymentAmountOverview: React.FC<GuaranteedPaymentAmountOverviewP
 
   return (
     <GuaranteedStepContainer title="Payment Amount Overview" currentStep={currentStep} totalSteps={totalSteps}>
-      <form onSubmit={(e) => { e.preventDefault(); handleNext(); }}>
+      {/* Help and Instructions */}
+      <div className={styles.helpSection}>
+        <QuickHelpBadge />
+        <GuaranteedInstructionButton onClick={() => setShowInstructions(true)} />
+      </div>
+
+      {/* Instructions Modal */}
+      <GuaranteedInstructionModal
+        isOpen={showInstructions}
+        onClose={() => setShowInstructions(false)}
+      >
+        <p className={styles.instructionsDescription}>What you need to do:</p>
+        <ul className={styles.instructionsList}>
+          <li className={styles.instructionsListItem}>Enter the <strong>payment amount</strong> - This is the amount of each guaranteed payment you want to exchange for a lump sum</li>
+          <li className={styles.instructionsListItem}>Select the <strong>start date</strong> - When do you want your guaranteed payments to begin?</li>
+          <li className={styles.instructionsListItem}>Select the <strong>end date</strong> - When do you want your guaranteed payments to end?</li>
+          <li className={styles.instructionsListItem}>Click "Continue" to proceed to the next step</li>
+        </ul>
+        <p className={styles.instructionsTip}>
+          💡 <em>These dates define the specific guaranteed payment period you want to exchange for an immediate lump sum payout. All guaranteed payments between these dates will be included in your calculation.</em>
+        </p>
+      </GuaranteedInstructionModal>
+
+      <form className={styles.form} onSubmit={(e) => { e.preventDefault(); handleNext(); }}>
         {/* Payment Amount Section */}
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '0.4rem',
-          marginBottom: '0.3rem'
-        }}>
-          <label style={{
-            fontSize: '0.83rem',
-            fontWeight: '700',
-            textAlign: 'center',
-            margin: '0.75rem 0 0.4rem 0'
-          }}>What's the amount of payments you're going to exchange for a lump sum?</label>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', marginBottom: '0.5rem', position: 'relative' }}>
+        <div className={styles.paymentAmountSection}>
+          <label className={styles.paymentAmountLabel}>What's the amount of payments you're going to exchange for a lump sum?</label>
+          <div className={styles.paymentAmountInputContainer}>
             <input
               ref={amountInputRef}
               id="paymentAmount"
-              style={{
-                padding: '0.45rem 1.1rem',
-                border: `1.5px solid ${errors.paymentAmount ? '#dc3545' : '#d1d5db'}`,
-                borderRadius: 10,
-                fontSize: '0.98rem',
-                background: '#f9fafb',
-                width: '100%',
-                maxWidth: 220,
-                margin: '0 auto',
-                textAlign: 'center',
-                color: '#333',
-                transition: 'all 0.2s ease',
-                boxSizing: 'border-box',
-                boxShadow: errors.paymentAmount ? '0 0 0 3px rgba(220, 53, 69, 0.1)' : undefined
-              }}
+              className={`${styles.paymentAmountInput} ${errors.paymentAmount ? 'error' : ''}`}
               type="text"
               placeholder="Enter amount (min $100)"
               value={paymentAmount}
               onChange={handleAmountChange}
             />
             {errors.paymentAmount && (
-              <span style={{ display: 'block', color: '#dc3545', fontSize: '0.85rem', marginTop: 6, textAlign: 'center' }}>{errors.paymentAmount}</span>
+              <span className={styles.paymentAmountError}>{errors.paymentAmount}</span>
             )}
           </div>
         </div>
 
         {/* Payment Dates Section */}
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '0.4rem',
-          marginBottom: '0.3rem'
-        }}>
-          <label style={{
-            fontSize: '0.83rem',
-            fontWeight: '700',
-            textAlign: 'center',
-            margin: '0.75rem 0 0.4rem 0'
-          }}>Select Payment Period</label>
-          
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '0.5rem' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', marginBottom: '0.5rem', position: 'relative' }}>
-              <label style={{ fontSize: '0.83rem', fontWeight: 700, textAlign: 'center', margin: '1rem 0 0.5rem 0', color: '#333' }} htmlFor="startDate">
+        <div className={styles.paymentDatesSection}>
+          <label className={styles.paymentDatesLabel}>Select Payment Period</label>
+
+          <div className={styles.dateInputsContainer}>
+            <div className={styles.dateInputGroup}>
+              <label className={styles.dateLabel} htmlFor="startDate">
                 Start Date
-                <span 
-                  style={{ display: 'inline-block', width: 18, height: 18, background: '#22c55e', color: 'white', borderRadius: '50%', textAlign: 'center', lineHeight: '18px', fontSize: 12, fontWeight: 'bold', marginLeft: 8, cursor: 'pointer', transition: 'all 0.2s ease', userSelect: 'none' }}
+                <span
+                  className={styles.tooltipButton}
                   onClick={() => setShowStartTooltip(!showStartTooltip)}
                 >
                   ?
                 </span>
               </label>
               {showStartTooltip && (
-                <div style={{ position: 'absolute', bottom: '100%', left: '50%', transform: 'translateX(-50%)', background: 'white', color: '#333', padding: 0, borderRadius: 12, fontSize: '0.85rem', lineHeight: 1.4, maxWidth: 300, zIndex: 1000, marginBottom: 8, boxShadow: '0 8px 32px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.08)', border: '1px solid #e5e7eb', animation: 'tooltipFadeIn 0.2s ease-out', cursor: 'pointer' }} onClick={() => setShowStartTooltip(false)}>
-                  <div style={{ padding: '16px 20px', position: 'relative' }}>
+                <div className={styles.tooltip} onClick={() => setShowStartTooltip(false)}>
+                  <div className={styles.tooltipContent}>
                     First payment date you want to trade for a lump sum.
                   </div>
                 </div>
@@ -176,43 +168,29 @@ const GuaranteedPaymentAmountOverview: React.FC<GuaranteedPaymentAmountOverviewP
               <input
                 ref={startDateRef}
                 id="startDate"
-                style={{
-                  padding: '0.45rem 1.1rem',
-                  border: `1.5px solid ${(errors.startDate || errors.dates) ? '#dc3545' : '#d1d5db'}`,
-                  borderRadius: 10,
-                  fontSize: '0.98rem',
-                  background: '#f9fafb',
-                  width: '100%',
-                  maxWidth: 220,
-                  margin: '0 auto',
-                  textAlign: 'center',
-                  color: '#333',
-                  transition: 'all 0.2s ease',
-                  boxSizing: 'border-box',
-                  boxShadow: (errors.startDate || errors.dates) ? '0 0 0 3px rgba(220, 53, 69, 0.1)' : undefined
-                }}
+                className={`${styles.dateInput} ${(errors.startDate || errors.dates) ? 'error' : ''}`}
                 type="date"
                 value={startDate}
                 onChange={handleStartDateChange}
               />
               {(errors.startDate || errors.dates) && (
-                <span style={{ display: 'block', color: '#dc3545', fontSize: '0.85rem', marginTop: 6, textAlign: 'center' }}>{errors.startDate || errors.dates}</span>
+                <span className={styles.dateError}>{errors.startDate || errors.dates}</span>
               )}
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', marginBottom: '0.5rem', position: 'relative' }}>
-              <label style={{ fontSize: '0.83rem', fontWeight: 700, textAlign: 'center', margin: '1rem 0 0.5rem 0', color: '#333' }} htmlFor="endDate">
+            <div className={styles.dateInputGroup}>
+              <label className={styles.dateLabel} htmlFor="endDate">
                 End Date
-                <span 
-                  style={{ display: 'inline-block', width: 18, height: 18, background: '#22c55e', color: 'white', borderRadius: '50%', textAlign: 'center', lineHeight: '18px', fontSize: 12, fontWeight: 'bold', marginLeft: 8, cursor: 'pointer', transition: 'all 0.2s ease', userSelect: 'none' }}
+                <span
+                  className={styles.tooltipButton}
                   onClick={() => setShowEndTooltip(!showEndTooltip)}
                 >
                   ?
                 </span>
               </label>
               {showEndTooltip && (
-                <div style={{ position: 'absolute', bottom: '100%', left: '50%', transform: 'translateX(-50%)', background: 'white', color: '#333', padding: 0, borderRadius: 12, fontSize: '0.85rem', lineHeight: 1.4, maxWidth: 300, zIndex: 1000, marginBottom: 8, boxShadow: '0 8px 32px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.08)', border: '1px solid #e5e7eb', animation: 'tooltipFadeIn 0.2s ease-out', cursor: 'pointer' }} onClick={() => setShowEndTooltip(false)}>
-                  <div style={{ padding: '16px 20px', position: 'relative' }}>
+                <div className={styles.tooltip} onClick={() => setShowEndTooltip(false)}>
+                  <div className={styles.tooltipContent}>
                     The last payment you want to exchange for a lump sum. After this date, your regular payments will resume back to you.
                   </div>
                 </div>
@@ -220,92 +198,25 @@ const GuaranteedPaymentAmountOverview: React.FC<GuaranteedPaymentAmountOverviewP
               <input
                 ref={endDateRef}
                 id="endDate"
-                style={{
-                  padding: '0.45rem 1.1rem',
-                  border: `1.5px solid ${(errors.endDate || errors.dates) ? '#dc3545' : '#d1d5db'}`,
-                  borderRadius: 10,
-                  fontSize: '0.98rem',
-                  background: '#f9fafb',
-                  width: '100%',
-                  maxWidth: 220,
-                  margin: '0 auto',
-                  textAlign: 'center',
-                  color: '#333',
-                  transition: 'all 0.2s ease',
-                  boxSizing: 'border-box',
-                  boxShadow: (errors.endDate || errors.dates) ? '0 0 0 3px rgba(220, 53, 69, 0.1)' : undefined
-                }}
+                className={`${styles.dateInput} ${(errors.endDate || errors.dates) ? 'error' : ''}`}
                 type="date"
                 value={endDate}
                 onChange={handleEndDateChange}
               />
               {(errors.endDate || errors.dates) && (
-                <span style={{ display: 'block', color: '#dc3545', fontSize: '0.85rem', marginTop: 6, textAlign: 'center' }}>{errors.endDate || errors.dates}</span>
+                <span className={styles.dateError}>{errors.endDate || errors.dates}</span>
               )}
             </div>
           </div>
-
-
         </div>
 
-        <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginTop: '0.75rem',
-          padding: '0.4rem 0'
-        }}>
-          <button
-            style={{
-              background: !checkFormValidity() ? '#bbf7d0' : 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
-              color: '#fff',
-              border: 'none',
-              borderRadius: '50%',
-              width: '3rem',
-              height: '3rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '1.4rem',
-              cursor: !checkFormValidity() ? 'not-allowed' : 'pointer',
-              transition: 'all 0.2s ease',
-              boxShadow: '0 4px 12px rgba(34, 197, 94, 0.3)',
-              fontWeight: '600'
-            }}
-            onMouseEnter={(e) => {
-              const target = e.target as HTMLButtonElement;
-              if (!target.disabled) {
-                target.style.background = 'linear-gradient(135deg, #16a34a 0%, #15803d 100%)';
-                target.style.transform = 'translateY(-2px)';
-                target.style.boxShadow = '0 6px 16px rgba(34, 197, 94, 0.4)';
-              }
-            }}
-            onMouseLeave={(e) => {
-              const target = e.target as HTMLButtonElement;
-              if (!target.disabled) {
-                target.style.background = 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)';
-                target.style.transform = 'translateY(0)';
-                target.style.boxShadow = '0 4px 12px rgba(34, 197, 94, 0.3)';
-              }
-            }}
-            onMouseDown={(e) => {
-              const target = e.target as HTMLButtonElement;
-              if (!target.disabled) {
-                target.style.transform = 'translateY(0)';
-                target.style.boxShadow = '0 4px 12px rgba(34, 197, 94, 0.3)';
-              }
-            }}
-            type="submit"
+        <div className={styles.navigationSection}>
+          <GuaranteedNavigationButton
+            direction="next"
             disabled={!checkFormValidity()}
-            aria-label="Next"
-          >
-            <span style={{
-              fontSize: '1.2rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}>&#8594;</span>
-          </button>
+            type="submit"
+            aria-label="Continue to next step"
+          />
         </div>
       </form>
     </GuaranteedStepContainer>

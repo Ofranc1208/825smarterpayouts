@@ -9,12 +9,12 @@
 
 /* Scrollable container with flexible height */
 .scrollContainer {
-  max-height: 420px;
+  max-height: 480px;
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;
-  padding-right: 8px;
-  padding-bottom: 12px;
+  padding-right: 6px;
+  padding-bottom: 8px;
   scroll-behavior: smooth;
   
   /* Custom scrollbar styling */

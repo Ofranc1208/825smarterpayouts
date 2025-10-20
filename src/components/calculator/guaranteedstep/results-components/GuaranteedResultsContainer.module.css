@@ -1,0 +1,72 @@
+/*
+ * ============================================================================
+ * GUARANTEED RESULTS CONTAINER STYLES - SHARED COMPONENT
+ * ============================================================================
+ *
+ * Container styling for Guaranteed result cards.
+ * Provides consistent layout and spacing for result displays.
+ */
+
+/* Container styling */
+.container {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* ============================================================================
+ * RESPONSIVE DESIGN
+ * ============================================================================
+ * Ensure container works well on all screen sizes
+ */
+
+@media (max-width: 768px) {
+  .container {
+    margin-bottom: 1.25rem;
+    margin-top: 0.4rem;
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin-bottom: 1rem;
+    margin-top: 0.3rem;
+    gap: 1rem;
+  }
+}
+
+/* ============================================================================
+ * ACCESSIBILITY ENHANCEMENTS
+ * ============================================================================
+ * High contrast mode support
+ */
+
+@media (prefers-contrast: high) {
+  .container {
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    padding: 0.5rem;
+    background: #f8fafc;
+  }
+}
+
+/* ============================================================================
+ * PRINT STYLES
+ * ============================================================================
+ * Ensure container is visible in print
+ */
+
+@media print {
+  .container {
+    border: 1px solid #000;
+    background: #fff;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    break-inside: avoid;
+  }
+}

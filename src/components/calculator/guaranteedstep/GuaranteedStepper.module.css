@@ -1,0 +1,27 @@
+/* ========================================
+   GUARANTEED STEPPER
+   Main stepper component styling
+   ======================================== */
+
+/* Main container */
+.stepperContainer {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0.5rem;
+}
+
+/* Loading state */
+.loadingContainer {
+  padding: 2rem;
+  text-align: center;
+}
+
+.loadingTitle {
+  margin: 0 0 1rem 0;
+  color: #1e293b;
+}
+
+.loadingText {
+  margin: 0;
+  color: #64748b;
+}

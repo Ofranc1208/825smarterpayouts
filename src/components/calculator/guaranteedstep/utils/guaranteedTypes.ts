@@ -9,15 +9,15 @@
 export interface GuaranteedFormData {
   // Payment Mode Selection
   paymentMode?: 'Monthly' | 'Quarterly' | 'Semiannually' | 'Annually' | 'Lump Sum';
-  
+
   // Annual Increase
   annualIncrease?: number;
-  
+
   // Regular Payment Details (for non-lump sum modes)
   paymentAmount?: string | number;
   startDate?: string;
   endDate?: string;
-  
+
   // Lump Sum Payment Details
   payments?: LumpSumPayment[];
 }
@@ -177,11 +177,11 @@ export type {
   GuaranteedFormData as FormData,
   GuaranteedMessage as Message,
   GuaranteedCalculationResult as CalculationResult,
-  
+
   // Component prop types
   GuaranteedStepProps as StepProps,
   GuaranteedOfferProps as OfferProps,
-  
+
   // Navigation types
   GuaranteedStep as Step,
   GuaranteedNavigationActions as NavigationActions

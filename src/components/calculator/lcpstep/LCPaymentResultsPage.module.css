@@ -237,9 +237,9 @@
 }
 
 .familyAmount {
-  font-size: 1.125rem;
+  font-size: 1.56rem;
   font-weight: 700;
-  color: #4b5563;
+  color: #16a34a;
   margin: 0;
 }
 
@@ -367,9 +367,12 @@
     font-size: 2rem;
   }
 
-  .minimumAmount,
-  .familyAmount {
+  .minimumAmount {
     font-size: 1rem;
+  }
+
+  .familyAmount {
+    font-size: 1.2rem;
   }
 }
 
@@ -390,9 +393,12 @@
     font-size: 1.75rem;
   }
 
-  .minimumAmount,
-  .familyAmount {
+  .minimumAmount {
     font-size: 0.9rem;
+  }
+
+  .familyAmount {
+    font-size: 1.08rem;
   }
 
   .cornerTopLeft,
