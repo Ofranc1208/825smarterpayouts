@@ -38,9 +38,10 @@ export default function GoogleTagManager() {
   return (
     <>
       {/* Google Tag Manager - Head */}
+      {/* Changed to lazyOnload to not block initial page load */}
       <Script
         id="google-tag-manager"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: `
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

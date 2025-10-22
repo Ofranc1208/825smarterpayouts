@@ -11,7 +11,13 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import GoogleAnalytics from '@/src/components/Analytics/GoogleAnalytics'
 import GoogleTagManager, { GoogleTagManagerNoScript } from '@/src/components/Analytics/GoogleTagManager'
 
-const inter = Inter({ subsets: ['latin'] })
+// Optimize font loading with display: swap and preload
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap', // Prevent invisible text during font load
+  preload: true,
+  fallback: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+})
 
 export const metadata: Metadata = {
   title: 'Structured Settlement Early Payout Calculator | Smarter Payouts',
@@ -26,18 +32,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Google Tag Manager - Must be in <head> */}
-        <GoogleTagManager />
-        
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         
-        {/* DNS prefetch for external resources */}
-        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-        
-        {/* Preconnect to critical origins */}
+        {/* Critical resource hints - load BEFORE scripts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="//www.google-analytics.com" />
+        
+        {/* Google Tag Manager - Deferred to not block rendering */}
+        <GoogleTagManager />
         
         {/* Remove unused preloads that are causing performance warnings */}
         {/* <link rel="preload" href="/assets/images/og-image.png" as="image" type="image/png" /> */}

@@ -23,7 +23,10 @@ const nextConfig = {
   // Speed up development
   swcMinify: true,
   compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
+    // Keep error and warn logs in production for debugging
+    removeConsole: process.env.NODE_ENV === 'production' ? {
+      exclude: ['error', 'warn'],
+    } : false,
   },
   // Deployment optimization
   typescript: {
@@ -36,10 +39,20 @@ const nextConfig = {
   },
   // Performance optimizations
   experimental: {
-    optimizePackageImports: ['react-icons'],
+    optimizePackageImports: [
+      'react-icons',
+      '@vercel/analytics',
+      '@vercel/speed-insights',
+      'lucide-react',
+      'framer-motion',
+    ],
     scrollRestoration: true,
     webpackBuildWorker: true,
     gzipSize: true,
+    // Enable CSS optimization
+    optimizeCss: true,
+    // Enable modern JavaScript features
+    esmExternals: true,
   },
   // Optimize bundle splitting
   webpack: (config, { dev, isServer }) => {
@@ -92,6 +105,39 @@ const nextConfig = {
   optimizeFonts: true,
   // Enable compression
   compress: true,
+  
+  // Add caching headers for better performance
+  async headers() {
+    return [
+      {
+        source: '/:all*(svg|jpg|jpeg|png|gif|ico|webp|avif)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/_next/static/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/fonts/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
+  },
 }
 
 module.exports = nextConfig 
