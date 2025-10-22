@@ -40,11 +40,11 @@ export interface HeroCTAButton {
   /** Button link */
   href: string;
   /** Accessibility label */
-  ariaLabel: string;
+  ariaLabel?: string;
   /** Button variant */
-  variant: 'primary' | 'secondary';
+  variant: 'primary' | 'secondary' | 'technology-primary' | 'mint-chat';
   /** Button gradient */
-  gradient: string;
+  gradient?: string;
   /** Optional icon */
   icon?: string | null;
 }

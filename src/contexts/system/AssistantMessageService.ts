@@ -55,9 +55,9 @@ export class AssistantMessageService {
     let welcomeText = 'Hello, Mint again. How can I help you with this step?';
     
     if (flowType === 'guaranteed') {
-      welcomeText = "Hi! I'm your Guaranteed Payment Assistant. I can help you through each step of your guaranteed payment calculation. What would you like to know?";
+      welcomeText = "Hi! I'm your Guaranteed Payment Assistant. I can help you through each step of your guaranteed payment calculation.\n\nWhat can I help you with?";
     } else if (flowType === 'lcp') {
-      welcomeText = "Hi! I'm your Life-Contingent Payment Assistant. I can help you through each step of your LCP calculation, including health and profile factors. What would you like to know?";
+      welcomeText = "Hi! I'm your Life-Contingent Payment Assistant. I can help you through each step of your LCP calculation.\n\nWhat can I help you with?";
     }
     
     return {
@@ -67,6 +67,48 @@ export class AssistantMessageService {
       step: step || undefined,
       flowType: flowType || undefined
     };
+  }
+
+  /**
+   * Get step-aware information for welcome message
+   */
+  private static getStepInfo(step: AssistantStep | undefined, flowType: AssistantFlowType): string {
+    if (flowType === 'lcp') {
+      const stepMap: Record<string, { number: number; total: number; name: string }> = {
+        'lcp_payment': { number: 1, total: 5, name: 'Payment Details' },
+        'lcp_profile': { number: 2, total: 5, name: 'Physical Profile' },
+        'lcp_health': { number: 3, total: 5, name: 'Health Overview' },
+        'lcp_details': { number: 4, total: 5, name: 'Payment Schedule' },
+        'lcp_lump_sum': { number: 4, total: 5, name: 'Lump Sum Details' },
+        'lcp_review': { number: 5, total: 5, name: 'Review' },
+        'lcp_results': { number: 5, total: 5, name: 'Results' }
+      };
+
+      const stepData = step ? stepMap[step as string] : null;
+      
+      if (stepData) {
+        return `I see you're on step ${stepData.number} of ${stepData.total} (${stepData.name}).\n\nWhat can I help you with here?`;
+      }
+      
+      return "What can I help you with?";
+    } else if (flowType === 'guaranteed') {
+      const stepMap: Record<string, { number: number; total: number; name: string }> = {
+        'mode': { number: 1, total: 2, name: 'Payment Mode' },
+        'amount': { number: 2, total: 2, name: 'Payment Amount' },
+        'review': { number: 2, total: 2, name: 'Review' },
+        'offer': { number: 2, total: 2, name: 'Offer' }
+      };
+
+      const stepData = step ? stepMap[step as string] : null;
+      
+      if (stepData) {
+        return `I see you're on step ${stepData.number} of ${stepData.total} (${stepData.name}).\n\nWhat can I help you with here?`;
+      }
+      
+      return "What can I help you with?";
+    }
+    
+    return "What can I help you with?";
   }
 
   /**

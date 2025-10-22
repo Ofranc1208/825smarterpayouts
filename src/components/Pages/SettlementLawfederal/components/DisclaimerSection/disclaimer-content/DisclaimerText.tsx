@@ -1,17 +1,23 @@
 // Disclaimer text component - under 50 lines per complexity rule
 // Legal warning text content
 
+import { settlementLawPageData } from '../../../data';
+
 export default function DisclaimerText() {
+  const disclaimer = settlementLawPageData.disclaimer;
+
   return (
-    <p style={{
+    <div style={{
       color: '#92400e',
-      lineHeight: '1.6',
-      fontSize: '0.95rem',
-      margin: '0'
+      lineHeight: '1.5',
+      fontSize: '0.75rem'
     }}>
-      <strong>Important:</strong> The information provided on this page represents laws we have gathered for informational purposes only. 
-      Laws change frequently and interpretations may vary. <strong>Always consult with a qualified attorney</strong> specializing in structured settlements 
-      to ensure the accuracy and applicability of these laws to your specific situation. This information should not be considered legal advice.
-    </p>
+      <p style={{ margin: '0 0 0.75rem 0' }}>
+        <strong>Important:</strong> {disclaimer.content}
+      </p>
+      <p style={{ margin: 0, fontSize: '0.75rem' }}>
+        <strong>Note:</strong> {disclaimer.warning}
+      </p>
+    </div>
   );
 }

@@ -1,0 +1,353 @@
+/* State Laws Shared Styles - Enterprise Design System
+ * Reusable across all state and county pages for consistency
+ */
+
+/* Base Layout Styles */
+.state-laws-page {
+  background: #ffffff;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.state-laws-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.state-laws-article {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+/* Navigation & Breadcrumbs */
+.state-laws-breadcrumbs {
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.state-laws-breadcrumbs a {
+  color: #059669;
+  text-decoration: underline;
+}
+
+.state-laws-breadcrumbs a:hover {
+  color: #047857;
+}
+
+/* Typography */
+.state-laws-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.state-laws-subtitle {
+  font-size: 1.125rem;
+  color: #6b7280;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.state-laws-section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 32px 0 16px 0;
+  line-height: 1.3;
+}
+
+.state-laws-section-subtitle {
+  font-size: 1rem;
+  color: #374151;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+/* Content Sections */
+.state-laws-section {
+  margin-bottom: 32px;
+}
+
+.state-laws-list {
+  list-style: disc;
+  margin-left: 20px;
+  margin-bottom: 16px;
+}
+
+.state-laws-list li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+  color: #374151;
+}
+
+.state-laws-text {
+  line-height: 1.6;
+  color: #374151;
+  margin-bottom: 16px;
+}
+
+.state-laws-highlight {
+  background: #f0fdf4;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 500;
+  color: #059669;
+}
+
+/* Call-to-Action Components */
+.state-laws-cta-section {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  color: white;
+  padding: 32px 24px;
+  border-radius: 16px;
+  margin: 32px 0;
+  text-align: center;
+}
+
+.state-laws-cta-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.state-laws-cta-description {
+  font-size: 1rem;
+  margin-bottom: 24px;
+  opacity: 0.9;
+}
+
+.state-laws-cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.state-laws-cta-button {
+  background: white;
+  color: #059669;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+}
+
+.state-laws-cta-button:hover {
+  background: #f9fafb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.state-laws-cta-button.primary {
+  background: #22c55e;
+  color: white;
+}
+
+.state-laws-cta-button.primary:hover {
+  background: #16a34a;
+  color: white;
+}
+
+/* Legal Disclaimer */
+.state-laws-disclaimer {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  padding: 16px;
+  border-radius: 8px;
+  margin-top: 32px;
+  font-size: 0.875rem;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.state-laws-disclaimer strong {
+  color: #374151;
+}
+
+.state-laws-disclaimer-title {
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.state-laws-last-updated {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  text-align: center;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* Resources Section */
+.state-laws-resources {
+  background: #f8fafc;
+  padding: 24px;
+  border-radius: 12px;
+  margin: 32px 0;
+}
+
+.state-laws-resources-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 16px;
+}
+
+.state-laws-resource-link {
+  color: #059669;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.state-laws-resource-link:hover {
+  color: #047857;
+}
+
+.state-laws-resource-item {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.state-laws-resource-item::before {
+  content: "📄";
+  font-size: 16px;
+}
+
+/* Card Components */
+.state-laws-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px;
+  margin: 16px 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease;
+}
+
+.state-laws-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.state-laws-card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 12px;
+}
+
+.state-laws-card-content {
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .state-laws-container {
+    padding: 0 12px;
+  }
+
+  .state-laws-title {
+    font-size: 1.875rem;
+  }
+
+  .state-laws-section-title {
+    font-size: 1.25rem;
+  }
+
+  .state-laws-cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .state-laws-cta-button {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+}
+
+/* Loading States */
+.state-laws-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 48px;
+  color: #6b7280;
+}
+
+.state-laws-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #e5e7eb;
+  border-top: 4px solid #059669;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error States */
+.state-laws-error {
+  text-align: center;
+  padding: 48px 24px;
+  color: #6b7280;
+}
+
+.state-laws-error-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ef4444;
+  margin-bottom: 8px;
+}
+
+.state-laws-error-message {
+  margin-bottom: 24px;
+}
+
+/* Focus States for Accessibility */
+.state-laws-cta-button:focus,
+.state-laws-resource-link:focus {
+  outline: 2px solid #059669;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Print Styles */
+@media print {
+  .state-laws-cta-section,
+  .state-laws-disclaimer {
+    display: none;
+  }
+
+  .state-laws-article {
+    max-width: none;
+    padding: 0;
+  }
+
+  .state-laws-title {
+    color: #000;
+  }
+
+  .state-laws-section-title {
+    color: #000;
+    page-break-after: avoid;
+  }
+}

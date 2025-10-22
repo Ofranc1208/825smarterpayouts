@@ -9,7 +9,7 @@ export default function HeroHeading() {
         color: COLORS.primary.dark,
         marginBottom: "1rem"
       }}>
-        Unlock Your Settlement's Hidden Value Today
+        Curious about an early payout option for your future settlement payments?
       </h1>
       
       <p style={{
@@ -18,7 +18,7 @@ export default function HeroHeading() {
         maxWidth: "600px",
         margin: "0 auto 1.5rem"
       }}>
-        <strong>Court-approved process</strong> with zero upfront costs. No need to speak to a salesperson — <strong>do it yourself</strong> in seconds.     
+        Discover how a <strong>Court-Approved Process</strong> with zero upfront costs may help you turn future payments into a lump sum payout—<strong>do it yourself</strong> in seconds.
       </p>
     </>
   );

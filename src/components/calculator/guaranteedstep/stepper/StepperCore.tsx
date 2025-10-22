@@ -45,9 +45,20 @@ const StepperCore: React.FC = () => {
     }
     
     // Always sync the assistant step with the current step
+    // Map actual step names to assistant step names
     if (currentStep) {
       console.log('🎯 [StepperCore] Syncing assistant step to:', currentStep);
-      setGuaranteedAssistantStep(currentStep);
+      
+      // Map calculator steps to assistant steps
+      const assistantStepMap: Record<string, string> = {
+        'mode': 'mode',
+        'amount': 'amount',
+        'review': 'review',
+        'offer': 'offer'
+      };
+      
+      const assistantStep = assistantStepMap[currentStep] || currentStep;
+      setGuaranteedAssistantStep(assistantStep as any);
     }
   }, [currentStep, goToNextStep, setGuaranteedAssistantStep]);
 

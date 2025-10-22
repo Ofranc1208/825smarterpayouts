@@ -43,23 +43,46 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({ sender, children, className }) 
     className                    // Additional custom classes
   ].filter(Boolean).join(' ');
 
-  // Render text with markdown formatting support
+  // Render text with markdown formatting support and line breaks
   const renderTextWithFormatting = (text: string) => {
     const { text: cleanText, hasBold } = formatMessageText(text);
 
-    if (!hasBold) {
-      return text;
-    }
-
-    // Split by bold markers and render with formatting
-    const parts = text.split(/(\*\*[^*]+\*\*)/g);
-    return parts.map((part, index) => {
-      if (part.startsWith('**') && part.endsWith('**')) {
-        // Remove the ** markers and make it bold
-        const boldText = part.slice(2, -2);
-        return <strong key={index}>{boldText}</strong>;
+    // Split by newlines first to preserve paragraphs
+    const lines = text.split('\n');
+    
+    return lines.map((line, lineIndex) => {
+      if (!line.trim()) {
+        // Empty line - render as spacing
+        return <br key={`br-${lineIndex}`} />;
       }
-      return part;
+
+      // Check if line has bold text
+      const hasBoldInLine = line.includes('**');
+      
+      if (!hasBoldInLine) {
+        return (
+          <React.Fragment key={lineIndex}>
+            {line}
+            {lineIndex < lines.length - 1 && <br />}
+          </React.Fragment>
+        );
+      }
+
+      // Split by bold markers and render with formatting
+      const parts = line.split(/(\*\*[^*]+\*\*)/g);
+      return (
+        <React.Fragment key={lineIndex}>
+          {parts.map((part, partIndex) => {
+            if (part.startsWith('**') && part.endsWith('**')) {
+              // Remove the ** markers and make it bold
+              const boldText = part.slice(2, -2);
+              return <strong key={`${lineIndex}-${partIndex}`}>{boldText}</strong>;
+            }
+            return <React.Fragment key={`${lineIndex}-${partIndex}`}>{part}</React.Fragment>;
+          })}
+          {lineIndex < lines.length - 1 && <br />}
+        </React.Fragment>
+      );
     });
   };
 

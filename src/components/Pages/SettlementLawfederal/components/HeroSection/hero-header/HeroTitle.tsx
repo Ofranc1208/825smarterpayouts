@@ -4,13 +4,13 @@
 export default function HeroTitle() {
   return (
     <h1 style={{
-      fontSize: "clamp(2rem, 5vw, 3.5rem)",
+      fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
       fontWeight: "700",
       color: "#1f2937",
-      marginBottom: "1.5rem",
-      lineHeight: "1.2"
+      marginBottom: "1rem",
+      lineHeight: "1.3"
     }}>
-      ⚖️ Structured Settlement Federal Law
+      Structured Settlement Federal Law
     </h1>
   );
 }

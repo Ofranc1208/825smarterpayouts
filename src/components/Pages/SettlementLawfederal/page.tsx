@@ -24,7 +24,32 @@ import LoadingFallback, {
 } from './components/LoadingFallback';
 
 // Lazy load below-the-fold sections for optimal performance
+const IntroductionSection = dynamic(() => import('./components/IntroductionSection'), {
+  loading: () => <LegalSectionLoader />,
+  ssr: false
+});
+
 const FederalLawsSection = dynamic(() => import('./components/FederalLawsSection'), {
+  loading: () => <LegalSectionLoader />,
+  ssr: false
+});
+
+const PracticalApplicationsSection = dynamic(() => import('./components/PracticalApplicationsSection'), {
+  loading: () => <LegalSectionLoader />,
+  ssr: false
+});
+
+const FAQSection = dynamic(() => import('./components/FAQSection'), {
+  loading: () => <LegalSectionLoader />,
+  ssr: false
+});
+
+const GovernmentResourcesSection = dynamic(() => import('./components/GovernmentResourcesSection'), {
+  loading: () => <ResourceSectionLoader />,
+  ssr: false
+});
+
+const BestPracticesSection = dynamic(() => import('./components/BestPracticesSection'), {
   loading: () => <LegalSectionLoader />,
   ssr: false
 });
@@ -120,30 +145,50 @@ export default function SettlementLawfederalPage() {
       >
         <div style={{
           width: '100%',
-          maxWidth: '900px',
+          maxWidth: '1200px',
           margin: '0 auto',
-          padding: '0 16px'
+          padding: '0 24px'
         }}>
+          <SectionErrorBoundary sectionName="Introduction">
+            <IntroductionSection />
+          </SectionErrorBoundary>
+
           <SectionErrorBoundary sectionName="Legal Disclaimer">
             <DisclaimerSection />
           </SectionErrorBoundary>
-          
+
           <SectionErrorBoundary sectionName="Federal Laws">
             <FederalLawsSection />
           </SectionErrorBoundary>
-          
+
+          <SectionErrorBoundary sectionName="Practical Applications">
+            <PracticalApplicationsSection />
+          </SectionErrorBoundary>
+
+          <SectionErrorBoundary sectionName="Frequently Asked Questions">
+            <FAQSection />
+          </SectionErrorBoundary>
+
+          <SectionErrorBoundary sectionName="Government Resources">
+            <GovernmentResourcesSection />
+          </SectionErrorBoundary>
+
+          <SectionErrorBoundary sectionName="Best Practices">
+            <BestPracticesSection />
+          </SectionErrorBoundary>
+
           <SectionErrorBoundary sectionName="Court Approval Process">
             <CourtApprovalSection />
           </SectionErrorBoundary>
-          
+
           <SectionErrorBoundary sectionName="Tax Implications">
             <TaxImplicationsSection />
           </SectionErrorBoundary>
-          
+
           <SectionErrorBoundary sectionName="Legal References">
             <ReferencesSection />
           </SectionErrorBoundary>
-          
+
           <SectionErrorBoundary sectionName="Additional Resources">
             <ResourcesSection />
           </SectionErrorBoundary>

@@ -48,6 +48,8 @@ export interface GuaranteedMessage {
     isWelcome?: boolean;
     isHandoff?: boolean;
     chunkType?: string;
+    isError?: boolean;
+    isBotMessage?: boolean;
   };
 }
 

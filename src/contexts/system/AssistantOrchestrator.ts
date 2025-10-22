@@ -135,6 +135,23 @@ export class AssistantOrchestrator {
         AssistantStorageService.saveMessages(updatedMessages);
       },
 
+      addBotMessage: (text: string) => {
+        const currentState = getState();
+        console.log('[AssistantOrchestrator] Adding bot message:', text);
+
+        const botMessage = AssistantMessageService.createBotMessage(
+          text,
+          currentState.currentStep,
+          currentState.flowType
+        );
+
+        const updatedMessages = [...currentState.messages, botMessage];
+        setState({ messages: updatedMessages });
+
+        // Save to storage
+        AssistantStorageService.saveMessages(updatedMessages);
+      },
+
       addTestMessage: () => {
         console.log('[AssistantOrchestrator] Adding test message');
         const currentState = getState();

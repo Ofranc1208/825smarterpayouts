@@ -3,6 +3,7 @@
 import React, { useState, useRef } from 'react';
 import GuaranteedStepContainer from './GuaranteedStepContainer';
 import { GuaranteedSection, GuaranteedFormInput, GuaranteedNavigationButton, GuaranteedInstructionModal } from './shared';
+import { useGuaranteedAssistant } from '../../../contexts/GuaranteedAssistantContext';
 import layout from './utils/GuaranteedLayout.module.css';
 import { validatePaymentAmount, validateDateRange, sanitizeNumericInput } from './utils/validationHelpers';
 import { GuaranteedFormData } from './utils/guaranteedTypes';
@@ -17,6 +18,7 @@ interface GuaranteedPaymentAmountOverviewProps {
 }
 
 const GuaranteedPaymentAmountOverview: React.FC<GuaranteedPaymentAmountOverviewProps> = ({ onNext, onBack, currentStep, totalSteps, initialData }) => {
+  const { openAssistant } = useGuaranteedAssistant();
   const [paymentAmount, setPaymentAmount] = useState<string>(initialData?.paymentAmount?.toString() || '');
   const [startDate, setStartDate] = useState<string>(initialData?.startDate || '');
   const [endDate, setEndDate] = useState<string>(initialData?.endDate || '');
@@ -106,6 +108,7 @@ const GuaranteedPaymentAmountOverview: React.FC<GuaranteedPaymentAmountOverviewP
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
         <button
           type="button"
+          onClick={openAssistant}
           style={{
             background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)',
             border: '1px solid #f59e0b',

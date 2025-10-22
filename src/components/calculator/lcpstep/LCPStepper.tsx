@@ -11,7 +11,6 @@ import LCPHealthOverview from './LCPHealthOverview';
 import LCPDatesSelection from './LCPDatesSelection';
 import LCPLumpSumAmountOverview from './LCPLumpSumAmountOverview';
 import AssistantPanel from './AssistantPanel';
-import { AssistantPrompt } from './assistant-components';
 import {
   createLCPFlowConfig,
   createStepHandler,
@@ -107,10 +106,15 @@ const LCPStepper: React.FC = () => {
     }
   }, [startLCPFlow, currentStep]);
 
-  // Set flow type only once when component mounts
+  // Sync LCP steps with assistant context for step-aware help
   React.useEffect(() => {
-    setFlowType('lcp');
-  }, [setFlowType]);
+    if (currentStep) {
+      setAssistantStep(currentStep);
+    }
+  }, [currentStep, setAssistantStep]);
+
+  // Flow type is now set by StepperContent wrapper
+  // Removed duplicate setFlowType call to avoid conflicts
 
   // ============================================================================
   // DYNAMIC HANDLER CREATION

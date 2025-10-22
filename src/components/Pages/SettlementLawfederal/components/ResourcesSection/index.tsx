@@ -37,13 +37,27 @@ export default function ResourcesSection() {
           </Link>
         </li>
         <li style={{ marginBottom: '0.75rem' }}>
-          <a href="https://www.irs.gov/pub/irs-pdf/p4345.pdf" target="_blank" rel="noopener noreferrer" style={{ color: '#059669', textDecoration: 'none' }}>
+          <a
+            href="https://www.irs.gov/pub/irs-pdf/p4345.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#059669', textDecoration: 'none' }}
+            aria-label="IRS Publication 4345: Settlements – Taxability (opens in new window)"
+          >
             IRS Publication 4345: Settlements – Taxability
+            <span style={{ fontSize: '0.875rem', opacity: 0.7, marginLeft: '0.25rem' }}>↗</span>
           </a>
         </li>
         <li style={{ marginBottom: '0' }}>
-          <a href="https://www.justice.gov/crt/structured-settlement-fact-sheet" target="_blank" rel="noopener noreferrer" style={{ color: '#059669', textDecoration: 'none' }}>
+          <a
+            href="https://www.justice.gov/crt/structured-settlement-fact-sheet"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#059669', textDecoration: 'none' }}
+            aria-label="U.S. Department of Justice: Structured Settlement Fact Sheet (opens in new window)"
+          >
             U.S. Department of Justice: Structured Settlement Fact Sheet
+            <span style={{ fontSize: '0.875rem', opacity: 0.7, marginLeft: '0.25rem' }}>↗</span>
           </a>
         </li>
       </ul>

@@ -93,7 +93,7 @@ export default function CTASection() {
           }}>
             <Button
               as="a"
-              href="/mint-chat-active?type=calculate&source=review-offer-cta"
+              href="/mint-intelligent-chat"
               variant="technology-primary"
               size="lg"
               enhancedHover={true}

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import ChatBubble from '../../../chat/ChatBubble';
 import ChatbotTyping from '../../../chatbot/ChatbotTyping';
 import styles from './GuaranteedMessageContainer.module.css';
@@ -19,42 +19,30 @@ export interface GuaranteedMessageContainerProps {
 
 /**
  * GuaranteedMessageContainer - Handles message display with auto-scroll functionality
- * Contains complex scroll behavior and user interaction detection
+ * The actual scrolling container is the parent div in GuaranteedAssistantPanel
  */
 const GuaranteedMessageContainer: React.FC<GuaranteedMessageContainerProps> = ({
   messages,
   isTyping,
   isLoading = false
 }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [isHovered, setIsHovered] = useState(false);
+  const endOfMessagesRef = useRef<HTMLDivElement>(null);
 
-  // Improved auto-scroll implementation with user interaction detection
+  // Auto-scroll to bottom when new messages arrive or typing status changes
   useEffect(() => {
-    if (containerRef.current && !isHovered) {
-      // Check if user is near the bottom before auto-scrolling
-      const container = containerRef.current;
-      const isNearBottom = container.scrollHeight - container.scrollTop - container.clientHeight < 50;
-
-      // Only auto-scroll if user is near the bottom (hasn't manually scrolled up)
-      if (isNearBottom) {
-        // Small delay to ensure DOM updates are complete
-        setTimeout(() => {
-          if (containerRef.current) {
-            containerRef.current.scrollTop = containerRef.current.scrollHeight;
-          }
-        }, 150);
-      }
+    // Scroll the end marker into view, which will scroll the parent container
+    if (endOfMessagesRef.current) {
+      setTimeout(() => {
+        endOfMessagesRef.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'end'
+        });
+      }, 100);
     }
-  }, [messages, isTyping, isHovered]);
+  }, [messages, isTyping]);
 
   return (
-    <div
-      ref={containerRef}
-      className={styles.container}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+    <div className={styles.container}>
       {messages.map((message) => (
         <ChatBubble
           key={message.id}
@@ -64,6 +52,8 @@ const GuaranteedMessageContainer: React.FC<GuaranteedMessageContainerProps> = ({
         </ChatBubble>
       ))}
       {isTyping && <ChatbotTyping />}
+      {/* Invisible marker at the end for auto-scroll */}
+      <div ref={endOfMessagesRef} style={{ height: '1px' }} />
     </div>
   );
 };

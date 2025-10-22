@@ -117,6 +117,7 @@ const GuaranteedLumpSumAmountOverview: React.FC<GuaranteedLumpSumAmountOverviewP
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
         <button
           type="button"
+          onClick={openAssistant}
           style={{
             background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)',
             border: '1px solid #f59e0b',

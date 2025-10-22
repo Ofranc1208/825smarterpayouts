@@ -1,0 +1,545 @@
+================================================================================
+🧮 CALCULATION SERVICE REFACTOR ANALYSIS
+================================================================================
+Created: 2024
+Purpose: Map the current monolithic calculationService.ts structure to plan
+         a clean refactoring into smaller, focused modules
+
+================================================================================
+📊 CURRENT STATE ANALYSIS
+================================================================================
+
+FILE: src/services/calculationService.ts (589 lines)
+STATUS: ⚠️ MONOLITHIC - Too many responsibilities in one file
+
+DEPENDENCIES:
+├── app/utils/npvCalculations.ts
+│   ├── calcNPVWithAdjustment()
+│   ├── calculateMinMaxNPV()
+│   ├── calculateGuaranteedNPV()
+│   └── PaymentFrequency (type)
+├── app/utils/deathBenefit.ts
+│   └── calculateDeathBenefitMaxPV()
+├── app/utils/npvConfig.ts
+│   ├── BASE_DISCOUNT_RATE
+│   ├── BASE_DISCOUNT_RATE_LCP
+│   ├── AMOUNT_ADJUSTMENTS
+│   ├── FAMILY_PROTECTION_DISCOUNT_RATE
+│   ├── RATE_SPREADS
+│   └── adjustmentMap
+├── src/utils/lcpMappingService.ts
+│   └── LCPMappingService.mapFormValuesToCalculationKeys()
+└── src/types.ts
+    ├── LCPFormData
+    ├── LCPCalculationResult
+    ├── GuaranteedFormData
+    ├── GuaranteedCalculationResult
+    └── CalculationError
+
+================================================================================
+🔍 CURRENT CLASS STRUCTURE
+================================================================================
+
+export class CalculationService {
+  
+  // ========================================
+  // 1️⃣ LIFE-CONTINGENT PAYMENT METHODS
+  // ========================================
+  
+  ✅ calculateLCP(formData: LCPFormData): LCPCalculationResult
+     Lines: 37-137 (101 lines)
+     Purpose: Calculate Life-Contingent Payments with health adjustments
+     Responsibilities:
+       - Validate LCP form data
+       - Extract payment, date, and health profile data
+       - Calculate main NPV with LCP adjustments
+       - Calculate min/max payout range
+       - Calculate family protection (death benefit)
+       - Return complete LCP result
+     Dependencies:
+       - calcNPVWithAdjustment()
+       - calculateMinMaxNPV()
+       - calculateDeathBenefitMaxPV()
+       - LCPMappingService
+       - adjustmentMap
+     
+  ✅ calculateLCPLumpSum(formData): LCPCalculationResult
+     Lines: 222-357 (136 lines)
+     Purpose: Calculate LCP for multiple lump sum payments
+     Responsibilities:
+       - Validate LCP lump sum data
+       - Calculate LCP-adjusted discount rate
+       - Process each lump sum payment individually
+       - Sum all payments with LCP health adjustments
+       - Calculate family protection (death benefit)
+       - Apply min/max adjustments to total
+       - Return complete LCP result
+     Dependencies:
+       - calculateDeathBenefitMaxPV()
+       - adjustmentMap
+       - BASE_DISCOUNT_RATE_LCP
+       - RATE_SPREADS
+       - AMOUNT_ADJUSTMENTS
+
+  // ========================================
+  // 2️⃣ GUARANTEED PAYMENT METHODS
+  // ========================================
+  
+  ✅ calculateLumpSum(formData): GuaranteedCalculationResult
+     Lines: 143-215 (73 lines)
+     Purpose: Calculate single lump sum payment (Guaranteed)
+     Responsibilities:
+       - Validate lump sum data
+       - Calculate time to payment
+       - Calculate NPV with discount factor
+       - Calculate min/max payout range
+       - Return guaranteed result
+     Dependencies:
+       - BASE_DISCOUNT_RATE
+       - RATE_SPREADS
+       - AMOUNT_ADJUSTMENTS
+     
+  ✅ calculateGuaranteed(formData: GuaranteedFormData): GuaranteedCalculationResult
+     Lines: 363-421 (59 lines)
+     Purpose: Calculate Guaranteed Payments (regular payments)
+     Responsibilities:
+       - Route to lump sum if needed
+       - Validate guaranteed form data
+       - Calculate min/max NPV
+       - Return guaranteed result
+     Dependencies:
+       - calculateMinMaxNPV()
+       - calculateGuaranteedLumpSum() (private)
+       - BASE_DISCOUNT_RATE
+       - AMOUNT_ADJUSTMENTS
+     
+  ✅ calculateGuaranteedLumpSum(formData): GuaranteedCalculationResult [PRIVATE]
+     Lines: 427-526 (100 lines)
+     Purpose: Calculate multiple lump sum payments (Guaranteed)
+     Responsibilities:
+       - Validate payments array
+       - Process each lump sum payment
+       - Sum all payments
+       - Apply min/max adjustments to total
+       - Track date range
+       - Return guaranteed result
+     Dependencies:
+       - BASE_DISCOUNT_RATE
+       - RATE_SPREADS
+       - AMOUNT_ADJUSTMENTS
+
+  // ========================================
+  // 3️⃣ UTILITY METHODS
+  // ========================================
+  
+  ✅ calculateComparison(lcpFormData, guaranteedFormData)
+     Lines: 532-546 (15 lines)
+     Purpose: Calculate both LCP and Guaranteed for comparison
+     Responsibilities:
+       - Call calculateLCP()
+       - Call calculateGuaranteed()
+       - Return both results
+     Dependencies:
+       - calculateLCP()
+       - calculateGuaranteed()
+  
+  // ========================================
+  // 4️⃣ VALIDATION METHODS
+  // ========================================
+  
+  ✅ validateLCPFormData(formData: LCPFormData)
+     Lines: 552-571 (20 lines)
+     Purpose: Pre-calculation validation for LCP
+     Responsibilities:
+       - Check all required LCP fields
+       - Return validation result with errors
+     Dependencies: None
+     
+  ✅ validateGuaranteedFormData(formData: GuaranteedFormData)
+     Lines: 576-588 (13 lines)
+     Purpose: Pre-calculation validation for Guaranteed
+     Responsibilities:
+       - Check all required Guaranteed fields
+       - Return validation result with errors
+     Dependencies: None
+
+}
+
+================================================================================
+🎯 IDENTIFIED PROBLEMS
+================================================================================
+
+1. ⚠️ SINGLE RESPONSIBILITY VIOLATION
+   - One class handles LCP, Guaranteed, Lump Sum, Validation, and Comparison
+   - Hard to test individual calculation types
+   - Hard to maintain and debug
+
+2. ⚠️ CODE DUPLICATION
+   - Lump sum calculation logic duplicated between:
+     * calculateLumpSum() (Guaranteed)
+     * calculateLCPLumpSum() (LCP)
+     * calculateGuaranteedLumpSum() (Guaranteed multiple)
+   - Date calculation logic repeated multiple times
+   - NPV calculation patterns repeated
+
+3. ⚠️ MIXED CONCERNS
+   - Validation mixed with calculation logic
+   - Data transformation mixed with business logic
+   - Error handling scattered throughout
+
+4. ⚠️ LARGE METHODS
+   - calculateLCPLumpSum: 136 lines
+   - calculateLCP: 101 lines
+   - calculateGuaranteedLumpSum: 100 lines
+   - Hard to understand and maintain
+
+5. ⚠️ TIGHT COUPLING
+   - Direct dependencies on multiple utility files
+   - Hard to mock for testing
+   - Changes in one area affect others
+
+================================================================================
+📋 PROPOSED REFACTORING STRUCTURE
+================================================================================
+
+NEW DIRECTORY STRUCTURE:
+src/services/calculations/
+├── index.ts                          # Main export barrel
+├── types.ts                          # Shared calculation types
+├── constants.ts                      # Calculation constants
+│
+├── core/                             # Core calculation engines
+│   ├── npvCalculator.ts              # NPV calculation logic
+│   ├── discountRateCalculator.ts    # Discount rate calculations
+│   ├── dateCalculator.ts             # Date/time calculations
+│   └── roundingUtils.ts              # Rounding and formatting
+│
+├── lcp/                              # Life-Contingent Payment calculations
+│   ├── LCPCalculationService.ts      # Main LCP service
+│   ├── LCPLumpSumCalculator.ts       # LCP lump sum logic
+│   ├── LCPHealthAdjustments.ts       # Health profile adjustments
+│   └── LCPValidator.ts               # LCP validation
+│
+├── guaranteed/                       # Guaranteed Payment calculations
+│   ├── GuaranteedCalculationService.ts   # Main Guaranteed service
+│   ├── GuaranteedLumpSumCalculator.ts    # Guaranteed lump sum logic
+│   └── GuaranteedValidator.ts            # Guaranteed validation
+│
+├── family-protection/                # Family Protection (Death Benefit)
+│   ├── FamilyProtectionCalculator.ts     # Death benefit calculations
+│   └── FamilyProtectionService.ts        # Service wrapper
+│
+└── comparison/                       # Comparison utilities
+    └── ComparisonService.ts          # Compare LCP vs Guaranteed
+
+================================================================================
+🔄 REFACTORING PLAN - PHASE BY PHASE
+================================================================================
+
+PHASE 1: EXTRACT UTILITIES (Low Risk)
+──────────────────────────────────────
+Goal: Extract reusable utility functions
+Files to create:
+  ✅ src/services/calculations/core/dateCalculator.ts
+     - extractMonthsFromToday()
+     - calculateDateDifference()
+     - addMonthsToDate()
+  
+  ✅ src/services/calculations/core/roundingUtils.ts
+     - roundUp100()
+     - roundUp10k()
+     - formatCurrency()
+  
+  ✅ src/services/calculations/core/discountRateCalculator.ts
+     - calculatePeriodicRate()
+     - calculateDiscountFactor()
+     - applyHealthAdjustments()
+
+PHASE 2: EXTRACT VALIDATORS (Low Risk)
+──────────────────────────────────────
+Goal: Separate validation logic
+Files to create:
+  ✅ src/services/calculations/lcp/LCPValidator.ts
+     - Move validateLCPFormData()
+     - Add field-level validation
+  
+  ✅ src/services/calculations/guaranteed/GuaranteedValidator.ts
+     - Move validateGuaranteedFormData()
+     - Add field-level validation
+
+PHASE 3: EXTRACT LCP CALCULATIONS (Medium Risk)
+──────────────────────────────────────
+Goal: Separate LCP logic into focused modules
+Files to create:
+  ✅ src/services/calculations/lcp/LCPCalculationService.ts
+     - Move calculateLCP()
+     - Use extracted utilities
+  
+  ✅ src/services/calculations/lcp/LCPLumpSumCalculator.ts
+     - Move calculateLCPLumpSum()
+     - Use extracted utilities
+  
+  ✅ src/services/calculations/lcp/LCPHealthAdjustments.ts
+     - Health profile adjustment logic
+     - LCP key mapping
+
+PHASE 4: EXTRACT GUARANTEED CALCULATIONS (Medium Risk)
+──────────────────────────────────────
+Goal: Separate Guaranteed logic into focused modules
+Files to create:
+  ✅ src/services/calculations/guaranteed/GuaranteedCalculationService.ts
+     - Move calculateGuaranteed()
+     - Move calculateLumpSum()
+  
+  ✅ src/services/calculations/guaranteed/GuaranteedLumpSumCalculator.ts
+     - Move calculateGuaranteedLumpSum()
+     - Consolidate lump sum logic
+
+PHASE 5: EXTRACT FAMILY PROTECTION (Low Risk)
+──────────────────────────────────────
+Goal: Centralize death benefit calculations
+Files to create:
+  ✅ src/services/calculations/family-protection/FamilyProtectionService.ts
+     - Wrapper for calculateDeathBenefitMaxPV()
+     - Add logging and error handling
+
+PHASE 6: REFACTOR ORCHESTRATOR (Medium Risk)
+──────────────────────────────────────
+Goal: Transform calculationService.ts into thin orchestration layer
+Files to update:
+  ✅ src/services/calculationService.ts
+     - KEEP the same file and CalculationService class
+     - KEEP all public method signatures (no breaking changes)
+     - REPLACE implementation logic with calls to new modules
+     - Transform from 589 lines to ~150 lines
+     - Acts as orchestrator/coordinator for all calculations
+
+PHASE 7: VERIFY NO BREAKING CHANGES (Critical)
+──────────────────────────────────────
+Goal: Ensure all existing code works without modification
+Verification steps:
+  - Run all existing tests
+  - Verify all imports still work
+  - Check that all method signatures unchanged
+  - Performance testing
+  - Integration testing
+
+PHASE 8: CLEANUP & DOCUMENTATION (Final)
+──────────────────────────────────────
+Goal: Finalize refactoring
+  - Remove any unused imports from calculationService.ts
+  - Add comments explaining orchestration pattern
+  - Update documentation
+  - Code review
+  - Merge to main
+
+================================================================================
+📦 NEW MODULE RESPONSIBILITIES
+================================================================================
+
+1️⃣ CORE UTILITIES
+   Purpose: Reusable calculation primitives
+   Files: dateCalculator.ts, roundingUtils.ts, discountRateCalculator.ts
+   Dependencies: None (pure functions)
+   Exports: Pure utility functions
+
+2️⃣ LCP CALCULATION SERVICE
+   Purpose: Life-Contingent Payment calculations
+   Files: LCPCalculationService.ts, LCPLumpSumCalculator.ts, LCPHealthAdjustments.ts
+   Dependencies: Core utilities, npvCalculations, deathBenefit
+   Exports: calculateLCP(), calculateLCPLumpSum()
+
+3️⃣ GUARANTEED CALCULATION SERVICE
+   Purpose: Guaranteed Payment calculations
+   Files: GuaranteedCalculationService.ts, GuaranteedLumpSumCalculator.ts
+   Dependencies: Core utilities, npvCalculations
+   Exports: calculateGuaranteed(), calculateGuaranteedLumpSum()
+
+4️⃣ FAMILY PROTECTION SERVICE
+   Purpose: Death benefit calculations
+   Files: FamilyProtectionService.ts
+   Dependencies: deathBenefit.ts
+   Exports: calculateFamilyProtection()
+
+5️⃣ VALIDATION SERVICES
+   Purpose: Pre-calculation validation
+   Files: LCPValidator.ts, GuaranteedValidator.ts
+   Dependencies: None
+   Exports: validate() methods
+
+6️⃣ COMPARISON SERVICE
+   Purpose: Compare calculation types
+   Files: ComparisonService.ts
+   Dependencies: LCP Service, Guaranteed Service
+   Exports: compareCalculations()
+
+7️⃣ ORCHESTRATOR (Main Entry Point)
+   Purpose: Coordinate all calculations - KEEP EXISTING FILE
+   Files: calculationService.ts (REFACTORED, NOT REPLACED)
+   Dependencies: All services
+   Exports: Same API as current CalculationService
+   Note: This is the EXISTING file, just refactored to delegate to modules
+
+================================================================================
+✅ BENEFITS OF REFACTORING
+================================================================================
+
+1. ✅ SINGLE RESPONSIBILITY
+   - Each module has one clear purpose
+   - Easier to understand and maintain
+
+2. ✅ TESTABILITY
+   - Small, focused modules easy to unit test
+   - Can mock dependencies easily
+   - Better test coverage
+
+3. ✅ REUSABILITY
+   - Core utilities can be used anywhere
+   - Calculation logic separated from validation
+
+4. ✅ MAINTAINABILITY
+   - Changes isolated to specific modules
+   - Easier to debug issues
+   - Clear file structure
+
+5. ✅ SCALABILITY
+   - Easy to add new calculation types
+   - Can extend without modifying existing code
+
+6. ✅ DEBUGGING
+   - Smaller files easier to navigate
+   - Clear separation of concerns
+   - Better error messages
+
+================================================================================
+⚠️ RISKS & MITIGATION
+================================================================================
+
+RISK 1: Breaking Changes
+  Mitigation: Keep existing calculationService.ts as orchestrator with same API
+
+RISK 2: Regression Bugs
+  Mitigation: Comprehensive testing before/after refactoring
+
+RISK 3: Import Hell
+  Mitigation: Use barrel exports (index.ts)
+
+RISK 4: Over-Engineering
+  Mitigation: Start simple, refactor incrementally
+
+================================================================================
+🧪 TESTING STRATEGY
+================================================================================
+
+1. ✅ BEFORE REFACTORING
+   - Create comprehensive test suite for current CalculationService
+   - Document all expected inputs/outputs
+   - Save test results as baseline
+
+2. ✅ DURING REFACTORING
+   - Test each new module independently
+   - Verify facade maintains same behavior
+   - Run regression tests after each phase
+
+3. ✅ AFTER REFACTORING
+   - Compare new results with baseline
+   - Performance testing
+   - Integration testing
+
+================================================================================
+📝 IMPLEMENTATION CHECKLIST
+================================================================================
+
+PREPARATION:
+  ☐ Review this document with team
+  ☐ Get approval for refactoring approach
+  ☐ Create feature branch
+  ☐ Set up test baseline
+
+PHASE 1: Core Utilities
+  ☐ Create dateCalculator.ts
+  ☐ Create roundingUtils.ts
+  ☐ Create discountRateCalculator.ts
+  ☐ Test utilities independently
+
+PHASE 2: Validators
+  ☐ Create LCPValidator.ts
+  ☐ Create GuaranteedValidator.ts
+  ☐ Test validators
+
+PHASE 3: LCP Services
+  ☐ Create LCPCalculationService.ts
+  ☐ Create LCPLumpSumCalculator.ts
+  ☐ Create LCPHealthAdjustments.ts
+  ☐ Test LCP services
+
+PHASE 4: Guaranteed Services
+  ☐ Create GuaranteedCalculationService.ts
+  ☐ Create GuaranteedLumpSumCalculator.ts
+  ☐ Test Guaranteed services
+
+PHASE 5: Family Protection
+  ☐ Create FamilyProtectionService.ts
+  ☐ Test family protection
+
+PHASE 6: Orchestrator Refactoring
+  ☐ Refactor calculationService.ts to use new modules
+  ☐ Keep all method signatures identical
+  ☐ Test backward compatibility
+
+PHASE 7: Verification
+  ☐ Run all existing tests (no changes needed)
+  ☐ Verify no breaking changes
+  ☐ Performance testing
+
+PHASE 8: Cleanup
+  ☐ Remove unused code from calculationService.ts
+  ☐ Add orchestration pattern comments
+  ☐ Update documentation
+  ☐ Code review
+  ☐ Merge to main
+
+================================================================================
+🎯 SUCCESS METRICS
+================================================================================
+
+1. ✅ Code Quality
+   - Average file size < 200 lines
+   - Cyclomatic complexity < 10 per function
+   - Test coverage > 80%
+
+2. ✅ Maintainability
+   - Clear module boundaries
+   - No circular dependencies
+   - Well-documented interfaces
+
+3. ✅ Performance
+   - No performance regression
+   - Same or better calculation speed
+
+4. ✅ Compatibility
+   - All existing code works without changes
+   - No breaking changes to API
+
+================================================================================
+📚 RELATED FILES TO REVIEW
+================================================================================
+
+Current Implementation:
+  - src/services/calculationService.ts (THIS FILE - TO BE REFACTORED)
+  - app/utils/npvCalculations.ts
+  - app/utils/deathBenefit.ts
+  - app/utils/npvConfig.ts
+  - src/utils/lcpMappingService.ts
+  - src/types.ts
+
+Files Using CalculationService:
+  - src/hooks/useLCPFlow.ts
+  - src/hooks/useGuaranteedFlow.ts
+  - src/components/calculator/lcpstep/*.tsx
+  - src/components/calculator/guaranteedstep/*.tsx
+
+================================================================================
+END OF REFACTORING ANALYSIS
+================================================================================
+

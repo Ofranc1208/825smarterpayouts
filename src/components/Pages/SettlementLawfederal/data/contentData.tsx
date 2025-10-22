@@ -1,50 +1,60 @@
 // Settlement Law Federal Content Data
-// Following enterprise patterns from Home and CourtApproval pages
+// Enhanced with comprehensive legal information and expandable disclaimer
 
-import { SettlementLawPageData, FederalLawData, CourtApprovalProcess, TaxImplication, LegalResource } from '../types';
+import { SettlementLawPageData, FederalLawData, CourtApprovalProcess, TaxImplication, LegalResource, FAQItem, BestPractice, GovernmentResource } from '../types';
 
 export const federalLawsData: FederalLawData[] = [
   {
     id: 'periodic-payment-act-1982',
     title: 'Periodic Payment Settlement Act of 1982',
-    description: 'Foundational federal law encouraging structured settlements for tort victims',
+    description: 'Foundational federal law that created tax-favored treatment for structured settlements from personal injury claims',
     year: 1982,
+    publicLaw: 'Public Law 97-473',
     sections: ['IRC § 104(a)(2)', 'IRC § 130'],
     keyProvisions: [
-      'Excludes damages from gross income for personal physical injuries',
-      'Allows qualified assignments of periodic payment obligations',
-      'Provides tax benefits for both payees and qualified assignees',
-      'Ensures structured settlement payments are tax-free to recipients'
+      'Excludes periodic payments from personal injury/physical sickness claims from gross income',
+      'Establishes "qualified assignments" allowing defendants to assign payment obligations to third parties',
+      'Creates tax-free treatment for structured settlement payments',
+      'Enables long-term financial planning through guaranteed periodic payments'
     ],
-    impact: 'Established the legal framework for tax-free structured settlements and promoted long-term financial security for injury victims.'
+    impact: 'Made structured settlements financially viable by providing tax incentives and legal framework for secure payment arrangements.',
+    whyItMatters: 'This law transformed how personal injury settlements work, making it possible for victims to receive tax-free income streams rather than taxable lump sums.',
+    consumerTakeaway: 'If you receive structured settlement payments from a physical injury claim, ensure the settlement meets these federal criteria to maintain tax advantages.'
   },
   {
     id: 'structured-settlement-protection-act-2002',
-    title: 'Structured Settlement Protection Act of 2002',
-    description: 'Federal law requiring court approval for structured settlement transfers',
+    title: 'Structured Settlement Protection Act (Federal Tax Framework)',
+    description: 'Federal excise tax provisions requiring court approval for structured settlement payment transfers',
     year: 2002,
     sections: ['IRC § 5891'],
+    publicLaw: 'Victims of Terrorism Tax Relief Act of 2001 (Public Law 107-134)',
     keyProvisions: [
-      'Requires court approval for any transfer of structured settlement payment rights',
-      'Imposes 40% excise tax on transfers not approved by court',
-      'Ensures transfers are in the "best interest" of the payee and dependents',
-      'Mandates independent professional advice for payees'
+      'Imposes 40% excise tax on "factoring transactions" not approved by court',
+      'Defines "qualified order" requirements for tax-free transfers',
+      'Requires court findings that transfers are in payee\'s "best interest"',
+      'Mandates disclosure, independent advice, and procedural protections'
     ],
-    impact: 'Protects structured settlement recipients from predatory practices and ensures judicial oversight of all transfers.'
+    impact: 'Provides federal "safety net" over the secondary market for structured settlement payment rights, preventing exploitative transfers.',
+    whyItMatters: 'This is the federal enforcement mechanism ensuring structured settlement transfers aren\'t predatory and maintain tax-free status.',
+    consumerTakeaway: 'Before selling structured settlement payments, ensure compliance with IRC §5891 and state transfer statutes to avoid 40% excise tax and loss of tax-free status.'
   },
   {
     id: 'victims-terrorism-tax-relief-act-2001',
     title: 'Victims of Terrorism Tax Relief Act of 2001',
-    description: 'Enhanced protections for structured settlement holders affected by terrorism',
+    description: 'Federal law that added IRC §5891 excise tax provisions and enhanced structured settlement transfer protections',
     year: 2001,
-    sections: ['Multiple provisions'],
+    sections: ['IRC § 5891', 'IRC § 104(a)(2) amendments'],
+    publicLaw: 'Public Law 107-134',
     keyProvisions: [
-      'Strengthens court approval requirements',
-      'Clarifies tax treatment of structured settlements',
-      'Provides additional protections for terrorism victims',
-      'Enhances oversight mechanisms'
+      'Created IRC §5891 imposing 40% excise tax on unapproved structured settlement transfers',
+      'Defined "qualified order" requirements for court-approved transfers',
+      'Established federal oversight of state transfer statutes',
+      'Required independent professional advice and best interest findings',
+      'Provided tax relief for terrorism victims with structured settlements'
     ],
-    impact: 'Further strengthened protections and clarified tax treatment, especially for victims of terrorism and disasters.'
+    impact: 'Created the federal tax enforcement mechanism that protects structured settlement recipients from predatory factoring companies by requiring court approval for all transfers.',
+    whyItMatters: 'This law is the primary federal protection against exploitative "cash now" companies. Without proper court approval under state law, transfers face a devastating 40% federal excise tax.',
+    consumerTakeaway: 'Never sell structured settlement payments without court approval under your state\'s transfer statute - violations trigger 40% federal excise tax and may void the transaction entirely.'
   }
 ];
 
@@ -105,40 +115,218 @@ export const courtProcessData: CourtApprovalProcess[] = [
 
 export const taxImplicationsData: TaxImplication[] = [
   {
-    category: 'Tax-Exempt Status',
-    description: 'Structured settlement payments are generally tax-free to the recipient',
-    code: 'IRC § 104(a)(2)',
+    category: 'Tax-Free Treatment of Settlement Payments',
+    description: 'Periodic payments from personal injury settlements are generally tax-free',
+    code: 'IRC § 104(a)(2) & § 130',
     impact: 'positive',
     details: [
-      'No federal income tax on periodic payments',
-      'No state income tax in most jurisdictions',
-      'Tax-free growth of invested funds',
-      'Lifetime tax exemption for qualifying payments'
+      'Excludes payments from gross income for physical injury/sickness claims',
+      'Tax-free growth of annuity investments',
+      'Maintains tax-free status through qualified assignments',
+      'Preserves public benefit eligibility'
     ]
   },
   {
-    category: 'Transfer Taxation',
-    description: 'Selling payment rights may create taxable events and penalties',
+    category: 'Transfer Taxation & Penalties',
+    description: 'Selling payment rights may trigger taxes and 40% excise tax penalty',
     code: 'IRC § 5891',
     impact: 'negative',
     details: [
-      '40% excise tax on unapproved transfers',
-      'Lump sum may be subject to income tax',
-      'Loss of future tax-free status',
-      'Potential state tax implications'
+      '40% excise tax on unapproved factoring transactions',
+      'Lump sum proceeds may be taxable income',
+      'Loss of future tax-free payment status',
+      'Federal and potential state tax consequences'
     ]
   },
   {
-    category: 'Qualified Assignments',
-    description: 'Payments from qualified assignees maintain tax-free status',
+    category: 'Qualified Assignment Benefits',
+    description: 'Properly structured assignments maintain tax advantages',
     code: 'IRC § 130',
     impact: 'positive',
     details: [
-      'Continued tax-free treatment',
-      'No impact on recipient\'s tax status',
-      'Maintained federal tax benefits',
-      'Preserved state tax exemptions'
+      'Continued tax-free treatment for payments',
+      'Separation of funding assets from liability',
+      'Enhanced security through annuity backing',
+      'Long-term financial planning advantages'
     ]
+  }
+];
+
+export const practicalApplicationsData = {
+  taxFreeTreatment: {
+    title: 'Tax-Free Treatment of Settlement Payments',
+    description: 'Understanding how IRC §104(a)(2) and IRC §130 work in practice',
+    details: [
+      'Periodic payments must be "fixed and determinable as to amount and time"',
+      'Cannot be accelerated or increased to maintain tax-free status',
+      'Qualified assignments separate funding from liability for security',
+      'Recipients maintain public benefit eligibility with structured payments'
+    ]
+  },
+  transfersAndSales: {
+    title: 'Transfers and Sales of Payment Rights',
+    description: 'The regulated process for selling structured settlement payments',
+    details: [
+      'Must comply with both federal (IRC §5891) and state transfer statutes',
+      'Requires court approval finding transfer is in "best interest"',
+      'Independent professional advice (legal/tax/financial) is mandatory',
+      'All 50 states + DC have compliant transfer statutes'
+    ]
+  },
+  courtApproval: {
+    title: 'Court Approval and State Statute Interface',
+    description: 'How federal and state laws work together',
+    details: [
+      'Federal law sets tax framework and 40% excise tax penalty',
+      'State laws implement procedural protections and court approval',
+      'State statutes must meet federal criteria for tax exemption',
+      'Court must make specific findings about payee\'s best interest'
+    ]
+  }
+};
+
+export const faqData: FAQItem[] = [
+  {
+    id: 'tax-free-payments',
+    question: 'Are structured settlement payments always tax-free?',
+    answer: 'Generally yes if the settlement meets IRC §104(a)(2) and §130 requirements (physical injury, fixed payment stream, etc). If payments are transferred without proper approval or accelerated, tax status may change.',
+    category: 'taxation'
+  },
+  {
+    id: 'selling-payments',
+    question: 'What happens if I sell my structured settlement payments?',
+    answer: 'If the sale is not approved by a court under applicable state statute (thus failing IRC §5891 "qualified order" requirements), the purchaser risks 40% excise tax, and you may lose tax-free status of future payments.',
+    category: 'transfers'
+  },
+  {
+    id: 'qualified-assignment',
+    question: 'What is a "qualified assignment"?',
+    answer: 'Under IRC §130, a defendant/insurer may assign payment obligations to a third-party "qualified assignment company". This ensures payments are funded by secure assets (like annuities) and removes liability from the defendant\'s books.',
+    category: 'legal'
+  },
+  {
+    id: 'state-vs-federal',
+    question: 'Do state laws matter if federal law covers structured settlements?',
+    answer: 'Yes. Federal law sets tax treatment and excise tax rules; state laws implement procedural protections for transfers and enforce court-approval mechanisms. Both are essential.',
+    category: 'legal'
+  },
+  {
+    id: 'transfer-checklist',
+    question: 'What should I check before agreeing to transfer (sell) my payment rights?',
+    answer: 'Confirm your state has compliant transfer statute, ensure court order approval, receive independent professional advice, understand discount and tax consequences, and retain documentation of all approvals.',
+    category: 'transfers'
+  }
+];
+
+export const governmentResourcesData: GovernmentResource[] = [
+  {
+    id: 'irs-publication-4345',
+    title: 'IRS Publication 4345: Settlements – Taxability',
+    description: 'Official IRS guidance on taxation of settlement payments and structured settlements',
+    url: 'https://www.irs.gov/pub/irs-pdf/p4345.pdf',
+    type: 'guidance',
+    relevance: 'critical'
+  },
+  {
+    id: 'irc-104',
+    title: '26 U.S. Code § 104 - Compensation for injuries or sickness',
+    description: 'Federal statute excluding personal injury settlements from gross income',
+    url: 'https://www.law.cornell.edu/uscode/text/26/104',
+    type: 'statute',
+    relevance: 'critical'
+  },
+  {
+    id: 'irc-130',
+    title: '26 U.S. Code § 130 - Qualified assignments',
+    description: 'Federal statute governing assignment of structured settlement payment obligations',
+    url: 'https://www.law.cornell.edu/uscode/text/26/130',
+    type: 'statute',
+    relevance: 'critical'
+  },
+  {
+    id: 'irc-5891',
+    title: '26 U.S. Code § 5891 - Structured settlement factoring transactions',
+    description: 'Federal statute imposing 40% excise tax on unapproved transfers',
+    url: 'https://www.law.cornell.edu/uscode/text/26/5891',
+    type: 'statute',
+    relevance: 'critical'
+  },
+  {
+    id: 'cfr-157',
+    title: '26 CFR Part 157 - Excise Tax on Structured Settlement Factoring Transactions',
+    description: 'Federal regulations implementing IRC §5891 excise tax provisions',
+    url: 'https://www.ecfr.gov/current/title-26/chapter-I/subchapter-F/part-157',
+    type: 'regulation',
+    relevance: 'critical'
+  },
+  {
+    id: 'ncoil-model-act',
+    title: 'NCOIL Model Structured Settlement Protection Act',
+    description: 'Model state legislation providing template for structured settlement transfer protections',
+    url: 'https://www.ncoil.org/wp-content/uploads/2019/10/Structured-Settlement-Protection-Act.pdf',
+    type: 'model-law',
+    relevance: 'high'
+  },
+  {
+    id: 'treasury-regulations',
+    title: 'Treasury Regulations § 1.104-1 - Compensation for injuries or sickness',
+    description: 'Treasury regulations interpreting IRC §104 exclusions for structured settlements',
+    url: 'https://www.law.cornell.edu/cfr/text/26/1.104-1',
+    type: 'regulation',
+    relevance: 'high'
+  },
+  {
+    id: 'doj-structured-settlements',
+    title: 'U.S. Department of Justice: Structured Settlement Resources',
+    description: 'DOJ guidance on structured settlements in federal litigation and victim compensation',
+    url: 'https://www.justice.gov/civil/structured-settlements',
+    type: 'guidance',
+    relevance: 'medium'
+  }
+];
+
+export const bestPracticesData: BestPractice[] = [
+  {
+    id: 'verify-structure',
+    title: 'Verify Proper Settlement Structure',
+    description: 'Confirm your structured settlement was correctly established with qualified assignment to maintain tax-free status.',
+    category: 'setup',
+    priority: 'high'
+  },
+  {
+    id: 'independent-advice',
+    title: 'Seek Independent Professional Advice',
+    description: 'Before any transfer decision, consult neutral attorney, CPA, and financial advisor experienced in structured settlements.',
+    category: 'transfers',
+    priority: 'critical'
+  },
+  {
+    id: 'understand-discount',
+    title: 'Understand the Discount and Costs',
+    description: 'Calculate the discounted present value, fees, and effective interest rate. Know exactly what you\'re giving up versus receiving.',
+    category: 'transfers',
+    priority: 'high'
+  },
+  {
+    id: 'court-approval',
+    title: 'Ensure Proper Court Approval',
+    description: 'Verify court makes required findings: transfer in your best interest, proper disclosure, independent advice received.',
+    category: 'transfers',
+    priority: 'critical'
+  },
+  {
+    id: 'retain-documentation',
+    title: 'Maintain Complete Records',
+    description: 'Keep copies of all settlement documents, court orders, disclosures, and professional advice certificates.',
+    category: 'records',
+    priority: 'medium'
+  },
+  {
+    id: 'avoid-pressure',
+    title: 'Avoid High-Pressure Sales',
+    description: 'Be cautious of unsolicited offers, "get cash now" promises, or pressure tactics. Take time to evaluate thoroughly.',
+    category: 'transfers',
+    priority: 'high'
   }
 ];
 
@@ -193,6 +381,17 @@ export const legalResourcesData: LegalResource[] = [
   }
 ];
 
+export const introductionData = {
+  title: 'Understanding Structured Settlements and Federal Law',
+  description: 'A structured settlement is an arrangement where a person resolves a personal-injury or workers\'-compensation claim and receives part or all of the compensation in periodic payments rather than a single lump sum. Federal laws govern how these settlements are treated — especially for tax purposes, for assignment or transfer of payment rights, and for consumer protection when payments are sold.',
+  keyPoints: [
+    'Federal laws provide the underlying legal framework for structured settlements',
+    'State laws (especially for transfers) play a crucial supporting role',
+    'Tax treatment, court approval processes, and consumer protections are federally regulated',
+    'Understanding both federal and state requirements is essential for proper compliance'
+  ]
+};
+
 export const settlementLawPageData: SettlementLawPageData = {
   hero: {
     title: '⚖️ Structured Settlement Federal Law',
@@ -203,13 +402,20 @@ export const settlementLawPageData: SettlementLawPageData = {
       secondary: { text: '💬 Chat with Mint AI', href: '/mint-intelligent-chat?chat=open&feature=calculator' }
     }
   },
+  introduction: introductionData,
   federalLaws: federalLawsData,
+  practicalApplications: practicalApplicationsData,
+  faq: faqData,
+  governmentResources: governmentResourcesData,
+  bestPractices: bestPracticesData,
   courtProcess: courtProcessData,
   taxImplications: taxImplicationsData,
   resources: legalResourcesData,
   disclaimer: {
-    title: '⚠️ Legal Disclaimer',
+    title: 'Legal Disclaimer',
     content: 'The information provided on this page represents laws we have gathered for informational purposes only. Laws change frequently and interpretations may vary.',
-    warning: 'Always consult with a qualified attorney specializing in structured settlements to ensure the accuracy and applicability of these laws to your specific situation. This information should not be considered legal advice.'
+    warning: 'Always consult with a qualified attorney specializing in structured settlements to ensure the accuracy and applicability of these laws to your specific situation. This information should not be considered legal advice.',
+    isExpandable: true,
+    shortText: 'Important legal information - click to read full disclaimer'
   }
 };

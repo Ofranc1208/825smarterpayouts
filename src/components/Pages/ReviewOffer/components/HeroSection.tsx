@@ -97,7 +97,7 @@ export default function HeroSection() {
             }}>
               <Button
                 as="a"
-                href="/mint-chat-active?type=calculate&source=review-offer-hero"
+                href="/mint-intelligent-chat"
                 variant="technology-primary"
                 size="lg"
                 enhancedHover={true}

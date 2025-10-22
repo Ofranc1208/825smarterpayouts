@@ -30,33 +30,75 @@ export default function ReferencesSection() {
         margin: '0'
       }}>
         <li style={{ marginBottom: '0.75rem' }}>
-          <a href="https://www.law.cornell.edu/uscode/text/26/104" target="_blank" rel="noopener noreferrer" style={{ color: '#059669', textDecoration: 'none' }}>
+          <a
+            href="https://www.law.cornell.edu/uscode/text/26/104"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#059669', textDecoration: 'none' }}
+            aria-label="26 U.S. Code § 104 - Compensation for injuries or sickness (opens in new window)"
+          >
             26 U.S. Code § 104 - Compensation for injuries or sickness
+            <span style={{ fontSize: '0.875rem', opacity: 0.7, marginLeft: '0.25rem' }}>↗</span>
           </a>
         </li>
         <li style={{ marginBottom: '0.75rem' }}>
-          <a href="https://www.law.cornell.edu/uscode/text/26/130" target="_blank" rel="noopener noreferrer" style={{ color: '#059669', textDecoration: 'none' }}>
+          <a
+            href="https://www.law.cornell.edu/uscode/text/26/130"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#059669', textDecoration: 'none' }}
+            aria-label="26 U.S. Code § 130 - Certain personal injury liability assignments (opens in new window)"
+          >
             26 U.S. Code § 130 - Certain personal injury liability assignments
+            <span style={{ fontSize: '0.875rem', opacity: 0.7, marginLeft: '0.25rem' }}>↗</span>
           </a>
         </li>
         <li style={{ marginBottom: '0.75rem' }}>
-          <a href="https://www.law.cornell.edu/uscode/text/26/5891" target="_blank" rel="noopener noreferrer" style={{ color: '#059669', textDecoration: 'none' }}>
+          <a
+            href="https://www.law.cornell.edu/uscode/text/26/5891"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#059669', textDecoration: 'none' }}
+            aria-label="26 U.S. Code § 5891 - Structured settlement factoring transactions (opens in new window)"
+          >
             26 U.S. Code § 5891 - Structured settlement factoring transactions
+            <span style={{ fontSize: '0.875rem', opacity: 0.7, marginLeft: '0.25rem' }}>↗</span>
           </a>
         </li>
         <li style={{ marginBottom: '0.75rem' }}>
-          <a href="https://www.congress.gov/bill/97th-congress/house-bill/5470" target="_blank" rel="noopener noreferrer" style={{ color: '#059669', textDecoration: 'none' }}>
+          <a
+            href="https://www.congress.gov/bill/97th-congress/house-bill/5470"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#059669', textDecoration: 'none' }}
+            aria-label="Periodic Payment Settlement Act of 1982 (Public Law 97-473) (opens in new window)"
+          >
             Periodic Payment Settlement Act of 1982 (Public Law 97-473)
+            <span style={{ fontSize: '0.875rem', opacity: 0.7, marginLeft: '0.25rem' }}>↗</span>
           </a>
         </li>
         <li style={{ marginBottom: '0.75rem' }}>
-          <a href="https://www.congress.gov/bill/107th-congress/house-bill/2884" target="_blank" rel="noopener noreferrer" style={{ color: '#059669', textDecoration: 'none' }}>
+          <a
+            href="https://www.congress.gov/bill/107th-congress/house-bill/2884"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#059669', textDecoration: 'none' }}
+            aria-label="Victims of Terrorism Tax Relief Act of 2001 (opens in new window)"
+          >
             Victims of Terrorism Tax Relief Act of 2001
+            <span style={{ fontSize: '0.875rem', opacity: 0.7, marginLeft: '0.25rem' }}>↗</span>
           </a>
         </li>
         <li style={{ marginBottom: '0' }}>
-          <a href="https://www.nacccs.org/structured-settlement-protection-acts/" target="_blank" rel="noopener noreferrer" style={{ color: '#059669', textDecoration: 'none' }}>
+          <a
+            href="https://www.nacccs.org/structured-settlement-protection-acts/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#059669', textDecoration: 'none' }}
+            aria-label="National Association of Settlement Purchasers: State Protection Acts (opens in new window)"
+          >
             National Association of Settlement Purchasers: State Protection Acts
+            <span style={{ fontSize: '0.875rem', opacity: 0.7, marginLeft: '0.25rem' }}>↗</span>
           </a>
         </li>
       </ul>

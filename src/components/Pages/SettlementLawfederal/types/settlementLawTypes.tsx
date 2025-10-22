@@ -23,9 +23,12 @@ export interface FederalLawData {
   title: string;
   description: string;
   year: number;
+  publicLaw?: string;
   sections: string[];
   keyProvisions: string[];
   impact: string;
+  whyItMatters?: string;
+  consumerTakeaway?: string;
 }
 
 export interface CourtApprovalProcess {
@@ -54,6 +57,42 @@ export interface LegalResource {
   relevance: 'high' | 'medium' | 'low';
 }
 
+export interface FAQItem {
+  id: string;
+  question: string;
+  answer: string;
+  category: 'taxation' | 'transfers' | 'legal' | 'general';
+}
+
+export interface GovernmentResource {
+  id: string;
+  title: string;
+  description: string;
+  url: string;
+  type: 'statute' | 'guidance' | 'model-law' | 'regulation';
+  relevance: 'critical' | 'high' | 'medium' | 'low';
+}
+
+export interface BestPractice {
+  id: string;
+  title: string;
+  description: string;
+  category: 'setup' | 'transfers' | 'records' | 'general';
+  priority: 'critical' | 'high' | 'medium' | 'low';
+}
+
+export interface IntroductionData {
+  title: string;
+  description: string;
+  keyPoints: string[];
+}
+
+export interface PracticalApplication {
+  title: string;
+  description: string;
+  details: string[];
+}
+
 export interface SettlementLawPageData {
   hero: {
     title: string;
@@ -64,7 +103,16 @@ export interface SettlementLawPageData {
       secondary: { text: string; href: string; };
     };
   };
+  introduction: IntroductionData;
   federalLaws: FederalLawData[];
+  practicalApplications: {
+    taxFreeTreatment: PracticalApplication;
+    transfersAndSales: PracticalApplication;
+    courtApproval: PracticalApplication;
+  };
+  faq: FAQItem[];
+  governmentResources: GovernmentResource[];
+  bestPractices: BestPractice[];
   courtProcess: CourtApprovalProcess[];
   taxImplications: TaxImplication[];
   resources: LegalResource[];
@@ -72,5 +120,7 @@ export interface SettlementLawPageData {
     title: string;
     content: string;
     warning: string;
+    isExpandable?: boolean;
+    shortText?: string;
   };
 }

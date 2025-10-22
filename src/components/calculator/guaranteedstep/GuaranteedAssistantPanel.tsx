@@ -2,20 +2,20 @@
 
 import React, { useRef, useEffect, useState } from 'react';
 import { useGuaranteedAssistant } from '../../../contexts/GuaranteedAssistantContext';
-import ChatBubble from '../../chat/ChatBubble';
-import ChatbotTyping from '../../chatbot/ChatbotTyping';
+import { GuaranteedAssistantBackdrop, GuaranteedMessageContainer } from './assistant-components';
 import { GuaranteedAssistantInputBar } from './GuaranteedAssistantInputBar';
 import styles from './GuaranteedAssistantPanel.module.css';
 
 const GuaranteedAssistantPanel: React.FC = () => {
-  const { 
-    isOpen, 
-    closeAssistant, 
-    messages, 
+  const {
+    isOpen,
+    closeAssistant,
+    messages,
     isTyping,
     currentStep,
     showWelcomeMessage,
-    getStepGuidance
+    addBotMessage,
+    clearMessages
   } = useGuaranteedAssistant();
   
   const containerRef = useRef<HTMLDivElement>(null);
@@ -23,6 +23,7 @@ const GuaranteedAssistantPanel: React.FC = () => {
   const [hasShownInitialAnimation, setHasShownInitialAnimation] = useState(false);
   const [showInitialTyping, setShowInitialTyping] = useState(false);
   const [hasShownWelcomeForStep, setHasShownWelcomeForStep] = useState<string | null>(null);
+  const [lastStepShown, setLastStepShown] = useState<string | null>(null);
   
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
@@ -51,85 +52,80 @@ const GuaranteedAssistantPanel: React.FC = () => {
     }
   }, [isOpen]);
 
-  // Handle initial welcome message when panel opens or step changes
+  // Handle initial welcome message when panel opens (simplified like LCP)
   useEffect(() => {
     if (isOpen && !hasShownInitialAnimation && messages.length === 0) {
+      console.log('[GuaranteedAssistantPanel] Starting initial animation sequence');
+      console.log('[GuaranteedAssistantPanel] Current step:', currentStep);
       setHasShownInitialAnimation(true);
-      console.log('[GuaranteedAssistantPanel] 👋 Showing welcome message for step:', currentStep || 'general');
       
-      // Show initial typing indicator
+      // Show typing animation
       setShowInitialTyping(true);
       
-      // Show contextual welcome message after typing animation
-      const timer = setTimeout(() => {
+      // After 1.5 seconds, hide typing and add welcome message
+      setTimeout(() => {
+        console.log('[GuaranteedAssistantPanel] Adding welcome message after animation');
+        console.log('[GuaranteedAssistantPanel] Current step at welcome time:', currentStep);
         setShowInitialTyping(false);
-        if (currentStep) {
-          showWelcomeMessage();
-        } else {
-          // Fallback message if currentStep is not available yet
-          console.log('[GuaranteedAssistantPanel] ⚠️ No currentStep available, showing general welcome');
-          // We could add a general welcome message here or wait for currentStep to be set
-        }
-      }, 1200);
-      
-      return () => clearTimeout(timer);
-    }
-  }, [isOpen, messages.length, hasShownInitialAnimation, currentStep, showWelcomeMessage]);
-
-  // Show welcome message when currentStep becomes available (delayed initial load)
-  useEffect(() => {
-    if (isOpen && hasShownInitialAnimation && currentStep && messages.length === 0 && hasShownWelcomeForStep !== currentStep) {
-      console.log('[GuaranteedAssistantPanel] 🎯 CurrentStep now available, showing welcome for:', currentStep);
-      
-      // Small delay to ensure smooth transition
-      const timer = setTimeout(() => {
-        showWelcomeMessage();
-        setHasShownWelcomeForStep(currentStep);
-      }, 500);
-      
-      return () => clearTimeout(timer);
-    }
-  }, [currentStep, isOpen, hasShownInitialAnimation, messages.length, showWelcomeMessage, hasShownWelcomeForStep]);
-
-  // Show contextual guidance when step changes (for existing conversations)
-  useEffect(() => {
-    if (isOpen && hasShownInitialAnimation && currentStep && messages.length > 0 && hasShownWelcomeForStep !== currentStep) {
-      console.log('[GuaranteedAssistantPanel] 🔄 Step changed to:', currentStep);
-      
-      // Small delay to avoid overwhelming the user
-      const timer = setTimeout(() => {
-        showWelcomeMessage();
-        setHasShownWelcomeForStep(currentStep);
-      }, 800);
-      
-      return () => clearTimeout(timer);
-    }
-  }, [currentStep, isOpen, hasShownInitialAnimation, messages.length, showWelcomeMessage, hasShownWelcomeForStep]);
-
-  // Prevent body scroll when guaranteed assistant panel is open
-  useEffect(() => {
-    if (isOpen) {
-      // Save current scroll position
-      const scrollY = window.scrollY;
-      
-      // Prevent body scroll
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = '100%';
-      document.body.style.overflowY = 'scroll';
-      
-      return () => {
-        // Restore body scroll
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.width = '';
-        document.body.style.overflowY = '';
         
-        // Restore scroll position
-        window.scrollTo(0, scrollY);
-      };
+        // Always show a step-aware welcome message
+        const effectiveStep = currentStep || 'mode'; // Default to mode if no step
+        const stepMap: Record<string, { number: number; total: number; name: string }> = {
+          'mode': { number: 1, total: 2, name: 'Payment Mode' },
+          'amount': { number: 2, total: 2, name: 'Payment Amount' },
+          'review': { number: 2, total: 2, name: 'Review' },
+          'offer': { number: 2, total: 2, name: 'Your Offer' }
+        };
+        
+        const stepData = stepMap[effectiveStep];
+        if (stepData) {
+          const welcomeMessage = `Hi! I'm your Guaranteed Payments assistant.
+
+I see you're now on step ${stepData.number} of ${stepData.total} (${stepData.name}).
+
+If you have any questions about any steps, please let me know.`;
+          
+          addBotMessage(welcomeMessage);
+          setLastStepShown(effectiveStep);
+        } else {
+          // Fallback if step mapping fails
+          addBotMessage(`Hi! I'm your Guaranteed Payments assistant.
+
+I see you're now on step 1 of 2 (Payment Mode).
+
+If you have any questions about any steps, please let me know.`);
+          setLastStepShown('mode');
+        }
+      }, 1500);
     }
-  }, [isOpen]);
+  }, [isOpen, hasShownInitialAnimation, messages.length, currentStep, addBotMessage]);
+
+  // Add step-aware message when step changes and panel is open (matching LCP pattern)
+  useEffect(() => {
+    if (isOpen && currentStep && currentStep !== lastStepShown && messages.length > 0) {
+      console.log('[GuaranteedAssistantPanel] Step changed from', lastStepShown, 'to', currentStep);
+      setLastStepShown(currentStep);
+
+      const stepMap: Record<string, { number: number; total: number; name: string }> = {
+        'mode': { number: 1, total: 2, name: 'Payment Mode' },
+        'amount': { number: 2, total: 2, name: 'Payment Amount' },
+        'review': { number: 2, total: 2, name: 'Review' },
+        'offer': { number: 2, total: 2, name: 'Your Offer' }
+      };
+
+      const stepData = stepMap[currentStep];
+      if (stepData) {
+        const stepMessage = `I see you're now on step ${stepData.number} of ${stepData.total} (${stepData.name}).\n\nWhat can I help you with here?`;
+
+        setTimeout(() => {
+          addBotMessage(stepMessage);
+        }, 300);
+      }
+    }
+  }, [isOpen, currentStep, lastStepShown, addBotMessage]); // Removed messages.length to prevent repeated triggers
+
+  // Note: Removed body scroll prevention to avoid black overlay issues
+  // The backdrop handles modal behavior without interfering with body styles
 
   if (!isOpen) {
     return null;
@@ -137,63 +133,55 @@ const GuaranteedAssistantPanel: React.FC = () => {
 
   return (
     <>
-      {/* Backdrop */}
-      <div
-        className={styles.assistantBackdrop}
-        onClick={closeAssistant}
-        aria-label="Close assistant panel"
-      />
+      {/* Backdrop Component */}
+      <GuaranteedAssistantBackdrop onClose={closeAssistant} />
       
       {/* Panel */}
-      <div className={styles.assistantPanel}>
-      <div className={styles.assistantHeader}>
-        <div className={styles.assistantTitle}>
-          <span className={styles.assistantIcon}>🤖</span>
-          <span>Guaranteed Payment Assistant</span>
-        </div>
-        <button
-          className={styles.closeButton}
-          onClick={closeAssistant}
-          aria-label="Close Assistant"
-        >
-          ✕
-        </button>
-      </div>
-      
-      <div className={styles.assistantContent}>
-        {isLoading ? (
-          <div className={styles.loadingContainer}>
-            <div className={styles.loadingSpinner}></div>
-            <p className={styles.loadingText}>Loading your assistant...</p>
-          </div>
-        ) : (
-          <>
-            <div
-              ref={containerRef}
-              className={styles.messagesContainer}
+      <div className={styles.panel}>
+        {/* Header with inline styling like LCP */}
+        <div className={styles.header}>
+          <h3 className={styles.title}>Guaranteed Payment Assistant</h3>
+          <div className={styles.headerButtons}>
+            <button
+              className={styles.resetButton}
+              onClick={clearMessages}
+              aria-label="Reset chat session"
+              title="Reset chat session"
+              type="button"
             >
-              {messages.map((message) => (
-                <ChatBubble
-                  key={message.id}
-                  sender={message.sender === 'assistant' ? 'bot' : (message.sender as 'user' | 'system')}
-                >
-                  {message.text}
-                </ChatBubble>
-              ))}
-              {(isTyping || showInitialTyping) && (
-                <div className={styles.typingContainer}>
-                  <ChatbotTyping />
-                </div>
-              )}
+              ↻
+            </button>
+            <button
+              className={styles.closeButton}
+              onClick={closeAssistant}
+              aria-label="Close assistant"
+              type="button"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+        
+        {/* Message Display Area */}
+        <div className={styles.messagesContainer}>
+          {isLoading ? (
+            <div className={styles.loadingContainer}>
+              Loading conversation...
             </div>
-            
-            <div className={styles.inputContainer}>
-              <GuaranteedAssistantInputBar />
+          ) : (
+            <div className={styles.messagesWrapper}>
+              <GuaranteedMessageContainer
+                messages={messages}
+                isTyping={isTyping || showInitialTyping}
+                isLoading={false}
+              />
             </div>
-          </>
-        )}
+          )}
+        </div>
+
+        {/* Input Bar */}
+        <GuaranteedAssistantInputBar />
       </div>
-    </div>
     </>
   );
 };

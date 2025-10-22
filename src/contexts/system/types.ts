@@ -21,6 +21,7 @@ export interface AssistantContextType {
   setIsTyping: (isTyping: boolean) => void;
   sendMessage: (text: string) => void;
   addWelcomeMessage: () => void;
+  addBotMessage: (text: string) => void;
   addTestMessage: () => void;
   testErrorHandling: () => void;
   currentStep: AssistantStep;
@@ -44,6 +45,7 @@ export interface AssistantActions {
   setIsTyping: (isTyping: boolean) => void;
   sendMessage: (text: string) => Promise<void>;
   addWelcomeMessage: () => void;
+  addBotMessage: (text: string) => void;
   addTestMessage: () => void;
   testErrorHandling: () => void;
   setCurrentStep: (step: AssistantStep) => void;

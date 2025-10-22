@@ -20,16 +20,56 @@
   position: relative;
 }
 
-/* Title styling */
-.title {
+/* Title container with icon */
+.titleContainer {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+/* Icon styling */
+.icon {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Title styling */
+.title {
   margin: 0;
   font-size: 16px;
   font-weight: 600;
   color: #ffffff;
   line-height: 1.4;
+}
+
+/* Header buttons container */
+.headerButtons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Test error button */
+.testErrorButton {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+.testErrorButton:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Close button styling */

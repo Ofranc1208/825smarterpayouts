@@ -80,6 +80,7 @@ export const AssistantProvider: React.FC<AssistantProviderProps> = ({ children }
     setIsTyping: actions.setIsTyping,
     sendMessage: actions.sendMessage,
     addWelcomeMessage: actions.addWelcomeMessage,
+    addBotMessage: actions.addBotMessage,
     addTestMessage: actions.addTestMessage,
     testErrorHandling: actions.testErrorHandling,
     setCurrentStep: actions.setCurrentStep,

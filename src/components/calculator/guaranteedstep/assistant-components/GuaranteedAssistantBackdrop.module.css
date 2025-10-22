@@ -18,7 +18,7 @@
   z-index: 999;
   backdrop-filter: blur(2px);
   cursor: pointer;
-  animation: backdropFadeIn 0.2s ease-out;
+  animation: backdropFadeIn 0.3s ease-out;
 }
 
 /* ============================================================================

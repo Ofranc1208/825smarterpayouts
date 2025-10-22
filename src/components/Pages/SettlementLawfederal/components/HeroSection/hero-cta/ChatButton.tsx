@@ -1,21 +1,20 @@
 // Hero chat button component - under 50 lines per complexity rule
 // Chat with Mint AI CTA button
 
-import Link from 'next/link';
+import Button from '@/src/components/shared/Button';
 
 export default function ChatButton() {
   return (
-    <Link href="/mint-intelligent-chat?chat=open&feature=calculator" style={{
-      display: "inline-block",
-      background: "linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)",
-      color: "white",
-      padding: "0.75rem 1.5rem",
-      borderRadius: "8px",
-      textDecoration: "none",
-      fontWeight: "600",
-      boxShadow: "0 4px 6px rgba(139, 92, 246, 0.2)"
-    }}>
-      💬 Chat with Mint AI
-    </Link>
+    <Button
+      as="a"
+      href="/mint-intelligent-chat"
+      variant="golden"
+      size="xl"
+      enhancedHover={true}
+      shimmer={true}
+      shimmerDelay={1}
+    >
+      Chat with Mint AI
+    </Button>
   );
 }

@@ -7,75 +7,66 @@
  * Replaces inline styles with CSS modules for better maintainability
  */
 
-/* Backdrop overlay */
-.assistantBackdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  animation: fadeIn 0.3s ease-out;
-}
+/* Note: Backdrop styles moved to GuaranteedAssistantBackdrop.module.css */
 
-/* Main panel container */
-.assistantPanel {
+/* Main panel container - matching LCP pattern */
+.panel {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: min(95vw, 500px);
-  max-height: 85vh;
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  width: 500px;
+  max-width: 90%;
+  height: 90vh;
+  max-height: 750px;
+  background-color: #ffffff;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  border-radius: 16px;
   animation: slideIn 0.3s ease-out;
+  overflow: hidden;
 }
 
-/* Header section */
-.assistantHeader {
+/* Header container - inline like LCP */
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1.5rem;
-  border-bottom: 1px solid #e5e7eb;
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  padding: 10px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #09b44d;
+  flex-shrink: 0;
+  border-radius: 16px 16px 0 0;
 }
 
-.assistantTitle {
+/* Header title */
+.title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Header buttons container */
+.headerButtons {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #1e293b;
 }
 
-.assistantIcon {
-  font-size: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.closeButton {
+/* Reset button - base styles */
+.resetButton {
   background: none;
   border: none;
-  font-size: 24px;
+  font-size: 18px;
+  color: #ffffff;
   cursor: pointer;
-  color: #64748b;
-  padding: 0.25rem;
+  padding: 4px;
   border-radius: 4px;
-  transition: all 0.15s ease;
+  transition: background-color 0.2s;
+  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -83,22 +74,32 @@
   height: 32px;
 }
 
-.closeButton:hover {
-  background: #fee2e2;
-  color: #dc2626;
+/* Reset button - hover state */
+.resetButton:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
-.closeButton:focus {
-  outline: 2px solid #ef4444;
-  outline-offset: 2px;
-}
-
-/* Main content area */
-.assistantContent {
-  flex: 1;
+/* Close button - base styles */
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  background-color: transparent;
   display: flex;
-  flex-direction: column;
-  min-height: 0;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+/* Close button - hover state */
+.closeButton:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Loading state */
@@ -127,13 +128,41 @@
   font-weight: 500;
 }
 
-/* Messages container */
+/* Message display area - matching LCP */
 .messagesContainer {
   flex: 1;
+  padding: 24px 20px 20px 20px;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 1rem;
-  max-height: 400px;
+  min-height: 0;
+  scroll-behavior: smooth;
+  background-color: #f9fafb;
+}
+
+/* Custom scrollbar for messages container */
+.messagesContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.messagesContainer::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.messagesContainer::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.messagesContainer::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Messages wrapper */
+.messagesWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .typingContainer {
@@ -228,11 +257,72 @@
   }
 }
 
-/* Accessibility enhancements */
+/* Responsive Design - Mobile */
+@media (max-width: 768px) {
+  .panel {
+    width: 95% !important;
+    height: 95vh !important;
+    max-height: 650px !important;
+  }
+
+  .header {
+    padding: 8px 12px !important;
+  }
+
+  .title {
+    font-size: 15px !important;
+  }
+
+  .messagesContainer {
+    padding: 20px 16px 16px 16px !important;
+  }
+}
+
+/* Animation keyframes */
+@keyframes slideIn {
+  from {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Focus states for accessibility */
+.closeButton:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .header {
+    border-bottom-width: 2px;
+  }
+
+  .closeButton {
+    border: 1px solid transparent;
+  }
+
+  .closeButton:focus-visible {
+    border-color: #ffffff;
+  }
+}
+
+/* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
-  .assistantBackdrop,
-  .assistantPanel {
+  .panel {
     animation: none;
+  }
+
+  .messagesContainer {
+    scroll-behavior: auto;
+  }
+
+  .closeButton {
+    transition: none;
   }
 
   .loadingSpinner {

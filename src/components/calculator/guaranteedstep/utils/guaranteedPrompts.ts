@@ -12,7 +12,14 @@ import { GuaranteedFormData } from './guaranteedTypes';
  * This prompt defines the Guaranteed Step Assistant's persona and capabilities.
  * It's specifically designed for contextual help during the guaranteed payment flow.
  */
-export const GUARANTEED_ASSISTANT_SYSTEM_PROMPT = `You are the Guaranteed Step Assistant, a specialized AI helper for Smarter Payouts' guaranteed payment calculator.
+export const GUARANTEED_ASSISTANT_SYSTEM_PROMPT = `You are the Guaranteed Step Assistant, a specialized AI helper for Smarter Payouts' structured settlement payment calculator.
+
+🏢 ABOUT SMARTER PAYOUTS:
+Smarter Payouts is a structured settlement purchasing company that helps people sell their future guaranteed payments for an immediate lump sum. We specialize in:
+- Purchasing structured settlement payments
+- Providing competitive cash offers for future payments
+- Helping people access their money when they need it most
+- Transparent, fair pricing based on market rates
 
 🎯 YOUR MISSION:
 You help users navigate the guaranteed payment calculation process step-by-step. You are contextually aware of:
@@ -21,11 +28,13 @@ You help users navigate the guaranteed payment calculation process step-by-step.
 - What they need to do next
 
 📋 YOUR CAPABILITIES:
+- Explain why we need specific information (to calculate accurate lump-sum offers)
 - Provide step-specific guidance and explanations
 - Answer questions about payment modes, amounts, and dates
 - Explain calculation methodology and offer ranges
 - Help users understand their options at each step
 - Clarify form requirements and validation rules
+- Explain the structured settlement purchasing process
 
 🎭 YOUR PERSONALITY:
 - Friendly and encouraging
@@ -33,6 +42,7 @@ You help users navigate the guaranteed payment calculation process step-by-step.
 - Patient with questions
 - Professional but approachable
 - Focused on the current step's needs
+- Transparent about why information is needed
 
 🔒 IMPORTANT RULES:
 - Stay focused on the guaranteed payment process
@@ -40,8 +50,9 @@ You help users navigate the guaranteed payment calculation process step-by-step.
 - Refer complex questions to specialists
 - Keep responses relevant to the current step
 - Use the user's actual data when providing examples
+- Always explain that we need information to provide accurate lump-sum payout calculations
 
-Remember: You're here to make the guaranteed payment calculation process smooth and understandable!`;
+Remember: You're here to make the structured settlement selling process smooth and understandable!`;
 
 /**
  * 📝 STEP-SPECIFIC GUIDANCE PROMPTS
@@ -244,6 +255,19 @@ export const generateContextualResponse = (
   formData: GuaranteedFormData
 ): string => {
   const lowerMessage = userMessage.toLowerCase();
+
+  // Check for "why do you need information" questions first
+  if ((lowerMessage.includes('why') && (lowerMessage.includes('need') || lowerMessage.includes('require') || lowerMessage.includes('ask'))) ||
+      (lowerMessage.includes('why') && lowerMessage.includes('information'))) {
+    return getWhyNeedInformationResponse(currentStep, formData);
+  }
+
+  // Check for "what do you do" or "who are you" questions
+  if ((lowerMessage.includes('what') && (lowerMessage.includes('do you do') || lowerMessage.includes('company'))) ||
+      (lowerMessage.includes('who') && lowerMessage.includes('are you')) ||
+      lowerMessage.includes('structured settlement')) {
+    return getCompanyInfoResponse();
+  }
 
   // Common question patterns
   if (lowerMessage.includes('how') && lowerMessage.includes('work')) {
@@ -469,4 +493,91 @@ For this step, I can explain:
 • What happens next
 
 What specific question can I answer for you? 🤔`;
+};
+
+/**
+ * 📋 WHY DO YOU NEED INFORMATION RESPONSE
+ * Explains why we collect specific information
+ */
+const getWhyNeedInformationResponse = (step: string, formData: GuaranteedFormData): string => {
+  const baseResponse = `Great question! 💡
+
+**We need this information to get you an accurate lump-sum payout amount for your future payments that you want to exchange.**
+
+As a structured settlement purchasing company, we calculate the present value of your future guaranteed payments. To provide you with the most competitive and accurate offer, we need to understand:
+
+✅ **Your payment schedule** - How much and how often you receive payments
+✅ **Payment timing** - When payments start and end
+✅ **Payment structure** - Whether they're regular or lump sum payments
+
+This information allows us to:
+📊 Calculate the exact present value of your payment stream
+💰 Provide you with a fair, market-based cash offer
+🎯 Give you the best possible payout for your structured settlement
+
+`;
+
+  // Add step-specific context
+  switch (step) {
+    case 'mode':
+      return baseResponse + `Right now, we're asking about your **payment frequency** because different payment schedules have different present values. Monthly payments are valued differently than annual or lump sum payments.
+
+What else would you like to know about this step?`;
+
+    case 'amount':
+      return baseResponse + `Right now, we're asking about your **payment amounts and dates** because we need to know exactly how much you'll receive and when. This is crucial for calculating an accurate lump-sum offer.
+
+What else would you like to know about your payment details?`;
+
+    case 'lumpsum':
+      return baseResponse + `Right now, we're asking about your **individual lump sum payment details** because each payment date and amount affects the total present value calculation differently.
+
+What else would you like to know about your lump sum payments?`;
+
+    case 'review':
+      return baseResponse + `We're now at the **review stage** where you can verify all the information before we calculate your personalized offer. Accuracy here ensures you get the best possible payout!
+
+Ready to see your offer?`;
+
+    default:
+      return baseResponse + `All of this information helps us provide you with the most accurate and competitive cash offer for your structured settlement payments.
+
+What specific information would you like me to explain further?`;
+  }
+};
+
+/**
+ * 🏢 COMPANY INFORMATION RESPONSE
+ * Explains what Smarter Payouts does
+ */
+const getCompanyInfoResponse = (): string => {
+  return `Great question! Let me tell you about Smarter Payouts. 🏢
+
+**Who We Are:**
+Smarter Payouts is a **structured settlement purchasing company**. We help people who receive guaranteed future payments (like structured settlements, annuities, or lottery winnings) sell some or all of those payments for an immediate lump sum of cash.
+
+**What We Do:**
+💰 **Purchase structured settlement payments** - We buy your future payments and give you cash now
+📊 **Provide competitive offers** - Fair, market-based pricing for your payment stream
+🎯 **Fast, transparent process** - No hidden fees, clear calculations
+✅ **Help when you need it** - Access your money when life circumstances change
+
+**Why People Work With Us:**
+• Medical expenses or emergencies
+• Home purchases or major investments
+• Debt consolidation
+• Education costs
+• Business opportunities
+• Any situation where you need cash now instead of waiting for future payments
+
+**Our Process:**
+1️⃣ You tell us about your payment schedule
+2️⃣ We calculate a fair lump-sum offer
+3️⃣ You review and decide if it works for you
+4️⃣ If you accept, we handle the paperwork and court approval
+5️⃣ You get your cash!
+
+We're here to give you financial flexibility when you need it most. 💪
+
+What else would you like to know about how we can help you?`;
 };

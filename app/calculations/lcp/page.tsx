@@ -1,13 +1,13 @@
 "use client";
 
 import React from 'react';
-import LCPStepper from '../../../src/components/calculator/lcpstep/LCPStepper';
+import { StepperContent } from '../../../src/components/calculator/lcpstep/stepper';
 
 // Force dynamic rendering to prevent static generation issues
 export const dynamic = 'force-dynamic';
 
 const LCPCalculatorPage: React.FC = () => {
-  return <LCPStepper />;
+  return <StepperContent />;
 };
 
 export default LCPCalculatorPage; 
