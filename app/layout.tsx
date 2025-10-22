@@ -8,6 +8,8 @@ import Footer from './components/Footer'
 import PerformanceOptimizer from './components/PerformanceOptimizer'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import GoogleAnalytics from '@/src/components/Analytics/GoogleAnalytics'
+import GoogleTagManager, { GoogleTagManagerNoScript } from '@/src/components/Analytics/GoogleTagManager'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,6 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Google Tag Manager - Must be in <head> */}
+        <GoogleTagManager />
+        
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         
         {/* DNS prefetch for external resources */}
@@ -149,6 +154,12 @@ export default function RootLayout({
         }} />
       </head>
       <body className={inter.className} data-page="/">{/* data-page will be updated by ConditionalNavbar */}
+        {/* Google Tag Manager (noscript) - Must be immediately after <body> */}
+        <GoogleTagManagerNoScript />
+        
+        {/* Google Analytics 4 */}
+        <GoogleAnalytics />
+        
         <PerformanceOptimizer 
           enableResourceHints={true}
           enableCriticalResourcePriority={true}

@@ -1,5 +1,7 @@
 import { Metadata, Viewport } from 'next';
 import MintChatActivePage from './MintChatActivePage';
+import { StructuredData } from '@/src/components/SEO/StructuredData';
+import { mintAISchema, organizationSchema } from '@/src/lib/structured-data/schemas';
 
 /**
  * Active Mint Chat Page Route
@@ -27,4 +29,15 @@ export const viewport: Viewport = {
   userScalable: false, // Prevent zoom for better chat experience
 };
 
-export default MintChatActivePage;
+// Wrap component with structured data
+function MintChatActivePageWithSchema() {
+  return (
+    <>
+      {/* Structured Data for SEO */}
+      <StructuredData schema={[mintAISchema, organizationSchema]} />
+      <MintChatActivePage />
+    </>
+  );
+}
+
+export default MintChatActivePageWithSchema;

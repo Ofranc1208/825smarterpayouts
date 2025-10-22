@@ -1,15 +1,32 @@
 # robots.txt for SmarterPayouts
+# Optimized for Google Search Console and SEO
 
 User-agent: *
 Allow: /
 
-# Block Next.js internal and irrelevant paths (if present)
+# Block Next.js internal and irrelevant paths
 Disallow: /api/
 Disallow: /_next/
 Disallow: /static/
 Disallow: /server/
 Disallow: /private/
-Disallow: /admin/
 
-# Sitemap location
-Sitemap: https://smarterpayouts.com/sitemap.xml 
+# Block admin and testing pages from search engines
+Disallow: /admin/
+Disallow: /test-firebase
+Disallow: /calculator-test/
+Disallow: /demo/
+
+# Allow important paths explicitly
+Allow: /state-laws/
+Allow: /structured-settlement-info-hub/
+Allow: /pricing-calculator
+Allow: /lump-sum-calculator
+Allow: /calculations/
+
+# Sitemap locations (Multiple sitemaps for better organization)
+Sitemap: https://smarterpayouts.com/sitemap.xml
+Sitemap: https://smarterpayouts.com/state-laws/sitemap.xml
+
+# Crawl-delay (optional, adjust if needed)
+# Crawl-delay: 1 
