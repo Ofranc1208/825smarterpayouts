@@ -58,7 +58,7 @@ export class PerformanceCalculator {
       { id: 'about', name: 'About Us', icon: 'ℹ️', path: '/about' },
       { id: 'contact', name: 'Contact', icon: '📞', path: '/contact' },
       { id: 'court-approval', name: 'Court Approval', icon: '⚖️', path: '/court-approval' },
-      { id: 'mint-chat', name: 'Mint Chat', icon: '🤖', path: '/mint-intelligent-chat' },
+      { id: 'mint-chat', name: 'Mint Chat', icon: '/assets/images/mint-mascot.png', path: '/mint-intelligent-chat' },
       { id: 'settlement-laws-federal', name: 'Federal Laws', icon: '🏛️', path: '/structured-settlement-laws' },
       { id: 'settlement-laws-state', name: 'State Laws', icon: '🗺️', path: '/structured-settlement-laws-by-state' },
       { id: 'youtube', name: 'YouTube Channel', icon: '📺', path: '/youtube-channel' },

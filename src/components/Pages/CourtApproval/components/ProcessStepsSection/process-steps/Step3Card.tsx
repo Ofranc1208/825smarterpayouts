@@ -50,7 +50,19 @@ export default function Step3Card() {
           fontWeight: 600,
           transition: 'all 0.2s ease'
         }}>
-          🤖 Practice with Mint AI
+          <img
+            src="/assets/images/mint-mascot.png"
+            alt="Mint AI"
+            style={{
+              width: '18px',
+              height: '18px',
+              objectFit: 'contain',
+              marginRight: '0.5rem',
+              display: 'inline-block',
+              verticalAlign: 'middle'
+            }}
+          />
+          Practice with Mint AI
         </Link>
       </div>
     </div>

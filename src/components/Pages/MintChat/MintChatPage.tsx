@@ -95,7 +95,17 @@ const MintChatPage: React.FC = () => {
           fontSize: '1.125rem',
           color: '#6b7280'
         }}>
-          🤖 Loading Mint AI Assistant...
+          <img
+            src="/assets/images/mint-mascot.png"
+            alt="Mint AI"
+            style={{
+              width: '40px',
+              height: '40px',
+              objectFit: 'contain',
+              marginRight: '0.5rem'
+            }}
+          />
+          Loading Mint AI Assistant...
         </div>
       }>
         {/* SEO Optimization */}

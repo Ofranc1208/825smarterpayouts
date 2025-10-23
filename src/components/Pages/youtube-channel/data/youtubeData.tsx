@@ -106,7 +106,7 @@ export const HERO_CONFIG = {
       label: 'Chat with Mint AI',
       href: '/mint-intelligent-chat',
       variant: 'secondary' as const,
-      icon: '🤖'
+      icon: '/assets/images/mint-mascot.png'
     }
   ]
 };
@@ -128,7 +128,7 @@ export const CTA_CONFIG = {
       label: 'Ask Mint AI',
       href: '/mint-intelligent-chat',
       variant: 'outline' as const,
-      icon: '🤖'
+      icon: '/assets/images/mint-mascot.png'
     }
   ],
   trustIndicators: [

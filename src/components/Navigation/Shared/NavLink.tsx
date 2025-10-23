@@ -26,8 +26,8 @@ const NavLink: React.FC<NavLinkProps> = ({ href, children, icon, onClick }) => {
   const linkStyle: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
-    gap: icon ? '0.625rem' : '0', // More generous gap for icons
-    padding: '0.75rem 1rem', // Better padding for touch targets
+    gap: icon ? '0.5rem' : '0', // Slightly reduced gap for icons
+    padding: '0.625rem 0.875rem', // More compact padding for better space utilization
     textDecoration: 'none',
     borderRadius: '8px', // Slightly larger border radius
     fontSize: '0.9375rem', // Comfortable reading size

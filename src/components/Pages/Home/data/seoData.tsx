@@ -49,9 +49,11 @@ export const HOME_SEO_CONFIG: SEOConfiguration = {
         addressCountry: 'US'
       },
       sameAs: [
-        'https://www.facebook.com/smarterpayouts',
-        'https://www.twitter.com/smarterpayouts',
-        'https://www.linkedin.com/company/smarterpayouts'
+        'https://youtube.com/@smarterpayouts',
+        'https://facebook.com/smarterpayouts',
+        'https://x.com/smarterpayouts',
+        'https://instagram.com/smarterpayouts',
+        'https://linkedin.com/company/smarterpayouts'
       ]
     },
     website: {

@@ -28,7 +28,7 @@ export const TECHNOLOGY_FEATURES: TechnologyFeature[] = [
   {
     title: "Mint AI Assistant",
     description: "24/7 intelligent support powered by advanced AI to guide you through every step of your settlement journey.",
-    icon: "🤖",
+    icon: "/assets/images/mint-mascot.png",
     link: "/mint-intelligent-chat",
     linkText: "Chat with Mint",
     color: "#8b5cf6",

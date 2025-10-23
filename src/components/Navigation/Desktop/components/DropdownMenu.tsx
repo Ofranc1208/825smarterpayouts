@@ -92,8 +92,9 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ title, items, isMobile }) =
     border: '2px solid #09b44d',
     borderRadius: '12px',
     boxShadow: '0 8px 25px rgba(9, 180, 77, 0.15)',
-    minWidth: '250px',
-    padding: '0.75rem 0',
+    minWidth: '220px', // Slightly narrower for better text wrapping
+    maxWidth: '280px', // Maximum width to prevent overflow
+    padding: '0.5rem 0', // Reduced padding
     zIndex: 1000,
     opacity: isOpen ? 1 : 0,
     visibility: isOpen ? 'visible' : 'hidden',
@@ -104,7 +105,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ title, items, isMobile }) =
   };
 
   const dropdownItemStyle: React.CSSProperties = {
-    padding: '0.5rem 1rem',
+    padding: '0.375rem 0.875rem', // More compact padding
     display: 'block',
   };
 

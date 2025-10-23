@@ -15,6 +15,14 @@ const SpecialistMenu: React.FC<SpecialistMenuProps> = ({ onChoice }) => {
 
   return (
     <div className={styles.menu}>
+      {/*
+        TEMPORARILY HIDDEN - Live Chat Button
+        TODO: Re-enable when live chat infrastructure is stable and tested
+        To re-enable: Uncomment the button below and remove this comment block
+        Related issue: Live chat system needs stability improvements before production use
+        Last modified: 2025-01-23 by user request
+      */}
+      {/*
       <button
         className={`${styles.menuBtn} ${isClicked ? styles.disabled : ''}`}
         onClick={() => handleChoiceClick('live_chat')}
@@ -22,6 +30,7 @@ const SpecialistMenu: React.FC<SpecialistMenuProps> = ({ onChoice }) => {
       >
         💬 Live Chat
       </button>
+      */}
       <button
         className={`${styles.menuBtn} ${isClicked ? styles.disabled : ''}`}
         onClick={() => handleChoiceClick('sms')}

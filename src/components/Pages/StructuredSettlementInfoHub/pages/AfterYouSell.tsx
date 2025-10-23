@@ -66,7 +66,18 @@ const AfterYouSell: React.FC = () => {
             <div style={{ background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)', padding: '2.5rem', borderRadius: '16px', marginBottom: '2rem', textAlign: 'center', color: 'white' }}>
               <h3 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '1rem' }}>💬 Get Personalized Financial Advice</h3>
               <p style={{ fontSize: '1.0625rem', lineHeight: '1.7', marginBottom: '1.5rem', opacity: 0.95 }}>Chat with Mint AI about managing your lump sum and avoiding pitfalls. 24/7 guidance.</p>
-              <Link href="/chat" style={{ display: 'inline-block', background: 'white', color: COLORS.accent.purple, padding: '1rem 2.5rem', borderRadius: '12px', textDecoration: 'none', fontWeight: '700', fontSize: '1.125rem', boxShadow: '0 6px 20px rgba(0,0,0,0.15)' }}>🤖 Chat with Mint AI →</Link>
+              <Link href="/chat" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'white', color: COLORS.accent.purple, padding: '1rem 2.5rem', borderRadius: '12px', textDecoration: 'none', fontWeight: '700', fontSize: '1.125rem', boxShadow: '0 6px 20px rgba(0,0,0,0.15)' }}>
+                <img
+                  src="/assets/images/mint-mascot.png"
+                  alt="Mint AI"
+                  style={{
+                    width: '24px',
+                    height: '24px',
+                    objectFit: 'contain'
+                  }}
+                />
+                Chat with Mint AI →
+              </Link>
             </div>
 
             <section style={{ background: 'white', borderRadius: '16px', padding: '2.5rem', marginBottom: '2rem', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>

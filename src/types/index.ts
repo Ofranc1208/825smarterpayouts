@@ -147,7 +147,7 @@ export interface GuaranteedReviewData {
 
 export type GuaranteedStep = 'select_type' | 'mode' | 'increase' | 'amount' | 'dates' | 'review' | 'offer';
 export type LCPStep = 'lcp_payment' | 'lcp_details' | 'lcp_profile' | 'lcp_lifestyle' | 'lcp_health' | 'lcp_lump_sum' | 'lcp_review' | 'lcp_results';
-export type CompareOfferStep = 'compare-offer-choice';
+export type CompareOfferStep = 'compare-offer-choice' | 'compare-offer-details' | 'compare-offer-review' | 'compare-offer-results';
 export type CalculatorStep = GuaranteedStep | LCPStep | CompareOfferStep;
 
 // ============================================================================

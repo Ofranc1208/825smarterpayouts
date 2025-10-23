@@ -183,6 +183,62 @@ export default function Footer() {
               ))}
             </div>
           </div>
+
+          {/* Social Media Links */}
+          <div>
+            <h4 style={{
+              fontSize: "1rem",
+              fontWeight: "600",
+              color: "#ffffff",
+              marginBottom: "1rem"
+            }}>
+              Follow Us
+            </h4>
+            <div style={{
+              display: "flex",
+              gap: "1rem",
+              flexWrap: "wrap"
+            }}>
+              {[
+                { name: 'YouTube', url: 'https://youtube.com/@smarterpayouts', icon: '📺', color: '#FF0000' },
+                { name: 'X (Twitter)', url: 'https://x.com/smarterpayouts', icon: '🐦', color: '#1DA1F2' },
+                { name: 'LinkedIn', url: 'https://linkedin.com/company/smarterpayouts', icon: '💼', color: '#0077B5' },
+                { name: 'Instagram', url: 'https://instagram.com/smarterpayouts', icon: '📸', color: '#E4405F' },
+                { name: 'Facebook', url: 'https://facebook.com/smarterpayouts', icon: '📘', color: '#1877F2' }
+              ].map((social) => (
+                <a
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: "40px",
+                    height: "40px",
+                    backgroundColor: social.color,
+                    borderRadius: "8px",
+                    textDecoration: "none",
+                    fontSize: "1.2rem",
+                    transition: "transform 0.2s ease, box-shadow 0.2s ease",
+                    boxShadow: "0 2px 4px rgba(0,0,0,0.1)"
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = "translateY(-2px)";
+                    e.currentTarget.style.boxShadow = "0 4px 8px rgba(0,0,0,0.2)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "translateY(0)";
+                    e.currentTarget.style.boxShadow = "0 2px 4px rgba(0,0,0,0.1)";
+                  }}
+                  aria-label={`Follow us on ${social.name}`}
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 

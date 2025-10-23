@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Button from '@/src/components/shared/Button';
+import Link from 'next/link';
 import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
 import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
@@ -29,33 +29,18 @@ const FAQ_DATA = [
 ];
 
 export default function FAQSection() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <section style={{ 
       padding: SPACING.section.standard, 
-      background: COLORS.backgrounds.lightGray,
-      position: 'relative'
+      background: '#ffffff'
     }}>
-      {/* Background Decoration */}
-      <div style={{
-        position: "absolute",
-        bottom: "10%",
-        left: "5%",
-        width: "100px",
-        height: "100px",
-        background: COLORS.radialGradients.purpleLight,
-        borderRadius: "50%",
-        opacity: 0.5
-      }}></div>
-
       <div style={{
         width: '100%',
-        maxWidth: '900px',
+        maxWidth: '800px',
         margin: '0 auto',
-        padding: SPACING.container.paddingX,
-        position: 'relative',
-        zIndex: 1
+        padding: SPACING.container.paddingX
       }}>
         {/* Section Header */}
         <div style={{
@@ -63,19 +48,16 @@ export default function FAQSection() {
           marginBottom: SPACING.stack.xxl
         }}>
           <h2 style={{
-            ...TEXT_PRESETS.sectionTitle,
-            color: COLORS.neutral.gray900,
-            marginBottom: SPACING.stack.md,
-            background: COLORS.titleGradients.grayToPurple,
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text"
+            fontSize: '2rem',
+            fontWeight: 700,
+            color: '#111827',
+            marginBottom: SPACING.stack.sm
           }}>
-            ❓ Frequently Asked Questions
+            Frequently Asked Questions
           </h2>
           <p style={{
-            ...TEXT_PRESETS.sectionSubtitle,
-            color: COLORS.text.secondary,
+            fontSize: '1rem',
+            color: '#6b7280',
             maxWidth: '600px',
             margin: '0 auto'
           }}>
@@ -83,130 +65,184 @@ export default function FAQSection() {
           </p>
         </div>
 
+        {/* Ask Mint AI CTA */}
+        <Link
+          href="/mint-intelligent-chat"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '0.75rem',
+            background: '#f0fdf4',
+            padding: '1rem 1.5rem',
+            borderRadius: '12px',
+            border: '1px solid #22c55e',
+            textDecoration: 'none',
+            marginBottom: SPACING.stack.xl,
+            transition: 'all 0.2s ease'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = '#dcfce7';
+            e.currentTarget.style.transform = 'translateY(-2px)';
+            e.currentTarget.style.boxShadow = '0 4px 12px rgba(34, 197, 94, 0.15)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = '#f0fdf4';
+            e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget.style.boxShadow = 'none';
+          }}
+        >
+          <img
+            src="/assets/images/mint-mascot.png"
+            alt="Mint AI"
+            style={{
+              width: '28px',
+              height: '28px',
+              objectFit: 'contain'
+            }}
+          />
+          <div style={{
+            fontSize: '0.9375rem',
+            fontWeight: 600,
+            color: '#047857'
+          }}>
+            Have a specific question? Ask Mint AI →
+          </div>
+        </Link>
+
         {/* FAQ Container */}
         <div style={{
-          background: 'rgba(255, 255, 255, 0.8)',
-          backdropFilter: 'blur(10px)',
-          borderRadius: BORDER_RADIUS.xlarge,
-          padding: SPACING.card.spacious,
-          border: `1px solid ${COLORS.borders.light}`,
-          boxShadow: BOX_SHADOWS.large
+          background: 'white',
+          borderRadius: '16px',
+          border: '1px solid #e5e7eb',
+          overflow: 'hidden'
         }}>
-          {/* Ask Mint AI Button - Top */}
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            marginBottom: SPACING.stack.lg
-          }}>
-            <Button
-              as="a"
-              href="/mint-intelligent-chat"
-              variant="mint-chat"
-              size="sm"
-              enhancedHover={true}
-            >
-              💬 Ask Mint AI
-            </Button>
-          </div>
 
           {/* FAQ Items */}
-          <div style={{ 
-            display: 'flex', 
-            flexDirection: 'column', 
-            gap: SPACING.stack.md,
-            marginBottom: SPACING.stack.xl
-          }}>
-            {FAQ_DATA.map((faq, index) => (
-              <details 
+          {FAQ_DATA.map((faq, index) => {
+            const isOpen = openIndex === index;
+            const isLast = index === FAQ_DATA.length - 1;
+            
+            return (
+              <div 
                 key={index} 
                 style={{
-                  background: hoveredIndex === index 
-                    ? COLORS.backgrounds.greenLight 
-                    : COLORS.backgrounds.white,
-                  borderRadius: BORDER_RADIUS.medium,
-                  border: `1px solid ${
-                    hoveredIndex === index 
-                      ? COLORS.borders.green 
-                      : COLORS.borders.medium
-                  }`,
-                  padding: SPACING.card.compact,
-                  transition: 'all 0.2s ease',
-                  cursor: 'pointer',
-                  boxShadow: hoveredIndex === index 
-                    ? BOX_SHADOWS.small 
-                    : 'none'
+                  borderBottom: isLast ? 'none' : '1px solid #f3f4f6'
                 }}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
               >
-                <summary style={{
-                  ...TEXT_PRESETS.faqQuestion,
-                  color: hoveredIndex === index 
-                    ? COLORS.primary.main 
-                    : COLORS.neutral.gray900,
-                  listStyle: 'none',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: SPACING.inline.sm,
-                  transition: 'color 0.2s ease'
-                }}>
-                  <span style={{
-                    fontSize: '1.2rem',
+                <button
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  style={{
+                    width: '100%',
+                    padding: '1.25rem 1.5rem',
+                    background: 'transparent',
+                    border: 'none',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    cursor: 'pointer',
+                    transition: 'background 0.2s ease',
+                    textAlign: 'left'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = '#f9fafb';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'transparent';
+                  }}
+                >
+                  <h3 style={{
+                    margin: 0,
+                    fontSize: '1rem',
+                    fontWeight: 600,
+                    color: '#111827',
+                    flex: 1,
+                    paddingRight: '1rem',
+                    lineHeight: '1.5'
+                  }}>
+                    {faq.question}
+                  </h3>
+                  <div style={{
+                    width: '28px',
+                    height: '28px',
+                    borderRadius: '50%',
+                    background: isOpen ? '#22c55e' : '#f3f4f6',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    transition: 'all 0.2s ease',
                     flexShrink: 0
                   }}>
-                    {hoveredIndex === index ? '👉' : '❓'}
-                  </span>
-                  <span>{faq.question}</span>
-                </summary>
-                <div style={{
-                  ...TEXT_PRESETS.faqAnswer,
-                  color: COLORS.text.secondary,
-                  marginTop: SPACING.stack.md,
-                  paddingLeft: `calc(1.2rem + ${SPACING.inline.sm})`
-                }}>
-                  {faq.answer}
-                </div>
-              </details>
-            ))}
-          </div>
-
-          {/* View All FAQs Button */}
-          <div style={{ 
-            textAlign: 'center',
-            paddingTop: SPACING.stack.md,
-            borderTop: `1px solid ${COLORS.borders.light}`
-          }}>
-            <Button
-              as="a"
-              href="/faqs"
-              variant="technology-primary"
-              size="lg"
-              enhancedHover={true}
-            >
-              📖 View All FAQs
-            </Button>
-          </div>
+                    <span style={{
+                      color: isOpen ? 'white' : '#6b7280',
+                      fontSize: '1.125rem',
+                      fontWeight: 600,
+                      transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                      transition: 'transform 0.2s ease',
+                      display: 'inline-block'
+                    }}>
+                      {isOpen ? '−' : '+'}
+                    </span>
+                  </div>
+                </button>
+                
+                {isOpen && (
+                  <div style={{
+                    padding: '0 1.5rem 1.5rem 1.5rem',
+                    background: '#fafafa'
+                  }}>
+                    <p style={{
+                      margin: 0,
+                      fontSize: '0.9375rem',
+                      color: '#6b7280',
+                      lineHeight: '1.7'
+                    }}>
+                      {faq.answer}
+                    </p>
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
 
-        {/* Help Text */}
-        <div style={{
+        {/* View All FAQs Button */}
+        <div style={{ 
           textAlign: 'center',
-          marginTop: SPACING.stack.lg,
-          padding: SPACING.card.compact,
-          background: 'rgba(243, 232, 255, 0.7)',
-          backdropFilter: 'blur(10px)',
-          borderRadius: BORDER_RADIUS.large,
-          border: `1px solid ${COLORS.borders.purple}`,
-          boxShadow: BOX_SHADOWS.small
+          marginTop: SPACING.stack.xl
         }}>
-          <p style={{ 
-            margin: 0, 
-            color: COLORS.accent.purple, 
-            fontSize: TYPOGRAPHY.fontSize.body.small,
-            fontWeight: TYPOGRAPHY.fontWeight.medium
-          }}>
-            💡 <strong>Pro Tip:</strong> Mint AI can answer any question instantly, 24/7
-          </p>
+          <Link
+            href="/faqs"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              padding: '0.875rem 2rem',
+              background: 'white',
+              border: '2px solid #22c55e',
+              borderRadius: '12px',
+              color: '#047857',
+              fontSize: '1rem',
+              fontWeight: 600,
+              textDecoration: 'none',
+              transition: 'all 0.2s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = '#22c55e';
+              e.currentTarget.style.color = 'white';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(34, 197, 94, 0.2)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'white';
+              e.currentTarget.style.color = '#047857';
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = 'none';
+            }}
+          >
+            View All FAQs
+            <span style={{ fontSize: '1.125rem' }}>→</span>
+          </Link>
         </div>
       </div>
     </section>

@@ -13,48 +13,49 @@ import { DropdownMenus } from './types';
 
 /**
  * Process routes that should be highlighted as a group
- * These represent the main customer journey steps
+ * These represent the main customer journey steps in "How It Works"
  */
 export const processRoutes = [
   '/get-a-quote',
   '/review-offer',
+  '/how-fast-can-i-get-my-money',
   '/court-approval',
   '/get-your-cash',
 ];
 
 /**
- * Dropdown menu configuration
+ * Dropdown menu configuration - Updated to match new navigation structure
  * Each key represents a dropdown section with its associated menu items
+ * Updated section names and content organization for better UX
  */
 export const dropdownMenus: DropdownMenus = {
-  whyUs: [
-    { href: '/youtube-channel', label: 'YouTube', icon: '📺' },
+  howItWorks: [
+    { href: '/get-a-quote', label: 'Get a Quote', icon: '📝' },
+    { href: '/review-offer', label: 'Review Your Offer', icon: '🔍' },
+    { href: '/how-fast-can-i-get-my-money', label: 'How Fast Can I Get Paid?', icon: '⚡' },
+    { href: '/court-approval', label: 'Court Approval', icon: '⚖️' },
+    { href: '/get-your-cash', label: 'Get Your Cash', icon: '💰' },
   ],
-  company: [
+  whyChooseUs: [
     { href: '/about', label: 'About Us', icon: '🏢' },
-    { href: '/faqs', label: 'FAQs', icon: '❓' },
     { href: '/contact', label: 'Contact Us', icon: '✉️' },
+    { href: '/faqs', label: 'FAQs', icon: '❓' },
     { href: '/social-media', label: 'Social Media', icon: '🌐' },
+    { href: '/credentials', label: 'Our Credentials', icon: '🛡️' },
+    { href: '/resources', label: 'Insurance Companies We Work With', icon: '🏢' },
   ],
   resources: [
     { href: '/structured-settlement-info-hub', label: 'Knowledge Hub', icon: '📚' },
     { href: '/articles', label: 'Articles', icon: '📖' },
     { href: '/testimonials', label: 'Testimonials', icon: '⭐' },
-    { href: '/credentials', label: 'Credentials', icon: '🛡️' },
-    { href: '/resources', label: 'Insurance Companies', icon: '🏢' },
-    { href: '/structured-settlement-laws', label: 'Federal Law', icon: '🏛️' },
-    { href: '/structured-settlement-laws-by-state', label: 'Laws by State', icon: '🏛️' },
-  ],
-  process: [
-    { href: '/get-a-quote', label: 'Get a Quote', icon: '📝' },
-    { href: '/review-offer', label: 'Review Offer', icon: '🔍' },
-    { href: '/court-approval', label: 'Court Approval', icon: '⚖️' },
-    { href: '/get-your-cash', label: 'Get Your Cash', icon: '💰' },
+    { href: '/youtube-channel', label: 'YouTube Channel', icon: '📺' },
   ],
   legal: [
+    { href: '/structured-settlement-laws', label: 'Federal Laws', icon: '🏛️' },
     { href: '/state-laws-overview', label: 'State Laws Overview', icon: '📜' },
-    { href: '/terms', label: 'Terms', icon: '📋' },
-    { href: '/privacy', label: 'Privacy', icon: '🔒' },
+    { href: '/structured-settlement-laws-by-state', label: 'Laws by State', icon: '🗺️' },
+    { href: '/terms', label: 'Terms of Service', icon: '📋' },
+    { href: '/privacy', label: 'Privacy Policy', icon: '🔒' },
   ],
 };
 
@@ -67,9 +68,11 @@ export const searchMap: { [key: string]: string } = {
   'faqs': '/faqs',
   'testimonials': '/testimonials',
   'contact': '/contact',
+  'contact us': '/contact',
   'quote': '/get-a-quote',
   'resources': '/resources',
   'about': '/about',
+  'about us': '/about',
   'privacy': '/privacy',
   'terms': '/terms',
   'calculator': '/mint-chat-active?type=calculate&source=search-calc',
@@ -82,6 +85,10 @@ export const searchMap: { [key: string]: string } = {
   'offer': '/review-offer',
   'court': '/court-approval',
   'cash': '/get-your-cash',
+  'how fast': '/how-fast-can-i-get-my-money',
+  'how fast can i get paid': '/how-fast-can-i-get-my-money',
+  'fast payout': '/how-fast-can-i-get-my-money',
+  'payout timeline': '/how-fast-can-i-get-my-money',
   'articles': '/articles',
   'youtube': '/youtube-channel',
   'state laws': '/state-laws-overview',
@@ -96,6 +103,8 @@ export const searchMap: { [key: string]: string } = {
   'insurance companies': '/resources',
   'companies': '/resources',
   'insurers': '/resources',
+  'credentials': '/credentials',
+  'social media': '/social-media',
   'mint': '/mint-chat-active?type=calculate&source=search-mint',
   'mint ai': '/mint-chat-active?type=calculate&source=search-mint-ai',
   'ai chat': '/mint-chat-active?type=calculate&source=search-ai-chat',

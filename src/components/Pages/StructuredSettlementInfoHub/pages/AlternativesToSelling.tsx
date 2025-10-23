@@ -165,7 +165,19 @@ const AlternativesToSelling: React.FC = () => {
                 fontSize: '1.125rem',
                 boxShadow: '0 6px 20px rgba(0,0,0,0.15)'
               }}>
-                🤖 Chat with Mint AI →
+                <img
+                  src="/assets/images/mint-mascot.png"
+                  alt="Mint AI"
+                  style={{
+                    width: '24px',
+                    height: '24px',
+                    objectFit: 'contain',
+                    marginRight: '0.5rem',
+                    display: 'inline-block',
+                    verticalAlign: 'middle'
+                  }}
+                />
+                Chat with Mint AI →
               </Link>
             </div>
 

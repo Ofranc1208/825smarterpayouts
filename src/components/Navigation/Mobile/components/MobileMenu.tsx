@@ -8,6 +8,12 @@ import { mainNavLinks, dropdownSections } from '../../Desktop/data/navigationDat
  * 
  * The main mobile menu panel with navigation items and dropdowns.
  * Handles the slide-out animation and menu content organization.
+ * 
+ * Features:
+ * - Compact spacing optimized for mobile screens
+ * - Accordion behavior: only one dropdown section open at a time
+ * - Bottom padding ensures all items are visible
+ * - Smooth animations and transitions
  */
 
 interface MobileMenuProps {
@@ -73,10 +79,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
     // Modern scrollbar styling
     scrollbarWidth: 'thin',
     scrollbarColor: '#d1d5db #f3f4f6',
+    // Add padding at bottom to ensure all items are visible
+    paddingBottom: '2rem',
   };
 
   const headerStyle: React.CSSProperties = {
-    padding: '1.25rem 1.5rem', // More generous padding
+    padding: '0.625rem 1rem', // Much thinner header - reduced from 1rem to 0.625rem
     borderBottom: '1px solid #e5e7eb', // Subtle border
     background: 'linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%)', // Subtle gradient
     display: 'flex',
@@ -92,27 +100,29 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '36px',
-    height: '36px',
+    width: '32px', // Slightly smaller button
+    height: '32px', // Slightly smaller button
     background: 'rgba(5, 150, 105, 0.08)', // Light green background
     border: 'none',
-    borderRadius: '8px',
-    fontSize: '1.5rem',
+    borderRadius: '6px', // Smaller border radius to match smaller button
+    fontSize: '1.25rem', // Smaller X icon
     cursor: 'pointer',
     color: '#059669',
     transition: 'all 0.2s ease',
   };
 
   const mainLinksStyle: React.CSSProperties = {
-    padding: '1.5rem 0', // More vertical spacing
+    padding: '0.75rem 0', // Reduced vertical spacing to bring items up
     borderBottom: '1px solid #f3f4f6',
   };
 
   const mainLinkItemStyle: React.CSSProperties = {
-    padding: '0.5rem 1.25rem', // Better horizontal padding
-    marginBottom: '0.25rem', // Space between items
+    padding: '0.375rem 1rem', // Reduced padding for more compact layout
+    marginBottom: '0.125rem', // Less space between items
   };
 
+  // Handle accordion behavior: only one section can be open at a time
+  // When a section is clicked, it either closes (if already open) or opens and auto-closes the previous section
   const handleSectionToggle = (sectionTitle: string) => {
     setExpandedSection(expandedSection === sectionTitle ? null : sectionTitle);
   };
@@ -143,7 +153,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
         <div style={headerStyle}>
           <span style={{ 
             fontWeight: 700, 
-            fontSize: '1.125rem',
+            fontSize: '1rem', // Slightly smaller font
             color: '#059669',
             letterSpacing: '-0.01em'
           }}>

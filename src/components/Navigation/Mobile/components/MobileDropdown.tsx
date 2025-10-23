@@ -35,11 +35,11 @@ const MobileDropdown: React.FC<MobileDropdownProps> = ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: '1rem 1.25rem', // Better horizontal padding
+    padding: '0.75rem 1rem', // Compact padding
     backgroundColor: isHovered ? '#f3f4f6' : '#f9fafb',
     borderBottom: '1px solid #f0f0f0',
     cursor: 'pointer',
-    fontSize: '0.9375rem',
+    fontSize: '0.875rem', // Smaller font size (14px)
     fontWeight: 600,
     color: isHovered ? '#1f2937' : '#374151',
     transition: 'all 0.2s ease',
@@ -61,7 +61,7 @@ const MobileDropdown: React.FC<MobileDropdownProps> = ({
   };
 
   const itemStyle: React.CSSProperties = {
-    padding: '0.5rem 1.5rem', // Better vertical spacing
+    padding: '0.25rem 1rem', // More compact padding for better space utilization
     marginBottom: '0.125rem', // Subtle gap between items
   };
 

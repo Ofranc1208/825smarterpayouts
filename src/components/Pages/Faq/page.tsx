@@ -1,6 +1,6 @@
 /**
  * FAQ Page - Orchestrator
- * 
+ *
  * Main FAQ page component that orchestrates all sections
  */
 
@@ -16,6 +16,8 @@ import {
   TrustSection,
   CtaSection
 } from './components';
+import { StructuredData } from '@/src/components/SEO/StructuredData';
+import { faqSchema, organizationSchema } from '@/src/lib/structured-data/schemas';
 
 export default function FAQs() {
   const {
@@ -28,8 +30,11 @@ export default function FAQs() {
 
   return (
     <>
+      {/* Structured Data for SEO */}
+      <StructuredData schema={[organizationSchema, faqSchema]} />
+
       <HeroSection />
-      
+
       <CategoryFilterSection
         categories={categories}
         activeCategory={activeCategory}
@@ -37,15 +42,15 @@ export default function FAQs() {
         resultCount={filteredFaqs.length}
         totalCount={faqData.length}
       />
-      
+
       <FaqAccordionSection
         faqs={filteredFaqs}
         openFaqs={openFaqs}
         onToggle={toggleFaq}
       />
-      
+
       <TrustSection />
-      
+
       <CtaSection />
     </>
   );

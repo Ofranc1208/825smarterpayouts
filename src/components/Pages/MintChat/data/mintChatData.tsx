@@ -58,7 +58,7 @@ export const SOLUTION_FEATURES: SolutionFeature[] = [
     id: 'ai-powered-chat',
     title: '24/7 AI-Powered Chat Support',
     description: 'Get instant answers to your questions anytime with Mint AI, your intelligent settlement assistant.',
-    icon: '🤖',
+    icon: '/assets/images/mint-mascot.png',
     benefits: [
       'Available 24/7, never wait for business hours',
       'Instant responses to common questions',

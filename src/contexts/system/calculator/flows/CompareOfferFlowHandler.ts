@@ -5,11 +5,22 @@ import { CompareOfferStep, CalculatorStep } from '../../../../types';
 import { FlowHandler } from '../types';
 import { CalculatorMessageService } from '../CalculatorMessageService';
 
+export interface CompareOfferFormData {
+  existingOfferAmount?: string;
+  paymentAmount?: string;
+  paymentFrequency?: 'monthly' | 'quarterly' | 'semiannually' | 'annually';
+  companyName?: string;
+  calculatedOfferAmount?: number;
+  difference?: number;
+  percentageDifference?: number;
+  isBetterOffer?: boolean;
+}
+
 export class CompareOfferFlowHandler implements FlowHandler {
   private compareOfferStep: CompareOfferStep | null;
   private setCompareOfferStep: (step: CompareOfferStep | null) => void;
   private logUserChoiceAsMessage: (text: string) => void;
-  private compareOfferData: any = {};
+  private compareOfferData: CompareOfferFormData = {};
 
   constructor(
     compareOfferStep: CompareOfferStep | null,
@@ -40,13 +51,19 @@ export class CompareOfferFlowHandler implements FlowHandler {
     }
 
     console.log('[CompareOfferFlowHandler] Navigating to step:', step);
+    
+    // Update data if provided
+    if (data) {
+      this.updateFormData(data);
+    }
+    
     this.setCompareOfferStep(step as CompareOfferStep);
   }
 
   /**
    * Update form data
    */
-  updateFormData(data: any): void {
+  updateFormData(data: Partial<CompareOfferFormData>): void {
     console.log('[CompareOfferFlowHandler] Updating form data:', data);
     this.compareOfferData = { ...this.compareOfferData, ...data };
   }
@@ -54,7 +71,7 @@ export class CompareOfferFlowHandler implements FlowHandler {
   /**
    * Get current form data
    */
-  getFormData(): any {
+  getFormData(): CompareOfferFormData {
     return this.compareOfferData;
   }
 
@@ -62,16 +79,22 @@ export class CompareOfferFlowHandler implements FlowHandler {
    * Handle offer choice selection
    */
   handleOfferChoice(choice: string): void {
+    console.log('[CompareOfferFlowHandler] Offer choice selected:', choice);
     CalculatorMessageService.logUserChoice(`Compare offer: ${choice}`, this.logUserChoiceAsMessage);
     
-    this.updateFormData({ offerChoice: choice });
-    this.handleStep('compare-offer-details');
+    if (choice === 'Help me compare my offer') {
+      this.handleStep('compare-offer-details');
+    } else if (choice === 'Upload Offer Document') {
+      // Future: Handle document upload
+      console.log('[CompareOfferFlowHandler] Document upload not yet implemented');
+    }
   }
 
   /**
    * Handle offer details submission
    */
-  handleOfferDetails(details: any): void {
+  handleOfferDetails(details: Partial<CompareOfferFormData>): void {
+    console.log('[CompareOfferFlowHandler] Offer details submitted:', details);
     CalculatorMessageService.logUserChoice('Offer details provided', this.logUserChoiceAsMessage);
     
     this.updateFormData(details);
@@ -81,10 +104,20 @@ export class CompareOfferFlowHandler implements FlowHandler {
   /**
    * Handle offer comparison calculation
    */
-  handleOfferCompare(): void {
+  handleOfferCompare(calculationResults: Partial<CompareOfferFormData>): void {
+    console.log('[CompareOfferFlowHandler] Calculating comparison:', calculationResults);
     CalculatorMessageService.logUserChoice('Compare offers', this.logUserChoiceAsMessage);
     
+    this.updateFormData(calculationResults);
     this.handleStep('compare-offer-results');
+  }
+
+  /**
+   * Handle edit (go back to details)
+   */
+  handleEdit(): void {
+    console.log('[CompareOfferFlowHandler] Editing offer details');
+    this.handleStep('compare-offer-details');
   }
 
   /**
@@ -106,6 +139,7 @@ export class CompareOfferFlowHandler implements FlowHandler {
    */
   startFlow(): void {
     console.log('[CompareOfferFlowHandler] Starting compare offer flow');
+    this.resetFlow(); // Clear any previous data
     this.handleStep('compare-offer-choice');
   }
 

@@ -7,7 +7,7 @@ export const mintAIFeaturesData: MintFeature[] = [
     id: "court-process-guidance",
     title: "Court Process Guidance",
     description: "Get step-by-step guidance through the entire court approval process.",
-    icon: "🤖",
+    icon: "/assets/images/mint-mascot.png",
     benefits: [
       "24/7 availability for questions",
       "Personalized timeline tracking",

@@ -43,6 +43,11 @@ export const organizationSchema = {
     contactOption: 'TollFree'
   },
   sameAs: [
+    'https://youtube.com/@smarterpayouts',
+    'https://facebook.com/smarterpayouts',
+    'https://x.com/smarterpayouts',
+    'https://instagram.com/smarterpayouts',
+    'https://linkedin.com/company/smarterpayouts',
     'https://www.bbb.org/',
     'https://search.sunbiz.org/Inquiry/CorporationSearch/ByName'
   ]
@@ -456,6 +461,186 @@ export const aboutPageSchema = {
     numberOfEmployees: {
       '@type': 'QuantitativeValue',
       value: '10-50'
+    }
+  }
+};
+
+// ============================================================================
+// SOCIAL MEDIA COLLECTION SCHEMA
+// ============================================================================
+
+export const socialMediaCollectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'SmarterPayouts Social Media',
+  description: 'Connect with SmarterPayouts across all social media platforms for updates, tips, and community engagement.',
+  url: `${BASE_URL}/social-media`,
+  mainEntity: {
+    '@type': 'ItemList',
+    name: 'Social Media Platforms',
+    numberOfItems: 5,
+    itemListElement: [
+      {
+        '@type': 'SocialMediaPosting',
+        '@id': 'https://youtube.com/@smarterpayouts',
+        name: 'YouTube Channel',
+        description: 'Educational videos about structured settlements and financial planning',
+        url: 'https://youtube.com/@smarterpayouts',
+        author: {
+          '@type': 'Organization',
+          name: ORGANIZATION_NAME,
+          url: BASE_URL
+        },
+        sharedContent: {
+          '@type': 'VideoObject',
+          name: 'Structured Settlement Calculator Tutorial',
+          description: 'Learn how to use our AI-powered structured settlement calculator'
+        }
+      },
+      {
+        '@type': 'SocialMediaPosting',
+        '@id': 'https://facebook.com/smarterpayouts',
+        name: 'Facebook Page',
+        description: 'Community updates and company news',
+        url: 'https://facebook.com/smarterpayouts',
+        author: {
+          '@type': 'Organization',
+          name: ORGANIZATION_NAME,
+          url: BASE_URL
+        }
+      },
+      {
+        '@type': 'SocialMediaPosting',
+        '@id': 'https://x.com/smarterpayouts',
+        name: 'X (Twitter) Profile',
+        description: 'Real-time updates and industry insights',
+        url: 'https://x.com/smarterpayouts',
+        author: {
+          '@type': 'Organization',
+          name: ORGANIZATION_NAME,
+          url: BASE_URL
+        }
+      },
+      {
+        '@type': 'SocialMediaPosting',
+        '@id': 'https://instagram.com/smarterpayouts',
+        name: 'Instagram Account',
+        description: 'Behind-the-scenes content and company highlights',
+        url: 'https://instagram.com/smarterpayouts',
+        author: {
+          '@type': 'Organization',
+          name: ORGANIZATION_NAME,
+          url: BASE_URL
+        }
+      },
+      {
+        '@type': 'SocialMediaPosting',
+        '@id': 'https://linkedin.com/company/smarterpayouts',
+        name: 'LinkedIn Company Page',
+        description: 'Professional updates and business news',
+        url: 'https://linkedin.com/company/smarterpayouts',
+        author: {
+          '@type': 'Organization',
+          name: ORGANIZATION_NAME,
+          url: BASE_URL
+        }
+      }
+    ]
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: ORGANIZATION_NAME,
+    url: BASE_URL,
+    logo: {
+      '@type': 'ImageObject',
+      url: LOGO_URL
+    }
+  }
+};
+
+// ============================================================================
+// FAQ SCHEMA
+// ============================================================================
+
+export const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  name: 'Structured Settlement FAQ',
+  description: 'Frequently asked questions about selling structured settlements, court approval process, timing, and SmarterPayouts services.',
+  url: `${BASE_URL}/faqs`,
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Is it legal to sell my structured settlement?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes, selling your structured settlement is 100% legal. The process is court-approved to ensure it\'s in your best interest, with all transactions reviewed by a judge.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I get a quote?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Use our structured settlement calculator to get an instant, secure quote — no personal data, no phone calls. Just your payment details and timing.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'How does court approval work?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Once you accept your quote, we handle the court paperwork. The judge will review your case in a short hearing — typically within 30 days — to ensure everything is fair and legal.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'How fast can I get paid?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Many of our clients receive funds in as little as 24–72 hours after court approval. We offer direct deposit, paper check, or secure digital transfer.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'What are the benefits of selling my structured settlement?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Selling allows you to access your future funds now — to eliminate debt, pay medical bills, invest, or improve your quality of life. Our process is transparent, fast, and court-approved.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'Do I need a lawyer?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'You don\'t need a lawyer to start, but you are always encouraged to seek independent legal or financial advice. We make sure everything is done clearly and transparently.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'What makes SmarterPayouts different?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'We\'re the first company to offer 100% digital quoting — no cold calls, no pressure. Built by legal and tech experts, our platform is built for you: fast, safe, and human-first.'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: 'What\'s the difference between a structured settlement and an annuity?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A structured settlement is tax-free and comes from a legal settlement, while annuities are typically taxable investments. Structured settlements offer unique legal protections and are designed for injury compensation.'
+      }
+    }
+  ],
+  publisher: {
+    '@type': 'Organization',
+    name: ORGANIZATION_NAME,
+    url: BASE_URL,
+    logo: {
+      '@type': 'ImageObject',
+      url: LOGO_URL
     }
   }
 };

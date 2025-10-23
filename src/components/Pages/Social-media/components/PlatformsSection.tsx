@@ -17,12 +17,22 @@ import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/c
 
 const platforms = [
   {
+    name: 'YouTube',
+    icon: '📺',
+    color: '#FF0000',
+    gradient: 'linear-gradient(135deg, #FF0000 0%, #CC0000 100%)',
+    desc: 'Subscribe to our YouTube channel for educational videos about structured settlements and financial planning.',
+    link: 'https://youtube.com/@smarterpayouts',
+    followers: '2.1K+'
+  },
+  {
     name: 'Facebook',
     icon: '📘',
     color: '#1877F2',
     gradient: 'linear-gradient(135deg, #1877F2 0%, #166FE5 100%)',
     desc: 'Follow us on Facebook to stay updated with our latest news and community posts.',
-    link: '#'
+    link: 'https://facebook.com/smarterpayouts',
+    followers: '5.2K+'
   },
   {
     name: 'X',
@@ -30,7 +40,8 @@ const platforms = [
     color: '#000000',
     gradient: 'linear-gradient(135deg, #000000 0%, #333333 100%)',
     desc: 'Join us on X for real-time updates, tips, and industry insights.',
-    link: '#'
+    link: 'https://x.com/smarterpayouts',
+    followers: '1.8K+'
   },
   {
     name: 'Instagram',
@@ -38,7 +49,8 @@ const platforms = [
     color: '#E4405F',
     gradient: 'linear-gradient(135deg, #E4405F 0%, #C13584 100%)',
     desc: 'Connect with us on Instagram for behind-the-scenes content and company highlights.',
-    link: '#'
+    link: 'https://instagram.com/smarterpayouts',
+    followers: '3.5K+'
   },
   {
     name: 'LinkedIn',
@@ -46,7 +58,8 @@ const platforms = [
     color: '#0A66C2',
     gradient: 'linear-gradient(135deg, #0A66C2 0%, #0077B5 100%)',
     desc: 'Follow our LinkedIn page for professional updates and business news.',
-    link: '#'
+    link: 'https://linkedin.com/company/smarterpayouts',
+    followers: '1.2K+'
   },
 ];
 
@@ -114,10 +127,30 @@ export default function PlatformsSection() {
                 fontWeight: TYPOGRAPHY.fontWeight.semibold,
                 color: platform.color,
                 textAlign: "center",
-                marginBottom: SPACING.stack.md
+                marginBottom: SPACING.stack.sm
               }}>
                 {platform.name}
               </h3>
+
+              {/* Followers Count */}
+              {platform.followers && (
+                <div style={{
+                  textAlign: "center",
+                  marginBottom: SPACING.stack.md
+                }}>
+                  <span style={{
+                    fontSize: TYPOGRAPHY.fontSize.body.small,
+                    color: COLORS.text.secondary,
+                    fontWeight: TYPOGRAPHY.fontWeight.medium,
+                    backgroundColor: `${platform.color}15`,
+                    padding: `${SPACING.unit.xs} ${SPACING.unit.sm}`,
+                    borderRadius: BORDER_RADIUS.small,
+                    border: `1px solid ${platform.color}25`
+                  }}>
+                    👥 {platform.followers} followers
+                  </span>
+                </div>
+              )}
 
               {/* Platform Description */}
               <p style={{

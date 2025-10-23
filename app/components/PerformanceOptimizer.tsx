@@ -174,35 +174,56 @@ export default function PerformanceOptimizer({
         }}
       />
 
-      {/* Lightweight performance monitoring */}
+      {/* Enhanced performance monitoring for INP optimization */}
       <Script
         id="performance-monitor"
         strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: `
-            // Lightweight performance monitoring (development only)
-            if (typeof window !== 'undefined' && ${process.env.NODE_ENV === 'development'}) {
-              // Track page load time (throttled)
-              window.addEventListener('load', function() {
-                setTimeout(() => {
-                  const loadTime = performance.now();
-                  if (loadTime > 3000) {
-                    console.warn('Slow page load detected:', Math.round(loadTime) + 'ms');
-                  }
-                }, 1000);
-              });
-              
-              // Monitor only critical long tasks (throttled)
+            // Enhanced performance monitoring for INP optimization
+            if (typeof window !== 'undefined') {
+              // INP monitoring - track interaction delays
+              let maxINP = 0;
               if ('PerformanceObserver' in window) {
-                const longTaskObserver = new PerformanceObserver((list) => {
+                const inpObserver = new PerformanceObserver((list) => {
                   for (const entry of list.getEntries()) {
-                    if (entry.duration > 100) { // Only report tasks > 100ms
-                      console.warn('Long task detected:', Math.round(entry.duration) + 'ms');
+                    maxINP = Math.max(maxINP, entry.processingStart - entry.startTime);
+                    if (entry.processingStart - entry.startTime > 200) {
+                      console.warn('Slow interaction detected:', Math.round(entry.processingStart - entry.startTime) + 'ms');
                     }
                   }
                 });
-                longTaskObserver.observe({entryTypes: ['longtask']});
+                try {
+                  inpObserver.observe({entryTypes: ['event'], buffered: true});
+                } catch (e) {
+                  // Fallback for browsers that don't support event timing
+                }
               }
+
+              // Monitor main thread blocking
+              let lastFrameTime = performance.now();
+              function checkFrameRate() {
+                const currentTime = performance.now();
+                const deltaTime = currentTime - lastFrameTime;
+                if (deltaTime > 50) { // More than 2 frames at 60fps
+                  console.warn('Frame drop detected:', Math.round(deltaTime) + 'ms');
+                }
+                lastFrameTime = currentTime;
+                requestAnimationFrame(checkFrameRate);
+              }
+
+              // Only monitor in development or if performance issues detected
+              if (${process.env.NODE_ENV === 'development'} || maxINP > 200) {
+                requestAnimationFrame(checkFrameRate);
+              }
+
+              // Optimize setTimeout/setInterval for better performance
+              const originalSetTimeout = window.setTimeout;
+              window.setTimeout = function(callback, delay, ...args) {
+                // Reduce timer resolution for better performance
+                const alignedDelay = Math.max(delay, 16); // Minimum 60fps
+                return originalSetTimeout.call(this, callback, alignedDelay, ...args);
+              };
             }
           `
         }}

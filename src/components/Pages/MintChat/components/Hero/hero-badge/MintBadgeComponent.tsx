@@ -59,7 +59,19 @@ export default function MintBadgeComponent({
       color: '#047857',
       ...style
     }}>
-      🤖 Mint AI
+      <img
+        src="/assets/images/mint-mascot.png"
+        alt="Mint AI"
+        style={{
+          width: variant === 'compact' ? '14px' : '16px',
+          height: variant === 'compact' ? '14px' : '16px',
+          objectFit: 'contain',
+          marginRight: '0.25rem',
+          display: 'inline-block',
+          verticalAlign: 'middle'
+        }}
+      />
+      Mint AI
     </div>
   );
 }

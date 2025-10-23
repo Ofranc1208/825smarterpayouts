@@ -86,17 +86,26 @@ export default function ChooseMethod() {
           >
             {/* Icon */}
             <div style={{
-              ...getIconContainerStyles({
-                size: '80px',
-                borderRadius: BORDER_RADIUS.large,
-                background: COLORS.primary.gradient,
-                color: COLORS.text.white,
-                fontSize: '2rem'
-              }),
+              width: '80px',
+              height: '80px',
               margin: `0 auto ${SPACING.stack.md}`,
-              boxShadow: `0 8px 24px ${COLORS.shadows.greenLight}`
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'white',
+              borderRadius: BORDER_RADIUS.large,
+              padding: '0.5rem',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.08)'
             }}>
-              🤖
+              <img
+                src="/assets/images/mint-mascot.png"
+                alt="Mint AI"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'contain'
+                }}
+              />
             </div>
 
             <h3 style={{
@@ -214,9 +223,22 @@ export default function ChooseMethod() {
             margin: 0,
             color: COLORS.primary.dark,
             fontSize: TYPOGRAPHY.fontSize.body.medium,
-            fontWeight: TYPOGRAPHY.fontWeight.medium
+            fontWeight: TYPOGRAPHY.fontWeight.medium,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '0.5rem'
           }}>
-            🤖 Need help choosing?{' '}
+            <img
+              src="/assets/images/mint-mascot.png"
+              alt="Mint AI"
+              style={{
+                width: '24px',
+                height: '24px',
+                objectFit: 'contain'
+              }}
+            />
+            Need help choosing?{' '}
             <Link
               href="/mint-intelligent-chat"
               style={{

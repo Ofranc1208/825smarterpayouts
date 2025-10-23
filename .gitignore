@@ -15,3 +15,13 @@ yarn-error.log
 # OS/macOS junk
 .DS_Store
 Thumbs.db
+
+# Firebase Admin Key Files (sensitive)
+serviceAccountKey.json
+smarterwebsite-3d25d-firebase-adminsdk-*.json
+
+# Ignore all JSON keys except firebase.json (used for config)
+*.json
+!firebase.json
+!firestore.indexes.json
+!firestore.rules

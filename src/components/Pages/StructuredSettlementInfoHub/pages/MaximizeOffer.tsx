@@ -85,7 +85,18 @@ const MaximizeOffer: React.FC = () => {
 
             {/* CTA #2 */}
             <div style={{ background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)', padding: '2.5rem', borderRadius: '16px', marginBottom: '2rem', textAlign: 'center', color: 'white' }}>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '1rem' }}>🤖 Need Personalized Strategy?</h3>
+              <h3 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
+                <img
+                  src="/assets/images/mint-mascot.png"
+                  alt="Mint AI"
+                  style={{
+                    width: '28px',
+                    height: '28px',
+                    objectFit: 'contain'
+                  }}
+                />
+                Need Personalized Strategy?
+              </h3>
               <p style={{ fontSize: '1.0625rem', lineHeight: '1.7', marginBottom: '1.5rem', opacity: 0.95 }}>Chat with Mint AI for tailored advice on maximizing your specific settlement offer.</p>
               <Link href="/chat" style={{ display: 'inline-block', background: 'white', color: COLORS.accent.purple, padding: '1rem 2.5rem', borderRadius: '12px', textDecoration: 'none', fontWeight: '700', fontSize: '1.125rem', boxShadow: '0 6px 20px rgba(0,0,0,0.15)' }}>💬 Get Strategy Help →</Link>
             </div>

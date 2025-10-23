@@ -29,9 +29,20 @@ export default function MintAISection({ onCTAClick }: MintAISectionProps) {
       }}>
         <div style={{
           fontSize: "3rem",
-          marginBottom: "1.5rem"
+          marginBottom: "1.5rem",
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
         }}>
-          🤖💬
+          <img
+            src="/assets/images/mint-mascot.png"
+            alt="Mint AI"
+            style={{
+              width: '80px',
+              height: '80px',
+              objectFit: 'contain'
+            }}
+          />
         </div>
         <h2 style={{
           fontSize: "2.5rem",

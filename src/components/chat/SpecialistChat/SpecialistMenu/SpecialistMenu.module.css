@@ -118,6 +118,11 @@
   transition: all 0.1s ease;
 }
 
+.menuBtn:focus {
+  outline: 2px solid #059669;
+  outline-offset: 2px;
+}
+
 .menuBtn:disabled,
 .menuBtn[disabled] {
   background: #e5e7eb;

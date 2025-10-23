@@ -21,37 +21,34 @@ export const mainNavLinks: NavigationItem[] = [
   { href: '/mint-chat-active?type=calculate&source=nav-chat', label: 'Chat with Mint AI', icon: '💬' }
 ];
 
-// Dropdown sections
+// Dropdown sections - Updated structure following 2025 best practices
 export const dropdownSections: DropdownSection = {
-  'Why Us': [
-    { href: '/blog', label: 'Blog', icon: '📝' },
-    { href: '/youtube-channel', label: 'YouTube', icon: '📺' },
-  ],
-  'Company Info': [
-    { href: '/about', label: 'About Us', icon: '🏢' },
-    { href: '/faqs', label: 'FAQs', icon: '❓' },
-    { href: '/contact', label: 'Contact Us', icon: '✉️' },
-    { href: '/social-media', label: 'Social Media', icon: '🌐' },
-  ],
-  'Resources': [
-    { href: '/structured-settlement-info-hub', label: 'Knowledge Hub', icon: '📚' },
-    { href: '/articles', label: 'Articles', icon: '📖' },
-    { href: '/testimonials', label: 'Testimonials', icon: '⭐' },
-    { href: '/credentials', label: 'Credentials', icon: '🛡️' },
-    { href: '/resources', label: 'Insurance Companies', icon: '🏢' },
-    { href: '/structured-settlement-laws', label: 'Federal Law', icon: '🏛️' },
-    { href: '/structured-settlement-laws-by-state', label: 'Laws by State', icon: '🏛️' },
-  ],
-  'Process': [
+  'How It Works': [
     { href: '/get-a-quote', label: 'Get a Quote', icon: '📝' },
-    { href: '/review-offer', label: 'Review Offer', icon: '🔍' },
+    { href: '/review-offer', label: 'Review Your Offer', icon: '🔍' },
+    { href: '/how-fast-can-i-get-my-money', label: 'How Fast Can I Get Paid?', icon: '⚡' },
     { href: '/court-approval', label: 'Court Approval', icon: '⚖️' },
     { href: '/get-your-cash', label: 'Get Your Cash', icon: '💰' },
   ],
-  'Legal': [
-    { href: '/blog/how-fast-payout', label: 'How Fast?', icon: '⚡' },
+  'Why Choose Us?': [
+    { href: '/about', label: 'About Us', icon: '🏢' },
+    { href: '/contact', label: 'Contact Us', icon: '✉️' },
+    { href: '/faqs', label: 'FAQs', icon: '❓' },
+    { href: '/social-media', label: 'Social Media', icon: '🌐' },
+    { href: '/credentials', label: 'Our Credentials', icon: '🛡️' },
+    { href: '/resources', label: 'Insurance Companies We Work With', icon: '🏢' },
+  ],
+  'Resources & Stories': [
+    { href: '/structured-settlement-info-hub', label: 'Knowledge Hub', icon: '📚' },
+    { href: '/articles', label: 'Articles', icon: '📖' },
+    { href: '/testimonials', label: 'Testimonials', icon: '⭐' },
+    { href: '/youtube-channel', label: 'YouTube Channel', icon: '📺' },
+  ],
+  'Legal & Compliance': [
+    { href: '/structured-settlement-laws', label: 'Federal Laws', icon: '🏛️' },
     { href: '/state-laws-overview', label: 'State Laws Overview', icon: '📜' },
-    { href: '/terms', label: 'Terms', icon: '📋' },
-    { href: '/privacy', label: 'Privacy', icon: '🔒' },
+    { href: '/structured-settlement-laws-by-state', label: 'Laws by State', icon: '🗺️' },
+    { href: '/terms', label: 'Terms of Service', icon: '📋' },
+    { href: '/privacy', label: 'Privacy Policy', icon: '🔒' },
   ],
 };

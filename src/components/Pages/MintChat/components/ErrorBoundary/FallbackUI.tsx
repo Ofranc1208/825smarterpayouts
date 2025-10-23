@@ -25,9 +25,23 @@ export default function FallbackUI({ error, resetError, isDevelopment = false }:
     }}>
       <div style={{
         fontSize: '3rem',
-        marginBottom: '1rem'
+        marginBottom: '1rem',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: '0.5rem'
       }}>
-        🤖💔
+        <img
+          src="/assets/images/mint-mascot.png"
+          alt="Mint AI"
+          style={{
+            width: '60px',
+            height: '60px',
+            objectFit: 'contain',
+            filter: 'grayscale(100%)'
+          }}
+        />
+        <span style={{ fontSize: '3rem' }}>💔</span>
       </div>
       
       <h2 style={{

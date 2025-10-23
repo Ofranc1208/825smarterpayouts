@@ -105,7 +105,29 @@ const nextConfig = {
   optimizeFonts: true,
   // Enable compression
   compress: true,
-  
+
+  // Redirects for broken navigation links (SEO and UX improvement)
+  async redirects() {
+    return [
+      // Fix broken blog links from old navigation
+      {
+        source: '/blog',
+        destination: '/articles',
+        permanent: true,
+      },
+      {
+        source: '/blog/:slug',
+        destination: '/articles',
+        permanent: true,
+      },
+      {
+        source: '/blog/how-fast-payout',
+        destination: '/how-fast-can-i-get-my-money',
+        permanent: true,
+      },
+    ];
+  },
+
   // Add caching headers for better performance
   async headers() {
     return [

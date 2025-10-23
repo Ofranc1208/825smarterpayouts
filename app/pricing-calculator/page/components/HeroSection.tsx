@@ -48,7 +48,19 @@ export default function HeroSection() {
               color: '#059669',
               marginBottom: "0.5rem"
             }}>
-              🤖 Mint AI
+              <img
+                src="/assets/images/mint-mascot.png"
+                alt="Mint AI"
+                style={{
+                  width: '16px',
+                  height: '16px',
+                  objectFit: 'contain',
+                  marginRight: '0.25rem',
+                  display: 'inline-block',
+                  verticalAlign: 'middle'
+                }}
+              />
+              Mint AI
             </div>
             
             <div style={{

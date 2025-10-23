@@ -32,7 +32,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Enhanced viewport for mobile optimization */}
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="format-detection" content="telephone=no" />
         
         {/* Critical resource hints - load BEFORE scripts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="" />
@@ -49,105 +54,60 @@ export default function RootLayout({
 
         <link rel="icon" href="/favicon_without_text.ico" type="image/x-icon" />
         <link rel="shortcut icon" href="/favicon_without_text.ico" type="image/x-icon" />
-        <title>Structured Settlement Early Payout Calculator | Smarter Payouts</title>
-        <meta name="description" content="Instant, accurate, and private lump sum calculator. No calls, no salespeople, no personal data required. See the real value of your structured settlement — avoid flashy cash advance offers." />
-        <meta property="og:title" content="SmarterPayouts – The First Real-Time Structured Settlement Calculator" />
-        <meta property="og:description" content="Instantly calculate your structured settlement lump sum payout with the industry's first real-time, logic-driven calculator. No sales calls, no personal info required." />
-        <meta property="og:image" content="/assets/images/og-image.png" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://smarterpayouts.com" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="/assets/images/og-image.png" />
+
+        {/* Hreflang for language targeting - Global fallback */}
+        <link rel="alternate" hrefLang="en" href="https://smarterpayouts.com" />
+        <link rel="alternate" hrefLang="en-US" href="https://smarterpayouts.com" />
+        <link rel="alternate" hrefLang="x-default" href="https://smarterpayouts.com" />
+
+        {/* Global meta tags - fallback for pages without specific metadata */}
+        <meta name="robots" content="index, follow" />
+        <meta name="googlebot" content="index, follow" />
+        <meta name="author" content="SmarterPayouts Team" />
+        <meta name="publisher" content="SmarterPayouts" />
         {/* Remove problematic video preload - will load on demand */}
 
+        {/* Optimized critical CSS - reduced DOM size */}
         <style dangerouslySetInnerHTML={{
           __html: `
-          /* Critical CSS for above-the-fold content */
-          /* Navbar styles - only apply when navbar is present (not on homepage) */
-          body:not([data-page="/"]) .navbar {
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            z-index: 1001 !important;
+          /* Critical above-the-fold styles - optimized for performance */
+          body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            box-sizing: border-box;
           }
 
-          /* AGGRESSIVE: Ensure homepage has NO navigation elements */
-          body[data-page="/"] .navbar,
+          /* Homepage navigation hiding - critical for layout */
           body[data-page="/"] nav,
-          body[data-page="/"] header[role="navigation"],
-          body[data-page="/"] [role="navigation"] {
+          body[data-page="/"] .navbar {
             display: none !important;
-            visibility: hidden !important;
-            opacity: 0 !important;
-            height: 0 !important;
-            min-height: 0 !important;
-            max-height: 0 !important;
-            overflow: hidden !important;
-            position: absolute !important;
-            left: -9999px !important;
           }
 
-          /* NAVBAR HEIGHT PRE-CALCULATION - Prevent layout shift */
-          /* Responsive heights: 54px for mobile, 64px for desktop */
-          :root {
-            --navbar-height: 54px; /* Mobile default */
+          /* Non-homepage navbar spacing */
+          body:not([data-page="/"]) {
+            padding-top: var(--navbar-height, 48px);
           }
 
-          /* Desktop navbar height */
+          /* Responsive navbar heights */
           @media (min-width: 768px) {
-            :root {
-              --navbar-height: 64px;
+            body:not([data-page="/"]) {
+              padding-top: 56px;
             }
           }
 
-          /* Reserve navbar space BEFORE it loads to prevent layout shift */
-          /* Exclude chat pages from navbar padding */
-          body:not([data-page="/"]):not([data-page="/mint-chat-active"]):not([data-page^="/connect-with-specialist"]) {
-            padding-top: var(--navbar-height);
-          }
-
-          /* Navbar container - height controlled by inline styles in DualNavbar.tsx */
-          /* CSS variable is only used for body padding-top */
-
-          /* Prevent layout shift */
-          img, video {
-            max-width: 100%;
-            height: auto;
-          }
-
-          /* Ensure navigation doesn't interfere with page content */
-          body:not([data-page="/"]) main {
-            position: relative;
-            z-index: 1;
-          }
-
-          /* Chat page specific styles - prevent scrolling and ensure fixed layout */
+          /* Chat page optimization */
           body[data-page="/mint-chat-active"] {
             overflow: hidden;
             height: 100vh;
             padding: 0 !important;
-            margin: 0 !important;
           }
 
-          body[data-page="/mint-chat-active"] main {
-            height: 100vh;
-            overflow: hidden;
-          }
+          /* Prevent layout shift */
+          img { max-width: 100%; height: auto; }
 
-          /* Prevent flash of unstyled content */
-          * {
-            box-sizing: border-box;
-          }
-
-          /* Optimize initial render */
-          body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-          }
-
-          /* Prevent content jump during loading */
+          /* Loading states */
           .loading-placeholder {
             min-height: 200px;
             display: flex;

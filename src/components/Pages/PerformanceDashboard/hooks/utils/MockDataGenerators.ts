@@ -157,7 +157,7 @@ export const generateMockPageData = (seed: number = 1) => {
     { 
       id: 'mint-chat', 
       name: 'Mint Chat', 
-      icon: '🤖', 
+      icon: '/assets/images/mint-mascot.png', 
       metrics: { visitors: 0, bounceRate: 0, pageViews: 0, avgSessionDuration: 0 }, 
       status: 'good' as 'good' | 'needs-improvement' | 'poor', 
       lastUpdated: new Date() 

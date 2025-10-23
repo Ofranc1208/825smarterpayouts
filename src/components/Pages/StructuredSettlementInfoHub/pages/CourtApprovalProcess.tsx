@@ -125,8 +125,17 @@ const CourtApprovalProcess: React.FC = () => {
               textAlign: 'center',
               color: 'white'
             }}>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '1rem' }}>
-                🤖 Questions About the Legal Process?
+              <h3 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
+                <img
+                  src="/assets/images/mint-mascot.png"
+                  alt="Mint AI"
+                  style={{
+                    width: '28px',
+                    height: '28px',
+                    objectFit: 'contain'
+                  }}
+                />
+                Questions About the Legal Process?
               </h3>
               <p style={{ fontSize: '1.0625rem', lineHeight: '1.7', marginBottom: '1.5rem', opacity: 0.95 }}>
                 Chat with Mint AI to understand court requirements specific to your state and situation.

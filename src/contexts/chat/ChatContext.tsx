@@ -12,6 +12,8 @@ import { useFormStepSnapshot } from '../../hooks/useFormStepSnapshot';
 import { useLiveChatIntegration } from '../../hooks/useLiveChatIntegration';
 import { useWelcomeScriptManager } from '../../hooks/useWelcomeScriptManager';
 import CompareOfferStepper from '../../components/calculator/CompareOfferStepper';
+import SMSModal from '../../components/chat/SMSModal';
+import AppointmentModal from '../../components/chat/AppointmentModal';
 
 // Orchestra Pattern Imports
 import { ChatContextType, ChatProviderProps } from './types';
@@ -39,6 +41,8 @@ export const ChatProvider = ({
   // State management
   const [isTyping, setIsTyping] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [showSMSModal, setShowSMSModal] = useState(false);
+  const [showAppointmentModal, setShowAppointmentModal] = useState(false);
 
   // Context dependencies
   const { currentStep, triggerReprompt, handleFlowSelect } = useCalculator();
@@ -94,14 +98,14 @@ export const ChatProvider = ({
   // Handle specialist choices (for specialist mode)
   const handleSpecialistChoice = useCallback(async (choice: 'live_chat' | 'sms' | 'phone_call' | 'appointment') => {
     console.log('[ChatContext] Specialist choice selected:', choice);
-    
+
     if (choice === 'live_chat') {
       // Log user's choice
       logUserChoiceAsMessage('💬 Live Chat');
-      
-      // Initialize live chat session first to get sessionId
-      const sessionId = await liveChatIntegration.initializeLiveChat();
-      
+
+      // Initialize live chat session (wrapped to match expected return type)
+      await liveChatIntegration.initializeLiveChat();
+
       // Add queue component message with sessionId for real-time monitoring
       // Guard: ensure we only add ONE queue message
       setVisibleMessages(prev => {
@@ -115,12 +119,27 @@ export const ChatProvider = ({
           sessionId: sessionId // Pass sessionId for real-time monitoring
         }];
       });
-      
+
       // Activate live chat mode
       liveChatIntegration.activateLiveChatMode();
-    } else {
-      // For other options, just log for now
-      logUserChoiceAsMessage(`Selected: ${choice}`);
+    } else if (choice === 'sms') {
+      // SMS Implementation - opens SMS modal
+      logUserChoiceAsMessage('📱 Text Message');
+      setShowSMSModal(true);
+    } else if (choice === 'phone_call') {
+      // Phone Call Implementation - initiates phone call
+      logUserChoiceAsMessage('📞 Phone Consultation');
+      if (typeof window !== 'undefined') {
+        // Use the business phone number
+        const phoneNumber = '+15615831280'; // Business phone number
+        const telUrl = `tel:${phoneNumber}`;
+        console.log('[ChatContext] Initiating phone call with URL:', telUrl);
+        window.location.href = telUrl;
+      }
+    } else if (choice === 'appointment') {
+      // Appointment Booking Implementation - opens appointment modal
+      logUserChoiceAsMessage('📅 Book an Appointment');
+      setShowAppointmentModal(true);
     }
   }, [logUserChoiceAsMessage, setVisibleMessages, liveChatIntegration]);
 
@@ -159,6 +178,11 @@ export const ChatProvider = ({
   const isGuaranteedFlowActive = currentStep && ['mode', 'amount', 'increase', 'dates', 'review', 'offer'].includes(currentStep);
   const isCompareOfferFlowActive = currentStep && currentStep.startsWith('compare-offer');
 
+  // Wrapper for initializeLiveChat to match expected return type
+  const wrappedInitializeLiveChat = useCallback(async (): Promise<void> => {
+    await liveChatIntegration.initializeLiveChat();
+  }, [liveChatIntegration]);
+
   // Context value
   const value: ChatContextType = useMemo(() => ({
     visibleMessages,
@@ -174,21 +198,21 @@ export const ChatProvider = ({
     specialist: liveChatIntegration.specialist,
     liveChatStatus: liveChatIntegration.connectionStatus,
     endLiveChat: liveChatIntegration.endLiveChat,
-    initializeLiveChat: liveChatIntegration.initializeLiveChat
+    initializeLiveChat: wrappedInitializeLiveChat
   }), [
-    visibleMessages, 
-    sendMessage, 
-    isTyping, 
-    isLoading, 
-    startConversationalForm, 
-    handleTypeSelection, 
+    visibleMessages,
+    sendMessage,
+    isTyping,
+    isLoading,
+    startConversationalForm,
+    handleTypeSelection,
     logUserChoiceAsMessage,
     liveChatIntegration.liveChatMode,
     liveChatIntegration.specialist,
     liveChatIntegration.connectionStatus,
     liveChatIntegration.endLiveChat,
     liveChatIntegration.isSpecialistTyping,
-    liveChatIntegration.initializeLiveChat
+    wrappedInitializeLiveChat
   ]);
 
   return (
@@ -196,11 +220,23 @@ export const ChatProvider = ({
       {children}
       {/* Compare Offer Stepper manages conversation flow when active */}
       {isCompareOfferFlowActive && (
-        <CompareOfferStepper 
+        <CompareOfferStepper
           visibleMessages={visibleMessages}
           setVisibleMessages={setVisibleMessages}
         />
       )}
+      {/* SMS Modal */}
+      <SMSModal
+        isOpen={showSMSModal}
+        onClose={() => setShowSMSModal(false)}
+        phoneNumber="+15615831280"
+      />
+
+      {/* Appointment Modal */}
+      <AppointmentModal
+        isOpen={showAppointmentModal}
+        onClose={() => setShowAppointmentModal(false)}
+      />
     </ChatContext.Provider>
   );
 };

@@ -254,8 +254,17 @@ const CommonMistakes: React.FC = () => {
               textAlign: 'center',
               color: 'white'
             }}>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '1rem' }}>
-                🤖 Have Questions About Your Specific Situation?
+              <h3 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
+                <img
+                  src="/assets/images/mint-mascot.png"
+                  alt="Mint AI"
+                  style={{
+                    width: '28px',
+                    height: '28px',
+                    objectFit: 'contain'
+                  }}
+                />
+                Have Questions About Your Specific Situation?
               </h3>
               <p style={{ fontSize: '1.0625rem', lineHeight: '1.7', marginBottom: '1.5rem', opacity: 0.95 }}>
                 Chat with Mint AI for personalized guidance on avoiding these mistakes. Get instant answers 24/7.

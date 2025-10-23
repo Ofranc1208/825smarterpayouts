@@ -42,8 +42,17 @@ export default function Step1Card() {
           borderRadius: '12px',
           border: '1px solid #bbf7d0'
         }}>
-          <div style={{ fontSize: '0.875rem', color: '#047857', fontWeight: 600 }}>
-            🤖 Mint helps prepare your paperwork
+          <div style={{ fontSize: '0.875rem', color: '#047857', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <img
+              src="/assets/images/mint-mascot.png"
+              alt="Mint AI"
+              style={{
+                width: '18px',
+                height: '18px',
+                objectFit: 'contain'
+              }}
+            />
+            Mint helps prepare your paperwork
           </div>
         </div>
       </div>

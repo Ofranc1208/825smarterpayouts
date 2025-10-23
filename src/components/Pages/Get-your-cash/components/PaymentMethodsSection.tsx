@@ -75,7 +75,15 @@ export default function PaymentMethodsSection() {
             fontSize: TYPOGRAPHY.fontSize.heading.h2,
             marginBottom: SPACING.stack.md
           }}>
-            🤖
+            <img
+              src="/assets/images/mint-mascot.png"
+              alt="Mint AI"
+              style={{
+                width: '48px',
+                height: '48px',
+                objectFit: 'contain'
+              }}
+            />
           </div>
           <h3 style={{
             fontSize: TYPOGRAPHY.fontSize.heading.h3,

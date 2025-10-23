@@ -23,7 +23,17 @@ const GuaranteedAssistantHeader: React.FC<GuaranteedAssistantHeaderProps> = ({
   return (
     <div className={styles.header}>
       <div className={styles.titleContainer}>
-        <span className={styles.icon}>🤖</span>
+        <span className={styles.icon}>
+          <img
+            src="/assets/images/mint-mascot.png"
+            alt="Mint AI"
+            style={{
+              width: '20px',
+              height: '20px',
+              objectFit: 'contain'
+            }}
+          />
+        </span>
         <h3 className={styles.title}>{title}</h3>
       </div>
       <div className={styles.headerButtons}>

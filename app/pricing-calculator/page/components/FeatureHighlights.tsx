@@ -10,7 +10,7 @@ export default function FeatureHighlights() {
       subtitle: 'Instant Quote'
     },
     {
-      icon: '🤖',
+      icon: '/assets/images/mint-mascot.png',
       title: 'AI',
       subtitle: 'Powered'
     },
@@ -47,7 +47,19 @@ export default function FeatureHighlights() {
           }}
           title={feature.description || undefined}>
             <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>
-              {feature.icon}
+              {feature.icon.startsWith('/') ? (
+                <img
+                  src={feature.icon}
+                  alt=""
+                  style={{
+                    width: '32px',
+                    height: '32px',
+                    objectFit: 'contain'
+                  }}
+                />
+              ) : (
+                feature.icon
+              )}
             </div>
             <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#047857' }}>
               {feature.title}

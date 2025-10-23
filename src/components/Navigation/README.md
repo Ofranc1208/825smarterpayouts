@@ -206,34 +206,33 @@ if (isFeatureEnabled('enableSecurity')) {
 
 ### Dropdown Sections
 
-#### Company Info
-- 🏢 About Us
-- 📝 Blog
-- 📺 YouTube
-- ❓ FAQs
-- ✉️ Contact Us
-- 🌐 Social Media
-
-#### Resources
-- 📚 Knowledge Hub
-- 📖 Articles
-- ⭐ Testimonials
-- 🛡️ Credentials
-- 🏢 Insurance Companies
-- 🏛️ Federal Law
-- 🏛️ Laws by State
-
-#### Process
+#### How It Works
 - 📝 Get a Quote
-- 🔍 Review Offer
+- 🔍 Review Your Offer
+- ⚡ How Fast Can I Get Paid?
 - ⚖️ Court Approval
 - 💰 Get Your Cash
 
-#### Legal
-- ⚡ How Fast?
+#### Why Choose Us?
+- 🏢 About Us
+- ✉️ Contact Us
+- ❓ FAQs
+- 🌐 Social Media
+- 🛡️ Our Credentials
+- 🏢 Insurance Companies We Work With
+
+#### Resources & Stories
+- 📚 Knowledge Hub
+- 📖 Articles
+- ⭐ Testimonials
+- 📺 YouTube Channel
+
+#### Legal & Compliance
+- 🏛️ Federal Laws
 - 📜 State Laws Overview
-- 📋 Terms
-- 🔒 Privacy
+- 🗺️ Laws by State
+- 📋 Terms of Service
+- 🔒 Privacy Policy
 
 ## File Structure
 
