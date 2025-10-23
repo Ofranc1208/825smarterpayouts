@@ -13,13 +13,19 @@ export const metadata = {
   }
 };
 
-import React, { Suspense } from 'react';
-import LoadingSpinner from '../../components/LoadingSpinner';
+import React from 'react';
+import dynamic from 'next/dynamic';
 import HeroSection from './components/HeroSection';
 import BenefitsSection from './components/BenefitsSection';
-import PricingCalculator from '../pricing';
+import LoadingSpinner from '../../components/LoadingSpinner';
 import { StructuredData } from '@/src/components/SEO/StructuredData';
 import { pricingCalculatorSchema, organizationSchema } from '@/src/lib/structured-data/schemas';
+
+// Dynamically import the calculator to avoid SSR issues with useSearchParams
+const PricingCalculator = dynamic(() => import('../pricing'), {
+  ssr: false,
+  loading: () => <LoadingSpinner text="Loading settlement calculator..." />
+});
 
 export default function PricingCalculatorPageWrapper() {
   return (
@@ -31,9 +37,7 @@ export default function PricingCalculatorPageWrapper() {
         <HeroSection />
         
         {/* Calculator Section */}
-        <Suspense fallback={<LoadingSpinner text="Loading settlement calculator..." />}>
-          <PricingCalculator />
-        </Suspense>
+        <PricingCalculator />
 
         {/* Benefits Section */}
         <BenefitsSection />

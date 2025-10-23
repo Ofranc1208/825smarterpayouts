@@ -1,10 +1,13 @@
 import React, { Suspense } from 'react';
-import LumpSumClientComponent from './LumpSumClientComponent';
+import dynamic from 'next/dynamic';
 import { StructuredData } from '@/src/components/SEO/StructuredData';
 import { lumpSumCalculatorSchema, organizationSchema } from '@/src/lib/structured-data/schemas';
 
-// Force dynamic rendering to prevent useSearchParams build errors
-export const dynamic = 'force-dynamic';
+// Dynamically import the client component to avoid SSR issues with useSearchParams
+const LumpSumClientComponent = dynamic(() => import('./LumpSumClientComponent'), {
+  ssr: false,
+  loading: () => <div className="container py-5 text-center">Loading Calculator...</div>
+});
 
 export const metadata = {
   title: "Lump Sum Calculator – Get Your Cash Offer | SmarterPayouts",
@@ -20,9 +23,7 @@ export default function LumpSumCalculatorPageWrapper() {
       {/* Structured Data for SEO */}
       <StructuredData schema={[lumpSumCalculatorSchema, organizationSchema]} />
       
-      <Suspense fallback={<div>Loading Calculator...</div>}>
-        <LumpSumClientComponent />
-      </Suspense>
+      <LumpSumClientComponent />
     </>
   );
 }
