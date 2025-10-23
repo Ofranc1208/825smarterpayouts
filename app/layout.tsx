@@ -32,12 +32,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Enhanced viewport for mobile optimization */}
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover" />
+        {/* Enhanced viewport for mobile optimization - prevents double-tap zoom but allows pinch zoom */}
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10, minimum-scale=1, user-scalable=yes, viewport-fit=cover, interactive-widget=resizes-visual" />
+        <meta name="disable-double-tap-zoom" content="true" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="SmarterPayouts" />
         <meta name="format-detection" content="telephone=no" />
+        <meta name="theme-color" content="#059669" />
+        <meta name="color-scheme" content="light" />
+        
+        {/* Touch and interaction optimization */}
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="MobileOptimized" content="width" />
+        <meta name="apple-touch-fullscreen" content="yes" />
         
         {/* Critical resource hints - load BEFORE scripts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="" />
