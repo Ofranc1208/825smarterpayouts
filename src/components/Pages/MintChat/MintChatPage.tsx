@@ -1,7 +1,7 @@
 'use client';
 
-import React, { Suspense, useEffect } from 'react';
-// import dynamic from 'next/dynamic';  // Disabled for now
+import React, { Suspense, useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { 
   SEOHead,
   HeroSection, 
@@ -35,8 +35,11 @@ import { analytics } from './utils/analytics';
  * @version 2.0.0 - Enterprise Edition
  */
 
-// Dynamic imports for performance optimization - disabled for now
-// const LazyFABSpeedDial = dynamic(() => import('../../../../app/components/FABSpeedDial'), { ssr: false });
+// Dynamic imports for performance optimization - client-only
+const LazyFABSpeedDial = dynamic(() => import('../../../../app/components/FABSpeedDial'), { 
+  ssr: false,
+  loading: () => null // Prevent hydration mismatch
+});
 
 /**
  * Main MintChat Page Component - Enterprise Edition
@@ -64,6 +67,8 @@ import { analytics } from './utils/analytics';
  * - ✅ Core Web Vitals monitoring
  */
 const MintChatPage: React.FC = () => {
+  const [isMounted, setIsMounted] = useState(false);
+  
   // Initialize enterprise hooks
   const { announceToScreenReader } = useAccessibility({
     enableKeyboardShortcuts: true,
@@ -78,6 +83,9 @@ const MintChatPage: React.FC = () => {
 
   // Initialize page functionality
   useEffect(() => {
+    // Mark component as mounted to prevent hydration mismatch
+    setIsMounted(true);
+    
     // Track page view
     analytics.trackPageView('/mint-intelligent-chat', 'Chat with Mint');
 
@@ -169,8 +177,8 @@ const MintChatPage: React.FC = () => {
         </div>
 
         {/* Dynamic Components */}
-        {/* Floating Action Button - disabled for now */}
-        {/* <LazyFABSpeedDial /> */}
+        {/* Floating Action Button - Client-only */}
+        {isMounted && <LazyFABSpeedDial />}
       </Suspense>
     </ErrorBoundary>
   );

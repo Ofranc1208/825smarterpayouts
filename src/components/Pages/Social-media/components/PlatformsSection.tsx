@@ -11,8 +11,6 @@
  * <PlatformsSection />
  */
 
-'use client';
-import Button from '@/src/components/shared/Button';
 import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
 
 const platforms = [
@@ -55,7 +53,7 @@ const platforms = [
     gradient: 'linear-gradient(135deg, #0A66C2 0%, #0077B5 100%)',
     desc: 'Follow our LinkedIn page for professional updates and business news.',
     link: 'https://linkedin.com/company/smarterpayouts'
-  },
+  }
 ];
 
 export default function PlatformsSection() {
@@ -95,15 +93,17 @@ export default function PlatformsSection() {
 
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-        gap: SPACING.grid.comfortable,
-        '@media (max-width: 768px)': {
-          gridTemplateColumns: '1fr',
-          gap: SPACING.grid.standard
-        }
+        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+        gap: SPACING.grid.comfortable
       }}>
         {platforms.map((platform) => (
-          <div key={platform.name}>
+          <a
+            key={platform.name}
+            href={platform.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: 'none', color: 'inherit' }}
+          >
             <div style={{
               background: COLORS.backgrounds.white,
               borderRadius: BORDER_RADIUS.large,
@@ -113,21 +113,11 @@ export default function PlatformsSection() {
               height: "100%",
               transition: "all 0.3s ease",
               position: "relative",
-              cursor: "pointer",
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
               minHeight: "280px"
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "translateY(-4px)";
-              e.currentTarget.style.boxShadow = BOX_SHADOWS.large;
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow = BOX_SHADOWS.medium;
-            }}
-            onClick={() => window.open(platform.link, '_blank')}>
+            }}>
               
               {/* Top Content */}
               <div>
@@ -175,7 +165,7 @@ export default function PlatformsSection() {
 
               {/* Follow Button */}
               <div style={{ textAlign: "center", marginTop: "auto" }}>
-                <div
+                <span
                   style={{
                     display: "inline-block",
                     background: platform.gradient,
@@ -184,30 +174,16 @@ export default function PlatformsSection() {
                     borderRadius: BORDER_RADIUS.small,
                     fontWeight: TYPOGRAPHY.fontWeight.semibold,
                     fontSize: TYPOGRAPHY.fontSize.body.medium,
-                    cursor: "pointer",
-                    transition: "all 0.2s ease",
                     border: "none",
                     minWidth: "200px",
                     textAlign: "center"
                   }}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    window.open(platform.link, '_blank');
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = "scale(1.05)";
-                    e.currentTarget.style.boxShadow = `0 10px 25px ${platform.color}40`;
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = "scale(1)";
-                    e.currentTarget.style.boxShadow = "none";
-                  }}
                 >
                   Follow on {platform.name}
-                </div>
+                </span>
               </div>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </section>

@@ -64,7 +64,9 @@ const ChatManager: React.FC = () => {
       
       // Check if we're on client side
       if (typeof window !== 'undefined') {
-        window.location.href = '/mint-chat-active?type=calculate';
+        // Redirect to dedicated chat page with calculate type (default)
+        const sessionId = `chat-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+        window.location.href = `/mint-chat-active?type=calculate&source=chat-manager&sessionId=${sessionId}`;
       }
       return;
     }

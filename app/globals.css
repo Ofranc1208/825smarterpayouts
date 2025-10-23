@@ -157,12 +157,21 @@ button, a, [role="button"], input, select, textarea {
 }
 
 /* Ensure links and buttons have proper touch targets (min 44x44px) */
-a, button, [role="button"] {
+/* Only apply to buttons and interactive elements, not navigation links */
+button, [role="button"]:not(a) {
   min-height: 44px;
   min-width: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Links should maintain their natural alignment */
+a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  /* Do NOT center justify - let content determine alignment */
 }
 
 /* === Zoom and Pinch Support === */

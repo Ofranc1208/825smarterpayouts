@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import dynamic from 'next/dynamic';
 // Import only critical above-the-fold components
 import {
@@ -32,6 +32,12 @@ const TestimonialsSection = dynamic(() => import('./components/Testimonials'), {
 const FinalCTASection = dynamic(() => import('./components/FinalCTA'), {
   loading: () => <LoadingFallback message="Loading Final CTA..." icon="🚀" background="linear-gradient(135deg, #22b455 0%, #1a9a47 100%)" />,
   ssr: false
+});
+
+// Lazy load FAB Speed Dial for contact options - client-only
+const LazyFABSpeedDial = dynamic(() => import('../../../../app/components/FABSpeedDial'), { 
+  ssr: false,
+  loading: () => null // Prevent hydration mismatch
 });
 
 import {
@@ -78,6 +84,8 @@ import { useWebVitals } from './hooks/useWebVitals';
  * @version 2.0.0
  */
 export default function HomePage() {
+  const [isMounted, setIsMounted] = useState(false);
+  
   const {
     trackHeroCTAClick,
     trackFeatureCardClick,
@@ -99,6 +107,9 @@ export default function HomePage() {
   useWebVitals();
 
   useEffect(() => {
+    // Mark component as mounted to prevent hydration mismatch
+    setIsMounted(true);
+    
     // Track page view on mount
     trackPageView();
     
@@ -169,6 +180,13 @@ export default function HomePage() {
             </SectionErrorBoundary>
           )}
         </div>
+        
+        {/* Floating Action Button for Contact Options - Client-only */}
+        {isMounted && (
+          <Suspense fallback={null}>
+            <LazyFABSpeedDial />
+          </Suspense>
+        )}
       </main>
     </HomePageErrorBoundary>
   );
