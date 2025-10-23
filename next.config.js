@@ -49,8 +49,8 @@ const nextConfig = {
     scrollRestoration: true,
     webpackBuildWorker: true,
     gzipSize: true,
-    // Enable CSS optimization
-    optimizeCss: true,
+    // CSS optimization disabled - requires critters package
+    // optimizeCss: true,
     // Enable modern JavaScript features
     esmExternals: true,
   },

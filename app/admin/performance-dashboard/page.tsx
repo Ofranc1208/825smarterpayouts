@@ -1,9 +1,6 @@
 import { Metadata } from 'next';
 import { PerformanceDashboardPage } from '@/src/components/Pages/PerformanceDashboard';
 
-// Force dynamic rendering for real-time data
-export const dynamic = 'force-dynamic';
-
 // Admin-only metadata
 export const metadata: Metadata = {
   title: 'Performance Dashboard - Admin | SmarterPayouts',
