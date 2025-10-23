@@ -27,11 +27,15 @@
 import Script from 'next/script';
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || '';
+const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
 export default function GoogleTagManager() {
   // Don't render if GTM_ID is not set
   if (!GTM_ID) {
-    console.warn('Google Tag Manager: NEXT_PUBLIC_GTM_ID is not set');
+    // Only warn in production - suppress in development
+    if (IS_PRODUCTION) {
+      console.warn('Google Tag Manager: NEXT_PUBLIC_GTM_ID is not set');
+    }
     return null;
   }
 

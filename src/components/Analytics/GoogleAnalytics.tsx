@@ -25,10 +25,15 @@
 import Script from 'next/script';
 import { GA_MEASUREMENT_ID } from '@/src/lib/analytics/gtag';
 
+const IS_PRODUCTION = process.env.NODE_ENV === 'production';
+
 export default function GoogleAnalytics() {
   // Don't render if GA_MEASUREMENT_ID is not set
   if (!GA_MEASUREMENT_ID) {
-    console.warn('Google Analytics: NEXT_PUBLIC_GA_MEASUREMENT_ID is not set');
+    // Only warn in production - suppress in development
+    if (IS_PRODUCTION) {
+      console.warn('Google Analytics: NEXT_PUBLIC_GA_MEASUREMENT_ID is not set');
+    }
     return null;
   }
 
