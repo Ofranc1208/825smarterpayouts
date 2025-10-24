@@ -28,7 +28,7 @@ export default function HeroSubtitle() {
       letterSpacing: "0.5px",
       marginBottom: "0.5rem"
     }}>
-      Industry's First AI Settlement Calculator
+      Settlement Industry's First Lump-Sum Payout Calculator
     </div>
   );
 }
