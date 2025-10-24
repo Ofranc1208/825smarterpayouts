@@ -42,9 +42,8 @@ const LCPSettlementPaymentsOverview: React.FC<Props> = ({ initialData, onNext, c
 
   return (
     <LCPStepContainer title="Settlement Payments Overview" currentStep={currentStep} totalSteps={totalSteps}>
-      {/* Help and Instructions - Both on same line */}
+      {/* Instructions Button */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-        <QuickHelpBadge />
         <button
           type="button"
           onClick={() => setShowInstructions(true)}
@@ -151,10 +150,7 @@ const LCPSettlementPaymentsOverview: React.FC<Props> = ({ initialData, onNext, c
       )}
 
       <form onSubmit={handleSubmit}>
-        <LCPSection
-          label="How often do you receive your payments?"
-          tooltip="This refers to how frequently you currently receive your structured settlement payments. For example, 'Monthly' means you get paid once per month, 'Quarterly' means every 3 months, 'Semi-annually' means twice per year, and 'Lump Sum' means you receive one large payment."
-        >
+        <LCPSection label="How often do you receive your payments?">
           {FREQUENCIES.map((freq) => (
             <LCPButton
               key={freq}
@@ -167,20 +163,40 @@ const LCPSettlementPaymentsOverview: React.FC<Props> = ({ initialData, onNext, c
           ))}
         </LCPSection>
 
-        <LCPSection
-          label="Do your payments increase yearly?"
-          tooltip="Some structured settlements include annual increases (often called 'cost-of-living adjustments' or COLAs) that increase your payment amounts each year to help offset inflation. Select the percentage increase you receive annually, or 0 if your payments stay the same."
-        >
-          {INCREASES.map((inc) => (
-            <LCPButton
-              key={inc}
-              variant="option"
-              selected={annualIncrease === inc}
-              onClick={() => setAnnualIncrease(inc)}
-            >
-              {inc}
-            </LCPButton>
-          ))}
+        <LCPSection label="Do your payments increase yearly?">
+          <div style={{ 
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: '0.86rem',
+            justifyContent: 'center',
+            maxWidth: '400px',
+            margin: '0 auto'
+          }}>
+            {/* First row: 0, 1, 2, 3 */}
+            {INCREASES.slice(0, 4).map((inc) => (
+              <LCPButton
+                key={inc}
+                variant="option"
+                selected={annualIncrease === inc}
+                onClick={() => setAnnualIncrease(inc)}
+              >
+                {inc}
+              </LCPButton>
+            ))}
+            {/* Second row: 4, 5, 6 centered */}
+            <div style={{ gridColumn: '1 / 5', display: 'flex', gap: '0.86rem', justifyContent: 'center' }}>
+              {INCREASES.slice(4).map((inc) => (
+                <LCPButton
+                  key={inc}
+                  variant="option"
+                  selected={annualIncrease === inc}
+                  onClick={() => setAnnualIncrease(inc)}
+                >
+                  {inc}
+                </LCPButton>
+              ))}
+            </div>
+          </div>
         </LCPSection>
 
         <div className={layout.actionRow}>

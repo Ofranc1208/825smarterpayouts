@@ -87,9 +87,8 @@ const LCPPhysicalProfileOverview: React.FC<Props> = ({ initialData, onNext, onBa
 
   return (
     <LCPStepContainer title="Physical Profile Overview" currentStep={currentStep} totalSteps={totalSteps}>
-      {/* Help and Instructions - Both on same line */}
+      {/* Instructions Button */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
-        <QuickHelpBadge />
         <button
           type="button"
           onClick={() => setShowInstructions(true)}
@@ -199,27 +198,42 @@ const LCPPhysicalProfileOverview: React.FC<Props> = ({ initialData, onNext, onBa
 
       <div className={styles.scrollContainer} ref={scrollContainerRef}>
         <form onSubmit={handleSubmit} className={styles.form}>
-          <LCPSection
-            label="Age"
-            tooltip="Select your current age range. This helps us understand your life expectancy and calculate appropriate payout amounts for your structured settlement."
-          >
-            {AGES.map((age) => (
-              <LCPButton
-                key={age}
-                variant="option"
-                selected={ageRange === age}
-                onClick={() => setAgeRange(age)}
-              >
-                {age}
-              </LCPButton>
-            ))}
+          <LCPSection label="Approximate Age">
+            <div style={{ 
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, 1fr)',
+              gap: '0.86rem',
+              justifyContent: 'center',
+              maxWidth: '350px',
+              margin: '0 auto'
+            }}>
+              {/* First row: 18–25, 26–35, 36–45 */}
+              {AGES.slice(0, 3).map((age) => (
+                <LCPButton
+                  key={age}
+                  variant="option"
+                  selected={ageRange === age}
+                  onClick={() => setAgeRange(age)}
+                >
+                  {age}
+                </LCPButton>
+              ))}
+              {/* Second row: 46–50, 51–56, 57–65 */}
+              {AGES.slice(3).map((age) => (
+                <LCPButton
+                  key={age}
+                  variant="option"
+                  selected={ageRange === age}
+                  onClick={() => setAgeRange(age)}
+                >
+                  {age}
+                </LCPButton>
+              ))}
+            </div>
           </LCPSection>
 
           <div ref={genderSectionRef}>
-            <LCPSection
-              label="Gender"
-              tooltip="Select the gender identity that best describes you. This information helps us provide more accurate health and longevity calculations for your structured settlement payout."
-            >
+            <LCPSection label="Gender">
               {GENDERS.map((g) => (
                 <LCPButton
                   key={g}
@@ -234,10 +248,7 @@ const LCPPhysicalProfileOverview: React.FC<Props> = ({ initialData, onNext, onBa
           </div>
 
           <div ref={bodyFrameSectionRef}>
-            <LCPSection
-              label="Body Frame"
-              tooltip="Choose the body frame size that best describes your build. Small frame typically means smaller bone structure, medium is average, and large frame means bigger bone structure. This helps with health and longevity assessments."
-            >
+            <LCPSection label="Body Frame">
               {BODY_FRAMES.map((frame) => (
                 <LCPButton
                   key={frame}
@@ -252,20 +263,40 @@ const LCPPhysicalProfileOverview: React.FC<Props> = ({ initialData, onNext, onBa
           </div>
 
           <div ref={weightSectionRef}>
-            <LCPSection
-              label="Weight"
-              tooltip="Select the weight category that best describes your current status. This information helps assess overall health and provides context for structured settlement payout calculations."
-            >
-              {WEIGHTS.map((w) => (
-                <LCPButton
-                  key={w.full}
-                  variant="option"
-                  selected={weight === w.full}
-                  onClick={() => handleWeightSelect(w.full)}
-                >
-                  {w.short}
-                </LCPButton>
-              ))}
+            <LCPSection label="Weight">
+              <div style={{ 
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: '0.86rem',
+                justifyContent: 'center',
+                maxWidth: '350px',
+                margin: '0 auto'
+              }}>
+                {/* First row: Under, Normal, Over */}
+                {WEIGHTS.slice(0, 3).map((w) => (
+                  <LCPButton
+                    key={w.full}
+                    variant="option"
+                    selected={weight === w.full}
+                    onClick={() => handleWeightSelect(w.full)}
+                  >
+                    {w.short}
+                  </LCPButton>
+                ))}
+                {/* Second row: Obese, Severe centered */}
+                <div style={{ gridColumn: '1 / 4', display: 'flex', gap: '0.86rem', justifyContent: 'center' }}>
+                  {WEIGHTS.slice(3).map((w) => (
+                    <LCPButton
+                      key={w.full}
+                      variant="option"
+                      selected={weight === w.full}
+                      onClick={() => handleWeightSelect(w.full)}
+                    >
+                      {w.short}
+                    </LCPButton>
+                  ))}
+                </div>
+              </div>
             </LCPSection>
           </div>
 

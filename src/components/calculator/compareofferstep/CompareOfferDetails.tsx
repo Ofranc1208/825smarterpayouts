@@ -166,3 +166,5 @@ const CompareOfferDetails: React.FC<CompareOfferDetailsProps> = ({
 
 export default CompareOfferDetails;
 
+
+

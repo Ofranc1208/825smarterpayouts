@@ -15,10 +15,16 @@ import CompareOfferStepper from '../../components/calculator/CompareOfferStepper
 import SMSModal from '../../components/chat/SMSModal';
 import AppointmentModal from '../../components/chat/AppointmentModal';
 
-// Orchestra Pattern Imports
+// Orchestra Pattern Imports - Clean separation of concerns
 import { ChatContextType, ChatProviderProps } from './types';
 import { MessageOrchestrator } from './MessageOrchestrator';
 import { CalculationLinkManager } from './CalculationLinkManager';
+import {
+  ChoiceHandler,
+  ModalManager,
+  ChatContextDependencies,
+  ModalState
+} from './ChatContext/index';
 
 const ChatContext = createContext<ChatContextType | undefined>(undefined);
 
@@ -30,19 +36,23 @@ export const useChat = () => {
   return context;
 };
 
-export const ChatProvider = ({ 
-  children, 
-  visibleMessages, 
-  setVisibleMessages, 
-  logUserChoiceAsMessage, 
+export const ChatProvider = ({
+  children,
+  visibleMessages,
+  setVisibleMessages,
+  logUserChoiceAsMessage,
   sessionId,
   mode = 'calculate' // Default to regular calculate mode
 }: ChatProviderProps) => {
-  // State management
+  // State management - Simplified with orchestrator pattern
   const [isTyping, setIsTyping] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [showSMSModal, setShowSMSModal] = useState(false);
-  const [showAppointmentModal, setShowAppointmentModal] = useState(false);
+
+  // Modal state management - extracted to ModalManager
+  const [modalState, setModalState] = useState<ModalState>({
+    showSMSModal: false,
+    showAppointmentModal: false
+  });
 
   // Context dependencies
   const { currentStep, triggerReprompt, handleFlowSelect } = useCalculator();
@@ -54,6 +64,66 @@ export const ChatProvider = ({
     setVisibleMessages,
     sessionId
   });
+
+  // Live Chat Integration - Must be declared before being used
+  const liveChatIntegration = useLiveChatIntegration({
+    sessionId,
+    setVisibleMessages
+  });
+
+  // Initialize modal manager first - needed by handleSpecialistChoice
+  const modalManager = useMemo(() => new ModalManager(
+    modalState,
+    setModalState,
+    logUserChoiceAsMessage
+  ), [modalState, logUserChoiceAsMessage, setModalState]);
+
+  // Handle specialist choices (for specialist mode) - Now all dependencies are available
+  const handleSpecialistChoice = useCallback(async (choice: 'live_chat' | 'sms' | 'phone_call' | 'appointment') => {
+    console.log('[ChatContext] Specialist choice selected:', choice);
+
+    if (choice === 'live_chat') {
+      // Log user's choice
+      logUserChoiceAsMessage('💬 Live Chat');
+
+      // Initialize live chat session
+      await liveChatIntegration.initializeLiveChat();
+
+      // Add queue component message with sessionId for real-time monitoring
+      setVisibleMessages(prev => {
+        const alreadyHasQueue = prev.some(m => (m as any).type === 'queue');
+        if (alreadyHasQueue) return prev;
+        return [...prev, {
+          id: `queue-${Date.now()}`,
+          type: 'queue' as any,
+          text: '',
+          sender: 'bot',
+          sessionId: sessionId
+        }];
+      });
+
+      // Activate live chat mode
+      liveChatIntegration.activateLiveChatMode();
+    } else if (choice === 'sms') {
+      // Use modal manager for SMS
+      modalManager.openSMSModal();
+    } else if (choice === 'phone_call') {
+      // Phone call through modal manager
+      modalManager.handlePhoneCall();
+    } else if (choice === 'appointment') {
+      // Use modal manager for appointment
+      modalManager.openAppointmentModal();
+    }
+  }, [logUserChoiceAsMessage, setVisibleMessages, liveChatIntegration, modalManager]);
+
+  // Initialize choice handler - now handleSpecialistChoice is available
+  const choiceHandler = useMemo(() => new ChoiceHandler({
+    advanceConversation,
+    setVisibleMessages,
+    setIsTyping,
+    startConversationalForm,
+    handleSpecialistChoice
+  }), [advanceConversation, setVisibleMessages, setIsTyping, startConversationalForm, handleSpecialistChoice]);
 
   // Orchestra Pattern - Initialize orchestrators
   const messageOrchestrator = useMemo(() => {
@@ -74,74 +144,10 @@ export const ChatProvider = ({
     return new CalculationLinkManager(setVisibleMessages, sessionId);
   }, [setVisibleMessages, sessionId]);
 
-  // Handle initial choices (for regular mode)
+  // Handle initial choices (for regular mode) - Simplified with orchestrator
   const handleInitialChoice = useCallback(async (choiceText: string) => {
-    switch (choiceText) {
-      case 'Compare An Offer':
-        await advanceConversation({
-          userMessageText: choiceText,
-          botConfirmationText: "Great, I can help you compare your offer. First, how would you like to provide the details of the offer you already have?"
-        });
-        handleFlowSelect('compare-offer');
-        break;
-      default:
-        console.log('Unhandled choice:', choiceText);
-    }
-  }, [handleFlowSelect, advanceConversation]);
-
-  // Live Chat Integration (extracted to custom hook)
-  const liveChatIntegration = useLiveChatIntegration({
-    sessionId,
-    setVisibleMessages
-  });
-
-  // Handle specialist choices (for specialist mode)
-  const handleSpecialistChoice = useCallback(async (choice: 'live_chat' | 'sms' | 'phone_call' | 'appointment') => {
-    console.log('[ChatContext] Specialist choice selected:', choice);
-
-    if (choice === 'live_chat') {
-      // Log user's choice
-      logUserChoiceAsMessage('💬 Live Chat');
-
-      // Initialize live chat session (wrapped to match expected return type)
-      await liveChatIntegration.initializeLiveChat();
-
-      // Add queue component message with sessionId for real-time monitoring
-      // Guard: ensure we only add ONE queue message
-      setVisibleMessages(prev => {
-        const alreadyHasQueue = prev.some(m => (m as any).type === 'queue');
-        if (alreadyHasQueue) return prev;
-        return [...prev, {
-          id: `queue-${Date.now()}`,
-          type: 'queue' as any, // Special type for queue component
-          text: '', // Not used for queue type
-          sender: 'bot',
-          sessionId: sessionId // Pass sessionId for real-time monitoring
-        }];
-      });
-
-      // Activate live chat mode
-      liveChatIntegration.activateLiveChatMode();
-    } else if (choice === 'sms') {
-      // SMS Implementation - opens SMS modal
-      logUserChoiceAsMessage('📱 Text Message');
-      setShowSMSModal(true);
-    } else if (choice === 'phone_call') {
-      // Phone Call Implementation - initiates phone call
-      logUserChoiceAsMessage('📞 Phone Consultation');
-      if (typeof window !== 'undefined') {
-        // Use the business phone number
-        const phoneNumber = '+15615831280'; // Business phone number
-        const telUrl = `tel:${phoneNumber}`;
-        console.log('[ChatContext] Initiating phone call with URL:', telUrl);
-        window.location.href = telUrl;
-      }
-    } else if (choice === 'appointment') {
-      // Appointment Booking Implementation - opens appointment modal
-      logUserChoiceAsMessage('📅 Book an Appointment');
-      setShowAppointmentModal(true);
-    }
-  }, [logUserChoiceAsMessage, setVisibleMessages, liveChatIntegration]);
+    await choiceHandler.handleChoice(choiceText);
+  }, [choiceHandler]);
 
   // Welcome script management (extracted to custom hook)
   useWelcomeScriptManager({
@@ -225,17 +231,17 @@ export const ChatProvider = ({
           setVisibleMessages={setVisibleMessages}
         />
       )}
-      {/* SMS Modal */}
+      {/* SMS Modal - Managed by orchestrator */}
       <SMSModal
-        isOpen={showSMSModal}
-        onClose={() => setShowSMSModal(false)}
+        isOpen={modalState.showSMSModal}
+        onClose={() => modalManager.closeSMSModal()}
         phoneNumber="+15615831280"
       />
 
-      {/* Appointment Modal */}
+      {/* Appointment Modal - Managed by orchestrator */}
       <AppointmentModal
-        isOpen={showAppointmentModal}
-        onClose={() => setShowAppointmentModal(false)}
+        isOpen={modalState.showAppointmentModal}
+        onClose={() => modalManager.closeAppointmentModal()}
       />
     </ChatContext.Provider>
   );

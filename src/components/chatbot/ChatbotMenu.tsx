@@ -29,16 +29,17 @@ const ChatbotMenu: React.FC<ChatbotMenuProps> = ({ onCalculate, onChoice }) => {
       </button>
       <button
         className={`${styles.menuBtn} ${isClicked ? styles.disabled : ''}`}
-        onClick={() => handleChoiceClick('Compare An Offer')}
-        disabled={isClicked}
-      >
-        Compare An Offer
-      </button>
-      <button
-        className={`${styles.menuBtn} ${isClicked ? styles.disabled : ''}`}
+        onClick={() => handleChoiceClick('Our Process')}
         disabled={isClicked}
       >
         Our Process
+      </button>
+      <button
+        className={`${styles.menuBtn} ${isClicked ? styles.disabled : ''}`}
+        onClick={() => handleChoiceClick('General Questions')}
+        disabled={isClicked}
+      >
+        General Questions
       </button>
     </div>
   );

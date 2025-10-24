@@ -12,12 +12,12 @@
 .chatBubble {
   max-width: 80%;
   min-width: 60px;
-  padding: 10px 14px;
-  margin-bottom: 8px;
+  padding: 14px 16px;
+  margin-bottom: 0;
   font-size: 0.98rem;
-  line-height: 1.4;
+  line-height: 1.5;
   border-radius: 16px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   text-align: left;
   word-break: break-word;
   animation: chatBubbleFadeIn 0.5s ease-in-out;

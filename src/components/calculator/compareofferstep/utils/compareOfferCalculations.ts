@@ -71,3 +71,5 @@ export function formatPercentage(percentage: number): string {
   return `${sign}${percentage.toFixed(2)}%`;
 }
 
+
+

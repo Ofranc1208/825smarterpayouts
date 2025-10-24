@@ -26,12 +26,6 @@ const LCPStepContainerContent: React.FC<LCPStepContainerProps> = ({ title, child
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <Link
-          href={backUrl}
-          className={styles.backLink}
-        >
-          ‹ Back to Chat
-        </Link>
         <div className={styles.stepIndicator}>
           Step {currentStep} of {totalSteps}
         </div>

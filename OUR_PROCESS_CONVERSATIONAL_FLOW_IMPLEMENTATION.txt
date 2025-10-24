@@ -1,0 +1,104 @@
+OUR PROCESS CONVERSATIONAL FLOW IMPLEMENTATION PLAN
+=================================================================
+
+GOAL:
+When users click the "Our Process" button, instead of navigating away from chat,
+provide a conversational explanation of our 4-step process followed by contact options.
+
+CURRENT STATE:
+- "Our Process" button exists but has no onClick handler
+- Navigation currently goes to /main#process (breaks chat flow)
+- Rich knowledge base exists with process information
+- Contact modals (SMSModal, AppointmentModal) already exist
+
+TARGET USER EXPERIENCE:
+1. User clicks "Our Process" button
+2. AI responds: "Great! Let me explain our simple 4-step process..."
+3. AI explains each step conversationally
+4. AI shows: "Ready to get started? Here's how to reach us:"
+5. Interactive contact buttons appear (SMS, Phone, Email, Appointment)
+
+IMPLEMENTATION APPROACH:
+✅ Enhanced Conversational Flow (Recommended)
+- Use existing AI infrastructure with specialized prompts
+- Create ContactOptions component for chat interface
+- Update ChatContext handler to trigger conversational flow
+- Integrate with existing modal system (SMSModal, AppointmentModal)
+
+FILES TO CREATE/MODIFY:
+
+1. 📄 Create: src/components/chat/ContactOptions/ContactOptions.tsx
+   - Interactive buttons for SMS, Phone, Email, Appointment
+   - Matches chat UI styling
+   - Integrates with existing modals
+
+2. 🔧 Modify: src/contexts/chat/ChatContext.tsx
+   - Update handleInitialChoice() for 'Our Process' case
+   - Add logic to trigger process explanation + contact options
+   - Remove navigation redirect
+
+3. 🔧 Modify: src/prompts/mainPrompts.ts
+   - Enhance system prompt with process-specific responses
+   - Add conversational process explanation flow
+   - Include contact information in responses
+
+4. 🔧 Modify: src/components/chatbot/ChatbotMenu.tsx
+   - Already updated (from previous changes)
+   - Button order: New Quote → Our Process → General Questions
+
+INTEGRATION POINTS:
+- SMSModal: src/components/chat/SMSModal/SMSModal.tsx (already exists)
+- AppointmentModal: src/components/chat/AppointmentModal/AppointmentModal.tsx (already exists)
+- AI System: src/hooks/useGPTIntegration.ts (already exists)
+- Chat Context: src/contexts/chat/ChatContext.tsx (to be modified)
+
+CONTACT INFORMATION TO DISPLAY:
+- Phone: +1 (561) 583-1280
+- SMS: +1 (561) 583-1280
+- Email: info@smarterpayouts.com
+- Appointment Booking: Via AppointmentModal
+
+AI CONVERSATION FLOW:
+1. User: "Our Process"
+2. AI: "Great! Our process is simple - just 4 steps from quote to cash..."
+3. AI: "Step 1: Get instant quote with our AI calculator..."
+4. AI: "Step 2: Review transparent terms with no hidden fees..."
+5. AI: "Step 3: Legal process - we handle all court filings..."
+6. AI: "Step 4: Receive funds in 2-5 business days..."
+7. AI: "Ready to get started? Here's how to reach us:"
+8. Show ContactOptions component with buttons
+
+EXPECTED OUTCOME:
+✅ Users stay engaged in chat experience
+✅ Process information delivered conversationally
+✅ Multiple contact options provided immediately
+✅ No navigation disruption
+✅ Uses existing infrastructure (no new dependencies)
+
+TESTING SCENARIOS:
+1. User clicks "Our Process" button
+2. AI responds with process explanation
+3. Contact buttons appear and function correctly
+4. SMS modal opens when SMS button clicked
+5. Appointment modal opens when appointment button clicked
+6. Phone/email links work correctly
+
+IMPLEMENTATION ORDER:
+1. ✅ Create implementation plan (this file)
+2. Create ContactOptions component
+3. Update ChatContext handler
+4. Enhance AI prompts
+5. Test integration with existing modals
+6. Verify complete user flow
+
+DEPENDENCIES:
+- React hooks (useState, useCallback)
+- Existing modal components (SMSModal, AppointmentModal)
+- Chat context system (already in place)
+- AI integration system (already in place)
+
+SUCCESS METRICS:
+- Users complete process explanation flow
+- Contact buttons are clicked and modals open
+- No navigation away from chat interface
+- Smooth conversational experience maintained

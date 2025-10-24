@@ -10,7 +10,7 @@
 /* Main container - 2025 best practices: larger, better spacing */
 .container {
   max-width: 480px;
-  margin: 3rem auto 3rem auto !important;
+  margin: 2.25rem auto 3rem auto !important;
   background: #fff;
   border-radius: 20px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
@@ -26,13 +26,13 @@
 /* Header section - ultra compact appearance */
 .header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding-top: 0;
-  padding-bottom: 0.2rem;
+  padding-bottom: 0.1rem;
   border-bottom: 1px solid #e5e7eb;
   margin-top: 0;
-  margin-bottom: 0.375rem;
+  margin-bottom: 0.2rem;
 }
 
 /* Back link */
@@ -88,7 +88,7 @@
 @media (max-width: 768px) {
   .container {
     max-width: 95%;
-    margin: 2.5rem auto 2.5rem auto !important;
+    margin: 1.875rem auto 2.5rem auto !important;
     padding: 0.4rem 1.5rem 1.25rem 1.5rem;
     min-height: 450px;
   }
@@ -114,7 +114,7 @@
 @media (max-width: 480px) {
   .container {
     max-width: 100%;
-    margin: 2rem 0.5rem 2rem 0.5rem !important;
+    margin: 1.5rem 0.5rem 2rem 0.5rem !important;
     padding: 0.3rem 1.25rem 1rem 1.25rem;
     min-height: 400px;
   }

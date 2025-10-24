@@ -48,9 +48,8 @@ const LCPHealthOverview: React.FC<Props> = ({ initialData, onNext, onBack, curre
 
   return (
     <LCPStepContainer title="Lifestyle Overview" currentStep={currentStep} totalSteps={totalSteps}>
-      {/* Help and Instructions - Both on same line */}
+      {/* Instructions Button */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
-        <QuickHelpBadge />
         <button
           type="button"
           onClick={() => setShowInstructions(true)}
@@ -158,10 +157,7 @@ const LCPHealthOverview: React.FC<Props> = ({ initialData, onNext, onBack, curre
       )}
 
       <form onSubmit={handleSubmit}>
-        <LCPSection
-          label="Do You Smoke?"
-          tooltip="Select whether you currently smoke or use any tobacco products. This information helps assess your overall health and longevity for structured settlement calculations."
-        >
+        <LCPSection label="Do You Smoke?">
           {SMOKE_OPTIONS.map((opt) => (
             <LCPButton
               key={opt}
@@ -174,10 +170,7 @@ const LCPHealthOverview: React.FC<Props> = ({ initialData, onNext, onBack, curre
           ))}
         </LCPSection>
 
-        <LCPSection
-          label="Health Profile"
-          tooltip="Rate your overall health status. 'Great' indicates excellent health, 'Normal' means average health, 'Fair' suggests some health concerns, and 'Below' indicates significant health issues that may affect life expectancy."
-        >
+        <LCPSection label="Health Profile">
           {HEALTH_OPTIONS.map((opt) => (
             <LCPButton
               key={opt}
@@ -190,10 +183,7 @@ const LCPHealthOverview: React.FC<Props> = ({ initialData, onNext, onBack, curre
           ))}
         </LCPSection>
 
-        <LCPSection
-          label="Cardiac Health"
-          tooltip="Describe your heart health condition. 'Normal' indicates no heart issues, 'Medicated' means you take medication for heart conditions, 'High' suggests significant cardiac concerns, and 'Unsure' if you're uncertain about your heart health status."
-        >
+        <LCPSection label="Cardiac Health">
           {CARDIAC_OPTIONS.map((opt) => (
             <LCPButton
               key={opt}

@@ -70,3 +70,5 @@ export const PAYMENT_FREQUENCY_MULTIPLIERS: Record<string, number> = {
   annually: 1
 };
 
+
+

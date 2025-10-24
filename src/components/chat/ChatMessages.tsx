@@ -159,8 +159,8 @@ const ChatMessages = () => {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        gap: 8,
-        padding: '16px',
+        gap: 20,
+        padding: '20px',
         paddingBottom: '32px', // Add extra bottom spacing to prevent sticking to input bar
         height: '100%', // Fill available space from CSS Grid parent
         overflow: 'visible' // Remove scrollbar, let parent handle layout

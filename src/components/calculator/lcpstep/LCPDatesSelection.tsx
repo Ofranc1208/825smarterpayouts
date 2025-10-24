@@ -117,9 +117,8 @@ const LCPDatesSelection: React.FC<Props> = ({ initialData, onNext, onBack, curre
 
   return (
     <LCPStepContainer title="Select Payment Date and Amount to be Exchanged for an Early Payout" currentStep={currentStep} totalSteps={totalSteps}>
-      {/* Help and Instructions - Both on same line */}
+      {/* Instructions Button */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
-        <QuickHelpBadge />
         <button
           type="button"
           onClick={() => setShowInstructions(true)}
@@ -227,10 +226,7 @@ const LCPDatesSelection: React.FC<Props> = ({ initialData, onNext, onBack, curre
       )}
 
       <form onSubmit={handleSubmit}>
-        <LCPSection
-          label="Payment Amount"
-          tooltip="Enter the amount of your future structured settlement payments that you would like to exchange for a lump sum. For example, if your monthly payments are $1,250, enter $1,250. This is the payment amount you want to convert into immediate cash today."
-        >
+        <LCPSection label="Payment Amount">
           <LCPFormInput
             type="text"
             value={amount}
@@ -241,10 +237,7 @@ const LCPDatesSelection: React.FC<Props> = ({ initialData, onNext, onBack, curre
           />
         </LCPSection>
 
-        <LCPSection
-          label="First Payment Date"
-          tooltip="When would you like to start exchanging your future payments for a lump sum? Select the date of the first payment you want to exchange. For example, if you want to start exchanging payments beginning March 1st, 2025, select 03/01/2025. Important: This date must be at least 3 months in the future from today to allow proper processing time."
-        >
+        <LCPSection label="First Payment Date">
           <LCPFormInput
             type="date"
             value={startDate}
@@ -253,10 +246,7 @@ const LCPDatesSelection: React.FC<Props> = ({ initialData, onNext, onBack, curre
           />
         </LCPSection>
 
-        <LCPSection
-          label="Last Payment Date"
-          tooltip="When would you like to stop exchanging your future payments? Select the date of the last payment you want to exchange for a lump sum. For example, if you want to exchange payments through December 31st, 2030, select 12/31/2030. All payments up to and including this date will be converted to a lump sum. After this date, your regular structured settlement payments will continue as scheduled."
-        >
+        <LCPSection label="Last Payment Date">
           <LCPFormInput
             type="date"
             value={endDate}

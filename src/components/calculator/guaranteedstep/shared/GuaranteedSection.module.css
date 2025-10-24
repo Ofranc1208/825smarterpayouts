@@ -52,25 +52,24 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
-  background: #e0f2fe;
-  color: #0369a1;
-  border: 1px solid #bae6fd;
+  width: 14px;
+  height: 14px;
+  background: transparent;
+  color: #9ca3af;
+  border: 1px solid #d1d5db;
   border-radius: 50%;
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 9px;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
   user-select: none;
   flex-shrink: 0;
 }
 
 .tooltipIcon:hover {
-  background: #0ea5e9;
-  color: white;
-  border-color: #0ea5e9;
-  transform: scale(1.1);
+  background: #f3f4f6;
+  color: #374151;
+  border-color: #9ca3af;
 }
 
 /* Tooltip container - Modern 2025 design - Bigger, bolder, easier to read */
@@ -166,10 +165,9 @@
   }
 
   .tooltipIcon {
-    width: 16px;
-    height: 16px;
-    line-height: 16px;
-    font-size: 11px;
+    width: 12px;
+    height: 12px;
+    font-size: 8px;
   }
 
   .tooltip {

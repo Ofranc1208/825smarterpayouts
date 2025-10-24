@@ -157,8 +157,8 @@ button, a, [role="button"], input, select, textarea {
 }
 
 /* Ensure links and buttons have proper touch targets (min 44x44px) */
-/* Only apply to buttons and interactive elements, not navigation links */
-button, [role="button"]:not(a) {
+/* Only apply to buttons and interactive elements, not navigation links or contact buttons */
+button:not([class*="contactBtn"]), [role="button"]:not(a):not([class*="contactBtn"]) {
   min-height: 44px;
   min-width: 44px;
   display: inline-flex;
