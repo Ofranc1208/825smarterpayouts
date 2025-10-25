@@ -28,15 +28,15 @@ const nextConfig = {
       exclude: ['error', 'warn'],
     } : false,
   },
-  // Deployment optimization
-  typescript: {
-    // Allow deployment with TypeScript errors (for quick deployment)
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    // Allow deployment with ESLint errors
-    ignoreDuringBuilds: true,
-  },
+  // Deployment optimization - Removed error-masking settings for production
+  // typescript: {
+  //   // Allow deployment with TypeScript errors (for quick deployment)
+  //   ignoreBuildErrors: true,
+  // },
+  // eslint: {
+  //   // Allow deployment with ESLint errors
+  //   ignoreDuringBuilds: true,
+  // },
   // Performance optimizations
   experimental: {
     optimizePackageImports: [
