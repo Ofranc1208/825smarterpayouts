@@ -41,7 +41,7 @@ export const ABOUT_US_STRUCTURED_DATA = {
     contactPoint: [
       {
         '@type': 'ContactPoint',
-        telephone: '+1-800-555-0123',
+        telephone: '+1-561-583-1280',
         contactType: 'Customer Service',
         availableLanguage: 'English',
         serviceArea: 'United States'

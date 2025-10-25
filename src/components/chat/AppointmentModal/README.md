@@ -45,7 +45,7 @@ const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 await sgMail.send({
-  to: 'contact@smarterpayouts.com',
+  to: 'info@smarterpayouts.com',
   from: 'appointments@smarterpayouts.com',
   subject: subject,
   text: emailBody,
@@ -71,7 +71,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 await resend.emails.send({
   from: 'appointments@smarterpayouts.com',
-  to: 'contact@smarterpayouts.com',
+  to: 'info@smarterpayouts.com',
   subject: subject,
   text: emailBody,
 });

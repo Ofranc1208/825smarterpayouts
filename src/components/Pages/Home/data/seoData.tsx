@@ -38,14 +38,14 @@ export const HOME_SEO_CONFIG: SEOConfiguration = {
       '@type': 'FinancialService',
       name: 'SmarterPayouts',
       url: 'https://smarterpayouts.com',
-      telephone: '+1-800-555-0123',
+      telephone: '+1-561-583-1280',
       email: 'info@smarterpayouts.com',
       address: {
         '@type': 'PostalAddress',
         streetAddress: '123 Financial Street',
-        addressLocality: 'New York',
-        addressRegion: 'NY',
-        postalCode: '10001',
+        addressLocality: 'Miami',
+        addressRegion: 'FL',
+        postalCode: '33101',
         addressCountry: 'US'
       },
       sameAs: [

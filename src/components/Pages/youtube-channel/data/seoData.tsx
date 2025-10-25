@@ -31,7 +31,7 @@ export const YOUTUBE_SEO_CONFIG: YouTubeSEOConfig = {
       ],
       contactPoint: {
         '@type': 'ContactPoint',
-        telephone: '+1-800-555-0123',
+        telephone: '+1-561-583-1280',
         contactType: 'Customer Service'
       }
     },

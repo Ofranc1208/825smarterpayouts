@@ -37,19 +37,19 @@ export const CONTACT_SEO_CONFIG: SEOConfiguration = {
     '@type': 'Organization',
     name: 'SmarterPayouts',
     url: 'https://smarterpayouts.com',
-    telephone: '+1-800-555-0123',
-    email: 'contact@smarterpayouts.com',
+    telephone: '+1-561-583-1280',
+    email: 'info@smarterpayouts.com',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '123 Settlement Street',
-      addressLocality: 'Financial District',
-      addressRegion: 'NY',
-      postalCode: '10001',
+      streetAddress: '123 Financial Street',
+      addressLocality: 'Miami',
+      addressRegion: 'FL',
+      postalCode: '33101',
       addressCountry: 'US'
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+1-800-555-0123',
+      telephone: '+1-561-583-1280',
       contactType: 'customer service',
       availableLanguage: 'English'
     }

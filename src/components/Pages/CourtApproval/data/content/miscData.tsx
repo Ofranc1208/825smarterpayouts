@@ -14,14 +14,12 @@ export const testimonialData: TestimonialData = {
 
 // Compliance Information
 export const complianceData: ComplianceInfo = {
-  badgeText: "Better Business Bureau A+ Rating",
+  badgeText: "Court Approved & Licensed",
   description: "Fully licensed and regulated structured settlement company",
-  link: "https://www.bbb.org/smarterpayouts",
+  link: "https://search.sunbiz.org/Inquiry/CorporationSearch/ByName",
   certifications: [
-    "Licensed in all 50 states",
-    "BBB A+ Rating",
-    "NSSTA Member",
-    "Bonded & Insured"
+    "100% No Personal Information Required",
+    "Court Approved"
   ]
 };
 

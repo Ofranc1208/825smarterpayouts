@@ -48,7 +48,6 @@ export const organizationSchema = {
     'https://x.com/smarterpayouts',
     'https://instagram.com/smarterpayouts',
     'https://linkedin.com/company/smarterpayouts',
-    'https://www.bbb.org/',
     'https://search.sunbiz.org/Inquiry/CorporationSearch/ByName'
   ]
 };

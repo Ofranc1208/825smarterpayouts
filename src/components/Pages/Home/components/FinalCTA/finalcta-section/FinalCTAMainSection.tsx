@@ -8,7 +8,7 @@ import { TrustIndicators } from '../finalcta-trust';
  * Main orchestrator for the Final CTA section, combining:
  * - Header (title and description)
  * - CTA buttons (primary and secondary)
- * - Trust indicators (security, BBB, licensing)
+ * - Trust indicators (security, licensing, compliance)
  * 
  * @component FinalCTAMainSection
  * @author SmarterPayouts Team

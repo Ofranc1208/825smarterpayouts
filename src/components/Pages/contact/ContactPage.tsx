@@ -83,23 +83,12 @@ export default function ContactPage({ className, style }: ContactPageProps) {
             margin: '0 auto',
             padding: '0 16px',
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-            gap: '3rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '2rem',
             alignItems: 'start'
           }}>
             <ContactForm onFormSubmit={handleFormSubmit} />
-            <div>
-              <h3 style={{
-                fontSize: "1.5rem",
-                fontWeight: "700",
-                color: "#1f2937",
-                marginBottom: "1.5rem",
-                textAlign: "center"
-              }}>
-                Other Ways to Reach Us
-              </h3>
-              <ContactInfo onCardClick={handleContactMethodClick} />
-            </div>
+            <ContactInfo onCardClick={handleContactMethodClick} />
           </div>
         </section>
 

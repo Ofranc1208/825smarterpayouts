@@ -24,7 +24,7 @@ export default function ContactCard({
   };
 
   return (
-    <div 
+    <div
       style={{
         background: "white",
         padding: "2rem",
@@ -33,7 +33,11 @@ export default function ContactCard({
         border: "1px solid #e5e7eb",
         textAlign: "center",
         transition: "all 0.2s ease",
-        cursor: "pointer"
+        cursor: "pointer",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between"
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.transform = "translateY(-4px)";
@@ -45,28 +49,31 @@ export default function ContactCard({
       }}
       onClick={handleClick}
     >
-      <div style={{
-        fontSize: "2.5rem",
-        marginBottom: "1rem"
-      }}>
-        {icon}
+      <div>
+        <div style={{
+          fontSize: "2.5rem",
+          marginBottom: "1rem"
+        }}>
+          {icon}
+        </div>
+        <h3 style={{
+          fontSize: "1.25rem",
+          fontWeight: "700",
+          color: "#1f2937",
+          marginBottom: "0.75rem"
+        }}>
+          {title}
+        </h3>
+        <p style={{
+          color: "#6b7280",
+          marginBottom: "1.5rem",
+          lineHeight: "1.5",
+          flex: 1
+        }}>
+          {description}
+        </p>
       </div>
-      <h3 style={{
-        fontSize: "1.25rem",
-        fontWeight: "700",
-        color: "#1f2937",
-        marginBottom: "0.75rem"
-      }}>
-        {title}
-      </h3>
-      <p style={{
-        color: "#6b7280",
-        marginBottom: "1.5rem",
-        lineHeight: "1.5"
-      }}>
-        {description}
-      </p>
-      <a 
+      <a
         href={actionLink}
         style={{
           color: "#059669",
@@ -74,12 +81,20 @@ export default function ContactCard({
           textDecoration: "none",
           fontSize: "0.875rem",
           textTransform: "uppercase",
-          letterSpacing: "0.5px"
+          letterSpacing: "0.5px",
+          display: "inline-block",
+          padding: "0.5rem 1rem",
+          borderRadius: "6px",
+          border: "1px solid #059669",
+          transition: "all 0.2s ease",
+          marginTop: "auto"
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.color = "#047857";
+          e.currentTarget.style.backgroundColor = "#059669";
+          e.currentTarget.style.color = "white";
         }}
         onMouseLeave={(e) => {
+          e.currentTarget.style.backgroundColor = "transparent";
           e.currentTarget.style.color = "#059669";
         }}
       >

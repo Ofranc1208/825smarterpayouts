@@ -7,7 +7,7 @@ export const CONTACT_METHODS: ContactMethod[] = [
     title: 'Call Us',
     description: 'Speak directly with our settlement experts. Available Monday-Friday, 9 AM - 6 PM EST.',
     actionText: 'Call Now',
-    actionLink: 'tel:+1-800-555-0123',
+    actionLink: 'tel:+1-561-583-1280',
     type: 'phone'
   },
   {
@@ -16,7 +16,7 @@ export const CONTACT_METHODS: ContactMethod[] = [
     title: 'Email Us',
     description: 'Send us your questions and we\'ll respond within 24 hours with personalized assistance.',
     actionText: 'Send Email',
-    actionLink: 'mailto:contact@smarterpayouts.com',
+    actionLink: 'mailto:info@smarterpayouts.com',
     type: 'email'
   },
   {
@@ -32,9 +32,9 @@ export const CONTACT_METHODS: ContactMethod[] = [
     id: 'location',
     icon: '📍',
     title: 'Visit Us',
-    description: 'Meet with our team in person at our headquarters for a comprehensive consultation.',
+    description: 'Meet with our team in person at our Florida headquarters for a comprehensive consultation.',
     actionText: 'Get Directions',
-    actionLink: 'https://maps.google.com',
+    actionLink: 'https://maps.google.com/maps?q=SmarterPayouts+Florida',
     type: 'location'
   }
 ];
@@ -67,8 +67,8 @@ export const FAQ_DATA: FAQItem[] = [
 ];
 
 export const CONTACT_INFO: ContactInfo = {
-  phone: '+1-800-555-0123',
-  email: 'contact@smarterpayouts.com',
+  phone: '+1-561-583-1280',
+  email: 'info@smarterpayouts.com',
   businessHours: {
     weekdays: 'Monday - Friday',
     hours: '9:00 AM - 6:00 PM',
@@ -78,9 +78,9 @@ export const CONTACT_INFO: ContactInfo = {
 };
 
 export const COMPANY_ADDRESS: CompanyAddress = {
-  street: '123 Settlement Street',
-  city: 'Financial District',
-  state: 'NY',
-  zip: '10001',
+  street: '123 Financial Street',
+  city: 'Miami',
+  state: 'FL',
+  zip: '33101',
   country: 'US'
 };

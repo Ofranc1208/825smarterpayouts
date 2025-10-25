@@ -1,7 +1,7 @@
 /**
  * Trust Indicators Component
  * 
- * Displays trust indicators like security, BBB accreditation, and licensing info.
+ * Displays trust indicators like security, licensing, and compliance info.
  * 
  * @component TrustIndicators
  * @author SmarterPayouts Team
@@ -26,16 +26,6 @@ export default function TrustIndicators() {
       }}>
         <span>🔒</span>
         <span>Secure & Confidential</span>
-      </div>
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px',
-        color: 'rgba(255, 255, 255, 0.7)',
-        fontSize: '0.875rem'
-      }}>
-        <span>⭐</span>
-        <span>BBB Accredited</span>
       </div>
       <div style={{
         display: 'flex',

@@ -2,7 +2,7 @@
 
 export const HOME_CONSTANTS = {
   COMPANY_NAME: 'SmarterPayouts',
-  PHONE: '+1-800-555-0123',
+  PHONE: '+1-561-583-1280',
   EMAIL: 'info@smarterpayouts.com',
   BUSINESS_HOURS: {
     WEEKDAYS: 'Monday - Friday',

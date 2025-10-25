@@ -3,7 +3,6 @@
 // Includes all static pages with proper priority and change frequency
 
 import { MetadataRoute } from 'next';
-import { getStateLawsSitemapEntries, getCountySitemapEntries } from './state-laws/sitemap';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://smarterpayouts.com';
@@ -26,6 +25,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // ============================================================================
     {
       url: `${baseUrl}/main`,
+      lastModified: currentDate,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/mint-intelligent-chat`,
+      lastModified: currentDate,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/mint-intelligent-chat`,
+      lastModified: currentDate,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/mint-intelligent-chat`,
       lastModified: currentDate,
       changeFrequency: 'daily',
       priority: 0.9,
@@ -283,11 +300,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     },
   ];
-
-  // Add state laws entries to main sitemap
-  const stateLawsEntries = getStateLawsSitemapEntries();
-  const countyEntries = getCountySitemapEntries();
-  routes.push(...stateLawsEntries, ...countyEntries);
 
   return routes;
 }

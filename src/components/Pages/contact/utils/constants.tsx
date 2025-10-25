@@ -1,8 +1,8 @@
 'use client';
 
 export const CONTACT_CONSTANTS = {
-  PHONE: '+1-800-555-0123',
-  EMAIL: 'contact@smarterpayouts.com',
+  PHONE: '+1-561-583-1280',
+  EMAIL: 'info@smarterpayouts.com',
   BUSINESS_HOURS: {
     WEEKDAYS: 'Monday - Friday',
     HOURS: '9:00 AM - 6:00 PM',

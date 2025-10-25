@@ -64,7 +64,7 @@ const CommonMistakes: React.FC = () => {
       title: "Working with Unlicensed Companies",
       cost: "Fraud, excessive fees, poor service",
       why: "Unlicensed buyers can disappear. Predatory companies charge hidden fees.",
-      solution: "Verify licensing with state. Check BBB ratings. Never pay upfront fees."
+      solution: "Verify licensing with state. Check company reviews and ratings. Never pay upfront fees."
     },
     {
       title: "Not Having a Financial Plan",
@@ -304,7 +304,7 @@ const CommonMistakes: React.FC = () => {
                 'Explore all alternatives first',
                 'Consult CPA about taxes',
                 'Verify company licensing',
-                'Check BBB ratings and reviews',
+                'Check company ratings and reviews',
                 'Read all contracts carefully',
                 'Create financial plan for lump sum',
                 'Prepare court approval docs',

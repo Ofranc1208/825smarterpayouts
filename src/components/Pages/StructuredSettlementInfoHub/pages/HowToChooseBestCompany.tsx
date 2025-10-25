@@ -25,12 +25,12 @@ const HowToChooseBestCompany: React.FC = () => {
   ]);
 
   const criteria = [
-    { title: "Licensing & Accreditation", desc: "Must be licensed in your state with proper insurance and BBB A+ rating" },
+    { title: "Licensing & Accreditation", desc: "Must be licensed in your state with proper insurance and state registration" },
     { title: "Competitive Discount Rates", desc: "Rates should be 8-12%. Get quotes from 3-5 companies to compare" },
     { title: "Experience & Track Record", desc: "At least 5-10 years in business with hundreds of completed transactions" },
     { title: "Transparent Pricing", desc: "All fees, costs, and terms disclosed upfront in writing with no hidden charges" },
     { title: "Direct Funding Capability", desc: "Company funds directly, not a broker. Eliminates 2-4% middleman markup" },
-    { title: "Customer Reviews", desc: "Consistently positive reviews on BBB, Google, Trustpilot showing good service" },
+    { title: "Customer Reviews", desc: "Consistently positive reviews on Google, Trustpilot, and industry platforms showing good service" },
     { title: "Responsive Communication", desc: "Quick responses, knowledgeable staff, clear explanations during process" },
     { title: "Legal & Court Support", desc: "Handles all court filings with 90%+ approval rate. Knows what judges want" },
     { title: "Flexible Options", desc: "Willing to buy partial payments (3-5 years) not just full settlements" },

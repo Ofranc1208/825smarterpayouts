@@ -33,15 +33,6 @@ interface Credential {
  */
 const credentials: Credential[] = [
   {
-    title: 'Better Business Bureau',
-    description: 'SmarterPayouts is listed with the BBB under their free verification program. While we do not pay for accreditation, our registration allows customers to verify our identity and view public feedback.',
-    link: 'https://www.bbb.org/',
-    linkText: 'Verify on BBB',
-    color: '#fbbf24',
-    accentColor: '#f59e0b',
-    icon: '🏆'
-  },
-  {
     title: 'Florida Corporation Registration',
     description: 'SmarterPayouts is a fully registered legal entity in the State of Florida. This official record verifies our legal standing and corporate identity.',
     link: 'https://search.sunbiz.org/Inquiry/CorporationSearch/ByName',

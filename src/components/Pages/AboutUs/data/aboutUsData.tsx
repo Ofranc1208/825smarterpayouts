@@ -192,13 +192,6 @@ export const AWARDS_RECOGNITION = [
     year: '2022',
     description: 'Outstanding achievement in financial technology'
   },
-  {
-    id: 'ethical-business',
-    title: 'Ethical Business Practices',
-    organization: 'Better Business Bureau',
-    year: '2022',
-    description: 'A+ rating for ethical business practices and customer service'
-  }
 ] as const;
 
 // Compliance & Certifications
@@ -237,13 +230,13 @@ export const COMPLIANCE_CERTIFICATIONS = [
 export const ABOUT_US_CONSTANTS = {
   COMPANY_NAME: 'SmarterPayouts',
   TAGLINE: 'Your Trusted Settlement Partner',
-  PHONE: '+1-800-555-0123',
+  PHONE: '+1-561-583-1280',
   EMAIL: 'info@smarterpayouts.com',
   ADDRESS: {
     street: '123 Financial Street',
-    city: 'New York',
-    state: 'NY',
-    zip: '10001',
+    city: 'Miami',
+    state: 'FL',
+    zip: '33101',
     country: 'United States'
   },
   SOCIAL_MEDIA: {

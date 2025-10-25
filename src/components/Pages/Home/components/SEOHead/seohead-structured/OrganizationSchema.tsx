@@ -24,7 +24,6 @@ export default function OrganizationSchema() {
       }
     ],
     "sameAs": [
-      "https://www.bbb.org/",
       "https://search.sunbiz.org/Inquiry/CorporationSearch/ByName"
     ]
   };

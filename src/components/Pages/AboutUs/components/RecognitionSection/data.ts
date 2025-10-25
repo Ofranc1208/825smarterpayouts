@@ -17,13 +17,6 @@ import type { Recognition } from '../../types';
  */
 export const RECOGNITION_ITEMS: Recognition[] = [
   {
-    title: "BBB Accredited Business",
-    description: "Committed to trust and transparency since 2017",
-    icon: "🏆",
-    type: "accreditation",
-    link: "https://www.bbb.org/us/fl/smarterpayouts"
-  },
-  {
     title: "Florida State Licensed",
     description: "Registered with SunBiz Corporation Search",
     icon: "📜",

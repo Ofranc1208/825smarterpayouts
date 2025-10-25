@@ -18,7 +18,7 @@ export default function StatisticsGrid() {
     { value: '400+', label: 'Happy Clients', linkUrl: '/testimonials' },
     { value: '$50M+', label: 'Payments Bought', linkUrl: '/about' },
     { value: '35-55', label: 'Days Average', linkUrl: '/how-fast-can-i-get-my-money' },
-    { value: 'BBB', label: 'Registered', linkUrl: '/credentials' }
+    { value: '100%', label: 'Client Satisfaction', linkUrl: '/testimonials' }
   ];
 
   return (

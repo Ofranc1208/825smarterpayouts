@@ -43,7 +43,7 @@ const trustIndicators: TrustIndicator[] = [
   {
     icon: '🏆',
     title: 'Verified & Trusted',
-    description: 'BBB registered and Florida corporation with full legal standing.',
+    description: 'Florida corporation with full legal standing and transparent operations.',
     gradient: 'linear-gradient(135deg, #059669, #047857)'
   }
 ];
