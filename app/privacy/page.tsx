@@ -11,6 +11,10 @@ export const metadata = {
   title: 'Privacy Policy | SmarterPayouts',
   description: 'Learn how SmarterPayouts protects your privacy and handles your information. Transparent, secure, and user-focused policies.',
   keywords: 'privacy policy, data protection, information security, user privacy, GDPR compliance, data handling',
+  alternates: {
+    canonical: 'https://smarterpayouts.com/privacy',
+  },
+  robots: 'index, follow',
   openGraph: {
     title: 'Privacy Policy | SmarterPayouts',
     description: 'Learn how SmarterPayouts protects your privacy and handles your information. Transparent, secure, and user-focused policies.',

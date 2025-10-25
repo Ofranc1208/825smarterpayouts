@@ -17,11 +17,15 @@ export const metadata = {
   title: 'Get Your Cash Your Way | Choose Your Payment Method | SmarterPayouts',
   description: 'Choose how you receive your structured settlement funds. Direct deposit, certified check, or in-person delivery. Fast, secure, and always on your terms.',
   keywords: 'payment methods, direct deposit, structured settlement payout, fast cash, secure payment, certified check',
+  alternates: {
+    canonical: 'https://smarterpayouts.com/get-your-cash',
+  },
+  robots: 'index, follow',
   openGraph: {
     title: 'Get Your Cash Your Way | Choose Your Payment Method | SmarterPayouts',
     description: 'Choose how you receive your structured settlement funds. Fast, secure, and always on your terms.',
-    type: 'article',
     url: 'https://smarterpayouts.com/get-your-cash',
+    type: 'article',
   }
 };
 

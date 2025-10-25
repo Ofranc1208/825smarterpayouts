@@ -5,7 +5,7 @@ import { allStates, allStateCounties, getCountySlugsByState } from '@/src/state-
 import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.smarterpayouts.com';
+  const baseUrl = 'https://smarterpayouts.com';
   const currentDate = new Date();
 
   // Base state laws index page
@@ -45,7 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
 // Export for use in main sitemap if needed
 export function getStateLawsSitemapEntries(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.smarterpayouts.com';
+  const baseUrl = 'https://smarterpayouts.com';
   const currentDate = new Date();
 
   return Object.values(allStates).map(state => ({
@@ -58,7 +58,7 @@ export function getStateLawsSitemapEntries(): MetadataRoute.Sitemap {
 
 // Export county sitemap entries separately
 export function getCountySitemapEntries(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.smarterpayouts.com';
+  const baseUrl = 'https://smarterpayouts.com';
   const currentDate = new Date();
 
   const countyEntries: MetadataRoute.Sitemap = [];

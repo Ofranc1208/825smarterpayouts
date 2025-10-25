@@ -20,6 +20,10 @@ export const metadata = {
   title: 'Get Instant Structured Settlement Quote | No Personal Info Required | SmarterPayouts',
   description: 'Get your free structured settlement quote in 60 seconds. No personal information, no credit checks, no pressure. AI-powered calculator provides instant accurate offers.',
   keywords: 'structured settlement quote, instant quote, no personal info, free quote, settlement calculator, cash offer, no credit check',
+  alternates: {
+    canonical: 'https://smarterpayouts.com/get-a-quote',
+  },
+  robots: 'index, follow',
   openGraph: {
     title: 'Get Instant Structured Settlement Quote | No Personal Info Required',
     description: 'Get your free structured settlement quote in 60 seconds. No personal information, no credit checks, no pressure.',

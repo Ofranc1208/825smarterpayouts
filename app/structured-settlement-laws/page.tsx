@@ -7,6 +7,9 @@ import SettlementLawfederalPage from '../../src/components/Pages/SettlementLawfe
 export const metadata: Metadata = {
   title: 'Structured Settlement Federal Law | SmarterPayouts',
   description: 'Learn about the key federal laws, tax rules, and court approval process governing structured settlements in the United States.',
+  alternates: {
+    canonical: 'https://smarterpayouts.com/structured-settlement-laws',
+  },
   robots: 'index, follow',
 };
 

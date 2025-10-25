@@ -38,17 +38,17 @@ export function generateMetadata({ params }: Props): Metadata {
       'state transfer requirements'
     ],
     alternates: {
-      canonical: `/state-laws/${data.slug}`
+      canonical: `https://smarterpayouts.com/state-laws/${data.slug}`
     },
     openGraph: {
       title: `Structured Settlement Laws in ${name}`,
       description,
-      url: `/state-laws/${data.slug}`,
+      url: `https://smarterpayouts.com/state-laws/${data.slug}`,
       type: 'article',
       siteName: 'SmarterPayouts',
       images: [
         {
-          url: '/og-state-laws.jpg',
+          url: 'https://smarterpayouts.com/og-state-laws.jpg',
           width: 1200,
           height: 630,
           alt: `Structured Settlement Laws in ${name}`

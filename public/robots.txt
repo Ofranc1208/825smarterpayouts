@@ -6,10 +6,28 @@ Allow: /
 
 # Block Next.js internal and irrelevant paths
 Disallow: /api/
-Disallow: /_next/
+Disallow: /_next/static/chunks/
+Disallow: /_next/static/css/
+Disallow: /_next/static/js/
+Disallow: /_next/static/webpack/
 Disallow: /static/
 Disallow: /server/
 Disallow: /private/
+
+# Allow essential static assets (fonts, images, etc.)
+Allow: /_next/static/media/
+Allow: /*.woff2
+Allow: /*.woff
+Allow: /*.ttf
+Allow: /*.eot
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.png
+Allow: /*.gif
+Allow: /*.webp
+Allow: /*.svg
+Allow: /*.ico
+Allow: /*.pdf
 
 # Block admin and testing pages from search engines
 Disallow: /admin/
@@ -29,4 +47,4 @@ Sitemap: https://smarterpayouts.com/sitemap.xml
 Sitemap: https://smarterpayouts.com/state-laws/sitemap.xml
 
 # Crawl-delay (optional, adjust if needed)
-# Crawl-delay: 1 
+Crawl-delay: 1 

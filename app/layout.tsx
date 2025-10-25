@@ -64,6 +64,9 @@ export default function RootLayout({
         <link rel="icon" href="/favicon_without_text.ico" type="image/x-icon" />
         <link rel="shortcut icon" href="/favicon_without_text.ico" type="image/x-icon" />
 
+        {/* Canonical URL - Global fallback for pages without explicit canonical URLs */}
+        <link rel="canonical" href="https://smarterpayouts.com" />
+
         {/* Hreflang for language targeting - Global fallback */}
         <link rel="alternate" hrefLang="en" href="https://smarterpayouts.com" />
         <link rel="alternate" hrefLang="en-US" href="https://smarterpayouts.com" />
