@@ -61,12 +61,7 @@
       "permanent": true
     }
   ],
-  "rewrites": [
-    {
-      "source": "/sitemap.xml",
-      "destination": "/api/sitemap.xml"
-    }
-  ],
+  "rewrites": [],
   "cleanUrls": true,
   "trailingSlash": false,
   "github": {
