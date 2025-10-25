@@ -202,7 +202,7 @@ export const PRELOAD_LINKS = [
   },
   {
     rel: 'preload',
-    href: '/images/mint-ai-avatar.png',
+    href: '/assets/images/mint-mascot.png',
     as: 'image',
     type: 'image/png'
   },

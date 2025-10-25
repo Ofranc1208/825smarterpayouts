@@ -1,10 +1,5 @@
-"use client";
+import { redirect } from 'next/navigation';
 
-import React from 'react';
-import { StepperContent } from '../../../src/components/calculator/lcpstep/stepper';
-
-const LCPCalculatorPage: React.FC = () => {
-  return <StepperContent />;
-};
-
-export default LCPCalculatorPage; 
+export default function LCPCalculatorPage() {
+  redirect('/mint-intelligent-chat');
+} 

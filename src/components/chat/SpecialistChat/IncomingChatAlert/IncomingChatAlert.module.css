@@ -226,6 +226,13 @@
   font-size: 12px;
   font-weight: 600;
   color: #6b7280;
+  display: flex;
+  align-items: center;
+}
+
+.contextSender img {
+  border-radius: 2px;
+  vertical-align: middle;
 }
 
 .contextText {

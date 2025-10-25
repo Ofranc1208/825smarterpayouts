@@ -233,6 +233,6 @@ export const MINT_CHAT_CONSTANTS = {
   SESSION_TIMEOUT: 30 * 60 * 1000, // 30 minutes
   RECONNECT_ATTEMPTS: 3,
   RECONNECT_DELAY: 2000,
-  DEFAULT_AVATAR: '/images/mint-ai-avatar.png',
-  USER_AVATAR: '/images/user-avatar.png'
+  DEFAULT_AVATAR: '/assets/images/mint-mascot.png',
+  USER_AVATAR: '/assets/images/user-avatar.png'
 } as const;

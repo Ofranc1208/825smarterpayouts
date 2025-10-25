@@ -216,7 +216,24 @@ export const IncomingChatAlert: React.FC<IncomingChatAlertProps> = ({
               {session.context.botTranscript.slice(-3).map((msg: any, idx: number) => (
                 <div key={idx} className={styles.contextMessage}>
                   <span className={styles.contextSender}>
-                    {msg.sender === 'user' ? '👤 Customer' : '🤖 Mint AI'}:
+                    {msg.sender === 'user' ? (
+                      <>
+                        <span style={{ fontSize: '14px', marginRight: '4px' }}>👤</span> Customer
+                      </>
+                    ) : (
+                      <>
+                        <img
+                          src="/assets/images/mint-mascot.png"
+                          alt="Mint AI"
+                          style={{
+                            width: '16px',
+                            height: '16px',
+                            marginRight: '4px'
+                          }}
+                        />
+                        Mint AI
+                      </>
+                    )}:
                   </span>
                   <span className={styles.contextText}>{msg.content}</span>
                 </div>

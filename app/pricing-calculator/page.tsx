@@ -1,2 +1,5 @@
-// Direct export from page/index to eliminate wrapper
-export { metadata, default } from './page/index';
+import { redirect } from 'next/navigation';
+
+export default function PricingCalculatorPage() {
+  redirect('/mint-intelligent-chat');
+}
