@@ -45,34 +45,10 @@ coverage/
 tmp/
 temp/
 
-# Cache
-.cache/
+# Firebase Admin Key Files (sensitive)
+serviceAccountKey.json
+smarterwebsite-3d25d-firebase-adminsdk-*.json
 
-# Firebase
-firebase-debug.log
-.firebaserc
-
-# Testing
-coverage/
-.nyc_output/
-
-# Miscellaneous
-*.tgz
-*.tar.gz
-
-# Editor directories and files
-*.swp
-*.swo
-*~
-
-# Local Netlify folder
-.netlify
-
-# Functions
-functions/node_modules/
-functions/.next/
-functions/dist/
-
-# Vercel Functions
-api/_*
-.vercel
+# Package manager files
+package-lock.json
+yarn.lock

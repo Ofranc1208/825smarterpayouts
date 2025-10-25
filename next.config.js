@@ -28,15 +28,7 @@ const nextConfig = {
       exclude: ['error', 'warn'],
     } : false,
   },
-  // Deployment optimization - Removed error-masking settings for production
-  // typescript: {
-  //   // Allow deployment with TypeScript errors (for quick deployment)
-  //   ignoreBuildErrors: true,
-  // },
-  // eslint: {
-  //   // Allow deployment with ESLint errors
-  //   ignoreDuringBuilds: true,
-  // },
+  // Deployment optimization - Removed problematic settings that mask build errors
   // Performance optimizations
   experimental: {
     optimizePackageImports: [

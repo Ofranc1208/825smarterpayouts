@@ -48,12 +48,12 @@ export function generateMetadata({ params }: Props): Metadata {
       'county court requirements'
     ],
     alternates: {
-      canonical: `https://smarterpayouts.com/state-laws/${stateInfo.slug}/${countyData.slug}`
+      canonical: `/state-laws/${stateInfo.slug}/${countyData.slug}`
     },
     openGraph: {
       title: `Structured Settlement Laws in ${stateName} - ${countyData.court.name}`,
       description,
-      url: `https://smarterpayouts.com/state-laws/${stateInfo.slug}/${countyData.slug}`,
+      url: `/state-laws/${stateInfo.slug}/${countyData.slug}`,
       type: 'article',
       siteName: 'SmarterPayouts'
     },
