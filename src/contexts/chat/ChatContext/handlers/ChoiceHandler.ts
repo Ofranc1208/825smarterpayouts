@@ -29,22 +29,34 @@ const generateUniqueId = () => {
 export class ChoiceHandler {
   constructor(private deps: ChoiceHandlerDependencies) {}
 
+  /**
+   * Main choice router - intelligently routes between internal flows and GPT passthrough
+   * 
+   * Internal flows (pre-scripted): 'Our Process', 'New Quote'
+   * GPT passthrough (direct AI): Everything else (specific questions, suggestions)
+   */
   async handleChoice(choiceText: string): Promise<void> {
-    switch (choiceText) {
-      case 'Our Process':
-        await this.handleOurProcessChoice();
-        break;
+    console.log('[ChoiceHandler] Routing choice:', choiceText);
 
-      case 'General Questions':
-        await this.handleGeneralQuestionsChoice(choiceText);
-        break;
+    // Define choices that use internal flows (pre-scripted responses)
+    const internalFlowChoices = ['Our Process', 'New Quote'];
+    
+    if (internalFlowChoices.includes(choiceText)) {
+      // Route to internal flow handlers
+      switch (choiceText) {
+        case 'Our Process':
+          await this.handleOurProcessChoice();
+          break;
 
-      case 'New Quote':
-        await this.handleNewQuoteChoice();
-        break;
-
-      default:
-        console.log('Unhandled choice:', choiceText);
+        case 'New Quote':
+          await this.handleNewQuoteChoice();
+          break;
+      }
+    } else {
+      // Pass all other choices directly to GPT for intelligent responses
+      // This includes: 'General Questions', 'Why work with SmarterPayouts?', etc.
+      console.log('[ChoiceHandler] Passing to GPT for direct response:', choiceText);
+      await this.handleGPTPassthrough(choiceText);
     }
   }
 
@@ -121,13 +133,30 @@ export class ChoiceHandler {
     setVisibleMessages(prev => [...prev, contactOptionsMessage]);
   }
 
-  private async handleGeneralQuestionsChoice(choiceText: string): Promise<void> {
+  /**
+   * GPT Passthrough Handler - Forwards exact question text to AI
+   * 
+   * This method passes the original question directly to GPT without modification,
+   * allowing the AI to use its DIRECT RESPONSES for exact matches.
+   * 
+   * Examples:
+   * - "Why work with SmarterPayouts?" → AI uses direct response
+   * - "How fast can I get my money?" → AI uses direct response
+   * - "General Questions" → AI provides helpful conversational response
+   */
+  private async handleGPTPassthrough(choiceText: string): Promise<void> {
     const { advanceConversation } = this.deps;
+    
+    console.log('[ChoiceHandler] GPT Passthrough - Original question:', choiceText);
+    
+    // Pass the exact question text as both user message and bot confirmation
+    // This ensures the AI receives the exact question and can match it to DIRECT RESPONSES
     await advanceConversation({
       userMessageText: choiceText,
-      botConfirmationText: "I'm here to help with any questions you have about structured settlements, selling your payments, or our services. What would you like to know?"
+      botConfirmationText: choiceText // Pass through the exact question
     });
-    // Start general conversation mode - let the AI handle the rest
+    
+    console.log('[ChoiceHandler] ✅ Question forwarded to GPT for direct response');
   }
 
   private async handleNewQuoteChoice(): Promise<void> {

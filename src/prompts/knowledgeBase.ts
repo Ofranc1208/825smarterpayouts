@@ -30,6 +30,15 @@ SmarterPayouts is the industry's first structured settlement company that helps 
 - **Fast Funding:** 2-5 business days after court approval (industry-leading speed)
 - **Personalized Service:** Small company means you get individual attention, not call center treatment
 
+**Company Statistics (2025):**
+- **Happy Clients Served:** 400+
+- **Future Payments Purchased:** $50M+
+- **Average Customer Rating:** 4.9/5 stars
+- **Processing Time:** 15-50 days (court-dependent)
+- **States Licensed:** All 50 states
+- **Response Time:** Under 24 hours
+- **Founded:** 2015
+
 ## Payment Types We Handle
 
 We handle two main types of structured settlement payments:

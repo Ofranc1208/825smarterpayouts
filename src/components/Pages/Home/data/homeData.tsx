@@ -59,14 +59,14 @@ export const FEATURE_CARDS: FeatureCard[] = [
 export const STATISTICS: StatisticData[] = [
   {
     id: 'customers-served',
-    value: '10,000+',
-    label: 'Customers Served',
+    value: '400+',
+    label: 'Happy Clients',
     description: 'Satisfied clients who got cash for their settlements'
   },
   {
     id: 'total-funded',
-    value: '$500M+',
-    label: 'Total Funded',
+    value: '$50M+',
+    label: 'Future Payments Bought',
     description: 'In structured settlement purchases'
   },
   {

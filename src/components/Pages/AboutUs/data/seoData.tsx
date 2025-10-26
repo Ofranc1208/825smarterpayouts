@@ -112,7 +112,7 @@ export const ABOUT_US_STRUCTURED_DATA = {
         name: 'How many customers has SmarterPayouts served?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'We have successfully served over 10,000 customers and facilitated more than $500 million in payouts.'
+          text: 'We have successfully served over 400 clients and facilitated more than $50 million in future payment purchases.'
         }
       },
       {

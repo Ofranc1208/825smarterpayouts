@@ -57,6 +57,10 @@ function AppProvidersContent({ children, mode }: { children: ReactNode; mode?: '
     }
   }, [visibleMessages, sessionId]);
 
+  // 🎯 Development Integration - Knowledge Indexer (Server-side API calls)
+  // File watching is handled server-side only to avoid Next.js bundling issues
+  // Use the API endpoint /api/file-watcher to trigger operations
+
   // Function to log user choices as messages in chat
   const logUserChoiceAsMessage = useCallback((text: string) => {
     const userChoiceMessage: TextMessage = {

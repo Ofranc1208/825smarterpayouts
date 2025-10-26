@@ -3,7 +3,7 @@ import { SEOConfiguration } from '../types';
 export const HOME_SEO_CONFIG: SEOConfiguration = {
   metadata: {
     title: 'SmarterPayouts - Get Cash for Your Structured Settlement | Free Quote',
-    description: 'Turn your structured settlement into cash today with SmarterPayouts. Get a free quote in minutes, transparent pricing, and cash in as little as 30 days. Trusted by 10,000+ customers.',
+    description: 'Turn your structured settlement into cash today with SmarterPayouts. Get a free quote in minutes, transparent pricing, and cash in as little as 30 days. Trusted by 400+ happy clients.',
     keywords: 'structured settlement, cash for settlement, sell structured settlement, settlement buyer, structured settlement company, cash advance, settlement funding',
     canonicalUrl: 'https://smarterpayouts.com',
     imageUrl: 'https://smarterpayouts.com/images/home-og-image.jpg',
@@ -28,7 +28,7 @@ export const HOME_SEO_CONFIG: SEOConfiguration = {
     card: 'summary_large_image',
     site: '@smarterpayouts',
     title: 'Get Cash for Your Structured Settlement - SmarterPayouts',
-    description: 'Free quotes, transparent pricing, cash in 30 days. Trusted by 10,000+ customers.',
+    description: 'Free quotes, transparent pricing, cash in 30 days. Trusted by 400+ happy clients.',
     image: 'https://smarterpayouts.com/images/home-twitter-card.jpg',
     imageAlt: 'SmarterPayouts Homepage'
   },

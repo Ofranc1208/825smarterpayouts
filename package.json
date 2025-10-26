@@ -26,13 +26,17 @@
     "deploy:staging": "vercel --prod=false",
     "deploy:production": "vercel --prod",
     "deploy:preview": "vercel",
-    "health-check": "curl -f $VERCEL_URL/api/health || exit 1"
+    "health-check": "curl -f $VERCEL_URL/api/health || exit 1",
+    "index-knowledge": "node scripts/indexKnowledge.js",
+    "dev-watcher": "tsx scripts/devWatcher.ts",
+    "start-file-watcher": "tsx scripts/devWatcher.ts"
   },
   "dependencies": {
     "@types/nodemailer": "^7.0.2",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
     "axios": "^1.9.0",
+    "chokidar": "^4.0.3",
     "date-fns": "^4.1.0",
     "firebase": "^11.8.1",
     "next": "^14.2.29",
@@ -57,6 +61,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
+    "@types/chokidar": "^1.7.5",
     "@types/jest": "^30.0.0",
     "@types/node": "^20.11.19",
     "@types/react": "^18.2.57",
@@ -78,6 +83,7 @@
     "purgecss": "^6.0.0",
     "tailwindcss": "^3.4.1",
     "ts-jest": "^29.4.1",
+    "tsx": "^4.20.6",
     "typescript": "^5.3.3",
     "web-vitals": "^3.5.2"
   }

@@ -6,8 +6,8 @@ export const COMPANY_OVERVIEW = {
   founded: '2015',
   headquarters: 'New York, NY',
   employees: '150+',
-  customersServed: '10,000+',
-  totalPayouts: '$500M+',
+  customersServed: '400+',
+  totalPayouts: '$50M+',
   averageRating: '4.9/5',
   responseTime: '< 24 hours',
   processingTime: '30-45 days',
@@ -31,16 +31,16 @@ export const MISSION_VISION = {
 export const KEY_STATISTICS = [
   {
     id: 'customers-served',
-    value: '10,000+',
-    label: 'Customers Served',
-    description: 'Satisfied customers who have accessed their settlement funds',
+    value: '400+',
+    label: 'Happy Clients',
+    description: 'Satisfied clients who have accessed their settlement funds',
     icon: '👥'
   },
   {
     id: 'total-payouts',
-    value: '$500M+',
-    label: 'Total Payouts',
-    description: 'Total amount paid to customers since inception',
+    value: '$50M+',
+    label: 'Future Payments Bought',
+    description: 'Total value of future payments purchased since inception',
     icon: '💰'
   },
   {
