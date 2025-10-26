@@ -110,7 +110,7 @@ export function CategoryFilterSection({
           </div>
           <div style={styles.resultCounter}>
             <p style={styles.counterText}>
-              📊 Showing {resultCount} of {totalCount} questions
+              📊 Showing {resultCount} of {totalCount} categories
             </p>
           </div>
         </div>
