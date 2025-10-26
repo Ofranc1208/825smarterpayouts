@@ -18,31 +18,43 @@ export class TextMessageProcessor {
   async processTextMessage(message: string, newUserMessage: TextMessage): Promise<void> {
     const { fetchIntent, snapshot } = this.config;
 
-    const intentResult = snapshot 
-      ? await fetchIntent(snapshot, message) 
-      : { intent: 'AMBIGUOUS', value: message };
+    // Check if we're in a form flow that needs intent classification
+    const isInFormFlow = snapshot && snapshot.stepId && snapshot.question;
 
-    switch (intentResult.intent) {
-      case 'FORM_ANSWER':
-        // Let the stepper components handle the form logic
-        break;
+    if (isInFormFlow) {
+      // Only use intent classification when actively in a form step
+      const intentResult = await fetchIntent(snapshot, message);
 
-      case 'ASK_QUESTION':
-        await this.handleQuestionIntent(newUserMessage);
-        break;
+      switch (intentResult.intent) {
+        case 'FORM_ANSWER':
+          // Let the stepper components handle the form logic
+          break;
 
-      case 'SPEAK_TO_AGENT':
-        await this.handleAgentRequest();
-        break;
+        case 'ASK_QUESTION':
+          await this.handleConversationalResponse(newUserMessage);
+          break;
 
-      case 'AMBIGUOUS':
-      default:
-        await this.handleAmbiguousIntent();
-        break;
+        case 'SPEAK_TO_AGENT':
+          await this.handleAgentRequest();
+          break;
+
+        case 'AMBIGUOUS':
+        default:
+          await this.handleConversationalResponse(newUserMessage);
+          break;
+      }
+    } else {
+      // Not in a form flow - handle as natural conversation
+      // Let GPT handle the conversation naturally with enhanced prompt
+      await this.handleConversationalResponse(newUserMessage);
     }
   }
 
-  private async handleQuestionIntent(userMessage: TextMessage): Promise<void> {
+  /**
+   * Unified conversational response handler
+   * Lets GPT handle the conversation naturally with enhanced prompt
+   */
+  private async handleConversationalResponse(userMessage: TextMessage): Promise<void> {
     const { processMessageWithGPT, setVisibleMessages, setIsTyping, setIsLoading, currentStep, triggerReprompt } = this.config;
 
     const botMsgId = generateUniqueId();
@@ -86,42 +98,5 @@ export class TextMessageProcessor {
         sender: 'bot',
       }
     ]);
-  }
-
-  private async handleAmbiguousIntent(): Promise<void> {
-    const { processMessageWithGPT, setVisibleMessages, setIsTyping, setIsLoading, currentStep, triggerReprompt } = this.config;
-
-    const botMsgId = generateUniqueId();
-    let isFirstChunk = true;
-
-    await processMessageWithGPT({
-      userMessage: {
-        id: generateUniqueId(),
-        type: 'text',
-        text: "I'm not quite sure I understand. Could you please rephrase?",
-        sender: 'user',
-      },
-      onStream: (partialText: string) => {
-        if (isFirstChunk) {
-          setIsTyping(false);
-          setVisibleMessages(prev => [
-            ...prev,
-            { id: botMsgId, type: 'text', text: partialText, sender: 'bot' }
-          ]);
-          isFirstChunk = false;
-        } else {
-          setVisibleMessages(prev => prev.map(m => 
-            m.id === botMsgId ? { ...m, text: partialText } : m
-          ));
-        }
-      },
-      onComplete: () => {
-        setIsTyping(false);
-        setIsLoading(false);
-      },
-      setVisibleMessages,
-      currentStep,
-      triggerReprompt
-    });
   }
 }

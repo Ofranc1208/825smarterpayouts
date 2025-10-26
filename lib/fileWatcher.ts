@@ -28,10 +28,10 @@ export class KnowledgeIndexer {
 
   private config: FileWatcherConfig = {
     watchPaths: [
-      path.resolve('src/components/Pages'),
-      path.resolve('src/prompts'),
-      path.resolve('src/data'),
-      path.resolve('src/types')
+      'src/components/Pages',
+      'src/prompts',
+      'src/data',
+      'src/types'
     ],
     ignorePatterns: [
       '**/node_modules/**',
@@ -54,9 +54,9 @@ export class KnowledgeIndexer {
    * Start file watching (safe - only in Node.js environment)
    */
   start(): void {
-    // CRITICAL SAFETY CHECK: Only work in Node.js environment (not browser)
+    // Safety check: only work in Node.js environment (not browser)
     if (typeof window !== 'undefined') {
-      console.log('🔒 File watcher only available in Node.js environment - skipping browser context');
+      console.log('🔒 File watcher only available in Node.js environment');
       return;
     }
 

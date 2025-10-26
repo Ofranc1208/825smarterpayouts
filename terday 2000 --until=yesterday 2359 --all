@@ -1,0 +1,35 @@
+1ae732ed743868457f57433f9aa088a2d340464e feat: Complete BBB removal and contact information standardization (20 hours ago)
+
+ app/calculations/guaranteed/page.tsx               | 18 [32m+[m[31m-----[m
+ app/credentials/page.tsx                           |  4 [32m+[m[31m-[m
+ app/sitemap.ts                                     | 24 [32m+++++[m[31m--[m
+ .../AboutUs/components/RecognitionSection/data.ts  |  7 [31m--[m
+ src/components/Pages/AboutUs/data/aboutUsData.tsx  | 15 [32m++[m[31m---[m
+ src/components/Pages/AboutUs/data/seoData.tsx      |  2 [32m+[m[31m-[m
+ src/components/Pages/AboutUs/utils/seo.ts          |  2 [32m+[m[31m-[m
+ .../Pages/CourtApproval/data/content/miscData.tsx  | 10 [32m++[m[31m-[m
+ .../Credentials/components/CredentialsGrid.tsx     |  9 [31m---[m
+ .../Credentials/components/TrustIndicators.tsx     |  2 [32m+[m[31m-[m
+ src/components/Pages/Credentials/tree.txt          | 18 [32m+++[m[31m---[m
+ .../finalcta-section/FinalCTAMainSection.tsx       |  2 [32m+[m[31m-[m
+ .../FinalCTA/finalcta-trust/TrustIndicators.tsx    | 12 [32m+[m[31m---[m
+ .../seohead-structured/OrganizationSchema.tsx      |  1 [31m-[m
+ .../why-choose-statistics/StatisticsGrid.tsx       |  2 [32m+[m[31m-[m
+ src/components/Pages/Home/data/seoData.tsx         |  8 [32m+[m[31m--[m
+ src/components/Pages/Home/utils/constants.tsx      |  2 [32m+[m[31m-[m
+ src/components/Pages/MintChat/data/seoData.tsx     |  2 [32m+[m[31m-[m
+ .../pages/CommonMistakes.tsx                       |  4 [32m+[m[31m-[m
+ .../pages/HowToChooseBestCompany.tsx               |  4 [32m+[m[31m-[m
+ src/components/Pages/contact/ContactPage.tsx       | 17 [32m+[m[31m----[m
+ .../contact/components/ContactInfo/ContactCard.tsx | 65 [32m+++++++++++[m[31m--------[m
+ .../contact/components/ContactInfo/ContactInfo.tsx | 75 [32m++++++[m[31m----------------[m
+ .../components/ContactPageErrorBoundary.tsx        |  2 [32m+[m[31m-[m
+ .../components/SEOHead/ContactPageSEOHead.tsx      | 12 [32m++[m[31m--[m
+ src/components/Pages/contact/data/contactData.tsx  | 20 [32m+++[m[31m---[m
+ src/components/Pages/contact/data/seoData.tsx      | 14 [32m++[m[31m--[m
+ src/components/Pages/contact/utils/constants.tsx   |  4 [32m+[m[31m-[m
+ .../Pages/youtube-channel/data/seoData.tsx         |  2 [32m+[m[31m-[m
+ src/components/chat/AppointmentModal/README.md     |  4 [32m+[m[31m-[m
+ src/lib/structured-data/schemas.ts                 |  1 [31m-[m
+ vercel.json                                        |  7 [32m+[m[31m-[m
+ 32 files changed, 154 insertions(+), 217 deletions(-)

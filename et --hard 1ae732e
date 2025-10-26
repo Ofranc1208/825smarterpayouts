@@ -1,0 +1,169 @@
+[33m1ae732e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m feat: Complete BBB removal and contact information standardization
+[1mdiff --git a/app/calculations/guaranteed/page.tsx b/app/calculations/guaranteed/page.tsx[m
+[1mindex 24e3606..fd9a76b 100644[m
+[1m--- a/app/calculations/guaranteed/page.tsx[m
+[1m+++ b/app/calculations/guaranteed/page.tsx[m
+[36m@@ -1,19 +1,5 @@[m
+[31m-"use client";[m
+[31m-[m
+[31m-import React from 'react';[m
+[31m-import { useSearchParams } from 'next/navigation';[m
+[31m-import GuaranteedStepper from '@/src/components/calculator/guaranteedstep/GuaranteedStepper';[m
+[32m+[m[32mimport { redirect } from 'next/navigation';[m
+ [m
+ export default function GuaranteedCalculatorPage() {[m
+[31m-  const searchParams = useSearchParams();[m
+[31m-  const sessionId = searchParams.get('sessionId');[m
+[31m-[m
+[31m-  // Log session for debugging[m
+[31m-  React.useEffect(() => {[m
+[31m-    if (sessionId) {[m
+[31m-      console.log('[GuaranteedCalculator] Started with sessionId:', sessionId);[m
+[31m-    }[m
+[31m-  }, [sessionId]);[m
+[31m-[m
+[31m-  return <GuaranteedStepper />;[m
+[32m+[m[32m  redirect('/mint-intelligent-chat');[m
+ } [m
+\ No newline at end of file[m
+[1mdiff --git a/app/credentials/page.tsx b/app/credentials/page.tsx[m
+[1mindex 06bc0aa..586e5e0 100644[m
+[1m--- a/app/credentials/page.tsx[m
+[1m+++ b/app/credentials/page.tsx[m
+[36m@@ -2,8 +2,8 @@[m [mimport CredentialsPage from '@/src/components/Pages/Credentials/page';[m
+ [m
+ export const metadata = {[m
+   title: 'Our Credentials | SmarterPayouts',[m
+[31m-  description: 'Verify SmarterPayouts credentials including BBB registration, Florida corporation status, and SSL certification. Transparent and trustworthy structured settlement company.',[m
+[31m-  keywords: 'SmarterPayouts credentials, BBB registration, Florida corporation, SSL certificate, structured settlement company verification',[m
+[32m+[m[32m  description: 'Verify SmarterPayouts credentials including Florida corporation status and SSL certification. Transparent and trustworthy structured settlement company.',[m
+[32m+[m[32m  keywords: 'SmarterPayouts credentials, Florida corporation, SSL certificate, structured settlement company verification',[m
+ };[m
+ [m
+ export default function Credentials() {[m
+[1mdiff --git a/app/sitemap.ts b/app/sitemap.ts[m
+[1mindex 6dd55bd..70ea555 100644[m
+[1m--- a/app/sitemap.ts[m
+[1m+++ b/app/sitemap.ts[m
+[36m@@ -3,7 +3,6 @@[m
+ // Includes all static pages with proper priority and change frequency[m
+ [m
+ import { MetadataRoute } from 'next';[m
+[31m-import { getStateLawsSitemapEntries, getCountySitemapEntries } from './state-laws/sitemap';[m
+ [m
+ export default function sitemap(): MetadataRoute.Sitemap {[m
+   const baseUrl = 'https://smarterpayouts.com';[m
+[36m@@ -36,6 +35,24 @@[m [mexport default function sitemap(): MetadataRoute.Sitemap {[m
+       changeFrequency: 'daily',[m
+       priority: 0.9,[m
+     },[m
+[32m+[m[32m    {[m
+[32m+[m[32m      url: `${baseUrl}/mint-intelligent-chat`,[m
+[32m+[m[32m      lastModified: currentDate,[m
+[32m+[m[32m      changeFrequency: 'daily',[m
+[32m+[m[32m      priority: 0.9,[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m      url: `${baseUrl}/mint-intelligent-chat`,[m
+[32m+[m[32m      lastModified: currentDate,[m
+[32m+[m[32m      changeFrequency: 'daily',[m
+[32m+[m[32m      priority: 0.9,[m
+[32m+[m[32m    },[m
+[32m+[m[32m    {[m
+[32m+[m[32m      url: `${baseUrl}/mint-intelligent-chat`,[m
+[32m+[m[32m      lastModified: currentDate,[m
+[32m+[m[32m      changeFrequency: 'daily',[m
+[32m+[m[32m      priority: 0.9,[m
+[32m+[m[32m    },[m
+     {[m
+       url: `${baseUrl}/mint-chat-active`,[m
+       lastModified: currentDate,[m
+[36m@@ -284,11 +301,6 @@[m [mexport default function sitemap(): MetadataRoute.Sitemap {[m
+     },[m
+   ];[m
+ [m
+[31m-  // Add state laws entries to main sitemap[m
+[31m-  const stateLawsEntries = getStateLawsSitemapEntries();[m
+[31m-  const countyEntries = getCountySitemapEntries();[m
+[31m-  routes.push(...stateLawsEntries, ...countyEntries);[m
+[31m-[m
+   return routes;[m
+ }[m
+ [m
+[1mdiff --git a/src/components/Pages/AboutUs/components/RecognitionSection/data.ts b/src/components/Pages/AboutUs/components/RecognitionSection/data.ts[m
+[1mindex 7d0fd94..eb8c79c 100644[m
+[1m--- a/src/components/Pages/AboutUs/components/RecognitionSection/data.ts[m
+[1m+++ b/src/components/Pages/AboutUs/components/RecognitionSection/data.ts[m
+[36m@@ -16,13 +16,6 @@[m [mimport type { Recognition } from '../../types';[m
+  * Recognition and credentials data[m
+  */[m
+ export const RECOGNITION_ITEMS: Recognition[] = [[m
+[31m-  {[m
+[31m-    title: "BBB Accredited Business",[m
+[31m-    description: "Committed to trust and transparency since 2017",[m
+[31m-    icon: "🏆",[m
+[31m-    type: "accreditation",[m
+[31m-    link: "https://www.bbb.org/us/fl/smarterpayouts"[m
+[31m-  },[m
+   {[m
+     title: "Florida State Licensed",[m
+     description: "Registered with SunBiz Corporation Search",[m
+[1mdiff --git a/src/components/Pages/AboutUs/data/aboutUsData.tsx b/src/components/Pages/AboutUs/data/aboutUsData.tsx[m
+[1mindex 223734f..9575cdc 100644[m
+[1m--- a/src/components/Pages/AboutUs/data/aboutUsData.tsx[m
+[1m+++ b/src/components/Pages/AboutUs/data/aboutUsData.tsx[m
+[36m@@ -192,13 +192,6 @@[m [mexport const AWARDS_RECOGNITION = [[m
+     year: '2022',[m
+     description: 'Outstanding achievement in financial technology'[m
+   },[m
+[31m-  {[m
+[31m-    id: 'ethical-business',[m
+[31m-    title: 'Ethical Business Practices',[m
+[31m-    organization: 'Better Business Bureau',[m
+[31m-    year: '2022',[m
+[31m-    description: 'A+ rating for ethical business practices and customer service'[m
+[31m-  }[m
+ ] as const;[m
+ [m
+ // Compliance & Certifications[m
+[36m@@ -237,13 +230,13 @@[m [mexport const COMPLIANCE_CERTIFICATIONS = [[m
+ export const ABOUT_US_CONSTANTS = {[m
+   COMPANY_NAME: 'SmarterPayouts',[m
+   TAGLINE: 'Your Trusted Settlement Partner',[m
+[31m-  PHONE: '+1-800-555-0123',[m
+[32m+[m[32m  PHONE: '+1-561-583-1280',[m
+   EMAIL: 'info@smarterpayouts.com',[m
+   ADDRESS: {[m
+     street: '123 Financial Street',[m
+[31m-    city: 'New York',[m
+[31m-    state: 'NY',[m
+[31m-    zip: '10001',[m
+[32m+[m[32m    city: 'Miami',[m
+[32m+[m[32m    state: 'FL',[m
+[32m+[m[32m    zip: '33101',[m
+     country: 'United States'[m
+   },[m
+   SOCIAL_MEDIA: {[m
+[1mdiff --git a/src/components/Pages/AboutUs/data/seoData.tsx b/src/components/Pages/AboutUs/data/seoData.tsx[m
+[1mindex 25d369f..26ed805 100644[m
+[1m--- a/src/components/Pages/AboutUs/data/seoData.tsx[m
+[1m+++ b/src/components/Pages/AboutUs/data/seoData.tsx[m
+[36m@@ -41,7 +41,7 @@[m [mexport const ABOUT_US_STRUCTURED_DATA = {[m
+     contactPoint: [[m
+       {[m
+         '@type': 'ContactPoint',[m
+[31m-        telephone: '+1-800-555-0123',[m
+[32m+[m[32m        telephone: '+1-561-583-1280',[m
+         contactType: 'Customer Service',[m
+         availableLanguage: 'English',[m
+         serviceArea: 'United States'[m
+[1mdiff --git a/src/components/Pages/AboutUs/utils/seo.ts b/src/components/Pages/AboutUs/utils/seo.ts[m
+[1mindex 0b33211..b6599f9 100644[m
+[1m--- a/src/components/Pages/AboutUs/utils/seo.ts[m
+[1m+++ b/src/components/Pages/AboutUs/utils/seo.ts[m
+[36m@@ -176,7 +176,7 @@[m [mexport function generateFAQStructuredData() {[m
+         name: 'Is SmarterPayouts licensed and regulated?',[m
+         acceptedAnswer: {[m
+           '@type': 'Answer',[m
+[31m-          text: 'Yes, SmarterPayouts is a BBB Accredited Business, Florida State Licensed, and fully compliant in all 50 states. All transactions are court-approved and regulated for your protection.'[m
+[32m+[m[32m          text: 'Yes, SmarterPayouts is Florida State Licensed and fully compliant in all 50 states. All transactions are court-approved and regulated for your p

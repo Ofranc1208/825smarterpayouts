@@ -71,9 +71,9 @@ export const DEFAULT_VECTOR_CONFIG: VectorStoreConfig = {
 };
 
 export const DEFAULT_FEATURE_FLAGS: FeatureFlags = {
-  enableVectorAI: true, // Enabled for development/testing
-  enableAutoIndexing: true, // Enabled for development/testing
-  enableContextRetrieval: true, // Enabled for development/testing
+  enableVectorAI: false, // Start disabled for safety
+  enableAutoIndexing: false, // Start disabled for safety
+  enableContextRetrieval: false, // Start disabled for safety
   maxDailyEmbeddings: 1000,
   similarityThreshold: 0.75
 };
