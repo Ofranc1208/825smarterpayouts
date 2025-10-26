@@ -90,7 +90,7 @@ export default function TrustIndicators() {
         </div>
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
           gap: SPACING.grid.standard
         }}>
           {trustIndicators.map((indicator, idx) => (
@@ -100,7 +100,7 @@ export default function TrustIndicators() {
               style={{
                 background: COLORS.backgrounds.white,
                 borderRadius: BORDER_RADIUS.medium,
-                padding: SPACING.card.standard,
+                padding: SPACING.card.comfortable,
                 textAlign: "center",
                 border: `1px solid ${COLORS.borders.light}`
               }}

@@ -200,11 +200,11 @@ export default function Footer() {
               flexWrap: "wrap"
             }}>
               {[
-                { name: 'YouTube', url: 'https://youtube.com/@smarterpayouts', icon: '📺', color: '#FF0000' },
-                { name: 'X (Twitter)', url: 'https://x.com/smarterpayouts', icon: '🐦', color: '#1DA1F2' },
+                { name: 'YouTube', url: 'https://youtube.com/@smarterpayouts', icon: '▶️', color: '#FF0000' },
+                { name: 'X', url: 'https://x.com/smarterpayouts', icon: '𝕏', color: '#000000' },
                 { name: 'LinkedIn', url: 'https://linkedin.com/company/smarterpayouts', icon: '💼', color: '#0077B5' },
-                { name: 'Instagram', url: 'https://instagram.com/smarterpayouts', icon: '📸', color: '#E4405F' },
-                { name: 'Facebook', url: 'https://facebook.com/smarterpayouts', icon: '📘', color: '#1877F2' }
+                { name: 'Instagram', url: 'https://instagram.com/smarterpayouts', icon: '📷', color: '#E4405F' },
+                { name: 'Facebook', url: 'https://facebook.com/smarterpayouts', icon: '🌐', color: '#1877F2' }
               ].map((social) => (
                 <a
                   key={social.name}

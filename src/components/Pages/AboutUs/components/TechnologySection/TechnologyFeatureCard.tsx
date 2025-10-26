@@ -111,11 +111,25 @@ export default function TechnologyFeatureCard({
         background: `linear-gradient(135deg, ${feature.color || '#059669'}15, ${feature.color || '#059669'}08)`,
         border: `2px solid ${feature.color || '#059669'}20`,
         transition: "all 0.3s ease",
-        transform: isHovered ? "scale(1.1)" : "scale(1)"
+        transform: isHovered ? "scale(1.1)" : "scale(1)",
+        overflow: "hidden"
       }}>
-        <span role="img" aria-label={`${feature.title} icon`}>
-          {feature.icon}
-        </span>
+        {feature.icon.startsWith('/') || feature.icon.startsWith('http') ? (
+          <img
+            src={feature.icon}
+            alt={`${feature.title} icon`}
+            style={{
+              width: "60px",
+              height: "60px",
+              objectFit: "contain",
+              borderRadius: "50%"
+            }}
+          />
+        ) : (
+          <span role="img" aria-label={`${feature.title} icon`}>
+            {feature.icon}
+          </span>
+        )}
       </div>
 
       {/* Feature Content */}

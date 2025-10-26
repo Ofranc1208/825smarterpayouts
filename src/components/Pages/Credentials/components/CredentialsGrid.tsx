@@ -72,11 +72,11 @@ export default function CredentialsGrid() {
       paddingLeft: SPACING.unit.md,
       paddingRight: SPACING.unit.md
     }}>
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-        gap: SPACING.grid.standard
-      }}>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+          gap: SPACING.grid.standard
+        }}>
         {credentials.map((credential) => (
           <div key={credential.title}>
             <div style={{

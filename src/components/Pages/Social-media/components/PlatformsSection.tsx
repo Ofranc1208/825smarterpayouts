@@ -16,7 +16,7 @@ import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/c
 const platforms = [
   {
     name: 'YouTube',
-    icon: '📺',
+    icon: '▶️',
     color: '#FF0000',
     gradient: 'linear-gradient(135deg, #FF0000 0%, #CC0000 100%)',
     desc: 'Subscribe to our YouTube channel for educational videos about structured settlements and financial planning.',
@@ -24,7 +24,7 @@ const platforms = [
   },
   {
     name: 'Facebook',
-    icon: '📘',
+    icon: '🌐',
     color: '#1877F2',
     gradient: 'linear-gradient(135deg, #1877F2 0%, #166FE5 100%)',
     desc: 'Follow us on Facebook to stay updated with our latest news and community posts.',
