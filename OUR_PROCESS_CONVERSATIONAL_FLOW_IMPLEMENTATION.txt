@@ -44,7 +44,7 @@ FILES TO CREATE/MODIFY:
 
 4. 🔧 Modify: src/components/chatbot/ChatbotMenu.tsx
    - Already updated (from previous changes)
-   - Button order: New Quote → Our Process → General Questions
+   - Button order: New Quote → Our Process
 
 INTEGRATION POINTS:
 - SMSModal: src/components/chat/SMSModal/SMSModal.tsx (already exists)

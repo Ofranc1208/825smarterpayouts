@@ -54,7 +54,7 @@ export class ChoiceHandler {
       }
     } else {
       // Pass all other choices directly to GPT for intelligent responses
-      // This includes: 'General Questions', 'Why work with SmarterPayouts?', etc.
+      // This includes: 'Why work with SmarterPayouts?', 'Compare An Offer', etc.
       console.log('[ChoiceHandler] Passing to GPT for direct response:', choiceText);
       await this.handleGPTPassthrough(choiceText);
     }
@@ -142,7 +142,7 @@ export class ChoiceHandler {
    * Examples:
    * - "Why work with SmarterPayouts?" → AI uses direct response
    * - "How fast can I get my money?" → AI uses direct response
-   * - "General Questions" → AI provides helpful conversational response
+   * - "Compare An Offer" → AI provides helpful conversational response
    */
   private async handleGPTPassthrough(choiceText: string): Promise<void> {
     const { advanceConversation } = this.deps;

@@ -49,5 +49,5 @@ export interface ChatOrchestratorConfig {
   dependencies: ChatContextDependencies;
 }
 
-export type ChoiceType = 'Our Process' | 'General Questions' | 'New Quote' | 'Compare An Offer';
+export type ChoiceType = 'Our Process' | 'New Quote' | 'Compare An Offer';
 export type SpecialistChoiceType = 'live_chat' | 'sms' | 'phone_call' | 'appointment';

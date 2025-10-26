@@ -34,13 +34,6 @@ const ChatbotMenu: React.FC<ChatbotMenuProps> = ({ onCalculate, onChoice }) => {
       >
         Our Process
       </button>
-      <button
-        className={`${styles.menuBtn} ${isClicked ? styles.disabled : ''}`}
-        onClick={() => handleChoiceClick('General Questions')}
-        disabled={isClicked}
-      >
-        General Questions
-      </button>
     </div>
   );
 };
