@@ -4,9 +4,9 @@ interface ProcessBackgroundProps {
 
 export default function ProcessBackground({ children }: ProcessBackgroundProps) {
   return (
-    <section style={{ 
-      background: '#f8fafc', 
-      padding: '48px 16px' 
+    <section style={{
+      background: '#f8fafc',
+      padding: '32px 16px'
     }}>
       {children}
     </section>

@@ -84,7 +84,7 @@ export default function FAQSection() {
         padding: SPACING.card.comfortable,
         borderRadius: BORDER_RADIUS.medium,
         boxShadow: BOX_SHADOWS.small,
-        marginTop: SPACING.unit.xxxl
+        marginTop: SPACING.unit.xxl
       }}
     >
       <h2 style={{

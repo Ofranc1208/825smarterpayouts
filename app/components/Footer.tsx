@@ -73,7 +73,7 @@ export default function Footer() {
             }}
             onMouseEnter={(e) => e.currentTarget.style.color = "#059669"}
             onMouseLeave={(e) => e.currentTarget.style.color = "#10b981"}>
-              💬 Chat with Mint AI
+              Chat with Mint AI
             </Link>
           </div>
 
@@ -200,11 +200,11 @@ export default function Footer() {
               flexWrap: "wrap"
             }}>
               {[
-                { name: 'YouTube', url: 'https://youtube.com/@smarterpayouts', icon: '▶️', color: '#FF0000' },
-                { name: 'X', url: 'https://x.com/smarterpayouts', icon: '𝕏', color: '#000000' },
-                { name: 'LinkedIn', url: 'https://linkedin.com/company/smarterpayouts', icon: '💼', color: '#0077B5' },
-                { name: 'Instagram', url: 'https://instagram.com/smarterpayouts', icon: '📷', color: '#E4405F' },
-                { name: 'Facebook', url: 'https://facebook.com/smarterpayouts', icon: '🌐', color: '#1877F2' }
+                { name: 'YouTube', url: 'https://youtube.com/@smarterpayouts', icon: '▶', color: '#FF0000' },
+                { name: 'X', url: 'https://x.com/smarterpayouts', icon: 'X', color: '#000000' },
+                { name: 'LinkedIn', url: 'https://linkedin.com/company/smarterpayouts', icon: 'in', color: '#0077B5' },
+                { name: 'Instagram', url: 'https://instagram.com/smarterpayouts', icon: 'IG', color: '#E4405F' },
+                { name: 'Facebook', url: 'https://facebook.com/smarterpayouts', icon: 'f', color: '#1877F2' }
               ].map((social) => (
                 <a
                   key={social.name}

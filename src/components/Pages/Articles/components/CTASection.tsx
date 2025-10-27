@@ -1,13 +1,14 @@
 /**
  * CTA Section Component - Articles Page
- * 
- * Displays final call-to-action buttons for conversion.
+ *
+ * Displays final call-to-action buttons for conversion with optimized spacing.
  * Uses design system tokens and shared Button components.
  * Fully accessible with semantic HTML and proper ARIA labels.
- * 
+ * Reduced padding for cleaner, more compact layout.
+ *
  * @component
  * @returns {JSX.Element} Rendered CTA section with action buttons
- * 
+ *
  * @example
  * <CTASection />
  */
@@ -23,7 +24,7 @@ export default function CTASection() {
         aria-label="Get your instant quote"
         style={{
           textAlign: 'center',
-          marginTop: SPACING.unit.xxl,
+          marginTop: SPACING.unit.xl,
           paddingLeft: SPACING.unit.md,
           paddingRight: SPACING.unit.md
         }}
@@ -41,12 +42,12 @@ export default function CTASection() {
       </section>
 
       {/* Secondary CTA - Chat with Mint AI */}
-      <section 
+      <section
         aria-label="Chat with Mint AI"
-        style={{ 
-          textAlign: 'center', 
+        style={{
+          textAlign: 'center',
           marginTop: SPACING.unit.lg,
-          marginBottom: SPACING.unit.xxxl,
+          marginBottom: SPACING.unit.xxl,
           paddingLeft: SPACING.unit.md,
           paddingRight: SPACING.unit.md
         }}

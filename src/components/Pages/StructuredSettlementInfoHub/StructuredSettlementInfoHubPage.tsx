@@ -1,18 +1,19 @@
 /**
  * Structured Settlement Info Hub - Main Landing Page
- * 
- * SEO-OPTIMIZED CENTERPIECE PAGE
+ *
+ * SEO-OPTIMIZED CENTERPIECE PAGE with optimized spacing
  * NO CSS FILES - All inline styling
  * Maximum SEO impact with rich content and structured data
- * 
+ *
  * Features:
- * - Hero section with CTAs
+ * - Hero section with CTAs (optimized padding)
  * - Featured content cards
  * - Resource grid
  * - Sticky sidebar
- * - Final CTA section
+ * - Final CTA section (reduced padding)
  * - Complete schema markup (Article, FAQ, Breadcrumb, LegalService)
  * - Responsive design with inline media queries
+ * - Cleaner, more compact layout
  */
 
 'use client';
@@ -103,7 +104,7 @@ const StructuredSettlementInfoHubPage: React.FC = () => {
       <main style={{
         background: '#f9fafb',
         minHeight: '100vh',
-        padding: '48px 0'
+        padding: '32px 0'
       }}>
         <div style={{
           width: '100%',
@@ -138,12 +139,12 @@ const StructuredSettlementInfoHubPage: React.FC = () => {
               ))}
 
               {/* Explore Resources Section */}
-              <section style={{ marginBottom: '3rem' }}>
+              <section style={{ marginBottom: '2rem' }}>
                 <h2 style={{
                   fontSize: '2rem',
                   fontWeight: '600',
                   color: '#1f2937',
-                  marginBottom: '2rem',
+                  marginBottom: '1.5rem',
                   textAlign: 'center'
                 }}>
                   📚 Explore Our Resources

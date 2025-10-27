@@ -22,7 +22,10 @@ export default function CTASection() {
 
   return (
     <section style={{
-      padding: SPACING.section.standard,
+      paddingTop: SPACING.unit.lg,
+      paddingBottom: SPACING.unit.lg,
+      paddingLeft: SPACING.unit.md,
+      paddingRight: SPACING.unit.md,
       textAlign: 'center',
       background: COLORS.backgrounds.greenLight,
       borderTop: `1px solid ${COLORS.neutral.gray200}`,
@@ -47,7 +50,7 @@ export default function CTASection() {
         <div style={{
           background: COLORS.backgrounds.white,
           borderRadius: BORDER_RADIUS.xxlarge,
-          padding: SPACING.card.standard,
+          padding: SPACING.card.compact,
           boxShadow: BOX_SHADOWS.large,
           border: `1px solid ${COLORS.neutral.gray200}`,
           maxWidth: "800px",
@@ -61,7 +64,7 @@ export default function CTASection() {
             background: COLORS.titleGradients.grayToGreen,
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
-            marginBottom: SPACING.stack.md
+            marginBottom: SPACING.stack.sm
           }}>
             Ready to Get Started?
           </h2>
@@ -71,18 +74,18 @@ export default function CTASection() {
             ...TEXT_PRESETS.sectionSubtitle,
             color: COLORS.text.secondary,
             maxWidth: '650px',
-            margin: `0 auto ${SPACING.stack.xxl}`
+            margin: `0 auto ${SPACING.stack.xl}`
           }}>
             Get your instant quote now and see exactly when you could have cash in hand. Ask Mint AI for personalized timing estimates!
           </p>
           
           {/* CTA Buttons */}
-          <div style={{ 
+          <div style={{
             display: 'flex',
             gap: SPACING.inline.md,
             justifyContent: 'center',
             flexWrap: 'wrap',
-            marginBottom: SPACING.stack.lg 
+            marginBottom: SPACING.stack.md
           }}>
             <Button
               as="a"
@@ -92,7 +95,7 @@ export default function CTASection() {
               enhancedHover={true}
               shimmer={true}
             >
-              💰 Get Your Instant Quote
+              Get Your Instant Quote
             </Button>
 
             <Button
@@ -104,7 +107,7 @@ export default function CTASection() {
               shimmer={true}
               shimmerDelay={1}
             >
-              💬 Chat with Mint AI
+              Chat with Mint AI
             </Button>
           </div>
           
@@ -127,7 +130,7 @@ export default function CTASection() {
               justifyContent: "center",
               gap: SPACING.inline.sm
             }}>
-              <span style={{ 
+              <span style={{
                 fontSize: TYPOGRAPHY.fontSize.heading.h5,
                 width: "24px",
                 height: "24px",
@@ -137,7 +140,7 @@ export default function CTASection() {
                 alignItems: "center",
                 justifyContent: "center",
                 color: COLORS.text.white
-              }}>⚡</span>
+              }}>✓</span>
               <strong>Get funds in 24-72 hours after approval</strong>
             </p>
           </div>

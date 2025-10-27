@@ -14,10 +14,7 @@
 
 import React from 'react';
 import HeroCTA from '@/src/components/Pages/AboutUs/components/HeroSection/HeroCTA';
-import { StatCard } from './shared';
-import { statsData } from '../data';
-import { SITE_STATS } from '../../../../../app/config/siteConfig';
-import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
+import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS } from '@/src/components/shared/styles';
 import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 export default function HeroSection() {
@@ -25,7 +22,7 @@ export default function HeroSection() {
   const ctaButtons = [
     {
       id: "instant-offer",
-      text: "💰 Get Your Instant Offer",
+      text: "Get Your Instant Offer",
       href: "/pricing-calculator",
       variant: "technology-primary" as const,
       size: "xl" as const,
@@ -33,7 +30,7 @@ export default function HeroSection() {
     },
     {
       id: "mint-ai",
-      text: "💬 Ask Mint AI",
+      text: "Ask Mint AI",
       href: "/mint-intelligent-chat",
       variant: "mint-chat" as const,
       size: "xl" as const,
@@ -42,11 +39,11 @@ export default function HeroSection() {
   ];
 
   return (
-    <section 
+    <section
       aria-labelledby="hero-heading"
       style={{
         background: COLORS.backgrounds.slateGradient,
-        padding: SPACING.section.hero,
+        padding: `${SPACING.unit.xl} 0`,
         position: "relative",
         overflow: "hidden"
       }}
@@ -75,40 +72,20 @@ export default function HeroSection() {
         zIndex: 1,
         textAlign: 'center'
       }}>
-        {/* Badge */}
-        <div style={{
-          display: "inline-flex",
-          alignItems: "center",
-          gap: SPACING.inline.sm,
-          background: COLORS.radialGradients.greenLight,
-          border: `1px solid ${COLORS.borders.green}`,
-          borderRadius: BORDER_RADIUS.large,
-          padding: `${SPACING.inline.xs} ${SPACING.inline.md}`,
-          marginBottom: SPACING.stack.lg,
-          fontSize: TYPOGRAPHY.fontSize.body.xsmall,
-          fontWeight: TYPOGRAPHY.fontWeight.semibold,
-          color: COLORS.primary.main,
-          boxShadow: BOX_SHADOWS.small,
-          letterSpacing: '1px',
-          textTransform: "uppercase" as const
-        }}>
-          💰 GET YOUR CASH
-        </div>
-        
         {/* Hero Heading */}
-        <h1 
+        <h1
           id="hero-heading"
           style={{
             ...TEXT_PRESETS.heroTitle,
             color: COLORS.neutral.gray900,
-            marginBottom: SPACING.stack.md,
+            marginBottom: SPACING.stack.sm,
             background: COLORS.titleGradients.grayToGreen,
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text"
           }}
         >
-          Get Your Cash — Your Way
+          Get Funded Your Way
         </h1>
         
         {/* Subtitle */}
@@ -116,60 +93,16 @@ export default function HeroSection() {
           ...TEXT_PRESETS.heroSubtitle,
           color: COLORS.text.secondary,
           maxWidth: "700px",
-          margin: `0 auto ${SPACING.stack.xl}`
+          margin: `0 auto ${SPACING.stack.lg}`
         }}>
           Choose how you want to receive your structured settlement funds. <strong style={{ color: COLORS.primary.dark }}>Fast, secure, and always on your terms.</strong>
         </p>
 
         {/* CTA Buttons (using shared component) */}
-        <div style={{ marginBottom: SPACING.stack.xl }}>
+        <div style={{ marginBottom: SPACING.stack.lg }}>
           <HeroCTA buttons={ctaButtons} align="center" layout="horizontal" />
         </div>
 
-        {/* Quick Stats Grid */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
-          gap: SPACING.inline.md,
-          marginTop: SPACING.stack.lg,
-          paddingTop: SPACING.stack.lg,
-          borderTop: `1px solid ${COLORS.neutral.gray200}`,
-          maxWidth: '600px',
-          margin: `${SPACING.stack.xl} auto 0`
-        }}>
-          {statsData.map((stat, index) => (
-            <StatCard key={index} stat={stat} />
-          ))}
-        </div>
-
-        {/* Compliance Badge */}
-        <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-          marginTop: SPACING.stack.xl
-        }}>
-          <a href={SITE_STATS.compliance.link} style={{ textDecoration: 'none' }}>
-            <div style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: SPACING.inline.sm,
-              background: COLORS.radialGradients.greenLight,
-              border: `1px solid ${COLORS.borders.green}`,
-              borderRadius: BORDER_RADIUS.xxlarge,
-              padding: `${SPACING.inline.md} ${SPACING.inline.xl}`,
-              fontSize: TYPOGRAPHY.fontSize.body.default,
-              fontWeight: TYPOGRAPHY.fontWeight.semibold,
-              color: COLORS.primary.dark,
-              cursor: 'pointer',
-              transition: 'transform 0.2s ease',
-              boxShadow: BOX_SHADOWS.small
-            }}
-            title={SITE_STATS.compliance.description}>
-              <span style={{ fontSize: TYPOGRAPHY.fontSize.heading.h5 }}>✅</span>
-              <span>{SITE_STATS.compliance.value} State & Federal Compliant</span>
-            </div>
-          </a>
-        </div>
       </div>
     </section>
   );

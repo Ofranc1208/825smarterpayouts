@@ -8,9 +8,9 @@ export default function ProcessStepsGrid() {
     <div style={{
       display: 'grid',
       gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-      gap: '1.5rem',
+      gap: '1rem',
       textAlign: 'center',
-      marginBottom: '3rem'
+      marginBottom: '2rem'
     }}>
       <Step1Card />
       <Step2Card />

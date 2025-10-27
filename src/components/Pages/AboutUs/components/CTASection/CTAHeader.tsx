@@ -60,7 +60,7 @@ export default function CTAHeader({
       <p style={{
         fontSize: "1.125rem",
         color: "#374151",
-        marginBottom: "2rem",
+        marginBottom: "1.5rem",
         lineHeight: "1.6",
         textAlign
       }}>

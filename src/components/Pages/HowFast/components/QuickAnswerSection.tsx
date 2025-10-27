@@ -25,8 +25,8 @@ export default function QuickAnswerSection() {
     <section
       aria-label="Quick answer overview"
       style={{
-        paddingTop: SPACING.unit.xl,
-        paddingBottom: SPACING.unit.xl,
+        paddingTop: SPACING.unit.lg,
+        paddingBottom: SPACING.unit.lg,
         paddingLeft: SPACING.unit.md,
         paddingRight: SPACING.unit.md,
         background: COLORS.backgrounds.white
@@ -70,7 +70,7 @@ export default function QuickAnswerSection() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 fontSize: TYPOGRAPHY.fontSize.heading.h5
-              }}>⚡</div>
+              }}>!</div>
               <h2 style={{
                 fontSize: TYPOGRAPHY.fontSize.heading.h5,
                 fontWeight: TYPOGRAPHY.fontWeight.bold,
@@ -94,15 +94,15 @@ export default function QuickAnswerSection() {
           <div style={{
             background: 'linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)',
             borderRadius: BORDER_RADIUS.large,
-            padding: SPACING.card.standard,
-            marginBottom: SPACING.stack.xl,
+            padding: SPACING.card.compact,
+            marginBottom: SPACING.stack.lg,
             border: `1px solid ${COLORS.borders.light}`
           }}>
             <div style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
               gap: SPACING.grid.standard,
-              marginBottom: SPACING.stack.md
+              marginBottom: SPACING.stack.sm
             }}>
               {[
                 { title: 'Total Time:', value: '30-45 days from quote to cash' },
@@ -113,7 +113,7 @@ export default function QuickAnswerSection() {
                 <div key={index} style={{
                   background: COLORS.backgrounds.white,
                   borderRadius: BORDER_RADIUS.medium,
-                  padding: SPACING.unit.md,
+                  padding: SPACING.unit.sm,
                   border: `1px solid ${COLORS.borders.light}`
                 }}>
                   <div style={{ 
@@ -136,7 +136,7 @@ export default function QuickAnswerSection() {
             
             {/* Mint AI Quick Help */}
             <div style={{
-              padding: SPACING.unit.md,
+              padding: SPACING.unit.sm,
               background: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)',
               borderRadius: BORDER_RADIUS.medium,
               border: `1px solid ${COLORS.borders.light}`,
@@ -148,7 +148,7 @@ export default function QuickAnswerSection() {
                 color: COLORS.primary.tech,
                 fontSize: TYPOGRAPHY.fontSize.body.small
               }}>
-                💬 Ask Mint AI for personalized timing estimates!
+                Ask Mint AI for personalized timing estimates!
               </div>
               <Button
                 as="a"

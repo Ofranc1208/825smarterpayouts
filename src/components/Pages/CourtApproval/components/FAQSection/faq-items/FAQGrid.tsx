@@ -8,7 +8,7 @@ export default function FAQGrid() {
     <div style={{
       display: 'grid',
       gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-      gap: '1.5rem'
+      gap: '0.875rem'
     }}>
       <CourtAppearanceFAQ />
       <ApprovalTimeFAQ />

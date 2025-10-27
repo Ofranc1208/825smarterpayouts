@@ -66,7 +66,7 @@ export default function RecognitionSection({
    */
   const sectionStyles = useMemo(() => ({
     background: "#f9fafb",
-    padding: "4rem 0",
+    padding: "3rem 0",
     position: "relative" as const,
     overflow: "hidden" as const
   }), []);

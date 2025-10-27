@@ -8,7 +8,7 @@ export default function HeroCTAContainer() {
       gap: '1rem',
       justifyContent: 'center',
       flexWrap: 'wrap',
-      marginBottom: '2rem'
+      marginBottom: '1.5rem'
     }}>
       <PrimaryCTAButton />
       <SecondaryCTAButton />

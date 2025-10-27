@@ -66,7 +66,7 @@ export default function ValuesSection({
    */
   const sectionStyles = useMemo(() => ({
     background: "white",
-    padding: "4rem 0",
+    padding: "3rem 0",
     position: "relative" as const,
     overflow: "hidden" as const
   }), []);

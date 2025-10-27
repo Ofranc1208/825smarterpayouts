@@ -14,7 +14,7 @@ export default function SecondaryCTAButton() {
       shimmerDelay={1}
       aria-label="Chat with Mint AI assistant for structured settlement help"
     >
-      💬 Ask Mint AI
+      Ask Mint AI
     </Button>
   );
 }

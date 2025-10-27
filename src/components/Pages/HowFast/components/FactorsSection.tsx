@@ -20,19 +20,19 @@ import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS } from '@/src/components/sha
 import type { Factor } from '../types';
 
 const speedUpFactors: Factor[] = [
-  { icon: '📄', text: 'Complete documentation ready', description: 'All papers organized and available' },
-  { icon: '📋', text: 'Clear settlement agreement', description: 'No ambiguities or missing clauses' },
-  { icon: '⚖️', text: 'Available court dates', description: 'Flexible scheduling with judge availability' },
-  { icon: '💳', text: 'Electronic payment setup', description: 'Direct deposit faster than checks' },
-  { icon: '📞', text: 'Responsive communication', description: 'Quick replies to requests' }
+  { icon: '✓', text: 'Complete documentation ready', description: 'All papers organized and available' },
+  { icon: '✓', text: 'Clear settlement agreement', description: 'No ambiguities or missing clauses' },
+  { icon: '⚖', text: 'Available court dates', description: 'Flexible scheduling with judge availability' },
+  { icon: '✓', text: 'Electronic payment setup', description: 'Direct deposit faster than checks' },
+  { icon: '✓', text: 'Responsive communication', description: 'Quick replies to requests' }
 ];
 
 const slowDownFactors: Factor[] = [
-  { icon: '❌', text: 'Missing or incomplete documents', description: 'Delays while gathering paperwork' },
-  { icon: '🔄', text: 'Complex settlement structures', description: 'Multiple annuities or unusual terms' },
-  { icon: '📅', text: 'Busy court schedules', description: 'Limited hearing availability' },
-  { icon: '🏛️', text: 'State-specific requirements', description: 'Additional local regulations' },
-  { icon: '🎄', text: 'Holiday court closures', description: 'Courts closed during holidays' }
+  { icon: '✗', text: 'Missing or incomplete documents', description: 'Delays while gathering paperwork' },
+  { icon: '✗', text: 'Complex settlement structures', description: 'Multiple annuities or unusual terms' },
+  { icon: '✗', text: 'Busy court schedules', description: 'Limited hearing availability' },
+  { icon: '✗', text: 'State-specific requirements', description: 'Additional local regulations' },
+  { icon: '✗', text: 'Holiday court closures', description: 'Courts closed during holidays' }
 ];
 
 export default function FactorsSection() {
@@ -44,8 +44,8 @@ export default function FactorsSection() {
       id="factors"
       aria-label="Factors affecting payout speed"
       style={{
-        paddingTop: SPACING.unit.xxxl,
-        paddingBottom: SPACING.unit.xxxl,
+        paddingTop: SPACING.unit.lg,
+        paddingBottom: SPACING.unit.lg,
         paddingLeft: SPACING.unit.md,
         paddingRight: SPACING.unit.md,
         background: COLORS.backgrounds.white
@@ -58,13 +58,13 @@ export default function FactorsSection() {
       }}>
         <div style={{
           textAlign: 'center',
-          marginBottom: SPACING.stack.xl
+          marginBottom: SPACING.stack.lg
         }}>
           <h2 style={{
             fontSize: TYPOGRAPHY.fontSize.heading.h3,
             fontWeight: TYPOGRAPHY.fontWeight.bold,
             color: COLORS.text.primary,
-            marginBottom: SPACING.stack.md
+            marginBottom: SPACING.stack.sm
           }}>
             What Affects How Fast You Get Paid
           </h2>
@@ -72,7 +72,7 @@ export default function FactorsSection() {
             fontSize: TYPOGRAPHY.fontSize.body.large,
             color: COLORS.text.secondary,
             maxWidth: '600px',
-            margin: `0 auto ${SPACING.stack.md}`
+            margin: `0 auto ${SPACING.stack.sm}`
           }}>
             Understanding these factors helps you prepare for the fastest possible payout
           </p>
@@ -83,14 +83,14 @@ export default function FactorsSection() {
             size="md"
             enhancedHover={true}
           >
-            💬 Ask Mint About Your Timeline
+            Ask Mint About Your Timeline
           </Button>
         </div>
 
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-          gap: SPACING.grid.comfortable
+          gap: SPACING.grid.standard
         }}>
           {/* Speed Up Factors - Collapsible */}
           <div style={{
@@ -103,7 +103,7 @@ export default function FactorsSection() {
             <div
               onClick={() => setIsSpeedUpOpen(!isSpeedUpOpen)}
               style={{
-                padding: SPACING.card.standard,
+                padding: SPACING.card.compact,
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
@@ -127,7 +127,7 @@ export default function FactorsSection() {
                   justifyContent: 'center',
                   fontSize: TYPOGRAPHY.fontSize.heading.h4,
                   flexShrink: 0
-                }}>⚡</div>
+                }}>✓</div>
                 <h3 style={{
                   fontSize: TYPOGRAPHY.fontSize.heading.h5,
                   fontWeight: TYPOGRAPHY.fontWeight.bold,
@@ -149,7 +149,7 @@ export default function FactorsSection() {
             {/* Collapsible Content */}
             {isSpeedUpOpen && (
               <div style={{
-                padding: SPACING.card.standard,
+                padding: SPACING.card.compact,
                 paddingTop: 0,
                 display: 'flex',
                 flexDirection: 'column',
@@ -198,7 +198,7 @@ export default function FactorsSection() {
             <div
               onClick={() => setIsSlowDownOpen(!isSlowDownOpen)}
               style={{
-                padding: SPACING.card.standard,
+                padding: SPACING.card.compact,
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
@@ -222,7 +222,7 @@ export default function FactorsSection() {
                   justifyContent: 'center',
                   fontSize: TYPOGRAPHY.fontSize.heading.h4,
                   flexShrink: 0
-                }}>⏳</div>
+                }}>✗</div>
                 <h3 style={{
                   fontSize: TYPOGRAPHY.fontSize.heading.h5,
                   fontWeight: TYPOGRAPHY.fontWeight.bold,
@@ -244,7 +244,7 @@ export default function FactorsSection() {
             {/* Collapsible Content */}
             {isSlowDownOpen && (
               <div style={{
-                padding: SPACING.card.standard,
+                padding: SPACING.card.compact,
                 paddingTop: 0,
                 display: 'flex',
                 flexDirection: 'column',
@@ -287,8 +287,8 @@ export default function FactorsSection() {
         <div style={{
           background: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)',
           borderRadius: BORDER_RADIUS.large,
-          padding: SPACING.card.standard,
-          marginTop: SPACING.stack.xl,
+          padding: SPACING.card.compact,
+          marginTop: SPACING.stack.lg,
           border: `1px solid ${COLORS.borders.light}`,
           textAlign: 'center'
         }}>
@@ -298,15 +298,15 @@ export default function FactorsSection() {
             fontSize: TYPOGRAPHY.fontSize.body.large,
             marginBottom: SPACING.unit.xs
           }}>
-            💡 Mint AI Tip
+            Mint AI Tip
           </div>
           <p style={{
             color: COLORS.primary.tech,
-            marginBottom: SPACING.stack.md,
+            marginBottom: SPACING.stack.sm,
             fontSize: TYPOGRAPHY.fontSize.body.medium,
             lineHeight: TYPOGRAPHY.lineHeight.relaxed
           }}>
-            <strong>Pro Tip:</strong> Our AI can analyze your specific situation and predict your exact timeline based on your state, 
+            <strong>Pro Tip:</strong> Our AI can analyze your specific situation and predict your exact timeline based on your state,
             settlement type, and current court schedules. Get a personalized timeline estimate in seconds!
           </p>
           <Button
@@ -316,7 +316,7 @@ export default function FactorsSection() {
             size="lg"
             enhancedHover={true}
           >
-            🔮 Get My Personalized Timeline
+            Get My Personalized Timeline
           </Button>
         </div>
       </div>

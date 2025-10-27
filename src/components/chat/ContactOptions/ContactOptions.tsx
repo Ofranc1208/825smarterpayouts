@@ -43,7 +43,7 @@ const ContactOptions: React.FC<ContactOptionsProps> = ({ onContactClick }) => {
             aria-label="Send text message"
           >
             <span className={styles.btnEmoji}>📱</span>
-            <span className={styles.btnText}>Text Us</span>
+            <span className={styles.btnText}>Text</span>
             <span className={styles.btnSubtext}>+1 (561) 583-1280</span>
           </button>
 
@@ -53,7 +53,7 @@ const ContactOptions: React.FC<ContactOptionsProps> = ({ onContactClick }) => {
             aria-label="Call us"
           >
             <span className={styles.btnEmoji}>📞</span>
-            <span className={styles.btnText}>Call Us</span>
+            <span className={styles.btnText}>Call</span>
             <span className={styles.btnSubtext}>+1 (561) 583-1280</span>
           </button>
 
@@ -62,8 +62,8 @@ const ContactOptions: React.FC<ContactOptionsProps> = ({ onContactClick }) => {
             onClick={handleEmailClick}
             aria-label="Email us"
           >
-            <span className={styles.btnEmoji}>✉️</span>
-            <span className={styles.btnText}>Email Us</span>
+            <span className={styles.btnEmoji}>✉</span>
+            <span className={styles.btnText}>Email</span>
             <span className={styles.btnSubtext}>info@smarterpayouts.com</span>
           </button>
 
@@ -73,7 +73,7 @@ const ContactOptions: React.FC<ContactOptionsProps> = ({ onContactClick }) => {
             aria-label="Book appointment"
           >
             <span className={styles.btnEmoji}>📅</span>
-            <span className={styles.btnText}>Book Appointment</span>
+            <span className={styles.btnText}>Book</span>
             <span className={styles.btnSubtext}>Free Consultation</span>
           </button>
         </div>

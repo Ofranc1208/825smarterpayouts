@@ -21,13 +21,13 @@ export default function FinalCTA() {
   const ctaButtons = [
     {
       id: "instant-offer",
-      text: "💰 Get Your Instant Offer",
+      text: "Get Your Instant Offer",
       href: "/pricing-calculator",
       variant: "technology-primary" as const
     },
     {
       id: "mint-ai",
-      text: "💬 Chat with Mint AI",
+      text: "Chat with Mint AI",
       href: "/mint-intelligent-chat",
       variant: "mint-chat" as const
     }
@@ -35,7 +35,10 @@ export default function FinalCTA() {
 
   return (
     <section style={{
-      padding: SPACING.section.standard,
+      paddingTop: SPACING.unit.lg,
+      paddingBottom: SPACING.unit.lg,
+      paddingLeft: SPACING.unit.md,
+      paddingRight: SPACING.unit.md,
       textAlign: 'center',
       background: COLORS.backgrounds.greenLight,
       borderTop: `1px solid ${COLORS.neutral.gray200}`,
@@ -60,7 +63,7 @@ export default function FinalCTA() {
         <div style={{
           background: COLORS.backgrounds.white,
           borderRadius: BORDER_RADIUS.xxlarge,
-          padding: SPACING.card.standard,
+          padding: SPACING.card.compact,
           boxShadow: BOX_SHADOWS.large,
           border: `1px solid ${COLORS.neutral.gray200}`,
           maxWidth: "800px",
@@ -74,23 +77,23 @@ export default function FinalCTA() {
             background: COLORS.titleGradients.grayToGreen,
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
-            marginBottom: SPACING.stack.md
+            marginBottom: SPACING.stack.sm
           }}>
-            Ready to Get Your Cash Your Way?
+            Ready to Get Funded Your Way?
           </h2>
-          
+
           {/* Subtitle */}
           <p style={{
             ...TEXT_PRESETS.sectionSubtitle,
             color: COLORS.text.secondary,
             maxWidth: '650px',
-            margin: `0 auto ${SPACING.stack.xxl}`
+            margin: `0 auto ${SPACING.stack.xl}`
           }}>
             Get your instant offer now and choose exactly how you want to receive your funds. Fast, secure, and always on your terms.
           </p>
-          
+
           {/* CTA Buttons - Using Shared HeroCTA Component */}
-          <div style={{ marginBottom: SPACING.stack.lg }}>
+          <div style={{ marginBottom: SPACING.stack.md }}>
             <HeroCTA buttons={ctaButtons} align="center" layout="horizontal" />
           </div>
           

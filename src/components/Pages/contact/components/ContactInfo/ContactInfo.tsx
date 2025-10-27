@@ -10,28 +10,28 @@ export default function ContactInfo({ onCardClick }: ContactInfoProps) {
     {
       icon: "📞",
       title: "Call Us",
-      description: "Speak directly with our settlement experts. Available Monday-Friday, 9 AM - 6 PM EST.",
+      description: "Available Monday-Friday, 9 AM - 6 PM EST.",
       actionText: "Call Now",
       actionLink: "tel:+1-561-583-1280"
     },
     {
       icon: "✉️",
       title: "Email Us",
-      description: "Send us your questions and we'll respond within 24 hours with personalized assistance.",
+      description: "We'll respond within 24 hours.",
       actionText: "Send Email",
       actionLink: "mailto:info@smarterpayouts.com"
     },
     {
       icon: "💬",
       title: "Live Chat",
-      description: "Get instant answers from our AI assistant Mint, available 24/7 to help with your questions.",
+      description: "Available 24/7 for instant answers.",
       actionText: "Start Chat",
       actionLink: "/mint-intelligent-chat"
     },
     {
       icon: "📍",
       title: "Visit Us",
-      description: "Meet with our team in person at our Florida headquarters for a comprehensive consultation.",
+      description: "Meet with our team for consultation.",
       actionText: "Get Directions",
       actionLink: "https://maps.google.com/maps?q=SmarterPayouts+Florida"
     }
@@ -40,9 +40,10 @@ export default function ContactInfo({ onCardClick }: ContactInfoProps) {
   return (
     <div style={{
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-      gap: '1.5rem',
-      width: '100%'
+      gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+      gap: '1.25rem',
+      width: '100%',
+      alignItems: 'stretch'
     }}>
       {contactMethods.map((method, index) => (
         <ContactCard

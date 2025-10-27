@@ -25,11 +25,11 @@ export default function HeroBackground({
   style = {}
 }: HeroBackgroundProps): JSX.Element {
   return (
-    <section 
-      aria-labelledby="hero-heading" 
+    <section
+      aria-labelledby="hero-heading"
       style={{
         background: background.gradient,
-        padding: background.padding,
+        padding: '3rem 0',
         position: "relative",
         overflow: "hidden",
         ...style
@@ -39,19 +39,9 @@ export default function HeroBackground({
         width: '100%',
         maxWidth: '1200px',
         margin: '0 auto',
-        padding: '0 16px'
+        padding: '0 1rem'
       }}>
-        <div style={{
-          display: 'flex',
-          justifyContent: 'center'
-        }}>
-          <div style={{
-            maxWidth: '800px',
-            textAlign: 'center'
-          }}>
-            {children}
-          </div>
-        </div>
+        {children}
       </div>
     </section>
   );

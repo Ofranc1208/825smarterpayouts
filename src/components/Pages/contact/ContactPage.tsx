@@ -6,7 +6,6 @@ import {
   ContactForm,
   ContactInfo,
   ContactPageSEOHead,
-  MintAISection,
   FAQSection,
   ContactPageErrorBoundary
 } from './components';
@@ -74,18 +73,19 @@ export default function ContactPage({ className, style }: ContactPageProps) {
         <HeroSection onCTAClick={handleCTAClick} />
         
         <section style={{
-          padding: "4rem 0",
+          padding: "3rem 0",
           background: "#f9fafb"
         }}>
           <div style={{
             width: '100%',
             maxWidth: '1200px',
             margin: '0 auto',
-            padding: '0 16px',
+            padding: '0 1rem',
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
             gap: '2rem',
-            alignItems: 'start'
+            alignItems: 'stretch',
+            justifyContent: 'center'
           }}>
             <ContactForm onFormSubmit={handleFormSubmit} />
             <ContactInfo onCardClick={handleContactMethodClick} />

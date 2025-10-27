@@ -1,12 +1,13 @@
 /**
- * Articles Page - Main Orchestrator
- * 
+ * Articles Page - Main Orchestrator with optimized spacing
+ *
  * Coordinates and renders all Articles page sections using the Orchestra pattern.
  * Imports modular components from ./components for clean separation of concerns.
- * 
+ * Reduced padding and margins throughout for cleaner, more compact layout.
+ *
  * @component
  * @returns {JSX.Element} Complete Articles page
- * 
+ *
  * @example
  * <ArticlesPage />
  */

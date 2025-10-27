@@ -19,11 +19,11 @@ import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 export default function CTASection() {
   return (
-    <section 
+    <section
       aria-label="Final call to action"
       style={{
-        paddingTop: SPACING.unit.xxxxl,
-        paddingBottom: SPACING.unit.xxxxl,
+        paddingTop: SPACING.unit.lg,
+        paddingBottom: SPACING.unit.lg,
         paddingLeft: SPACING.unit.md,
         paddingRight: SPACING.unit.md,
         textAlign: 'center',
@@ -57,7 +57,7 @@ export default function CTASection() {
         <div style={{
           background: COLORS.backgrounds.white,
           borderRadius: BORDER_RADIUS.xxlarge,
-          padding: SPACING.card.standard,
+          padding: SPACING.card.compact,
           boxShadow: BOX_SHADOWS.large,
           border: `1px solid ${COLORS.neutral.gray200}`,
           maxWidth: '800px',
@@ -69,7 +69,7 @@ export default function CTASection() {
             background: COLORS.titleGradients.grayToGreen,
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
-            marginBottom: SPACING.stack.md
+            marginBottom: SPACING.stack.sm
           }}>
             Ready to Get Your Private Quote?
           </h2>
@@ -79,7 +79,7 @@ export default function CTASection() {
             ...TEXT_PRESETS.sectionSubtitle,
             color: COLORS.text.secondary,
             maxWidth: '650px',
-            margin: `0 auto ${SPACING.stack.xxl}`
+            margin: `0 auto ${SPACING.stack.xl}`
           }}>
             Start your secure, private quote process now. No personal information required.
           </p>

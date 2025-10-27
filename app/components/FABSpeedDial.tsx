@@ -78,13 +78,13 @@ export default function FABSpeedDial() {
       {/* FAB Items Container - Staggered Animation */}
       <div className={`${styles.fabItems} ${isOpen ? styles.open : ''}`}>
         {/* Call Option - Glassmorphism Style */}
-        <a 
-          href="tel:+19547649750" 
+        <a
+          href="tel:+19547649750"
           className={styles.fabItem}
           aria-label="Call Us"
         >
           <span className={styles.fabItemIcon}>📞</span>
-          <span className={styles.fabItemText}>Call Us</span>
+          <span className={styles.fabItemText}>Call</span>
         </a>
 
         {/* Chat Option - Glassmorphism Style */}
@@ -95,17 +95,17 @@ export default function FABSpeedDial() {
           onClick={handleChatClick}
         >
           <span className={styles.fabItemIcon}>💬</span>
-          <span className={styles.fabItemText}>Chat With Us</span>
+          <span className={styles.fabItemText}>Chat</span>
         </button>
 
         {/* Email Option - Glassmorphism Style */}
-        <a 
-          href="/contact" 
+        <a
+          href="/contact"
           className={styles.fabItem}
           aria-label="Email Us"
         >
-          <span className={styles.fabItemIcon}>✉️</span>
-          <span className={styles.fabItemText}>Email Us</span>
+          <span className={styles.fabItemIcon}>✉</span>
+          <span className={styles.fabItemText}>Email</span>
         </a>
       </div>
     </div>

@@ -152,18 +152,18 @@ function ArticleCard({ article }: { article: Article }) {
 }
 
 /**
- * Articles Grid Component
+ * Articles Grid Component with optimized spacing for cleaner layout
  */
 export default function ArticlesGrid() {
   return (
-    <section 
+    <section
       aria-label="Structured Settlement Resources and Articles"
       style={{
         width: '100%',
         maxWidth: SPACING.container.maxWidth,
         margin: '0 auto',
-        paddingTop: SPACING.unit.xxxxl,
-        paddingBottom: SPACING.unit.xl,
+        paddingTop: SPACING.unit.xxl,
+        paddingBottom: SPACING.unit.lg,
         paddingLeft: SPACING.unit.md,
         paddingRight: SPACING.unit.md
       }}
@@ -172,7 +172,7 @@ export default function ArticlesGrid() {
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
         gap: SPACING.grid.comfortable,
-        marginBottom: SPACING.unit.xxxl
+        marginBottom: SPACING.unit.xxl
       }}>
         {articles.map((article) => (
           <ArticleCard key={article.id} article={article} />

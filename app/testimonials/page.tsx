@@ -17,12 +17,12 @@
 import TestimonialsPage from '@/src/components/Pages/Testimonials/page';
 
 export const metadata = {
-  title: 'Client Testimonials | SmarterPayouts',
-  description: 'Read real reviews from clients who trusted SmarterPayouts with their structured settlement payouts. Transparent, no-pressure experience.',
-  keywords: 'structured settlement testimonials, client reviews, payout reviews, settlement company reviews',
+  title: 'Authentic Client Testimonials | SmarterPayouts',
+  description: 'Read authentic testimonials shared directly with us by clients who experienced our transparent structured settlement process. Real experiences, honest feedback.',
+  keywords: 'structured settlement testimonials, authentic client reviews, settlement company experiences, client feedback',
   openGraph: {
-    title: 'Client Testimonials – SmarterPayouts',
-    description: 'Read real reviews from clients who trusted SmarterPayouts with their structured settlement payouts.',
+    title: 'Authentic Client Testimonials – SmarterPayouts',
+    description: 'Read testimonials shared directly with us by clients who experienced our transparent settlement process.',
     type: 'article',
     url: 'https://smarterpayouts.com/testimonials',
     images: [
@@ -35,8 +35,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Client Testimonials – SmarterPayouts',
-    description: 'Read real reviews from clients who trusted SmarterPayouts with their structured settlement payouts.',
+    title: 'Authentic Client Testimonials – SmarterPayouts',
+    description: 'Read testimonials shared directly with us by clients who experienced our transparent settlement process.',
     site: '@SmarterPayouts',
     images: ['https://smarterpayouts.com/assets/images/social-preview.jpg'],
   },

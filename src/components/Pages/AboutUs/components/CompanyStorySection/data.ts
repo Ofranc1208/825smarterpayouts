@@ -18,22 +18,22 @@ import type { CompanyStoryConfig, StoryParagraph } from './types';
 export const STORY_PARAGRAPHS: StoryParagraph[] = [
   {
     id: 'founding',
-    text: 'Founded in 2017, SmarterPayouts emerged from a simple belief: structured settlement recipients deserve transparency, speed, and control over their financial decisions.',
+    text: 'Founded in 2017 with a focus on transparency and speed for structured settlement recipients.',
     emphasis: 'founding'
   },
   {
     id: 'problem',
-    text: 'Our founders, experienced in both technology and structured settlements, recognized that the traditional industry was plagued by high-pressure sales tactics and opaque pricing. They set out to create the first truly transparent, digital-first structured settlement company.',
+    text: 'Our founders saw high-pressure sales and hidden fees in the industry. They built the first transparent, digital-first solution.',
     emphasis: 'solution'
   },
   {
     id: 'achievement',
-    text: "Today, we're proud to be Florida's most trusted structured settlement company, serving clients nationwide with our innovative approach. We've helped over 400+ clients access more than $50 million in early payouts, all while maintaining our commitment to transparency and client-first service.",
+    text: "400+ clients served, $50M+ in payouts with 100% transparency.",
     emphasis: 'stats'
   },
   {
     id: 'mission',
-    text: 'Our mission remains the same: to provide structured settlement recipients with honest quotes, clear processes, and the respect they deserve during important financial decisions.',
+    text: 'We provide honest quotes, clear processes, and respect during financial decisions.',
     emphasis: 'mission'
   }
 ];
@@ -43,15 +43,14 @@ export const STORY_PARAGRAPHS: StoryParagraph[] = [
  */
 export const COMPANY_STORY_CONFIG: CompanyStoryConfig = {
   title: 'Our Story',
-  subtitle: 'The SmarterPayouts Journey',
   background: {
     section: 'white',
     content: '#f9fafb',
-    padding: '4rem 0'
+    padding: '3rem 0'
   },
   layout: {
     maxWidth: '800px',
-    contentPadding: '2.5rem',
+    contentPadding: '1.5rem',
     borderRadius: '16px'
   }
 } as const;

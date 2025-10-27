@@ -18,20 +18,20 @@ import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 export default function PaymentMethodsSection() {
   return (
-    <section id="payment-methods" style={{ 
-      padding: SPACING.section.standard,
+    <section id="payment-methods" style={{
+      padding: `${SPACING.unit.lg} 0`,
       background: COLORS.backgrounds.lightGray
     }}>
       <div style={SPACING.container.styles}>
         {/* Section Header */}
         <div style={{
           textAlign: 'center',
-          marginBottom: SPACING.stack.xxl
+          marginBottom: SPACING.stack.xl
         }}>
           <h2 style={{
             ...TEXT_PRESETS.sectionTitle,
             color: COLORS.text.primary,
-            marginBottom: SPACING.stack.md
+            marginBottom: SPACING.stack.sm
           }}>
             Choose Your Perfect Payment Method
           </h2>
@@ -49,8 +49,8 @@ export default function PaymentMethodsSection() {
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: SPACING.stack.lg,
-          marginBottom: SPACING.stack.xxl
+          gap: SPACING.grid.standard,
+          marginBottom: SPACING.stack.xl
         }}>
           {paymentMethods.map((method, index) => (
             <PaymentMethodCard key={index} method={method} />
@@ -61,7 +61,7 @@ export default function PaymentMethodsSection() {
         <div style={{
           background: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)',
           borderRadius: BORDER_RADIUS.xxlarge,
-          padding: SPACING.card.standard,
+          padding: SPACING.card.compact,
           border: `2px solid #93c5fd`,
           textAlign: 'center',
           boxShadow: BOX_SHADOWS.large,
@@ -72,34 +72,34 @@ export default function PaymentMethodsSection() {
             display: 'inline-flex',
             alignItems: 'center',
             gap: SPACING.inline.sm,
-            fontSize: TYPOGRAPHY.fontSize.heading.h2,
-            marginBottom: SPACING.stack.md
+            fontSize: TYPOGRAPHY.fontSize.heading.h4,
+            marginBottom: SPACING.stack.sm
           }}>
             <img
               src="/assets/images/mint-mascot.png"
               alt="Mint AI"
               style={{
-                width: '48px',
-                height: '48px',
+                width: '40px',
+                height: '40px',
                 objectFit: 'contain'
               }}
             />
           </div>
           <h3 style={{
-            fontSize: TYPOGRAPHY.fontSize.heading.h3,
+            fontSize: TYPOGRAPHY.fontSize.heading.h4,
             fontWeight: TYPOGRAPHY.fontWeight.bold,
             color: '#1d4ed8',
-            marginBottom: SPACING.stack.md,
+            marginBottom: SPACING.stack.sm,
             letterSpacing: '-0.5px'
           }}>
             Need Help Choosing?
           </h3>
           <p style={{
             color: '#1e40af',
-            fontSize: TYPOGRAPHY.fontSize.body.large,
+            fontSize: TYPOGRAPHY.fontSize.body.medium,
             lineHeight: TYPOGRAPHY.lineHeight.relaxed,
             maxWidth: '650px',
-            margin: `0 auto ${SPACING.stack.xl}`
+            margin: `0 auto ${SPACING.stack.lg}`
           }}>
             Not sure which payment method is right for you? Mint AI can analyze your situation, timeline needs, and preferences to recommend the perfect option. Get personalized advice in seconds!
           </p>
@@ -115,7 +115,7 @@ export default function PaymentMethodsSection() {
             transition: 'all 0.2s ease',
             boxShadow: BOX_SHADOWS.medium
           }}>
-            💡 Get My Payment Recommendation
+            Get My Payment Recommendation
           </Link>
         </div>
       </div>

@@ -9,7 +9,6 @@
 
 import React from 'react';
 import HeroCTA from '@/src/components/Pages/AboutUs/components/HeroSection/HeroCTA';
-import MintBadge from '../../../../../app/components/MintBadge';
 import { COLORS, SPACING, TEXT_PRESETS } from '@/src/components/shared/styles';
 
 export function HeroSection() {
@@ -19,14 +18,6 @@ export function HeroSection() {
       text: "💰 Get Your Instant Offer",
       href: "/pricing-calculator",
       variant: "technology-primary" as const,
-      size: "xl" as const,
-      enhancedHover: true
-    },
-    {
-      id: "mint-ai",
-      text: "💬 Chat with Mint AI",
-      href: "/mint-intelligent-chat",
-      variant: "mint-chat" as const,
       size: "xl" as const,
       enhancedHover: true
     }
@@ -50,13 +41,6 @@ export function HeroSection() {
             maxWidth: '800px',
             textAlign: 'center'
           }}>
-            <MintBadge variant="compact" style={{ marginBottom: SPACING.unit.xl }} />
-            <div style={{
-              ...TEXT_PRESETS.eyebrow,
-              marginBottom: SPACING.unit.md
-            }}>
-              Get Your Answers
-            </div>
             <h1 style={{
               ...TEXT_PRESETS.h1,
               marginBottom: SPACING.unit.lg,

@@ -17,21 +17,21 @@ import type { Recognition } from '../../types';
  */
 export const RECOGNITION_ITEMS: Recognition[] = [
   {
-    title: "Florida State Licensed",
-    description: "Registered with SunBiz Corporation Search",
+    title: "State Licensed",
+    description: "Licensed corporation",
     icon: "📜",
     type: "license",
     link: "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults"
   },
   {
     title: "Secure & Compliant",
-    description: "Full legal compliance in all 50 states",
+    description: "Licensed to operate with full compliance",
     icon: "🔒",
     type: "certification"
   },
   {
     title: "Industry Innovation",
-    description: "First company with instant online quotes",
+    description: "First with instant online quotes",
     icon: "🚀",
     type: "award"
   }
@@ -42,7 +42,6 @@ export const RECOGNITION_ITEMS: Recognition[] = [
  */
 export const RECOGNITION_CONFIG = {
   title: "Recognition & Compliance",
-  subtitle: "Trusted & Verified",
-  description: "Our credentials and recognition demonstrate our commitment to excellence, transparency, and regulatory compliance in the structured settlement industry.",
+  description: "Licensed and compliant with industry standards.",
   sectionId: "recognition"
 } as const;

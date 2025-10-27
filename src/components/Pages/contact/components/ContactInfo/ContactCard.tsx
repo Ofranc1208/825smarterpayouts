@@ -1,4 +1,5 @@
 'use client';
+import { Button } from '@/src/components/shared';
 
 interface ContactCardProps {
   icon: string;
@@ -27,7 +28,7 @@ export default function ContactCard({
     <div
       style={{
         background: "white",
-        padding: "2rem",
+        padding: "1.5rem",
         borderRadius: "12px",
         boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
         border: "1px solid #e5e7eb",
@@ -52,7 +53,7 @@ export default function ContactCard({
       <div>
         <div style={{
           fontSize: "2.5rem",
-          marginBottom: "1rem"
+          marginBottom: "0.75rem"
         }}>
           {icon}
         </div>
@@ -60,34 +61,29 @@ export default function ContactCard({
           fontSize: "1.25rem",
           fontWeight: "700",
           color: "#1f2937",
-          marginBottom: "0.75rem"
+          marginBottom: "0.5rem"
         }}>
           {title}
         </h3>
         <p style={{
           color: "#6b7280",
-          marginBottom: "1.5rem",
+          marginBottom: "1rem",
           lineHeight: "1.5",
           flex: 1
         }}>
           {description}
         </p>
       </div>
-      <a
+      <Button
+        as="a"
         href={actionLink}
+        variant="outline"
+        size="sm"
+        enhancedHover={true}
         style={{
-          color: "#059669",
-          fontWeight: "600",
-          textDecoration: "none",
-          fontSize: "0.875rem",
-          textTransform: "uppercase",
-          letterSpacing: "0.5px",
-          display: "inline-block",
-          padding: "0.5rem 1rem",
-          borderRadius: "6px",
-          border: "1px solid #059669",
-          transition: "all 0.2s ease",
-          marginTop: "auto"
+          marginTop: "auto",
+          borderColor: "#059669",
+          color: "#059669"
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.backgroundColor = "#059669";
@@ -97,9 +93,10 @@ export default function ContactCard({
           e.currentTarget.style.backgroundColor = "transparent";
           e.currentTarget.style.color = "#059669";
         }}
+        onClick={handleClick}
       >
-        {actionText} →
-      </a>
+        {actionText}
+      </Button>
     </div>
   );
 }

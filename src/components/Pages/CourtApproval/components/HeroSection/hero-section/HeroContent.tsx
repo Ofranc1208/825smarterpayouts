@@ -11,19 +11,11 @@ export default function HeroContent() {
     }}>
       <div style={{
         maxWidth: '800px',
-        margin: '0 auto'
+        margin: '0 auto',
+        textAlign: 'center'
       }}>
-        <div style={{
-          background: 'rgba(255, 255, 255, 0.9)',
-          backdropFilter: 'blur(10px)',
-          borderRadius: '20px',
-          padding: '2rem 1.5rem',
-          boxShadow: '0 20px 60px rgba(5, 150, 105, 0.1)',
-          border: '1px solid rgba(5, 150, 105, 0.1)'
-        }}>
-          <HeroHeaderContainer />
-          <HeroCTAContainer />
-        </div>
+        <HeroHeaderContainer />
+        <HeroCTAContainer />
       </div>
     </div>
   );

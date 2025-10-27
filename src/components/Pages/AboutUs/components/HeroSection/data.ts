@@ -16,16 +16,11 @@ import type { HeroConfig, HeroCTAButton } from '../../types';
  * Hero section configuration
  */
 export const HERO_CONFIG: HeroConfig = {
-  badge: {
-    variant: 'compact',
-    text: 'About SmarterPayouts'
-  },
   title: 'Revolutionizing Structured Settlements with AI',
-  subtitle: 'About SmarterPayouts',
-  description: "We're not just another settlement company. We're the first AI-powered platform that puts you in control of your financial future with instant quotes, intelligent assistance, and groundbreaking technology.",
+  description: "The first AI-powered platform for instant quotes with no personal info required.",
   background: {
     gradient: "linear-gradient(135deg, #f8fafc 0%, #e9f9f1 50%, #f0fdf4 100%)",
-    padding: "4rem 0 3rem"
+    padding: "3rem 0"
   }
 } as const;
 

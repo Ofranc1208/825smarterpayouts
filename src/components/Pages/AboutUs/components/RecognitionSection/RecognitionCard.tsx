@@ -91,9 +91,12 @@ export default function RecognitionCard({
         padding: "2rem",
         textAlign: "center",
         height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
         transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
         transform: isHovered ? "translateY(-8px)" : "translateY(0)",
-        boxShadow: isHovered 
+        boxShadow: isHovered
           ? `0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 0 0 1px ${typeStyles.borderColor}40`
           : "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
         border: `2px solid ${isHovered ? typeStyles.borderColor + '60' : 'transparent'}`,

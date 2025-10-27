@@ -36,7 +36,7 @@ export const dropdownSections: DropdownSection = {
     { href: '/faqs', label: 'FAQs', icon: '❓' },
     { href: '/social-media', label: 'Social Media', icon: '🌐' },
     { href: '/credentials', label: 'Our Credentials', icon: '🛡️' },
-    { href: '/resources', label: 'Insurance Companies We Work With', icon: '🏢' },
+    { href: '/resources', label: 'Insurance Companies', icon: '🏢' },
   ],
   'Resources & Stories': [
     { href: '/structured-settlement-info-hub', label: 'Knowledge Hub', icon: '📚' },

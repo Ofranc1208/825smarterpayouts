@@ -4,7 +4,7 @@ export default function ProcessTitle() {
       fontSize: '2rem',
       fontWeight: '700',
       color: '#1f2937',
-      marginBottom: '1rem'
+      marginBottom: '0.75rem'
     }}>
       How the Court Approval Process Works
     </h2>

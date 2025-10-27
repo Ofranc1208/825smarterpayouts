@@ -6,7 +6,7 @@ export default function HeroBackground({ children }: HeroBackgroundProps) {
   return (
     <section style={{
       background: "linear-gradient(135deg, #f8fafc 0%, #e9f9f1 50%, #f0fdf4 100%)",
-      padding: "2rem 0 3rem",
+      padding: "1rem 0 1.5rem",
       textAlign: 'center',
       position: 'relative',
       overflow: 'hidden'

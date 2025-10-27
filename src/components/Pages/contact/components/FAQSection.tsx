@@ -15,20 +15,20 @@ export default function FAQSection({ onFAQClick }: FAQSectionProps) {
 
   const faqs: FAQItem[] = [
     {
-      question: "How quickly can I get a response to my inquiry?",
-      answer: "We respond to all inquiries within 24 hours during business days. For urgent matters, you can call us directly or use our live chat feature for immediate assistance."
+      question: "How quickly can I get a response?",
+      answer: "We respond within 24 hours. For urgent matters, call us or use live chat."
     },
     {
-      question: "What information should I include in my message?",
-      answer: "Please include details about your structured settlement, any specific questions you have, and the best way to contact you. The more information you provide, the better we can assist you."
+      question: "What information should I include?",
+      answer: "Include details about your structured settlement and how to contact you."
     },
     {
-      question: "Is there a cost for the initial consultation?",
-      answer: "No, our initial consultation is completely free. We'll review your situation and provide expert advice with no obligation or upfront costs."
+      question: "Is the consultation free?",
+      answer: "Yes, completely free with no obligation."
     },
     {
       question: "Can I speak with someone immediately?",
-      answer: "Yes! You can call us during business hours (Monday-Friday, 9 AM - 6 PM EST) or use our Mint AI chat feature available 24/7 for instant responses."
+      answer: "Call us during business hours or use 24/7 live chat for instant responses."
     }
   ];
 
@@ -41,14 +41,18 @@ export default function FAQSection({ onFAQClick }: FAQSectionProps) {
 
   return (
     <section style={{
-      padding: "4rem 0",
+      padding: "3rem 0",
       background: "white"
     }}>
       <div style={{
         width: '100%',
         maxWidth: '800px',
         margin: '0 auto',
-        padding: '0 16px'
+        padding: '0 1rem',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column'
       }}>
         <div style={{
           textAlign: 'center',

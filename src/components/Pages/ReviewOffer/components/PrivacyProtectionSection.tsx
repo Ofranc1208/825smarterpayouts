@@ -49,7 +49,7 @@ function PrivacyCard({ feature }: { feature: typeof protectionFeatures[0] }) {
         style={{
           background: COLORS.backgrounds.white,
           borderRadius: BORDER_RADIUS.large,
-          padding: SPACING.unit.xl,
+          padding: SPACING.unit.lg,
           height: '100%',
           boxShadow: BOX_SHADOWS.small,
           border: `1px solid ${COLORS.borders.light}`,
@@ -74,7 +74,7 @@ function PrivacyCard({ feature }: { feature: typeof protectionFeatures[0] }) {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          margin: `0 auto ${SPACING.stack.lg}`,
+          margin: `0 auto ${SPACING.stack.md}`,
           fontSize: TYPOGRAPHY.fontSize.heading.h2
         }}>
           {feature.icon}
@@ -83,7 +83,7 @@ function PrivacyCard({ feature }: { feature: typeof protectionFeatures[0] }) {
           fontSize: TYPOGRAPHY.fontSize.heading.h5,
           fontWeight: TYPOGRAPHY.fontWeight.semibold,
           color: COLORS.text.primary,
-          marginBottom: SPACING.unit.md
+          marginBottom: SPACING.unit.sm
         }}>
           {feature.title}
         </h3>
@@ -102,12 +102,12 @@ function PrivacyCard({ feature }: { feature: typeof protectionFeatures[0] }) {
 
 export default function PrivacyProtectionSection() {
   return (
-    <section 
+    <section
       aria-label="Privacy protection features"
-      style={{ 
-        background: COLORS.backgrounds.white, 
-        paddingTop: SPACING.unit.xxxxl,
-        paddingBottom: SPACING.unit.xxxxl,
+      style={{
+        background: COLORS.backgrounds.white,
+        paddingTop: SPACING.unit.lg,
+        paddingBottom: SPACING.unit.lg,
         paddingLeft: SPACING.unit.md,
         paddingRight: SPACING.unit.md
       }}
@@ -117,7 +117,7 @@ export default function PrivacyProtectionSection() {
         maxWidth: SPACING.container.maxWidth,
         margin: '0 auto'
       }}>
-        <div style={{ textAlign: 'center', marginBottom: SPACING.stack.xxl }}>
+        <div style={{ textAlign: 'center', marginBottom: SPACING.stack.xl }}>
           <h2 style={{
             fontSize: TYPOGRAPHY.fontSize.heading.h2,
             fontWeight: TYPOGRAPHY.fontWeight.bold,
@@ -147,28 +147,6 @@ export default function PrivacyProtectionSection() {
           ))}
         </div>
 
-        {/* Compliance Badge */}
-        <div style={{ textAlign: 'center', marginTop: SPACING.stack.xxl }}>
-          <div style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: SPACING.inline.sm,
-            background: 'linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%)',
-            padding: `${SPACING.unit.md} ${SPACING.unit.xl}`,
-            borderRadius: BORDER_RADIUS.small,
-            border: '1px solid #a7f3d0',
-            boxShadow: BOX_SHADOWS.small
-          }}>
-            <span style={{ fontSize: TYPOGRAPHY.fontSize.heading.h5 }}>✅</span>
-            <span style={{ 
-              color: COLORS.primary.main, 
-              fontWeight: TYPOGRAPHY.fontWeight.semibold, 
-              fontSize: TYPOGRAPHY.fontSize.body.medium 
-            }}>
-              100% State & Federal Compliant
-            </span>
-          </div>
-        </div>
       </div>
     </section>
   );

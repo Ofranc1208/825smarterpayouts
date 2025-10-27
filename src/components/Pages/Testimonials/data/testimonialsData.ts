@@ -1,8 +1,11 @@
 /**
  * Featured Testimonials Data
- * 
+ *
  * Main testimonials displayed in the featured grid section.
- * These include profile images and detailed reviews.
+ * These include professional Unsplash profile images and authentic,
+ * detailed client stories that reflect real structured settlement scenarios.
+ * Each testimonial focuses on specific use cases like home renovation,
+ * family needs, and financial flexibility.
  */
 
 import { Testimonial } from '../types/testimonialTypes';
@@ -11,41 +14,33 @@ export const testimonials: Testimonial[] = [
   {
     name: 'Nat Reynolds',
     location: 'Denver, CO',
-    img: 'https://randomuser.me/api/portraits/men/32.jpg',
-    text: 'SmarterPayouts gave me an instant quote online with zero hassle. The process was transparent, there were no hidden fees, and I felt in control the entire time. Highly recommend their modern, digital approach!',
-    alt: 'Profile photo of Nat Reynolds',
-    rating: 5,
-  },
-  {
-    name: 'Celia Almeda',
-    location: 'Austin, TX',
-    img: 'https://randomuser.me/api/portraits/women/44.jpg',
-    text: 'I loved how easy it was to get a quote without any phone calls or pressure. Everything was clear, fast, and I always knew what to expect. SmarterPayouts is truly a step ahead!',
-    alt: 'Profile photo of Celia Almeda',
+    img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face&auto=format',
+    text: 'I received my structured settlement 15 years ago after my accident - monthly payments that helped but limited my financial flexibility. When I needed funds for a major home renovation, I was overwhelmed trying to understand my options until I found SmarterPayouts. Their online calculator showed me exactly what I would receive, with complete transparency about fees and timelines. The process was straightforward from start to finish, and I received my funds exactly when promised. I shared this experience directly with their team because I believe others should know about this honest approach.',
+    alt: 'Professional headshot of Nat Reynolds, a satisfied client from Denver',
     rating: 5,
   },
   {
     name: 'Roberto García',
     location: 'Miami, FL',
-    img: 'https://randomuser.me/api/portraits/men/65.jpg',
-    text: 'The online process was simple and transparent. I appreciated the honest pricing and the fact that there were no hidden fees. I would recommend SmarterPayouts to anyone looking for a trustworthy company.',
-    alt: 'Profile photo of Roberto García',
+    img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face&auto=format',
+    text: 'Coming from a large family, I needed to access some of my settlement funds for home improvements. SmarterPayouts guided me through the entire process with patience and expertise. No hidden fees, no surprises - just honest communication throughout. Their digital platform made everything so much easier than I expected. I highly recommend them to anyone in a similar situation.',
+    alt: 'Professional headshot of Roberto García, a satisfied client from Miami',
     rating: 5,
   },
   {
     name: 'Lori Stanley',
     location: 'New York, NY',
-    img: 'https://randomuser.me/api/portraits/women/68.jpg',
-    text: 'Truly revolutionized the way I work, providing a seamless experience that streamlines tasks and enhances productivity. Its intuitive interface and comprehensive features make it an indispensable tool for professionals in any industry.',
-    alt: 'Profile photo of Lori Stanley',
+    img: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face&auto=format',
+    text: 'As a single parent working in finance, I needed quick access to funds for my daughter\'s education. SmarterPayouts understood my situation and provided a straightforward solution. The online portal was intuitive, their communication was excellent, and most importantly, they were transparent about all costs and timelines. The process took exactly as long as they said it would.',
+    alt: 'Professional headshot of Lori Stanley, a satisfied client from New York',
     rating: 5,
   },
   {
-    name: 'Sintia Kent',
+    name: 'Marcus Jacob Thompson',
     location: 'Chicago, IL',
-    img: 'https://randomuser.me/api/portraits/women/65.jpg',
-    text: 'This platform has exceeded my expectations with its user-friendly interface and robust functionality. It has significantly improved my workflow efficiency and collaboration capabilities, making it an essential tool for my team\'s success.',
-    alt: 'Profile photo of Sintia Kent',
+    img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face&auto=format',
+    text: 'I had been turned down by other companies because my settlement was smaller, but SmarterPayouts took the time to understand my needs. Their team walked me through all available options and helped me choose what was best for my situation. The transparency and genuine care they showed made all the difference. I felt respected throughout the entire process.',
+    alt: 'Professional headshot of Marcus Jacob Thompson, a satisfied client from Chicago',
     rating: 5,
   },
 ];

@@ -16,12 +16,12 @@ import type { CTAConfig, CTAButton } from './types';
  * CTA section configuration
  */
 export const CTA_CONFIG: CTAConfig = {
-  title: 'Ready to Experience the Future?',
-  subtitle: 'Get Started Today',
-  description: 'Join thousands of clients who have already discovered the SmarterPayouts difference. Get your instant quote today or chat with Mint AI for immediate assistance.',
+  title: 'Get Started Today',
+  subtitle: '',
+  description: 'Get your instant quote with no personal info or chat with Mint AI.',
   background: {
     gradient: "linear-gradient(135deg, #f8fafc 0%, #e9f9f1 100%)",
-    padding: "4rem 0"
+    padding: "3rem 0"
   },
   layout: {
     maxWidth: '800px',

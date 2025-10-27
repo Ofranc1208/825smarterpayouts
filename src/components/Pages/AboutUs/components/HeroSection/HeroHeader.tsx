@@ -12,7 +12,6 @@
 
 'use client';
 import React from 'react';
-import MintBadge from '@/components/MintBadge';
 import type { HeroHeaderProps } from './types';
 
 /**
@@ -26,40 +25,19 @@ export default function HeroHeader({
   subtitle,
   description,
   align = 'center',
-  showBadge = true,
+  showBadge = false,
   badge
 }: HeroHeaderProps): JSX.Element {
   const textAlign = align as React.CSSProperties['textAlign'];
 
   return (
     <>
-      {/* Mint Badge */}
-      {showBadge && badge && (
-        <MintBadge 
-          variant={badge.variant} 
-          style={{ marginBottom: "2rem" }} 
-        />
-      )}
-
-      {/* Subtitle */}
-      <div style={{
-        fontSize: "0.875rem",
-        fontWeight: "600",
-        color: "#047857",
-        textTransform: "uppercase",
-        letterSpacing: "1px",
-        marginBottom: "1rem",
-        textAlign
-      }}>
-        {subtitle}
-      </div>
-
       {/* Main Title */}
       <h1 id="hero-heading" style={{
         fontSize: "clamp(2rem, 5vw, 3.5rem)",
         fontWeight: "700",
         color: "#1f2937",
-        marginBottom: "1.5rem",
+        marginBottom: "1rem",
         lineHeight: "1.2",
         textAlign
       }}>
@@ -71,7 +49,7 @@ export default function HeroHeader({
         fontSize: "1.125rem",
         color: "#374151",
         maxWidth: "600px",
-        margin: textAlign === 'center' ? "0 auto 2rem" : "0 0 2rem",
+        margin: textAlign === 'center' ? "0 auto 1.5rem" : "0 0 1.5rem",
         lineHeight: "1.6",
         textAlign
       }}>

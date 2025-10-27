@@ -48,7 +48,7 @@ export default function NewsletterSection() {
         padding: `${SPACING.unit.xxl} ${SPACING.card.standard}`,
         borderRadius: BORDER_RADIUS.large,
         border: `1px solid ${COLORS.borders.light}`,
-        marginTop: SPACING.unit.xxxl,
+        marginTop: SPACING.unit.xxl,
         textAlign: 'center'
       }}
     >

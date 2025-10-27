@@ -1,13 +1,14 @@
 /**
  * Hero Section Component - Articles Page
- * 
- * Displays the page title, description, and main CTA buttons.
+ *
+ * Displays the page title, description, and main CTA buttons without badge.
  * Uses design system tokens for consistent styling and shared Button components.
  * Fully accessible with semantic HTML and proper ARIA labels.
- * 
+ * Optimized spacing for cleaner layout.
+ *
  * @component
  * @returns {JSX.Element} Rendered hero section with CTAs
- * 
+ *
  * @example
  * <HeroSection />
  */
@@ -17,12 +18,12 @@ import { COLORS, TYPOGRAPHY, SPACING } from '@/src/components/shared/styles';
 
 export default function HeroSection() {
   return (
-    <section 
+    <section
       aria-label="Articles page hero section"
       style={{
         background: "linear-gradient(135deg, #f8fafc 0%, #e9f9f1 50%, #f0fdf4 100%)",
-        paddingTop: SPACING.unit.xxxxl,
-        paddingBottom: SPACING.unit.xxxl,
+        paddingTop: SPACING.unit.xxxl,
+        paddingBottom: SPACING.unit.xxl,
         paddingLeft: SPACING.unit.md,
         paddingRight: SPACING.unit.md,
         position: "relative",
@@ -42,16 +43,6 @@ export default function HeroSection() {
             maxWidth: '800px',
             textAlign: 'center'
           }}>
-            <div style={{
-              fontSize: TYPOGRAPHY.fontSize.body.small,
-              fontWeight: TYPOGRAPHY.fontWeight.semibold,
-              color: COLORS.primary.main,
-              textTransform: "uppercase",
-              letterSpacing: "1px",
-              marginBottom: SPACING.unit.md
-            }}>
-              Knowledge Center
-            </div>
             <h1 style={{
               fontSize: "clamp(2rem, 5vw, 3.5rem)",
               fontWeight: TYPOGRAPHY.fontWeight.bold,

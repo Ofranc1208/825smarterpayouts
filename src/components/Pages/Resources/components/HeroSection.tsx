@@ -1,8 +1,9 @@
 /**
  * Hero Section Component - Resources Page
  *
- * Displays the main hero content with a badge, title, description, and search CTA button.
- * Uses design system tokens for consistent styling and shared components.
+ * Displays the main hero content with a professional badge, optimized title sizing,
+ * detailed description, and CTA buttons. Improved typography hierarchy and spacing
+ * for better visual balance and readability.
  *
  * @component
  * @returns {JSX.Element} Rendered hero section for insurance directory
@@ -22,8 +23,8 @@ export default function HeroSection() {
       aria-label="Insurance directory hero section"
       style={{
         background: 'linear-gradient(135deg, #f8fafc 0%, #e9f9f1 50%, #f0fdf4 100%)',
-        paddingTop: SPACING.unit.xl,
-        paddingBottom: SPACING.unit.lg,
+        paddingTop: SPACING.unit.xxxl,
+        paddingBottom: SPACING.unit.xxl,
         paddingLeft: SPACING.unit.md,
         paddingRight: SPACING.unit.md,
         position: 'relative',
@@ -43,40 +44,44 @@ export default function HeroSection() {
             display: 'inline-flex',
             alignItems: 'center',
             gap: SPACING.inline.xs,
-            background: 'linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%)',
-            padding: `${SPACING.unit.xxs} ${SPACING.unit.md}`,
-            borderRadius: BORDER_RADIUS.small,
-            marginBottom: SPACING.stack.sm,
-            border: `1px solid ${COLORS.borders.green}`
+            background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
+            padding: `${SPACING.unit.xs} ${SPACING.unit.lg}`,
+            borderRadius: BORDER_RADIUS.full,
+            marginBottom: SPACING.stack.md,
+            border: `1px solid ${COLORS.primary.main}`,
+            boxShadow: BOX_SHADOWS.small
           }}>
             <span style={{ fontSize: TYPOGRAPHY.fontSize.body.large }}>📋</span>
             <span style={{
-              color: COLORS.primary.main,
-              fontWeight: TYPOGRAPHY.fontWeight.semibold,
-              fontSize: TYPOGRAPHY.fontSize.body.xsmall,
+              color: COLORS.backgrounds.white,
+              fontWeight: TYPOGRAPHY.fontWeight.bold,
+              fontSize: TYPOGRAPHY.fontSize.body.small,
               textTransform: 'uppercase',
               letterSpacing: '1px'
-            }}>INSURANCE DIRECTORY</span>
+            }}>Insurance Directory</span>
           </div>
 
           <h1 style={{
-            fontSize: TYPOGRAPHY.fontSize.heading.h2,
+            fontSize: TYPOGRAPHY.fontSize.heading.h3,
             fontWeight: TYPOGRAPHY.fontWeight.bold,
             color: COLORS.text.primary,
             marginBottom: SPACING.stack.sm,
-            lineHeight: TYPOGRAPHY.lineHeight.tight
+            lineHeight: TYPOGRAPHY.lineHeight.snug,
+            maxWidth: "600px",
+            margin: "0 auto"
           }}>
             Structured Settlement Insurance Companies
           </h1>
 
           <p style={{
-            fontSize: TYPOGRAPHY.fontSize.body.medium,
+            fontSize: TYPOGRAPHY.fontSize.body.large,
             color: COLORS.text.secondary,
-            maxWidth: "700px",
-            margin: `0 auto ${SPACING.stack.md}`,
-            lineHeight: TYPOGRAPHY.lineHeight.normal
+            maxWidth: "600px",
+            margin: `0 auto ${SPACING.stack.lg}`,
+            lineHeight: TYPOGRAPHY.lineHeight.relaxed,
+            fontWeight: TYPOGRAPHY.fontWeight.medium
           }}>
-            Complete directory with contact information for insurance companies. Search and verify payments instantly.
+            Complete directory with contact information for insurance companies that provide structured settlement contracts. Search and verify payments instantly.
           </p>
 
           {/* CTA Buttons */}

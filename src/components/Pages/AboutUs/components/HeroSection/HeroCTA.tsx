@@ -24,7 +24,7 @@ export default function HeroCTA({
   buttons,
   align = 'center',
   layout = 'horizontal',
-  gap = '1rem'
+  gap = '0.75rem'
 }: HeroCTAProps): JSX.Element {
   const justifyContent = align === 'center' ? 'center' : align === 'right' ? 'flex-end' : 'flex-start';
   const flexDirection = layout === 'vertical' ? 'column' : 'row';

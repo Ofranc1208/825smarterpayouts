@@ -50,7 +50,7 @@ export default function ContactForm({ onFormSubmit }: ContactFormProps) {
   return (
     <div style={{
       background: "white",
-      padding: "2rem",
+      padding: "1.5rem",
       borderRadius: "12px",
       boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
       border: "1px solid #e5e7eb"
@@ -59,7 +59,7 @@ export default function ContactForm({ onFormSubmit }: ContactFormProps) {
         fontSize: "1.5rem",
         fontWeight: "700",
         color: "#1f2937",
-        marginBottom: "1.5rem",
+        marginBottom: "1rem",
         textAlign: "center"
       }}>
         Send us a Message
@@ -72,7 +72,7 @@ export default function ContactForm({ onFormSubmit }: ContactFormProps) {
           color: "#065f46",
           padding: "1rem",
           borderRadius: "8px",
-          marginBottom: "1.5rem",
+          marginBottom: "1rem",
           textAlign: "center"
         }}>
           ✅ Thank you! Your message has been sent successfully.
@@ -86,7 +86,7 @@ export default function ContactForm({ onFormSubmit }: ContactFormProps) {
           color: "#991b1b",
           padding: "1rem",
           borderRadius: "8px",
-          marginBottom: "1.5rem",
+          marginBottom: "1rem",
           textAlign: "center"
         }}>
           ❌ Sorry, there was an error sending your message. Please try again.

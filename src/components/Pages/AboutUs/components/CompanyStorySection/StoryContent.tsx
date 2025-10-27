@@ -29,16 +29,16 @@ export default function StoryContent({
       background: background.content,
       borderRadius: layout.borderRadius,
       padding: layout.contentPadding,
-      marginBottom: "2rem"
+      marginBottom: "1.5rem"
     }}>
       {paragraphs.map((paragraph, index) => (
-        <p 
+        <p
           key={paragraph.id}
           style={{
             fontSize: "1.125rem",
             color: "#374151",
             lineHeight: "1.6",
-            marginBottom: index === paragraphs.length - 1 ? "0" : "1.5rem"
+            marginBottom: index === paragraphs.length - 1 ? "0" : "1rem"
           }}
         >
           {paragraph.text}

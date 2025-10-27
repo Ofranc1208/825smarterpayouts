@@ -13,7 +13,7 @@ export default function PrimaryCTAButton() {
       shimmer={true}
       aria-label="Get your instant structured settlement quote"
     >
-      💰 Get Your Instant Offer
+      Get Your Instant Offer
     </Button>
   );
 }

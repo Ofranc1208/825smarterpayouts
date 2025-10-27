@@ -8,7 +8,7 @@ import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 export default function FinalCTA() {
   return (
     <section style={{
-      padding: SPACING.section.standard,
+      padding: `${SPACING.unit.lg} 0`,
       textAlign: 'center',
       background: COLORS.backgrounds.greenLight,
       borderTop: `1px solid ${COLORS.neutral.gray200}`,
@@ -33,7 +33,7 @@ export default function FinalCTA() {
         <div style={{
           background: COLORS.backgrounds.white,
           borderRadius: BORDER_RADIUS.xxlarge,
-          padding: SPACING.card.standard,
+          padding: SPACING.card.compact,
           boxShadow: BOX_SHADOWS.large,
           border: `1px solid ${COLORS.neutral.gray200}`,
           maxWidth: "800px",
@@ -57,49 +57,16 @@ export default function FinalCTA() {
             ...TEXT_PRESETS.sectionSubtitle,
             color: COLORS.text.secondary,
             maxWidth: '650px',
-            margin: `0 auto ${SPACING.stack.xxl}`
+            margin: `0 auto ${SPACING.stack.xl}`
           }}>
-            Get your instant quote today or chat with our AI assistant for personalized guidance. No personal information required to get started.
+            Get your instant quote today or chat with our AI assistant for personalized guidance. <strong>No personal information required</strong> to get started.
           </p>
           
           {/* CTA Buttons - Using Shared Component */}
-          <div style={{ marginBottom: SPACING.stack.lg }}>
+          <div style={{ marginBottom: SPACING.stack.md }}>
             <HeroCTA buttons={HERO_CTA_BUTTONS} align="center" layout="horizontal" />
           </div>
           
-          {/* Footer Badge */}
-          <div style={{
-            background: COLORS.backgrounds.greenLight,
-            borderRadius: BORDER_RADIUS.medium,
-            padding: SPACING.card.compact,
-            border: `1px solid ${COLORS.borders.green}`,
-            maxWidth: "500px",
-            margin: "0 auto"
-          }}>
-            <p style={{
-              margin: "0",
-              fontSize: TYPOGRAPHY.fontSize.body.medium,
-              fontWeight: TYPOGRAPHY.fontWeight.medium,
-              color: COLORS.primary.main,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: SPACING.inline.sm
-            }}>
-              <span style={{ 
-                fontSize: TYPOGRAPHY.fontSize.heading.h5,
-                width: "24px",
-                height: "24px",
-                background: COLORS.primary.gradient,
-                borderRadius: BORDER_RADIUS.circle,
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: COLORS.text.white
-              }}>⚡</span>
-              <strong>Instant quotes in 60 seconds or less</strong>
-            </p>
-          </div>
         </div>
       </div>
     </section>

@@ -31,12 +31,12 @@ const faqs = [
 
 export default function FAQSection() {
   return (
-    <section 
+    <section
       aria-label="Frequently asked questions"
-      style={{ 
-        background: '#f9fafb', 
-        paddingTop: SPACING.unit.xxxxl,
-        paddingBottom: SPACING.unit.xxxxl,
+      style={{
+        background: '#f9fafb',
+        paddingTop: SPACING.unit.lg,
+        paddingBottom: SPACING.unit.lg,
         paddingLeft: SPACING.unit.md,
         paddingRight: SPACING.unit.md
       }}
@@ -53,14 +53,14 @@ export default function FAQSection() {
           <div style={{
             background: COLORS.backgrounds.white,
             borderRadius: BORDER_RADIUS.large,
-            padding: SPACING.card.comfortable,
+            padding: SPACING.card.compact,
             boxShadow: BOX_SHADOWS.small
           }}>
             <h2 style={{
               fontSize: TYPOGRAPHY.fontSize.heading.h3,
               fontWeight: TYPOGRAPHY.fontWeight.bold,
               color: COLORS.text.primary,
-              marginBottom: SPACING.stack.xl,
+              marginBottom: SPACING.stack.lg,
               textAlign: 'center'
             }}>
               Privacy & Security FAQ
@@ -73,7 +73,7 @@ export default function FAQSection() {
                   style={{
                     border: `1px solid ${COLORS.borders.light}`,
                     borderRadius: BORDER_RADIUS.medium,
-                    padding: SPACING.unit.lg
+                    padding: SPACING.unit.md
                   }}
                 >
                   <summary style={{
@@ -85,7 +85,7 @@ export default function FAQSection() {
                     {faq.question}
                   </summary>
                   <div style={{
-                    marginTop: SPACING.unit.md,
+                    marginTop: SPACING.unit.sm,
                     color: COLORS.text.secondary,
                     lineHeight: TYPOGRAPHY.lineHeight.relaxed,
                     fontSize: TYPOGRAPHY.fontSize.body.medium
@@ -96,9 +96,9 @@ export default function FAQSection() {
               ))}
             </div>
 
-            <div style={{ 
-              textAlign: 'center', 
-              marginTop: SPACING.stack.xl,
+            <div style={{
+              textAlign: 'center',
+              marginTop: SPACING.stack.lg,
               display: 'flex',
               gap: SPACING.inline.md,
               justifyContent: 'center',

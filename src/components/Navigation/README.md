@@ -219,7 +219,7 @@ if (isFeatureEnabled('enableSecurity')) {
 - ❓ FAQs
 - 🌐 Social Media
 - 🛡️ Our Credentials
-- 🏢 Insurance Companies We Work With
+- 🏢 Insurance Companies
 
 #### Resources & Stories
 - 📚 Knowledge Hub

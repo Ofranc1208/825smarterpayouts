@@ -190,8 +190,9 @@ export default function RecognitionGrid({
    */
   const gridStyles = useMemo(() => ({
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-    gap: '1.5rem'
+    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+    gap: '1.5rem',
+    alignItems: 'start'
   }), []);
 
   // Error State

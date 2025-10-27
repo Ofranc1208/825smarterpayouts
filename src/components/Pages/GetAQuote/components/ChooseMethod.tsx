@@ -9,7 +9,7 @@ import { createFloatHover } from '@/src/components/shared/styles/hoverEffects';
 export default function ChooseMethod() {
   return (
     <section style={{
-      padding: SPACING.section.standard,
+      padding: `${SPACING.unit.lg} 0`,
       background: COLORS.backgrounds.whiteToSlate,
       position: 'relative'
     }}>
@@ -36,7 +36,7 @@ export default function ChooseMethod() {
         {/* Section Header */}
         <div style={{
           textAlign: 'center',
-          marginBottom: SPACING.stack.xxl
+          marginBottom: SPACING.stack.xl
         }}>
           <h2 style={{
             ...TEXT_PRESETS.sectionTitle,
@@ -63,8 +63,8 @@ export default function ChooseMethod() {
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-          gap: SPACING.grid.comfortable,
-          marginBottom: SPACING.stack.xl
+          gap: SPACING.grid.standard,
+          marginBottom: SPACING.stack.lg
         }}>
           {/* AI Calculator Card */}
           <div
@@ -123,22 +123,6 @@ export default function ChooseMethod() {
             }}>
               Instant quote in 60 seconds. No personal info required.
             </p>
-
-            {/* Badge */}
-            <div style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: SPACING.inline.xs,
-              fontSize: TYPOGRAPHY.fontSize.body.xsmall,
-              fontWeight: TYPOGRAPHY.fontWeight.bold,
-              color: COLORS.primary.main,
-              background: COLORS.backgrounds.greenLight,
-              padding: `${SPACING.unit.xxs} ${SPACING.unit.sm}`,
-              borderRadius: BORDER_RADIUS.medium,
-              letterSpacing: TYPOGRAPHY.letterSpacing.wide
-            }}>
-              ⚡ RECOMMENDED • 24/7 AVAILABLE
-            </div>
           </div>
 
           {/* Talk to Expert Card */}
@@ -211,7 +195,7 @@ export default function ChooseMethod() {
         {/* Help Text Card */}
         <div style={{
           textAlign: 'center',
-          marginTop: SPACING.stack.xl,
+          marginTop: SPACING.stack.lg,
           padding: SPACING.card.compact,
           background: 'rgba(240, 253, 244, 0.7)',
           backdropFilter: 'blur(10px)',

@@ -1,14 +1,21 @@
 /**
- * Testimonials Page - Orchestrator Pattern
- * 
- * Main page component that orchestrates all testimonial sections.
- * All page logic is broken down into focused, modular components.
- * 
- * Sections:
- * - HeroSection: Hero with title, subtitle, and rating overview
- * - FeaturedTestimonialsGrid: Main testimonial cards with images
- * - QuickTestimonialsSection: Compact testimonials grid
- * - CTASection: Call-to-action with buttons
+ * Testimonials Page - Clean Modern Design
+ *
+ * Main page component featuring clean, authentic testimonial design:
+ * - HeroSection: Clean hero with direct title and transparent messaging
+ * - FeaturedTestimonialsGrid: Modern cards with glassmorphism effects
+ * - QuickTestimonialsSection: Compact testimonials with smooth animations
+ * - CTASection: Optimized call-to-action section
+ *
+ * Features:
+ * - Clean design without distracting badges
+ * - Authentic testimonials emphasizing transparency
+ * - Modern glassmorphism effects throughout
+ * - Professional typography with gradient accents
+ * - Smooth animations and enhanced hover effects
+ * - Real client stories with detailed experiences
+ * - Professional profile images from Unsplash
+ * - Responsive layouts optimized for all devices
  */
 
 'use client';

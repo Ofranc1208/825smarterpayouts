@@ -1,9 +1,10 @@
 /**
  * Hero Section Component for Info Hub Pages
- * Reusable hero with gradient background
- * 
+ * Reusable hero with gradient background and optimized spacing
+ *
  * NO CSS FILES - All styles inline
  * Uses COLORS from shared/styles
+ * Optimized padding for cleaner layout
  */
 
 'use client';
@@ -27,7 +28,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <section style={{
       background: "linear-gradient(135deg, #f8fafc 0%, #e9f9f1 50%, #f0fdf4 100%)",
-      padding: "5rem 0 4rem",
+      padding: "3rem 0 2rem",
       position: "relative",
       overflow: "hidden",
       borderBottom: "1px solid #e5e7eb"
@@ -62,7 +63,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           fontSize: "1.125rem",
           color: COLORS.text.tertiary,
           maxWidth: "600px",
-          margin: "0 auto 2rem",
+          margin: "0 auto 1.5rem",
           lineHeight: "1.6"
         }}>
           {subtitle}

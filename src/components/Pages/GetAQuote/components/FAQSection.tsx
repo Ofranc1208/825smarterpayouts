@@ -32,8 +32,8 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section style={{ 
-      padding: SPACING.section.standard, 
+    <section style={{
+      padding: `${SPACING.unit.lg} 0`,
       background: '#ffffff'
     }}>
       <div style={{
@@ -45,7 +45,7 @@ export default function FAQSection() {
         {/* Section Header */}
         <div style={{
           textAlign: 'center',
-          marginBottom: SPACING.stack.xxl
+          marginBottom: SPACING.stack.xl
         }}>
           <h2 style={{
             fontSize: '2rem',
@@ -78,7 +78,7 @@ export default function FAQSection() {
             borderRadius: '12px',
             border: '1px solid #22c55e',
             textDecoration: 'none',
-            marginBottom: SPACING.stack.xl,
+            marginBottom: SPACING.stack.lg,
             transition: 'all 0.2s ease'
           }}
           onMouseEnter={(e) => {
@@ -207,9 +207,9 @@ export default function FAQSection() {
         </div>
 
         {/* View All FAQs Button */}
-        <div style={{ 
+        <div style={{
           textAlign: 'center',
-          marginTop: SPACING.stack.xl
+          marginTop: SPACING.stack.lg
         }}>
           <Link
             href="/faqs"

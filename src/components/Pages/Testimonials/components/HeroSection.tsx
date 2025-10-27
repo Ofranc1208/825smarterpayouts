@@ -1,11 +1,13 @@
 /**
- * Hero Section - Testimonials Page
- * 
- * Displays the main hero section with:
- * - Page title and subtitle
- * - Overall rating display
- * - CTA buttons using shared HeroCTA component
- * - Gradient background
+ * Hero Section - Testimonials Page (Clean Design)
+ *
+ * Displays a clean, modern hero section with:
+ * - Direct title without badges for cleaner look
+ * - Large gradient title with enhanced typography
+ * - Enhanced rating display with integrated stats
+ * - Modern CTA buttons with improved spacing
+ * - Subtle background decorative elements
+ * - Glassmorphism rating card with backdrop blur effects
  */
 
 'use client';
@@ -35,155 +37,130 @@ export default function HeroSection() {
 
   return (
     <section style={{
-      background: COLORS.backgrounds.slateGradient,
-      padding: SPACING.section.hero,
+      background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%)',
+      padding: `${SPACING.unit.xxxxl} 0`,
       position: "relative",
       overflow: "hidden"
     }}>
+      {/* Background decorative elements */}
+      <div style={{
+        position: 'absolute',
+        top: '20%',
+        left: '10%',
+        width: '150px',
+        height: '150px',
+        background: 'radial-gradient(circle, rgba(34, 197, 94, 0.05) 0%, transparent 70%)',
+        borderRadius: '50%',
+        pointerEvents: 'none'
+      }} />
+      <div style={{
+        position: 'absolute',
+        bottom: '30%',
+        right: '15%',
+        width: '120px',
+        height: '120px',
+        background: 'radial-gradient(circle, rgba(34, 197, 94, 0.03) 0%, transparent 70%)',
+        borderRadius: '50%',
+        pointerEvents: 'none'
+      }} />
+
       <div style={{
         width: '100%',
         maxWidth: SPACING.container.maxWidth,
         margin: '0 auto',
-        padding: SPACING.container.padding
+        padding: SPACING.container.padding,
+        position: 'relative',
+        zIndex: 1
       }}>
         <div style={{
           display: 'flex',
           justifyContent: 'center'
         }}>
           <div style={{
-            maxWidth: '800px',
+            maxWidth: '900px',
             textAlign: 'center'
           }}>
-            {/* Badge */}
-            <div style={{
-              fontSize: TYPOGRAPHY.fontSize.body.small,
-              fontWeight: TYPOGRAPHY.fontWeight.semibold,
-              color: COLORS.primary.dark,
-              textTransform: "uppercase",
-              letterSpacing: "1px",
-              marginBottom: SPACING.stack.sm
-            }}>
-              Client Success Stories
-            </div>
-
-            {/* Title */}
+            {/* Modern Title */}
             <h1 style={{
-              ...TEXT_PRESETS.heroTitle,
-              color: COLORS.neutral.gray900,
-              marginBottom: SPACING.stack.md,
-              background: COLORS.titleGradients.grayToGreen,
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text"
+              fontSize: 'clamp(2.5rem, 6vw, 4rem)',
+              fontWeight: TYPOGRAPHY.fontWeight.bold,
+              background: 'linear-gradient(135deg, #1f2937 0%, #374151 50%, #22c55e 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              marginBottom: SPACING.stack.lg,
+              lineHeight: TYPOGRAPHY.lineHeight.tight,
+              textShadow: '0 2px 4px rgba(0,0,0,0.1)'
             }}>
-              What Our Clients Are Saying
+              Real Client Experiences
             </h1>
 
             {/* Subtitle */}
             <p style={{
-              ...TEXT_PRESETS.heroSubtitle,
+              fontSize: TYPOGRAPHY.fontSize.body.xlarge,
               color: COLORS.text.secondary,
-              maxWidth: "700px",
-              margin: `0 auto ${SPACING.stack.lg}`
+              maxWidth: "800px",
+              margin: `0 auto ${SPACING.stack.xl}`,
+              lineHeight: TYPOGRAPHY.lineHeight.relaxed,
+              fontWeight: TYPOGRAPHY.fontWeight.medium
             }}>
-              Real feedback from real people. Discover why clients trust SmarterPayouts for a <strong style={{ color: COLORS.primary.dark }}>transparent, no-pressure experience</strong>.
+              These testimonials were shared directly with us by clients who experienced our <strong style={{ color: '#22c55e' }}>transparent settlement process</strong>. Every story reflects genuine experiences from people who trusted us with their financial needs.
             </p>
 
-            {/* Rating Display */}
+            {/* Enhanced Rating Display - 40% Smaller */}
             <div style={{
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               gap: SPACING.inline.md,
-              marginBottom: SPACING.stack.xl
+              marginBottom: SPACING.stack.lg,
+              background: 'rgba(255,255,255,0.8)',
+              backdropFilter: 'blur(10px)',
+              padding: `${SPACING.unit.md} ${SPACING.unit.lg}`,
+              borderRadius: '1.5rem',
+              border: '1px solid rgba(255,255,255,0.5)',
+              boxShadow: '0 6px 20px rgba(0,0,0,0.08)'
             }}>
-              <StarRating rating={5} size="large" />
-              <span style={{ 
-                color: COLORS.text.secondary, 
-                fontWeight: TYPOGRAPHY.fontWeight.semibold,
-                fontSize: TYPOGRAPHY.fontSize.body.large
-              }}>
-                4.9/5 from 400+ clients
-              </span>
-            </div>
-
-            {/* CTA Buttons */}
-            <div style={{ marginBottom: SPACING.stack.xl }}>
-              <HeroCTA buttons={ctaButtons} align="center" layout="horizontal" />
-            </div>
-
-            {/* Trust Indicators / Social Proof */}
-            <div style={{
-              display: 'flex',
-              justifyContent: 'center',
-              gap: SPACING.inline.xl,
-              flexWrap: 'wrap',
-              marginTop: SPACING.stack.xl,
-              paddingTop: SPACING.stack.lg,
-              borderTop: `1px solid ${COLORS.neutral.gray200}`
-            }}>
-              {/* Total Reviews */}
+              <div style={{ textAlign: 'center' }}>
+                <StarRating rating={5} size="medium" />
+                <div style={{
+                  color: COLORS.text.primary,
+                  fontWeight: TYPOGRAPHY.fontWeight.bold,
+                  fontSize: TYPOGRAPHY.fontSize.body.medium,
+                  marginTop: SPACING.stack.xs
+                }}>
+                  4.9/5
+                </div>
+              </div>
+              <div style={{
+                width: '1px',
+                height: '2rem',
+                background: 'linear-gradient(to bottom, transparent, #22c55e, transparent)'
+              }} />
               <div style={{ textAlign: 'center' }}>
                 <div style={{
-                  fontSize: TYPOGRAPHY.fontSize.heading.h3,
+                  fontSize: TYPOGRAPHY.fontSize.heading.h4,
                   fontWeight: TYPOGRAPHY.fontWeight.bold,
-                  color: COLORS.primary.dark,
-                  marginBottom: SPACING.stack.xs
+                  color: '#22c55e',
+                  lineHeight: 1
                 }}>
                   400+
                 </div>
                 <div style={{
-                  fontSize: TYPOGRAPHY.fontSize.body.small,
-                  color: COLORS.text.tertiary,
+                  color: COLORS.text.secondary,
+                  fontSize: '0.7rem',
+                  fontWeight: TYPOGRAPHY.fontWeight.medium,
                   textTransform: 'uppercase',
-                  letterSpacing: '0.5px',
-                  fontWeight: TYPOGRAPHY.fontWeight.medium
+                  letterSpacing: '0.5px'
                 }}>
                   Happy Clients
                 </div>
               </div>
+            </div>
 
-              {/* Average Rating */}
-              <div style={{ textAlign: 'center' }}>
-                <div style={{
-                  fontSize: TYPOGRAPHY.fontSize.heading.h3,
-                  fontWeight: TYPOGRAPHY.fontWeight.bold,
-                  color: COLORS.primary.dark,
-                  marginBottom: SPACING.stack.xs
-                }}>
-                  4.9/5
-                </div>
-                <div style={{
-                  fontSize: TYPOGRAPHY.fontSize.body.small,
-                  color: COLORS.text.tertiary,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.5px',
-                  fontWeight: TYPOGRAPHY.fontWeight.medium
-                }}>
-                  Average Rating
-                </div>
-              </div>
-
-              {/* Court Approved */}
-              <div style={{ textAlign: 'center' }}>
-                <div style={{
-                  fontSize: TYPOGRAPHY.fontSize.heading.h3,
-                  fontWeight: TYPOGRAPHY.fontWeight.bold,
-                  color: COLORS.primary.dark,
-                  marginBottom: SPACING.stack.xs
-                }}>
-                  100%
-                </div>
-                <div style={{
-                  fontSize: TYPOGRAPHY.fontSize.body.small,
-                  color: COLORS.text.tertiary,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.5px',
-                  fontWeight: TYPOGRAPHY.fontWeight.medium
-                }}>
-                  Court Approved
-                </div>
-              </div>
+            {/* CTA Buttons */}
+            <div style={{ marginTop: SPACING.stack.lg }}>
+              <HeroCTA buttons={ctaButtons} align="center" layout="horizontal" />
             </div>
           </div>
         </div>

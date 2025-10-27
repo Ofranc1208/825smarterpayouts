@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import { Button } from '@/src/components/shared';
 
 interface MintAISectionProps {
   onCTAClick?: (buttonId: string) => void;
@@ -14,7 +15,7 @@ export default function MintAISection({ onCTAClick }: MintAISectionProps) {
 
   return (
     <section style={{
-      padding: "4rem 0",
+      padding: "3rem 0",
       background: "linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)",
       color: "white",
       position: "relative",
@@ -24,8 +25,12 @@ export default function MintAISection({ onCTAClick }: MintAISectionProps) {
         width: '100%',
         maxWidth: '1200px',
         margin: '0 auto',
-        padding: '0 16px',
-        textAlign: 'center'
+        padding: '0 1rem',
+        textAlign: 'center',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column'
       }}>
         <div style={{
           fontSize: "3rem",
@@ -53,40 +58,29 @@ export default function MintAISection({ onCTAClick }: MintAISectionProps) {
         </h2>
         <p style={{
           fontSize: "1.25rem",
-          marginBottom: "2rem",
+          marginBottom: "1.5rem",
           maxWidth: "600px",
-          margin: "0 auto 2rem",
+          margin: "0 auto 1.5rem",
           opacity: "0.9"
         }}>
-          Get instant answers to your settlement questions 24/7. Our AI assistant is trained on structured settlement expertise and ready to help.
+          Get instant answers to your settlement questions 24/7.
         </p>
-        <Link 
+        <Button
+          as="a"
           href="/mint-intelligent-chat"
+          variant="mint-chat"
+          size="lg"
+          enhancedHover={true}
+          leftIcon="💬"
           style={{
-            display: "inline-block",
             background: "rgba(255, 255, 255, 0.2)",
             backdropFilter: "blur(10px)",
-            color: "white",
-            padding: "1rem 2rem",
-            borderRadius: "12px",
-            textDecoration: "none",
-            fontWeight: "600",
-            fontSize: "1.125rem",
-            border: "1px solid rgba(255, 255, 255, 0.3)",
-            transition: "all 0.2s ease"
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = "rgba(255, 255, 255, 0.3)";
-            e.currentTarget.style.transform = "translateY(-2px)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = "rgba(255, 255, 255, 0.2)";
-            e.currentTarget.style.transform = "translateY(0)";
+            border: "1px solid rgba(255, 255, 255, 0.3)"
           }}
           onClick={handleCTAClick}
         >
-          💬 Start Chatting with Mint AI
-        </Link>
+          Chat with Mint AI
+        </Button>
       </div>
     </section>
   );

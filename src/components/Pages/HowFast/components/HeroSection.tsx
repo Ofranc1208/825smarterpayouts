@@ -17,12 +17,12 @@ import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS } from '@/src/components/sha
 
 export default function HeroSection() {
   return (
-    <section 
+    <section
       aria-label="How fast page hero section"
       style={{
         background: 'linear-gradient(135deg, #f8fafc 0%, #e9f9f1 50%, #f0fdf4 100%)',
-        paddingTop: SPACING.unit.xxxxl,
-        paddingBottom: SPACING.unit.xxxl,
+        paddingTop: SPACING.unit.xl,
+        paddingBottom: SPACING.unit.xl,
         paddingLeft: SPACING.unit.md,
         paddingRight: SPACING.unit.md,
         position: 'relative',
@@ -42,35 +42,11 @@ export default function HeroSection() {
             maxWidth: '800px',
             textAlign: 'center'
           }}>
-            {/* Speed Badge */}
-            <div style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              background: 'rgba(245, 158, 11, 0.1)',
-              paddingTop: SPACING.unit.xs,
-              paddingBottom: SPACING.unit.xs,
-              paddingLeft: SPACING.unit.md,
-              paddingRight: SPACING.unit.md,
-              borderRadius: BORDER_RADIUS.small,
-              marginBottom: SPACING.stack.md,
-              border: '1px solid rgba(245, 158, 11, 0.3)'
-            }}>
-              <span style={{ fontSize: '1.25rem' }}>⚡</span>
-              <span style={{ 
-                color: COLORS.accent.gold, 
-                fontWeight: TYPOGRAPHY.fontWeight.semibold,
-                fontSize: TYPOGRAPHY.fontSize.body.small
-              }}>
-                FAST PAYOUT GUIDE
-              </span>
-            </div>
-
             <h1 style={{
               fontSize: "clamp(2rem, 5vw, 3.5rem)",
               fontWeight: TYPOGRAPHY.fontWeight.bold,
               color: COLORS.text.primary,
-              marginBottom: SPACING.stack.lg,
+              marginBottom: SPACING.stack.md,
               lineHeight: TYPOGRAPHY.lineHeight.tight
             }}>
               How Fast Can I Get My Money?
@@ -81,7 +57,7 @@ export default function HeroSection() {
               maxWidth: "600px",
               margin: "0 auto",
               lineHeight: TYPOGRAPHY.lineHeight.relaxed,
-              marginBottom: SPACING.stack.xl
+              marginBottom: SPACING.stack.lg
             }}>
               Complete timeline guide for structured settlement payouts. Most clients receive funds in <strong>24-72 hours</strong> after court approval.
             </p>
@@ -101,7 +77,7 @@ export default function HeroSection() {
                 enhancedHover={true}
                 shimmer={true}
               >
-                💰 Get Your Instant Quote
+                Get Your Instant Quote
               </Button>
 
               <Button
@@ -113,7 +89,7 @@ export default function HeroSection() {
                 shimmer={true}
                 shimmerDelay={1}
               >
-                💬 Chat with Mint AI
+                Chat with Mint AI
               </Button>
             </div>
           </div>

@@ -31,7 +31,7 @@ import type { HeroSectionProps } from './types';
 export default function AboutHeroSection({
   id = 'hero-section',
   className,
-  showBadge = true,
+  showBadge = false,
   showCTA = true,
   config
 }: HeroSectionProps = {}): JSX.Element {

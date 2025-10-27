@@ -18,7 +18,7 @@ import type { TechnologyFeature } from '../../types';
 export const TECHNOLOGY_FEATURES: TechnologyFeature[] = [
   {
     title: "Instant Quote Engine",
-    description: "Get real-time settlement valuations in under 60 seconds using our proprietary algorithms and market data.",
+    description: "Real-time settlement valuations in under 60 seconds.",
     icon: "⚡",
     link: "/pricing-calculator",
     linkText: "Try Calculator",
@@ -27,7 +27,7 @@ export const TECHNOLOGY_FEATURES: TechnologyFeature[] = [
   },
   {
     title: "Mint AI Assistant",
-    description: "24/7 intelligent support powered by advanced AI to guide you through every step of your settlement journey.",
+    description: "24/7 AI support guides you through every step.",
     icon: "/assets/images/mint-mascot.png",
     link: "/mint-intelligent-chat",
     linkText: "Chat with Mint",
@@ -36,7 +36,7 @@ export const TECHNOLOGY_FEATURES: TechnologyFeature[] = [
   },
   {
     title: "Digital-First Platform",
-    description: "Streamlined online experience with secure document upload, e-signatures, and real-time progress tracking.",
+    description: "Secure online experience with document upload and tracking.",
     icon: "💻",
     link: "/get-a-quote",
     linkText: "Get Started",
@@ -45,7 +45,7 @@ export const TECHNOLOGY_FEATURES: TechnologyFeature[] = [
   },
   {
     title: "Blockchain Security",
-    description: "Military-grade encryption and blockchain technology ensure your personal and financial data stays protected.",
+    description: "Military-grade encryption protects your data.",
     icon: "🔐",
     color: "#dc2626",
     gradient: "linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)"
@@ -56,10 +56,9 @@ export const TECHNOLOGY_FEATURES: TechnologyFeature[] = [
  * Section configuration
  */
 export const TECHNOLOGY_CONFIG = {
-  title: "Groundbreaking Technology Innovations",
-  subtitle: "Leading the Industry with Cutting-Edge Solutions",
-  description: "We've revolutionized the structured settlement industry with innovative technology that puts you in control. Our platform combines artificial intelligence, real-time data processing, and user-centric design to deliver the fastest, most accurate settlement valuations in the market.",
-  ctaText: "Experience the difference technology makes in your settlement journey.",
-  ctaButtonText: "See Our Process",
+  title: "Technology",
+  description: "AI-powered platform for instant quotes with no personal info required.",
+  ctaText: "Get started today.",
+  ctaButtonText: "Get Started",
   ctaButtonLink: "/get-a-quote"
 } as const;

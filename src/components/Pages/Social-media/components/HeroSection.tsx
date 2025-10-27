@@ -38,16 +38,6 @@ export default function HeroSection() {
             maxWidth: '800px',
             textAlign: 'center'
           }}>
-            <div style={{
-              fontSize: TYPOGRAPHY.fontSize.body.small,
-              fontWeight: TYPOGRAPHY.fontWeight.semibold,
-              color: COLORS.primary.main,
-              textTransform: "uppercase",
-              letterSpacing: "1px",
-              marginBottom: SPACING.unit.md
-            }}>
-              Connect With Us
-            </div>
             <h1 style={{
               fontSize: "clamp(2rem, 5vw, 3.5rem)",
               fontWeight: TYPOGRAPHY.fontWeight.bold,
@@ -84,18 +74,6 @@ export default function HeroSection() {
                 shimmer={true}
               >
                 💰 Get Your Instant Quote
-              </Button>
-
-              <Button
-                as="a"
-                href="/mint-intelligent-chat"
-                variant="technology-secondary"
-                size="lg"
-                enhancedHover={true}
-                shimmer={true}
-                shimmerDelay={1}
-              >
-                💬 Chat with Mint AI
               </Button>
             </div>
           </div>

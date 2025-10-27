@@ -66,7 +66,7 @@ function TimelineCard({ step }: { step: TimelineStep }) {
       <div
         onClick={() => setIsOpen(!isOpen)}
         style={{
-          padding: SPACING.card.standard,
+          padding: SPACING.card.compact,
           cursor: 'pointer',
           display: 'flex',
           alignItems: 'center',
@@ -128,7 +128,7 @@ function TimelineCard({ step }: { step: TimelineStep }) {
       {/* Collapsible Content */}
       {isOpen && (
         <div style={{
-          padding: SPACING.card.standard,
+          padding: SPACING.card.compact,
           paddingTop: 0,
           borderTop: `1px solid ${COLORS.borders.light}`
         }}>
@@ -152,8 +152,8 @@ export default function TimelineSection() {
       id="timeline"
       aria-label="Complete timeline breakdown"
       style={{
-        paddingTop: SPACING.unit.xxxl,
-        paddingBottom: SPACING.unit.xxxl,
+        paddingTop: SPACING.unit.lg,
+        paddingBottom: SPACING.unit.lg,
         paddingLeft: SPACING.unit.md,
         paddingRight: SPACING.unit.md,
         background: '#f9fafb',
@@ -170,7 +170,7 @@ export default function TimelineSection() {
           fontSize: TYPOGRAPHY.fontSize.heading.h3,
           fontWeight: TYPOGRAPHY.fontWeight.bold,
           color: COLORS.text.primary,
-          marginBottom: SPACING.stack.lg,
+          marginBottom: SPACING.stack.md,
           textAlign: 'center'
         }}>
           Complete Timeline Breakdown
@@ -178,7 +178,7 @@ export default function TimelineSection() {
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: SPACING.grid.comfortable
+          gap: SPACING.grid.standard
         }}>
           {timelineSteps.map((step) => (
             <TimelineCard key={step.step} step={step} />

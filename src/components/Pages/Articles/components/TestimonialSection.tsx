@@ -16,10 +16,10 @@ import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS } from '@/src/components/sha
 
 export default function TestimonialSection() {
   return (
-    <section 
+    <section
       aria-label="Customer testimonial"
-      style={{ 
-        marginTop: SPACING.unit.xxxl,
+      style={{
+        marginTop: SPACING.unit.xxl,
         display: 'flex',
         justifyContent: 'center',
         paddingLeft: SPACING.unit.md,

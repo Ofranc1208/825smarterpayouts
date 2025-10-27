@@ -1,9 +1,10 @@
 /**
  * CTA Section Component
- * Final call-to-action section at bottom of pages
- * 
+ * Final call-to-action section at bottom of pages with optimized spacing
+ *
  * NO CSS FILES - All styles inline
  * Uses COLORS from shared/styles
+ * Reduced padding for cleaner, more compact layout
  */
 
 'use client';
@@ -19,7 +20,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
   return (
     <section style={{
       background: 'linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%)',
-      padding: '4rem 0',
+      padding: '2rem 0',
       textAlign: 'center',
       borderTop: '1px solid #e5e7eb'
     }}>
@@ -40,9 +41,9 @@ export const CTASection: React.FC<CTASectionProps> = ({
         <p style={{
           fontSize: '1.125rem',
           color: COLORS.text.tertiary,
-          marginBottom: '2rem',
+          marginBottom: '1.5rem',
           maxWidth: '600px',
-          margin: '0 auto 2rem',
+          margin: '0 auto 1.5rem',
           lineHeight: '1.6'
         }}>
           {subtitle}

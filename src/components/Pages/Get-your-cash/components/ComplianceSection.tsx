@@ -20,38 +20,13 @@ import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 export default function ComplianceSection() {
   return (
-    <section style={{ 
-      padding: SPACING.section.standard,
+    <section style={{
+      padding: `${SPACING.unit.lg} 0`,
       background: COLORS.backgrounds.white
     }}>
       <div style={SPACING.container.styles}>
-        {/* Compliance Badge (Large, Centered) */}
-        <div style={{ textAlign: 'center', marginBottom: SPACING.stack.xxl }}>
-          <Link href={SITE_STATS.compliance.link} style={{ textDecoration: 'none' }}>
-            <div style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: SPACING.inline.sm,
-              background: COLORS.radialGradients.greenLight,
-              border: `1px solid ${COLORS.borders.green}`,
-              borderRadius: BORDER_RADIUS.xxlarge,
-              padding: `${SPACING.inline.md} ${SPACING.inline.xl}`,
-              fontSize: TYPOGRAPHY.fontSize.body.large,
-              fontWeight: TYPOGRAPHY.fontWeight.semibold,
-              color: COLORS.primary.dark,
-              cursor: 'pointer',
-              transition: 'transform 0.2s ease',
-              boxShadow: BOX_SHADOWS.medium
-            }}
-            title={SITE_STATS.compliance.description}>
-              <span style={{ fontSize: TYPOGRAPHY.fontSize.heading.h4 }}>✅</span>
-              <span>{SITE_STATS.compliance.value} State & Federal Compliant</span>
-            </div>
-          </Link>
-        </div>
-
         {/* Testimonial Card */}
-        <div style={{ marginBottom: SPACING.stack.xxl }}>
+        <div style={{ marginBottom: SPACING.stack.xl }}>
           <TestimonialCard testimonial={testimonialData} />
         </div>
 
@@ -59,28 +34,20 @@ export default function ComplianceSection() {
         <div style={{
           background: COLORS.radialGradients.greenLight,
           borderRadius: BORDER_RADIUS.xxlarge,
-          padding: SPACING.card.standard,
+          padding: SPACING.card.compact,
           border: `1px solid ${COLORS.borders.green}`,
           boxShadow: BOX_SHADOWS.large
         }}>
           {/* FAQ Header */}
           <div style={{
             textAlign: 'center',
-            marginBottom: SPACING.stack.xl
+            marginBottom: SPACING.stack.lg
           }}>
-            <div style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: SPACING.inline.sm,
-              marginBottom: SPACING.stack.sm
-            }}>
-              <span style={{ fontSize: TYPOGRAPHY.fontSize.heading.h3 }}>❓</span>
-            </div>
             <h2 style={{
-              fontSize: TYPOGRAPHY.fontSize.heading.h2,
+              fontSize: TYPOGRAPHY.fontSize.heading.h4,
               fontWeight: TYPOGRAPHY.fontWeight.bold,
               color: COLORS.primary.dark,
-              margin: `0 0 ${SPACING.stack.md} 0`
+              margin: `0 0 ${SPACING.stack.xs} 0`
             }}>
               Getting Your Cash FAQ
             </h2>
@@ -89,7 +56,7 @@ export default function ComplianceSection() {
               color: COLORS.text.white,
               padding: `${SPACING.inline.md} ${SPACING.inline.lg}`,
               borderRadius: BORDER_RADIUS.large,
-              fontSize: TYPOGRAPHY.fontSize.body.default,
+              fontSize: TYPOGRAPHY.fontSize.body.medium,
               fontWeight: TYPOGRAPHY.fontWeight.semibold,
               textDecoration: 'none',
               display: 'inline-flex',
@@ -98,7 +65,7 @@ export default function ComplianceSection() {
               boxShadow: BOX_SHADOWS.medium,
               transition: 'all 0.2s ease'
             }}>
-              💬 Ask Mint AI Instantly
+              Ask Mint AI Instantly
             </Link>
           </div>
 
@@ -106,7 +73,7 @@ export default function ComplianceSection() {
           <div style={{
             display: 'flex',
             flexDirection: 'column',
-            gap: SPACING.stack.md
+            gap: SPACING.stack.sm
           }}>
             {faqData.map((faq, index) => (
               <FAQItem key={index} faq={faq} />
@@ -114,20 +81,20 @@ export default function ComplianceSection() {
           </div>
 
           {/* Bottom CTA */}
-          <div style={{ textAlign: 'center', marginTop: SPACING.stack.xxl }}>
+          <div style={{ textAlign: 'center', marginTop: SPACING.stack.lg }}>
             <Link href="/faqs" style={{
               background: COLORS.primary.gradient,
               color: COLORS.text.white,
               padding: `${SPACING.inline.md} ${SPACING.inline.xl}`,
               borderRadius: BORDER_RADIUS.medium,
-              fontSize: TYPOGRAPHY.fontSize.body.default,
+              fontSize: TYPOGRAPHY.fontSize.body.medium,
               fontWeight: TYPOGRAPHY.fontWeight.semibold,
               textDecoration: 'none',
               display: 'inline-block',
               transition: 'all 0.2s ease',
               boxShadow: BOX_SHADOWS.medium
             }}>
-              📖 Read All FAQs
+              Read All FAQs
             </Link>
           </div>
         </div>

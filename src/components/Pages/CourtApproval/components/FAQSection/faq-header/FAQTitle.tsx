@@ -1,12 +1,12 @@
 export default function FAQTitle() {
   return (
     <h2 style={{
-      fontSize: 'clamp(1.25rem, 2.5vw, 1.875rem)',
+      fontSize: 'clamp(1.125rem, 2.25vw, 1.625rem)',
       fontWeight: 700,
       color: '#047857',
-      marginBottom: '1rem'
+      marginBottom: '0.625rem'
     }}>
-      ❓ Court Approval FAQ
+      Court Approval FAQ
     </h2>
   );
 }
