@@ -24,9 +24,8 @@ Allow: /pricing-calculator
 Allow: /lump-sum-calculator
 Allow: /calculations/
 
-# Sitemap locations (Multiple sitemaps for better organization)
+# Sitemap location (Consolidated into single comprehensive sitemap)
 Sitemap: https://smarterpayouts.com/sitemap.xml
-Sitemap: https://smarterpayouts.com/state-laws/sitemap.xml
 
 # Crawl-delay (optional, adjust if needed)
 # Crawl-delay: 1 

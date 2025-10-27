@@ -3,6 +3,7 @@
 // Includes all static pages with proper priority and change frequency
 
 import { MetadataRoute } from 'next';
+import { allStates, allStateCounties } from '@/src/state-laws/data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://smarterpayouts.com';
@@ -25,24 +26,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // ============================================================================
     {
       url: `${baseUrl}/main`,
-      lastModified: currentDate,
-      changeFrequency: 'daily',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/mint-intelligent-chat`,
-      lastModified: currentDate,
-      changeFrequency: 'daily',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/mint-intelligent-chat`,
-      lastModified: currentDate,
-      changeFrequency: 'daily',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/mint-intelligent-chat`,
       lastModified: currentDate,
       changeFrequency: 'daily',
       priority: 0.9,
@@ -191,6 +174,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.75,
     },
+
+    // ============================================================================
+    // PRIORITY 0.75 - Dynamic State Law Pages (All 50 States)
+    // ============================================================================
+    ...Object.values(allStates).map(state => ({
+      url: `${baseUrl}/state-laws/${state.slug}`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.75,
+    })),
+
+    // ============================================================================
+    // PRIORITY 0.7 - County Law Pages (High-value local pages)
+    // ============================================================================
+    ...Object.entries(allStateCounties).flatMap(([stateSlug, stateCounties]) =>
+      Object.values(stateCounties).map(county => ({
+        url: `${baseUrl}/state-laws/${stateSlug}/${county.slug}`,
+        lastModified: currentDate,
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
+      }))
+    ),
 
     // ============================================================================
     // PRIORITY 0.7 - Supporting Content Pages
