@@ -14,10 +14,6 @@
   
   // Global type declarations for external libraries
   declare global {
-    interface Window {
-      gtag: (...args: any[]) => void;
-    }
-    const gtag: (...args: any[]) => void;
     const Sentry: {
       captureException: (error: Error, context?: any) => void;
     };
@@ -87,6 +83,12 @@ class PerformanceMonitor {
    * Initialize performance monitoring
    */
   private initialize(): void {
+    // Only initialize in browser environment
+    if (typeof window === 'undefined') {
+      console.log('PerformanceMonitor: Skipping initialization (server-side)');
+      return;
+    }
+
     if (this.config.enableCoreWebVitals) {
       this.initializeCoreWebVitals();
     }
@@ -137,6 +139,9 @@ class PerformanceMonitor {
    * Initialize real-time performance monitoring
    */
   private initializeRealTimeMonitoring(): void {
+    // Only run in browser
+    if (typeof window === 'undefined') return;
+    
     // Monitor long tasks
     if ('PerformanceObserver' in window) {
       const longTaskObserver = new PerformanceObserver((list) => {
@@ -241,6 +246,9 @@ class PerformanceMonitor {
    * Get navigation type
    */
   private getNavigationType(): string {
+    if (typeof window === 'undefined' || typeof performance === 'undefined') {
+      return 'unknown';
+    }
     if ('navigation' in performance) {
       return (performance as any).navigation.type;
     }
@@ -251,6 +259,9 @@ class PerformanceMonitor {
    * Report initial performance data
    */
   private reportInitialPerformance(): void {
+    // Only run in browser
+    if (typeof window === 'undefined' || typeof performance === 'undefined') return;
+    
     // Report navigation timing
     if ('navigation' in performance) {
       const nav = (performance as any).navigation;
@@ -316,14 +327,17 @@ class PerformanceMonitor {
    * Send metric to analytics
    */
   private sendToAnalytics(metric: PerformanceMetric): void {
+    // Only run in browser
+    if (typeof window === 'undefined') return;
+    
     // Google Analytics 4
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'performance_metric', {
+    if (typeof window.gtag !== 'undefined') {
+      window.gtag('event', 'performance_metric', {
         metric_name: metric.name,
         metric_value: metric.value,
         metric_rating: metric.rating,
         navigation_type: metric.navigationType,
-      });
+      } as any);
     }
 
     // Custom analytics endpoint
@@ -344,13 +358,16 @@ class PerformanceMonitor {
    * Send custom metric to analytics
    */
   private sendCustomMetricToAnalytics(metric: CustomMetric): void {
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'custom_performance_metric', {
+    // Only run in browser
+    if (typeof window === 'undefined') return;
+    
+    if (typeof window.gtag !== 'undefined') {
+      window.gtag('event', 'custom_performance_metric', {
         metric_name: metric.name,
         metric_value: metric.value,
         metric_unit: metric.unit,
         metadata: metric.metadata,
-      });
+      } as any);
     }
   }
 
@@ -358,6 +375,9 @@ class PerformanceMonitor {
    * Send error to tracking service
    */
   private sendErrorToTracking(error: any): void {
+    // Only run in browser
+    if (typeof window === 'undefined') return;
+    
     // Sentry integration
     if (typeof Sentry !== 'undefined') {
       Sentry.captureException(new Error(`Performance: ${error.metric} = ${error.value}`), {
