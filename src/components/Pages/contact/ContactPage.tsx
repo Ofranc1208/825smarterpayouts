@@ -7,6 +7,7 @@ import {
   ContactInfo,
   ContactPageSEOHead,
   FAQSection,
+  MintAISection,
   ContactPageErrorBoundary
 } from './components';
 import {
