@@ -5,7 +5,10 @@
  * Follows the Orchestra pattern established across the application.
  */
 
+import dynamic from 'next/dynamic';
 import PrivacyPage from '@/src/components/Pages/Privacy/page';
+
+const LazyFABSpeedDial = dynamic(() => import('../components/FABSpeedDial'), { ssr: false });
 
 export const metadata = {
   title: 'Privacy Policy | SmarterPayouts',
@@ -24,5 +27,10 @@ export const metadata = {
 };
 
 export default function Privacy() {
-  return <PrivacyPage />;
+  return (
+    <>
+      <PrivacyPage />
+      <LazyFABSpeedDial />
+    </>
+  );
 }

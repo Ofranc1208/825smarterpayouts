@@ -6,7 +6,10 @@
  */
 
 import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import ReviewOfferPage from '@/src/components/Pages/ReviewOffer/page';
+
+const LazyFABSpeedDial = dynamic(() => import('../components/FABSpeedDial'), { ssr: false });
 
 export const metadata: Metadata = {
   title: 'Review Your Structured Settlement Offer | SmarterPayouts',
@@ -25,5 +28,10 @@ export const metadata: Metadata = {
 };
 
 export default function ReviewOffer() {
-  return <ReviewOfferPage />;
+  return (
+    <>
+      <ReviewOfferPage />
+      <LazyFABSpeedDial />
+    </>
+  );
 }

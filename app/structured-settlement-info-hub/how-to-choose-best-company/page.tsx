@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import { HowToChooseBestCompany } from '@/src/components/Pages/StructuredSettlementInfoHub';
+
+const LazyFABSpeedDial = dynamic(() => import('../../components/FABSpeedDial'), { ssr: false });
 
 export const metadata: Metadata = {
   title: 'How to Choose Best Structured Settlement Company | 10 Criteria | SmarterPayouts',

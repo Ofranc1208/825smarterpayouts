@@ -1,5 +1,8 @@
+import dynamic from 'next/dynamic';
 import SocialMediaPage from '@/src/components/Pages/Social-media/page';
 import Head from 'next/head';
+
+const LazyFABSpeedDial = dynamic(() => import('../components/FABSpeedDial'), { ssr: false });
 
 export const metadata = {
   title: 'Social Media | SmarterPayouts',
@@ -12,5 +15,10 @@ export const metadata = {
 };
 
 export default function SocialMedia() {
-  return <SocialMediaPage />;
+  return (
+    <>
+      <SocialMediaPage />
+      <LazyFABSpeedDial />
+    </>
+  );
 }

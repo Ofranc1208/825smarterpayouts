@@ -4,12 +4,15 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import dynamic from 'next/dynamic';
 import { getStateBySlug, getCountyByStateAndSlug } from '@/src/state-laws/data';
 import { buildBreadcrumbJsonLd, buildWebPageSchema, buildCountyJsonLd } from '@/src/state-laws/lib/jsonld';
 import CTASection, { CountyPageCTA } from '@/src/state-laws/components/CTASection';
 import LegalDisclaimer, { CountyPageDisclaimer } from '@/src/state-laws/components/LegalDisclaimer';
 import Breadcrumbs, { CountyPageBreadcrumbs } from '@/src/state-laws/components/Breadcrumbs';
 import '../../../../src/state-laws/components/shared-styles.css';
+
+const LazyFABSpeedDial = dynamic(() => import('../../../components/FABSpeedDial'), { ssr: false });
 
 type Props = {
   params: { state: string; county: string };
@@ -93,10 +96,11 @@ export default function CountyLawPage({ params }: Props) {
   ];
 
   return (
-    <div className="state-laws-page">
-      <div className="state-laws-container">
-        {/* Main Content */}
-        <article className="state-laws-article">
+    <>
+      <div className="state-laws-page">
+        <div className="state-laws-container">
+          {/* Main Content */}
+          <article className="state-laws-article">
           {/* JSON-LD Structured Data */}
           <script
             type="application/ld+json"
@@ -436,7 +440,9 @@ export default function CountyLawPage({ params }: Props) {
           ))
         }}
       />
-    </div>
+      </div>
+      <LazyFABSpeedDial />
+    </>
   );
 }
 

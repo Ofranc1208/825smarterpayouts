@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import { CommonMistakes } from '@/src/components/Pages/StructuredSettlementInfoHub';
+
+const LazyFABSpeedDial = dynamic(() => import('../../components/FABSpeedDial'), { ssr: false });
 
 export const metadata: Metadata = {
   title: '8 Common Mistakes Selling Structured Settlements | Avoid Costly Errors | SmarterPayouts',
@@ -11,6 +14,11 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <CommonMistakes />;
+  return (
+    <>
+      <CommonMistakes />
+      <LazyFABSpeedDial />
+    </>
+  );
 }
 

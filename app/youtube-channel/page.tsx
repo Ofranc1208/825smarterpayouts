@@ -11,8 +11,11 @@
  * @version 2.0.0 - Enterprise Edition
  */
 
+import dynamic from 'next/dynamic';
 import { YouTubeChannelPage } from '@/src/components/Pages';
 import { Metadata } from 'next';
+
+const LazyFABSpeedDial = dynamic(() => import('../components/FABSpeedDial'), { ssr: false });
 
 // Enterprise-grade SEO metadata for App Router
 export const generateViewport = () => ({
@@ -77,5 +80,10 @@ export const metadata: Metadata = {
 };
 
 export default function YouTubeChannel() {
-  return <YouTubeChannelPage />;
+  return (
+    <>
+      <YouTubeChannelPage />
+      <LazyFABSpeedDial />
+    </>
+  );
 }

@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import FAQs from '@/src/components/Pages/Faq/page';
+
+const LazyFABSpeedDial = dynamic(() => import('../components/FABSpeedDial'), { ssr: false });
 
 export const metadata: Metadata = {
   title: 'FAQs - Structured Settlement Questions | SmarterPayouts',
@@ -26,6 +29,11 @@ export const metadata: Metadata = {
 };
 
 export default function FaqsWrapper() {
-  return <FAQs />;
+  return (
+    <>
+      <FAQs />
+      <LazyFABSpeedDial />
+    </>
+  );
 }
 

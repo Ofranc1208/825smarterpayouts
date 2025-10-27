@@ -1,4 +1,7 @@
+import dynamic from 'next/dynamic';
 import HowFastPage from '@/src/components/Pages/HowFast/page';
+
+const LazyFABSpeedDial = dynamic(() => import('../components/FABSpeedDial'), { ssr: false });
 
 export const metadata = {
   title: 'How Fast Can I Get My Structured Settlement Money? | SmarterPayouts',
@@ -84,6 +87,7 @@ export default function HowFastCanIGetMyMoney() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
       <HowFastPage />
+      <LazyFABSpeedDial />
     </>
   );
 }

@@ -11,7 +11,10 @@
  * 📁 Logic Location: src/components/Pages/Get-your-cash/page.tsx
  */
 
+import dynamic from 'next/dynamic';
 import GetYourCashPage from '@/src/components/Pages/Get-your-cash/page';
+
+const LazyFABSpeedDial = dynamic(() => import('../components/FABSpeedDial'), { ssr: false });
 
 export const metadata = {
   title: 'Get Funded Your Way | Choose Your Payment Method | SmarterPayouts',
@@ -30,5 +33,10 @@ export const metadata = {
 };
 
 export default function GetFundedYourWayRoute() {
-  return <GetYourCashPage />;
+  return (
+    <>
+      <GetYourCashPage />
+      <LazyFABSpeedDial />
+    </>
+  );
 }

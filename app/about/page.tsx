@@ -11,7 +11,10 @@
  */
 
 import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import { AboutPage } from '@/src/components/Pages';
+
+const LazyFABSpeedDial = dynamic(() => import('../components/FABSpeedDial'), { ssr: false });
 
 export const metadata: Metadata = {
   title: 'About SmarterPayouts | AI-Powered Settlement Calculator',
@@ -30,5 +33,10 @@ export const metadata: Metadata = {
 };
 
 export default function About() {
-  return <AboutPage />;
+  return (
+    <>
+      <AboutPage />
+      <LazyFABSpeedDial />
+    </>
+  );
 }

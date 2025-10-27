@@ -2,7 +2,10 @@
 // Following enterprise architecture patterns
 
 import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import SettlementLawfederalPage from '../../src/components/Pages/SettlementLawfederal/page';
+
+const LazyFABSpeedDial = dynamic(() => import('../components/FABSpeedDial'), { ssr: false });
 
 export const metadata: Metadata = {
   title: 'Structured Settlement Federal Law | SmarterPayouts',
@@ -14,5 +17,10 @@ export const metadata: Metadata = {
 };
 
 export default function StructuredSettlementFederalLaw() {
-  return <SettlementLawfederalPage />;
+  return (
+    <>
+      <SettlementLawfederalPage />
+      <LazyFABSpeedDial />
+    </>
+  );
 }

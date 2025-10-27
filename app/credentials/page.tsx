@@ -1,4 +1,7 @@
+import dynamic from 'next/dynamic';
 import CredentialsPage from '@/src/components/Pages/Credentials/page';
+
+const LazyFABSpeedDial = dynamic(() => import('../components/FABSpeedDial'), { ssr: false });
 
 export const metadata = {
   title: 'Our Credentials | SmarterPayouts',
@@ -7,5 +10,10 @@ export const metadata = {
 };
 
 export default function Credentials() {
-  return <CredentialsPage />;
+  return (
+    <>
+      <CredentialsPage />
+      <LazyFABSpeedDial />
+    </>
+  );
 }

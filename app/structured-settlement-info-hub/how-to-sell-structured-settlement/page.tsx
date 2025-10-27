@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import { HowToSellStructuredSettlement } from '@/src/components/Pages/StructuredSettlementInfoHub';
+
+const LazyFABSpeedDial = dynamic(() => import('../../components/FABSpeedDial'), { ssr: false });
 
 export const metadata: Metadata = {
   title: 'How to Sell a Structured Settlement | 5-Step Process | SmarterPayouts',
@@ -16,5 +19,10 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <HowToSellStructuredSettlement />;
+  return (
+    <>
+      <HowToSellStructuredSettlement />
+      <LazyFABSpeedDial />
+    </>
+  );
 }

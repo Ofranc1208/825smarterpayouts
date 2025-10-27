@@ -1,4 +1,7 @@
+import dynamic from 'next/dynamic';
 import { CourtApprovalPage } from '../../src/components/Pages/CourtApproval';
+
+const LazyFABSpeedDial = dynamic(() => import('../components/FABSpeedDial'), { ssr: false });
 
 export const metadata = {
   title: 'Court Approved Structured Settlements | SmarterPayouts',
@@ -17,5 +20,10 @@ export const metadata = {
 };
 
 export default function CourtApproval() {
-  return <CourtApprovalPage />;
+  return (
+    <>
+      <CourtApprovalPage />
+      <LazyFABSpeedDial />
+    </>
+  );
 }

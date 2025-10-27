@@ -1,4 +1,7 @@
+import dynamic from 'next/dynamic';
 import ArticlesPage from '@/src/components/Pages/Articles/page';
+
+const LazyFABSpeedDial = dynamic(() => import('../components/FABSpeedDial'), { ssr: false });
 
 export const metadata = {
   title: 'Articles & Resources | SmarterPayouts',
@@ -11,5 +14,10 @@ export const metadata = {
 };
 
 export default function Articles() {
-  return <ArticlesPage />;
+  return (
+    <>
+      <ArticlesPage />
+      <LazyFABSpeedDial />
+    </>
+  );
 }

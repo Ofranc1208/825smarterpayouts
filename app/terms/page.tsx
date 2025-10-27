@@ -5,7 +5,10 @@
  * Follows the Orchestra pattern established across the application.
  */
 
+import dynamic from 'next/dynamic';
 import TermsPage from '@/src/components/Pages/Terms/page';
+
+const LazyFABSpeedDial = dynamic(() => import('../components/FABSpeedDial'), { ssr: false });
 
 export const metadata = {
   title: 'Terms and Conditions | SmarterPayouts',
@@ -24,5 +27,10 @@ export const metadata = {
 };
 
 export default function Terms() {
-  return <TermsPage />;
+  return (
+    <>
+      <TermsPage />
+      <LazyFABSpeedDial />
+    </>
+  );
 }

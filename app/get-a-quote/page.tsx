@@ -14,7 +14,10 @@
  * Once you're confident the new structure works, you can keep this minimal wrapper.
  */
 
+import dynamic from 'next/dynamic';
 import GetAQuotePage from '@/src/components/Pages/GetAQuote';
+
+const LazyFABSpeedDial = dynamic(() => import('../components/FABSpeedDial'), { ssr: false });
 
 export const metadata = {
   title: 'Get Instant Structured Settlement Quote | No Personal Info Required | SmarterPayouts',
@@ -33,7 +36,12 @@ export const metadata = {
 };
 
 export default function GetAQuoteRoute() {
-  return <GetAQuotePage />;
+  return (
+    <>
+      <GetAQuotePage />
+      <LazyFABSpeedDial />
+    </>
+  );
 }
 
 // ════════════════════════════════════════════════════════════════════════════════

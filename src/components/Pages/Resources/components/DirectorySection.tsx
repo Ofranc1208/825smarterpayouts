@@ -159,10 +159,10 @@ export default function DirectorySection() {
         {/* Search Input */}
         <input
           type="text"
-          placeholder="Search insurance company, acronym, or note..."
+          placeholder="Search company or acronym..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          aria-label="Search insurance company"
+          aria-label="Search company or acronym"
           style={{
             width: '100%',
             maxWidth: '480px',

@@ -20,7 +20,10 @@
  */
 
 import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import ContactPage from '../../src/components/Pages/contact';
+
+const LazyFABSpeedDial = dynamic(() => import('../components/FABSpeedDial'), { ssr: false });
 
 // ============================================================================
 // METADATA CONFIGURATION
@@ -67,5 +70,10 @@ export const metadata: Metadata = {
  * ContactPage component from src/components/Pages/contact.
  */
 export default function ContactRoute() {
-  return <ContactPage />;
+  return (
+    <>
+      <ContactPage />
+      <LazyFABSpeedDial />
+    </>
+  );
 }

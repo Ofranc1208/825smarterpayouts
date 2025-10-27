@@ -1,4 +1,7 @@
+import dynamic from 'next/dynamic';
 import StateLawsPage from '@/src/components/Pages/State-laws/page';
+
+const LazyFABSpeedDial = dynamic(() => import('../components/FABSpeedDial'), { ssr: false });
 
 export const metadata = {
   title: 'State Laws Overview - Structured Settlement Regulations | SmarterPayouts',
@@ -7,5 +10,10 @@ export const metadata = {
 };
 
 export default function StateLawsOverview() {
-  return <StateLawsPage />;
+  return (
+    <>
+      <StateLawsPage />
+      <LazyFABSpeedDial />
+    </>
+  );
 }

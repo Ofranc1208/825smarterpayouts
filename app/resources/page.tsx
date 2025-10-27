@@ -5,7 +5,10 @@
  * Follows the Orchestra pattern established across the application.
  */
 
+import dynamic from 'next/dynamic';
 import ResourcesPage from '@/src/components/Pages/Resources/page';
+
+const LazyFABSpeedDial = dynamic(() => import('../components/FABSpeedDial'), { ssr: false });
 
 export const metadata = {
   title: 'Insurance Company Directory | Smarter Payouts',
@@ -20,5 +23,10 @@ export const metadata = {
 };
 
 export default function Resources() {
-  return <ResourcesPage />;
+  return (
+    <>
+      <ResourcesPage />
+      <LazyFABSpeedDial />
+    </>
+  );
 }

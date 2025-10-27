@@ -14,7 +14,10 @@
  * Once you're confident the new structure works, you can keep this minimal wrapper.
  */
 
+import dynamic from 'next/dynamic';
 import TestimonialsPage from '@/src/components/Pages/Testimonials/page';
+
+const LazyFABSpeedDial = dynamic(() => import('../components/FABSpeedDial'), { ssr: false });
 
 export const metadata = {
   title: 'Authentic Client Testimonials | SmarterPayouts',
@@ -43,7 +46,12 @@ export const metadata = {
 };
 
 export default function TestimonialsRoute() {
-  return <TestimonialsPage />;
+  return (
+    <>
+      <TestimonialsPage />
+      <LazyFABSpeedDial />
+    </>
+  );
 }
 
 // ════════════════════════════════════════════════════════════════════════════════
