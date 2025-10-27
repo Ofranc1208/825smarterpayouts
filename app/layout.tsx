@@ -65,11 +65,7 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/favicon_without_text.ico" type="image/x-icon" />
 
         {/* Canonical URLs are handled individually by each page's metadata */}
-
-        {/* Hreflang for language targeting - Global fallback */}
-        <link rel="alternate" hrefLang="en" href="https://smarterpayouts.com" />
-        <link rel="alternate" hrefLang="en-US" href="https://smarterpayouts.com" />
-        <link rel="alternate" hrefLang="x-default" href="https://smarterpayouts.com" />
+        {/* Individual pages handle their own hreflang if needed */}
 
         {/* Global meta tags - fallback for pages without specific metadata */}
         <meta name="robots" content="index, follow" />

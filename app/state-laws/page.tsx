@@ -20,12 +20,12 @@ export const metadata: Metadata = {
     'legal requirements by state'
   ],
   alternates: {
-    canonical: '/state-laws'
+    canonical: 'https://smarterpayouts.com/state-laws'
   },
   openGraph: {
     title: 'Structured Settlement Laws by State | Complete Guide',
     description: 'Find structured settlement transfer requirements, court approval processes, and legal resources for every US state.',
-    url: '/state-laws',
+    url: 'https://smarterpayouts.com/state-laws',
     type: 'website',
     siteName: 'SmarterPayouts'
   },
