@@ -110,7 +110,7 @@ export const PROCESS_STEPS: ProcessStep[] = [
 export const TESTIMONIALS: TestimonialData[] = [
   {
     id: 'testimonial-1',
-    name: 'Sarah Johnson',
+    name: 'Jennifer M.',
     role: 'Small Business Owner',
     company: 'Johnson Consulting',
     content: 'SmarterPayouts helped me access my settlement money when I needed it most to expand my business. The process was smooth and transparent.',
@@ -118,7 +118,7 @@ export const TESTIMONIALS: TestimonialData[] = [
   },
   {
     id: 'testimonial-2',
-    name: 'Michael Chen',
+    name: 'Robert L.',
     role: 'Father of Two',
     company: 'Family',
     content: 'When my kids needed college funding, SmarterPayouts made it possible to access my future payments. Great service and fair pricing.',

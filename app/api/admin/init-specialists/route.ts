@@ -15,9 +15,9 @@ import { NextResponse } from 'next/server';
 // Test specialists data
 const TEST_SPECIALISTS = [
   {
-    id: 'specialist_sarah_johnson',
-    name: 'Sarah Johnson',
-    email: 'sarah@smarterpayouts.com',
+    id: 'specialist_jennifer_m',
+    name: 'Jennifer M.',
+    email: 'jennifer@smarterpayouts.com',
     status: 'online' as const,
     skills: ['settlements', 'calculations', 'court-approval'],
     maxConcurrentChats: 5,
@@ -28,9 +28,9 @@ const TEST_SPECIALISTS = [
     languages: ['English', 'Spanish'],
   },
   {
-    id: 'specialist_michael_chen',
-    name: 'Michael Chen',
-    email: 'michael@smarterpayouts.com',
+    id: 'specialist_robert_l',
+    name: 'Robert L.',
+    email: 'robert@smarterpayouts.com',
     status: 'online' as const,
     skills: ['settlements', 'legal', 'documentation'],
     maxConcurrentChats: 3,

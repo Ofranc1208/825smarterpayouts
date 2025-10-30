@@ -20,7 +20,7 @@ export const ABOUT_US_INTEGRATION_CONTENT = `
 ### Company Overview & Mission
 
 **Company Name:** SmarterPayouts
-**Founded:** 2015 (9+ years in business)
+**Founded:** 2017 (7+ years in business)
 **Headquarters:** Tampa, Florida
 **Industry Focus:** Structured Settlement Early Payout Services
 **Coverage Area:** Works with licensed brokers in all 50 US states + Washington D.C.
@@ -38,45 +38,26 @@ export const ABOUT_US_INTEGRATION_CONTENT = `
 - Regulatory compliance
 - Ethical business practices
 
-### Leadership Team & Expertise
+### Company Leadership
 
-**Sarah Johnson - Chief Executive Officer**
-- Former Goldman Sachs executive with 15+ years in financial services
-- Expert in structured settlements and financial planning
-- Led company growth from startup to industry leader
-- Focus: Strategic direction and customer experience
+**Oscar Francis - Creator & Founder**
+- Oscar Francis is the creator and founder of SmarterPayouts
+- He's on a mission to bring fairness and transparency to structured settlement transfers.
+- Passionate about helping people access their money when they need it most
+- Committed to revolutionizing the industry with innovative technology and ethical practices
+- Focus on customer-first approach and eliminating hidden fees
 
-**Michael Chen - Chief Technology Officer**
-- Former Google engineer specializing in AI and fintech applications
-- 12+ years in technology development and machine learning
-- Designed our proprietary AI-powered platform
-- Focus: Technology innovation and platform development
-
-**David Rodriguez - Chief Financial Officer**
-- CPA with 20+ years in financial services and regulatory compliance
-- Expert in financial regulations and risk management
-- Ensures all transactions meet legal and ethical standards
-- Focus: Financial compliance and operational efficiency
-
-**Emily Thompson - Chief Operating Officer**
-- Operations expert with extensive customer service experience
-- 15+ years in process optimization and team management
-- Manages day-to-day operations and customer satisfaction
-- Focus: Operational excellence and team development
+**Team Expertise:**
+- Experienced team with expertise in structured settlements and financial services
+- Focus on customer service and transparent processes
 
 ### Company Achievements & Recognition
 
-**Awards & Recognition (2023-2024):**
-- **Best FinTech Innovation** - Financial Services Awards 2023
-- **Customer Choice Award** - Settlement Industry Association 2023
-- **Technology Excellence** - InsurTech Awards 2022
-- **Top Rated Settlement Company** - Customer Reviews Platform 2024
-
-**Industry Firsts:**
-- First company to offer 100% digital upfront pricing
-- First AI-powered instant quote calculator
-- First transparent fee structure (no hidden costs)
-- First 24/7 AI customer support assistant (Mint)
+**Key Differentiators:**
+- Upfront pricing with no hidden fees
+- AI-powered instant quote calculator
+- Transparent fee structure
+- 24/7 AI customer support assistant (Mint)
 
 **Compliance & Certifications:**
 - **State Coverage:** Works with licensed brokers in all 50 US states since 2017
@@ -85,46 +66,17 @@ export const ABOUT_US_INTEGRATION_CONTENT = `
 - **GDPR Compliance:** General Data Protection Regulation compliance
 - **Better Business Bureau:** A+ rating and accreditation
 
-### Company Timeline & Growth
+### Company History & Growth
 
-**2015 - Company Founded**
-- SmarterPayouts founded with mission to modernize structured settlement industry
-- Initial focus on transparency and customer-first approach
-- First office opened in Tampa, Florida
+**Founded in 2017**
+- SmarterPayouts established to modernize structured settlement industry
+- Based in Tampa, Florida
 
-**2016 - First Customer Served**
-- Successfully completed first structured settlement transfer
-- Established legal team and court approval processes
-- Positive customer feedback validates business model
-
-**2017 - Multi-State Licensing**
-- Obtained licenses in 25 states
-- Expanded legal and compliance teams
-- Developed proprietary technology platform
-
-**2018 - Technology Platform Launch**
-- Launched AI-powered quote calculator
-- Implemented digital document processing
-- Reduced processing time by 60%
-
-**2020 - Mint AI Introduction**
-- Launched 24/7 AI customer support assistant
-- Improved customer response time to under 2 hours
-- Enhanced customer satisfaction scores
-
-**2022 - Nationwide Operations**
-- Achieved licensing in all 50 states
-- Expanded team to 150+ employees
-- $30M+ in payments processed
-
-**2023 - Industry Recognition**
-- Served 10,000+ customers milestone
-- $50M+ in future payments purchased
-- Multiple industry awards received
-
-**2024 - Continued Innovation**
-- Enhanced AI capabilities and customer experience
-- Maintained 4.9/5 customer rating
+**Key Milestones:**
+- Works with licensed brokers in all 50 states
+- Served 400+ happy clients
+- Purchased over $50 million in future payments
+- 4.9/5 customer rating
 - Ongoing investment in technology and compliance
 
 ### Company Statistics (Current as of 2025)

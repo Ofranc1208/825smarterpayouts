@@ -37,7 +37,7 @@ SmarterPayouts is the industry's first structured settlement company that helps 
 - **Processing Time:** 15-50 days (court-dependent)
 - **Coverage Area:** Works with licensed brokers in all 50 states
 - **Response Time:** Under 24 hours
-- **Founded:** 2015
+- **Founded:** 2017
 
 ## Payment Types We Handle
 

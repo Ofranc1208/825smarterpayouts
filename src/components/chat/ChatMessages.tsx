@@ -9,6 +9,7 @@ import DocumentPreview from './DocumentPreview';
 import { LiveChatQueue } from './SpecialistChat/LiveChatQueue';
 import GuaranteedCalculationLink from '../calculator/guaranteedstep/shared/GuaranteedCalculationLink';
 import ContactInfo from './ContactInfo/ContactInfo';
+import OscarFrancisCard from './OscarFrancisCard';
 import styles from './ChatBubble.module.css';
 // import { parseAIResponse } from '../../utils/parsing'; // No longer needed for text messages
 
@@ -73,6 +74,8 @@ const ChatMessages = () => {
         );
       case 'ContactInfo':
         return <ContactInfo {...componentData} />;
+      case 'OscarFrancisCard':
+        return <OscarFrancisCard {...componentData} />;
       // Add more component types here as needed
       default:
         console.warn(`Unknown component type: ${componentType}`);

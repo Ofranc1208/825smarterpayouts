@@ -134,9 +134,9 @@ export const CTA_CONFIG = {
   trustIndicators: [
     {
       id: 'customers-served',
-      text: '10,000+ Customers Served',
+      text: 'Customers Served',
       icon: '👥',
-      value: '10,000+'
+      value: '400+'
     },
     {
       id: 'average-rating',

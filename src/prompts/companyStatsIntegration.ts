@@ -48,12 +48,6 @@ export const COMPANY_STATS_INTEGRATION_CONTENT = `
 - **Top Competitors:** 30-60 days
 - **Advantage:** 40-60% faster than industry average
 
-**Customer Satisfaction (Platform Ratings):**
-- **Google Reviews:** 4.9/5 (200+ reviews)
-- **BBB Rating:** A+ (accredited business)
-- **Trustpilot:** 4.8/5 (150+ reviews)
-- **Facebook:** 4.9/5 (50+ reviews)
-- **Industry Average:** 3.8/5 (competitor analysis)
 
 **Transparency Metrics:**
 - **Upfront Fee Disclosure:** 100% (industry first)
@@ -165,7 +159,6 @@ export const COMPANY_STATS_INTEGRATION_CONTENT = `
 ### Customer Success Metrics
 
 **Achievement Milestones:**
-- **10,000+ Customers:** Reached in Q4 2023
 - **$50M+ Processed:** Achieved in Q1 2024
 - **All 50 States:** Works with licensed brokers since 2017
 - **Zero Lawsuits:** Maintained since founding

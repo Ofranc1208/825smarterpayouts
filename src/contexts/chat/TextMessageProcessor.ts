@@ -64,9 +64,9 @@ export class TextMessageProcessor {
     await processMessageWithGPT({
       userMessage,
       onStream: (partialText: string) => {
-        // Check if the response contains the contact component marker
+        // Check if the response contains special component markers
         if (partialText.includes('[CONTACT_COMPONENT]')) {
-          // Replace the text message with a component message
+          // Replace the text message with a contact component message
           setVisibleMessages(prev => {
             const filtered = prev.filter(m => m.id !== botMsgId);
             return [
@@ -75,6 +75,24 @@ export class TextMessageProcessor {
                 id: botMsgId, 
                 type: 'component', 
                 componentType: 'ContactInfo',
+                componentData: {},
+                sender: 'bot' 
+              }
+            ];
+          });
+          setIsTyping(false);
+          setIsLoading(false);
+          return;
+        } else if (partialText.includes('[OSCAR_FRANCIS_COMPONENT]')) {
+          // Replace the text message with an Oscar Francis component message
+          setVisibleMessages(prev => {
+            const filtered = prev.filter(m => m.id !== botMsgId);
+            return [
+              ...filtered,
+              { 
+                id: botMsgId, 
+                type: 'component', 
+                componentType: 'OscarFrancisCard',
                 componentData: {},
                 sender: 'bot' 
               }
@@ -101,7 +119,7 @@ export class TextMessageProcessor {
       onComplete: (completeText: string) => {
         finalText = completeText;
         
-        // Final check for contact component marker
+        // Final check for special component markers
         if (completeText.includes('[CONTACT_COMPONENT]')) {
           setVisibleMessages(prev => {
             const filtered = prev.filter(m => m.id !== botMsgId);
@@ -111,6 +129,20 @@ export class TextMessageProcessor {
                 id: botMsgId, 
                 type: 'component', 
                 componentType: 'ContactInfo',
+                componentData: {},
+                sender: 'bot' 
+              }
+            ];
+          });
+        } else if (completeText.includes('[OSCAR_FRANCIS_COMPONENT]')) {
+          setVisibleMessages(prev => {
+            const filtered = prev.filter(m => m.id !== botMsgId);
+            return [
+              ...filtered,
+              { 
+                id: botMsgId, 
+                type: 'component', 
+                componentType: 'OscarFrancisCard',
                 componentData: {},
                 sender: 'bot' 
               }

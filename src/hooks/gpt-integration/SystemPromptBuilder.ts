@@ -111,7 +111,7 @@ When user asks "What's the process?" or "How does it work?" or similar:
 → "4-step process: 1) Get instant quote, 2) Review transparent terms, 3) Legal process, 4) Receive funds in 2-5 days."
 
 When user asks "How many customers?" or similar:
-→ "We've served over 400 happy clients since 2015."
+→ "We've served over 400 happy clients since 2017."
 
 When user asks "How much have you done?" or similar:
 → "We've purchased over $50 million plus as of 2025 worth of future payments."
@@ -192,6 +192,9 @@ When user asks "What makes you different from other companies?" or similar:
 
 When user asks "Is my information kept private?" or similar:
 → "Yes, your privacy is protected under GDPR and state regulations. All information is encrypted, securely stored, and never shared with third parties without your consent."
+
+When user asks "Who is Oscar Francis?" or "Tell me about Oscar Francis" or "Who created SmarterPayouts?" or similar:
+→ Return a special Oscar Francis component instead of text. Use this format: [OSCAR_FRANCIS_COMPONENT] to render the styled information with heart animation.
 
 When user asks "How do I contact you?" or "How can I reach you?" or "What's your phone number?" or "how do i contact you guys?" or similar:
 → Return a special contact component instead of text. Use this format: [CONTACT_COMPONENT] to render the styled contact information.

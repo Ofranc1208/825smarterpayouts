@@ -3,9 +3,9 @@
 // Company Overview Data
 export const COMPANY_OVERVIEW = {
   name: 'SmarterPayouts',
-  founded: '2015',
+  founded: '2017',
   headquarters: 'New York, NY',
-  employees: '150+',
+  employees: 'Team of specialists',
   customersServed: '400+',
   totalPayouts: '$50M+',
   averageRating: '4.9/5',
@@ -73,47 +73,13 @@ export const KEY_STATISTICS = [
   }
 ] as const;
 
-// Leadership Team
-export const LEADERSHIP_TEAM = [
-  {
-    id: 'ceo',
-    name: 'Sarah Johnson',
-    title: 'Chief Executive Officer',
-    bio: 'Former Goldman Sachs executive with 15+ years in financial services and structured settlements.',
-    image: '/images/team/sarah-johnson.jpg',
-    linkedin: 'https://linkedin.com/in/sarah-johnson-ceo'
-  },
-  {
-    id: 'cto',
-    name: 'Michael Chen',
-    title: 'Chief Technology Officer',
-    bio: 'Former Google engineer specializing in AI and machine learning applications in fintech.',
-    image: '/images/team/michael-chen.jpg',
-    linkedin: 'https://linkedin.com/in/michael-chen-cto'
-  },
-  {
-    id: 'cfo',
-    name: 'David Rodriguez',
-    title: 'Chief Financial Officer',
-    bio: 'CPA with 20+ years experience in financial services and regulatory compliance.',
-    image: '/images/team/david-rodriguez.jpg',
-    linkedin: 'https://linkedin.com/in/david-rodriguez-cfo'
-  },
-  {
-    id: 'coo',
-    name: 'Emily Thompson',
-    title: 'Chief Operating Officer',
-    bio: 'Operations expert with extensive experience in customer service and process optimization.',
-    image: '/images/team/emily-thompson.jpg',
-    linkedin: 'https://linkedin.com/in/emily-thompson-coo'
-  }
-] as const;
+// Leadership Team - Removed to avoid fictional information
 
 // Company Timeline
 export const COMPANY_TIMELINE = [
   {
     id: 'founded',
-    year: '2015',
+    year: '2017',
     title: 'Company Founded',
     description: 'SmarterPayouts was founded with a mission to modernize the structured settlement industry.',
     milestone: true
@@ -154,13 +120,6 @@ export const COMPANY_TIMELINE = [
     milestone: true
   },
   {
-    id: 'milestone-customers',
-    year: '2023',
-    title: '10,000+ Customers',
-    description: 'Reached the milestone of serving over 10,000 satisfied customers.',
-    milestone: true
-  },
-  {
     id: 'future',
     year: '2024',
     title: 'Continued Innovation',
@@ -169,30 +128,7 @@ export const COMPANY_TIMELINE = [
   }
 ] as const;
 
-// Awards & Recognition
-export const AWARDS_RECOGNITION = [
-  {
-    id: 'best-fintech',
-    title: 'Best FinTech Innovation',
-    organization: 'Financial Services Awards',
-    year: '2023',
-    description: 'Recognized for innovative use of AI in structured settlements'
-  },
-  {
-    id: 'customer-choice',
-    title: 'Customer Choice Award',
-    organization: 'Settlement Industry Association',
-    year: '2023',
-    description: 'Highest customer satisfaction rating in the industry'
-  },
-  {
-    id: 'tech-excellence',
-    title: 'Technology Excellence',
-    organization: 'InsurTech Awards',
-    year: '2022',
-    description: 'Outstanding achievement in financial technology'
-  },
-] as const;
+// Awards & Recognition - Removed to avoid fictional information
 
 // Compliance & Certifications
 export const COMPLIANCE_CERTIFICATIONS = [

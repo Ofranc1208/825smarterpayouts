@@ -72,7 +72,7 @@ A: A structured settlement is tax-free and comes from a legal settlement (injury
 ### Company Information
 
 **Q: How many clients have you served?**
-A: We've served over 400 happy clients since our founding in 2015, with a 4.9/5 customer rating.
+A: We've served over 400 happy clients since our founding in 2017, with a 4.9/5 customer rating.
 
 **Q: How much experience do you have?**
 A: We've purchased over $50 million worth of future payments for our clients. We work with licensed brokers in all 50 states and have deep expertise in both guaranteed payments and life-contingent payments.

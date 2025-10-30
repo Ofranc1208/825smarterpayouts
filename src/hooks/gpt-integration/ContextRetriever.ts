@@ -63,7 +63,7 @@ export async function retrieveVectorContext(userQuery: string): Promise<Retrieve
 
     // Simple relevance matching based on keywords (MVP approach)
     if (searchQuery.includes('company') || searchQuery.includes('about') || searchQuery.includes('statistics')) {
-      retrievedContent = `Company Statistics: 400+ happy clients served, $50M+ in future payments purchased, 4.9/5 customer rating, founded in 2015, works with licensed brokers in all 50 states.`;
+      retrievedContent = `Company Statistics: 400+ happy clients served, $50M+ in future payments purchased, 4.9/5 customer rating, founded in 2017, works with licensed brokers in all 50 states.`;
       contextSource = 'company_data';
     } else if (searchQuery.includes('process') || searchQuery.includes('how') || searchQuery.includes('step')) {
       retrievedContent = `4-Step Process: 1) Get instant quote (no personal info), 2) Review transparent terms, 3) Legal process (we handle everything), 4) Receive funds in 2-5 days after court approval.`;
