@@ -25,7 +25,7 @@ export function formatConversationMessages(
   const allMessages = [...visibleMessages, userMessage];
   
   return allMessages
-    .filter((msg): msg is TextMessage => msg.type === 'text')
+    .filter((msg): msg is TextMessage => msg && msg.type === 'text')
     .map(msg => ({
       role: msg.sender === 'user' ? 'user' as const : 'assistant' as const,
       content: msg.text
@@ -37,6 +37,6 @@ export function formatConversationMessages(
  * Used to determine if user is in a form flow
  */
 export function hasFormFlow(visibleMessages: Message[]): boolean {
-  return visibleMessages.some(msg => msg.type === 'component');
+  return visibleMessages.some(msg => msg && msg.type === 'component');
 }
 

@@ -1,13 +1,13 @@
 /**
  * Hero Section Component - Credentials Page
- * 
+ *
  * Displays the hero section with title, description, and CTA buttons.
  * Uses design system tokens for consistent styling and shared Button components.
  * Fully accessible with semantic HTML and proper ARIA labels.
- * 
+ *
  * @component
  * @returns {JSX.Element} Rendered hero section with CTAs
- * 
+ *
  * @example
  * <HeroSection />
  */
@@ -41,16 +41,6 @@ export default function HeroSection() {
             maxWidth: '800px',
             textAlign: 'center'
           }}>
-            <div style={{
-              fontSize: TYPOGRAPHY.fontSize.body.small,
-              fontWeight: TYPOGRAPHY.fontWeight.semibold,
-              color: COLORS.primary.main,
-              textTransform: "uppercase",
-              letterSpacing: "1px",
-              marginBottom: SPACING.unit.md
-            }}>
-              Verified & Trusted
-            </div>
             <h1 style={{
               fontSize: "clamp(2rem, 5vw, 3.5rem)",
               fontWeight: TYPOGRAPHY.fontWeight.bold,

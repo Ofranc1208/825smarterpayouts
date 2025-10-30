@@ -13,7 +13,8 @@ export default function StepGrid({ isMounted, gridColumns }: StepGridProps) {
       gridTemplateColumns: isMounted ? gridColumns : "1fr",
       gap: SPACING.grid.comfortable,
       alignItems: "stretch",
-      textAlign: "center"
+      textAlign: "center",
+      height: "100%"
     }}>
       <StepCard
         to="/mint-chat-active?type=calculate&source=main-process-step1"
@@ -25,7 +26,7 @@ export default function StepGrid({ isMounted, gridColumns }: StepGridProps) {
         to="/review-offer"
         icon="2"
         title="Review Terms"
-        text="Compare our transparent offer with competitors. No hidden fees, no pressure tactics - just clear, honest pricing."
+        text="Compare our transparent offer with competitors. No hidden fees, no pressure tactics - just clear, honest pricing and terms."
       />
       <StepCard
         to="/court-approval"

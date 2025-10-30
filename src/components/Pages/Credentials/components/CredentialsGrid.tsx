@@ -42,15 +42,6 @@ const credentials: Credential[] = [
     icon: '📋'
   },
   {
-    title: 'Sunbiz Registration',
-    description: 'Sunbiz is the official corporate registry for Florida. SmarterPayouts can be found on Sunbiz, validating our formation, structure, and legal representatives.',
-    link: 'https://search.sunbiz.org/Inquiry/CorporationSearch/ByName',
-    linkText: 'View on Sunbiz',
-    color: '#fbbf24',
-    accentColor: '#f59e0b',
-    icon: '🏛️'
-  },
-  {
     title: 'SSL Certificate of Incorporation',
     description: 'Our website and backend operations are secured with full SSL certification. This ensures secure, encrypted communication for all user activity.',
     link: 'https://www.ssllabs.com/ssltest/analyze.html?d=smarterpayouts.com',

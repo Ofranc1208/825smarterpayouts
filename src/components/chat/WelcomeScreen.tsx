@@ -35,12 +35,17 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartChat }) => {
         return;
       }
       
-      // Route to specialist page for specialist choice, otherwise use main chat
+      // Route to appropriate page based on choice
       if (choice === 'specialist') {
         const specialistUrl = `/connect-with-specialist?type=${choice}`;
         console.log('[WelcomeScreen] 🎯 SPECIALIST ROUTE - Navigating to:', specialistUrl);
         window.location.href = specialistUrl;
         console.log('[WelcomeScreen] ✅ Navigation to specialist page initiated');
+      } else if (choice === 'process') {
+        const processUrl = `/learn-about-process?type=${choice}`;
+        console.log('[WelcomeScreen] 📚 PROCESS ROUTE - Navigating to:', processUrl);
+        window.location.href = processUrl;
+        console.log('[WelcomeScreen] ✅ Navigation to process page initiated');
       } else {
         const chatUrl = `/mint-chat-active?type=${choice}`;
         console.log('[WelcomeScreen] 💬 REGULAR CHAT ROUTE - Navigating to:', chatUrl);

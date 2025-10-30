@@ -12,12 +12,13 @@ export default function ValuePropsGrid({ isMounted, gridColumns }: ValuePropsGri
       display: "grid",
       gridTemplateColumns: isMounted ? gridColumns : "1fr",
       gap: SPACING.grid.spacious,
-      alignItems: "start"
+      alignItems: "stretch"
     }}>
       <div style={{
         display: "flex",
         flexDirection: "column",
-        gap: SPACING.grid.comfortable
+        gap: SPACING.grid.comfortable,
+        height: "100%"
       }}>
         <ValuePropCard
           icon="AI"
@@ -43,7 +44,8 @@ export default function ValuePropsGrid({ isMounted, gridColumns }: ValuePropsGri
       <div style={{
         display: "flex",
         flexDirection: "column",
-        gap: SPACING.grid.comfortable
+        gap: SPACING.grid.comfortable,
+        height: "100%"
       }}>
         <ValuePropCard
           icon="⚖️"

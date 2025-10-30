@@ -8,16 +8,18 @@
 import { useEffect } from 'react';
 import { useWelcomeScript } from './useWelcomeScript';
 import { useSpecialistWelcomeScript } from './useSpecialistWelcomeScript';
+import { useProcessWelcomeScript } from './useProcessWelcomeScript';
 import type { Message } from './useConversationalForm';
 
 interface UseWelcomeScriptManagerProps {
-  mode: 'calculate' | 'specialist';
+  mode: 'calculate' | 'specialist' | 'process';
   visibleMessages: Message[];
   setVisibleMessages: React.Dispatch<React.SetStateAction<Message[]>>;
   setIsTyping: React.Dispatch<React.SetStateAction<boolean>>;
   onCalculate: () => void;
   onInitialChoice: (choice: string) => void;
   onSpecialistChoice: (choice: 'live_chat' | 'sms' | 'phone_call' | 'appointment') => void;
+  onProcessTopicClick?: (topic: string) => void;
 }
 
 export const useWelcomeScriptManager = ({
@@ -27,10 +29,11 @@ export const useWelcomeScriptManager = ({
   setIsTyping,
   onCalculate,
   onInitialChoice,
-  onSpecialistChoice
+  onSpecialistChoice,
+  onProcessTopicClick
 }: UseWelcomeScriptManagerProps) => {
   
-  // Initialize welcome scripts for both modes
+  // Initialize welcome scripts for all modes
   const regularWelcomeScript = useWelcomeScript({
     onCalculate,
     onChoice: onInitialChoice,
@@ -42,8 +45,14 @@ export const useWelcomeScriptManager = ({
     initialMessages: visibleMessages
   });
 
+  const processWelcomeScript = useProcessWelcomeScript({
+    onTopicClick: onProcessTopicClick || (() => {}),
+    initialMessages: visibleMessages
+  });
+
   // Select the appropriate welcome script based on mode
-  const activeWelcomeScript = mode === 'specialist' ? specialistWelcomeScript : regularWelcomeScript;
+  const activeWelcomeScript = mode === 'specialist' ? specialistWelcomeScript : 
+                              mode === 'process' ? processWelcomeScript : regularWelcomeScript;
 
   // Sync welcome script state with context
   useEffect(() => {

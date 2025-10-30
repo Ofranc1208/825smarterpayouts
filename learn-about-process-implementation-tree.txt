@@ -1,0 +1,106 @@
+LEARN ABOUT OUR PROCESS - IMPLEMENTATION TREE
+================================================
+
+GOAL: Create a dedicated chat experience for "Learn About Our Process" similar to specialist chat
+SCOPE: Simple, strategic implementation that reuses existing infrastructure
+
+CURRENT STATE ANALYSIS:
+✅ Specialist chat working: /connect-with-specialist?type=specialist
+✅ Main chat working: /mint-chat-active?type=calculate
+✅ Process flow exists but embedded in main chat
+✅ GPT integration already working
+✅ Modal system (SMS, Appointment) already working
+
+TARGET ARCHITECTURE:
+/learn-about-process?type=process
+├── MintChatActivePage (reuse existing)
+├── ChatController (add 'process' mode)
+├── AppProviders (pass mode='process')
+├── ChatProvider (handle process mode)
+└── Process-specific components
+
+IMPLEMENTATION STEPS:
+====================
+
+1. ✅ CREATE ROUTE
+   ├── app/learn-about-process/page.tsx (thin wrapper)
+   └── Reuse MintChatActivePage component
+
+2. ✅ CREATE PROCESS COMPONENTS
+   ├── src/components/chat/ProcessChat/
+   │   ├── ProcessMenu/
+   │   │   ├── ProcessMenu.tsx
+   │   │   ├── ProcessMenu.module.css
+   │   │   └── index.ts
+   │   └── index.ts
+   └── src/hooks/useProcessWelcomeScript.ts
+
+3. ✅ UPDATE EXISTING COMPONENTS
+   ├── src/components/chat/ChatController.tsx (add 'process' mode)
+   ├── src/hooks/useWelcomeScriptManager.ts (add process mode)
+   ├── src/contexts/chat/ChatContext.tsx (handle process mode)
+   └── src/components/chat/types.ts (process choice type already exists)
+
+4. ✅ UPDATE WELCOME SCREEN
+   └── src/components/chat/WelcomeScreen.tsx (add process navigation)
+
+PROCESS MENU TOPICS:
+===================
+1. "How does the selling process work?"
+2. "What are the legal requirements?"
+3. "How much can I get for my settlement?"
+4. "What are the risks and benefits?"
+5. "How long does the process take?"
+6. "Ask me anything else"
+
+NOTE: Removed "What is a structured settlement?" - users should already know this
+
+GPT INTEGRATION:
+===============
+✅ Already working - no changes needed
+✅ Process mode will use same GPT system
+✅ Users can ask follow-up questions naturally
+✅ Maintains conversation context
+
+FILES CREATED:
+==============
+1. ✅ app/learn-about-process/page.tsx
+2. ✅ src/components/chat/ProcessChat/ProcessMenu/ProcessMenu.tsx
+3. ✅ src/components/chat/ProcessChat/ProcessMenu/ProcessMenu.module.css
+4. ✅ src/components/chat/ProcessChat/ProcessMenu/index.ts
+5. ✅ src/components/chat/ProcessChat/index.ts
+6. ✅ src/hooks/useProcessWelcomeScript.ts
+
+FILES MODIFIED:
+===============
+1. ✅ src/components/chat/ChatController.tsx
+2. ✅ src/hooks/useWelcomeScriptManager.ts
+3. ✅ src/contexts/chat/ChatContext.tsx
+4. ✅ src/components/chat/WelcomeScreen.tsx
+
+IMPLEMENTATION COMPLETED:
+========================
+1. ✅ Route creation (5 minutes)
+2. ✅ ProcessMenu component (10 minutes)
+3. ✅ Process welcome script (5 minutes)
+4. ✅ Update existing components (10 minutes)
+5. ✅ Integration complete (5 minutes)
+TOTAL: ~35 minutes - COMPLETED!
+
+REUSE EXISTING PATTERNS:
+========================
+✅ Same as SpecialistMenu pattern
+✅ Same as useSpecialistWelcomeScript pattern
+✅ Same as ChatController mode handling
+✅ Same as AppProviders mode passing
+✅ Same GPT integration (no changes needed)
+
+EXPECTED RESULT:
+================
+- User clicks "Learn About Our Process"
+- Navigates to /learn-about-process?type=process
+- Chat opens with process education topics
+- User can select topics or ask questions
+- GPT handles follow-up questions naturally
+- Contact options available at any time
+- Clean, simple, maintainable code

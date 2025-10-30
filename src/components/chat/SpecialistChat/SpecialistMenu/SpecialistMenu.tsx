@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './SpecialistMenu.module.css';
 
 interface SpecialistMenuProps {
@@ -6,10 +6,8 @@ interface SpecialistMenuProps {
 }
 
 const SpecialistMenu: React.FC<SpecialistMenuProps> = ({ onChoice }) => {
-  const [isClicked, setIsClicked] = useState(false);
 
   const handleChoiceClick = (choice: 'live_chat' | 'sms' | 'phone_call' | 'appointment') => {
-    setIsClicked(true);
     onChoice(choice);
   };
 
@@ -32,23 +30,20 @@ const SpecialistMenu: React.FC<SpecialistMenuProps> = ({ onChoice }) => {
       </button>
       */}
       <button
-        className={`${styles.menuBtn} ${isClicked ? styles.disabled : ''}`}
+        className={styles.menuBtn}
         onClick={() => handleChoiceClick('sms')}
-        disabled={isClicked}
       >
         📱 Text Message
       </button>
       <button
-        className={`${styles.menuBtn} ${isClicked ? styles.disabled : ''}`}
+        className={styles.menuBtn}
         onClick={() => handleChoiceClick('phone_call')}
-        disabled={isClicked}
       >
         📞 Phone Consultation
       </button>
       <button
-        className={`${styles.menuBtn} ${isClicked ? styles.disabled : ''}`}
+        className={styles.menuBtn}
         onClick={() => handleChoiceClick('appointment')}
-        disabled={isClicked}
       >
         📅 Book an Appointment
       </button>

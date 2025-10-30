@@ -78,6 +78,7 @@ export const ChatProvider = ({
     logUserChoiceAsMessage
   ), [modalState, logUserChoiceAsMessage, setModalState]);
 
+
   // Handle specialist choices (for specialist mode) - Now all dependencies are available
   const handleSpecialistChoice = useCallback(async (choice: 'live_chat' | 'sms' | 'phone_call' | 'appointment') => {
     console.log('[ChatContext] Specialist choice selected:', choice);
@@ -149,17 +150,6 @@ export const ChatProvider = ({
     await choiceHandler.handleChoice(choiceText);
   }, [choiceHandler]);
 
-  // Welcome script management (extracted to custom hook)
-  useWelcomeScriptManager({
-    mode,
-    visibleMessages,
-    setVisibleMessages,
-    setIsTyping,
-    onCalculate: startConversationalForm,
-    onInitialChoice: handleInitialChoice,
-    onSpecialistChoice: handleSpecialistChoice
-  });
-
   // Handle calculation link management
   useEffect(() => {
     calculationLinkManager.handleLCPFlow(currentStep);
@@ -179,6 +169,28 @@ export const ChatProvider = ({
       await messageOrchestrator.processMessage(message);
     }
   }, [messageOrchestrator, liveChatIntegration]);
+
+  // Handle process topic clicks (for process mode)
+  const handleProcessTopicClick = useCallback(async (topic: string) => {
+    console.log('[ChatContext] Process topic clicked:', topic);
+    
+    // Use the same pattern as regular chat - pass to sendMessage
+    // This will go through messageOrchestrator.processMessage() → TextMessageProcessor → GPT
+    // sendMessage will handle adding the user message to chat
+    await sendMessage(topic);
+  }, [sendMessage]);
+
+  // Welcome script management (extracted to custom hook)
+  useWelcomeScriptManager({
+    mode,
+    visibleMessages,
+    setVisibleMessages,
+    setIsTyping,
+    onCalculate: startConversationalForm,
+    onInitialChoice: handleInitialChoice,
+    onSpecialistChoice: handleSpecialistChoice,
+    onProcessTopicClick: handleProcessTopicClick
+  });
 
   // Flow state helpers
   const isGuaranteedFlowActive = currentStep && ['mode', 'amount', 'increase', 'dates', 'review', 'offer'].includes(currentStep);

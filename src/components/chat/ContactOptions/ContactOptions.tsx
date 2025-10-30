@@ -38,43 +38,63 @@ const ContactOptions: React.FC<ContactOptionsProps> = ({ onContactClick }) => {
       <div className={styles.contactOptions}>
         <div className={styles.contactGrid}>
           <button
-            className={`${styles.contactBtn} ${styles.smsBtn}`}
+            className={styles.contactBtn}
             onClick={handleSMSClick}
             aria-label="Send text message"
           >
-            <span className={styles.btnEmoji}>📱</span>
-            <span className={styles.btnText}>Text</span>
-            <span className={styles.btnSubtext}>+1 (561) 583-1280</span>
+            <div className={styles.contactIcon}>
+              <span className={styles.iconEmoji}>📱</span>
+            </div>
+            <div className={styles.contactContent}>
+              <div className={styles.contactTitle}>Text Us</div>
+              <div className={styles.contactDescription}>SMS available 24/7</div>
+              <div className={styles.contactAction}>+1 (561) 583-1280</div>
+            </div>
           </button>
 
           <button
-            className={`${styles.contactBtn} ${styles.phoneBtn}`}
+            className={styles.contactBtn}
             onClick={handlePhoneClick}
             aria-label="Call us"
           >
-            <span className={styles.btnEmoji}>📞</span>
-            <span className={styles.btnText}>Call</span>
-            <span className={styles.btnSubtext}>+1 (561) 583-1280</span>
+            <div className={styles.contactIcon}>
+              <span className={styles.iconEmoji}>📞</span>
+            </div>
+            <div className={styles.contactContent}>
+              <div className={styles.contactTitle}>Call Us</div>
+              <div className={styles.contactDescription}>Monday-Friday, 9AM-6PM EST</div>
+              <div className={styles.contactAction}>+1 (561) 583-1280</div>
+            </div>
           </button>
 
           <button
-            className={`${styles.contactBtn} ${styles.emailBtn}`}
+            className={styles.contactBtn}
             onClick={handleEmailClick}
             aria-label="Email us"
           >
-            <span className={styles.btnEmoji}>✉</span>
-            <span className={styles.btnText}>Email</span>
-            <span className={styles.btnSubtext}>info@smarterpayouts.com</span>
+            <div className={styles.contactIcon}>
+              <span className={styles.iconEmoji}>✉️</span>
+            </div>
+            <div className={styles.contactContent}>
+              <div className={styles.contactTitle}>Email Us</div>
+              <div className={styles.contactDescription}>Response within 24 hours</div>
+              <div className={styles.contactAction}>info@smarterpayouts.com</div>
+            </div>
           </button>
 
           <button
-            className={`${styles.contactBtn} ${styles.appointmentBtn}`}
+            className={styles.contactBtn}
             onClick={handleAppointmentClick}
             aria-label="Book appointment"
           >
-            <span className={styles.btnEmoji}>📅</span>
-            <span className={styles.btnText}>Book</span>
-            <span className={styles.btnSubtext}>Free Consultation</span>
+            <div className={styles.contactIcon}>
+              <span className={styles.iconEmoji}>📅</span>
+            </div>
+            <div className={styles.contactContent}>
+              <div className={styles.contactTitle}>Book Appointment</div>
+              <div className={styles.contactDescription}>Free Consultation</div>
+              <div className={styles.contactAction}>Schedule Now</div>
+            </div>
           </button>
         </div>
       </div>

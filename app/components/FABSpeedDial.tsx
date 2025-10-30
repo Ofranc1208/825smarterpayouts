@@ -45,7 +45,7 @@ export default function FABSpeedDial() {
     window.location.href = `/mint-chat-active?type=calculate&source=fab-chat&sessionId=${sessionId}`;
   };
 
-  const handlePayoutClick = (e: React.MouseEvent) => {
+  const handleEarlyPayoutClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     closeFAB();
@@ -86,47 +86,47 @@ export default function FABSpeedDial() {
 
       {/* FAB Items Container - Staggered Animation */}
       <div className={`${styles.fabItems} ${isOpen ? styles.open : ''}`}>
+        {/* Early Payout Option - Glassmorphism Style */}
+        <button
+          className={`${styles.fabItem} ${styles.fabButton}`}
+          aria-label="Get Your Early Payout Quote Now"
+          data-testid="fab-early-payout-trigger"
+          onClick={handleEarlyPayoutClick}
+        >
+          <span className={styles.fabItemIcon}>💰</span>
+          <span className={styles.fabItemText}>Early Payout</span>
+        </button>
+
         {/* Call Option - Glassmorphism Style */}
         <a
           href="tel:+19547649750"
           className={styles.fabItem}
-          aria-label="Call Us"
+          aria-label="Call Us Now"
         >
           <span className={styles.fabItemIcon}>📞</span>
-          <span className={styles.fabItemText}>Call</span>
+          <span className={styles.fabItemText}>Call Now</span>
         </a>
 
         {/* Chat Option - Glassmorphism Style */}
         <button
           className={`${styles.fabItem} ${styles.fabButton}`}
-          aria-label="Chat With Us"
+          aria-label="Chat With Us Now"
           data-testid="fab-chat-trigger"
           onClick={handleChatClick}
         >
           <span className={styles.fabItemIcon}>💬</span>
-          <span className={styles.fabItemText}>Chat</span>
+          <span className={styles.fabItemText}>Chat Now</span>
         </button>
 
         {/* Email Option - Glassmorphism Style */}
         <a
           href="/contact"
           className={styles.fabItem}
-          aria-label="Email Us"
+          aria-label="Email Us Now"
         >
           <span className={styles.fabItemIcon}>✉</span>
-          <span className={styles.fabItemText}>Email</span>
+          <span className={styles.fabItemText}>Email Now</span>
         </a>
-
-        {/* Get Payout Option - Glassmorphism Style */}
-        <button
-          className={`${styles.fabItem} ${styles.fabButton}`}
-          aria-label="Get Your Payout Quote"
-          data-testid="fab-payout-trigger"
-          onClick={handlePayoutClick}
-        >
-          <span className={styles.fabItemIcon}>💰</span>
-          <span className={styles.fabItemText}>Get Payout</span>
-        </button>
       </div>
     </div>
   );

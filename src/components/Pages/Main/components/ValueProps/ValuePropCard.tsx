@@ -25,7 +25,12 @@ export default function ValuePropCard({
 }: ValuePropCardProps) {
   return (
     <div 
-      style={getAccentBorderCardStyles(borderColor)}
+      style={{
+        ...getAccentBorderCardStyles(borderColor),
+        height: "100%",
+        display: "flex",
+        flexDirection: "column"
+      }}
       {...createSlideHover({
         translateX: 8,
         shadowColor: hoverShadowColor,
@@ -33,7 +38,12 @@ export default function ValuePropCard({
         borderColor
       })}
     >
-      <div style={{ marginBottom: SPACING.unit.md }}>
+      <div style={{ 
+        marginBottom: SPACING.unit.md,
+        flex: 1,
+        display: "flex",
+        flexDirection: "column"
+      }}>
         <div style={{
           ...getIconContainerStyles({
             size: ICON_SIZES.medium,
@@ -54,7 +64,10 @@ export default function ValuePropCard({
         <p style={{
           ...TEXT_PRESETS.cardText,
           color: COLORS.text.secondary,
-          margin: 0
+          margin: 0,
+          flex: 1,
+          display: "flex",
+          alignItems: "flex-start"
         }}>
           {description}
         </p>

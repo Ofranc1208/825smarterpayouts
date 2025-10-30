@@ -16,10 +16,15 @@ export default function StepCard({ to, icon, title, text }: StepCardProps) {
   const stepNumber = icon;
   
   return (
-    <div style={{ width: "100%", position: "relative" }}>
-      <Link href={to} style={{ textDecoration: "none", color: "inherit" }}>
+    <div style={{ width: "100%", position: "relative", height: "100%" }}>
+      <Link href={to} style={{ textDecoration: "none", color: "inherit", height: "100%", display: "block" }}>
         <div 
-          style={getStepCardStyles()}
+          style={{
+            ...getStepCardStyles(),
+            height: "100%",
+            display: "flex",
+            flexDirection: "column"
+          }}
           {...createScaleHover({
             scale: 1.03,
             shadowColor: COLORS.shadows.greenLighter,
@@ -57,7 +62,10 @@ export default function StepCard({ to, icon, title, text }: StepCardProps) {
           <p style={{
             ...TEXT_PRESETS.cardText,
             color: COLORS.text.secondary,
-            margin: 0
+            margin: 0,
+            flex: 1,
+            display: "flex",
+            alignItems: "flex-start"
           }}>{text}</p>
           
           <div style={{

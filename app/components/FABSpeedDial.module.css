@@ -13,24 +13,31 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-/* Main Circular FAB Button - Material Design 2025 Compliant */
+/* Main Circular FAB Button - Modern 2025 Design */
 .fabMain {
-  /* Material Design: Primary action color */
-  background: linear-gradient(135deg, #22c55e 0%, #16a34a 50%, #15803d 100%);
+  /* Modern gradient with enhanced depth */
+  background: linear-gradient(135deg, 
+    #22c55e 0%, 
+    #16a34a 30%, 
+    #15803d 70%, 
+    #14532d 100%);
   color: #ffffff;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 36px;
   
-  /* Material Design: Standard FAB is 56dp, we use 64px for better visibility */
-  width: 64px;
-  height: 64px;
+  /* Enhanced size for better visibility */
+  width: 68px;
+  height: 68px;
   border-radius: 50%;
   
-  /* Material Design: Elevation 6dp at rest */
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.14), 
-              0 1px 18px rgba(0, 0, 0, 0.12),
-              0 3px 5px rgba(0, 0, 0, 0.2),
-              0 0 0 0 rgba(34, 197, 94, 0.3);
+  /* Modern shadow system with multiple layers */
+  box-shadow: 
+    0 8px 24px rgba(34, 197, 94, 0.25),
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    0 2px 6px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   
   display: flex;
   align-items: center;
@@ -41,10 +48,12 @@
   border: none;
   cursor: pointer;
   
-  /* Material Design: Standard easing */
-  transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Enhanced transition with modern easing */
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
   overflow: hidden;
+  transform: translateZ(0);
+  will-change: transform, box-shadow;
 }
 
 /* Material Design: Ripple effect simulation */
@@ -66,22 +75,34 @@
   height: 100%;
 }
 
-/* Material Design: Elevation 12dp on hover/focus */
+/* Modern hover/focus effects */
 .fabMain:hover,
 .fabMain:focus {
-  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.14), 
-              0 3px 14px rgba(0, 0, 0, 0.12),
-              0 5px 5px rgba(0, 0, 0, 0.2),
-              0 0 20px 5px rgba(34, 197, 94, 0.4);
-  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 32px rgba(34, 197, 94, 0.35),
+    0 6px 16px rgba(0, 0, 0, 0.2),
+    0 3px 8px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px) scale(1.05);
+  background: linear-gradient(135deg, 
+    #22c55e 0%, 
+    #16a34a 25%, 
+    #15803d 60%, 
+    #14532d 100%);
 }
 
-/* Material Design: Elevation 8dp when pressed */
+/* Modern active state */
 .fabMain:active {
-  box-shadow: 0 7px 8px rgba(0, 0, 0, 0.14), 
-              0 2px 12px rgba(0, 0, 0, 0.12),
-              0 4px 4px rgba(0, 0, 0, 0.2);
-  transform: translateY(0);
+  box-shadow: 
+    0 6px 20px rgba(34, 197, 94, 0.3),
+    0 3px 10px rgba(0, 0, 0, 0.2),
+    0 1px 4px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px) scale(1.02);
+  transition: all 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* Material Design: Surface overlay for depth */
@@ -152,29 +173,36 @@
   pointer-events: auto;
 }
 
-/* Individual FAB Items - Enhanced Glassmorphism Style */
+/* Individual FAB Items - Modern 2025 Design */
 .fabItem {
   display: flex;
   align-items: center;
-  gap: 14px;
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(16px) saturate(180%);
-  padding: 16px 24px;
-  border-radius: 32px;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.15), 
-              0 4px 12px rgba(34, 197, 94, 0.2),
-              inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  border: 2.5px solid rgba(34, 197, 94, 0.3);
+  gap: 16px;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.95) 0%, 
+    rgba(255, 255, 255, 0.85) 100%);
+  backdrop-filter: blur(20px) saturate(200%) brightness(110%);
+  padding: 18px 28px;
+  border-radius: 24px;
+  box-shadow: 
+    0 12px 32px rgba(0, 0, 0, 0.12),
+    0 6px 16px rgba(34, 197, 94, 0.15),
+    0 2px 8px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   text-decoration: none;
-  color: #0f172a;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  color: #1e293b;
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   width: fit-content;
   min-width: 180px;
   font-weight: 600;
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  animation: fabItemSlideIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+  animation: fabItemSlideIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) backwards;
+  transform: translateZ(0);
+  will-change: transform, box-shadow;
 }
 
 .fabItem::before {
@@ -184,12 +212,38 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.1), transparent);
-  transition: left 0.5s ease;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(34, 197, 94, 0.08), 
+    rgba(34, 197, 94, 0.12),
+    transparent);
+  transition: left 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 1;
 }
 
 .fabItem:hover::before {
   left: 100%;
+}
+
+.fabItem::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    transparent 50%, 
+    rgba(0, 0, 0, 0.02) 100%);
+  border-radius: 24px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.fabItem:hover::after {
+  opacity: 1;
 }
 
 .fabItem:nth-child(1) {
@@ -220,16 +274,22 @@
 }
 
 .fabItem:hover {
-  transform: translateX(-10px) scale(1.05);
-  box-shadow: 0 16px 40px rgba(34, 197, 94, 0.35), 
-              0 8px 16px rgba(0, 0, 0, 0.2),
-              inset 0 1px 0 rgba(255, 255, 255, 1);
-  border-color: rgba(34, 197, 94, 0.6);
-  background: rgba(255, 255, 255, 1);
+  transform: translateX(-12px) scale(1.02) translateY(-2px);
+  box-shadow: 
+    0 20px 48px rgba(34, 197, 94, 0.25),
+    0 12px 24px rgba(0, 0, 0, 0.15),
+    0 4px 12px rgba(34, 197, 94, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.08);
+  border-color: rgba(34, 197, 94, 0.4);
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.98) 0%, 
+    rgba(248, 250, 252, 0.95) 100%);
 }
 
 .fabItem:active {
-  transform: translateX(-6px) scale(1.0);
+  transform: translateX(-8px) scale(0.98) translateY(-1px);
+  transition: all 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* Button-specific reset for chat button */
@@ -238,23 +298,55 @@
   font-size: 16px;
 }
 
-/* Icon styling - Enhanced */
+/* Icon styling - Modern 2025 */
 .fabItemIcon {
-  font-size: 26px;
+  font-size: 28px;
   line-height: 1;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-  transition: transform 0.3s ease;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.12));
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.8) 0%, 
+    rgba(248, 250, 252, 0.6) 100%);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .fabItem:hover .fabItemIcon {
-  transform: scale(1.15) rotate(5deg);
+  transform: scale(1.1) rotate(3deg) translateY(-1px);
+  box-shadow: 
+    0 6px 16px rgba(34, 197, 94, 0.2),
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
 }
 
-/* Text styling - Enhanced */
+/* Text styling - Modern 2025 */
 .fabItemText {
   font-size: 16px;
   font-weight: 600;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.4px;
+  position: relative;
+  z-index: 3;
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: all 0.3s ease;
+}
+
+.fabItem:hover .fabItemText {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* Material Design: Mobile responsive (small screens) */
@@ -264,23 +356,27 @@
     right: 16px;
   }
 
-  /* Material Design: Standard FAB size on mobile (56dp) */
+  /* Modern FAB size on mobile */
   .fabMain {
-    width: 56px;
-    height: 56px;
-    font-size: 28px;
-    /* Material Design: Same elevation on mobile */
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.14), 
-                0 1px 18px rgba(0, 0, 0, 0.12),
-                0 3px 5px rgba(0, 0, 0, 0.2);
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+    box-shadow: 
+      0 6px 20px rgba(34, 197, 94, 0.2),
+      0 3px 10px rgba(0, 0, 0, 0.12),
+      0 1px 4px rgba(0, 0, 0, 0.08),
+      0 0 0 1px rgba(255, 255, 255, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
 
   .fabMain:hover,
   .fabMain:focus {
-    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.14), 
-                0 3px 14px rgba(0, 0, 0, 0.12),
-                0 5px 5px rgba(0, 0, 0, 0.2),
-                0 0 20px 5px rgba(34, 197, 94, 0.4);
+    box-shadow: 
+      0 10px 28px rgba(34, 197, 94, 0.3),
+      0 5px 14px rgba(0, 0, 0, 0.15),
+      0 2px 6px rgba(0, 0, 0, 0.1),
+      0 0 0 1px rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px) scale(1.03);
   }
 
   .fabIcon {
@@ -288,17 +384,22 @@
   }
 
   .fabItem {
-    padding: 12px 18px;
+    padding: 14px 20px;
     min-width: 150px;
-    border-width: 2px;
+    border-radius: 20px;
+    gap: 12px;
   }
 
   .fabItemIcon {
-    font-size: 22px;
+    font-size: 24px;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
   }
 
   .fabItemText {
     font-size: 14px;
+    letter-spacing: 0.3px;
   }
 }
 

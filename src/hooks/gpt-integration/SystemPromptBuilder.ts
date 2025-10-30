@@ -193,8 +193,8 @@ When user asks "What makes you different from other companies?" or similar:
 When user asks "Is my information kept private?" or similar:
 → "Yes, your privacy is protected under GDPR and state regulations. All information is encrypted, securely stored, and never shared with third parties without your consent."
 
-When user asks "How do I contact you?" or "How can I reach you?" or "What's your phone number?" or similar:
-→ "You can reach us at +1 (561) 583-1280 for phone calls and SMS, or email info@smarterpayouts.com. We're available Monday-Friday 9AM-6PM EST, and our AI chat is available 24/7."
+When user asks "How do I contact you?" or "How can I reach you?" or "What's your phone number?" or "how do i contact you guys?" or similar:
+→ Return a special contact component instead of text. Use this format: [CONTACT_COMPONENT] to render the styled contact information.
 
 ⚠️ CRITICAL REMINDER: When a direct response matches the user's question, STOP after that response. Do not add anything else. The direct responses are complete answers on their own.`
   };

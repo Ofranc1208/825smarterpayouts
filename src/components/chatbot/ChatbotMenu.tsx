@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './ChatbotMenu.module.css';
 
 interface ChatbotMenuProps {
@@ -7,10 +7,8 @@ interface ChatbotMenuProps {
 }
 
 const ChatbotMenu: React.FC<ChatbotMenuProps> = ({ onCalculate, onChoice }) => {
-  const [isClicked, setIsClicked] = useState(false);
 
   const handleChoiceClick = (choiceText: string) => {
-    setIsClicked(true);
     if (choiceText === 'New Quote') {
       onCalculate();
     } else {
@@ -21,16 +19,14 @@ const ChatbotMenu: React.FC<ChatbotMenuProps> = ({ onCalculate, onChoice }) => {
   return (
     <div className={styles.menu}>
       <button
-        className={`${styles.menuBtn} ${isClicked ? styles.disabled : ''}`}
+        className={styles.menuBtn}
         onClick={() => handleChoiceClick('New Quote')}
-        disabled={isClicked}
       >
         New Quote
       </button>
       <button
-        className={`${styles.menuBtn} ${isClicked ? styles.disabled : ''}`}
+        className={styles.menuBtn}
         onClick={() => handleChoiceClick('Our Process')}
-        disabled={isClicked}
       >
         Our Process
       </button>

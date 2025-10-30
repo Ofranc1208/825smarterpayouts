@@ -30,21 +30,18 @@ const Step1SelectType: React.FC<Step1SelectTypeProps> = ({ onSelectType }) => {
         <button
           className={getButtonClassName('guaranteed')}
           onClick={() => handleSelection('guaranteed')}
-          disabled={!!selectedChoice}
         >
           Guaranteed Payments
         </button>
         <button
           className={getButtonClassName('life-contingent')}
           onClick={() => handleSelection('life-contingent')}
-          disabled={!!selectedChoice}
         >
           Life Payments
         </button>
         <button
           className={getButtonClassName('dont-know')}
           onClick={() => handleSelection('dont-know')}
-          disabled={!!selectedChoice}
         >
           I don't know
         </button>

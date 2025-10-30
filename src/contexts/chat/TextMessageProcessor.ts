@@ -59,10 +59,32 @@ export class TextMessageProcessor {
 
     const botMsgId = generateUniqueId();
     let isFirstChunk = true;
+    let finalText = '';
 
     await processMessageWithGPT({
       userMessage,
       onStream: (partialText: string) => {
+        // Check if the response contains the contact component marker
+        if (partialText.includes('[CONTACT_COMPONENT]')) {
+          // Replace the text message with a component message
+          setVisibleMessages(prev => {
+            const filtered = prev.filter(m => m.id !== botMsgId);
+            return [
+              ...filtered,
+              { 
+                id: botMsgId, 
+                type: 'component', 
+                componentType: 'ContactInfo',
+                componentData: {},
+                sender: 'bot' 
+              }
+            ];
+          });
+          setIsTyping(false);
+          setIsLoading(false);
+          return;
+        }
+
         if (isFirstChunk) {
           setIsTyping(false);
           setVisibleMessages(prev => [
@@ -76,7 +98,26 @@ export class TextMessageProcessor {
           ));
         }
       },
-      onComplete: () => {
+      onComplete: (completeText: string) => {
+        finalText = completeText;
+        
+        // Final check for contact component marker
+        if (completeText.includes('[CONTACT_COMPONENT]')) {
+          setVisibleMessages(prev => {
+            const filtered = prev.filter(m => m.id !== botMsgId);
+            return [
+              ...filtered,
+              { 
+                id: botMsgId, 
+                type: 'component', 
+                componentType: 'ContactInfo',
+                componentData: {},
+                sender: 'bot' 
+              }
+            ];
+          });
+        }
+        
         setIsTyping(false);
         setIsLoading(false);
       },

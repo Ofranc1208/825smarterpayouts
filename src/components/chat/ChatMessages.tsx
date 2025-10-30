@@ -8,6 +8,7 @@ import ChatbotTyping from '../../components/chatbot/ChatbotTyping';
 import DocumentPreview from './DocumentPreview';
 import { LiveChatQueue } from './SpecialistChat/LiveChatQueue';
 import GuaranteedCalculationLink from '../calculator/guaranteedstep/shared/GuaranteedCalculationLink';
+import ContactInfo from './ContactInfo/ContactInfo';
 import styles from './ChatBubble.module.css';
 // import { parseAIResponse } from '../../utils/parsing'; // No longer needed for text messages
 
@@ -70,6 +71,8 @@ const ChatMessages = () => {
             sessionId={componentData.sessionId}
           />
         );
+      case 'ContactInfo':
+        return <ContactInfo {...componentData} />;
       // Add more component types here as needed
       default:
         console.warn(`Unknown component type: ${componentType}`);
