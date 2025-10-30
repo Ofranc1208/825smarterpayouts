@@ -125,11 +125,11 @@ const DualNavbar: React.FC = () => {
         <a href="/main" style={logoStyle}>
           <img 
             src="/favicon_without_text.ico" 
-            alt="Smarter Payouts Logo"
+            alt="SmarterPayouts Logo"
             style={logoIconStyle}
           />
           <span style={{ fontSize: isMobile ? '0.875rem' : '1rem', fontWeight: 700 }}>
-            Smarter Payouts
+            SmarterPayouts
           </span>
         </a>
 

@@ -40,7 +40,7 @@ export default function Footer() {
             }}>
               <Image
                 src="/assets/images/mint-mascot.png"
-                alt="SmarterPayouts"
+                alt="Smarter Payouts"
                 width={32}
                 height={32}
                 style={{ borderRadius: "50%" }}
@@ -51,7 +51,7 @@ export default function Footer() {
                 color: "#ffffff",
                 margin: 0
               }}>
-                SmarterPayouts
+                Smarter Payouts
               </h3>
             </div>
             <p style={{
