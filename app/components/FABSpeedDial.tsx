@@ -45,6 +45,15 @@ export default function FABSpeedDial() {
     window.location.href = `/mint-chat-active?type=calculate&source=fab-chat&sessionId=${sessionId}`;
   };
 
+  const handlePayoutClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    closeFAB();
+    
+    // Navigate directly to Mint Chat page for payout calculation
+    window.location.href = '/mint-intelligent-chat';
+  };
+
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (fabRef.current && !fabRef.current.contains(e.target as Node)) {
@@ -107,6 +116,17 @@ export default function FABSpeedDial() {
           <span className={styles.fabItemIcon}>✉</span>
           <span className={styles.fabItemText}>Email</span>
         </a>
+
+        {/* Get Payout Option - Glassmorphism Style */}
+        <button
+          className={`${styles.fabItem} ${styles.fabButton}`}
+          aria-label="Get Your Payout Quote"
+          data-testid="fab-payout-trigger"
+          onClick={handlePayoutClick}
+        >
+          <span className={styles.fabItemIcon}>💰</span>
+          <span className={styles.fabItemText}>Get Payout</span>
+        </button>
       </div>
     </div>
   );

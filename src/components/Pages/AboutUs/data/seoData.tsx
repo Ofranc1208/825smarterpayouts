@@ -32,10 +32,10 @@ export const ABOUT_US_STRUCTURED_DATA = {
     numberOfEmployees: '150',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '123 Financial Street',
-      addressLocality: 'New York',
-      addressRegion: 'NY',
-      postalCode: '10001',
+      streetAddress: '15257 Amberly Dr Ste 233',
+      addressLocality: 'Tampa',
+      addressRegion: 'FL',
+      postalCode: '33647',
       addressCountry: 'US'
     },
     contactPoint: [

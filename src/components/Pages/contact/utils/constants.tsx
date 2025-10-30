@@ -11,10 +11,10 @@ export const CONTACT_CONSTANTS = {
   RESPONSE_TIME: '24 hours',
   COMPANY_NAME: 'SmarterPayouts',
   ADDRESS: {
-    STREET: '123 Settlement Street',
-    CITY: 'Financial District',
-    STATE: 'NY',
-    ZIP: '10001',
+    STREET: '15257 Amberly Dr Ste 233',
+    CITY: 'Tampa',
+    STATE: 'FL',
+    ZIP: '33647',
     COUNTRY: 'US'
   }
 } as const;

@@ -21,7 +21,7 @@ export const ABOUT_US_INTEGRATION_CONTENT = `
 
 **Company Name:** SmarterPayouts
 **Founded:** 2015 (9+ years in business)
-**Headquarters:** Miami, Florida
+**Headquarters:** Tampa, Florida
 **Industry Focus:** Structured Settlement Early Payout Services
 **States Licensed:** All 50 US states + Washington D.C.
 
@@ -90,7 +90,7 @@ export const ABOUT_US_INTEGRATION_CONTENT = `
 **2015 - Company Founded**
 - SmarterPayouts founded with mission to modernize structured settlement industry
 - Initial focus on transparency and customer-first approach
-- First office opened in Miami, Florida
+- First office opened in Tampa, Florida
 
 **2016 - First Customer Served**
 - Successfully completed first structured settlement transfer

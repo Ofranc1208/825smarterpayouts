@@ -22,10 +22,10 @@ export default function ContactPageSEOHead() {
     phone: "+1-561-583-1280",
     email: "info@smarterpayouts.com",
     address: {
-      streetAddress: "123 Financial Street",
-      addressLocality: "Miami",
+      streetAddress: "15257 Amberly Dr Ste 233",
+      addressLocality: "Tampa",
       addressRegion: "FL",
-      postalCode: "33101",
+      postalCode: "33647",
       addressCountry: "US"
     }
   };

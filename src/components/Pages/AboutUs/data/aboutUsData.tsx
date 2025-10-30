@@ -233,10 +233,10 @@ export const ABOUT_US_CONSTANTS = {
   PHONE: '+1-561-583-1280',
   EMAIL: 'info@smarterpayouts.com',
   ADDRESS: {
-    street: '123 Financial Street',
-    city: 'Miami',
+    street: '15257 Amberly Dr Ste 233',
+    city: 'Tampa',
     state: 'FL',
-    zip: '33101',
+    zip: '33647',
     country: 'United States'
   },
   SOCIAL_MEDIA: {

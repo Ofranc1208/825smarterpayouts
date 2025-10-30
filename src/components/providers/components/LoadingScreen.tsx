@@ -17,33 +17,46 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({
 }) => {
   return (
     <div className={styles.container}>
-      {/* Simple branding */}
+      {/* Professional branding section */}
       <div className={styles.branding}>
-        <h1 className={styles.title}>
-          SmarterPayouts
-        </h1>
+        <div className={styles.logoContainer}>
+          <div className={styles.logoIcon}>💰</div>
+          <h1 className={styles.title}>
+            SmarterPayouts
+          </h1>
+        </div>
         <p className={styles.tagline}>
           Know your upfront price
         </p>
       </div>
 
-      {/* Key benefits */}
+      {/* Enhanced benefits section */}
       <div className={styles.benefits}>
-        <h2 className={styles.benefitsTitle}>
-          100% Upfront Pricing
-        </h2>
-        <p className={styles.benefitsText}>
-          Complete transparency • We never ask for personal information to get a quote
-        </p>
+        <div className={styles.benefitsCard}>
+          <h2 className={styles.benefitsTitle}>
+            100% Upfront Pricing
+          </h2>
+          <p className={styles.benefitsText}>
+            Complete transparency • We never ask for personal information to get a quote
+          </p>
+        </div>
       </div>
 
-      {/* Loading spinner */}
-      <div className={styles.spinner}>
-        <div className={styles.spinnerIcon} />
-        <p className={styles.spinnerText}>
-          {message}
-        </p>
+      {/* Professional loading section */}
+      <div className={styles.loadingSection}>
+        <div className={styles.spinnerContainer}>
+          <div className={styles.spinner}>
+            <div className={styles.spinnerRing}></div>
+            <div className={styles.spinnerRing}></div>
+            <div className={styles.spinnerRing}></div>
+          </div>
+        </div>
+        <div className={styles.loadingText}>
+          <p className={styles.primaryText}>{message}</p>
+          <p className={styles.secondaryText}>Please wait while we prepare your experience</p>
+        </div>
       </div>
+
     </div>
   );
 };

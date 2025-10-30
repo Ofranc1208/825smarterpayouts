@@ -78,9 +78,9 @@ export const CONTACT_INFO: ContactInfo = {
 };
 
 export const COMPANY_ADDRESS: CompanyAddress = {
-  street: '123 Financial Street',
-  city: 'Miami',
+  street: '15257 Amberly Dr Ste 233',
+  city: 'Tampa',
   state: 'FL',
-  zip: '33101',
+  zip: '33647',
   country: 'US'
 };

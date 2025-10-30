@@ -11,10 +11,10 @@ export const localBusinessSchema = {
   email: "info@smarterpayouts.com",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "123 Financial District",
-    addressLocality: "New York",
-    addressRegion: "NY",
-    postalCode: "10001",
+    streetAddress: "15257 Amberly Dr Ste 233",
+    addressLocality: "Tampa",
+    addressRegion: "FL",
+    postalCode: "33647",
     addressCountry: "US"
   },
   geo: {

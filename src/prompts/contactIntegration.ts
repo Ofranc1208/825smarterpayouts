@@ -39,7 +39,7 @@ export const CONTACT_INTEGRATION_CONTENT = `
 - **Features:** AI-powered with specialist escalation when needed
 
 **Physical Location:**
-- **Address:** 123 Financial Street, Miami, FL 33101
+- **Address:** 15257 Amberly Dr Ste 233, Tampa, FL 33647
 - **Business Hours:** Monday-Friday, 9:00 AM - 6:00 PM EST
 - **Phone:** +1 (561) 583-1280
 - **Best For:** In-person consultations (by appointment only)

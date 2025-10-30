@@ -41,10 +41,10 @@ export const CONTACT_SEO_CONFIG: SEOConfiguration = {
     email: 'info@smarterpayouts.com',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '123 Financial Street',
-      addressLocality: 'Miami',
+      streetAddress: '15257 Amberly Dr Ste 233',
+      addressLocality: 'Tampa',
       addressRegion: 'FL',
-      postalCode: '33101',
+      postalCode: '33647',
       addressCountry: 'US'
     },
     contactPoint: {
