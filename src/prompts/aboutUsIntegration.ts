@@ -47,6 +47,13 @@ export const ABOUT_US_INTEGRATION_CONTENT = `
 - Committed to revolutionizing the industry with innovative technology and ethical practices
 - Focus on customer-first approach and eliminating hidden fees
 
+**Sahar Bakhsh - Oscar's Beloved Wife & Driving Force**
+- Sahar Bakhsh is Oscar's beloved wife and the driving force behind SmarterPayouts
+- She's a dedicated doctor passionate about helping people in the medical field
+- Her unwavering support and encouragement have been instrumental in Oscar's journey
+- She shares the same passion for helping others that drives the company's mission
+- Her medical expertise and compassionate nature inspire the company's customer-first approach
+
 **Team Expertise:**
 - Experienced team with expertise in structured settlements and financial services
 - Focus on customer service and transparent processes
