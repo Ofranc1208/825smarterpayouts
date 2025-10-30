@@ -37,7 +37,7 @@ export const COMPANY_STATS_INTEGRATION_CONTENT = `
 - **Court Approval Rate:** 98% (industry highest)
 - **On-Time Funding:** 99.2% of approved cases funded within promised timeframe
 - **Document Processing:** 24-48 hours (industry-leading speed)
-- **State Compliance:** 100% (licensed in all 50 states since 2017)
+- **State Coverage:** 100% (works with licensed brokers in all 50 states since 2017)
 - **Security Incidents:** 0 major incidents (SOC 2 Type II certified)
 
 ### Industry Comparisons & Benchmarks
@@ -167,8 +167,7 @@ export const COMPANY_STATS_INTEGRATION_CONTENT = `
 **Achievement Milestones:**
 - **10,000+ Customers:** Reached in Q4 2023
 - **$50M+ Processed:** Achieved in Q1 2024
-- **All 50 States:** Licensed since 2017
-- **Industry Awards:** 4 major awards in 2023-2024
+- **All 50 States:** Works with licensed brokers since 2017
 - **Zero Lawsuits:** Maintained since founding
 
 **Quality Assurance Results:**

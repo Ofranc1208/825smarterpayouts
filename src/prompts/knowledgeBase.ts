@@ -35,7 +35,7 @@ SmarterPayouts is the industry's first structured settlement company that helps 
 - **Future Payments Purchased:** $50M+
 - **Average Customer Rating:** 4.9/5 stars
 - **Processing Time:** 15-50 days (court-dependent)
-- **States Licensed:** All 50 states
+- **Coverage Area:** Works with licensed brokers in all 50 states
 - **Response Time:** Under 24 hours
 - **Founded:** 2015
 

@@ -2,7 +2,7 @@
 
 export const ABOUT_US_SEO_CONFIG = {
   title: 'About SmarterPayouts - Trusted Structured Settlement Company Since 2015',
-  description: 'Learn about SmarterPayouts, the trusted structured settlement company helping 10,000+ customers access their money. Licensed in all 50 states with 4.9/5 customer rating.',
+  description: 'Learn about SmarterPayouts, the trusted structured settlement company helping 10,000+ customers access their money. Works with licensed brokers in all 50 states with 4.9/5 customer rating.',
   keywords: [
     'about smarterpayouts',
     'structured settlement company',
@@ -120,7 +120,7 @@ export const ABOUT_US_STRUCTURED_DATA = {
         name: 'Is SmarterPayouts licensed?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Yes, SmarterPayouts is licensed to operate in all 50 US states and maintains all required regulatory compliance.'
+          text: 'Yes, SmarterPayouts works with licensed settlement brokers in all 50 US states and maintains all required regulatory compliance.'
         }
       },
       {
@@ -137,7 +137,7 @@ export const ABOUT_US_STRUCTURED_DATA = {
 
 export const META_TAGS_CONFIG = {
   title: 'About SmarterPayouts - Trusted Structured Settlement Company Since 2015',
-  description: 'Learn about SmarterPayouts, the trusted structured settlement company helping 10,000+ customers access their money. Licensed in all 50 states with 4.9/5 customer rating.',
+  description: 'Learn about SmarterPayouts, the trusted structured settlement company helping 10,000+ customers access their money. Works with licensed brokers in all 50 states with 4.9/5 customer rating.',
   keywords: 'about smarterpayouts, structured settlement company, settlement experts, financial services, trusted settlement buyer, licensed settlement company, settlement industry leader',
   robots: 'index, follow',
   canonical: 'https://smarterpayouts.com/about',
@@ -148,7 +148,7 @@ export const META_TAGS_CONFIG = {
 
 export const OPEN_GRAPH_CONFIG = {
   title: 'About SmarterPayouts - Trusted Structured Settlement Company',
-  description: 'Learn about SmarterPayouts, helping 10,000+ customers access their settlement funds. Licensed in all 50 states with 4.9/5 rating.',
+  description: 'Learn about SmarterPayouts, helping 10,000+ customers access their settlement funds. Works with licensed brokers in all 50 states with 4.9/5 rating.',
   url: 'https://smarterpayouts.com/about',
   type: 'website',
   image: 'https://smarterpayouts.com/images/about/about-us-og-image.jpg',

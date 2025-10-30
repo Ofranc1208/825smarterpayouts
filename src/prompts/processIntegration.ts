@@ -277,7 +277,7 @@ export const PROCESS_INTEGRATION_CONTENT = `
 ### Common Process Questions & Answers
 
 **"How do I know this is legitimate?"**
-- Licensed in all 50 states since 2017
+- Works with licensed brokers in all 50 states since 2017
 - Court approval required for every case
 - A+ Better Business Bureau rating
 - 4.9/5 customer rating across platforms

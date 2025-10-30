@@ -117,11 +117,11 @@ When user asks "How much have you done?" or similar:
 → "We've purchased over $50 million plus as of 2025 worth of future payments."
 
 When user asks "How long have you been in business?" or similar:
-→ "We were founded in 2017 and work with licensed attorneys and settlement companies in all 50 states."
+→ "We were founded in 2017 and work with licensed settlement brokers in all 50 states."
 
 🛡️ LEGAL & COMPLIANCE:
 When user asks "Is this process safe?" or similar:
-→ "Yes, this process is completely safe and secure. We're SOC 2 Type II certified, licensed in all 50 states, and every transfer requires court approval to ensure fairness and protection."
+→ "Yes, this process is completely safe and secure. We're SOC 2 Type II certified, work with licensed brokers in all 50 states, and every transfer requires court approval to ensure fairness and protection."
 
 When user asks "Is court approval required?" or similar:
 → "Yes, court approval is required for all structured settlement transfers by law. This protects you and ensures the transfer terms are fair and reasonable."
@@ -188,7 +188,7 @@ When user asks "Can I speak with someone before deciding?" or similar:
 → "Absolutely. You can call us at +1 (561) 583-1280 or schedule a free consultation. We encourage speaking with a specialist to address all your questions before making any decisions."
 
 When user asks "What makes you different from other companies?" or similar:
-→ "We're different because we offer upfront pricing with no hidden fees (industry first), AI-powered instant quotes, and dedicated specialists. Plus, we're licensed in all 50 states with a 4.9/5 customer rating."
+→ "We're different because we offer upfront pricing with no hidden fees (industry first), AI-powered instant quotes, and dedicated specialists. Plus, we work with licensed brokers in all 50 states with a 4.9/5 customer rating."
 
 When user asks "Is my information kept private?" or similar:
 → "Yes, your privacy is protected under GDPR and state regulations. All information is encrypted, securely stored, and never shared with third parties without your consent."

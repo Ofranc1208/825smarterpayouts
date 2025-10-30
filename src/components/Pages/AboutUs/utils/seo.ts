@@ -176,7 +176,7 @@ export function generateFAQStructuredData() {
         name: 'Is SmarterPayouts licensed and regulated?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Yes, SmarterPayouts is Florida State Licensed and fully compliant in all 50 states. All transactions are court-approved and regulated for your protection.'
+          text: 'Yes, SmarterPayouts is Florida State Licensed and works with licensed brokers in all 50 states. All transactions are court-approved and regulated for your protection.'
         }
       }
     ]

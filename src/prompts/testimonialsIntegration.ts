@@ -177,7 +177,7 @@ export const TESTIMONIALS_INTEGRATION_CONTENT = `
 
 **Trust Indicators:**
 - 100% compliance with all legal requirements
-- Licensed in all 50 states since 2017
+- Works with licensed brokers in all 50 states since 2017
 - A+ Better Business Bureau rating
 - SOC 2 Type II certified for security
 - Never had a major customer complaint or lawsuit

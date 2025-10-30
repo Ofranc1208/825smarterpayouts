@@ -94,7 +94,7 @@ export const faqData: FAQ[] = [
   {
     id: 22,
     question: "Can I sell my settlement if I live in any state?",
-    answer: "Yes, structured settlement sales are legal in all 50 states, but each state has specific court approval requirements. We're licensed to work nationwide and know each state's requirements.",
+    answer: "Yes, structured settlement sales are legal in all 50 states, but each state has specific court approval requirements. We work with licensed brokers nationwide and know each state's requirements.",
     category: "Legal"
   },
   {

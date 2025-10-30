@@ -31,7 +31,7 @@ const OfferLoadingAnimation: React.FC<OfferLoadingAnimationProps> = ({ onComplet
     "You're never captive to contracts",
     "We guarantee the highest rate possible",
     "Court-approved process for your protection",
-    "Licensed in all 50 states",
+    "Works with licensed brokers in all 50 states",
     "Comparing offers from top-rated buyers",
     "Your satisfaction is our priority",
   ];

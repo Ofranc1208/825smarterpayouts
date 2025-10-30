@@ -52,7 +52,7 @@ ${FAQ_INTEGRATION_CONTENT}
 - Dedicated specialist handles your case start to finish
 - 400+ happy clients served, $50M+ in payments purchased
 - 4.9/5 customer rating
-- Licensed in all 50 states since 2015
+- Works with licensed brokers in all 50 states since 2015
 - Fast funding: 2-5 business days after court approval
 - Both guaranteed and life-contingent payments
 
@@ -87,7 +87,7 @@ export const getContextAwarePrompt = (_context: any) => {
 - "What's the process?": "4-step process: 1) Get instant quote, 2) Review transparent terms, 3) Legal process, 4) Receive funds in 2-5 days."
 - "How many customers?": "We've served over 400 happy clients since 2015."
 - "How much have you done?": "We've purchased over $50 million worth of future payments for our clients."
-- "How long have you been in business?": "We were founded in 2015 and are licensed in all 50 states."
+- "How long have you been in business?": "We were founded in 2015 and work with licensed brokers in all 50 states."
 
 🎭 PERSONALITY:
 - Friendly and professional

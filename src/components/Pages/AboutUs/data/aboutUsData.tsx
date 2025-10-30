@@ -11,7 +11,7 @@ export const COMPANY_OVERVIEW = {
   averageRating: '4.9/5',
   responseTime: '< 24 hours',
   processingTime: '30-45 days',
-  statesLicensed: '50 states'
+  statesLicensed: 'Works with licensed brokers in all 50 states'
 } as const;
 
 // Mission & Vision
@@ -66,9 +66,9 @@ export const KEY_STATISTICS = [
   },
   {
     id: 'states-licensed',
-    value: '50 states',
-    label: 'Licensed States',
-    description: 'Licensed to operate in all 50 US states',
+    value: 'All 50 states',
+    label: 'Coverage Area',
+    description: 'Works with licensed brokers in all 50 US states',
     icon: '🇺🇸'
   }
 ] as const;
@@ -198,8 +198,8 @@ export const AWARDS_RECOGNITION = [
 export const COMPLIANCE_CERTIFICATIONS = [
   {
     id: 'state-licensing',
-    title: 'State Licensing',
-    description: 'Licensed in all 50 US states',
+    title: 'State Coverage',
+    description: 'Works with licensed brokers in all 50 US states',
     authority: 'State Insurance Departments',
     status: 'Active'
   },

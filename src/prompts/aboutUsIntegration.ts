@@ -23,7 +23,7 @@ export const ABOUT_US_INTEGRATION_CONTENT = `
 **Founded:** 2015 (9+ years in business)
 **Headquarters:** Tampa, Florida
 **Industry Focus:** Structured Settlement Early Payout Services
-**States Licensed:** All 50 US states + Washington D.C.
+**Coverage Area:** Works with licensed brokers in all 50 US states + Washington D.C.
 
 **Mission Statement:**
 "To provide structured settlement recipients with transparent, fair, and efficient access to their money when they need it most, through innovative technology and exceptional customer service."
@@ -79,7 +79,7 @@ export const ABOUT_US_INTEGRATION_CONTENT = `
 - First 24/7 AI customer support assistant (Mint)
 
 **Compliance & Certifications:**
-- **State Licensing:** Licensed in all 50 US states since 2017
+- **State Coverage:** Works with licensed brokers in all 50 US states since 2017
 - **SOC 2 Type II:** Security and availability controls certification
 - **PCI DSS Compliance:** Payment card industry data security standards
 - **GDPR Compliance:** General Data Protection Regulation compliance

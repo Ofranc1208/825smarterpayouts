@@ -26,7 +26,7 @@ A: Yes, selling your structured settlement is 100% legal. The process is court-a
 A: You don't need to hire your own lawyer to start. We handle all court paperwork and legal filings. However, you're always encouraged to seek independent legal or financial advice. We make sure everything is done clearly and transparently, and we never discourage getting a second opinion.
 
 **Q: Can I sell my settlement if I live in any state?**
-A: Yes, structured settlement sales are legal in all 50 states, but each state has specific court approval requirements. We're licensed to work nationwide and know each state's requirements inside and out.
+A: Yes, structured settlement sales are legal in all 50 states, but each state has specific court approval requirements. We work with licensed brokers nationwide and know each state's requirements inside and out.
 
 **Q: How does court approval work?**
 A: Once you accept your quote, we handle all the court paperwork. The judge will review your case in a short hearing — typically within 30 days — to ensure everything is fair and legal. The judge asks basic questions to confirm you understand the transaction and that it's in your best interest.
@@ -75,7 +75,7 @@ A: A structured settlement is tax-free and comes from a legal settlement (injury
 A: We've served over 400 happy clients since our founding in 2015, with a 4.9/5 customer rating.
 
 **Q: How much experience do you have?**
-A: We've purchased over $50 million worth of future payments for our clients. We're licensed in all 50 states and have deep expertise in both guaranteed payments and life-contingent payments.
+A: We've purchased over $50 million worth of future payments for our clients. We work with licensed brokers in all 50 states and have deep expertise in both guaranteed payments and life-contingent payments.
 
 **Q: What's your response time?**
 A: We respond to inquiries within 24 hours, typically much faster. Once you start the process, you'll have a dedicated specialist who knows your case and is available to answer questions throughout.
