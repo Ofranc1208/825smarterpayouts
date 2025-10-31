@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import GuaranteedStepContainer from './GuaranteedStepContainer';
 import { GuaranteedNavigationButton } from './shared';
-import { useGuaranteedAssistant } from '../../../contexts/GuaranteedAssistantContext';
 import { GuaranteedNumberOfPaymentsInput, GuaranteedPaymentCard } from './lump-sum-components';
 import { RATE_SPREADS, AMOUNT_ADJUSTMENTS, BASE_DISCOUNT_RATE } from '../../../../app/utils/npvConfig';
 import { GuaranteedFormData, LumpSumPayment } from './utils/guaranteedTypes';
+import { validateLumpSumDate } from './utils/validationHelpers';
 import { safeStringify } from './utils/typeUtils';
 import layout from './utils/GuaranteedLayout.module.css';
 import styles from './GuaranteedLumpSumAmountOverview.module.css';
@@ -26,7 +26,6 @@ const GuaranteedLumpSumAmountOverview: React.FC<GuaranteedLumpSumAmountOverviewP
   totalSteps,
   initialData
 }) => {
-  const { openAssistant } = useGuaranteedAssistant();
   const [numberOfPayments, setNumberOfPayments] = useState<number | ''>('');
   const [payments, setPayments] = useState<LumpSumPayment[]>(initialData?.payments && initialData.payments.length > 0 ? initialData.payments : [{ amount: '', lumpSumDate: '' }]);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
@@ -61,6 +60,25 @@ const GuaranteedLumpSumAmountOverview: React.FC<GuaranteedLumpSumAmountOverviewP
       updatedPayments[index].amount = filteredValue;
     } else {
       updatedPayments[index].lumpSumDate = value;
+      
+      // Real-time validation for date
+      if (value) {
+        const dateValidation = validateLumpSumDate(value);
+        if (!dateValidation.isValid) {
+          setErrors(prev => ({ ...prev, [`payment-${index}-date`]: dateValidation.error || '' }));
+        } else {
+          setErrors(prev => {
+            const { [`payment-${index}-date`]: _, ...rest } = prev;
+            return rest;
+          });
+        }
+      } else {
+        // Clear error if date is empty
+        setErrors(prev => {
+          const { [`payment-${index}-date`]: _, ...rest } = prev;
+          return rest;
+        });
+      }
     }
     
     setPayments(updatedPayments);
@@ -95,6 +113,12 @@ const GuaranteedLumpSumAmountOverview: React.FC<GuaranteedLumpSumAmountOverviewP
 
         if (!payment.lumpSumDate) {
           currentErrors[`payment-${index}-date`] = 'Please enter a payment date.';
+        } else {
+          // Validate lump sum date (6 months minimum, 40 years maximum)
+          const dateValidation = validateLumpSumDate(payment.lumpSumDate);
+          if (!dateValidation.isValid) {
+            currentErrors[`payment-${index}-date`] = dateValidation.error || 'Invalid payment date.';
+          }
         }
       });
     }
@@ -113,44 +137,8 @@ const GuaranteedLumpSumAmountOverview: React.FC<GuaranteedLumpSumAmountOverviewP
 
   return (
     <GuaranteedStepContainer title="Select Payment Date and Amount to be Exchanged for an Early Payout" currentStep={currentStep} totalSteps={totalSteps}>
-      {/* Help and Instructions - Centered like LCP */}
+      {/* Instructions - Centered */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
-        <button
-          type="button"
-          onClick={openAssistant}
-          style={{
-            background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)',
-            border: '1px solid #f59e0b',
-            borderRadius: '20px',
-            padding: '0.3rem 0.7rem',
-            fontSize: '0.7rem',
-            fontWeight: '500',
-            color: '#92400e',
-            cursor: 'pointer',
-            transition: 'all 0.2s ease',
-            boxShadow: '0 1px 3px rgba(245, 158, 11, 0.2)',
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.25rem',
-            userSelect: 'none',
-            fontFamily: 'inherit'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)';
-            e.currentTarget.style.color = '#ffffff';
-            e.currentTarget.style.transform = 'translateY(-1px)';
-            e.currentTarget.style.boxShadow = '0 2px 6px rgba(245, 158, 11, 0.3)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)';
-            e.currentTarget.style.color = '#92400e';
-            e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = '0 1px 3px rgba(245, 158, 11, 0.2)';
-          }}
-        >
-          <span style={{ fontSize: '0.65rem' }}>💡</span>
-          Quick AI Help
-        </button>
         <button
           type="button"
           style={{

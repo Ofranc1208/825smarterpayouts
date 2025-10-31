@@ -29,45 +29,26 @@ const GuaranteedOffer: React.FC<GuaranteedOfferProps> = ({
   const [showLoading, setShowLoading] = useState(true);
   const [showResults, setShowResults] = useState(false);
 
-  console.log('🎯 [GuaranteedOffer] Rendering with calculationResult:', calculationResult);
-  console.log('🎯 [GuaranteedOffer] minOffer:', calculationResult.minOffer);
-  console.log('🎯 [GuaranteedOffer] maxOffer:', calculationResult.maxOffer);
-  console.log('🎯 [GuaranteedOffer] showLoading:', showLoading);
-  console.log('🎯 [GuaranteedOffer] showResults:', showResults);
-
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   const handleLoadingComplete = () => {
-    console.log('✅ [GuaranteedOffer] Loading complete, showing results');
-    console.log('✅ [GuaranteedOffer] About to show results with data:', calculationResult);
     setShowLoading(false);
     setShowResults(true);
   };
 
   // Validate offer threshold - check if MAXIMUM payout is below $10,000
   const offerValidation = validateOfferThreshold(calculationResult.maxOffer);
-  
-  console.log('🔍 [GuaranteedOffer] Offer validation:', {
-    maxOffer: calculationResult.maxOffer,
-    isValid: offerValidation.isValid,
-    error: offerValidation.error
-  });
 
   // Show loading animation first
   if (showLoading) {
-    console.log('🔄 [GuaranteedOffer] Showing loading animation');
     return <GuaranteedOfferLoadingAnimation onComplete={handleLoadingComplete} />;
   }
 
-  console.log('🎨 [GuaranteedOffer] Past loading, checking validation...');
-
   // If maximum offer is below $10,000 threshold, show "No Offers Available" message
   if (!offerValidation.isValid) {
-    console.log('⚠️ [GuaranteedOffer] Maximum offer below threshold, showing no offers message');
-    
     return (
       <div className={styles.pageContainer}>
         <div className={styles.noOffersCard}>
@@ -92,16 +73,7 @@ const GuaranteedOffer: React.FC<GuaranteedOfferProps> = ({
     );
   }
 
-  console.log('✅ [GuaranteedOffer] Validation passed, ready to show results');
-
   // Show the professional contract-style results
-  console.log('✨ [GuaranteedOffer] Rendering offer display with values:', {
-    minOffer: calculationResult.minOffer,
-    maxOffer: calculationResult.maxOffer,
-    formattedMin: formatCurrency(calculationResult.minOffer),
-    formattedMax: formatCurrency(calculationResult.maxOffer)
-  });
-
   return (
     <div className={styles.pageContainer}>
       {/* Contract-Inspired Document */}

@@ -23,7 +23,6 @@ export const GuaranteedCalculationLink: React.FC<GuaranteedCalculationLinkProps>
       ? `${href}?sessionId=${sessionId}`
       : href;
     
-    console.log('[GuaranteedCalculationLink] 🔍 Navigating with sessionId:', sessionId, 'URL:', url);
     window.location.href = url;
   };
 

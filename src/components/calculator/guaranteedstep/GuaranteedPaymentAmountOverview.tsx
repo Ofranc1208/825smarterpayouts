@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import GuaranteedStepContainer from './GuaranteedStepContainer';
 import { GuaranteedSection, GuaranteedFormInput, GuaranteedNavigationButton, GuaranteedInstructionModal, GuaranteedInstructionButton } from './shared';
 import { useGuaranteedAssistant } from '../../../contexts/GuaranteedAssistantContext';
 import layout from './utils/GuaranteedLayout.module.css';
 import { validatePaymentAmount, validateDateRange, sanitizeNumericInput } from './utils/validationHelpers';
+import { getMinStartDateString, getMaxStartDateString, getMaxEndDateString } from './utils/dateHelpers';
 import { GuaranteedFormData } from './utils/guaranteedTypes';
 import styles from './GuaranteedPaymentAmountOverview.module.css';
 
@@ -24,12 +25,6 @@ const GuaranteedPaymentAmountOverview: React.FC<GuaranteedPaymentAmountOverviewP
   const [endDate, setEndDate] = useState<string>(initialData?.endDate || '');
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [showInstructions, setShowInstructions] = useState(false);
-  const [showStartTooltip, setShowStartTooltip] = useState(false);
-  const [showEndTooltip, setShowEndTooltip] = useState(false);
-
-  const amountInputRef = useRef<HTMLInputElement>(null);
-  const startDateRef = useRef<HTMLInputElement>(null);
-  const endDateRef = useRef<HTMLInputElement>(null);
 
   const checkFormValidity = () => {
     // Enhanced payment amount validation
@@ -86,15 +81,43 @@ const GuaranteedPaymentAmountOverview: React.FC<GuaranteedPaymentAmountOverviewP
 
   const handleStartDateChange = (value: string) => {
     setStartDate(value);
-    if (errors.startDate || errors.dates) {
-      setErrors(prev => ({ ...prev, startDate: '', dates: '' }));
+    // Validate immediately if we have both dates
+    if (value && endDate) {
+      const dateValidation = validateDateRange(value, endDate);
+      if (!dateValidation.isValid) {
+        setErrors(prev => ({ ...prev, dates: dateValidation.error || '' }));
+      } else {
+        setErrors(prev => {
+          const { dates, ...rest } = prev;
+          return rest;
+        });
+      }
+    } else {
+      setErrors(prev => {
+        const { dates, ...rest } = prev;
+        return rest;
+      });
     }
   };
 
   const handleEndDateChange = (value: string) => {
     setEndDate(value);
-    if (errors.endDate || errors.dates) {
-      setErrors(prev => ({ ...prev, endDate: '', dates: '' }));
+    // Validate immediately if we have both dates
+    if (startDate && value) {
+      const dateValidation = validateDateRange(startDate, value);
+      if (!dateValidation.isValid) {
+        setErrors(prev => ({ ...prev, dates: dateValidation.error || '' }));
+      } else {
+        setErrors(prev => {
+          const { dates, ...rest } = prev;
+          return rest;
+        });
+      }
+    } else {
+      setErrors(prev => {
+        const { dates, ...rest } = prev;
+        return rest;
+      });
     }
   };
 
@@ -111,6 +134,11 @@ const GuaranteedPaymentAmountOverview: React.FC<GuaranteedPaymentAmountOverviewP
 
   const isValid = checkFormValidity();
   const touched = true;
+
+  // Calculate min/max dates for date inputs
+  const minStartDateString = getMinStartDateString();
+  const maxStartDateString = getMaxStartDateString();
+  const maxEndDateString = getMaxEndDateString();
 
   return (
     <GuaranteedStepContainer title="Select Payment Date and Amount to be Exchanged for an Early Payout" currentStep={currentStep} totalSteps={totalSteps}>
@@ -139,7 +167,6 @@ const GuaranteedPaymentAmountOverview: React.FC<GuaranteedPaymentAmountOverviewP
       <form onSubmit={handleSubmit}>
         <GuaranteedSection
           label="Payment Amount"
-          tooltip="Enter the amount of your future structured settlement payments that you want to exchange for a lump sum. For example, if your monthly payments are $1,250, enter $1,250. This is the payment amount you want to convert into immediate cash today."
         >
           <GuaranteedFormInput
               type="text"
@@ -153,24 +180,25 @@ const GuaranteedPaymentAmountOverview: React.FC<GuaranteedPaymentAmountOverviewP
 
         <GuaranteedSection
           label="First Payment Date"
-          tooltip="When would you like to start exchanging your future payments for a lump sum? Select the date of the first payment you want to exchange. For example, if you want to start exchanging payments beginning March 1st, 2025, select 03/01/2025. Important: This date must be at least 3 months in the future from today to allow proper processing time."
         >
           <GuaranteedFormInput
                 type="date"
                 value={startDate}
                 onChange={handleStartDateChange}
+                min={minStartDateString}
+                max={maxStartDateString}
             error={errors.dates}
           />
         </GuaranteedSection>
 
         <GuaranteedSection
           label="Last Payment Date"
-          tooltip="When would you like to stop exchanging your future payments? Select the date of the last payment you want to exchange for a lump sum. For example, if you want to exchange payments through December 31st, 2030, select 12/31/2030. All payments up to and including this date will be converted to a lump sum. After this date, your regular structured settlement payments will continue as scheduled."
         >
           <GuaranteedFormInput
                 type="date"
                 value={endDate}
                 onChange={handleEndDateChange}
+                max={maxEndDateString}
             error={errors.dates}
           />
         </GuaranteedSection>

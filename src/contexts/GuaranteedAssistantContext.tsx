@@ -55,7 +55,6 @@ export const GuaranteedAssistantProvider: React.FC<GuaranteedAssistantProviderPr
   };
   
   const sessionId = getSessionId();
-  console.log('[GuaranteedAssistantProvider] 🚀 Initializing with sessionId:', sessionId, 'propSessionId:', propSessionId);
   
   // Connect to CalculatorContext for form data awareness
   const { formData } = useCalculator();
@@ -72,13 +71,6 @@ export const GuaranteedAssistantProvider: React.FC<GuaranteedAssistantProviderPr
   const [messages, setMessages] = useState(initialState.messages);
   const [isTyping, setIsTyping] = useState(initialState.isTyping);
   const [currentStep, setCurrentStepState] = useState<GuaranteedAssistantStep>(initialState.currentStep);
-
-  console.log('[GuaranteedAssistantProvider] 📊 State initialized:', {
-    sessionId,
-    messageCount: messages.length,
-    currentStep,
-    isOpen
-  });
 
   // State update helper
   const updateState = (updates: Partial<GuaranteedAssistantState>) => {
@@ -123,13 +115,6 @@ export const GuaranteedAssistantProvider: React.FC<GuaranteedAssistantProviderPr
     sessionId,
     actions
   ]);
-
-  console.log('[GuaranteedAssistantProvider] 🔄 Context value updated:', {
-    isOpen,
-    messageCount: messages.length,
-    currentStep,
-    isTyping
-  });
 
   return (
     <GuaranteedAssistantContext.Provider value={contextValue}>

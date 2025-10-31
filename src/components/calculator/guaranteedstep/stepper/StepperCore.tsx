@@ -40,14 +40,12 @@ const StepperCore: React.FC = () => {
   React.useEffect(() => {
     // Initialize to 'mode' step if no currentStep is set (direct navigation to page)
     if (!currentStep) {
-      console.log('🚀 [StepperCore] Initializing currentStep to mode');
       goToNextStep('mode');
     }
     
     // Always sync the assistant step with the current step
     // Map actual step names to assistant step names
     if (currentStep) {
-      console.log('🎯 [StepperCore] Syncing assistant step to:', currentStep);
       
       // Map calculator steps to assistant steps
       const assistantStepMap: Record<string, string> = {
@@ -88,8 +86,6 @@ const StepperCore: React.FC = () => {
     };
 
     const mappedPaymentMode = mapPaymentMode(data.paymentMode);
-    
-    console.log('🔄 Mapping payment mode:', data.paymentMode, '→', mappedPaymentMode);
 
     // Save step data using centralized function (merge with existing data)
     const currentData = formData?.guaranteedData || {};
@@ -170,14 +166,11 @@ const StepperCore: React.FC = () => {
 
   // 🎬 DIRECT STEP RENDERING LOGIC (using global currentStep)
   const renderCurrentStep = () => {
-    console.log('🔄 Rendering step:', currentStep);
-    
     // Get guaranteed data from global context (flat structure)
     const guaranteedData = formData?.guaranteedData || {};
     
     switch (currentStep) {
       case 'mode':
-        console.log('📋 Rendering mode step');
          return (
            <GuaranteedPaymentOverview
              onNext={handlePaymentOverviewComplete}
@@ -188,7 +181,6 @@ const StepperCore: React.FC = () => {
          );
 
       case 'amount':
-        console.log('📋 Rendering amount step');
         // Check if payment mode is Lump Sum from global data (flat structure)
         const paymentMode = guaranteedData.paymentMode;
          if (paymentMode === 'Lump Sum') {
@@ -214,7 +206,6 @@ const StepperCore: React.FC = () => {
         }
 
       case 'review':
-        console.log('📋 Rendering review step');
          return (
            <GuaranteedReview
             paymentMode={guaranteedData.paymentMode || ''}
@@ -232,13 +223,8 @@ const StepperCore: React.FC = () => {
          );
 
       case 'offer':
-        console.log('📋 Rendering offer step');
         // Get calculation result from global context
         const globalCalculationResult = guaranteedData.calculationResult;
-
-        console.log('🎯 Rendering offer step');
-        console.log('📊 Global form data:', formData);
-        console.log('🧮 Global calculation result:', globalCalculationResult);
 
         // Map the calculation result to the expected format
         const calculationResult = globalCalculationResult ? {
@@ -248,8 +234,6 @@ const StepperCore: React.FC = () => {
           minOffer: 0,
           maxOffer: 0
         };
-
-        console.log('📋 Mapped calculation result for offer:', calculationResult);
 
          return (
            <GuaranteedOffer
@@ -261,7 +245,6 @@ const StepperCore: React.FC = () => {
          );
 
       default:
-        console.log('❌ No step matched, currentStep:', currentStep);
         return (
           <div style={{ padding: '2rem', textAlign: 'center' }}>
             <h3 style={{ margin: '0 0 1rem 0', color: '#1e293b' }}>Loading...</h3>
@@ -272,8 +255,6 @@ const StepperCore: React.FC = () => {
   };
 
   // 🎬 MAIN RENDER
-  console.log('🎬 StepperCore rendering, currentStep:', currentStep);
-
   return (
     <>
       <div style={{ paddingBottom: '2rem' }}>

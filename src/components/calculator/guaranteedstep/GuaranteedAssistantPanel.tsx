@@ -28,8 +28,6 @@ const GuaranteedAssistantPanel: React.FC = () => {
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
     if (containerRef.current) {
-      console.log('[GuaranteedAssistantPanel] Auto-scrolling to bottom, messages:', messages.length, 'isTyping:', isTyping);
-      
       // Small delay to ensure DOM updates are complete
       setTimeout(() => {
         if (containerRef.current) {
@@ -55,8 +53,6 @@ const GuaranteedAssistantPanel: React.FC = () => {
   // Handle initial welcome message when panel opens (simplified like LCP)
   useEffect(() => {
     if (isOpen && !hasShownInitialAnimation && messages.length === 0) {
-      console.log('[GuaranteedAssistantPanel] Starting initial animation sequence');
-      console.log('[GuaranteedAssistantPanel] Current step:', currentStep);
       setHasShownInitialAnimation(true);
       
       // Show typing animation
@@ -64,8 +60,6 @@ const GuaranteedAssistantPanel: React.FC = () => {
       
       // After 1.5 seconds, hide typing and add welcome message
       setTimeout(() => {
-        console.log('[GuaranteedAssistantPanel] Adding welcome message after animation');
-        console.log('[GuaranteedAssistantPanel] Current step at welcome time:', currentStep);
         setShowInitialTyping(false);
         
         // Always show a step-aware welcome message
@@ -103,7 +97,6 @@ If you have any questions about any steps, please let me know.`);
   // Add step-aware message when step changes and panel is open (matching LCP pattern)
   useEffect(() => {
     if (isOpen && currentStep && currentStep !== lastStepShown && messages.length > 0) {
-      console.log('[GuaranteedAssistantPanel] Step changed from', lastStepShown, 'to', currentStep);
       setLastStepShown(currentStep);
 
       const stepMap: Record<string, { number: number; total: number; name: string }> = {

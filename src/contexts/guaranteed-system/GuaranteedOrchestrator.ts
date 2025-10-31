@@ -16,8 +16,6 @@ export class GuaranteedOrchestrator {
    * Initialize the assistant state
    */
   static initializeState(sessionId: string, formData: GuaranteedFormData): GuaranteedAssistantState {
-    console.log('[GuaranteedOrchestrator] 🚀 Initializing state for session:', sessionId);
-
     // Load messages from storage
     const storedMessages = GuaranteedStorageService.loadMessages(sessionId);
 
@@ -44,12 +42,10 @@ export class GuaranteedOrchestrator {
       // ============================================================================
 
       openAssistant: () => {
-        console.log('[GuaranteedOrchestrator] 🎯 Opening assistant panel');
         setState({ isOpen: true });
       },
 
       closeAssistant: () => {
-        console.log('[GuaranteedOrchestrator] ❌ Closing assistant panel');
         setState({ isOpen: false });
       },
 
@@ -61,7 +57,6 @@ export class GuaranteedOrchestrator {
         if (!text.trim()) return;
 
         const currentState = getState();
-        console.log('[GuaranteedOrchestrator] 💬 Sending basic message:', text);
 
         try {
           // Add user message
@@ -117,7 +112,6 @@ export class GuaranteedOrchestrator {
         if (!text.trim()) return;
 
         const currentState = getState();
-        console.log('[GuaranteedOrchestrator] 🎯 Sending contextual message:', text, 'Step:', currentState.currentStep);
 
         try {
           // Add user message with context
@@ -176,7 +170,6 @@ export class GuaranteedOrchestrator {
 
       addUserChoice: (choice: string, step?: string) => {
         const currentState = getState();
-        console.log('[GuaranteedOrchestrator] ✅ User choice:', choice, 'for step:', step);
 
         const choiceMessage = GuaranteedMessageService.createUserChoiceMessage(
           choice,
@@ -191,7 +184,6 @@ export class GuaranteedOrchestrator {
 
       addBotMessage: (text: string) => {
         const currentState = getState();
-        console.log('[GuaranteedOrchestrator] 🤖 Adding bot message:', text);
 
         const botMessage = GuaranteedMessageService.createBotMessage(
           text,
@@ -207,7 +199,6 @@ export class GuaranteedOrchestrator {
       addErrorMessage: (errorText?: string) => {
         const currentState = getState();
         const errorMessage = errorText || "Sorry, I'm having trouble connecting. Please try again.";
-        console.log('[GuaranteedOrchestrator] ❌ Adding error message:', errorMessage);
 
         const error = GuaranteedMessageService.createErrorMessage(
           errorMessage,
@@ -225,7 +216,6 @@ export class GuaranteedOrchestrator {
       // ============================================================================
 
       setCurrentStep: (step: GuaranteedAssistantStep) => {
-        console.log('[GuaranteedOrchestrator] 📍 Setting current step:', step);
         setState({ currentStep: step });
       },
 
@@ -235,7 +225,6 @@ export class GuaranteedOrchestrator {
 
       clearMessages: () => {
         const currentState = getState();
-        console.log('[GuaranteedOrchestrator] 🗑️ Clearing messages');
         setState({ messages: [] });
         GuaranteedStorageService.clearMessages(currentState.sessionId);
       },
@@ -253,8 +242,6 @@ export class GuaranteedOrchestrator {
       showWelcomeMessage: () => {
         const currentState = getState();
         if (!currentState.currentStep) return;
-
-        console.log('[GuaranteedOrchestrator] 👋 Showing welcome message for step:', currentState.currentStep);
 
         const welcomeText = GuaranteedResponseService.getWelcomeMessage(
           currentState.currentStep,
@@ -274,8 +261,6 @@ export class GuaranteedOrchestrator {
       },
 
       testErrorHandling: () => {
-        console.log('[GuaranteedOrchestrator] 🧪 Testing error handling');
-
         setState({ isTyping: true });
 
         // Simulate error after delay
@@ -297,7 +282,6 @@ export class GuaranteedOrchestrator {
 
       handoffToMainChat: () => {
         const currentState = getState();
-        console.log('[GuaranteedOrchestrator] 🔄 Initiating handoff to main chat');
 
         // Get the summary for handoff
         const summary = GuaranteedResponseService.generateHandoffSummary(currentState.formData);
@@ -329,12 +313,10 @@ export class GuaranteedOrchestrator {
           // Navigate to main chat with handoff parameter
           const currentUrl = new URL(window.location.href);
           const currentSessionId = currentUrl.searchParams.get('sessionId') || currentState.sessionId;
-          console.log('[GuaranteedOrchestrator] 🔍 Handoff - currentSessionId:', currentSessionId, 'sessionId:', currentState.sessionId);
 
           // If we're not already on the main chat page, navigate there
           if (!window.location.pathname.includes('mint-intelligent-chat')) {
             const handoffUrl = `/mint-intelligent-chat?sessionId=${currentSessionId}&handoff=guaranteed&chat=open`;
-            console.log('[GuaranteedOrchestrator] 🔍 Handoff URL:', handoffUrl);
             window.location.href = handoffUrl;
           } else {
             // If we're already on the chat page, just trigger a reload with the parameters

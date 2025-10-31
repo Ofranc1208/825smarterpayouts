@@ -38,10 +38,7 @@ export const useGuaranteedStorage = (sessionId: string = 'default') => {
       const storageKey = getStorageKey();
       const stored = localStorage.getItem(storageKey);
       
-      console.log(`[useGuaranteedStorage] Loading messages for sessionId: ${sessionId}, key: ${storageKey}`);
-      
       if (!stored) {
-        console.log('[useGuaranteedStorage] No stored messages found');
         return [];
       }
 
@@ -54,7 +51,6 @@ export const useGuaranteedStorage = (sessionId: string = 'default') => {
         timestamp: new Date(msg.timestamp)
       }));
 
-      console.log(`[useGuaranteedStorage] Loaded ${messagesWithDates.length} messages`);
       return messagesWithDates;
     } catch (error) {
       console.error('[useGuaranteedStorage] Error loading messages:', error);
@@ -71,8 +67,6 @@ export const useGuaranteedStorage = (sessionId: string = 'default') => {
 
       const storageKey = getStorageKey();
       localStorage.setItem(storageKey, JSON.stringify(messagesToSave));
-      
-      console.log(`[useGuaranteedStorage] Saved ${messagesToSave.length} messages to ${storageKey}`);
     } catch (error) {
       console.error('[useGuaranteedStorage] Error saving messages:', error);
     }
@@ -94,8 +88,6 @@ export const useGuaranteedStorage = (sessionId: string = 'default') => {
       metadata
     };
 
-    console.log('[useGuaranteedStorage] Adding message:', newMessage);
-
     setMessages(prev => {
       const updated = [...prev, newMessage];
       saveMessages(updated);
@@ -105,14 +97,12 @@ export const useGuaranteedStorage = (sessionId: string = 'default') => {
 
   // Clear all messages
   const clearMessages = useCallback((): void => {
-    console.log('[useGuaranteedStorage] Clearing all messages');
     setMessages([]);
     
     try {
       if (typeof window !== 'undefined') {
         const storageKey = getStorageKey();
         localStorage.removeItem(storageKey);
-        console.log(`[useGuaranteedStorage] Cleared storage: ${storageKey}`);
       }
     } catch (error) {
       console.error('[useGuaranteedStorage] Error clearing storage:', error);
@@ -121,13 +111,9 @@ export const useGuaranteedStorage = (sessionId: string = 'default') => {
 
   // Initialize: Load messages on mount
   useEffect(() => {
-    console.log(`[useGuaranteedStorage] Initializing for sessionId: ${sessionId}`);
-    
     const loadedMessages = loadMessages();
     setMessages(loadedMessages);
     setIsLoading(false);
-    
-    console.log(`[useGuaranteedStorage] Initialization complete. Loaded ${loadedMessages.length} messages`);
   }, [loadMessages, sessionId]);
 
   // Auto-save when messages change (after initial load)

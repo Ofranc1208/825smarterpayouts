@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { GuaranteedSection, GuaranteedFormInput } from '../shared';
+import { getMinStartDateString, getMaxEndDateString } from '../utils/dateHelpers';
 import GuaranteedPaymentAmountInput from './GuaranteedPaymentAmountInput';
 import styles from './GuaranteedPaymentCard.module.css';
 
@@ -36,6 +37,10 @@ const GuaranteedPaymentCard: React.FC<GuaranteedPaymentCardProps> = ({
     onPaymentChange(index, 'lumpSumDate', value);
   };
 
+  // Calculate min/max dates for date input
+  const minDateString = getMinStartDateString();
+  const maxDateString = getMaxEndDateString();
+
   return (
     <div className={styles.card}>
       <h6 className={styles.title}>Payment {index + 1}</h6>
@@ -52,6 +57,8 @@ const GuaranteedPaymentCard: React.FC<GuaranteedPaymentCardProps> = ({
           type="date"
           value={payment.lumpSumDate || ''}
           onChange={handleDateChange}
+          min={minDateString}
+          max={maxDateString}
           error={errors[`payment-${index}-date`]}
           isValid={!!payment.lumpSumDate}
         />

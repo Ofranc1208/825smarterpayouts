@@ -11,7 +11,6 @@ export const GuaranteedAssistantInputBar = () => {
 
   const handleSend = () => {
     if (text.trim() && !isTyping) {
-      console.log('[GuaranteedAssistantInputBar] 🎯 Sending contextual message:', text);
       sendContextualMessage(text);
       setText('');
     }

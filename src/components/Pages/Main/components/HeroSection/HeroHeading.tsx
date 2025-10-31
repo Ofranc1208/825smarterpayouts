@@ -9,7 +9,7 @@ export default function HeroHeading() {
         color: COLORS.primary.dark,
         marginBottom: "1rem"
       }}>
-        Curious about an early payout option for your future settlement payments?
+        Unlock tomorrow's payments, into today's opportunities.
       </h1>
       
       <p style={{

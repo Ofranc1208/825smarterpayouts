@@ -22,6 +22,9 @@ export class GuaranteedStorageService {
    */
   static saveMessages(sessionId: string, messages: GuaranteedAssistantMessage[]): void {
     try {
+      // Check if we're in the browser (client-side)
+      if (typeof window === 'undefined') return;
+      
       const storageKey = this.getStorageKey(sessionId);
       const serializedMessages = messages.map(msg => ({
         ...msg,
@@ -29,7 +32,6 @@ export class GuaranteedStorageService {
       }));
       
       localStorage.setItem(storageKey, JSON.stringify(serializedMessages));
-      console.log('[GuaranteedStorageService] 💾 Saved messages:', messages.length, 'to key:', storageKey);
     } catch (error) {
       console.error('[GuaranteedStorageService] ❌ Error saving messages:', error);
     }
@@ -40,11 +42,13 @@ export class GuaranteedStorageService {
    */
   static loadMessages(sessionId: string): GuaranteedAssistantMessage[] {
     try {
+      // Check if we're in the browser (client-side)
+      if (typeof window === 'undefined') return [];
+      
       const storageKey = this.getStorageKey(sessionId);
       const stored = localStorage.getItem(storageKey);
       
       if (!stored) {
-        console.log('[GuaranteedStorageService] 📭 No stored messages found for key:', storageKey);
         return [];
       }
 
@@ -54,7 +58,6 @@ export class GuaranteedStorageService {
         timestamp: new Date(msg.timestamp)
       }));
 
-      console.log('[GuaranteedStorageService] 📬 Loaded messages:', messages.length, 'from key:', storageKey);
       return messages;
     } catch (error) {
       console.error('[GuaranteedStorageService] ❌ Error loading messages:', error);
@@ -67,9 +70,11 @@ export class GuaranteedStorageService {
    */
   static clearMessages(sessionId: string): void {
     try {
+      // Check if we're in the browser (client-side)
+      if (typeof window === 'undefined') return;
+      
       const storageKey = this.getStorageKey(sessionId);
       localStorage.removeItem(storageKey);
-      console.log('[GuaranteedStorageService] 🗑️ Cleared messages for key:', storageKey);
     } catch (error) {
       console.error('[GuaranteedStorageService] ❌ Error clearing messages:', error);
     }
@@ -80,6 +85,9 @@ export class GuaranteedStorageService {
    */
   static hasStoredMessages(sessionId: string): boolean {
     try {
+      // Check if we're in the browser (client-side)
+      if (typeof window === 'undefined') return false;
+      
       const storageKey = this.getStorageKey(sessionId);
       return localStorage.getItem(storageKey) !== null;
     } catch (error) {
