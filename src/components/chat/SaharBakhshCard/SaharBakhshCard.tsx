@@ -53,7 +53,7 @@ const SaharBakhshCard: React.FC<SaharBakhshCardProps> = ({ className }) => {
 
         <div className={styles.description}>
           <p className={styles.mainText}>
-            Oscar's beloved wife and dedicated doctor, passionate about helping people.
+            Oscar's beloved wife and dedicated doctor.
           </p>
           
           <div className={styles.missionPoints}>
