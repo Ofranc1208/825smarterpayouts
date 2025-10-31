@@ -65,14 +65,47 @@ export default function ContactCard({
         }}>
           {title}
         </h3>
-        <p style={{
-          color: "#6b7280",
+        <div style={{
           marginBottom: "1rem",
-          lineHeight: "1.5",
           flex: 1
         }}>
-          {description}
-        </p>
+          {/* Display address formatted exactly like Google Maps */}
+          {title === "Visit Us" && description.includes('\n') ? (
+            <address
+              style={{
+                color: "#374151",
+                lineHeight: "1.8",
+                fontStyle: "normal",
+                textAlign: "center",
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.5rem"
+              }}
+              itemScope
+              itemType="https://schema.org/PostalAddress"
+            >
+              {/* Street address - emphasized like Google Maps */}
+              <div itemProp="streetAddress" style={{ fontWeight: "600", color: "#1f2937", fontSize: "1rem" }}>
+                {description.split('\n')[0]}
+              </div>
+              {/* City, State ZIP - main line like Google Maps */}
+              <div style={{ color: "#6b7280", fontSize: "0.95rem" }}>
+                {description.split('\n')[1]}
+              </div>
+              {/* Country - subtle like Google Maps */}
+              <div itemProp="addressCountry" style={{ fontSize: "0.875rem", color: "#9ca3af" }}>
+                {description.split('\n')[2]}
+              </div>
+            </address>
+          ) : (
+            <p style={{
+              color: "#6b7280",
+              lineHeight: "1.5"
+            }}>
+              {description}
+            </p>
+          )}
+        </div>
       </div>
       <Button
         as="a"

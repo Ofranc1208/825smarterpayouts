@@ -31,18 +31,6 @@ export default function HeroCTAButtons({ onCTAClick }: HeroCTAButtonsProps) {
       >
         Get Your Instant Offer
       </Button>
-
-      <Button
-        as="a"
-        href="/mint-intelligent-chat"
-        variant="technology-secondary"
-        size="lg"
-        enhancedHover={true}
-        leftIcon="💬"
-        onClick={() => handleButtonClick('mint-intelligent-chat')}
-      >
-        Chat with Mint AI
-      </Button>
     </div>
   );
 }

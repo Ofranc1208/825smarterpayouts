@@ -20,21 +20,12 @@ export const CONTACT_METHODS: ContactMethod[] = [
     type: 'email'
   },
   {
-    id: 'chat',
-    icon: '💬',
-    title: 'Live Chat',
-    description: 'Get instant answers from our AI assistant Mint, available 24/7 to help with your questions.',
-    actionText: 'Start Chat',
-    actionLink: '/mint-intelligent-chat',
-    type: 'chat'
-  },
-  {
     id: 'location',
     icon: '📍',
     title: 'Visit Us',
-    description: 'Meet with our team in person at our Florida headquarters for a comprehensive consultation.',
+    description: '15257 Amberly Dr Ste 233\nTampa, FL 33647\nUnited States',
     actionText: 'Get Directions',
-    actionLink: 'https://maps.google.com/maps?q=SmarterPayouts+Florida',
+    actionLink: 'https://maps.google.com/maps?q=15257+Amberly+Dr+Ste+233,+Tampa,+FL+33647',
     type: 'location'
   }
 ];
@@ -43,7 +34,7 @@ export const FAQ_DATA: FAQItem[] = [
   {
     id: 'response-time',
     question: 'How quickly can I get a response?',
-    answer: 'We respond within 24 hours. For urgent matters, call us or use live chat.',
+    answer: 'We respond within 24 hours. For urgent matters, please call us.',
     category: 'general'
   },
   {
@@ -61,7 +52,7 @@ export const FAQ_DATA: FAQItem[] = [
   {
     id: 'immediate-contact',
     question: 'Can I speak with someone immediately?',
-    answer: 'Call us during business hours or use 24/7 live chat for instant responses.',
+    answer: 'Call us during business hours for immediate assistance.',
     category: 'availability'
   }
 ];

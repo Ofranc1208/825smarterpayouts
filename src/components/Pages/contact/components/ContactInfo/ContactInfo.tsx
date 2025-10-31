@@ -6,6 +6,17 @@ interface ContactInfoProps {
 }
 
 export default function ContactInfo({ onCardClick }: ContactInfoProps) {
+  // Company address - formatted exactly like Google Maps displays it
+  const companyAddress = {
+    street: '15257 Amberly Dr Ste 233',
+    city: 'Tampa',
+    state: 'FL',
+    zip: '33647',
+    country: 'United States',
+    // Google Maps format: Street, City, State ZIP, Country
+    fullAddress: '15257 Amberly Dr Ste 233\nTampa, FL 33647\nUnited States'
+  };
+
   const contactMethods = [
     {
       icon: "📞",
@@ -22,18 +33,12 @@ export default function ContactInfo({ onCardClick }: ContactInfoProps) {
       actionLink: "mailto:info@smarterpayouts.com"
     },
     {
-      icon: "💬",
-      title: "Live Chat",
-      description: "Available 24/7 for instant answers.",
-      actionText: "Start Chat",
-      actionLink: "/mint-intelligent-chat"
-    },
-    {
       icon: "📍",
       title: "Visit Us",
-      description: "Meet with our team for consultation.",
+      description: companyAddress.fullAddress, // Show full formatted address
       actionText: "Get Directions",
-      actionLink: "https://maps.google.com/maps?q=SmarterPayouts+Florida"
+      actionLink: `https://maps.google.com/maps?q=${encodeURIComponent(`${companyAddress.street}, ${companyAddress.city}, ${companyAddress.state} ${companyAddress.zip}`)}`,
+      address: companyAddress // Pass address object for structured display
     }
   ];
 

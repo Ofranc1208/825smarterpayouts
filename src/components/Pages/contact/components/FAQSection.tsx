@@ -16,7 +16,7 @@ export default function FAQSection({ onFAQClick }: FAQSectionProps) {
   const faqs: FAQItem[] = [
     {
       question: "How quickly can I get a response?",
-      answer: "We respond within 24 hours. For urgent matters, call us or use live chat."
+      answer: "We respond within 24 hours. For urgent matters, please call us."
     },
     {
       question: "What information should I include?",
@@ -28,7 +28,7 @@ export default function FAQSection({ onFAQClick }: FAQSectionProps) {
     },
     {
       question: "Can I speak with someone immediately?",
-      answer: "Call us during business hours or use 24/7 live chat for instant responses."
+      answer: "Call us during business hours for immediate assistance."
     }
   ];
 

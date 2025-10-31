@@ -7,7 +7,6 @@ import {
   ContactInfo,
   ContactPageSEOHead,
   FAQSection,
-  MintAISection,
   ContactPageErrorBoundary
 } from './components';
 import {
@@ -93,7 +92,6 @@ export default function ContactPage({ className, style }: ContactPageProps) {
           </div>
         </section>
 
-        <MintAISection onCTAClick={handleCTAClick} />
         <FAQSection onFAQClick={handleFAQClick} />
       </main>
     </ContactPageErrorBoundary>
