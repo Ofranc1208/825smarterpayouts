@@ -11,21 +11,6 @@ import HeroCTA from '@/src/components/Pages/AboutUs/components/HeroSection/HeroC
 import { COLORS, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
 
 export function CTASection() {
-  const ctaButtons = [
-    {
-      id: "calculator",
-      text: "💰 Get Your Instant Offer",
-      href: "/main",
-      variant: "technology-primary" as const
-    },
-    {
-      id: "chat",
-      text: "💬 Chat with Mint AI",
-      href: "/mint-intelligent-chat",
-      variant: "technology-secondary" as const
-    }
-  ];
-
   return (
     <section style={{
       padding: `${SPACING.unit.xl} 0`,
@@ -78,11 +63,28 @@ export function CTASection() {
             margin: `0 auto ${SPACING.stack.md}`,
             lineHeight: "1.7"
           }}>
-            Try our free calculator and see why Google recognized SmarterPayouts with a 4.9★ rating. No personal info needed. No sales calls. Just instant, accurate results.
+            Ready to get started? Join the hundreds of happy users and find your settlement's true value now.
           </p>
           
           {/* CTA Buttons */}
-          <HeroCTA buttons={ctaButtons} align="center" layout="horizontal" />
+          <HeroCTA 
+            buttons={[
+              {
+                id: "calculator",
+                text: "Early Payout Calculator",
+                href: "/main",
+                variant: "technology-primary" as const
+              },
+              {
+                id: "process",
+                text: "How Our Process Works",
+                href: "/get-a-quote",
+                variant: "technology-secondary" as const
+              }
+            ]} 
+            align="center" 
+            layout="horizontal" 
+          />
 
           {/* Trust Badge */}
           <div style={{
@@ -102,7 +104,7 @@ export function CTASection() {
               alignItems: 'center',
               gap: SPACING.unit.xs
             }}>
-              <span style={{ fontSize: '1rem' }}>✅</span>
+              <span style={{ fontSize: '0.875rem', color: COLORS.primary.main }}>✓</span>
               <strong>100% Court-Approved & Compliant</strong>
             </p>
           </div>

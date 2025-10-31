@@ -23,7 +23,7 @@ export function ContentSection() {
           maxWidth: '900px',
           margin: '0 auto'
         }}>
-          {/* What the Badge Means - Simplified */}
+          {/* Key Differentiators - Skip the Sales Pitch */}
           <div style={{
             background: 'linear-gradient(135deg, #ffffff 0%, #f9fafb 100%)',
             borderRadius: BORDER_RADIUS.xxlarge,
@@ -53,24 +53,98 @@ export function ContentSection() {
                 display: 'flex',
                 alignItems: 'center',
                 gap: SPACING.unit.sm,
-                fontSize: '1.125rem',
-                fontWeight: '600'
+                fontSize: '1.25rem',
+                fontWeight: '700'
               }}>
-                <span style={{
-                  fontSize: '1.25rem',
-                  color: '#FFB400'
-                }}>⭐</span>
-                What This 4.9★ Rating Means for You
+                Why Our 4.9★ Rating Matters: Skip the Sales Pitch
               </h2>
               <p style={{
                 ...TEXT_PRESETS.body,
-                marginBottom: SPACING.stack.sm,
+                marginBottom: SPACING.stack.md,
                 color: COLORS.text.secondary,
                 lineHeight: '1.7',
-                fontSize: '1rem'
+                fontSize: '1.0625rem'
               }}>
-                When you see Google's 4.9★ rating with "Free · Finance" next to SmarterPayouts, it means Google has independently verified that we're a legitimate, trustworthy financial tool. This isn't a paid advertisement or marketing claim—it's Google's algorithm recognizing that we meet their highest standards.
+                Our high 4.9★ rating is a direct result of our <strong>"Skip the Sales Pitch"</strong> approach. Unlike competitors who use lengthy phone-based processes with pushy sales tactics, we provide honest, instant calculations that put you in control from the start.
               </p>
+              
+              {/* Comparison Section */}
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                gap: SPACING.unit.md,
+                marginTop: SPACING.stack.md
+              }}>
+                {/* Our Approach */}
+                <div style={{
+                  background: 'linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%)',
+                  borderRadius: BORDER_RADIUS.large,
+                  padding: SPACING.card.compact,
+                  border: '2px solid rgba(34, 197, 94, 0.3)'
+                }}>
+                  <div style={{
+                    fontSize: '1.25rem',
+                    marginBottom: SPACING.unit.xs,
+                    color: COLORS.primary.main
+                  }}>✓</div>
+                  <h3 style={{
+                    fontSize: '1rem',
+                    fontWeight: '700',
+                    marginBottom: SPACING.unit.xs,
+                    color: COLORS.text.secondary
+                  }}>
+                    Our Approach
+                  </h3>
+                  <ul style={{
+                    margin: 0,
+                    paddingLeft: SPACING.unit.md,
+                    fontSize: '0.875rem',
+                    lineHeight: '1.7',
+                    color: COLORS.text.secondary
+                  }}>
+                    <li>Instant AI-powered calculator</li>
+                    <li>No phone calls required</li>
+                    <li>100% transparent pricing</li>
+                    <li>No sales pressure</li>
+                  </ul>
+                </div>
+
+                {/* Competitors' Approach */}
+                <div style={{
+                  background: 'linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%)',
+                  borderRadius: BORDER_RADIUS.large,
+                  padding: SPACING.card.compact,
+                  border: '2px solid rgba(239, 68, 68, 0.2)'
+                }}>
+                  <div style={{
+                    fontSize: '1.25rem',
+                    marginBottom: SPACING.unit.xs,
+                    color: '#ef4444'
+                  }}>✗</div>
+                  <h3 style={{
+                    fontSize: '1rem',
+                    fontWeight: '700',
+                    marginBottom: SPACING.unit.xs,
+                    color: COLORS.text.secondary
+                  }}>
+                    Traditional Competitors
+                  </h3>
+                  <ul style={{
+                    margin: 0,
+                    paddingLeft: SPACING.unit.md,
+                    fontSize: '0.875rem',
+                    lineHeight: '1.7',
+                    color: COLORS.text.secondary
+                  }}>
+                    <li>Lengthy phone-based processes</li>
+                    <li>Pushy sales tactics</li>
+                    <li>Hidden fees and rates</li>
+                    <li>Pressure to commit quickly</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Core Features Highlight */}
               <div style={{
                 background: '#fff7e6',
                 borderRadius: BORDER_RADIUS.large,
@@ -82,11 +156,12 @@ export function ContentSection() {
                   margin: 0,
                   color: COLORS.text.secondary,
                   fontWeight: '600',
-                  lineHeight: '1.7'
+                  lineHeight: '1.7',
+                  fontSize: '1rem'
                 }}>
-                  ✅ <strong>100% Free:</strong> No hidden fees, no subscription required<br/>
-                  ✅ <strong>Verified Accurate:</strong> Google confirms our calculations are reliable<br/>
-                  ✅ <strong>Top 1% Recognition:</strong> Only the best financial tools get this badge
+                  <strong>AI-Powered Accuracy:</strong> Get instant, precise calculations without waiting<br/>
+                  <strong>Instant, No-Obligation Payout Offers:</strong> See your options immediately, no strings attached<br/>
+                  <strong>100% Free:</strong> No hidden fees, no subscription required—just honest, transparent service
                 </p>
               </div>
             </div>
@@ -108,7 +183,7 @@ export function ContentSection() {
               fontSize: '1.125rem',
               fontWeight: '600'
             }}>
-              Why Google Recognizes SmarterPayouts
+              What Our Rating Means
             </h2>
             <p style={{
               ...TEXT_PRESETS.body,
@@ -117,7 +192,7 @@ export function ContentSection() {
               lineHeight: '1.7',
               fontSize: '1rem'
             }}>
-              Google doesn't hand out 4.9★ ratings lightly. To earn this badge, we had to prove ourselves in several key areas:
+              Our 4.9★ rating on Google reflects our commitment to excellence in several key areas:
             </p>
             
             <div style={{
@@ -237,7 +312,7 @@ export function ContentSection() {
               lineHeight: '1.7',
               fontSize: '1rem'
             }}>
-              The Google 4.9★ rating isn't just a number—it's your assurance that you're working with a reputable, trustworthy company:
+              Our 4.9★ rating on Google isn't just a number—it's your assurance that you're working with a reputable, trustworthy company:
             </p>
             
             <ul style={{
@@ -248,16 +323,16 @@ export function ContentSection() {
               fontSize: '1rem'
             }}>
               <li style={{ marginBottom: SPACING.stack.xs }}>
-                <strong style={{ color: COLORS.text.secondary }}>You can trust our calculations.</strong> Google verified that our math is accurate and our tools actually work.
+                <strong style={{ color: COLORS.text.secondary }}>You can trust our calculations.</strong> Our tools are accurate and validated by our user community.
               </li>
               <li style={{ marginBottom: SPACING.stack.xs }}>
                 <strong style={{ color: COLORS.text.secondary }}>No scams, no tricks.</strong> The "Free" badge means we don't charge hidden fees or require subscriptions.
               </li>
               <li style={{ marginBottom: SPACING.stack.xs }}>
-                <strong style={{ color: COLORS.text.secondary }}>You're in good company.</strong> Only the top 1% of financial tools earn this recognition from Google.
+                <strong style={{ color: COLORS.text.secondary }}>You're in good company.</strong> Our rating reflects positive feedback from users who trust our service.
               </li>
               <li>
-                <strong style={{ color: COLORS.text.secondary }}>Fast, modern experience.</strong> Our site loads quickly, works on any device, and is easy to use—just as Google expects from top-rated tools.
+                <strong style={{ color: COLORS.text.secondary }}>Fast, modern experience.</strong> Our site loads quickly, works on any device, and is easy to use—designed with user experience in mind.
               </li>
             </ul>
           </div>

@@ -60,20 +60,21 @@ export function HeroSection() {
               marginBottom: SPACING.unit.sm,
               lineHeight: "1.3",
               color: COLORS.text.secondary,
-              fontSize: 'clamp(1.375rem, 3vw, 1.75rem)',
-              fontWeight: '600'
+              fontSize: 'clamp(1.5rem, 3.5vw, 2rem)',
+              fontWeight: '700'
             }}>
-              Google Finance Rating
+              SmarterPayouts: 4.9★ Rating on Google
             </h1>
             <p style={{
               ...TEXT_PRESETS.bodyLarge,
-              maxWidth: "600px",
+              maxWidth: "700px",
               margin: `0 auto ${SPACING.unit.lg}`,
-              color: COLORS.text.tertiary,
-              fontSize: '1rem',
-              fontWeight: '400'
+              color: COLORS.text.secondary,
+              fontSize: 'clamp(1rem, 2vw, 1.125rem)',
+              fontWeight: '500',
+              lineHeight: '1.6'
             }}>
-              Why Google Recognized SmarterPayouts as a Top Financial Tool
+              See Why Hundreds of Structured Settlement Owners Trust Our AI-Powered Calculator
             </p>
             
             {/* Custom Rating Badge Display */}
@@ -89,22 +90,22 @@ export function HeroSection() {
               />
             </div>
 
-            {/* CTA Buttons - Moved from ContentSection */}
+            {/* CTA Buttons */}
             <div style={{
-              marginTop: SPACING.unit.lg
+              marginTop: SPACING.unit.xl
             }}>
               <HeroCTA 
                 buttons={[
                   {
                     id: "calculator",
-                    text: "💰 Try Our Calculator",
+                    text: "Early Payout Calculator",
                     href: "/main",
                     variant: "technology-primary" as const
                   },
                   {
-                    id: "chat",
-                    text: "💬 Chat with Mint AI",
-                    href: "/mint-intelligent-chat",
+                    id: "process",
+                    text: "How Our Process Works",
+                    href: "/get-a-quote",
                     variant: "technology-secondary" as const
                   }
                 ]} 

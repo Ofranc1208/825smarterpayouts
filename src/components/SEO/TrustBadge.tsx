@@ -15,8 +15,8 @@ interface TrustBadgeProps {
 
 /**
  * TrustBadge Component
- * Simple Google rating badge displaying: ★★★★★ 4.9 rating
- * Secondary line: Recognized by Google - Only top 1% of financial tools
+ * Google-compliant rating badge displaying: 4.9 ★★★★★ (250) · Free · Finance
+ * Matches Google Play Store format exactly for compliance
  * Includes microdata for SEO and accessibility
  */
 export default function TrustBadge({
@@ -37,7 +37,7 @@ export default function TrustBadge({
       itemScope 
       itemType="https://schema.org/SoftwareApplication"
       role="status"
-      aria-label={`${rating} star rating recognized by Google. Top 1% of financial tools. Free application with ${reviewCount} reviews.`}
+      aria-label={`${rating} star rating with ${reviewCount} reviews. Free ${category} application.`}
       style={href ? { cursor: 'pointer' } : {}}
     >
       {/* Microdata for SEO - Google crawlers */}
@@ -51,17 +51,17 @@ export default function TrustBadge({
       <meta itemProp="price" content="0" />
       <meta itemProp="priceCurrency" content="USD" />
       
-      {/* Five Stars and Rating */}
+      {/* Google Play Store Format: 4.9 ★★★★★ (250) · Free · Finance */}
       <div className={styles.mainLine}>
+        <span className={styles.ratingNumber}>{rating}</span>
         <span className={styles.fiveStars} aria-label="5 star rating">
           ★★★★★
         </span>
-        <span className={styles.rating}>{rating} rating</span>
-      </div>
-      
-      {/* Award Text */}
-      <div className={styles.subtext}>
-        Recognized by Google - Only top 1% of financial tools
+        <span className={styles.reviewCount}>({reviewCount})</span>
+        <span className={styles.separator}>·</span>
+        <span className={styles.freeText}>Free</span>
+        <span className={styles.separator}>·</span>
+        <span className={styles.categoryText}>{category}</span>
       </div>
     </div>
   );

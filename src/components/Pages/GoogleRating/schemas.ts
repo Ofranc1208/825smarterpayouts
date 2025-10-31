@@ -1,24 +1,25 @@
 /**
- * Google Rating Page Structured Data Schemas
+ * Platform Rating Page Structured Data Schemas
  * 
  * JSON-LD schemas for SEO optimization
+ * Compliant with Google's guidelines for displaying ratings
  */
 
 const BASE_URL = 'https://smarterpayouts.com';
 const ORGANIZATION_NAME = 'Smarter Payouts';
 
 // AboutPage Schema
-export const googleRatingPageSchema = {
+export const platformRatingPageSchema = {
   '@context': 'https://schema.org',
   '@type': 'AboutPage',
-  name: 'Our Google 4.9★ Finance Rating',
-  description: 'Learn how SmarterPayouts earned Google\'s 4.9★ Free · Finance badge for transparency and trust in structured settlement tools.',
-  url: `${BASE_URL}/google-rating`,
+  name: 'Our 4.9★ Finance Rating on Google',
+  description: 'Learn about SmarterPayouts\' 4.9★ Free · Finance rating on Google and what it means for users seeking structured settlement transparency.',
+  url: `${BASE_URL}/platform-rating`,
   mainEntity: {
     '@type': 'Organization',
     name: ORGANIZATION_NAME,
     url: BASE_URL,
-    description: 'SmarterPayouts is recognized by Google with a 4.9★ Free · Finance rating for transparent, accurate structured settlement calculators.',
+    description: 'SmarterPayouts has a 4.9★ Free · Finance rating on Google based on user reviews for transparent, accurate structured settlement calculators.',
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: '4.9',
@@ -36,12 +37,12 @@ export const googleRatingPageSchema = {
 };
 
 // WebPage Schema
-export const googleRatingWebPageSchema = {
+export const platformRatingWebPageSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
-  name: 'Our Google 4.9★ Finance Rating',
-  description: 'Learn how SmarterPayouts earned Google\'s 4.9★ Free · Finance badge for transparency and trust in structured settlement tools.',
-  url: `${BASE_URL}/google-rating`,
+  name: 'Our 4.9★ Finance Rating on Google',
+  description: 'Learn about SmarterPayouts\' 4.9★ Free · Finance rating on Google and what it means for users seeking structured settlement transparency.',
+  url: `${BASE_URL}/platform-rating`,
   inLanguage: 'en-US',
   isPartOf: {
     '@type': 'WebSite',
@@ -50,8 +51,8 @@ export const googleRatingWebPageSchema = {
   },
   about: {
     '@type': 'Thing',
-    name: 'Google Rating Badge',
-    description: 'Google\'s algorithmic recognition of SmarterPayouts as a trusted free finance application'
+    name: 'Platform Rating',
+    description: 'SmarterPayouts\' user rating on Google for structured settlement calculator services'
   },
   publisher: {
     '@type': 'Organization',

@@ -32,7 +32,7 @@ export default function HeroContentContainer() {
           reviewCount="250"
           category="Finance"
           alignment="center"
-          href="/google-rating"
+          href="/platform-rating"
         />
       </div>
       
