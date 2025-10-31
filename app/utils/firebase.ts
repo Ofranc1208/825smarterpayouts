@@ -1,6 +1,5 @@
-// USE THIS CODE IF THE TEST WORKED
+// OPTIMIZED: Lazy load Firebase Auth to prevent blocking page load (5+ second iframe load)
 import { initializeApp, getApps, getApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 import { getDatabase } from 'firebase/database';
@@ -20,13 +19,50 @@ const firebaseConfig = {
 // Initialize Firebase app only if it hasn't been initialized already (Singleton Pattern)
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 
-// Export the initialized Firebase services for use in other parts of your app
-const auth = getAuth(app);
+// Lazy load Auth - CRITICAL OPTIMIZATION: Only initialize when actually needed
+// This prevents the Firebase Auth iframe (5+ seconds) from loading on page load
+let authInstance: any = null;
+
+function initializeAuth() {
+  // Only initialize on client side when actually accessed
+  if (!authInstance && typeof window !== 'undefined') {
+    // Lazy import - only loads when auth is actually needed
+    // This saves 5+ seconds by preventing the auth iframe from loading on page load
+    const { getAuth } = require('firebase/auth');
+    authInstance = getAuth(app);
+  }
+  return authInstance;
+}
+
+// Export auth as a Proxy for backward compatibility
+// Only initializes when first accessed (saves 5+ seconds on page load)
+// Proxy is always truthy, so `if (auth)` checks will work
+export const auth = new Proxy({} as any, {
+  get(_target, prop) {
+    const instance = initializeAuth();
+    if (instance) {
+      const value = instance[prop];
+      // Bind methods to the instance for proper `this` context
+      if (typeof value === 'function') {
+        return value.bind(instance);
+      }
+      return value;
+    }
+    return undefined;
+  }
+});
+
+// Export function for explicit access
+export function getAuthInstance(): any {
+  return initializeAuth();
+}
+
+// Initialize other services immediately (they don't block page load)
 const db = getFirestore(app);
 const storage = getStorage(app);
 const rtdb = getDatabase(app);
 
-export { app, auth, db, storage, rtdb };
+export { app, db, storage, rtdb };
 
 // Safest compatibility: add loadFirebase export
 export function loadFirebase() {

@@ -48,11 +48,10 @@ export default function RootLayout({
         <meta name="MobileOptimized" content="width" />
         <meta name="apple-touch-fullscreen" content="yes" />
         
-        {/* Critical resource hints - load BEFORE scripts */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        {/* Critical resource hints - only for resources we actually use */}
         <link rel="dns-prefetch" href="//www.googletagmanager.com" />
         <link rel="dns-prefetch" href="//www.google-analytics.com" />
+        {/* Removed unused font preconnects - they're not being used */}
         
         {/* Google Tag Manager - Deferred to not block rendering */}
         <GoogleTagManager />

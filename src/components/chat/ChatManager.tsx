@@ -55,12 +55,16 @@ const ChatManager: React.FC = () => {
     
     // Set active screen based on URL parameter
     if (typeParam) {
-      console.log('[ChatManager] Type parameter detected:', typeParam);
+      if (process.env.NODE_ENV === 'development') {
+        console.log('[ChatManager] Type parameter detected:', typeParam);
+      }
       setActiveScreen(typeParam);
     }
     
     if (shouldAutoOpen) {
-      console.log('[ChatManager] Chat auto-open detected, redirecting to dedicated page');
+      if (process.env.NODE_ENV === 'development') {
+        console.log('[ChatManager] Chat auto-open detected, redirecting to dedicated page');
+      }
       
       // Check if we're on client side
       if (typeof window !== 'undefined') {
@@ -75,23 +79,22 @@ const ChatManager: React.FC = () => {
   // Simplified body scroll management - only when modal is open
   useEffect(() => {
     if (isChatOpen) {
-      console.log('[ChatManager] Chat opened - preventing body scroll');
+      if (process.env.NODE_ENV === 'development') {
+        console.log('[ChatManager] Chat opened - preventing body scroll');
+      }
       const originalOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
 
       return () => {
-        console.log('[ChatManager] Chat closed - restoring body scroll');
+        if (process.env.NODE_ENV === 'development') {
+          console.log('[ChatManager] Chat closed - restoring body scroll');
+        }
         document.body.style.overflow = originalOverflow;
       };
     }
   }, [isChatOpen]);
 
   const handleStartChat = (choice: ChatChoice | 'live_chat' | 'sms' | 'phone_call' | 'appointment') => {
-    console.log('[ChatManager DEPLOYMENT DEBUG] === HANDLE START CHAT ===');
-    console.log('[ChatManager] Choice selected:', choice);
-    console.log('[ChatManager] Previous isChatOpen:', isChatOpen);
-    console.log('[ChatManager] Previous activeScreen:', activeScreen);
-
     try {
       // For specialist contact methods, map them to appropriate ChatChoice
       let mappedChoice: ChatChoice;
@@ -105,10 +108,6 @@ const ChatManager: React.FC = () => {
 
       setActiveScreen(mappedChoice);
       setIsChatOpen(true);
-
-      console.log('[ChatManager] ✅ State updated successfully');
-      console.log('[ChatManager] New isChatOpen: true');
-      console.log('[ChatManager] New activeScreen:', mappedChoice);
     } catch (error) {
       console.error('[ChatManager] ❌ CRITICAL ERROR setting chat state:', error);
       console.error('[ChatManager] Error details:', error instanceof Error ? error.message : 'Unknown error');
@@ -116,7 +115,6 @@ const ChatManager: React.FC = () => {
   };
 
   const handleCloseChat = () => {
-    console.log('[ChatManager] Closing chat');
     setIsChatOpen(false);
     setActiveScreen(null);
     
@@ -124,11 +122,6 @@ const ChatManager: React.FC = () => {
     // For now, just close the modal and return to welcome screen
     // Users can use the "← SmarterPayouts" button to navigate back to main site
   };
-
-  // Log render cycles for debugging
-  console.log('[ChatManager] === RENDER CYCLE ===');
-  console.log('[ChatManager] Rendering with isChatOpen:', isChatOpen);
-  console.log('[ChatManager] Rendering with activeScreen:', activeScreen);
 
   return (
     <div className={styles.chatManagerWrapper}>
@@ -143,7 +136,6 @@ const ChatManager: React.FC = () => {
           className={`${styles.chatModalOverlay} ${isChatOpen ? styles.open : ''}`}
           onClick={(e) => {
             if (e.target === e.currentTarget) {
-              console.log('[ChatManager] Overlay clicked - closing modal');
               handleCloseChat();
             }
           }}

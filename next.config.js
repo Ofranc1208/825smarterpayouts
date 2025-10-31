@@ -52,16 +52,36 @@ const nextConfig = {
     // Enable modern JavaScript features
     esmExternals: true,
   },
-  // Optimize bundle splitting
+  // Optimize bundle splitting - improved strategy for better performance
   webpack: (config, { dev, isServer }) => {
     if (!dev && !isServer) {
       config.optimization.splitChunks = {
         chunks: 'all',
+        minSize: 20000,
+        maxSize: 244000,
         cacheGroups: {
+          // Separate vendor chunks for better caching
           vendor: {
             test: /[\\/]node_modules[\\/]/,
             name: 'vendors',
             chunks: 'all',
+            priority: 10,
+            reuseExistingChunk: true,
+          },
+          // Separate Firebase chunk (heavy library)
+          firebase: {
+            test: /[\\/]node_modules[\\/](firebase|@firebase)[\\/]/,
+            name: 'firebase',
+            chunks: 'async', // Only load when needed
+            priority: 20,
+          },
+          // Separate common chunk for shared code
+          common: {
+            name: 'common',
+            minChunks: 2,
+            chunks: 'all',
+            priority: 5,
+            reuseExistingChunk: true,
           },
         },
       };

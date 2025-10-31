@@ -142,9 +142,9 @@ export function usePerformanceMonitor(options: UsePerformanceMonitorOptions = {}
     initWebVitals();
   }, [enableCoreWebVitals, trackCustomMetric]);
 
-  // Monitor memory usage
+  // Monitor memory usage - only in development
   useEffect(() => {
-    if (!enableCustomMetrics || typeof window === 'undefined') return;
+    if (!enableCustomMetrics || typeof window === 'undefined' || process.env.NODE_ENV !== 'development') return;
 
     const monitorMemory = () => {
       if ('memory' in performance) {
@@ -154,7 +154,7 @@ export function usePerformanceMonitor(options: UsePerformanceMonitorOptions = {}
       }
     };
 
-    // Monitor memory every 30 seconds
+    // Monitor memory every 30 seconds (development only)
     const memoryInterval = setInterval(monitorMemory, 30000);
     
     // Initial measurement

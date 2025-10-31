@@ -26,9 +26,7 @@ export default function useHomePerformance(): UseHomePerformanceReturn {
           const navEntry = entry as PerformanceNavigationTiming;
           const pageLoadTime = navEntry.loadEventEnd - navEntry.fetchStart;
           
-          console.log('Home Page Load Time:', pageLoadTime);
-          
-          // Send to analytics
+          // Send to analytics (no console logging to reduce noise)
           if ((window as any).gtag) {
             (window as any).gtag('event', 'page_load_time', {
               event_category: 'performance',
@@ -89,8 +87,10 @@ export default function useHomePerformance(): UseHomePerformanceReturn {
     if (typeof window !== 'undefined' && 'PerformanceObserver' in window) {
       const clsObserver = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
-                  if (entry.entryType === 'layout-shift' && !(entry as any).hadRecentInput) {
-          console.log('Layout Shift detected:', (entry as any).value);
+          if (entry.entryType === 'layout-shift' && !(entry as any).hadRecentInput) {
+            if (process.env.NODE_ENV === 'development') {
+              console.log('Layout Shift detected:', (entry as any).value);
+            }
           }
         }
       });

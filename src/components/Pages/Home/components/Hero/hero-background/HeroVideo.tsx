@@ -89,17 +89,22 @@ export default function HeroVideo() {
 
     // Skip video on reduced motion or slow connection - show poster only
     if (prefersReducedMotion || isSlowConnection) {
-      console.log('[HeroVideo] Using poster only (reduced motion or slow connection)');
+      if (process.env.NODE_ENV === 'development') {
+        console.log('[HeroVideo] Using poster only (reduced motion or slow connection)');
+      }
       return;
     }
 
     const handleCanPlay = () => {
-      console.log('[HeroVideo] Video loaded and ready to play');
+      // Video loaded successfully - no need to log
       setVideoLoaded(true);
     };
 
     const handleError = () => {
-      console.warn('[HeroVideo] Video failed to load, using fallback poster');
+      // Only log errors in development - keep warnings for production issues
+      if (process.env.NODE_ENV === 'development') {
+        console.warn('[HeroVideo] Video failed to load, using fallback poster');
+      }
       setVideoError(true);
     };
 

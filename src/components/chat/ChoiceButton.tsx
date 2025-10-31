@@ -44,24 +44,16 @@ const ChoiceButton: React.FC<ChoiceButtonProps> = ({ icon, text, onClick, classN
   const [isPressed, setIsPressed] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  // Enhanced click handler with comprehensive debugging for deployment
+  // Enhanced click handler
   const handleClick = () => {
     try {
-      console.log('[ChoiceButton DEPLOYMENT DEBUG] === BUTTON CLICK DETECTED ===');
-      console.log('[ChoiceButton] Button text:', text);
-      console.log('[ChoiceButton] onClick handler exists:', !!onClick);
-      console.log('[ChoiceButton] Button ref:', buttonRef.current);
-      console.log('[ChoiceButton] Window location:', typeof window !== 'undefined' ? window.location.href : 'SSR');
-      
       setIsPressed(true);
       setTimeout(() => setIsPressed(false), 150);
 
       if (onClick) {
-        console.log('[ChoiceButton] 🚀 Executing onClick handler now...');
         onClick();
-        console.log('[ChoiceButton] ✅ onClick handler executed successfully');
-      } else {
-        console.warn('[ChoiceButton] ⚠️ WARNING: onClick handler is undefined!');
+      } else if (process.env.NODE_ENV === 'development') {
+        console.warn('[ChoiceButton] onClick handler is undefined');
       }
     } catch (error) {
       console.error('[ChoiceButton] ❌ CRITICAL ERROR in click handler:', error);
@@ -73,21 +65,13 @@ const ChoiceButton: React.FC<ChoiceButtonProps> = ({ icon, text, onClick, classN
     }
   };
 
-  // Enhanced mouse handlers with deployment debugging
+  // Mouse handlers
   const handleMouseEnter = () => {
-    try {
-      console.log('[ChoiceButton] Mouse enter - hover state activated');
-    } catch (error) {
-      console.error('[ChoiceButton] Mouse enter error:', error);
-    }
+    // Hover state handled by CSS
   };
 
   const handleMouseLeave = () => {
-    try {
-      console.log('[ChoiceButton] Mouse leave - hover state deactivated');
-    } catch (error) {
-      console.error('[ChoiceButton] Mouse leave error:', error);
-    }
+    // Hover state handled by CSS
   };
 
   const handleMouseDown = () => {

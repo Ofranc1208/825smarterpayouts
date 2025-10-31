@@ -105,7 +105,7 @@ export default function PerformanceOptimizer({
     if (typeof document !== 'undefined' && document.fonts) {
       document.fonts.ready.then(() => {
         if (process.env.NODE_ENV === 'development') {
-          console.log('Fonts loaded');
+          // Fonts loaded - no console logging to reduce noise
         }
       }).catch((error) => {
         if (process.env.NODE_ENV === 'development') {
@@ -182,40 +182,50 @@ export default function PerformanceOptimizer({
           __html: `
             // Enhanced performance monitoring for INP optimization
             if (typeof window !== 'undefined') {
-              // INP monitoring - track interaction delays
+              const isDevelopment = ${process.env.NODE_ENV === 'development'};
+              
+              // INP monitoring disabled to reduce console noise
+              // Still tracks maxINP silently for analytics, but no console warnings
               let maxINP = 0;
               if ('PerformanceObserver' in window) {
                 const inpObserver = new PerformanceObserver((list) => {
                   for (const entry of list.getEntries()) {
                     maxINP = Math.max(maxINP, entry.processingStart - entry.startTime);
-                    if (entry.processingStart - entry.startTime > 200) {
-                      console.warn('Slow interaction detected:', Math.round(entry.processingStart - entry.startTime) + 'ms');
-                    }
+                    // Console warnings disabled - still tracking maxINP silently
+                    // Uncomment below if you need to debug very slow interactions (>2000ms):
+                    // if (isDevelopment && entry.processingStart - entry.startTime > 2000) {
+                    //   console.warn('Extreme slow interaction detected:', Math.round(entry.processingStart - entry.startTime) + 'ms');
+                    // }
                   }
                 });
+                // Try modern API with type and buffered (no warnings)
+                // Only use if supported - no fallback to avoid warnings
                 try {
-                  inpObserver.observe({entryTypes: ['event'], buffered: true});
+                  inpObserver.observe({type: 'event', buffered: true});
                 } catch (e) {
-                  // Fallback for browsers that don't support event timing
+                  // Silently skip if browser doesn't support modern API
+                  // Don't use entryTypes fallback to avoid "buffered with entryTypes" warning
                 }
               }
 
-              // Monitor main thread blocking
-              let lastFrameTime = performance.now();
-              function checkFrameRate() {
-                const currentTime = performance.now();
-                const deltaTime = currentTime - lastFrameTime;
-                if (deltaTime > 50) { // More than 2 frames at 60fps
-                  console.warn('Frame drop detected:', Math.round(deltaTime) + 'ms');
+              // Frame drop monitoring disabled to reduce console noise
+              // Uncomment below if you need to debug severe performance issues (>5000ms drops)
+              /*
+              if (isDevelopment) {
+                let lastFrameTime = performance.now();
+                function checkFrameRate() {
+                  const currentTime = performance.now();
+                  const deltaTime = currentTime - lastFrameTime;
+                  // Only log critical frame drops (>5000ms) - very rare
+                  if (deltaTime > 5000) {
+                    console.warn('Critical frame drop detected:', Math.round(deltaTime) + 'ms');
+                  }
+                  lastFrameTime = currentTime;
+                  requestAnimationFrame(checkFrameRate);
                 }
-                lastFrameTime = currentTime;
                 requestAnimationFrame(checkFrameRate);
               }
-
-              // Only monitor in development or if performance issues detected
-              if (${process.env.NODE_ENV === 'development'} || maxINP > 200) {
-                requestAnimationFrame(checkFrameRate);
-              }
+              */
 
               // Optimize setTimeout/setInterval for better performance
               const originalSetTimeout = window.setTimeout;

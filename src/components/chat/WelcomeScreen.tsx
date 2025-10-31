@@ -16,41 +16,28 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartChat }) => {
   const [showGuaranteeModal, setShowGuaranteeModal] = React.useState(false);
   const [showPrivacyModal, setShowPrivacyModal] = React.useState(false);
   
-  console.log('[WelcomeScreen DEPLOYMENT DEBUG] === COMPONENT RENDER ===');
-  console.log('[WelcomeScreen] onStartChat function exists:', !!onStartChat);
-  console.log('[WelcomeScreen] onStartChat type:', typeof onStartChat);
-  
   // Navigate to dedicated chat page
   const handleStartChat = (choice: ChatChoice) => {
-    console.log('[WelcomeScreen] === BUTTON CLICKED ===');
-    console.log('[WelcomeScreen] Choice:', choice);
-    console.log('[WelcomeScreen] Choice type:', typeof choice);
-    console.log('[WelcomeScreen] Is specialist?', choice === 'specialist');
-    console.log('[WelcomeScreen] Navigating to dedicated chat page...');
+    if (process.env.NODE_ENV === 'development') {
+      console.log('[WelcomeScreen] Starting chat with choice:', choice);
+    }
     
     try {
       // Check if we're on client side
       if (typeof window === 'undefined') {
-        console.log('[WelcomeScreen] SSR detected, skipping navigation');
         return;
       }
       
       // Route to appropriate page based on choice
       if (choice === 'specialist') {
         const specialistUrl = `/connect-with-specialist?type=${choice}`;
-        console.log('[WelcomeScreen] 🎯 SPECIALIST ROUTE - Navigating to:', specialistUrl);
         window.location.href = specialistUrl;
-        console.log('[WelcomeScreen] ✅ Navigation to specialist page initiated');
       } else if (choice === 'process') {
         const processUrl = `/learn-about-process?type=${choice}`;
-        console.log('[WelcomeScreen] 📚 PROCESS ROUTE - Navigating to:', processUrl);
         window.location.href = processUrl;
-        console.log('[WelcomeScreen] ✅ Navigation to process page initiated');
       } else {
         const chatUrl = `/mint-chat-active?type=${choice}`;
-        console.log('[WelcomeScreen] 💬 REGULAR CHAT ROUTE - Navigating to:', chatUrl);
         window.location.href = chatUrl;
-        console.log('[WelcomeScreen] ✅ Navigation to chat page initiated');
       }
     } catch (error) {
       console.error('[WelcomeScreen] ❌ ERROR navigating to chat page:', error);
@@ -58,7 +45,9 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartChat }) => {
       
       // Fallback: try the old modal approach
       if (onStartChat && typeof onStartChat === 'function') {
-        console.log('[WelcomeScreen] Falling back to modal approach...');
+        if (process.env.NODE_ENV === 'development') {
+          console.log('[WelcomeScreen] Falling back to modal approach...');
+        }
         onStartChat(choice);
       }
     }

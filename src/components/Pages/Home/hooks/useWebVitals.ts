@@ -100,14 +100,18 @@ export function useWebVitals() {
       });
     }
 
-    // Console log in development
-    if (process.env.NODE_ENV === 'development') {
-      console.log(`📊 Web Vital - ${name}:`, {
-        value: metric.value,
-        rating: getVitalRating(name, metric.value),
-        id: metric.id
-      });
-    }
+    // Suppress console warnings to reduce noise - still tracked via analytics
+    // Uncomment below if you need to debug poor Web Vital ratings:
+    // if (process.env.NODE_ENV === 'development') {
+    //   const rating = getVitalRating(name, metric.value);
+    //   if (rating === 'poor') {
+    //     console.warn(`⚠️ Web Vital - ${name}:`, {
+    //       value: metric.value,
+    //       rating: rating,
+    //       id: metric.id
+    //     });
+    //   }
+    // }
   };
 
   const getVitalRating = (name: string, value: number): 'good' | 'needs-improvement' | 'poor' => {

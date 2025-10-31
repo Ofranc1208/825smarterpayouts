@@ -285,7 +285,11 @@ class PerformanceMonitor {
    * Report performance budget violation
    */
   private reportPerformanceBudgetViolation(metric: PerformanceMetric): void {
-    console.warn(`Performance budget violated: ${metric.name} = ${metric.value} (${metric.rating})`);
+    // Suppress console warnings to reduce noise - still tracked via analytics
+    // Uncomment below if you need to debug performance budget violations:
+    // if (process.env.NODE_ENV === 'development') {
+    //   console.warn(`Performance budget violated: ${metric.name} = ${metric.value} (${metric.rating})`);
+    // }
     
     // Send to error tracking service
     if (this.config.enableErrorTracking) {
