@@ -32,6 +32,7 @@ export const dropdownSections: DropdownSection = {
   ],
   'Why Choose Us?': [
     { href: '/about', label: 'About Us', icon: '🏢' },
+    { href: '/google-rating', label: 'Google Rating', icon: '⭐' },
     { href: '/contact', label: 'Contact Us', icon: '✉️' },
     { href: '/faqs', label: 'FAQs', icon: '❓' },
     { href: '/social-media', label: 'Social Media', icon: '🌐' },

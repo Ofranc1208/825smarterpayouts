@@ -49,11 +49,10 @@ export class LCPFlowHandler implements FlowHandler {
    */
   handleStep(step: CalculatorStep, data?: any): void {
     if (!this.canHandle(step)) {
-      console.warn('[LCPFlowHandler] Cannot handle step:', step);
+      console.error('[LCPFlowHandler] Cannot handle step:', step);
       return;
     }
 
-    console.log('[LCPFlowHandler] Navigating to step:', step);
     this.setLcpCurrentStep(step as LCPStep);
   }
 
@@ -61,7 +60,6 @@ export class LCPFlowHandler implements FlowHandler {
    * Update form data
    */
   updateFormData(data: Partial<LCPFormData>): void {
-    console.log('[LCPFlowHandler] Updating form data:', data);
     this.setLcpFormData(prev => ({ ...prev, ...data }));
   }
 
@@ -143,7 +141,6 @@ export class LCPFlowHandler implements FlowHandler {
    * Handle back to review action
    */
   handleBackToReview(): void {
-    console.log('[LCPFlowHandler] Going back to review');
     this.handleStep('lcp_review');
   }
 
@@ -165,7 +162,6 @@ export class LCPFlowHandler implements FlowHandler {
    * Start LCP flow
    */
   startFlow(): void {
-    console.log('[LCPFlowHandler] Starting LCP flow');
     this.handleStep('lcp_payment');
   }
 }

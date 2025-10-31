@@ -19,7 +19,7 @@ export default function HeroSubtitle() {
       marginBottom: '1rem',
       textShadow: '1px 1px 2px rgba(0,0,0,0.5)'
     }}>
-      Industry's First AI-Powered Platform
+      Get Your Early Payout Offer — Instantly
     </h2>
   );
 }

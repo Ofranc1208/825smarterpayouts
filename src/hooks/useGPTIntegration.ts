@@ -95,18 +95,26 @@ export const useGPTIntegration = ({ visibleMessages }: UseGPTIntegrationProps) =
       onComplete
     });
 
-    // Step 8: Trigger reprompt for form flow
-    triggerReprompt();
-
-    // Step 9: Insert StepRenderer component after AI response
-    setVisibleMessages(prev => [
-      ...prev,
-      {
-        id: `step-${Date.now()}`,
-        type: 'component',
-        component: React.createElement(StepRenderer, { stepId: currentStep || '' }),
-      }
-    ]);
+    // Step 8: Only trigger reprompt and insert StepRenderer if actually in a calculator flow
+    // Only insert when we have a valid calculator step (not just any currentStep value)
+    const isCalculatorStep = currentStep && (
+      currentStep.startsWith('lcp_') || 
+      ['mode', 'amount', 'dates', 'review', 'offer', 'increase'].includes(currentStep)
+    );
+    
+    if (isCalculatorStep) {
+      triggerReprompt();
+      
+      // Step 9: Insert StepRenderer component ONLY when in active calculator flow
+      setVisibleMessages(prev => [
+        ...prev,
+        {
+          id: `step-${Date.now()}`,
+          type: 'component',
+          component: React.createElement(StepRenderer, { stepId: currentStep }),
+        }
+      ]);
+    }
   };
 
   return {

@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
 import MainPage from '@/src/components/Pages/Main';
 import dynamic from 'next/dynamic';
+import { StructuredData } from '@/src/components/SEO/StructuredData';
+import { pricingCalculatorSchema, organizationSchema } from '@/src/lib/structured-data/schemas';
 
 const LazyFABSpeedDial = dynamic(() => import('../components/FABSpeedDial'), { ssr: false });
 const LazyChatManager = dynamic(() => import('@/src/components/chat/ChatManager'), {
@@ -27,6 +29,8 @@ export const metadata: Metadata = {
 export default function Main() {
   return (
     <>
+      {/* Structured Data for SEO - Google Rating Badge */}
+      <StructuredData schema={[pricingCalculatorSchema, organizationSchema]} />
       <MainPage />
       <LazyFABSpeedDial />
     </>

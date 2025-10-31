@@ -43,8 +43,6 @@ export class SessionManager {
       const url = new URL(window.location.href);
       url.searchParams.set('sessionId', sessionId);
       window.history.replaceState({}, '', url.toString());
-      
-      console.log('[SessionManager] Updated URL with sessionId:', sessionId);
     } catch (error) {
       console.error('[SessionManager] Failed to update URL:', error);
     }
@@ -57,13 +55,11 @@ export class SessionManager {
     const existingSessionId = this.getSessionIdFromUrl();
     
     if (existingSessionId) {
-      console.log('[SessionManager] Using existing sessionId from URL:', existingSessionId);
       return existingSessionId;
     }
     
     const newSessionId = this.generateSessionId();
     this.updateUrlWithSessionId(newSessionId);
-    console.log('[SessionManager] Generated new sessionId:', newSessionId);
     
     return newSessionId;
   }

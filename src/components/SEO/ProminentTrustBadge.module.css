@@ -1,0 +1,144 @@
+/**
+ * ProminentTrustBadge Styles
+ * Desktop-only prominent overlay for Google rating badge
+ * Similar prominence to "Skip the Sales Pitch" mobile overlay
+ */
+
+.prominentBadge {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  z-index: 999;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border: 2px solid #0ea5e9;
+  border-radius: 16px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 8px 24px rgba(14, 165, 233, 0.25);
+  backdrop-filter: blur(10px);
+  animation: slideInRight 0.5s ease-out;
+  font-family: inherit;
+  user-select: none;
+  max-width: 280px;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.badgeContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #0369a1;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.star {
+  font-size: 1.25rem;
+  color: #fbbf24;
+  filter: drop-shadow(0 2px 4px rgba(251, 191, 36, 0.3));
+  line-height: 1;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.rating {
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.separator {
+  opacity: 0.5;
+  margin: 0 0.25rem;
+  font-weight: 400;
+}
+
+.price {
+  font-weight: 700;
+  color: #059669;
+  font-size: 1.125rem;
+}
+
+.category {
+  font-weight: 600;
+  font-size: 1.125rem;
+}
+
+.badgeSubtext {
+  font-size: 0.75rem;
+  color: #64748b;
+  text-align: center;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.prominentBadge:hover {
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  border-color: #0284c7;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(14, 165, 233, 0.35);
+}
+
+.prominentBadge:hover .badgeContent {
+  color: #ffffff;
+}
+
+.prominentBadge:hover .price {
+  color: #ffffff;
+}
+
+.prominentBadge:hover .badgeSubtext {
+  color: #e0f2fe;
+}
+
+/* Responsive adjustments - hide on smaller desktop screens if needed */
+@media (max-width: 1024px) {
+  .prominentBadge {
+    top: 70px;
+    right: 15px;
+    padding: 0.875rem 1.25rem;
+    max-width: 260px;
+  }
+
+  .badgeContent {
+    font-size: 1rem;
+    gap: 0.3rem;
+  }
+
+  .star {
+    font-size: 1.125rem;
+  }
+
+  .rating,
+  .price,
+  .category {
+    font-size: 1rem;
+  }
+}
+
+/* Ensure it's hidden on mobile (handled by component logic but extra safety) */
+@media (max-width: 767px) {
+  .prominentBadge {
+    display: none !important;
+  }
+}
+

@@ -3,6 +3,7 @@
 import HeroTitle from './HeroTitle';
 import HeroSubtitle from './HeroSubtitle';
 import HeroDescription from './HeroDescription';
+import TrustBadge from '@/src/components/SEO/TrustBadge';
 
 /**
  * Hero Content Container Component
@@ -18,6 +19,23 @@ export default function HeroContentContainer() {
     <>
       <HeroTitle />
       <HeroSubtitle />
+      
+      {/* Google Rating Badge - Increased spacing */}
+      <div style={{ 
+        marginTop: '1.5rem',
+        marginBottom: '1.5rem',
+        display: 'flex',
+        justifyContent: 'center'
+      }}>
+        <TrustBadge 
+          rating="4.9"
+          reviewCount="250"
+          category="Finance"
+          alignment="center"
+          href="/google-rating"
+        />
+      </div>
+      
       <HeroDescription />
     </>
   );

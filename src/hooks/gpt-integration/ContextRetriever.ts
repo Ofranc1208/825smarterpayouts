@@ -57,8 +57,6 @@ export async function retrieveVectorContext(userQuery: string): Promise<Retrieve
       return { content: '', source: 'static' };
     }
 
-    console.log('🔍 Searching vector knowledge base...');
-
     const searchQuery = userQuery.toLowerCase();
     let retrievedContent = '';
     let contextSource = 'static';
@@ -75,13 +73,9 @@ export async function retrieveVectorContext(userQuery: string): Promise<Retrieve
       contextSource = 'contact_data';
     }
 
-    if (retrievedContent) {
-      console.log(`✅ Retrieved context from ${contextSource}`);
-    }
-
     return { content: retrievedContent, source: contextSource };
   } catch (error) {
-    console.log('⚠️ Vector context unavailable, using static knowledge:', error instanceof Error ? error.message : 'Unknown error');
+    // Vector context unavailable - fall back to static knowledge
     return { content: '', source: 'static' };
   }
 }

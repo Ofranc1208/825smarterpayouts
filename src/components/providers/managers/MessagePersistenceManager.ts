@@ -37,7 +37,6 @@ export class MessagePersistenceManager {
       
       if (savedMessages) {
         const parsedMessages = JSON.parse(savedMessages);
-        console.log('[MessagePersistenceManager] Loaded messages for session:', sessionId, 'Count:', parsedMessages.length);
         return parsedMessages;
       }
     } catch (error) {
@@ -75,8 +74,6 @@ export class MessagePersistenceManager {
       
       const storageKey = this.getStorageKey(sessionId);
       localStorage.setItem(storageKey, JSON.stringify(serializableMessages));
-      
-      console.log('[MessagePersistenceManager] Saved messages for session:', sessionId, 'Count:', serializableMessages.length);
     } catch (error) {
       console.error('[MessagePersistenceManager] Failed to save messages:', error);
     }
@@ -91,7 +88,6 @@ export class MessagePersistenceManager {
     try {
       const storageKey = this.getStorageKey(sessionId);
       localStorage.removeItem(storageKey);
-      console.log('[MessagePersistenceManager] Cleared messages for session:', sessionId);
     } catch (error) {
       console.error('[MessagePersistenceManager] Failed to clear messages:', error);
     }

@@ -157,12 +157,29 @@ export const guaranteedCalculatorSchema = {
   offers: {
     '@type': 'Offer',
     price: '0',
-    priceCurrency: 'USD'
+    priceCurrency: 'USD',
+    description: 'Free instant settlement quote calculator'
   },
   creator: {
     '@type': 'Organization',
     name: ORGANIZATION_NAME,
     url: BASE_URL
+  },
+  featureList: [
+    'Instant NPV calculations',
+    'Guaranteed payment analysis',
+    'No personal information required',
+    'Transparent pricing'
+  ],
+  softwareVersion: '2.0',
+  datePublished: '2024-01-01',
+  dateModified: new Date().toISOString().split('T')[0],
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.9',
+    reviewCount: '250',
+    bestRating: '5',
+    worstRating: '1'
   }
 };
 
@@ -177,12 +194,29 @@ export const lcpCalculatorSchema = {
   offers: {
     '@type': 'Offer',
     price: '0',
-    priceCurrency: 'USD'
+    priceCurrency: 'USD',
+    description: 'Free instant settlement quote calculator'
   },
   creator: {
     '@type': 'Organization',
     name: ORGANIZATION_NAME,
     url: BASE_URL
+  },
+  featureList: [
+    'Life-contingent payment analysis',
+    'Mortality adjustments',
+    'No personal information required',
+    'Transparent pricing'
+  ],
+  softwareVersion: '2.0',
+  datePublished: '2024-01-01',
+  dateModified: new Date().toISOString().split('T')[0],
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.9',
+    reviewCount: '250',
+    bestRating: '5',
+    worstRating: '1'
   }
 };
 

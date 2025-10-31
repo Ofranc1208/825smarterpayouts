@@ -42,7 +42,7 @@ export interface HeroCTAButton {
   /** Accessibility label */
   ariaLabel?: string;
   /** Button variant */
-  variant: 'primary' | 'secondary' | 'technology-primary' | 'mint-chat';
+  variant: 'primary' | 'secondary' | 'technology-primary' | 'technology-secondary' | 'mint-chat';
   /** Button gradient */
   gradient?: string;
   /** Optional icon */

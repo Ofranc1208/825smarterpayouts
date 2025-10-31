@@ -79,11 +79,6 @@ function AppProvidersContent({ children, mode }: { children: ReactNode; mode?: '
     logUserChoiceAsMessage
   };
 
-  // Safe logging that works in both SSR and client
-  if (typeof window !== 'undefined') {
-    console.log('[AppProviders] 🔍 Rendering with sessionId:', sessionId, 'URL:', window.location.href);
-  }
-
   // Don't render until sessionId is ready - show LoadingScreen component
   if (!sessionId) {
     return <LoadingScreen message="Connecting..." />;

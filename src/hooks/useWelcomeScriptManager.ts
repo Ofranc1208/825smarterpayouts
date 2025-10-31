@@ -56,12 +56,10 @@ export const useWelcomeScriptManager = ({
 
   // Sync welcome script state with context
   useEffect(() => {
-    console.log('[useWelcomeScriptManager] Syncing visible messages for mode:', mode);
     setVisibleMessages(activeWelcomeScript.visibleMessages);
   }, [activeWelcomeScript.visibleMessages, setVisibleMessages, mode]);
 
   useEffect(() => {
-    console.log('[useWelcomeScriptManager] Syncing typing state:', activeWelcomeScript.isTyping);
     setIsTyping(activeWelcomeScript.isTyping);
   }, [activeWelcomeScript.isTyping, setIsTyping]);
 

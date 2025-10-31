@@ -58,32 +58,11 @@ export const SmartInputBar: React.FC<SmartInputBarProps> = ({
   // Custom hooks for separation of concerns
   const { isMobile, isKeyboardVisible } = useDeviceDetection();
   
-  // Debug: Log mobile detection and file input configuration
-  React.useEffect(() => {
-    console.log('📱 [SmartInputBar] Device detection:', {
-      isMobile,
-      userAgent: navigator.userAgent,
-      windowWidth: window.innerWidth
-    });
-    
-    // Log file input attributes for debugging iOS picker
-    if (fileInputRef.current) {
-      console.log('📷 [SmartInputBar] File input config:', {
-        accept: fileInputRef.current.getAttribute('accept'),
-        capture: fileInputRef.current.getAttribute('capture') || 'none (shows iOS action sheet)',
-        multiple: fileInputRef.current.hasAttribute('multiple'),
-        isMobile,
-        expectedBehavior: isMobile 
-          ? 'iOS action sheet: Take Photo / Photo Library / Browse'
-          : 'Desktop file picker with multiple selection'
-      });
-    }
-  }, [isMobile]);
+  // Device detection for mobile file handling
+  // File input configuration for iOS picker (capture handled via attribute)
   
   // Handle file upload completion - send to chat and analyze PDFs
   const handleFileUploaded = React.useCallback(async (uploadResult: any, file?: File) => {
-    console.log('📤 Sending file to chat:', uploadResult);
-    
     // Detect MIME type from file or extension
     let mimeType = 'application/octet-stream';
     if (file && file.type) {

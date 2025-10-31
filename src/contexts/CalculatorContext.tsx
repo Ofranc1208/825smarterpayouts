@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, ReactNode, useState, useCallback } from 'react';
+import React, { createContext, useContext, ReactNode, useState, useCallback, useMemo } from 'react';
 import { useGuaranteedFlow } from '../hooks/useGuaranteedFlow';
 import { 
   CalculatorOrchestrator,
@@ -40,8 +40,8 @@ interface CalculatorProviderProps {
 }
 
 export const CalculatorProvider: React.FC<CalculatorProviderProps> = ({ children, logUserChoiceAsMessage }) => {
-  // Initialize state using orchestrator
-  const initialState = CalculatorOrchestrator.initializeState();
+  // Initialize state using orchestrator - only once
+  const initialState = useMemo(() => CalculatorOrchestrator.initializeState(), []);
   
   // Use flow-specific hooks and state
   const guaranteedFlow = useGuaranteedFlow();

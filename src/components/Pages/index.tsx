@@ -27,6 +27,8 @@ export { default as TestimonialsPage } from './Testimonials/page';
 export { TestimonialsPage as Testimonials } from './Testimonials/page';
 export { StructuredSettlementInfoHubPage } from './StructuredSettlementInfoHub';
 export { StructuredSettlementInfoHubPage as StructuredSettlementInfoHub } from './StructuredSettlementInfoHub';
+export { default as GoogleRatingPage } from './GoogleRating';
+export { GoogleRatingPage as GoogleRating } from './GoogleRating';
 
 // Re-export individual components for flexibility
 export {

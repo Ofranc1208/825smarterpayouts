@@ -144,7 +144,6 @@ export const useConversationalForm = ({ setVisibleMessages, sessionId }: UseConv
     // Update the flow state (this triggers the Director to take control)
     if (type === 'guaranteed') {
       // 🎯 NEW: Add navigation link for guaranteed flow instead of rendering component
-      console.log('[useConversationalForm] 🔍 Creating guaranteed link with sessionId:', sessionId);
       const guaranteedLinkMessage: ComponentMessage = {
         id: generateUniqueId(),
         type: 'component',
@@ -159,8 +158,39 @@ export const useConversationalForm = ({ setVisibleMessages, sessionId }: UseConv
       
       // Don't trigger the old flow - let the link handle navigation
     } else if (type === 'life-contingent' || type === 'dont-know') {
-      // Unified flow: both life-contingent and dont-know go to LCP flow
-      handleFlowSelect('lcp');
+      // 🎯 FIX: Create LCP link component instead of immediately starting flow
+      // This matches the Guaranteed behavior - only start flow when link is clicked
+      const lcpLinkMessage: ComponentMessage = {
+        id: generateUniqueId(),
+        type: 'component',
+        componentType: 'CalculationLink',
+        componentData: {
+          text: 'Start Your Calculation →',
+          href: `/calculations/lcp?sessionId=${sessionId}`,
+          style: {
+            display: 'block',
+            maxWidth: '224px',
+            width: '100%',
+            padding: '12.8px 19.2px',
+            background: 'linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%)',
+            color: '#047857',
+            border: '2px solid #059669',
+            borderRadius: '14px',
+            textAlign: 'center',
+            margin: '8px auto',
+            cursor: 'pointer',
+            textDecoration: 'none',
+            fontWeight: '700',
+            fontSize: '0.76rem',
+            boxShadow: '0 4px 12px rgba(5, 150, 105, 0.15)',
+            transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)'
+          }
+        }
+      };
+      setVisibleMessages(prev => [...prev, lcpLinkMessage]);
+      
+      // Don't trigger the flow - let the link handle navigation
+      // REMOVED: handleFlowSelect('lcp');
     }
   }, [advanceConversation, handleFlowSelect, setVisibleMessages, sessionId]);
 

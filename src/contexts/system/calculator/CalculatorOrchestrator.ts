@@ -27,7 +27,6 @@ export class CalculatorOrchestrator {
    * Initialize calculator state
    */
   static initializeState(): CalculatorState {
-    console.log('[CalculatorOrchestrator] Initializing state');
     return CalculatorStateService.createInitialState();
   }
 
@@ -45,13 +44,10 @@ export class CalculatorOrchestrator {
   ): CalculatorActions {
     return {
       startCalculator: () => {
-        console.log('[CalculatorOrchestrator] Starting calculator');
         flowHandlers.guaranteed.startCalculator();
       },
 
       handleFlowSelect: (flow: FlowType) => {
-        console.log('[CalculatorOrchestrator] Selecting flow:', flow);
-        
         const startingStep = CalculatorFlowService.getStartingStep(flow);
         
         switch (flow) {
@@ -68,11 +64,9 @@ export class CalculatorOrchestrator {
       },
 
       goToNextStep: (step: CalculatorStep) => {
-        console.log('[CalculatorOrchestrator] Going to step:', step);
-        
         const flowType = CalculatorFlowService.routeStep(step);
         if (!flowType) {
-          console.warn('[CalculatorOrchestrator] Unknown flow for step:', step);
+          console.error('[CalculatorOrchestrator] Unknown flow for step:', step);
           return;
         }
 
@@ -90,8 +84,6 @@ export class CalculatorOrchestrator {
       },
 
       updateFormData: (data: Partial<CalculatorFormData>) => {
-        console.log('[CalculatorOrchestrator] Updating form data:', data);
-        
         if (data.guaranteedData) {
           flowHandlers.guaranteed.updateFormData(data.guaranteedData);
         }
@@ -102,68 +94,55 @@ export class CalculatorOrchestrator {
 
       // Guaranteed Flow Actions
       handleGuaranteedModeSelect: (mode: string) => {
-        console.log('[CalculatorOrchestrator] Guaranteed mode select:', mode);
         flowHandlers.guaranteed.handleModeSelect(mode);
       },
 
       handleIncreaseSelect: (rate: number) => {
-        console.log('[CalculatorOrchestrator] Increase select:', rate);
         flowHandlers.guaranteed.handleIncreaseSelect(rate);
       },
 
       handleAmountNext: () => {
-        console.log('[CalculatorOrchestrator] Amount next');
         flowHandlers.guaranteed.handleAmountNext();
       },
 
       handleDatesNext: () => {
-        console.log('[CalculatorOrchestrator] Dates next');
         flowHandlers.guaranteed.handleDatesNext();
       },
 
       handleReviewCalculate: () => {
-        console.log('[CalculatorOrchestrator] Review calculate');
         flowHandlers.guaranteed.handleReviewCalculate();
       },
 
       // LCP Flow Actions
       handleLcpPaymentNext: (data: LCPPaymentData) => {
-        console.log('[CalculatorOrchestrator] LCP payment next:', data);
         flowHandlers.lcp.handlePaymentNext(data);
       },
 
       handleLcpDetailsNext: (data: LCPDetailsData) => {
-        console.log('[CalculatorOrchestrator] LCP details next:', data);
         flowHandlers.lcp.handleDetailsNext(data);
       },
 
       handleLcpProfileNext: (data: LCPProfileData) => {
-        console.log('[CalculatorOrchestrator] LCP profile next:', data);
         flowHandlers.lcp.handleProfileNext(data);
       },
 
       handleLcpLifestyleNext: (data: LCPLifestyleData) => {
-        console.log('[CalculatorOrchestrator] LCP lifestyle next:', data);
         flowHandlers.lcp.handleLifestyleNext(data);
       },
 
       handleLcpHealthNext: (data: LCPHealthData) => {
-        console.log('[CalculatorOrchestrator] LCP health next:', data);
         flowHandlers.lcp.handleHealthNext(data);
       },
 
       handleLcpCalculate: (data: Partial<any>) => {
-        console.log('[CalculatorOrchestrator] LCP calculate:', data);
         flowHandlers.lcp.handleCalculate(data);
       },
 
       handleLcpBackToReview: () => {
-        console.log('[CalculatorOrchestrator] LCP back to review');
         flowHandlers.lcp.handleBackToReview();
       },
 
       triggerReprompt: () => {
-        console.log('[CalculatorOrchestrator] Triggering reprompt');
         const currentState = getState();
         const newCounter = CalculatorStateService.incrementRepromptCounter(currentState.repromptCounter);
         setState({ repromptCounter: newCounter });

@@ -60,7 +60,6 @@ export class GuaranteedFlowHandler implements FlowHandler {
    * Start calculator flow
    */
   startCalculator(): void {
-    console.log('[GuaranteedFlowHandler] Starting calculator');
     this.guaranteedFlow.startCalculator();
   }
 

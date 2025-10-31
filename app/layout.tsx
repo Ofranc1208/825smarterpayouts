@@ -138,6 +138,7 @@ export default function RootLayout({
         <ErrorBoundary>
           {/* Navigation Bridge - conditionally shows navbar from src/Navigation system */}
           <ConditionalNavbar />
+          
           {children}
           {/* Global Footer - appears on all pages */}
           <Footer />

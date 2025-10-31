@@ -37,20 +37,27 @@ export default function HeroCTA({
       flexWrap: "wrap",
       flexDirection
     }}>
-      {buttons.map((button) => (
-        <Button
-          key={button.id}
-          as="a"
-          href={button.href}
-          variant={button.id === 'instant-offer' ? 'technology-primary' : 'technology-secondary'}
-          size="lg"
-          enhancedHover={true}
-          shimmer={true}
-          shimmerDelay={button.id === 'instant-offer' ? 0 : 1}
-        >
-          {button.text}
-        </Button>
-      ))}
+      {buttons.map((button) => {
+        // Use provided variant if it's a technology variant, otherwise use button.id logic
+        const variant = button.variant === 'technology-primary' || button.variant === 'technology-secondary' 
+          ? button.variant 
+          : button.id === 'instant-offer' ? 'technology-primary' : 'technology-secondary';
+        
+        return (
+          <Button
+            key={button.id}
+            as="a"
+            href={button.href}
+            variant={variant}
+            size="lg"
+            enhancedHover={true}
+            shimmer={true}
+            shimmerDelay={button.id === 'instant-offer' ? 0 : 1}
+          >
+            {button.text}
+          </Button>
+        );
+      })}
     </div>
   );
 }

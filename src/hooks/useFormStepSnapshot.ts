@@ -14,14 +14,12 @@ export function useFormStepSnapshot() {
     const context = useContext(CalculatorContext);
     
     if (!context) {
-      console.log('[useFormStepSnapshot] CalculatorContext not available');
       return null;
     }
     
     const currentStep = context.currentStep;
 
     if (!currentStep) {
-      console.log('[useFormStepSnapshot] No current step available');
       return null;
     }
 

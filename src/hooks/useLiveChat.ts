@@ -92,8 +92,6 @@ export const useLiveChat = (options: UseLiveChatOptions): UseLiveChatReturn => {
       setError(null);
       notifiedSpecialistId.current = null; // Reset notification tracking
 
-      console.log('[useLiveChat] 🚀 Initializing live chat...', { sessionId, userId });
-
       // Initialize services if not already done
       if (!liveChatService.current) {
         liveChatService.current = new LiveChatService();
@@ -115,7 +113,6 @@ export const useLiveChat = (options: UseLiveChatOptions): UseLiveChatReturn => {
         customerId ?? userId // Pass customerId, fallback to userId
       );
 
-      console.log('[useLiveChat] ✅ Live chat session created:', createdSessionId);
       // Persist created session id for subsequent actions
       liveSessionIdRef.current = createdSessionId;
 
@@ -123,8 +120,6 @@ export const useLiveChat = (options: UseLiveChatOptions): UseLiveChatReturn => {
       messageUnsubscribe.current = liveChatService.current.onMessage(
         createdSessionId,
         (message) => {
-          console.log('[useLiveChat] 📨 New message received:', message);
-          
           // Handle typing indicators
           if (message.senderType === 'specialist') {
             setIsSpecialistTyping(false);
@@ -141,8 +136,6 @@ export const useLiveChat = (options: UseLiveChatOptions): UseLiveChatReturn => {
       sessionUnsubscribe.current = liveChatService.current.onSessionUpdate(
         createdSessionId,
         async (updatedSession) => {
-          console.log('[useLiveChat] 🔄 Session updated:', updatedSession);
-
           // Check if specialist was assigned (prevent duplicate notifications)
           if (updatedSession.specialistId && updatedSession.specialistId !== notifiedSpecialistId.current) {
             const assignedSpecialist = await specialistService.current!.getSpecialist(
@@ -152,7 +145,6 @@ export const useLiveChat = (options: UseLiveChatOptions): UseLiveChatReturn => {
             if (assignedSpecialist) {
               setSpecialist(assignedSpecialist);
               notifiedSpecialistId.current = updatedSession.specialistId;
-              console.log('[useLiveChat] 👤 Specialist assigned:', assignedSpecialist);
               
               if (onSpecialistAssigned) {
                 onSpecialistAssigned(assignedSpecialist);
@@ -162,7 +154,6 @@ export const useLiveChat = (options: UseLiveChatOptions): UseLiveChatReturn => {
 
           // Check if session ended
           if (updatedSession.status === 'completed') {
-            console.log('[useLiveChat] ✅ Session completed');
             setIsLiveChatActive(false);
             
             if (onSessionEnd) {
@@ -174,14 +165,11 @@ export const useLiveChat = (options: UseLiveChatOptions): UseLiveChatReturn => {
 
       // DO NOT auto-assign specialist - wait for manual acceptance from dashboard
       // The specialist will be assigned when they accept the chat from the IncomingChatAlert
-      console.log('[useLiveChat] ⏳ Session created, waiting for specialist to accept...');
-
+      
       // Mark as active (session is active, waiting for specialist)
       setIsLiveChatActive(true);
       setConnectionStatus('connected');
       setIsConnecting(false);
-
-      console.log('[useLiveChat] ✅ Live chat initialized successfully');
       
       // Return the sessionId so it can be used by the queue component
       return createdSessionId;
@@ -205,12 +193,8 @@ export const useLiveChat = (options: UseLiveChatOptions): UseLiveChatReturn => {
     }
 
     try {
-      console.log('[useLiveChat] 📤 Sending message:', content);
-      
       const sid = liveSessionIdRef.current ?? sessionId;
       await liveChatService.current.sendMessage(sid, content, userId, 'user');
-
-      console.log('[useLiveChat] ✅ Message sent successfully');
     } catch (err) {
       console.error('[useLiveChat] ❌ Failed to send message:', err);
       setError(err instanceof Error ? err.message : 'Failed to send message');
@@ -226,8 +210,6 @@ export const useLiveChat = (options: UseLiveChatOptions): UseLiveChatReturn => {
     }
 
     try {
-      console.log('[useLiveChat] 🛑 Ending live chat session...');
-      
       const sid = liveSessionIdRef.current ?? sessionId;
       await liveChatService.current.endLiveChatSession(sid, 'user_ended');
       
@@ -235,8 +217,6 @@ export const useLiveChat = (options: UseLiveChatOptions): UseLiveChatReturn => {
       setSpecialist(null);
       setConnectionStatus('disconnected');
       notifiedSpecialistId.current = null;
-      
-      console.log('[useLiveChat] ✅ Live chat ended successfully');
       
       if (onSessionEnd) {
         onSessionEnd();
@@ -252,8 +232,6 @@ export const useLiveChat = (options: UseLiveChatOptions): UseLiveChatReturn => {
    */
   useEffect(() => {
     return () => {
-      console.log('[useLiveChat] 🧹 Cleaning up live chat...');
-      
       // Unsubscribe from listeners
       if (messageUnsubscribe.current) {
         messageUnsubscribe.current();

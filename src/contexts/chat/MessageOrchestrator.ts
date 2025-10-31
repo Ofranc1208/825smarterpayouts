@@ -24,8 +24,6 @@ export class MessageOrchestrator {
   async processMessage(message: string | FileMessage): Promise<void> {
     const { setVisibleMessages, setIsTyping, setIsLoading } = this.config;
 
-    console.log('[MessageOrchestrator] Processing message:', typeof message === 'string' ? message : `File: ${message.content.name}`);
-
     // Create user message
     const newUserMessage = this.createUserMessage(message);
     
@@ -36,10 +34,8 @@ export class MessageOrchestrator {
 
     try {
       if (typeof message === 'string') {
-        console.log('[MessageOrchestrator] Processing text message');
         await this.textProcessor.processTextMessage(message, newUserMessage as TextMessage);
       } else {
-        console.log('[MessageOrchestrator] Processing file message:', message.content.mime);
         await this.fileProcessor.processFileMessage(message);
       }
     } catch (error) {

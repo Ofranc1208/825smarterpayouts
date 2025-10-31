@@ -1,9 +1,6 @@
 "use client";
 
 import React, { Suspense } from 'react';
-import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
-import { useAssistant } from '../../../contexts/AssistantContext';
 import styles from './LCPStepContainer.module.css';
 
 interface LCPStepContainerProps {
@@ -14,15 +11,6 @@ interface LCPStepContainerProps {
 }
 
 const LCPStepContainerContent: React.FC<LCPStepContainerProps> = ({ title, children, currentStep, totalSteps }) => {
-  const searchParams = useSearchParams();
-  const sessionId = searchParams.get('sessionId');
-  const { openAssistant } = useAssistant();
-
-  // Build the back URL with session ID and chat=open
-  const backUrl = sessionId
-    ? `/mint-intelligent-chat?sessionId=${sessionId}&chat=open`
-    : '/mint-intelligent-chat?chat=open';
-
   return (
     <div className={styles.container}>
       <header className={styles.header}>
