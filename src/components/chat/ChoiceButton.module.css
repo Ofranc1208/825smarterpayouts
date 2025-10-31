@@ -27,7 +27,7 @@
   }
 }
 
-/* Main button styling */
+/* Main button styling - entire area is clickable */
 .choiceButton {
   display: flex;
   align-items: center;
@@ -48,6 +48,9 @@
   box-shadow: 0 4px 12px rgba(5, 150, 105, 0.08), 0 2px 8px rgba(0, 0, 0, 0.05);
   position: relative;
   overflow: hidden;
+  /* Ensure entire button area is clickable */
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Staggered entrance animation */
@@ -75,7 +78,7 @@
   transform: translateY(0) scale(0.98);
 }
 
-/* Live indicator dot */
+/* Live indicator dot - decorative only, doesn't block clicks */
 .liveIndicator {
   position: absolute;
   top: 12px;
@@ -85,9 +88,11 @@
   border-radius: 50%;
   background: #22c55e;
   animation: livePulse 2s ease-in-out infinite;
+  pointer-events: none; /* Ensure clicks pass through to button */
+  z-index: 1;
 }
 
-/* Icon container */
+/* Icon container - fully clickable as part of button */
 .iconContainer {
   display: flex;
   align-items: center;
@@ -100,15 +105,17 @@
   flex-shrink: 0;
   font-size: 1.5rem;
   transition: all 0.3s ease;
+  pointer-events: none; /* Clicks pass through to parent button */
 }
 
-/* Button text */
+/* Button text - fully clickable as part of button */
 .buttonText {
   flex: 1;
   line-height: 1.4;
+  pointer-events: none; /* Clicks pass through to parent button */
 }
 
-/* Arrow icon */
+/* Arrow icon - fully clickable as part of button */
 .arrowIcon {
   font-size: 1.5rem;
   color: #9ca3af;
@@ -118,6 +125,7 @@
   justify-content: center;
   width: 24px;
   height: 24px;
+  pointer-events: none; /* Clicks pass through to parent button */
 }
 
 /* Ripple effect container */
