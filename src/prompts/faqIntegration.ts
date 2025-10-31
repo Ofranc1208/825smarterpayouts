@@ -34,7 +34,7 @@ A: Once you accept your quote, we handle all the court paperwork. The judge will
 ### Process Questions
 
 **Q: How do I get a quote?**
-A: Use our AI-powered Early Payout Calculator to get an instant, secure quote — no personal data, no phone calls required. Just provide your payment details and timing. The whole process takes 2-3 minutes and you'll get an immediate estimate.
+A: Use our AI-powered Early Payout Calculator to get an instant, secure quote — no personal data, no phone calls required. Just provide your payment details and timing. The whole process takes under 2 minutes and you'll get an immediate estimate guranteed.
 
 **Q: What if I only want to sell some of my payments?**
 A: Absolutely! You can sell just a portion of your future payments and keep the rest. This is called a "partial sale" and many clients choose this option to balance immediate needs with future security. You have complete flexibility.

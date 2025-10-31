@@ -16,6 +16,7 @@ import { getContactContextHint } from '../../prompts/contactIntegration';
 import { getTestimonialsContextHint } from '../../prompts/testimonialsIntegration';
 import { getProcessContextHint } from '../../prompts/processIntegration';
 import { getCompanyStatsContextHint } from '../../prompts/companyStatsIntegration';
+import { getCalculatorContextHint } from '../../prompts/calculatorIntegration';
 
 // Safe vector manager import
 let vectorManager: any = null;
@@ -43,6 +44,7 @@ export interface ContextHints {
   testimonials: string;
   process: string;
   companyStats: string;
+  calculator: string;
 }
 
 /**
@@ -95,7 +97,8 @@ export function generateContextHints(userQuery: string): ContextHints {
     contact: getContactContextHint(userQuery),
     testimonials: getTestimonialsContextHint(userQuery),
     process: getProcessContextHint(userQuery),
-    companyStats: getCompanyStatsContextHint(userQuery)
+    companyStats: getCompanyStatsContextHint(userQuery),
+    calculator: getCalculatorContextHint(userQuery)
   };
 }
 

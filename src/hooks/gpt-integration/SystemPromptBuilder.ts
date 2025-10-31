@@ -13,6 +13,7 @@ import { CONTACT_INTEGRATION_CONTENT } from '../../prompts/contactIntegration';
 import { TESTIMONIALS_INTEGRATION_CONTENT } from '../../prompts/testimonialsIntegration';
 import { PROCESS_INTEGRATION_CONTENT } from '../../prompts/processIntegration';
 import { COMPANY_STATS_INTEGRATION_CONTENT } from '../../prompts/companyStatsIntegration';
+import { CALCULATOR_INTEGRATION_CONTENT } from '../../prompts/calculatorIntegration';
 import { RetrievedContext, ContextHints } from './ContextRetriever';
 
 export interface SystemPromptConfig {
@@ -67,8 +68,13 @@ ${contextHints.companyStats}
 ${FAQ_INTEGRATION_CONTENT}
 ${contextHints.faq}
 
+🧮 CALCULATOR SYSTEM GUIDE:
+${CALCULATOR_INTEGRATION_CONTENT}
+${contextHints.calculator || ''}
+
 💬 CONVERSATION RULES (use only when direct responses don't apply):
 - For FAQ questions: Reference the FAQ content above and provide clear, direct answers
+- For calculator questions: Reference the Calculator System Guide, show ONE example first, offer more if requested
 - For process questions: Walk through our 4-step process with appropriate detail
 - For company questions: Use our statistics and differentiators naturally
 - For testimonials: Share relevant customer experiences when appropriate
