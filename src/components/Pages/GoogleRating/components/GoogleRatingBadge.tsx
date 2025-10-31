@@ -24,7 +24,7 @@ export function GoogleRatingBadge({
       itemScope
       itemType="https://schema.org/AggregateRating"
       role="status"
-      aria-label={`${rating} star rating awarded by Google. Top 1% of financial tools.`}
+      aria-label={`${rating} star rating recognized by Google. Top 1% of financial tools.`}
       style={{
         display: 'inline-flex',
         flexDirection: 'column',
@@ -98,7 +98,7 @@ export function GoogleRatingBadge({
         marginTop: '0.2rem',
         maxWidth: '260px'
       }}>
-        Awarded by Google<br />
+        Recognized by Google<br />
         <span style={{ color: COLORS.primary.main, fontWeight: '500' }}>
           Only top 1% of financial tools
         </span>

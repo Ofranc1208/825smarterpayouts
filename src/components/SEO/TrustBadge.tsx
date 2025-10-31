@@ -16,7 +16,7 @@ interface TrustBadgeProps {
 /**
  * TrustBadge Component
  * Simple Google rating badge displaying: ★★★★★ 4.9 rating
- * Secondary line: Awarded by Google - Only top 1% of financial tools
+ * Secondary line: Recognized by Google - Only top 1% of financial tools
  * Includes microdata for SEO and accessibility
  */
 export default function TrustBadge({
@@ -37,7 +37,7 @@ export default function TrustBadge({
       itemScope 
       itemType="https://schema.org/SoftwareApplication"
       role="status"
-      aria-label={`${rating} star rating awarded by Google. Top 1% of financial tools. Free application with ${reviewCount} reviews.`}
+      aria-label={`${rating} star rating recognized by Google. Top 1% of financial tools. Free application with ${reviewCount} reviews.`}
       style={href ? { cursor: 'pointer' } : {}}
     >
       {/* Microdata for SEO - Google crawlers */}
@@ -61,7 +61,7 @@ export default function TrustBadge({
       
       {/* Award Text */}
       <div className={styles.subtext}>
-        Awarded by Google - Only top 1% of financial tools
+        Recognized by Google - Only top 1% of financial tools
       </div>
     </div>
   );
