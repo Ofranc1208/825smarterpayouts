@@ -1,6 +1,8 @@
 // Validation helpers for LCP calculator
 // ======================================
 
+import { getMaxEndDateByAge, getMaxYearsByAge, getBaseReferenceDate } from './dateHelpers';
+
 export interface ValidationResult {
   isValid: boolean;
   error?: string;
@@ -172,6 +174,54 @@ export function validateOfferThreshold(amount: number, threshold: number = VALID
       isValid: false,
       error: `Offer amount must be at least $${threshold.toLocaleString()} to proceed`
     };
+  }
+
+  return { isValid: true };
+}
+
+/**
+ * Validate date range with age-based maximum end date cap
+ * Maximum calculation: (Today + 6 months) + age-based years
+ * 
+ * @param startDate - Start date string (YYYY-MM-DD)
+ * @param endDate - End date string (YYYY-MM-DD)
+ * @param ageRange - Optional age range string for age-based validation
+ * @returns Validation result with age-specific error messages
+ */
+export function validateDateRangeWithAge(
+  startDate: string, 
+  endDate: string, 
+  ageRange?: string
+): ValidationResult {
+  // First run standard validation
+  const standardValidation = validateDateRange(startDate, endDate);
+  if (!standardValidation.isValid) {
+    return standardValidation;
+  }
+
+  // If age range provided, check age-based absolute maximum
+  if (ageRange) {
+    const baseDate = getBaseReferenceDate(); // Today + 6 months
+    const maxEndDate = getMaxEndDateByAge(ageRange);
+    const maxYears = getMaxYearsByAge(ageRange);
+    const end = new Date(endDate);
+    const start = new Date(startDate);
+
+    // Check if end date exceeds age-based maximum
+    if (end > maxEndDate) {
+      return {
+        isValid: false,
+        error: `Based on your age range, end date cannot exceed ${maxYears} years from ${baseDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} (maximum: ${maxEndDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })})`
+      };
+    }
+
+    // Also check start date (shouldn't exceed max either)
+    if (start > maxEndDate) {
+      return {
+        isValid: false,
+        error: `Based on your age range, start date cannot exceed ${maxYears} years from ${baseDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} (maximum: ${maxEndDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })})`
+      };
+    }
   }
 
   return { isValid: true };

@@ -25,3 +25,12 @@ export const UTILITY_CLASSES = {
   FORM_ROW: 'formRow',
   FORM_COLUMN: 'formColumn'
 } as const;
+
+// Date helper exports
+export { 
+  getBaseReferenceDate,
+  getMaxYearsByAge,
+  getMaxEndDateByAge,
+  getMaxEndDateStringByAge,
+  getMinStartDateString
+} from './dateHelpers';

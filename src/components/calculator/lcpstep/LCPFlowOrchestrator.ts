@@ -192,7 +192,8 @@ export const createLCPFlowConfig = (components: {
       getInitialData: (formData) => ({
         startDate: formData.detailsData?.startDate,
         endDate: formData.detailsData?.endDate,
-        amount: formData.paymentData?.amount
+        amount: formData.paymentData?.amount,
+        ageRange: formData.profileData?.ageRange
       }),
 
       transformData: (stepOutput, formData) => ({

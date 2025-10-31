@@ -69,7 +69,17 @@ const GuaranteedPaymentAmountOverview: React.FC<GuaranteedPaymentAmountOverviewP
   const handleAmountChange = (value: string) => {
     const sanitized = sanitizeNumericInput(value);
     setPaymentAmount(sanitized);
-    if (errors.paymentAmount) {
+    
+    // Validate immediately and show error if invalid
+    if (sanitized) {
+      const amountValidation = validatePaymentAmount(sanitized);
+      if (!amountValidation.isValid) {
+        setErrors(prev => ({ ...prev, paymentAmount: amountValidation.error || '' }));
+      } else {
+        setErrors(prev => ({ ...prev, paymentAmount: '' }));
+      }
+    } else {
+      // Clear error if field is empty
       setErrors(prev => ({ ...prev, paymentAmount: '' }));
     }
   };

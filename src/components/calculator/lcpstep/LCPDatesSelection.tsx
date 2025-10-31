@@ -3,7 +3,8 @@
 import React, { useState } from 'react';
 import LCPStepContainer from './LCPStepContainer';
 import { LCPButton, LCPSection, LCPFormInput, LCPNavigationButton, QuickHelpBadge } from './shared';
-import { validatePaymentAmount, validateDateRange, sanitizeNumericInput } from './utils/validationHelpers';
+import { validatePaymentAmount, validateDateRange, validateDateRangeWithAge, sanitizeNumericInput } from './utils/validationHelpers';
+import { getMaxEndDateStringByAge, getMinStartDateString } from './utils/dateHelpers';
 import layout from './utils/LCPLayout.module.css';
 import utilities from './utils/LCPUtilities.module.css';
 
@@ -12,6 +13,7 @@ interface Props {
     startDate?: string;
     endDate?: string;
     amount?: string;
+    ageRange?: string;
   };
   onNext: (data: { startDate: string; endDate: string; amount: string }) => void;
   onBack?: () => void;
@@ -30,6 +32,14 @@ const LCPDatesSelection: React.FC<Props> = ({ initialData, onNext, onBack, curre
     dates?: string;
   }>({});
 
+  // Calculate maximum end date based on age range
+  const maxEndDateString = initialData?.ageRange 
+    ? getMaxEndDateStringByAge(initialData.ageRange)
+    : undefined;
+  
+  // Calculate minimum start date (3 months from today)
+  const minStartDateString = getMinStartDateString();
+
   // Update state when initialData changes (for edit functionality)
   React.useEffect(() => {
     if (initialData?.startDate) setStartDate(initialData.startDate);
@@ -42,7 +52,7 @@ const LCPDatesSelection: React.FC<Props> = ({ initialData, onNext, onBack, curre
     const amountValidation = validatePaymentAmount(amount);
     if (!amountValidation.isValid) return false;
 
-    const dateValidation = validateDateRange(startDate, endDate);
+    const dateValidation = validateDateRangeWithAge(startDate, endDate, initialData?.ageRange);
     if (!dateValidation.isValid) return false;
 
     return true;
@@ -56,7 +66,7 @@ const LCPDatesSelection: React.FC<Props> = ({ initialData, onNext, onBack, curre
       errors.amount = amountValidation.error;
     }
 
-    const dateValidation = validateDateRange(startDate, endDate);
+    const dateValidation = validateDateRangeWithAge(startDate, endDate, initialData?.ageRange);
     if (!dateValidation.isValid) {
       errors.dates = dateValidation.error;
     }
@@ -75,11 +85,21 @@ const LCPDatesSelection: React.FC<Props> = ({ initialData, onNext, onBack, curre
     }
   };
 
-  // Handle amount input with sanitization
+  // Handle amount input with sanitization and real-time validation
   const handleAmountChange = (value: string) => {
     const sanitized = sanitizeNumericInput(value);
     setAmount(sanitized);
-    if (validationErrors.amount) {
+    
+    // Validate immediately and show error if invalid
+    if (sanitized) {
+      const amountValidation = validatePaymentAmount(sanitized);
+      if (!amountValidation.isValid) {
+        setValidationErrors(prev => ({ ...prev, amount: amountValidation.error }));
+      } else {
+        setValidationErrors(prev => ({ ...prev, amount: undefined }));
+      }
+    } else {
+      // Clear error if field is empty
       setValidationErrors(prev => ({ ...prev, amount: undefined }));
     }
   };
@@ -89,7 +109,7 @@ const LCPDatesSelection: React.FC<Props> = ({ initialData, onNext, onBack, curre
     setStartDate(value);
     // Validate immediately if we have both dates
     if (value && endDate) {
-      const dateValidation = validateDateRange(value, endDate);
+      const dateValidation = validateDateRangeWithAge(value, endDate, initialData?.ageRange);
       if (!dateValidation.isValid) {
         setValidationErrors(prev => ({ ...prev, dates: dateValidation.error }));
       } else {
@@ -104,7 +124,7 @@ const LCPDatesSelection: React.FC<Props> = ({ initialData, onNext, onBack, curre
     setEndDate(value);
     // Validate immediately if we have both dates
     if (startDate && value) {
-      const dateValidation = validateDateRange(startDate, value);
+      const dateValidation = validateDateRangeWithAge(startDate, value, initialData?.ageRange);
       if (!dateValidation.isValid) {
         setValidationErrors(prev => ({ ...prev, dates: dateValidation.error }));
       } else {
@@ -242,6 +262,7 @@ const LCPDatesSelection: React.FC<Props> = ({ initialData, onNext, onBack, curre
             type="date"
             value={startDate}
             onChange={handleStartDateChange}
+            min={minStartDateString}
             error={validationErrors.dates}
           />
         </LCPSection>
@@ -251,6 +272,7 @@ const LCPDatesSelection: React.FC<Props> = ({ initialData, onNext, onBack, curre
             type="date"
             value={endDate}
             onChange={handleEndDateChange}
+            max={maxEndDateString}
             error={validationErrors.dates}
           />
         </LCPSection>

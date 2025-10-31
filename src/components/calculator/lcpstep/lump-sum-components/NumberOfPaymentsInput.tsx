@@ -43,7 +43,7 @@ const NumberOfPaymentsInput: React.FC<NumberOfPaymentsInputProps> = ({
         type="text"
         value={value.toString()}
         onChange={handleChange}
-        placeholder="Click to enter number (1-10)"
+        placeholder="Enter lump sums 1-10"
         error={error}
         isValid={typeof value === 'number' && value >= 1 && value <= 10}
       />
