@@ -33,6 +33,7 @@ export function generateMetadata({ params }: Props): Metadata {
   return {
     title: `Structured Settlement Laws in ${name} | SmarterPayouts`,
     description,
+    robots: 'index, follow',
     keywords: [
       `${name} structured settlement laws`,
       `${name} court approval`,
