@@ -11,6 +11,7 @@ import GuaranteedCalculationLink from '../calculator/guaranteedstep/shared/Guara
 import ContactInfo from './ContactInfo/ContactInfo';
 import OscarFrancisCard from './OscarFrancisCard';
 import SaharBakhshCard from './SaharBakhshCard';
+import QuoteButton from './QuoteButton';
 import styles from './ChatBubble.module.css';
 // import { parseAIResponse } from '../../utils/parsing'; // No longer needed for text messages
 
@@ -79,6 +80,8 @@ const ChatMessages = () => {
         return <OscarFrancisCard {...componentData} />;
       case 'SaharBakhshCard':
         return <SaharBakhshCard {...componentData} />;
+      case 'QuoteButton':
+        return <QuoteButton {...componentData} />;
       // Add more component types here as needed
       default:
         console.warn(`Unknown component type: ${componentType}`);

@@ -119,6 +119,24 @@ export class TextMessageProcessor {
           setIsTyping(false);
           setIsLoading(false);
           return;
+        } else if (partialText.includes('[QUOTE_BUTTON_COMPONENT]')) {
+          // Replace the text message with a Quote Button component message
+          setVisibleMessages(prev => {
+            const filtered = prev.filter(m => m.id !== botMsgId);
+            return [
+              ...filtered,
+              { 
+                id: botMsgId, 
+                type: 'component', 
+                componentType: 'QuoteButton',
+                componentData: {},
+                sender: 'bot' 
+              }
+            ];
+          });
+          setIsTyping(false);
+          setIsLoading(false);
+          return;
         }
 
         if (isFirstChunk) {
@@ -175,6 +193,20 @@ export class TextMessageProcessor {
                 id: botMsgId, 
                 type: 'component', 
                 componentType: 'SaharBakhshCard',
+                componentData: {},
+                sender: 'bot' 
+              }
+            ];
+          });
+        } else if (completeText.includes('[QUOTE_BUTTON_COMPONENT]')) {
+          setVisibleMessages(prev => {
+            const filtered = prev.filter(m => m.id !== botMsgId);
+            return [
+              ...filtered,
+              { 
+                id: botMsgId, 
+                type: 'component', 
+                componentType: 'QuoteButton',
                 componentData: {},
                 sender: 'bot' 
               }
