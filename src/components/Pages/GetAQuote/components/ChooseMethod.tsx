@@ -141,7 +141,7 @@ export default function ChooseMethod() {
               shadowColor: COLORS.shadows.goldLight,
               shadowSize: '0 16px 40px'
             })}
-            onClick={() => window.location.href = 'tel:+19547649750'}
+            onClick={() => window.location.href = 'tel:+15615831280'}
           >
             {/* Icon */}
             <div style={{
@@ -187,7 +187,7 @@ export default function ChooseMethod() {
               borderRadius: BORDER_RADIUS.medium,
               border: '1px solid #fbbf24'
             }}>
-              📞 (954) 764-9750
+              📞 (561) 583-1280
             </div>
           </div>
         </div>

@@ -99,7 +99,7 @@ export default function FABSpeedDial() {
 
         {/* Call Option - Glassmorphism Style */}
         <a
-          href="tel:+19547649750"
+          href="tel:+15615831280"
           className={styles.fabItem}
           aria-label="Call Us Now"
         >

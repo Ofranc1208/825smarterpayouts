@@ -25,7 +25,7 @@ export function ContentSection() {
         }}>
           {/* Key Differentiators - Skip the Sales Pitch */}
           <div style={{
-            background: 'linear-gradient(135deg, #ffffff 0%, #f9fafb 100%)',
+            background: COLORS.backgrounds.white,
             borderRadius: BORDER_RADIUS.xxlarge,
             padding: `${SPACING.unit.xl} ${SPACING.unit.lg}`,
             boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(255, 180, 0, 0.1)',
@@ -34,18 +34,7 @@ export function ContentSection() {
             position: 'relative',
             overflow: 'hidden'
           }}>
-            {/* Decorative accent */}
-            <div style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '6px',
-              height: '100%',
-              background: 'linear-gradient(180deg, #FFB400 0%, #059669 100%)',
-              borderRadius: '0 4px 4px 0'
-            }}></div>
-            
-            <div style={{ paddingLeft: SPACING.unit.md }}>
+            <div>
               <h2 style={{
                 ...TEXT_PRESETS.h2,
                 marginBottom: SPACING.stack.sm,
@@ -56,7 +45,7 @@ export function ContentSection() {
                 fontSize: '1.25rem',
                 fontWeight: '700'
               }}>
-                Why Our 4.9★ Rating Matters: Skip the Sales Pitch
+                Why Our Rating Matters: Skip the Sales Pitch
               </h2>
               <p style={{
                 ...TEXT_PRESETS.body,
@@ -65,7 +54,7 @@ export function ContentSection() {
                 lineHeight: '1.7',
                 fontSize: '1.0625rem'
               }}>
-                Our high 4.9★ rating is a direct result of our <strong>"Skip the Sales Pitch"</strong> approach. Unlike competitors who use lengthy phone-based processes with pushy sales tactics, we provide honest, instant calculations that put you in control from the start.
+                Our high rating is a direct result of our <strong>"Skip the Sales Pitch"</strong> approach. Unlike competitors who use lengthy phone-based processes with pushy sales tactics, we provide honest, instant calculations that put you in control from the start.
               </p>
               
               {/* Comparison Section */}
@@ -102,7 +91,7 @@ export function ContentSection() {
                     lineHeight: '1.7',
                     color: COLORS.text.secondary
                   }}>
-                    <li>Instant AI-powered calculator</li>
+                    <li>Instant AI-powered platform</li>
                     <li>No phone calls required</li>
                     <li>100% transparent pricing</li>
                     <li>No sales pressure</li>
@@ -192,7 +181,7 @@ export function ContentSection() {
               lineHeight: '1.7',
               fontSize: '1rem'
             }}>
-              Our 4.9★ rating on Google reflects our commitment to excellence in several key areas:
+              Our rating on Google reflects our commitment to excellence in several key areas:
             </p>
             
             <div style={{
@@ -312,7 +301,7 @@ export function ContentSection() {
               lineHeight: '1.7',
               fontSize: '1rem'
             }}>
-              Our 4.9★ rating on Google isn't just a number—it's your assurance that you're working with a reputable, trustworthy company:
+              Our rating on Google isn't just a number—it's your assurance that you're working with a reputable, trustworthy company:
             </p>
             
             <ul style={{

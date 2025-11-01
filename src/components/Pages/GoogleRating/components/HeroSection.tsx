@@ -7,8 +7,8 @@
 'use client';
 
 import React from 'react';
-import { GoogleRatingBadge } from './GoogleRatingBadge';
 import HeroCTA from '@/src/components/Pages/AboutUs/components/HeroSection/HeroCTA';
+import LightTrustBadge from './LightTrustBadge';
 import { COLORS, SPACING } from '@/src/components/shared/styles';
 import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
@@ -20,27 +20,6 @@ export function HeroSection() {
       position: "relative",
       overflow: "hidden"
     }}>
-      {/* Decorative background elements */}
-      <div style={{
-        position: "absolute",
-        top: "-100px",
-        right: "-100px",
-        width: "400px",
-        height: "400px",
-        background: "radial-gradient(circle, rgba(255, 214, 0, 0.1) 0%, transparent 70%)",
-        borderRadius: "50%",
-        pointerEvents: "none"
-      }}></div>
-      <div style={{
-        position: "absolute",
-        bottom: "-50px",
-        left: "-50px",
-        width: "300px",
-        height: "300px",
-        background: "radial-gradient(circle, rgba(34, 197, 94, 0.08) 0%, transparent 70%)",
-        borderRadius: "50%",
-        pointerEvents: "none"
-      }}></div>
 
       <div style={{
         ...SPACING.container.styles,
@@ -63,7 +42,7 @@ export function HeroSection() {
               fontSize: 'clamp(1.5rem, 3.5vw, 2rem)',
               fontWeight: '700'
             }}>
-              SmarterPayouts: 4.9★ Rating on Google
+              Smarter Payouts Rating on Google
             </h1>
             <p style={{
               ...TEXT_PRESETS.bodyLarge,
@@ -74,19 +53,21 @@ export function HeroSection() {
               fontWeight: '500',
               lineHeight: '1.6'
             }}>
-              See Why Hundreds of Structured Settlement Owners Trust Our AI-Powered Calculator
+              Our rating on Google is based on user reviews and reflects publicly available data. Ratings are subject to change and are displayed for informational purposes only.
             </p>
             
-            {/* Custom Rating Badge Display */}
+            {/* Rating Badge Display */}
             <div style={{ 
               marginTop: SPACING.unit.lg,
               marginBottom: SPACING.unit.lg,
               display: 'flex',
               justifyContent: 'center'
             }}>
-              <GoogleRatingBadge 
+              <LightTrustBadge 
                 rating="4.9"
                 reviewCount="250"
+                category="Finance"
+                alignment="center"
               />
             </div>
 

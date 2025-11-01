@@ -467,7 +467,7 @@ export const contactPageSchema = {
     name: ORGANIZATION_NAME,
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+1-954-764-9750',
+      telephone: '+1-561-583-1280',
       contactType: 'customer service',
       areaServed: 'US',
       availableLanguage: 'English'

@@ -1,44 +1,37 @@
 "use client";
 
 import React from 'react';
-import Link from 'next/link';
-import styles from './TrustBadge.module.css';
+import styles from './LightTrustBadge.module.css';
 
-interface TrustBadgeProps {
+interface LightTrustBadgeProps {
   rating?: string;
   reviewCount?: string;
   category?: string;
   className?: string;
   alignment?: 'center' | 'left';
-  href?: string; // Optional link destination
 }
 
 /**
- * TrustBadge Component
- * Google-compliant rating badge displaying: 4.9 ★★★★★ (250) · Free · Finance
- * Matches Google Play Store format exactly for compliance
- * Includes microdata for SEO and accessibility
+ * LightTrustBadge Component
+ * Optimized for light backgrounds with dark text for proper contrast
+ * Used specifically on the platform-rating page
  */
-export default function TrustBadge({
+export default function LightTrustBadge({
   rating = '4.9',
   reviewCount = '250',
   category = 'Finance',
   className = '',
-  alignment = 'center',
-  href
-}: TrustBadgeProps) {
-  // Structured data for Google crawlers
-  // See: https://schema.org/AggregateRating
+  alignment = 'center'
+}: LightTrustBadgeProps) {
   const alignmentClass = alignment === 'left' ? styles.alignLeft : styles.alignCenter;
 
-  const badgeContent = (
+  return (
     <div 
-      className={`${styles.trustBadge} ${alignmentClass} ${className}`}
+      className={`${styles.lightTrustBadge} ${alignmentClass} ${className}`}
       itemScope 
       itemType="https://schema.org/SoftwareApplication"
       role="status"
       aria-label={`${rating} star rating with ${reviewCount} reviews. Free ${category} application.`}
-      style={href ? { cursor: 'pointer' } : {}}
     >
       {/* Microdata for SEO - Google crawlers */}
       <meta itemProp="applicationCategory" content="FinanceApplication" />
@@ -63,31 +56,7 @@ export default function TrustBadge({
         <span className={styles.separator}>·</span>
         <span className={styles.categoryText}>{category}</span>
       </div>
-      {/* Rating on Google text */}
-      {href && (
-        <div className={styles.ratingLink}>
-          Rating on Google
-        </div>
-      )}
     </div>
   );
-
-  // If href is provided, wrap in Link component
-  if (href) {
-    return (
-      <Link 
-        href={href}
-        style={{ 
-          textDecoration: 'none',
-          display: 'inline-block'
-        }}
-        aria-label={`Learn more about our ${rating} star Google rating`}
-      >
-        {badgeContent}
-      </Link>
-    );
-  }
-
-  return badgeContent;
 }
 
