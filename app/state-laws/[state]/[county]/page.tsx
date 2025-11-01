@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import dynamic from 'next/dynamic';
-import { getStateBySlug, getCountyByStateAndSlug } from '@/src/state-laws/data';
+import { getStateBySlug, getCountyByStateAndSlug, getStatesWithCountyData, getCountySlugsByState } from '@/src/state-laws/data';
 import { buildBreadcrumbJsonLd, buildWebPageSchema, buildCountyJsonLd } from '@/src/state-laws/lib/jsonld';
 import CTASection, { CountyPageCTA } from '@/src/state-laws/components/CTASection';
 import LegalDisclaimer, { CountyPageDisclaimer } from '@/src/state-laws/components/LegalDisclaimer';
@@ -51,7 +51,7 @@ export function generateMetadata({ params }: Props): Metadata {
       'county court requirements'
     ],
     alternates: {
-      canonical: `/state-laws/${stateInfo.slug}/${countyData.slug}`
+      canonical: `https://www.smarterpayouts.com/state-laws/${stateInfo.slug}/${countyData.slug}`
     },
     openGraph: {
       title: `Structured Settlement Laws in ${stateName} - ${countyData.court.name}`,
@@ -448,8 +448,6 @@ export default function CountyLawPage({ params }: Props) {
 
 // Generate static pages for all counties across all states
 export function generateStaticParams() {
-  const { getStatesWithCountyData, getCountySlugsByState } = require('@/src/state-laws/data');
-
   const params: Array<{ state: string; county: string }> = [];
 
   getStatesWithCountyData().forEach((stateSlug: string) => {

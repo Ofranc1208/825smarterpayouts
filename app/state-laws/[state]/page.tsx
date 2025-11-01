@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import dynamic from 'next/dynamic';
-import { getStateBySlug, getNeighboringStates } from '@/src/state-laws/data';
+import { getStateBySlug, getNeighboringStates, statesList, allStates } from '@/src/state-laws/data';
 import { buildStateJsonLd, buildBreadcrumbJsonLd, buildWebPageSchema } from '@/src/state-laws/lib/jsonld';
 import CTASection, { StatePageCTA } from '@/src/state-laws/components/CTASection';
 import LegalDisclaimer, { StatePageDisclaimer } from '@/src/state-laws/components/LegalDisclaimer';
@@ -41,7 +41,7 @@ export function generateMetadata({ params }: Props): Metadata {
       'state transfer requirements'
     ],
     alternates: {
-      canonical: `/state-laws/${data.slug}`
+      canonical: `https://www.smarterpayouts.com/state-laws/${data.slug}`
     },
     openGraph: {
       title: `Structured Settlement Laws in ${name}`,
@@ -281,18 +281,8 @@ export default function StateLawPage({ params }: Props) {
 
 // Generate static pages for all states at build time
 export function generateStaticParams() {
-  const { statesList, allStates } = require('@/src/state-laws/data');
-
   return statesList.map((stateName: string) => ({
     state: allStates[stateName].slug
   }));
 }
 
-// Handle 404 for invalid state slugs
-export function generateMetadataForNotFound(): Metadata {
-  return {
-    title: 'State Not Found | SmarterPayouts',
-    description: 'The requested state could not be found in our structured settlement laws database.',
-    robots: 'noindex, nofollow'
-  };
-}
