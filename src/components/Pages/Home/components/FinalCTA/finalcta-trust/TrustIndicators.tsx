@@ -35,7 +35,7 @@ export default function TrustIndicators() {
         fontSize: '0.875rem'
       }}>
         <span>📋</span>
-        <span>Florida Licensed</span>
+        <span>Registered Florida Corporation</span>
       </div>
     </div>
   );

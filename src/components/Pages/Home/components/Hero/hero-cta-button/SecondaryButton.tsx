@@ -15,17 +15,17 @@ export default function SecondaryButton() {
   return (
     <Link href="/mint-intelligent-chat" style={{
       fontWeight: '600',
-      fontSize: 'clamp(1rem, 2.5vw, 1.1rem)',
-      borderRadius: '24px',
-      boxShadow: '0 4px 16px rgba(9, 180, 77, 0.3)',
+      fontSize: 'clamp(0.8rem, 2vw, 0.88rem)',
+      borderRadius: '19px',
+      boxShadow: '0 3px 13px rgba(9, 180, 77, 0.3)',
       border: 'none',
-      padding: '16px 32px',
+      padding: '13px 26px',
       transition: 'all 0.2s ease',
       background: '#09b44d',
       color: '#fff',
       textDecoration: 'none',
       display: 'inline-block',
-      minWidth: '250px'
+      minWidth: '200px'
     }}>
       Early Payout Calculator
     </Link>

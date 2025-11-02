@@ -20,7 +20,7 @@ export default function StepGrid({ isMounted, gridColumns }: StepGridProps) {
         to="/mint-chat-active?type=calculate&source=main-process-step1"
         icon="1"
         title="Get Instant Quote"
-        text="Our AI-powered calculator analyzes your settlement and provides an instant, personalized quote with no personal information required."
+        text="Our AI-powered platform analyzes your settlement and provides an instant, personalized quote with no personal information required."
       />
       <StepCard
         to="/review-offer"

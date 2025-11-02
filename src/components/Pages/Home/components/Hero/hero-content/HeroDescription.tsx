@@ -19,7 +19,7 @@ export default function HeroDescription() {
       textShadow: '1px 1px 2px rgba(0,0,0,0.5)',
       lineHeight: '1.6'
     }}>
-      No personal info needed. Simply use our AI-powered calculator.
+      No personal info needed. Simply use our AI-powered platform.
     </p>
   );
 }

@@ -64,8 +64,8 @@ export default function HeroTitle() {
         style={{ 
           fontWeight: '700', 
           color: 'white', 
-          fontSize: 'clamp(2rem, 5vw, 2.75rem)',
-          marginBottom: '1rem',
+          fontSize: 'clamp(1.7rem, 4.25vw, 2.34rem)',
+          marginBottom: '1.07rem',
           textShadow: '2px 2px 4px rgba(0,0,0,0.5)'
         }}
       >

@@ -15,7 +15,7 @@ export default function FeaturesGrid() {
   const features = [
     {
       icon: '🧮',
-      title: 'AI-Powered Calculator',
+      title: 'AI-Powered Platform',
       description: 'Get your quote in seconds with Mint, our AI assistant. No personal information required to see your settlement value.',
       linkText: 'Try Calculator →',
       linkUrl: '/mint-chat-active?type=calculate'

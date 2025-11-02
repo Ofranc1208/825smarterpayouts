@@ -1,7 +1,5 @@
 'use client';
 
-import Link from 'next/link';
-
 /**
  * Secondary CTA Button Component
  * 
@@ -13,8 +11,8 @@ import Link from 'next/link';
  */
 export default function SecondaryCTAButton() {
   return (
-    <Link 
-      href="/contact" 
+    <a 
+      href="tel:+15615831280"
       style={{
         display: 'inline-block',
         padding: '12px 48px',
@@ -42,6 +40,6 @@ export default function SecondaryCTAButton() {
       }}
     >
       Talk to Expert
-    </Link>
+    </a>
   );
 }

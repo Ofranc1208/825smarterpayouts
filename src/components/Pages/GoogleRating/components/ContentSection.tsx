@@ -214,7 +214,7 @@ export function ContentSection() {
                   color: COLORS.text.secondary,
                   lineHeight: '1.6'
                 }}>
-                  Your information is protected with bank-level encryption. No personal data required to use our calculators.
+                  Your information is protected with bank-level encryption. No personal data required to use our platform.
                 </p>
               </div>
 
