@@ -19,7 +19,7 @@ export default function CTAButtonsContainer() {
       marginTop: '2rem',
       display: 'flex',
       flexDirection: 'column',
-      gap: '1rem',
+      gap: '1.15rem',
       alignItems: 'center'
     }}>
       <PrimaryButton />

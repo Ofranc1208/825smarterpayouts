@@ -12,13 +12,13 @@
 export default function WhyChooseTitle() {
   return (
     <h2 style={{
-      fontSize: 'clamp(2rem, 4vw, 2.5rem)',
+      fontSize: 'clamp(1.6rem, 3.2vw, 2rem)',
       fontWeight: '700',
       lineHeight: '1.2',
       marginBottom: '24px',
       color: '#2d5a27'
     }}>
-      Why Choose SmarterPayouts?
+      Why Choose Smarter Payouts?
     </h2>
   );
 }
