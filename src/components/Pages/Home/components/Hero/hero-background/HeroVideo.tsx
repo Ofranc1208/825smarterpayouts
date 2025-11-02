@@ -131,11 +131,12 @@ export default function HeroVideo() {
 
   const videoStyle: React.CSSProperties = {
     position: 'absolute',
-    top: 0,
+    top: '-15%',
     left: 0,
     width: '100%',
-    height: '100%',
+    height: '130%',
     objectFit: 'cover',
+    objectPosition: 'center center',
     zIndex: 1,
     opacity: videoLoaded && shouldPlayVideo ? 1 : 0,
     transition: 'opacity 1s cubic-bezier(0.4, 0, 0.2, 1)', // 2025: Smoother easing
@@ -145,11 +146,12 @@ export default function HeroVideo() {
 
   const posterStyle: React.CSSProperties = {
     position: 'absolute',
-    top: 0,
+    top: '-15%',
     left: 0,
     width: '100%',
-    height: '100%',
+    height: '130%',
     objectFit: 'cover',
+    objectPosition: 'center center',
     zIndex: 0,
     opacity: !videoLoaded || !shouldPlayVideo ? 1 : 0,
     transition: 'opacity 1s cubic-bezier(0.4, 0, 0.2, 1)',
