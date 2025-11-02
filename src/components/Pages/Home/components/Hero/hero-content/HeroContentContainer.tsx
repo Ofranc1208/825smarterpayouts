@@ -22,8 +22,8 @@ export default function HeroContentContainer() {
       
       {/* Google Rating Badge - Increased spacing */}
       <div style={{ 
-        marginTop: '1.5rem',
-        marginBottom: '1.5rem',
+        marginTop: '1.6rem',
+        marginBottom: '1.6rem',
         display: 'flex',
         justifyContent: 'center'
       }}>

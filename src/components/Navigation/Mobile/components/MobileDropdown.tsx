@@ -35,7 +35,7 @@ const MobileDropdown: React.FC<MobileDropdownProps> = ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: '0.75rem 1rem', // Compact padding
+    padding: '0.6rem 0.8rem', // Reduced by 20%: 0.75rem 1rem → 0.6rem 0.8rem
     backgroundColor: isHovered ? '#f3f4f6' : '#f9fafb',
     borderBottom: '1px solid #f0f0f0',
     cursor: 'pointer',
@@ -61,12 +61,17 @@ const MobileDropdown: React.FC<MobileDropdownProps> = ({
   };
 
   const itemStyle: React.CSSProperties = {
-    padding: '0.25rem 1rem', // More compact padding for better space utilization
-    marginBottom: '0.125rem', // Subtle gap between items
+    padding: '0.2rem 0.8rem', // Reduced by 20%: 0.25rem 1rem → 0.2rem 0.8rem
+    marginBottom: '0.05rem', // Further reduced spacing between dropdown items
+  };
+
+  // Wrapper style with increased spacing between dropdown sections (15% increase)
+  const dropdownWrapperStyle: React.CSSProperties = {
+    marginBottom: '0.575rem', // Increased spacing: base 0.5rem * 1.15 = 0.575rem
   };
 
   return (
-    <div>
+    <div style={dropdownWrapperStyle}>
       <div 
         style={sectionHeaderStyle} 
         onClick={onToggle}
@@ -82,7 +87,12 @@ const MobileDropdown: React.FC<MobileDropdownProps> = ({
       <div style={sectionContentStyle}>
         {items.map((item) => (
           <div key={item.href} style={itemStyle}>
-            <NavLink href={item.href} icon={item.icon} onClick={onItemClick}>
+            <NavLink 
+              href={item.href} 
+              icon={item.icon} 
+              onClick={onItemClick}
+              fontSize="0.80rem"
+            >
               {item.label}
             </NavLink>
           </div>

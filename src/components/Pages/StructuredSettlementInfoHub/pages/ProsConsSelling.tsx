@@ -9,6 +9,7 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
+import Button from '@/src/components/shared/Button';
 import { COLORS } from '@/src/components/shared/styles';
 import {
   HeroSection,
@@ -80,13 +81,26 @@ const ProsConsSelling: React.FC = () => {
         __html: `
           * { box-sizing: border-box !important; }
           body, html { margin: 0 !important; padding: 0 !important; }
-          @media (max-width: 768px) {
+          @media (max-width: 1024px) {
             .content-grid {
               grid-template-columns: 1fr !important;
+              gap: 2rem !important;
             }
             .sidebar {
               position: static !important;
               width: 100% !important;
+              max-width: 100% !important;
+            }
+          }
+          @media (max-width: 768px) {
+            .content-grid {
+              grid-template-columns: 1fr !important;
+              gap: 1.5rem !important;
+            }
+            .sidebar {
+              position: static !important;
+              width: 100% !important;
+              max-width: 100% !important;
             }
           }
         `
@@ -115,7 +129,11 @@ const ProsConsSelling: React.FC = () => {
             gap: '2rem',
             alignItems: 'start'
           }}>
-            <article>
+            {/* Main Content */}
+            <article style={{
+              minWidth: 0,
+              width: '100%'
+            }}>
               {/* Introduction */}
               <section style={{
                 background: 'white',
@@ -161,26 +179,26 @@ const ProsConsSelling: React.FC = () => {
               {/* PROS Section */}
               <section style={{
                 background: 'white',
-                padding: '2.5rem',
+                padding: 'clamp(1.5rem, 4vw, 2rem)',
                 borderRadius: '16px',
                 boxShadow: '0 4px 6px rgba(0,0,0,0.07)',
                 marginBottom: '2rem',
                 border: '1px solid #e5e7eb'
               }}>
                 <h2 style={{
-                  fontSize: '2rem',
+                  fontSize: '1.75rem',
                   fontWeight: '700',
                   color: COLORS.primary.main,
-                  marginBottom: '2rem',
+                  marginBottom: '1.5rem',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '0.75rem'
                 }}>
-                  <span style={{ fontSize: '2.5rem' }}>✅</span>
+                  <span style={{ fontSize: '1.5rem' }}>✅</span>
                   Advantages of Selling
                 </h2>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                   {[
                     {
                       title: '💰 Immediate Access to Large Lump Sum',
@@ -225,26 +243,26 @@ const ProsConsSelling: React.FC = () => {
                   ].map((pro, index) => (
                     <div key={index} style={{
                       background: 'linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%)',
-                      padding: '2rem',
+                      padding: '1.5rem',
                       borderRadius: '12px',
-                      border: '2px solid #a7f3d0'
+                      border: '1px solid #a7f3d0'
                     }}>
                       <h3 style={{
-                        fontSize: '1.25rem',
+                        fontSize: '1.125rem',
                         fontWeight: '700',
                         color: COLORS.text.primary,
-                        marginBottom: '1rem'
+                        marginBottom: '0.75rem'
                       }}>
                         {pro.title}
                       </h3>
                       <ul style={{
                         color: COLORS.text.secondary,
-                        lineHeight: '1.9',
+                        lineHeight: '1.6',
                         paddingLeft: '1.5rem',
                         margin: 0
                       }}>
                         {pro.benefits.map((benefit, idx) => (
-                          <li key={idx}>{benefit}</li>
+                          <li key={idx} style={{ marginBottom: '0.5rem' }}>{benefit}</li>
                         ))}
                       </ul>
                     </div>
@@ -254,16 +272,17 @@ const ProsConsSelling: React.FC = () => {
 
               {/* INLINE CTA after pros */}
               <div style={{
-                background: 'linear-gradient(135deg, #059669 0%, #047857 100%)',
-                padding: '2.5rem',
+                background: 'linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%)',
+                padding: '2rem',
                 borderRadius: '16px',
                 marginBottom: '2rem',
                 textAlign: 'center',
-                color: 'white'
+                border: '1px solid #d1fae5'
               }}>
                 <h3 style={{
                   fontSize: '1.5rem',
                   fontWeight: '700',
+                  color: COLORS.text.primary,
                   marginBottom: '1rem'
                 }}>
                   See What Your Settlement is Worth Today
@@ -272,49 +291,45 @@ const ProsConsSelling: React.FC = () => {
                   fontSize: '1.0625rem',
                   lineHeight: '1.7',
                   marginBottom: '1.5rem',
-                  opacity: 0.95
+                  color: COLORS.text.secondary
                 }}>
                   Get an instant, no-obligation quote in 60 seconds. See multiple scenarios and compare your options.
                 </p>
-                <Link href="/mint-chat-active?type=calculate" style={{
-                  display: 'inline-block',
-                  background: 'white',
-                  color: COLORS.primary.main,
-                  padding: '1rem 2.5rem',
-                  borderRadius: '12px',
-                  textDecoration: 'none',
-                  fontWeight: '700',
-                  fontSize: '1.125rem',
-                  boxShadow: '0 6px 20px rgba(0,0,0,0.15)',
-                  transition: 'transform 0.2s ease'
-                }}>
+                <Button
+                  as="a"
+                  href="/mint-chat-active?type=calculate"
+                  variant="technology-primary"
+                  size="sm"
+                  enhancedHover={true}
+                  shimmer={true}
+                >
                   💰 Calculate My Offer Now →
-                </Link>
+                </Button>
               </div>
 
               {/* CONS Section */}
               <section style={{
                 background: 'white',
-                padding: '2.5rem',
+                padding: 'clamp(1.5rem, 4vw, 2rem)',
                 borderRadius: '16px',
                 boxShadow: '0 4px 6px rgba(0,0,0,0.07)',
                 marginBottom: '2rem',
                 border: '1px solid #e5e7eb'
               }}>
                 <h2 style={{
-                  fontSize: '2rem',
+                  fontSize: '1.75rem',
                   fontWeight: '700',
                   color: '#dc2626',
-                  marginBottom: '2rem',
+                  marginBottom: '1.5rem',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '0.75rem'
                 }}>
-                  <span style={{ fontSize: '2.5rem' }}>⚠️</span>
+                  <span style={{ fontSize: '1.5rem' }}>⚠️</span>
                   Disadvantages & Risks
                 </h2>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                   {[
                     {
                       title: '💸 Receive Less Than Total Value',
@@ -359,26 +374,26 @@ const ProsConsSelling: React.FC = () => {
                   ].map((con, index) => (
                     <div key={index} style={{
                       background: 'linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%)',
-                      padding: '2rem',
+                      padding: '1.5rem',
                       borderRadius: '12px',
-                      border: '2px solid #fecaca'
+                      border: '1px solid #fecaca'
                     }}>
                       <h3 style={{
-                        fontSize: '1.25rem',
+                        fontSize: '1.125rem',
                         fontWeight: '700',
                         color: COLORS.text.primary,
-                        marginBottom: '1rem'
+                        marginBottom: '0.75rem'
                       }}>
                         {con.title}
                       </h3>
                       <ul style={{
                         color: COLORS.text.secondary,
-                        lineHeight: '1.9',
+                        lineHeight: '1.6',
                         paddingLeft: '1.5rem',
                         margin: 0
                       }}>
                         {con.risks.map((risk, idx) => (
-                          <li key={idx}>{risk}</li>
+                          <li key={idx} style={{ marginBottom: '0.5rem' }}>{risk}</li>
                         ))}
                       </ul>
                     </div>
@@ -388,16 +403,17 @@ const ProsConsSelling: React.FC = () => {
 
               {/* INLINE CTA after cons - Chat with AI */}
               <div style={{
-                background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
-                padding: '2.5rem',
+                background: 'linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%)',
+                padding: '2rem',
                 borderRadius: '16px',
                 marginBottom: '2rem',
                 textAlign: 'center',
-                color: 'white'
+                border: '1px solid #e9d5ff'
               }}>
                 <h3 style={{
                   fontSize: '1.5rem',
                   fontWeight: '700',
+                  color: COLORS.text.primary,
                   marginBottom: '1rem'
                 }}>
                   Not Sure if Selling is Right for You?
@@ -406,30 +422,27 @@ const ProsConsSelling: React.FC = () => {
                   fontSize: '1.0625rem',
                   lineHeight: '1.7',
                   marginBottom: '1.5rem',
-                  opacity: 0.95
+                  color: COLORS.text.secondary
                 }}>
                   Chat with Mint AI to explore your options, understand alternatives, and get personalized guidance 24/7.
                 </p>
-                <Link href="/mint-intelligent-chat" style={{
-                  display: 'inline-block',
-                  background: 'white',
-                  color: '#7c3aed',
-                  padding: '1rem 2.5rem',
-                  borderRadius: '12px',
-                  textDecoration: 'none',
-                  fontWeight: '700',
-                  fontSize: '1.125rem',
-                  boxShadow: '0 6px 20px rgba(0,0,0,0.15)',
-                  transition: 'transform 0.2s ease'
-                }}>
+                <Button
+                  as="a"
+                  href="/mint-intelligent-chat"
+                  variant="mint-chat"
+                  size="sm"
+                  enhancedHover={true}
+                  shimmer={true}
+                  shimmerDelay={1}
+                >
                   💬 Get Free AI Guidance →
-                </Link>
+                </Button>
               </div>
 
               {/* Decision Framework */}
               <section style={{
                 background: 'white',
-                padding: '2.5rem',
+                padding: 'clamp(1.5rem, 4vw, 2rem)',
                 borderRadius: '16px',
                 boxShadow: '0 4px 6px rgba(0,0,0,0.07)',
                 marginBottom: '2rem',
@@ -439,38 +452,38 @@ const ProsConsSelling: React.FC = () => {
                   fontSize: '1.75rem',
                   fontWeight: '600',
                   color: COLORS.text.primary,
-                  marginBottom: '1.5rem'
+                  marginBottom: '1.25rem'
                 }}>
                   When Selling Makes Sense
                 </h2>
                 <div style={{
                   background: 'linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%)',
-                  padding: '2rem',
+                  padding: '1.5rem',
                   borderRadius: '12px',
                   border: '1px solid #a7f3d0',
-                  marginBottom: '2rem'
+                  marginBottom: '1.5rem'
                 }}>
                   <h3 style={{
-                    fontSize: '1.25rem',
+                    fontSize: '1.125rem',
                     fontWeight: '600',
                     color: COLORS.text.primary,
-                    marginBottom: '1rem'
+                    marginBottom: '0.75rem'
                   }}>
                     ✅ Good Reasons to Sell:
                   </h3>
                   <ul style={{
                     color: COLORS.text.secondary,
-                    lineHeight: '2',
+                    lineHeight: '1.6',
                     paddingLeft: '1.5rem',
                     margin: 0
                   }}>
-                    <li>Eliminating high-interest debt (credit cards, payday loans)</li>
-                    <li>Emergency medical expenses not covered by insurance</li>
-                    <li>Business investment with clear ROI projections</li>
-                    <li>Education costs for yourself or dependents</li>
-                    <li>Down payment on income-generating property</li>
-                    <li>You have other reliable income sources</li>
-                    <li>You have a detailed financial plan for the funds</li>
+                    <li style={{ marginBottom: '0.5rem' }}>Eliminating high-interest debt (credit cards, payday loans)</li>
+                    <li style={{ marginBottom: '0.5rem' }}>Emergency medical expenses not covered by insurance</li>
+                    <li style={{ marginBottom: '0.5rem' }}>Business investment with clear ROI projections</li>
+                    <li style={{ marginBottom: '0.5rem' }}>Education costs for yourself or dependents</li>
+                    <li style={{ marginBottom: '0.5rem' }}>Down payment on income-generating property</li>
+                    <li style={{ marginBottom: '0.5rem' }}>You have other reliable income sources</li>
+                    <li style={{ marginBottom: '0.5rem' }}>You have a detailed financial plan for the funds</li>
                   </ul>
                 </div>
 
@@ -478,37 +491,37 @@ const ProsConsSelling: React.FC = () => {
                   fontSize: '1.75rem',
                   fontWeight: '600',
                   color: COLORS.text.primary,
-                  marginBottom: '1.5rem'
+                  marginBottom: '1.25rem'
                 }}>
                   When to Avoid Selling
                 </h2>
                 <div style={{
                   background: 'linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%)',
-                  padding: '2rem',
+                  padding: '1.5rem',
                   borderRadius: '12px',
                   border: '1px solid #fecaca'
                 }}>
                   <h3 style={{
-                    fontSize: '1.25rem',
+                    fontSize: '1.125rem',
                     fontWeight: '600',
                     color: COLORS.text.primary,
-                    marginBottom: '1rem'
+                    marginBottom: '0.75rem'
                   }}>
                     ⛔ Poor Reasons to Sell:
                   </h3>
                   <ul style={{
                     color: COLORS.text.secondary,
-                    lineHeight: '2',
+                    lineHeight: '1.6',
                     paddingLeft: '1.5rem',
                     margin: 0
                   }}>
-                    <li>Non-essential luxury purchases (vacations, vehicles, etc.)</li>
-                    <li>Pressure from family or friends to access money</li>
-                    <li>Gambling or speculative investments</li>
-                    <li>No clear plan for how to use the funds</li>
-                    <li>You depend on payments for basic living expenses</li>
-                    <li>Receiving government benefits that could be affected</li>
-                    <li>Acting out of impatience rather than genuine need</li>
+                    <li style={{ marginBottom: '0.5rem' }}>Non-essential luxury purchases (vacations, vehicles, etc.)</li>
+                    <li style={{ marginBottom: '0.5rem' }}>Pressure from family or friends to access money</li>
+                    <li style={{ marginBottom: '0.5rem' }}>Gambling or speculative investments</li>
+                    <li style={{ marginBottom: '0.5rem' }}>No clear plan for how to use the funds</li>
+                    <li style={{ marginBottom: '0.5rem' }}>You depend on payments for basic living expenses</li>
+                    <li style={{ marginBottom: '0.5rem' }}>Receiving government benefits that could be affected</li>
+                    <li style={{ marginBottom: '0.5rem' }}>Acting out of impatience rather than genuine need</li>
                   </ul>
                 </div>
               </section>

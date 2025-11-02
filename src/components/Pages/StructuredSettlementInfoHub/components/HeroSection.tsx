@@ -9,7 +9,7 @@
 
 'use client';
 import React from 'react';
-import Link from 'next/link';
+import Button from '@/src/components/shared/Button';
 import { COLORS } from '@/src/components/shared/styles';
 
 interface HeroSectionProps {
@@ -75,28 +75,27 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             justifyContent: "center",
             flexWrap: "wrap"
           }}>
-            <Link href="/mint-chat-active?type=calculate&source=info-hub-hero" style={{
-              display: "inline-block",
-              background: "linear-gradient(135deg, #09b44d 0%, #059669 100%)",
-              color: "white",
-              padding: "0.75rem 1.5rem",
-              borderRadius: "8px",
-              textDecoration: "none",
-              fontWeight: "600",
-              boxShadow: "0 4px 6px rgba(9, 180, 77, 0.2)",
-              transition: "transform 0.2s ease"
-            }}>💰 Get Your Quote</Link>
-            <Link href="/mint-intelligent-chat" style={{
-              display: "inline-block",
-              background: "linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)",
-              color: "white",
-              padding: "0.75rem 1.5rem",
-              borderRadius: "8px",
-              textDecoration: "none",
-              fontWeight: "600",
-              boxShadow: "0 4px 6px rgba(139, 92, 246, 0.2)",
-              transition: "transform 0.2s ease"
-            }}>💬 Chat with Mint AI</Link>
+            <Button
+              as="a"
+              href="/mint-chat-active?type=calculate&source=info-hub-hero"
+              variant="technology-primary"
+              size="sm"
+              enhancedHover={true}
+              shimmer={true}
+            >
+              💰 Get Your Quote
+            </Button>
+            <Button
+              as="a"
+              href="/mint-intelligent-chat"
+              variant="mint-chat"
+              size="sm"
+              enhancedHover={true}
+              shimmer={true}
+              shimmerDelay={1}
+            >
+              💬 Chat with Mint AI
+            </Button>
           </div>
         )}
       </div>

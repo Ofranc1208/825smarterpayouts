@@ -9,7 +9,7 @@
 
 'use client';
 import React from 'react';
-import Link from 'next/link';
+import Button from '@/src/components/shared/Button';
 import { COLORS } from '@/src/components/shared/styles';
 import type { CTASectionProps } from '../types';
 
@@ -54,34 +54,27 @@ export const CTASection: React.FC<CTASectionProps> = ({
           justifyContent: 'center',
           flexWrap: 'wrap'
         }}>
-          <Link href="/mint-chat-active?type=calculate&source=info-hub-cta" style={{
-            display: 'inline-block',
-            background: 'linear-gradient(135deg, #09b44d 0%, #059669 100%)',
-            color: 'white',
-            padding: '1rem 2rem',
-            borderRadius: '2rem',
-            textDecoration: 'none',
-            fontWeight: '600',
-            fontSize: '1.125rem',
-            boxShadow: '0 4px 15px rgba(9, 180, 77, 0.3)',
-            transition: 'transform 0.2s ease'
-          }}>
+          <Button
+            as="a"
+            href="/mint-chat-active?type=calculate&source=info-hub-cta"
+            variant="technology-primary"
+            size="sm"
+            enhancedHover={true}
+            shimmer={true}
+          >
             💰 Get Your Instant Quote
-          </Link>
-          <Link href="/mint-intelligent-chat" style={{
-            display: 'inline-block',
-            background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
-            color: 'white',
-            padding: '1rem 2rem',
-            borderRadius: '2rem',
-            textDecoration: 'none',
-            fontWeight: '600',
-            fontSize: '1.125rem',
-            boxShadow: '0 4px 15px rgba(139, 92, 246, 0.3)',
-            transition: 'transform 0.2s ease'
-          }}>
+          </Button>
+          <Button
+            as="a"
+            href="/mint-intelligent-chat"
+            variant="mint-chat"
+            size="sm"
+            enhancedHover={true}
+            shimmer={true}
+            shimmerDelay={1}
+          >
             💬 Chat with Mint AI
-          </Link>
+          </Button>
         </div>
       </div>
     </section>

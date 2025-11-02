@@ -28,7 +28,7 @@ const articles: Article[] = [
     description: 'Understand how structured settlements work, their benefits, and key decisions before cashing out.',
     image: '/assets/images/court1.jpg',
     imageAlt: 'Courtroom with judge - Structured Settlements Explained',
-    href: '/blog/structured-settlements',
+    href: '/structured-settlement-info-hub/what-is-a-structured-settlement',
     featured: true
   },
   {
@@ -37,7 +37,7 @@ const articles: Article[] = [
     description: 'Explore when it\'s smart to sell your payments and what you should watch out for in the process.',
     image: '/assets/images/sell.jpg',
     imageAlt: 'Person considering selling settlement - Should You Sell Your Settlement?',
-    href: '/blog/should-you-sell',
+    href: '/structured-settlement-info-hub/pros-cons-selling-structured-settlement',
     featured: false
   },
   {
@@ -46,7 +46,7 @@ const articles: Article[] = [
     description: 'Learn how long it typically takes to receive your payout and how SmarterPayouts speeds up the process.',
     image: '/assets/images/online.jpg',
     imageAlt: 'Laptop showing online payout - How Fast Is a Settlement Payout?',
-    href: '/blog/how-fast-payout',
+    href: '/how-fast-can-i-get-my-money',
     featured: false
   }
 ];

@@ -84,7 +84,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
   };
 
   const headerStyle: React.CSSProperties = {
-    padding: '0.625rem 1rem', // Much thinner header - reduced from 1rem to 0.625rem
+    padding: '0.32rem 1rem', // Additional 20% reduction: 0.4rem → 0.32rem
     borderBottom: '1px solid #e5e7eb', // Subtle border
     background: 'linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%)', // Subtle gradient
     display: 'flex',
@@ -100,25 +100,25 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '32px', // Slightly smaller button
-    height: '32px', // Slightly smaller button
+    width: '17px', // Additional 20% reduction: 21px → 17px
+    height: '17px', // Additional 20% reduction: 21px → 17px
     background: 'rgba(5, 150, 105, 0.08)', // Light green background
     border: 'none',
-    borderRadius: '6px', // Smaller border radius to match smaller button
-    fontSize: '1.25rem', // Smaller X icon
+    borderRadius: '3px', // Additional 20% reduction: 4px → 3px
+    fontSize: '0.65rem', // Additional 20% reduction: 0.8rem → 0.65rem
     cursor: 'pointer',
     color: '#059669',
     transition: 'all 0.2s ease',
   };
 
   const mainLinksStyle: React.CSSProperties = {
-    padding: '0.75rem 0', // Reduced vertical spacing to bring items up
+    padding: '0.6rem 0', // Reduced by 20%: 0.75rem → 0.6rem
     borderBottom: '1px solid #f3f4f6',
   };
 
   const mainLinkItemStyle: React.CSSProperties = {
-    padding: '0.375rem 1rem', // Reduced padding for more compact layout
-    marginBottom: '0.125rem', // Less space between items
+    padding: '0.3rem 0.8rem', // Reduced by 20%: 0.375rem 1rem → 0.3rem 0.8rem
+    marginBottom: '0.05rem', // Further reduced spacing between main items
   };
 
   // Handle accordion behavior: only one section can be open at a time
@@ -153,7 +153,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
         <div style={headerStyle}>
           <span style={{ 
             fontWeight: 700, 
-            fontSize: '1rem', // Slightly smaller font
+            fontSize: '0.7rem', // Additional 20% reduction: 0.875rem → 0.7rem
             color: '#059669',
             letterSpacing: '-0.01em'
           }}>

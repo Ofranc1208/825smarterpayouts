@@ -16,9 +16,10 @@ interface NavLinkProps {
   children: React.ReactNode;
   icon?: string;
   onClick?: () => void;
+  fontSize?: string; // Optional custom font size
 }
 
-const NavLink: React.FC<NavLinkProps> = ({ href, children, icon, onClick }) => {
+const NavLink: React.FC<NavLinkProps> = ({ href, children, icon, onClick, fontSize }) => {
   const pathname = usePathname();
   const isActive = pathname === href;
   const [isHovered, setIsHovered] = React.useState(false);
@@ -26,11 +27,11 @@ const NavLink: React.FC<NavLinkProps> = ({ href, children, icon, onClick }) => {
   const linkStyle: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
-    gap: icon ? '0.5rem' : '0', // Slightly reduced gap for icons
-    padding: '0.625rem 0.875rem', // More compact padding for better space utilization
+    gap: icon ? '0.35rem' : '0', // Reduced icon gap
+    padding: '0.5rem 0.7rem', // Reduced by 20%: 0.625rem 0.875rem → 0.5rem 0.7rem
     textDecoration: 'none',
     borderRadius: '8px', // Slightly larger border radius
-    fontSize: '0.9375rem', // Comfortable reading size
+    fontSize: fontSize || '0.9375rem', // Use custom fontSize if provided, otherwise default
     fontWeight: isActive ? 600 : 500,
     color: isActive ? '#059669' : (isHovered ? '#047857' : '#374151'),
     backgroundColor: isActive ? '#f0fdf4' : (isHovered ? '#f9fafb' : 'transparent'),
