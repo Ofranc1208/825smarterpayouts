@@ -13,18 +13,18 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 3vh 0 17vh;
+  padding: 1vh 0.5rem 2vh;
   margin: 0;
   animation: fadeIn 0.3s ease-out;
-  overflow: hidden;
+  overflow-y: auto;
   overscroll-behavior: none;
-  touch-action: none;
+  touch-action: pan-y;
 }
 
 /* Center overlay content when showing success state */
 .overlay:has(.overlayContent.successState) {
   align-items: center;
-  padding: 0;
+  padding: 1vh 0.5rem;
 }
 
 .overlayContent {
@@ -36,10 +36,11 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   position: relative;
   animation: scaleIn 0.3s ease-out;
-  max-height: 90vh;
-  overflow-y: visible;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
   overscroll-behavior: contain;
-  margin-top: 1vh;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 /* Remove top margin when in success state to center it */
@@ -96,14 +97,14 @@
 /* Offer Code Container */
 .offerCodeContainer {
   margin: 0.75rem auto 0.5rem !important;
-  padding: 0.5rem 0.875rem !important;
+  padding: 0.4375rem 0.75rem !important;
   background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%) !important;
   border: 2px solid #22c55e !important;
   border-radius: 8px !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 0.625rem !important;
+  gap: 0.5rem !important;
   width: fit-content !important;
   max-width: 100% !important;
   box-sizing: border-box !important;
@@ -114,7 +115,7 @@
 }
 
 .offerCodeLabel {
-  font-size: 0.75rem !important;
+  font-size: 0.6875rem !important;
   font-weight: 600 !important;
   color: #15803d !important;
   text-transform: uppercase !important;
@@ -125,12 +126,12 @@
 }
 
 .offerCodeDisplay {
-  font-size: 1rem !important;
+  font-size: 0.875rem !important;
   font-weight: 700 !important;
   color: #16a34a !important;
   font-family: 'Courier New', monospace !important;
-  letter-spacing: 0.1em !important;
-  padding: 0.375rem 0.625rem !important;
+  letter-spacing: 0.08em !important;
+  padding: 0.3125rem 0.5rem !important;
   background: #ffffff !important;
   border-radius: 6px !important;
   border: 1px solid #22c55e !important;
@@ -143,8 +144,8 @@
 
 /* Phone Call Container */
 .phoneCallContainer {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -155,19 +156,24 @@
   background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
   border: 1.5px solid #fbbf24;
   border-radius: 8px;
-  padding: 0.5rem 0.75rem;
+  padding: 0.375rem 0.625rem;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+  margin-left: auto;
+  margin-right: 0;
   text-align: center;
-  width: 100%;
+  width: auto;
+  max-width: 65%;
+  min-width: fit-content;
   box-sizing: border-box;
+  align-self: flex-end;
 }
 
 .bonusText {
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   color: #92400e;
-  margin: 0 0 0.375rem 0;
-  line-height: 1.3;
+  margin: 0 0 0.25rem 0;
+  line-height: 1.2;
   text-align: center;
 }
 
@@ -180,14 +186,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  margin-top: 0.375rem;
-  padding-top: 0.375rem;
+  gap: 0.375rem;
+  margin-top: 0.25rem;
+  padding-top: 0.25rem;
   border-top: 1px solid rgba(251, 191, 36, 0.3);
 }
 
 .expirationLabel {
-  font-size: 0.6875rem;
+  font-size: 0.625rem;
   font-weight: 600;
   color: #92400e;
   text-transform: uppercase;
@@ -195,12 +201,12 @@
 }
 
 .timerValue {
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: #dc2626;
   font-family: 'Courier New', monospace;
   background: rgba(255, 255, 255, 0.8);
-  padding: 0.2rem 0.4rem;
+  padding: 0.15rem 0.35rem;
   border-radius: 4px;
   border: 1px solid rgba(220, 38, 38, 0.3);
 }
@@ -209,19 +215,19 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.875rem 1.5rem;
+  gap: 0.375rem;
+  padding: 0.625rem 1.125rem;
   background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
   color: #ffffff;
   text-decoration: none;
   border-radius: 8px;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.875rem;
   transition: all 0.2s ease;
   box-shadow: 0 2px 8px rgba(34, 197, 94, 0.3);
   width: auto;
-  min-width: 200px;
-  min-height: 48px;
+  min-width: 180px;
+  min-height: 40px;
 }
 
 .phoneLink:hover {
@@ -278,6 +284,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.125rem;
+  align-items: stretch;
 }
 
 /* Ensure tight spacing between offer code and submit button */
@@ -302,14 +309,15 @@
   justify-content: center;
   gap: 0.75rem;
   cursor: pointer;
-  font-size: 0.875rem;
-  line-height: 1.5;
+  font-size: 0.625rem;
+  line-height: 1.4;
   width: fit-content;
   padding: 0.5rem 0.75rem;
   border-radius: 8px;
   transition: all 0.2s ease;
   background: rgba(34, 197, 94, 0.05);
   border: 2px solid rgba(34, 197, 94, 0.2);
+  white-space: nowrap;
 }
 
 .termsLabel:hover {
@@ -363,6 +371,8 @@
   align-items: center;
   gap: 0.5rem;
   flex: 1;
+  font-size: 0.625rem;
+  white-space: nowrap;
 }
 
 .termsTooltipButton {
@@ -676,9 +686,15 @@
 
 /* Responsive Design */
 @media (max-width: 640px) {
+  .overlay {
+    padding: 0.5rem 0.5rem 1rem;
+  }
+
   .overlayContent {
-    border-radius: 16px 16px 0 0;
-    padding: 1.25rem;
+    border-radius: 16px;
+    padding: 1.25rem 1rem;
+    margin-top: 0.25rem;
+    max-height: calc(100vh - 1rem);
   }
 
   .title {
