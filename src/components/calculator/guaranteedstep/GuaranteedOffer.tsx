@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { GuaranteedOfferLoadingAnimation } from './results-components';
 import { formatCurrency, validateOfferThreshold } from './utils/validationHelpers';
+import { OfferCaptureOverlay } from '../shared-results';
 import styles from './GuaranteedOffer.module.css';
 
 interface GuaranteedOfferProps {
@@ -75,42 +76,59 @@ const GuaranteedOffer: React.FC<GuaranteedOfferProps> = ({
 
   // Show the professional contract-style results
   return (
-    <div className={styles.pageContainer}>
-      {/* Contract-Inspired Document */}
-      <div className={styles.documentCard}>
-        {/* Decorative Border Corners */}
-        <div className={styles.cornerTopLeft} />
-        <div className={styles.cornerTopRight} />
-        <div className={styles.cornerBottomLeft} />
-        <div className={styles.cornerBottomRight} />
+    <>
+      <div className={styles.pageContainer}>
+        {/* Contract-Inspired Document */}
+        <div className={styles.documentCard}>
+          {/* Decorative Border Corners */}
+          <div className={styles.cornerTopLeft} />
+          <div className={styles.cornerTopRight} />
+          <div className={styles.cornerBottomLeft} />
+          <div className={styles.cornerBottomRight} />
 
-        {/* Header */}
-        <div className={styles.header}>
-          <h1 className={styles.title}>Early Payout Offer</h1>
-          <p className={styles.subtitle}>STRUCTURED SETTLEMENT VALUATION</p>
-        </div>
+          {/* Header */}
+          <div className={styles.header}>
+            <h1 className={styles.title}>Early Payout Offer</h1>
+            <p className={styles.subtitle}>STRUCTURED SETTLEMENT VALUATION</p>
+          </div>
 
-        {/* Minimum Payout - Top, Smaller, Center-Aligned */}
-        <div className={styles.minimumPayoutContainer}>
-          <p className={styles.minimumLabel}>Minimum Payout</p>
-          <p className={styles.minimumAmount}>{formatCurrency(calculationResult.minOffer)}</p>
-        </div>
+          {/* Minimum Payout - Top, Smaller, Center-Aligned */}
+          <div className={styles.minimumPayoutContainer}>
+            <p className={styles.minimumLabel}>Minimum Payout</p>
+            <p className={styles.minimumAmount}>{formatCurrency(calculationResult.minOffer)}</p>
+          </div>
 
-        {/* Maximum Payout - Center & Largest with Shimmer */}
-        <div className={styles.maximumPayoutContainer}>
-          <p className={styles.maximumLabel}>Maximum Payout</p>
-          <p className={styles.maximumAmount}>{formatCurrency(calculationResult.maxOffer)}</p>
-        </div>
+          {/* Maximum Payout - Center & Largest with Shimmer */}
+          <div className={styles.maximumPayoutContainer}>
+            <p className={styles.maximumLabel}>Maximum Payout</p>
+            <p className={styles.maximumAmount}>{formatCurrency(calculationResult.maxOffer)}</p>
+          </div>
 
-        {/* Footer Note */}
-        <div className={styles.footer}>
-          <p className={styles.disclaimer}>
-            This offer is based on the information you provided and represents an estimated range.<br />
-            Final terms subject to verification and approval.
-          </p>
+          {/* Footer Note */}
+          <div className={styles.footer}>
+            <p className={styles.disclaimer}>
+              This offer is based on the information you provided and represents an estimated range.<br />
+              Final terms subject to verification and approval.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+
+      {/* Offer Capture Overlay - Only show when results are displayed */}
+      {showResults && offerValidation.isValid && (
+        <OfferCaptureOverlay
+          calculatorType="guaranteed"
+          delaySeconds={7}
+          quoteData={{
+            minOffer: calculationResult.minOffer,
+            maxOffer: calculationResult.maxOffer,
+          }}
+          onSuccess={(data) => {
+            console.log('Offer captured:', data);
+          }}
+        />
+      )}
+    </>
   );
 };
 

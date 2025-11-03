@@ -9,7 +9,7 @@ export default function HeroHeading() {
         color: COLORS.primary.dark,
         marginBottom: "1rem"
       }}>
-        Unlock tomorrow's payments, into today's opportunities.
+        Unlock Tomorrow's Payments Into Today's Opportunities.
       </h1>
       
       <p style={{

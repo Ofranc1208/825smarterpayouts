@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offer Confirmation Email Preview</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      padding: 40px 20px;
+      line-height: 1.6;
+    }
+    .preview-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .preview-header {
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+      border-radius: 8px 8px 0 0;
+    }
+    .preview-header h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    .preview-header p {
+      font-size: 16px;
+      opacity: 0.95;
+    }
+    .email-preview {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+    }
+    .email-header {
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+      color: white;
+      padding: 40px 30px;
+      text-align: center;
+      border-radius: 8px 8px 0 0;
+    }
+    .email-header h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .email-header p {
+      font-size: 18px;
+      opacity: 0.95;
+    }
+    .email-content {
+      padding: 40px 30px;
+      background: #ffffff;
+    }
+    .greeting {
+      font-size: 18px;
+      color: #1f2937;
+      margin-bottom: 25px;
+      line-height: 1.8;
+    }
+    .offer-box {
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      border: 3px solid #3b82f6;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      text-align: center;
+    }
+    .offer-box-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1e40af;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+    .offer-amount {
+      font-size: 42px;
+      font-weight: 700;
+      color: #1e40af;
+      margin: 10px 0;
+      font-family: 'Courier New', monospace;
+    }
+    .offer-code-section {
+      background: #f9fafb;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 25px 0;
+      text-align: center;
+    }
+    .offer-code-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+    .offer-code {
+      font-size: 28px;
+      font-weight: 700;
+      color: #1f2937;
+      font-family: 'Courier New', monospace;
+      letter-spacing: 0.2em;
+      padding: 10px 20px;
+      background: white;
+      border: 2px solid #3b82f6;
+      border-radius: 6px;
+      display: inline-block;
+      margin-top: 5px;
+    }
+    .info-section {
+      margin: 30px 0;
+      padding: 25px;
+      background: #f9fafb;
+      border-radius: 8px;
+      border-left: 4px solid #22c55e;
+    }
+    .info-section h2 {
+      font-size: 20px;
+      color: #1f2937;
+      margin-bottom: 15px;
+    }
+    .info-section ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .info-section li {
+      padding: 8px 0;
+      color: #4b5563;
+      font-size: 15px;
+    }
+    .info-section li::before {
+      content: "✓ ";
+      color: #22c55e;
+      font-weight: bold;
+      margin-right: 8px;
+    }
+    .cta-section {
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      border: 2px solid #fbbf24;
+      border-radius: 10px;
+      padding: 25px;
+      margin: 30px 0;
+      text-align: center;
+    }
+    .cta-section h3 {
+      font-size: 20px;
+      color: #92400e;
+      margin-bottom: 10px;
+    }
+    .cta-section p {
+      font-size: 16px;
+      color: #92400e;
+      margin: 5px 0;
+    }
+    .contact-section {
+      background: #ffffff;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 25px;
+      margin: 30px 0;
+    }
+    .contact-section h3 {
+      font-size: 18px;
+      color: #1f2937;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .contact-info {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 15px;
+    }
+    .contact-item {
+      text-align: center;
+      flex: 1;
+      min-width: 150px;
+    }
+    .contact-item-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 5px;
+    }
+    .contact-item-value {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1f2937;
+    }
+    .contact-item-value a {
+      color: #22c55e;
+      text-decoration: none;
+    }
+    .contact-item-value a:hover {
+      text-decoration: underline;
+    }
+    .footer {
+      background: #f9fafb;
+      padding: 30px;
+      text-align: center;
+      border-radius: 0 0 8px 8px;
+      border-top: 1px solid #e5e7eb;
+    }
+    .footer p {
+      color: #6b7280;
+      font-size: 14px;
+      margin: 5px 0;
+    }
+    .footer a {
+      color: #22c55e;
+      text-decoration: none;
+    }
+    .note {
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 4px;
+      font-size: 14px;
+      color: #92400e;
+    }
+  </style>
+</head>
+<body>
+  <div class="preview-container">
+    <div class="preview-header">
+      <h1>📧 Email Template Preview</h1>
+      <p>This is what your customers will receive when they submit their offer information</p>
+    </div>
+
+    <div class="email-preview" style="margin-top: 30px;">
+      <!-- Email Header -->
+      <div class="email-header">
+        <h1>🎉 Congratulations!</h1>
+        <p>You Qualify for an Early Payout Option</p>
+      </div>
+
+      <!-- Email Content -->
+      <div class="email-content">
+        <!-- Greeting -->
+        <div class="greeting">
+          <p>Dear Valued Client,</p>
+          <p>Thank you for using SmarterPayouts to get your instant quote. We're excited to share your personalized offer with you!</p>
+        </div>
+
+        <!-- Offer Amount Box -->
+        <div class="offer-box">
+          <div class="offer-box-label">Your Offer Range</div>
+          <div class="offer-amount">$303,800 - $336,600</div>
+          <p style="color: #1e40af; font-size: 14px; margin-top: 10px;">This is your estimated payout range based on your structured settlement details.</p>
+        </div>
+
+        <!-- Offer Code Section -->
+        <div class="offer-code-section">
+          <div class="offer-code-label">Your Unique Offer Code</div>
+          <div class="offer-code">996436</div>
+          <p style="color: #6b7280; font-size: 13px; margin-top: 10px;">
+            Please save this code. You'll need it when you speak with our specialists.
+          </p>
+        </div>
+
+        <!-- What Happens Next -->
+        <div class="info-section">
+          <h2>What Happens Next?</h2>
+          <ul>
+            <li>Our specialist will contact you within 24 hours</li>
+            <li>We'll review your structured settlement details together</li>
+            <li>We'll finalize your exact payout amount and timeline</li>
+            <li>You'll receive transparent, upfront pricing with no hidden fees</li>
+            <li>Your case will be processed quickly and professionally</li>
+          </ul>
+        </div>
+
+        <!-- Bonus Message -->
+        <div class="cta-section">
+          <h3>💰 Special Bonus Opportunity</h3>
+          <p><strong>You may qualify for up to $5,000 bonus towards closing your structured settlement!</strong></p>
+          <p style="font-size: 14px; margin-top: 10px;">Call us today to see if you qualify for this exclusive offer.</p>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="contact-section">
+          <h3>📞 Ready to Get Started?</h3>
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-item-label">Call Us</div>
+              <div class="contact-item-value">
+                <a href="tel:+15615831280">+1-561-583-1280</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-label">Email Us</div>
+              <div class="contact-item-value">
+                <a href="mailto:info@smarterpayouts.com">info@smarterpayouts.com</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-label">Visit Us</div>
+              <div class="contact-item-value">
+                <a href="https://smarterpayouts.com">smarterpayouts.com</a>
+              </div>
+            </div>
+          </div>
+          <div style="text-align: center; margin-top: 15px; font-size: 14px; color: #6b7280;">
+            <strong>Business Hours:</strong> Monday - Friday, 9:00 AM - 6:00 PM EST
+          </div>
+        </div>
+
+        <!-- Why SmarterPayouts -->
+        <div class="info-section">
+          <h2>Why Choose SmarterPayouts?</h2>
+          <ul>
+            <li><strong>Transparent Pricing:</strong> No hidden fees, upfront costs</li>
+            <li><strong>Fast Processing:</strong> 15-50 days from start to finish</li>
+            <li><strong>Expert Support:</strong> Dedicated specialist for your case</li>
+            <li><strong>Trusted & Secure:</strong> SOC 2 Type II, PCI DSS, GDPR compliant</li>
+            <li><strong>Proven Track Record:</strong> 400+ happy clients, $50M+ purchased</li>
+            <li><strong>4.9/5 Rating:</strong> Excellent customer satisfaction</li>
+          </ul>
+        </div>
+
+        <!-- Important Note -->
+        <div class="note">
+          <strong>📝 Important:</strong> This is an initial estimate. Final payout amounts are subject to court approval and verification of your settlement documents. Our specialist will work with you to confirm all details.
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p><strong>SmarterPayouts</strong> - Your Trusted Settlement Partner</p>
+        <p>15257 Amberly Dr Ste 233, Tampa, FL 33647</p>
+        <p>
+          <a href="https://smarterpayouts.com">Website</a> | 
+          <a href="tel:+15615831280">+1-561-583-1280</a> | 
+          <a href="mailto:info@smarterpayouts.com">info@smarterpayouts.com</a>
+        </p>
+        <p style="margin-top: 15px; font-size: 12px; color: #9ca3af;">
+          This email was sent to <strong>ofranc1208@gmail.com</strong> because you requested an offer quote from SmarterPayouts.
+          <br>Founded in 2017 | Licensed in all 50 US States
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

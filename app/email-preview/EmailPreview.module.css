@@ -1,0 +1,578 @@
+/* ============================================================================
+ * EMAIL PREVIEW PAGE - MATCHES LCP PAYMENT RESULTS PAGE STYLE
+ * ============================================================================
+ */
+
+.previewWrapper {
+  padding: 40px 20px;
+  background: #f3f4f6;
+  min-height: 100vh;
+}
+
+.previewContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.previewHeader {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  color: white;
+  padding: 30px 20px;
+  text-align: center;
+  border-radius: 8px 8px 0 0;
+  margin-bottom: 30px;
+}
+
+.previewHeaderTitle {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.previewHeaderSubtitle {
+  font-size: 16px;
+}
+
+.calculatorTypeBadge {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.typeLink {
+  color: white;
+  text-decoration: underline;
+  margin: 0 5px;
+  opacity: 0.9;
+}
+
+.typeLink:hover {
+  opacity: 1;
+}
+
+/* ============================================================================
+ * EMAIL TEMPLATE STYLES
+ * ============================================================================
+ */
+
+.emailCard {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.logoSection {
+  background: #ffffff;
+  padding: 30px 30px 20px;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.websiteLink {
+  margin-top: 8px;
+}
+
+.websiteLinkAnchor {
+  color: #22c55e;
+  text-decoration: none;
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.websiteLinkAnchor:hover {
+  text-decoration: underline;
+}
+
+.logoImage {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+.logoText {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.congratulationsHeader {
+  background: #ffffff;
+  color: #1f2937;
+  padding: 35px 30px;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.congratulationsTopRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.congratulationsTitle {
+  font-size: 28px;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #1f2937;
+}
+
+.offerCodeTop {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f9fafb;
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.offerCodeLabelTop {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #6b7280;
+}
+
+.offerCodeValue {
+  font-size: 24px;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.15em;
+  background: #ffffff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 2px solid #3b82f6;
+  color: #1f2937;
+}
+
+.congratulationsSubtitle {
+  font-size: 16px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.emailContent {
+  padding: 35px 30px;
+  background: #ffffff;
+}
+
+.greeting {
+  font-size: 15px;
+  color: #4b5563;
+  margin-bottom: 35px;
+  line-height: 1.7;
+}
+
+.greetingLine {
+  margin-bottom: 8px;
+  color: #1f2937;
+}
+
+.greetingLine:last-child {
+  margin: 0;
+}
+
+/* ============================================================================
+ * OFFER CARDS - MATCHING LCP RESULTS PAGE
+ * ============================================================================
+ */
+
+.offerSection {
+  margin-bottom: 35px;
+}
+
+.offerHeader {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 1rem;
+}
+
+.offerTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 0.25rem 0;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.offerSubtitle {
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+/* Minimum Payout - Top, Smaller */
+.minimumPayoutContainer {
+  margin-bottom: 1.25rem;
+  padding: 0.875rem 1rem;
+  background: #f9fafb;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  text-align: center;
+}
+
+.minimumLabel {
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.minimumAmount {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #4b5563;
+  margin: 0;
+}
+
+/* Maximum Payout - Center & Largest with Shimmer */
+.maximumPayoutContainer {
+  text-align: center;
+  margin-bottom: 1.25rem;
+  padding: 1.5rem 1.25rem;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border-radius: 10px;
+  border: 2px solid #22c55e;
+  position: relative;
+  overflow: hidden;
+}
+
+.maximumPayoutContainer::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 70%
+  );
+  animation: shimmer 3s infinite;
+}
+
+.maximumLabel {
+  font-size: 0.75rem;
+  color: #15803d;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+
+.maximumAmount {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #15803d;
+  margin: 0;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 4px rgba(21, 128, 61, 0.1);
+}
+
+/* Family Protection Value - Bottom */
+.familyProtectionContainer {
+  padding: 0.875rem 1rem;
+  background: #f9fafb;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  text-align: center;
+}
+
+.familyLabel {
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.familyAmount {
+  font-size: 1.56rem;
+  font-weight: 700;
+  color: #16a34a;
+  margin: 0;
+}
+
+/* Offer Disclaimer */
+.offerDisclaimer {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 2px solid #e5e7eb;
+  text-align: center;
+}
+
+.disclaimerText {
+  font-size: 0.65rem;
+  color: #9ca3af;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ============================================================================
+ * OFFER CODE SECTION
+ * ============================================================================
+ */
+
+.offerCodeSection {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 22px 20px;
+  margin: 30px 0;
+  text-align: center;
+}
+
+.offerCodeLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 12px;
+}
+
+.offerCode {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1f2937;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.2em;
+  background: #ffffff;
+  padding: 12px 24px;
+  border: 2px solid #3b82f6;
+  border-radius: 8px;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+/* ============================================================================
+ * BONUS MESSAGE
+ * ============================================================================
+ */
+
+.bonusMessage {
+  background: #fef3c7;
+  border: 1px solid #fbbf24;
+  border-radius: 10px;
+  padding: 22px;
+  margin: 30px 0;
+  text-align: center;
+}
+
+.bonusText {
+  font-size: 15px;
+  color: #92400e;
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.bonusAmount {
+  font-size: 17px;
+}
+
+/* ============================================================================
+ * CONTACT SECTION
+ * ============================================================================
+ */
+
+.contactSection {
+  text-align: center;
+  margin: 40px 0 30px;
+  padding: 30px 25px;
+  background: #f9fafb;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.contactTitle {
+  font-size: 17px;
+  color: #1f2937;
+  margin-bottom: 18px;
+  font-weight: 600;
+}
+
+.contactPhone {
+  font-size: 28px;
+  font-weight: 700;
+  color: #22c55e;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.contactPhone a {
+  color: #22c55e;
+  text-decoration: none;
+}
+
+.contactHours {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* ============================================================================
+ * FOOTER
+ * ============================================================================
+ */
+
+.footer {
+  background: #f9fafb;
+  padding: 25px 30px;
+  text-align: center;
+  border-top: 1px solid #e5e7eb;
+}
+
+.footerCompany {
+  color: #1f2937;
+  font-size: 15px;
+  margin: 5px 0;
+  font-weight: 600;
+}
+
+.footerNote {
+  margin-top: 15px;
+  font-size: 11px;
+  color: #9ca3af;
+  margin: 0;
+}
+
+/* ============================================================================
+ * LEGAL DISCLAIMERS SECTION
+ * ============================================================================
+ */
+
+.disclaimersSection {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+.disclaimerHeading {
+  font-size: 10px;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+
+.disclaimerText {
+  font-size: 9px;
+  color: #9ca3af;
+  line-height: 1.6;
+  margin: 0 0 10px 0;
+}
+
+.disclaimerText strong {
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.disclaimerText:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================================================
+ * ANIMATIONS
+ * ============================================================================
+ */
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+/* ============================================================================
+ * RESPONSIVE DESIGN
+ * ============================================================================
+ */
+
+@media (max-width: 768px) {
+  .previewWrapper {
+    padding: 20px 15px;
+  }
+
+  .emailContent {
+    padding: 25px 20px;
+  }
+
+  .maximumAmount {
+    font-size: 2rem;
+  }
+
+  .minimumAmount {
+    font-size: 1rem;
+  }
+
+  .familyAmount {
+    font-size: 1.2rem;
+  }
+
+  .contactPhone {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .emailContent {
+    padding: 20px 15px;
+  }
+
+  .maximumAmount {
+    font-size: 1.75rem;
+  }
+
+  .minimumAmount {
+    font-size: 0.9rem;
+  }
+
+  .familyAmount {
+    font-size: 1.08rem;
+  }
+
+  .contactPhone {
+    font-size: 20px;
+  }
+}
+

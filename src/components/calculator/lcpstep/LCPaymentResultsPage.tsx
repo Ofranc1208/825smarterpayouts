@@ -5,6 +5,7 @@ import { LCPCalculationResult } from '../../../types';
 import styles from './LCPaymentResultsPage.module.css';
 import { OfferLoadingAnimation } from './results-components';
 import { validateOfferThreshold, formatCurrency } from './utils/validationHelpers';
+import { OfferCaptureOverlay } from '../shared-results';
 
 interface Props {
   result: LCPCalculationResult;
@@ -76,54 +77,72 @@ const LCPaymentResultsPage: React.FC<Props> = ({ result, onBack, currentStep, to
 
   // Then show the results
   return (
-    <div className={styles.pageContainer}>
-      {/* Contract-Inspired Document */}
-      <div className={styles.documentCard}>
-        {/* Decorative Border Corners */}
-        <div className={styles.cornerTopLeft} />
-        <div className={styles.cornerTopRight} />
-        <div className={styles.cornerBottomLeft} />
-        <div className={styles.cornerBottomRight} />
+    <>
+      <div className={styles.pageContainer}>
+        {/* Contract-Inspired Document */}
+        <div className={styles.documentCard}>
+          {/* Decorative Border Corners */}
+          <div className={styles.cornerTopLeft} />
+          <div className={styles.cornerTopRight} />
+          <div className={styles.cornerBottomLeft} />
+          <div className={styles.cornerBottomRight} />
 
-        {/* Header */}
-        <div className={styles.header}>
-          <h1 className={styles.title}>Early Payout Offer</h1>
-          <p className={styles.subtitle}>STRUCTURED SETTLEMENT VALUATION</p>
-        </div>
-
-        {/* Minimum Payout - Top, Smaller, Center-Aligned */}
-        {result.minPayout !== undefined && (
-          <div className={styles.minimumPayoutContainer}>
-            <p className={styles.minimumLabel}>Minimum Payout</p>
-            <p className={styles.minimumAmount}>{formatCurrency(result.minPayout)}</p>
+          {/* Header */}
+          <div className={styles.header}>
+            <h1 className={styles.title}>Early Payout Offer</h1>
+            <p className={styles.subtitle}>STRUCTURED SETTLEMENT VALUATION</p>
           </div>
-        )}
 
-        {/* Maximum Payout - Center & Largest with Shimmer */}
-        {result.maxPayout !== undefined && (
-          <div className={styles.maximumPayoutContainer}>
-            <p className={styles.maximumLabel}>Maximum Payout</p>
-            <p className={styles.maximumAmount}>{formatCurrency(result.maxPayout)}</p>
+          {/* Minimum Payout - Top, Smaller, Center-Aligned */}
+          {result.minPayout !== undefined && (
+            <div className={styles.minimumPayoutContainer}>
+              <p className={styles.minimumLabel}>Minimum Payout</p>
+              <p className={styles.minimumAmount}>{formatCurrency(result.minPayout)}</p>
+            </div>
+          )}
+
+          {/* Maximum Payout - Center & Largest with Shimmer */}
+          {result.maxPayout !== undefined && (
+            <div className={styles.maximumPayoutContainer}>
+              <p className={styles.maximumLabel}>Maximum Payout</p>
+              <p className={styles.maximumAmount}>{formatCurrency(result.maxPayout)}</p>
+            </div>
+          )}
+
+          {/* Family Protection Value - Bottom, Center-Aligned */}
+          {result.familyProtectionNPV !== undefined && (
+            <div className={styles.familyProtectionContainer}>
+              <p className={styles.familyLabel}>Family Protection Value</p>
+              <p className={styles.familyAmount}>{formatCurrency(result.familyProtectionNPV)}</p>
+            </div>
+          )}
+
+          {/* Footer Note */}
+          <div className={styles.footer}>
+            <p className={styles.disclaimer}>
+              This offer is based on the information you provided and represents an estimated range.<br />
+              Final terms subject to verification and approval.
+            </p>
           </div>
-        )}
-
-        {/* Family Protection Value - Bottom, Center-Aligned */}
-        {result.familyProtectionNPV !== undefined && (
-          <div className={styles.familyProtectionContainer}>
-            <p className={styles.familyLabel}>Family Protection Value</p>
-            <p className={styles.familyAmount}>{formatCurrency(result.familyProtectionNPV)}</p>
-          </div>
-        )}
-
-        {/* Footer Note */}
-        <div className={styles.footer}>
-          <p className={styles.disclaimer}>
-            This offer is based on the information you provided and represents an estimated range.<br />
-            Final terms subject to verification and approval.
-          </p>
         </div>
       </div>
-    </div>
+
+      {/* Offer Capture Overlay - Only show when results are displayed */}
+      {showResults && offerValidation.isValid && result.minPayout !== undefined && result.maxPayout !== undefined && (
+        <OfferCaptureOverlay
+          calculatorType="lcp"
+          delaySeconds={7}
+          quoteData={{
+            minOffer: result.minPayout,
+            maxOffer: result.maxPayout,
+            familyProtectionValue: result.familyProtectionNPV, // Include family protection value for LCP
+          }}
+          onSuccess={(data) => {
+            console.log('Offer captured:', data);
+          }}
+        />
+      )}
+    </>
   );
 };
 
