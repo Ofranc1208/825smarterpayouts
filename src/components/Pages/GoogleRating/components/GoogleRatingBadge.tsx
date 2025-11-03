@@ -21,8 +21,6 @@ export function GoogleRatingBadge({
 }: GoogleRatingBadgeProps) {
   return (
     <div 
-      itemScope
-      itemType="https://schema.org/AggregateRating"
       role="status"
       aria-label={`${rating} star rating based on user reviews`}
       style={{
@@ -38,11 +36,7 @@ export function GoogleRatingBadge({
         maxWidth: '100%'
       }}
     >
-      {/* Microdata for SEO */}
-      <meta itemProp="ratingValue" content={rating} />
-      <meta itemProp="reviewCount" content={reviewCount} />
-      <meta itemProp="bestRating" content="5" />
-      <meta itemProp="worstRating" content="1" />
+      {/* Removed redundant microdata AggregateRating — JSON-LD in <head> now handles SEO schema. */}
       
       {/* Stars - Bright Yellow */}
       <div style={{

@@ -28,21 +28,10 @@ export default function LightTrustBadge({
   return (
     <div 
       className={`${styles.lightTrustBadge} ${alignmentClass} ${className}`}
-      itemScope 
-      itemType="https://schema.org/SoftwareApplication"
       role="status"
       aria-label={`${rating} star rating with ${reviewCount} reviews. Free ${category} application.`}
     >
-      {/* Microdata for SEO - Google crawlers */}
-      <meta itemProp="applicationCategory" content="FinanceApplication" />
-      <meta itemProp="aggregateRating" itemScope itemType="https://schema.org/AggregateRating" />
-      <meta itemProp="ratingValue" content={rating} />
-      <meta itemProp="reviewCount" content={reviewCount} />
-      <meta itemProp="bestRating" content="5" />
-      <meta itemProp="worstRating" content="1" />
-      <meta itemProp="offers" itemScope itemType="https://schema.org/Offer" />
-      <meta itemProp="price" content="0" />
-      <meta itemProp="priceCurrency" content="USD" />
+      {/* Removed redundant microdata AggregateRating — JSON-LD in <head> now handles SEO schema. */}
       
       {/* Google Play Store Format: 4.9 ★★★★★ (250) · Free · Finance */}
       <div className={styles.mainLine}>

@@ -17,7 +17,7 @@ interface TrustBadgeProps {
  * TrustBadge Component
  * Google-compliant rating badge displaying: 4.9 ★★★★★ (250) · Free · Finance
  * Matches Google Play Store format exactly for compliance
- * Includes microdata for SEO and accessibility
+ * Visual badge only — structured data handled by JSON-LD in <head>
  */
 export default function TrustBadge({
   rating = '4.9',
@@ -27,29 +27,16 @@ export default function TrustBadge({
   alignment = 'center',
   href
 }: TrustBadgeProps) {
-  // Structured data for Google crawlers
-  // See: https://schema.org/AggregateRating
   const alignmentClass = alignment === 'left' ? styles.alignLeft : styles.alignCenter;
 
   const badgeContent = (
     <div 
       className={`${styles.trustBadge} ${alignmentClass} ${className}`}
-      itemScope 
-      itemType="https://schema.org/SoftwareApplication"
       role="status"
       aria-label={`${rating} star rating with ${reviewCount} reviews. Free ${category} application.`}
       style={href ? { cursor: 'pointer' } : {}}
     >
-      {/* Microdata for SEO - Google crawlers */}
-      <meta itemProp="applicationCategory" content="FinanceApplication" />
-      <meta itemProp="aggregateRating" itemScope itemType="https://schema.org/AggregateRating" />
-      <meta itemProp="ratingValue" content={rating} />
-      <meta itemProp="reviewCount" content={reviewCount} />
-      <meta itemProp="bestRating" content="5" />
-      <meta itemProp="worstRating" content="1" />
-      <meta itemProp="offers" itemScope itemType="https://schema.org/Offer" />
-      <meta itemProp="price" content="0" />
-      <meta itemProp="priceCurrency" content="USD" />
+      {/* Removed redundant microdata AggregateRating — JSON-LD in <head> now handles SEO schema. */}
       
       {/* Google Play Store Format: 4.9 ★★★★★ (250) · Free · Finance */}
       <div className={styles.mainLine}>

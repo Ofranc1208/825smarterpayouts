@@ -66,18 +66,10 @@ export default function ProminentTrustBadge({
   return (
     <div 
       className={`${styles.prominentBadge} ${className}`}
-      itemScope 
-      itemType="https://schema.org/SoftwareApplication"
       role="status"
       aria-label={`${rating} star rating based on ${reviewCount} reviews. Free ${category} application.`}
     >
-      <meta itemProp="applicationCategory" content="FinanceApplication" />
-      <meta itemProp="aggregateRating" itemScope itemType="https://schema.org/AggregateRating" />
-      <meta itemProp="ratingValue" content={rating} />
-      <meta itemProp="reviewCount" content={reviewCount} />
-      <meta itemProp="offers" itemScope itemType="https://schema.org/Offer" />
-      <meta itemProp="price" content="0" />
-      <meta itemProp="priceCurrency" content="USD" />
+      {/* Removed redundant microdata AggregateRating — JSON-LD in <head> now handles SEO schema. */}
       
       <div className={styles.badgeContent}>
         <span className={styles.star}>★</span>
