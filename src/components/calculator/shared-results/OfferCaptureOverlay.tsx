@@ -239,6 +239,8 @@ const OfferCaptureOverlay: React.FC<OfferCaptureOverlayProps> = ({
 
               <OfferCodeDisplay offerCode={offerCode} />
 
+              <BonusMessage />
+
               {/* Submit Button - Only show when input has value AND terms are agreed */}
               {/* Positioned immediately after offer code for clear action flow */}
               {(activeTab === 'email' ? formValidation.email.trim() : formValidation.message.trim()) && agreeToTerms && (
@@ -250,8 +252,6 @@ const OfferCaptureOverlay: React.FC<OfferCaptureOverlayProps> = ({
                   {offerCapture.isSubmitting ? 'Sending...' : `Send My Offer ${activeTab === 'email' ? 'via Email' : 'via Message'}`}
                 </button>
               )}
-
-              <BonusMessage />
 
               <CallToActionButton />
             </form>

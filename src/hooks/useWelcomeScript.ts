@@ -30,7 +30,7 @@ export const useWelcomeScript = ({ onCalculate, onChoice, initialMessages }: Use
     {
       id: generateUniqueId(),
       type: 'text',
-      text: 'I can help you with these topics and much more.',
+      text: 'I can help you with these topics and **much more**.',
       sender: 'bot',
     },
     {
