@@ -18,7 +18,7 @@ export default function HeroSection() {
     {
       id: "mint-ai",
       text: "💬 Chat with Mint AI",
-      href: "/mint-intelligent-chat",
+      href: "/mint-intelligent-chat?chat=open&feature=calculator",
       variant: "mint-chat" as const,
       size: "xl" as const,
       enhancedHover: true

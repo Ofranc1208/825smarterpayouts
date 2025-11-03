@@ -75,7 +75,7 @@ export default function FinalCTA() {
             
             <Button
               as="a"
-              href="/mint-intelligent-chat"
+              href="/mint-intelligent-chat?chat=open&feature=calculator"
               variant="technology-secondary"
               size="xl"
               enhancedHover={true}

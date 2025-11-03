@@ -152,7 +152,7 @@ export default function QuickAnswerSection() {
               </div>
               <Button
                 as="a"
-                href="/mint-intelligent-chat"
+                href="/mint-intelligent-chat?chat=open&feature=calculator"
                 variant="mint-chat"
                 size="md"
                 enhancedHover={true}

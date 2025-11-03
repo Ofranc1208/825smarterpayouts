@@ -86,7 +86,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ relatedArticles = [] }) => {
         }}>
           Get instant answers to your settlement questions 24/7.
         </p>
-        <Link href="/mint-intelligent-chat" style={{
+        <Link href="/mint-intelligent-chat?chat=open&feature=calculator" style={{
           display: 'block',
           background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
           color: 'white',

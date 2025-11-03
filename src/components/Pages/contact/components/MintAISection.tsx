@@ -67,7 +67,7 @@ export default function MintAISection({ onCTAClick }: MintAISectionProps) {
         </p>
         <Button
           as="a"
-          href="/mint-intelligent-chat"
+          href="/mint-intelligent-chat?chat=open&feature=calculator"
           variant="mint-chat"
           size="lg"
           enhancedHover={true}

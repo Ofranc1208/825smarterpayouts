@@ -78,7 +78,7 @@ export default function FactorsSection() {
           </p>
           <Button
             as="a"
-            href="/mint-intelligent-chat"
+            href="/mint-intelligent-chat?chat=open&feature=calculator"
             variant="mint-chat"
             size="md"
             enhancedHover={true}
@@ -311,7 +311,7 @@ export default function FactorsSection() {
           </p>
           <Button
             as="a"
-            href="/mint-intelligent-chat"
+            href="/mint-intelligent-chat?chat=open&feature=calculator"
             variant="mint-chat"
             size="lg"
             enhancedHover={true}

@@ -87,7 +87,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </Button>
             <Button
               as="a"
-              href="/mint-intelligent-chat"
+              href="/mint-intelligent-chat?chat=open&feature=calculator"
               variant="mint-chat"
               size="sm"
               enhancedHover={true}

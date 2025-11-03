@@ -68,7 +68,7 @@ export default function CTASection() {
             }}>
               <Button
                 as="a"
-                href="/mint-intelligent-chat"
+                href="/mint-intelligent-chat?chat=open&feature=calculator"
                 variant="technology-secondary"
                 size="xl"
                 enhancedHover={true}
@@ -80,7 +80,7 @@ export default function CTASection() {
               
               <Button
                 as="a"
-                href="/mint-chat-active?type=calculate&source=social-media-cta"
+                href="/pricing-calculator"
                 variant="technology-primary"
                 size="xl"
                 enhancedHover={true}

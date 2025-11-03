@@ -73,7 +73,7 @@ export default function HeroSection() {
           }}>
             <Button
               as="a"
-              href="/mint-chat-active?type=calculate&source=state-laws-hero"
+              href="/pricing-calculator"
               variant="technology-primary"
               size="lg"
               enhancedHover={true}
@@ -84,7 +84,7 @@ export default function HeroSection() {
             
             <Button
               as="a"
-              href="/mint-intelligent-chat"
+              href="/mint-intelligent-chat?chat=open&feature=calculator"
               variant="technology-secondary"
               size="lg"
               enhancedHover={true}

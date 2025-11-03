@@ -66,7 +66,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
           </Button>
           <Button
             as="a"
-            href="/mint-intelligent-chat"
+            href="/mint-intelligent-chat?chat=open&feature=calculator"
             variant="mint-chat"
             size="sm"
             enhancedHover={true}

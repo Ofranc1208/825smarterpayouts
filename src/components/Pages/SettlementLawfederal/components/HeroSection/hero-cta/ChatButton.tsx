@@ -7,7 +7,7 @@ export default function ChatButton() {
   return (
     <Button
       as="a"
-      href="/mint-intelligent-chat"
+      href="/mint-intelligent-chat?chat=open&feature=calculator"
       variant="golden"
       size="xl"
       enhancedHover={true}
