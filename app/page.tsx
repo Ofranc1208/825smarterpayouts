@@ -11,6 +11,8 @@
  */
 
 import { HomePage } from '@/src/components/Pages';
+import { StructuredData } from '@/src/components/SEO/StructuredData';
+import { organizationSchema, websiteSchema } from '@/src/lib/structured-data/schemas';
 
 export const metadata = {
   title: 'Structured Settlement Calculator | Smarter Payouts',
@@ -54,5 +56,11 @@ export const metadata = {
 };
 
 export default function Home() {
-  return <HomePage />;
+  return (
+    <>
+      {/* Server-side structured data for SEO - Organization with AggregateRating + Website schema */}
+      <StructuredData schema={[organizationSchema, websiteSchema]} />
+      <HomePage />
+    </>
+  );
 }

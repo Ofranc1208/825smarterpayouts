@@ -49,7 +49,14 @@ export const organizationSchema = {
     'https://instagram.com/smarterpayouts',
     'https://linkedin.com/company/smarterpayouts',
     'https://search.sunbiz.org/Inquiry/CorporationSearch/ByName'
-  ]
+  ],
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.9',
+    reviewCount: '250',
+    bestRating: '5',
+    worstRating: '1'
+  }
 };
 
 // ============================================================================
