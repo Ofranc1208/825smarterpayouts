@@ -31,8 +31,12 @@ export class AppointmentEmailManager {
         text: template.generateText(),
       };
 
+      console.log('📧 [AppointmentEmailManager] Sending email to:', EMAIL_CONFIG.to);
+      console.log('📧 [AppointmentEmailManager] From:', EMAIL_CONFIG.from);
+      
       const info = await transporter.sendMail(mailOptions);
       console.log('✅ Email sent successfully:', info.messageId);
+      console.log('✅ Email sent to:', EMAIL_CONFIG.to);
 
       return { success: true, messageId: info.messageId };
     } catch (error) {

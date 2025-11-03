@@ -34,8 +34,12 @@ export class OfferCaptureEmailManager {
         text: template.generateText(),
       };
 
+      console.log('📧 [OfferCaptureEmailManager] Sending email to:', EMAIL_CONFIG.to);
+      console.log('📧 [OfferCaptureEmailManager] From:', EMAIL_CONFIG.from);
+      
       const info = await transporter.sendMail(mailOptions);
       console.log('✅ Offer capture email sent successfully:', info.messageId);
+      console.log('✅ Email sent to:', EMAIL_CONFIG.to);
 
       return { success: true, messageId: info.messageId };
     } catch (error) {
