@@ -11,10 +11,16 @@ import {
 } from '../templates/OfferCaptureNotificationTemplate';
 
 export class OfferCaptureEmailManager {
-  private transporter = EmailTransporter.getInstance();
+  /**
+   * Get transporter instance (lazy initialization)
+   * Only creates the transporter when actually needed, not at module load time
+   */
+  private getTransporter() {
+    return EmailTransporter.getInstance().getTransporter();
+  }
 
   async sendOfferCaptureNotification(captureData: OfferCaptureData) {
-    const transporter = this.transporter.getTransporter();
+    const transporter = this.getTransporter();
 
     if (!transporter) {
       console.error(

@@ -28,6 +28,12 @@ export class EmailTransporter {
    * Create email transporter
    */
   private createTransporter(): nodemailer.Transporter | null {
+    // Skip initialization during build phase
+    if (process.env.NEXT_PHASE === 'phase-production-build') {
+      console.log('⚠️ [EmailTransporter] Skipping initialization during build phase');
+      return null;
+    }
+    
     console.log('📧 [EmailTransporter] Creating transporter...');
     console.log('📧 [EmailTransporter] From:', EMAIL_CONFIG.from);
     console.log('📧 [EmailTransporter] Password configured:', !!EMAIL_CONFIG.password);
@@ -81,8 +87,14 @@ export class EmailTransporter {
 
   /**
    * Get transporter instance
+   * Recreates transporter if it was null (e.g., initialized during build phase)
    */
   getTransporter(): nodemailer.Transporter | null {
+    // If transporter is null and we're not in build phase, try to recreate it
+    if (!this.transporter && process.env.NEXT_PHASE !== 'phase-production-build') {
+      console.log('🔄 [EmailTransporter] Recreating transporter at runtime...');
+      this.transporter = this.createTransporter();
+    }
     return this.transporter;
   }
 

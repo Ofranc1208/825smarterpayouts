@@ -11,10 +11,16 @@ import {
 } from '../templates/CustomerOfferConfirmationTemplate';
 
 export class CustomerEmailManager {
-  private transporter = EmailTransporter.getInstance();
+  /**
+   * Get transporter instance (lazy initialization)
+   * Only creates the transporter when actually needed, not at module load time
+   */
+  private getTransporter() {
+    return EmailTransporter.getInstance().getTransporter();
+  }
 
   async sendCustomerOfferConfirmation(customerData: CustomerOfferData) {
-    const transporter = this.transporter.getTransporter();
+    const transporter = this.getTransporter();
 
     if (!transporter) {
       console.log(
