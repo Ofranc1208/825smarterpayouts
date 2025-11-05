@@ -51,32 +51,6 @@ export default function EmailPreviewPage({
             />
           </div>
 
-          {/* Congratulations Header with Offer Code */}
-          <div className={styles.congratulationsHeader}>
-            <h1 className={styles.congratulationsTitle}>
-              <span style={{ color: '#22c55e' }}>C</span>
-              <span style={{ color: '#f59e0b' }}>o</span>
-              <span style={{ color: '#8b5cf6' }}>n</span>
-              <span style={{ color: '#22c55e' }}>g</span>
-              <span style={{ color: '#ec4899' }}>r</span>
-              <span style={{ color: '#f59e0b' }}>a</span>
-              <span style={{ color: '#22c55e' }}>t</span>
-              <span style={{ color: '#ec4899' }}>u</span>
-              <span style={{ color: '#8b5cf6' }}>l</span>
-              <span style={{ color: '#f59e0b' }}>a</span>
-              <span style={{ color: '#22c55e' }}>t</span>
-              <span style={{ color: '#ec4899' }}>i</span>
-              <span style={{ color: '#8b5cf6' }}>o</span>
-              <span style={{ color: '#22c55e' }}>n</span>
-              <span style={{ color: '#f59e0b' }}>s</span>
-              <span style={{ color: '#ec4899' }}>!</span>
-            </h1>
-            <div className={styles.offerCodeTop}>
-              <div className={styles.offerCodeLabelTop}>Offer Code</div>
-              <div className={styles.offerCodeValue}>{offerCode}</div>
-            </div>
-          </div>
-
           {/* Email Content */}
           <div className={styles.emailContent}>
             {/* Greeting */}

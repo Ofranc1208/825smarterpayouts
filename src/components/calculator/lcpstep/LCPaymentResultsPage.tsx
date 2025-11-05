@@ -131,7 +131,7 @@ const LCPaymentResultsPage: React.FC<Props> = ({ result, onBack, currentStep, to
       {showResults && offerValidation.isValid && result.minPayout !== undefined && result.maxPayout !== undefined && (
         <OfferCaptureOverlay
           calculatorType="lcp"
-          delaySeconds={7}
+          delaySeconds={5}
           quoteData={{
             minOffer: result.minPayout,
             maxOffer: result.maxPayout,

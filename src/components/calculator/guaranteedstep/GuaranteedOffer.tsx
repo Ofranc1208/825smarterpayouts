@@ -118,7 +118,7 @@ const GuaranteedOffer: React.FC<GuaranteedOfferProps> = ({
       {showResults && offerValidation.isValid && (
         <OfferCaptureOverlay
           calculatorType="guaranteed"
-          delaySeconds={7}
+          delaySeconds={5}
           quoteData={{
             minOffer: calculationResult.minOffer,
             maxOffer: calculationResult.maxOffer,

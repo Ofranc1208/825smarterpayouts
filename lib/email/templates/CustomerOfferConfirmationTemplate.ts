@@ -31,11 +31,6 @@ export class CustomerOfferConfirmationTemplate extends BaseEmailTemplate {
     @media only screen and (max-width: 600px) {
       .header-container { padding: 20px 20px 15px !important; }
       .header-title { font-size: 22px !important; }
-      .congrats-header { padding: 25px 20px !important; }
-      .congrats-title { font-size: 24px !important; margin-bottom: 18px !important; }
-      .offer-code-container { margin: 0 auto !important; display: block !important; }
-      .offer-code-label { font-size: 7px !important; }
-      .offer-code-value { font-size: 12px !important; padding: 3px 6px !important; }
       .content-padding { padding: 25px 20px !important; }
     }
   </style>
@@ -52,58 +47,6 @@ export class CustomerOfferConfirmationTemplate extends BaseEmailTemplate {
                 <tr>
                   <td align="center">
                     <img src="https://smarterpayouts.com/assets/images/emailtemplate.png" alt="SmarterPayouts" style="max-width: 230px; height: auto; display: block; margin: 0 auto;" />
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-
-          <!-- Congratulations Header -->
-          <tr>
-            <td class="congrats-header" style="background: #ffffff; color: #1f2937; padding: 35px 30px; text-align: center; border-bottom: 1px solid #e5e7eb;">
-              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-                <tr>
-                  <td align="center" style="padding-bottom: 20px;">
-                    <h1 class="congrats-title" style="font-size: 28px; margin: 0; font-weight: 700; letter-spacing: 0.5px; line-height: 1.2; font-family: 'Segoe UI', 'Comic Sans MS', 'Trebuchet MS', Arial, sans-serif;">
-                      <span style="color: #22c55e;">C</span>
-                      <span style="color: #f59e0b;">o</span>
-                      <span style="color: #8b5cf6;">n</span>
-                      <span style="color: #22c55e;">g</span>
-                      <span style="color: #ec4899;">r</span>
-                      <span style="color: #f59e0b;">a</span>
-                      <span style="color: #22c55e;">t</span>
-                      <span style="color: #ec4899;">u</span>
-                      <span style="color: #8b5cf6;">l</span>
-                      <span style="color: #f59e0b;">a</span>
-                      <span style="color: #22c55e;">t</span>
-                      <span style="color: #ec4899;">i</span>
-                      <span style="color: #8b5cf6;">o</span>
-                      <span style="color: #22c55e;">n</span>
-                      <span style="color: #f59e0b;">s</span>
-                      <span style="color: #ec4899;">!</span>
-                    </h1>
-                  </td>
-                </tr>
-                <tr>
-                  <td align="center" style="padding-bottom: 0;">
-                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" class="offer-code-container" style="margin: 0 auto; background: #f9fafb; border-radius: 6px; border: 1px solid #e5e7eb;">
-                      <tr>
-                        <td style="padding: 6px 12px; text-align: center;">
-                          <table role="presentation" cellspacing="0" cellpadding="0" border="0">
-                            <tr>
-                              <td align="center" style="padding-bottom: 3px;">
-                                <div class="offer-code-label" style="font-size: 8px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #6b7280;">Offer Code</div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td align="center">
-                                <div class="offer-code-value" style="font-size: 14px; font-weight: 700; font-family: 'Courier New', Courier, monospace; letter-spacing: 0.08em; background: #ffffff; padding: 4px 8px; border-radius: 5px; border: 1.5px solid #3b82f6; color: #1f2937; display: inline-block;">${this.customerData.offerCode}</div>
-                              </td>
-                            </tr>
-                          </table>
-                        </td>
-                      </tr>
-                    </table>
                   </td>
                 </tr>
               </table>

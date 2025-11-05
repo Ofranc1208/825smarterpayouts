@@ -11,7 +11,6 @@ import {
   ContactInput,
   TermsCheckbox,
   OfferCodeDisplay,
-  BonusMessage,
   CallToActionButton,
   SuccessState,
 } from './components';
@@ -44,7 +43,7 @@ interface OfferCaptureOverlayProps {
  */
 const OfferCaptureOverlay: React.FC<OfferCaptureOverlayProps> = ({
   calculatorType = 'guaranteed',
-  delaySeconds = 7,
+  delaySeconds = 5,
   onDismiss,
   onSuccess,
   quoteData
@@ -238,8 +237,6 @@ const OfferCaptureOverlay: React.FC<OfferCaptureOverlayProps> = ({
               />
 
               <OfferCodeDisplay offerCode={offerCode} />
-
-              <BonusMessage />
 
               {/* Submit Button - Only show when input has value AND terms are agreed */}
               {/* Positioned immediately after offer code for clear action flow */}
