@@ -1,4 +1,6 @@
 import React from 'react';
+import { COLORS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 /**
  * CTA Title Component for YouTube Channel
@@ -51,11 +53,11 @@ export default function CTATitle({
     <h2 
       id={id}
       style={{
-        fontSize: 'clamp(1.25rem, 4vw, 1.5rem)',
-        fontWeight: '700',
+        ...TEXT_PRESETS.heroTitle,
+        fontSize: 'clamp(1.5rem, 3.5vw, 2rem)',
+        color: COLORS.neutral.gray900,
         marginBottom: '1rem',
-        color: themeColor,
-        background: `linear-gradient(135deg, ${themeColor} 0%, #1f2937 100%)`,
+        background: COLORS.titleGradients.grayToGreen,
         WebkitBackgroundClip: 'text',
         WebkitTextFillColor: 'transparent',
         backgroundClip: 'text',

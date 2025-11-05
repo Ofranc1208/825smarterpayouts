@@ -23,8 +23,8 @@ export default function HowFastPage() {
   return (
     <>
       <HeroSection />
-      <QuickAnswerSection />
       <TimelineSection />
+      <QuickAnswerSection />
       <FactorsSection />
       <CTASection />
     </>

@@ -9,6 +9,7 @@
 import React from 'react';
 import HeroCTA from '@/src/components/Pages/AboutUs/components/HeroSection/HeroCTA';
 import { COLORS, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 export function CTASection() {
   return (
@@ -46,13 +47,16 @@ export function CTASection() {
         }}>
           {/* Title */}
           <h2 style={{
-            fontSize: "1.25rem",
-            fontWeight: "600",
+            ...TEXT_PRESETS.heroTitle,
             marginBottom: SPACING.stack.sm,
             lineHeight: "1.3",
-            color: COLORS.text.secondary
+            color: COLORS.neutral.gray900,
+            background: COLORS.titleGradients.grayToGreen,
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text"
           }}>
-            Experience the Same Trusted Service
+            Get Your Quote
           </h2>
           
           {/* Subtitle */}
@@ -63,7 +67,7 @@ export function CTASection() {
             margin: `0 auto ${SPACING.stack.md}`,
             lineHeight: "1.7"
           }}>
-            Ready to get started? Join the hundreds of happy users and find your settlement's true value now.
+            Join the hundreds of users who trust our transparent, instant settlement calculator.
           </p>
           
           {/* CTA Buttons */}

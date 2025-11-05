@@ -16,6 +16,7 @@
 
 import { useState } from 'react';
 import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 import type { TimelineStep } from '../types';
 
 const timelineSteps: TimelineStep[] = [
@@ -167,11 +168,14 @@ export default function TimelineSection() {
         margin: '0 auto'
       }}>
         <h2 style={{
-          fontSize: TYPOGRAPHY.fontSize.heading.h3,
-          fontWeight: TYPOGRAPHY.fontWeight.bold,
-          color: COLORS.text.primary,
+          ...TEXT_PRESETS.heroTitle,
+          color: COLORS.neutral.gray900,
           marginBottom: SPACING.stack.md,
-          textAlign: 'center'
+          textAlign: 'center',
+          background: COLORS.titleGradients.grayToGreen,
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          backgroundClip: "text"
         }}>
           Complete Timeline Breakdown
         </h2>

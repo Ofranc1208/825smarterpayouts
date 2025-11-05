@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { COLORS } from '@/src/components/shared/styles';
 import FormFields from './FormFields';
 import FormSubmitButton from './FormSubmitButton';
 
@@ -58,9 +59,13 @@ export default function ContactForm({ onFormSubmit }: ContactFormProps) {
       <h3 style={{
         fontSize: "1.5rem",
         fontWeight: "700",
-        color: "#1f2937",
+        color: COLORS.neutral.gray900,
         marginBottom: "1rem",
-        textAlign: "center"
+        textAlign: "center",
+        background: COLORS.titleGradients.grayToGreen,
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        backgroundClip: "text"
       }}>
         Send us a Message
       </h3>

@@ -7,7 +7,8 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
-import { COLORS } from '@/src/components/shared/styles';
+import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 import { HeroSection, Sidebar, RelatedResources, SchemaMarkup } from '../components';
 import { generateArticleSchema, generateBreadcrumbSchema } from '../utils';
 
@@ -47,73 +48,181 @@ const MaximizeOffer: React.FC = () => {
         }
       ` }} />
 
-      <HeroSection title="📈 How to Maximize Your Settlement Offer" subtitle="12 proven strategies to get the best possible price" showCTAs={true} />
+      <HeroSection title="How to Maximize Your Settlement Offer" subtitle="Proven strategies to get the best possible price" showCTAs={true} />
 
-      <main style={{ background: '#f9fafb', minHeight: '100vh', padding: '3rem 1.5rem', boxSizing: 'border-box', width: '100%' }}>
-        <div style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 360px', gap: '2.5rem', boxSizing: 'border-box', width: '100%' }} className="content-grid">
+      <main style={{ background: COLORS.backgrounds.lightGray, minHeight: '100vh', padding: `${SPACING.unit.xl} ${SPACING.unit.md}`, boxSizing: 'border-box', width: '100%' }}>
+        <div style={{ maxWidth: SPACING.container.maxWidth, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 300px', gap: SPACING.unit.xl, boxSizing: 'border-box', width: '100%' }} className="content-grid">
           <div style={{ minWidth: 0, boxSizing: 'border-box' }}>
-            <section style={{ background: 'white', borderRadius: '16px', padding: '2.5rem', marginBottom: '2rem', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
-              <h2 style={{ fontSize: '2rem', fontWeight: '700', color: '#111827', marginBottom: '1.5rem' }}>The $10,000-$30,000 Question</h2>
-              <p style={{ fontSize: '1.0625rem', lineHeight: '1.7', color: '#374151', marginBottom: '1.5rem' }}>
+            <section style={{ background: COLORS.backgrounds.white, borderRadius: BORDER_RADIUS.large, padding: `${SPACING.unit.xl} ${SPACING.unit.lg}`, marginBottom: SPACING.stack.lg, boxShadow: BOX_SHADOWS.medium, border: `1px solid ${COLORS.neutral.gray200}` }}>
+              <h2 style={{
+                ...TEXT_PRESETS.heroTitle,
+                fontSize: 'clamp(1.5rem, 3.5vw, 2rem)',
+                color: COLORS.neutral.gray900,
+                marginBottom: SPACING.stack.md,
+                background: COLORS.titleGradients.grayToGreen,
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                textAlign: 'center'
+              }}>
+                The $10,000-$30,000 Question
+              </h2>
+              <p style={{
+                fontSize: TYPOGRAPHY.fontSize.body.medium,
+                lineHeight: TYPOGRAPHY.lineHeight.relaxed,
+                color: COLORS.text.secondary,
+                marginBottom: SPACING.stack.md,
+                textAlign: 'center',
+                maxWidth: '700px',
+                margin: `0 auto ${SPACING.stack.md}`
+              }}>
                 Two people with identical settlements can receive offers differing by <strong>$10,000 to $30,000</strong>. The difference? Knowledge and negotiation.
               </p>
-              <div style={{ background: '#d1fae5', border: '2px solid #10b981', borderRadius: '12px', padding: '1.5rem' }}>
-                <h3 style={{ color: '#065f46', fontSize: '1.125rem', fontWeight: '700', marginBottom: '0.75rem' }}>💰 Real Impact</h3>
-                <p style={{ color: '#047857', lineHeight: '1.6', margin: 0 }}>On a $250,000 settlement, reducing discount from 12% to 9% increases payout by ~$15,000. Every point matters.</p>
+              <div style={{
+                background: COLORS.backgrounds.greenLight,
+                border: `1px solid ${COLORS.borders.green}`,
+                borderRadius: BORDER_RADIUS.medium,
+                padding: SPACING.card.compact,
+                maxWidth: '600px',
+                margin: '0 auto',
+                textAlign: 'center'
+              }}>
+                <h3 style={{
+                  fontSize: TYPOGRAPHY.fontSize.heading.h5,
+                  fontWeight: TYPOGRAPHY.fontWeight.semibold,
+                  color: COLORS.primary.main,
+                  marginBottom: SPACING.stack.xs,
+                  textAlign: 'center'
+                }}>
+                  Real Impact
+                </h3>
+                <p style={{
+                  fontSize: TYPOGRAPHY.fontSize.body.small,
+                  color: COLORS.text.secondary,
+                  lineHeight: TYPOGRAPHY.lineHeight.relaxed,
+                  margin: 0
+                }}>
+                  On a $250,000 settlement, reducing discount from 12% to 9% increases payout by ~$15,000. Every point matters.
+                </p>
               </div>
             </section>
 
-            {/* CTA #1 */}
-            <div style={{ background: 'linear-gradient(135deg, #059669 0%, #047857 100%)', padding: '2.5rem', borderRadius: '16px', marginBottom: '2rem', textAlign: 'center', color: 'white' }}>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '1rem' }}>Start with Strategy #1: Get Multiple Quotes</h3>
-              <p style={{ fontSize: '1.0625rem', lineHeight: '1.7', marginBottom: '1.5rem', opacity: 0.95 }}>The most effective way to maximize: compare companies. Get competitive quotes now.</p>
-              <Link href="/mint-chat-active?type=calculate" style={{ display: 'inline-block', background: 'white', color: COLORS.primary.main, padding: '1rem 2.5rem', borderRadius: '12px', textDecoration: 'none', fontWeight: '700', fontSize: '1.125rem', boxShadow: '0 6px 20px rgba(0,0,0,0.15)' }}>💸 Compare Quotes →</Link>
-            </div>
-
-            <section style={{ background: 'white', borderRadius: '16px', padding: '2.5rem', marginBottom: '2rem', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
-              <h2 style={{ fontSize: '2rem', fontWeight: '700', color: '#111827', marginBottom: '2rem' }}>8 Key Strategies to Maximize</h2>
-              {strategies.map((s, i) => (
-                <div key={i} style={{ marginBottom: '2rem', paddingBottom: '2rem', borderBottom: i < strategies.length - 1 ? '2px solid #e5e7eb' : 'none' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem', gap: '1rem' }}>
-                    <h3 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#111827', flex: 1 }}>{i + 1}. {s.title}</h3>
-                    <span style={{ background: COLORS.primary.main, color: 'white', padding: '0.5rem 0.75rem', borderRadius: '8px', fontSize: '0.8125rem', fontWeight: '700', whiteSpace: 'nowrap', flexShrink: 0 }}>{s.impact}</span>
+            <section style={{ background: COLORS.backgrounds.white, borderRadius: BORDER_RADIUS.large, padding: `${SPACING.unit.xl} ${SPACING.unit.lg}`, marginBottom: SPACING.stack.lg, boxShadow: BOX_SHADOWS.medium, border: `1px solid ${COLORS.neutral.gray200}` }}>
+              <h2 style={{
+                ...TEXT_PRESETS.heroTitle,
+                fontSize: 'clamp(1.5rem, 3.5vw, 2rem)',
+                color: COLORS.neutral.gray900,
+                marginBottom: SPACING.stack.lg,
+                background: COLORS.titleGradients.grayToGreen,
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                textAlign: 'center'
+              }}>
+                Key Strategies to Maximize
+              </h2>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: SPACING.unit.md }}>
+                {strategies.map((s, i) => (
+                  <div key={i} style={{
+                    background: COLORS.backgrounds.lightGray,
+                    borderRadius: BORDER_RADIUS.medium,
+                    padding: SPACING.card.compact,
+                    border: `1px solid ${COLORS.neutral.gray200}`,
+                    transition: 'all 0.2s ease'
+                  }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: SPACING.stack.xs, gap: SPACING.unit.md, flexWrap: 'wrap' }}>
+                      <h3 style={{
+                        fontSize: TYPOGRAPHY.fontSize.heading.h5,
+                        fontWeight: TYPOGRAPHY.fontWeight.semibold,
+                        color: COLORS.neutral.gray900,
+                        flex: 1,
+                        minWidth: '200px'
+                      }}>
+                        {i + 1}. {s.title}
+                      </h3>
+                      <span style={{
+                        background: COLORS.primary.main,
+                        color: COLORS.backgrounds.white,
+                        padding: `${SPACING.unit.xs} ${SPACING.unit.sm}`,
+                        borderRadius: BORDER_RADIUS.small,
+                        fontSize: TYPOGRAPHY.fontSize.body.small,
+                        fontWeight: TYPOGRAPHY.fontWeight.semibold,
+                        whiteSpace: 'nowrap',
+                        flexShrink: 0
+                      }}>
+                        {s.impact}
+                      </span>
+                    </div>
+                    <p style={{
+                      fontSize: TYPOGRAPHY.fontSize.body.small,
+                      color: COLORS.text.secondary,
+                      lineHeight: TYPOGRAPHY.lineHeight.relaxed,
+                      margin: 0
+                    }}>
+                      {s.desc}
+                    </p>
                   </div>
-                  <p style={{ color: '#6b7280', lineHeight: '1.7' }}>{s.desc}</p>
-                </div>
-              ))}
+                ))}
+              </div>
             </section>
 
-            {/* CTA #2 */}
-            <div style={{ background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)', padding: '2.5rem', borderRadius: '16px', marginBottom: '2rem', textAlign: 'center', color: 'white' }}>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
-                <img
-                  src="/assets/images/mint-mascot.png"
-                  alt="Mint AI"
-                  style={{
-                    width: '28px',
-                    height: '28px',
-                    objectFit: 'contain'
-                  }}
-                />
-                Need Personalized Strategy?
-              </h3>
-              <p style={{ fontSize: '1.0625rem', lineHeight: '1.7', marginBottom: '1.5rem', opacity: 0.95 }}>Chat with Mint AI for tailored advice on maximizing your specific settlement offer.</p>
-              <Link href="/chat" style={{ display: 'inline-block', background: 'white', color: COLORS.accent.purple, padding: '1rem 2.5rem', borderRadius: '12px', textDecoration: 'none', fontWeight: '700', fontSize: '1.125rem', boxShadow: '0 6px 20px rgba(0,0,0,0.15)' }}>💬 Get Strategy Help →</Link>
-            </div>
-
-            <section style={{ background: 'white', borderRadius: '16px', padding: '2.5rem', marginBottom: '2rem', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
-              <h2 style={{ fontSize: '2rem', fontWeight: '700', color: '#111827', marginBottom: '1.5rem' }}>Real Success Story</h2>
-              <div style={{ background: '#eff6ff', border: '2px solid #3b82f6', borderRadius: '12px', padding: '2rem' }}>
-                <h4 style={{ fontSize: '1.25rem', fontWeight: '700', color: '#1e40af', marginBottom: '1rem' }}>📖 Sarah's $22,000 Improvement</h4>
-                <p style={{ color: '#1e3a8a', lineHeight: '1.8', marginBottom: '1rem' }}>
-                  <strong>Initial:</strong> $275,000 in payments. Needed $80,000. First offer: $78,000 at 12% (terrible deal).
-                </p>
-                <p style={{ color: '#1e3a8a', lineHeight: '1.8', marginBottom: '1rem' }}>
-                  <strong>Actions:</strong> Got 5 more quotes, calculated fair value, proposed partial sale (5 years only), prepared business plan, negotiated.
-                </p>
-                <p style={{ color: '#1e3a8a', lineHeight: '1.8', margin: 0 }}>
-                  <strong style={{ color: COLORS.primary.main, fontSize: '1.125rem' }}>Result:</strong> $88,000 for 6 years at 9.2%. <strong>$22,000 better + kept $120,000 future value!</strong>
-                </p>
+            <section style={{ background: COLORS.backgrounds.white, borderRadius: BORDER_RADIUS.large, padding: `${SPACING.unit.xl} ${SPACING.unit.lg}`, marginBottom: SPACING.stack.lg, boxShadow: BOX_SHADOWS.medium, border: `1px solid ${COLORS.neutral.gray200}` }}>
+              <h2 style={{
+                ...TEXT_PRESETS.heroTitle,
+                fontSize: 'clamp(1.5rem, 3.5vw, 2rem)',
+                color: COLORS.neutral.gray900,
+                marginBottom: SPACING.stack.md,
+                background: COLORS.titleGradients.grayToGreen,
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                textAlign: 'center'
+              }}>
+                Real Success Story
+              </h2>
+              <div style={{
+                background: COLORS.backgrounds.lightGray,
+                border: `1px solid ${COLORS.neutral.gray200}`,
+                borderRadius: BORDER_RADIUS.medium,
+                padding: SPACING.card.standard,
+                maxWidth: '700px',
+                margin: '0 auto'
+              }}>
+                <h4 style={{
+                  fontSize: TYPOGRAPHY.fontSize.heading.h5,
+                  fontWeight: TYPOGRAPHY.fontWeight.semibold,
+                  color: COLORS.neutral.gray900,
+                  marginBottom: SPACING.stack.sm,
+                  textAlign: 'center'
+                }}>
+                  Sarah's $22,000 Improvement
+                </h4>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: SPACING.unit.sm }}>
+                  <p style={{
+                    fontSize: TYPOGRAPHY.fontSize.body.small,
+                    color: COLORS.text.secondary,
+                    lineHeight: TYPOGRAPHY.lineHeight.relaxed,
+                    margin: 0
+                  }}>
+                    <strong>Initial:</strong> $275,000 in payments. Needed $80,000. First offer: $78,000 at 12% (terrible deal).
+                  </p>
+                  <p style={{
+                    fontSize: TYPOGRAPHY.fontSize.body.small,
+                    color: COLORS.text.secondary,
+                    lineHeight: TYPOGRAPHY.lineHeight.relaxed,
+                    margin: 0
+                  }}>
+                    <strong>Actions:</strong> Got 5 more quotes, calculated fair value, proposed partial sale (5 years only), prepared business plan, negotiated.
+                  </p>
+                  <p style={{
+                    fontSize: TYPOGRAPHY.fontSize.body.small,
+                    color: COLORS.text.secondary,
+                    lineHeight: TYPOGRAPHY.lineHeight.relaxed,
+                    margin: 0
+                  }}>
+                    <strong style={{ color: COLORS.primary.main }}>Result:</strong> $88,000 for 6 years at 9.2%. <strong>$22,000 better + kept $120,000 future value!</strong>
+                  </p>
+                </div>
               </div>
             </section>
 

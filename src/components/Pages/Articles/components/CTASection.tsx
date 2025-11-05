@@ -37,7 +37,7 @@ export default function CTASection() {
           enhancedHover={true}
           shimmer={true}
         >
-          💰 Get Your Instant Quote
+          Get Your Instant Quote
         </Button>
       </section>
 
@@ -61,7 +61,7 @@ export default function CTASection() {
           shimmer={true}
           shimmerDelay={1}
         >
-          💬 Chat with Mint AI
+          Chat with Mint AI
         </Button>
       </section>
     </>

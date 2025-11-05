@@ -79,7 +79,7 @@ export default function HeroSection() {
           maxWidth: "700px",
           margin: `0 auto ${SPACING.stack.lg}`
         }}>
-          Get a <strong style={{ color: COLORS.primary.dark }}>free, no-obligation cash offer</strong> in 60 seconds. <strong>No personal information required</strong>, no credit checks, no pressure. Just instant, accurate quotes.
+          <strong style={{ color: COLORS.primary.dark }}>Free cash offer in 60 seconds.</strong> No personal info required. No pressure.
         </p>
 
         {/* CTA Buttons (using shared component) */}

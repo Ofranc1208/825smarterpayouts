@@ -66,11 +66,13 @@ export function CtaSection() {
         }}>
           {/* Title with Gradient */}
           <h2 style={{
-            fontSize: "1.875rem",
-            fontWeight: "700",
+            ...TEXT_PRESETS.heroTitle,
+            fontSize: 'clamp(1.75rem, 4vw, 2.25rem)',
+            color: COLORS.neutral.gray900,
             background: COLORS.titleGradients.grayToGreen,
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
             marginBottom: SPACING.stack.md,
             lineHeight: "1.2"
           }}>

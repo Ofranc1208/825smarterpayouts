@@ -10,6 +10,7 @@ import React from 'react';
 import { testimonials } from '../data';
 import { TestimonialCard } from './shared';
 import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 export default function FeaturedTestimonialsGrid() {
   return (
@@ -17,7 +18,7 @@ export default function FeaturedTestimonialsGrid() {
       width: '100%',
       maxWidth: SPACING.container.maxWidth,
       margin: '0 auto',
-      padding: `${SPACING.unit.xxxxl} ${SPACING.container.padding}`,
+      padding: `${SPACING.unit.xl} ${SPACING.container.padding}`,
       background: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%)',
       position: 'relative',
       overflow: 'hidden'
@@ -47,33 +48,34 @@ export default function FeaturedTestimonialsGrid() {
       {/* Section Header - Modern and Engaging */}
       <div style={{
         textAlign: 'center',
-        marginBottom: SPACING.unit.xxxxl,
+        marginBottom: SPACING.unit.xl,
         position: 'relative',
         zIndex: 1
       }}>
         <h2 style={{
-          fontSize: TYPOGRAPHY.fontSize.heading.h1,
-          fontWeight: TYPOGRAPHY.fontWeight.bold,
-          background: 'linear-gradient(135deg, #1f2937 0%, #374151 50%, #22c55e 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
+          ...TEXT_PRESETS.heroTitle,
+          fontSize: 'clamp(1.75rem, 4vw, 2.25rem)',
+          color: COLORS.neutral.gray900,
           marginBottom: SPACING.stack.lg,
           lineHeight: TYPOGRAPHY.lineHeight.tight,
+          background: COLORS.titleGradients.grayToGreen,
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          backgroundClip: "text",
           maxWidth: '800px',
           margin: `0 auto ${SPACING.stack.lg}`
         }}>
           Shared by Our Clients
         </h2>
         <p style={{
-          fontSize: TYPOGRAPHY.fontSize.body.xlarge,
+          fontSize: TYPOGRAPHY.fontSize.body.medium,
           color: COLORS.text.secondary,
-          maxWidth: '700px',
+          maxWidth: '600px',
           margin: '0 auto',
           lineHeight: TYPOGRAPHY.lineHeight.relaxed,
-          fontWeight: TYPOGRAPHY.fontWeight.medium
+          fontWeight: TYPOGRAPHY.fontWeight.normal
         }}>
-          These authentic testimonials were provided directly to us by clients who have experienced our <strong style={{ color: '#22c55e' }}>no-pressure, transparent process</strong>. Each story represents a real person's journey through our settlement services.
+          These authentic testimonials were provided directly to us by our clients. Each story represents a real person's experience with our transparent settlement process.
         </p>
       </div>
 

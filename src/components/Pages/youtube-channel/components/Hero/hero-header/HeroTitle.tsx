@@ -1,4 +1,6 @@
 import React from 'react';
+import { COLORS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 /**
  * Hero Title Component for YouTube Channel
@@ -47,12 +49,12 @@ export default function HeroTitle({
     <h1 
       id={id}
       style={{
-        fontSize: "clamp(2rem, 5vw, 3.5rem)",
-        fontWeight: "700",
-        color: "#1f2937",
+        ...TEXT_PRESETS.heroTitle,
+        fontSize: 'clamp(1.75rem, 4vw, 2.75rem)',
+        color: COLORS.neutral.gray900,
         marginBottom: "1.5rem",
         lineHeight: "1.2",
-        background: "linear-gradient(135deg, #1f2937 0%, #059669 100%)",
+        background: COLORS.titleGradients.grayToGreen,
         WebkitBackgroundClip: "text",
         WebkitTextFillColor: "transparent",
         backgroundClip: "text",

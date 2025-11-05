@@ -12,13 +12,14 @@
  */
 
 import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 export default function CommunitySection() {
   return (
     <section style={{
       background: COLORS.backgrounds.lightGray,
-      paddingTop: SPACING.unit.xxxxl,
-      paddingBottom: SPACING.unit.xxxxl,
+      paddingTop: SPACING.unit.xl,
+      paddingBottom: SPACING.unit.xl,
       paddingLeft: SPACING.unit.md,
       paddingRight: SPACING.unit.md
     }}>
@@ -31,25 +32,29 @@ export default function CommunitySection() {
           display: 'flex',
           justifyContent: 'center',
           textAlign: 'center',
-          marginBottom: SPACING.unit.xxxl
+          marginBottom: SPACING.unit.lg
         }}>
           <div style={{
             maxWidth: '800px'
           }}>
             <h2 style={{
-              fontSize: TYPOGRAPHY.fontSize.heading.h3,
-              fontWeight: TYPOGRAPHY.fontWeight.semibold,
-              color: COLORS.text.primary,
-              marginBottom: SPACING.stack.md
+              ...TEXT_PRESETS.heroTitle,
+              fontSize: 'clamp(1.75rem, 4vw, 2.25rem)',
+              color: COLORS.neutral.gray900,
+              marginBottom: SPACING.stack.sm,
+              background: COLORS.titleGradients.grayToGreen,
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text"
             }}>
               Join Our Community
             </h2>
             <p style={{
-              fontSize: TYPOGRAPHY.fontSize.body.large,
+              fontSize: TYPOGRAPHY.fontSize.body.medium,
               color: COLORS.text.secondary,
-              marginBottom: SPACING.unit.xxxl
+              marginBottom: SPACING.unit.lg
             }}>
-              Stay connected with thousands of clients who trust SmarterPayouts for their structured settlement needs.
+              Connect with thousands of clients who trust SmarterPayouts.
             </p>
           </div>
         </div>

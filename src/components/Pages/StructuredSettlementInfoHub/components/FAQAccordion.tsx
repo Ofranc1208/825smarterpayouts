@@ -8,7 +8,8 @@
 
 'use client';
 import React, { useState } from 'react';
-import { COLORS, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
+import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 import type { FAQItem } from '../types';
 
 interface FAQAccordionProps {
@@ -30,10 +31,15 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({
     <section style={{ marginBottom: '3rem' }}>
       {title && (
         <h2 style={{
-          fontSize: '1.5rem',
-          fontWeight: '600',
-          color: COLORS.text.primary,
-          marginBottom: '1.5rem'
+          ...TEXT_PRESETS.heroTitle,
+          fontSize: 'clamp(1.75rem, 4vw, 2.25rem)',
+          color: COLORS.neutral.gray900,
+          marginBottom: SPACING.stack.lg,
+          background: COLORS.titleGradients.grayToGreen,
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          backgroundClip: "text",
+          textAlign: 'center'
         }}>
           {title}
         </h2>

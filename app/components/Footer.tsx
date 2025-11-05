@@ -202,7 +202,6 @@ export default function Footer() {
               {[
                 { name: 'YouTube', url: 'https://youtube.com/@smarterpayouts', icon: '▶', color: '#FF0000' },
                 { name: 'X', url: 'https://x.com/smarterpayouts', icon: 'X', color: '#000000' },
-                { name: 'LinkedIn', url: 'https://linkedin.com/company/smarterpayouts', icon: 'in', color: '#0077B5' },
                 { name: 'Instagram', url: 'https://instagram.com/smarterpayouts', icon: 'IG', color: '#E4405F' },
                 { name: 'Facebook', url: 'https://facebook.com/smarterpayouts', icon: 'f', color: '#1877F2' }
               ].map((social) => (

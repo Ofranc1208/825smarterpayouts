@@ -1,3 +1,5 @@
+import { COLORS, SPACING, BORDER_RADIUS } from '@/src/components/shared/styles';
+
 interface MintBackgroundProps {
   children: React.ReactNode;
 }
@@ -5,12 +7,11 @@ interface MintBackgroundProps {
 export default function MintBackground({ children }: MintBackgroundProps) {
   return (
     <div style={{
-      background: 'linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%)',
-      borderRadius: '24px',
-      padding: '3rem 2rem',
-      margin: '3rem 0',
+      background: COLORS.backgrounds.white,
+      padding: `${SPACING.unit.lg} ${SPACING.container.paddingX}`,
       textAlign: 'center',
-      border: '1px solid #0ea5e9'
+      maxWidth: SPACING.container.maxWidth,
+      margin: `${SPACING.stack.lg} auto`
     }}>
       {children}
     </div>

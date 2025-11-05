@@ -10,7 +10,8 @@
 import React from 'react';
 import Link from 'next/link';
 import Button from '@/src/components/shared/Button';
-import { COLORS } from '@/src/components/shared/styles';
+import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 import {
   HeroSection,
   Sidebar,
@@ -107,7 +108,7 @@ const ProsConsSelling: React.FC = () => {
       }} />
 
       <HeroSection
-        title="⚖️ Pros & Cons of Selling Your Structured Settlement"
+        title="Pros & Cons of Selling Your Structured Settlement"
         subtitle="Make an informed decision by understanding both the advantages and disadvantages of selling your structured settlement payments."
         showCTAs={true}
       />
@@ -136,42 +137,53 @@ const ProsConsSelling: React.FC = () => {
             }}>
               {/* Introduction */}
               <section style={{
-                background: 'white',
-                padding: '2.5rem',
-                borderRadius: '16px',
-                boxShadow: '0 4px 6px rgba(0,0,0,0.07)',
-                marginBottom: '2rem',
-                border: '1px solid #e5e7eb'
+                background: COLORS.backgrounds.white,
+                padding: `${SPACING.unit.xl} ${SPACING.unit.lg}`,
+                borderRadius: BORDER_RADIUS.large,
+                boxShadow: BOX_SHADOWS.medium,
+                marginBottom: SPACING.stack.lg,
+                border: `1px solid ${COLORS.neutral.gray200}`
               }}>
                 <h2 style={{
-                  fontSize: '1.75rem',
-                  fontWeight: '600',
-                  color: COLORS.text.primary,
-                  marginBottom: '1.5rem'
+                  ...TEXT_PRESETS.heroTitle,
+                  fontSize: 'clamp(1.75rem, 4vw, 2.25rem)',
+                  color: COLORS.neutral.gray900,
+                  marginBottom: SPACING.stack.md,
+                  background: COLORS.titleGradients.grayToGreen,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  textAlign: 'center'
                 }}>
                   Making an Informed Decision
                 </h2>
                 <p style={{
-                  color: COLORS.text.tertiary,
-                  lineHeight: '1.8',
-                  fontSize: '1.0625rem',
-                  marginBottom: '1.5rem'
+                  fontSize: TYPOGRAPHY.fontSize.body.medium,
+                  color: COLORS.text.secondary,
+                  lineHeight: TYPOGRAPHY.lineHeight.relaxed,
+                  marginBottom: SPACING.stack.lg,
+                  textAlign: 'center',
+                  maxWidth: '700px',
+                  margin: `0 auto ${SPACING.stack.lg}`
                 }}>
                   Selling your structured settlement is a major financial decision that can significantly impact your future. While it provides immediate access to cash, it also means giving up guaranteed future income. Understanding both sides helps you make the right choice for your situation.
                 </p>
                 <div style={{
-                  background: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)',
-                  padding: '1.5rem',
-                  borderRadius: '12px',
-                  border: '1px solid #93c5fd'
+                  background: COLORS.backgrounds.greenLight,
+                  padding: SPACING.card.compact,
+                  borderRadius: BORDER_RADIUS.medium,
+                  border: `1px solid ${COLORS.borders.green}`,
+                  maxWidth: '600px',
+                  margin: '0 auto',
+                  textAlign: 'center'
                 }}>
                   <p style={{
+                    fontSize: TYPOGRAPHY.fontSize.body.medium,
                     color: COLORS.text.secondary,
-                    fontSize: '1rem',
-                    lineHeight: '1.7',
+                    lineHeight: TYPOGRAPHY.lineHeight.relaxed,
                     margin: 0
                   }}>
-                    💡 <strong>Key Insight:</strong> There's no universal "right" answer. The decision depends on your unique financial situation, goals, and needs. This guide helps you evaluate what's best for YOU.
+                    <strong style={{ color: COLORS.primary.main }}>Key Insight:</strong> There's no universal "right" answer. The decision depends on your unique financial situation, goals, and needs. This guide helps you evaluate what's best for YOU.
                   </p>
                 </div>
               </section>
@@ -186,22 +198,23 @@ const ProsConsSelling: React.FC = () => {
                 border: '1px solid #e5e7eb'
               }}>
                 <h2 style={{
-                  fontSize: '1.75rem',
-                  fontWeight: '700',
-                  color: COLORS.primary.main,
-                  marginBottom: '1.5rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.75rem'
+                  ...TEXT_PRESETS.heroTitle,
+                  fontSize: 'clamp(1.75rem, 4vw, 2.25rem)',
+                  color: COLORS.neutral.gray900,
+                  marginBottom: SPACING.stack.md,
+                  background: COLORS.titleGradients.grayToGreen,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  textAlign: 'center'
                 }}>
-                  <span style={{ fontSize: '1.5rem' }}>✅</span>
                   Advantages of Selling
                 </h2>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                   {[
                     {
-                      title: '💰 Immediate Access to Large Lump Sum',
+                      title: 'Immediate Access to Large Lump Sum',
                       benefits: [
                         'Handle emergency expenses (medical bills, urgent home repairs)',
                         'Pay off high-interest credit card debt or loans',
@@ -211,7 +224,7 @@ const ProsConsSelling: React.FC = () => {
                       ]
                     },
                     {
-                      title: '📈 Investment Opportunities',
+                      title: 'Investment Opportunities',
                       benefits: [
                         'Invest in business ventures or startup costs',
                         'Purchase income-generating real estate',
@@ -221,7 +234,7 @@ const ProsConsSelling: React.FC = () => {
                       ]
                     },
                     {
-                      title: '🎯 Financial Flexibility',
+                      title: 'Financial Flexibility',
                       benefits: [
                         'Control when and how you use your money',
                         'Consolidate multiple debts into one manageable payment',
@@ -231,7 +244,7 @@ const ProsConsSelling: React.FC = () => {
                       ]
                     },
                     {
-                      title: '⚡ Eliminate Financial Stress',
+                      title: 'Eliminate Financial Stress',
                       benefits: [
                         'Stop waiting for monthly or annual payments',
                         'End anxiety about managing limited income',
@@ -248,10 +261,11 @@ const ProsConsSelling: React.FC = () => {
                       border: '1px solid #a7f3d0'
                     }}>
                       <h3 style={{
-                        fontSize: '1.125rem',
-                        fontWeight: '700',
-                        color: COLORS.text.primary,
-                        marginBottom: '0.75rem'
+                        fontSize: TYPOGRAPHY.fontSize.heading.h5,
+                        fontWeight: TYPOGRAPHY.fontWeight.semibold,
+                        color: COLORS.neutral.gray900,
+                        marginBottom: SPACING.stack.sm,
+                        textAlign: 'center'
                       }}>
                         {pro.title}
                       </h3>
@@ -280,10 +294,15 @@ const ProsConsSelling: React.FC = () => {
                 border: '1px solid #d1fae5'
               }}>
                 <h3 style={{
-                  fontSize: '1.5rem',
-                  fontWeight: '700',
-                  color: COLORS.text.primary,
-                  marginBottom: '1rem'
+                  ...TEXT_PRESETS.heroTitle,
+                  fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+                  color: COLORS.neutral.gray900,
+                  marginBottom: SPACING.stack.sm,
+                  background: COLORS.titleGradients.grayToGreen,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  textAlign: 'center'
                 }}>
                   See What Your Settlement is Worth Today
                 </h3>
@@ -303,7 +322,7 @@ const ProsConsSelling: React.FC = () => {
                   enhancedHover={true}
                   shimmer={true}
                 >
-                  💰 Calculate My Offer Now →
+                  Calculate My Offer Now →
                 </Button>
               </div>
 
@@ -317,22 +336,23 @@ const ProsConsSelling: React.FC = () => {
                 border: '1px solid #e5e7eb'
               }}>
                 <h2 style={{
-                  fontSize: '1.75rem',
-                  fontWeight: '700',
-                  color: '#dc2626',
-                  marginBottom: '1.5rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.75rem'
+                  ...TEXT_PRESETS.heroTitle,
+                  fontSize: 'clamp(1.75rem, 4vw, 2.25rem)',
+                  color: COLORS.neutral.gray900,
+                  marginBottom: SPACING.stack.md,
+                  background: COLORS.titleGradients.grayToGreen,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  textAlign: 'center'
                 }}>
-                  <span style={{ fontSize: '1.5rem' }}>⚠️</span>
                   Disadvantages & Risks
                 </h2>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                   {[
                     {
-                      title: '💸 Receive Less Than Total Value',
+                      title: 'Receive Less Than Total Value',
                       risks: [
                         'Discount rates typically range from 9-18%',
                         'You\'ll get 60-85% of total future payments',
@@ -342,7 +362,7 @@ const ProsConsSelling: React.FC = () => {
                       ]
                     },
                     {
-                      title: '📉 Loss of Guaranteed Future Income',
+                      title: 'Loss of Guaranteed Future Income',
                       risks: [
                         'No more regular periodic payments for living expenses',
                         'Give up tax-free income stream',
@@ -352,7 +372,7 @@ const ProsConsSelling: React.FC = () => {
                       ]
                     },
                     {
-                      title: '🏛️ Government Benefits Impact',
+                      title: 'Government Benefits Impact',
                       risks: [
                         'Large lump sum may affect SSI or Medicaid eligibility',
                         'Could disqualify you from needs-based assistance',
@@ -362,7 +382,7 @@ const ProsConsSelling: React.FC = () => {
                       ]
                     },
                     {
-                      title: '🎲 Mismanagement Risk',
+                      title: 'Mismanagement Risk',
                       risks: [
                         'Statistics show many people spend lump sums quickly',
                         'Without financial discipline, money can disappear fast',
@@ -379,10 +399,11 @@ const ProsConsSelling: React.FC = () => {
                       border: '1px solid #fecaca'
                     }}>
                       <h3 style={{
-                        fontSize: '1.125rem',
-                        fontWeight: '700',
-                        color: COLORS.text.primary,
-                        marginBottom: '0.75rem'
+                        fontSize: TYPOGRAPHY.fontSize.heading.h5,
+                        fontWeight: TYPOGRAPHY.fontWeight.semibold,
+                        color: COLORS.neutral.gray900,
+                        marginBottom: SPACING.stack.sm,
+                        textAlign: 'center'
                       }}>
                         {con.title}
                       </h3>
@@ -411,10 +432,15 @@ const ProsConsSelling: React.FC = () => {
                 border: '1px solid #e9d5ff'
               }}>
                 <h3 style={{
-                  fontSize: '1.5rem',
-                  fontWeight: '700',
-                  color: COLORS.text.primary,
-                  marginBottom: '1rem'
+                  ...TEXT_PRESETS.heroTitle,
+                  fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+                  color: COLORS.neutral.gray900,
+                  marginBottom: SPACING.stack.sm,
+                  background: COLORS.titleGradients.grayToGreen,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  textAlign: 'center'
                 }}>
                   Not Sure if Selling is Right for You?
                 </h3>
@@ -435,7 +461,7 @@ const ProsConsSelling: React.FC = () => {
                   shimmer={true}
                   shimmerDelay={1}
                 >
-                  💬 Get Free AI Guidance →
+                  Get Free AI Guidance →
                 </Button>
               </div>
 
@@ -449,10 +475,15 @@ const ProsConsSelling: React.FC = () => {
                 border: '1px solid #e5e7eb'
               }}>
                 <h2 style={{
-                  fontSize: '1.75rem',
-                  fontWeight: '600',
-                  color: COLORS.text.primary,
-                  marginBottom: '1.25rem'
+                  ...TEXT_PRESETS.heroTitle,
+                  fontSize: 'clamp(1.75rem, 4vw, 2.25rem)',
+                  color: COLORS.neutral.gray900,
+                  marginBottom: SPACING.stack.md,
+                  background: COLORS.titleGradients.grayToGreen,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  textAlign: 'center'
                 }}>
                   When Selling Makes Sense
                 </h2>
@@ -464,12 +495,13 @@ const ProsConsSelling: React.FC = () => {
                   marginBottom: '1.5rem'
                 }}>
                   <h3 style={{
-                    fontSize: '1.125rem',
-                    fontWeight: '600',
-                    color: COLORS.text.primary,
-                    marginBottom: '0.75rem'
+                    fontSize: TYPOGRAPHY.fontSize.heading.h5,
+                    fontWeight: TYPOGRAPHY.fontWeight.semibold,
+                    color: COLORS.neutral.gray900,
+                    marginBottom: SPACING.stack.sm,
+                    textAlign: 'center'
                   }}>
-                    ✅ Good Reasons to Sell:
+                    Good Reasons to Sell:
                   </h3>
                   <ul style={{
                     color: COLORS.text.secondary,
@@ -488,10 +520,15 @@ const ProsConsSelling: React.FC = () => {
                 </div>
 
                 <h2 style={{
-                  fontSize: '1.75rem',
-                  fontWeight: '600',
-                  color: COLORS.text.primary,
-                  marginBottom: '1.25rem'
+                  ...TEXT_PRESETS.heroTitle,
+                  fontSize: 'clamp(1.75rem, 4vw, 2.25rem)',
+                  color: COLORS.neutral.gray900,
+                  marginBottom: SPACING.stack.md,
+                  background: COLORS.titleGradients.grayToGreen,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  textAlign: 'center'
                 }}>
                   When to Avoid Selling
                 </h2>
@@ -502,12 +539,13 @@ const ProsConsSelling: React.FC = () => {
                   border: '1px solid #fecaca'
                 }}>
                   <h3 style={{
-                    fontSize: '1.125rem',
-                    fontWeight: '600',
-                    color: COLORS.text.primary,
-                    marginBottom: '0.75rem'
+                    fontSize: TYPOGRAPHY.fontSize.heading.h5,
+                    fontWeight: TYPOGRAPHY.fontWeight.semibold,
+                    color: COLORS.neutral.gray900,
+                    marginBottom: SPACING.stack.sm,
+                    textAlign: 'center'
                   }}>
-                    ⛔ Poor Reasons to Sell:
+                    Poor Reasons to Sell:
                   </h3>
                   <ul style={{
                     color: COLORS.text.secondary,

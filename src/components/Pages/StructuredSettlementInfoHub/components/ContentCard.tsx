@@ -7,9 +7,9 @@
  */
 
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { COLORS, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
+import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
 import type { ContentCardProps } from '../types';
 
 export const ContentCard: React.FC<ContentCardProps> = ({
@@ -19,46 +19,60 @@ export const ContentCard: React.FC<ContentCardProps> = ({
   buttonText,
   buttonLink
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <section style={{
-      background: 'white',
-      padding: '2.5rem',
-      borderRadius: BORDER_RADIUS.large,
-      boxShadow: BOX_SHADOWS.medium,
-      marginBottom: '2rem',
-      border: '1px solid #e5e7eb',
-      transition: 'box-shadow 0.2s ease'
-    }}>
+    <section 
+      style={{
+        background: COLORS.backgrounds.white,
+        padding: `${SPACING.unit.xl} ${SPACING.unit.lg}`,
+        borderRadius: BORDER_RADIUS.large,
+        boxShadow: isHovered ? BOX_SHADOWS.large : BOX_SHADOWS.medium,
+        marginBottom: SPACING.stack.lg,
+        border: `1px solid ${COLORS.neutral.gray200}`,
+        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+        transform: isHovered ? 'translateY(-2px)' : 'translateY(0)'
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <h2 style={{
-        fontSize: '1.5rem',
-        fontWeight: '600',
-        color: COLORS.text.primary,
-        marginBottom: '1rem',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '0.5rem'
+        fontSize: TYPOGRAPHY.fontSize.heading.h3,
+        fontWeight: TYPOGRAPHY.fontWeight.bold,
+        color: COLORS.neutral.gray900,
+        marginBottom: SPACING.stack.md,
+        lineHeight: TYPOGRAPHY.lineHeight.tight,
+        background: COLORS.titleGradients.grayToGreen,
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        backgroundClip: "text"
       }}>
-        {emoji && <span>{emoji}</span>}
         {title}
       </h2>
       <p style={{
-        color: COLORS.text.tertiary,
-        lineHeight: '1.6',
-        marginBottom: '1.5rem'
+        fontSize: TYPOGRAPHY.fontSize.body.medium,
+        color: COLORS.text.secondary,
+        lineHeight: TYPOGRAPHY.lineHeight.relaxed,
+        marginBottom: SPACING.stack.lg
       }}>
         {description}
       </p>
-      <Link href={buttonLink} style={{
-        display: 'inline-block',
-        background: 'linear-gradient(135deg, #059669 0%, #047857 100%)',
-        color: 'white',
-        padding: '0.75rem 1.5rem',
-        borderRadius: '0.5rem',
-        textDecoration: 'none',
-        fontWeight: '600',
-        boxShadow: '0 4px 6px rgba(5, 150, 105, 0.2)',
-        transition: 'transform 0.2s ease'
-      }}>
+      <Link 
+        href={buttonLink} 
+        style={{
+          display: 'inline-block',
+          background: isHovered ? COLORS.primary.gradient : COLORS.primary.main,
+          color: COLORS.backgrounds.white,
+          padding: `${SPACING.unit.md} ${SPACING.unit.xl}`,
+          borderRadius: BORDER_RADIUS.medium,
+          textDecoration: 'none',
+          fontWeight: TYPOGRAPHY.fontWeight.semibold,
+          fontSize: TYPOGRAPHY.fontSize.body.medium,
+          boxShadow: isHovered ? BOX_SHADOWS.medium : BOX_SHADOWS.small,
+          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+          transform: isHovered ? 'translateY(-1px)' : 'translateY(0)'
+        }}
+      >
         {buttonText}
       </Link>
     </section>

@@ -36,25 +36,24 @@ export function ContentSection() {
           }}>
             <div>
               <h2 style={{
-                ...TEXT_PRESETS.h2,
+                ...TEXT_PRESETS.heroTitle,
                 marginBottom: SPACING.stack.sm,
-                color: COLORS.text.secondary,
-                display: 'flex',
-                alignItems: 'center',
-                gap: SPACING.unit.sm,
-                fontSize: '1.25rem',
-                fontWeight: '700'
+                color: COLORS.neutral.gray900,
+                background: COLORS.titleGradients.grayToGreen,
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text"
               }}>
-                Why Our Rating Matters: Skip the Sales Pitch
+                Why Our Rating Matters
               </h2>
               <p style={{
                 ...TEXT_PRESETS.body,
                 marginBottom: SPACING.stack.md,
                 color: COLORS.text.secondary,
                 lineHeight: '1.7',
-                fontSize: '1.0625rem'
+                fontSize: '1rem'
               }}>
-                Our high rating is a direct result of our <strong>"Skip the Sales Pitch"</strong> approach. Unlike competitors who use lengthy phone-based processes with pushy sales tactics, we provide honest, instant calculations that put you in control from the start.
+                Our high rating reflects our transparent, instant approach. No sales pressure, no hidden fees—just honest calculations.
               </p>
               
               {/* Comparison Section */}
@@ -133,26 +132,6 @@ export function ContentSection() {
                 </div>
               </div>
 
-              {/* Core Features Highlight */}
-              <div style={{
-                background: '#fff7e6',
-                borderRadius: BORDER_RADIUS.large,
-                padding: SPACING.card.compact,
-                marginTop: SPACING.stack.md,
-                border: '1px solid rgba(255, 180, 0, 0.2)'
-              }}>
-                <p style={{
-                  margin: 0,
-                  color: COLORS.text.secondary,
-                  fontWeight: '600',
-                  lineHeight: '1.7',
-                  fontSize: '1rem'
-                }}>
-                  <strong>AI-Powered Accuracy:</strong> Get instant, precise calculations without waiting<br/>
-                  <strong>Instant, No-Obligation Payout Offers:</strong> See your options immediately, no strings attached<br/>
-                  <strong>100% Free:</strong> No hidden fees, no subscription required—just honest, transparent service
-                </p>
-              </div>
             </div>
           </div>
 
@@ -166,11 +145,13 @@ export function ContentSection() {
             marginBottom: SPACING.stack.lg
           }}>
             <h2 style={{
-              ...TEXT_PRESETS.h2,
+              ...TEXT_PRESETS.heroTitle,
               marginBottom: SPACING.stack.sm,
-              color: COLORS.text.secondary,
-              fontSize: '1.125rem',
-              fontWeight: '600'
+              color: COLORS.neutral.gray900,
+              background: COLORS.titleGradients.grayToGreen,
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text"
             }}>
               What Our Rating Means
             </h2>
@@ -181,99 +162,8 @@ export function ContentSection() {
               lineHeight: '1.7',
               fontSize: '1rem'
             }}>
-              Our rating on Google reflects our commitment to excellence in several key areas:
+              Our rating reflects our commitment to transparency, security, and accuracy in structured settlement calculations.
             </p>
-            
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-              gap: SPACING.unit.md,
-              marginTop: SPACING.stack.md
-            }}>
-              <div style={{
-                padding: SPACING.card.compact,
-                background: '#f0fdf4',
-                borderRadius: BORDER_RADIUS.large,
-                border: '1px solid #d1fae5'
-              }}>
-                <div style={{
-                  fontSize: '1.75rem',
-                  marginBottom: SPACING.unit.xs
-                }}>🔒</div>
-                <h3 style={{
-                  fontSize: '1rem',
-                  fontWeight: '600',
-                  marginBottom: SPACING.unit.xs,
-                  color: COLORS.text.secondary
-                }}>
-                  Security & Privacy
-                </h3>
-                <p style={{
-                  margin: 0,
-                  fontSize: '0.875rem',
-                  color: COLORS.text.secondary,
-                  lineHeight: '1.6'
-                }}>
-                  Your information is protected with bank-level encryption. No personal data required to use our platform.
-                </p>
-              </div>
-
-              <div style={{
-                padding: SPACING.card.compact,
-                background: '#fef3c7',
-                borderRadius: BORDER_RADIUS.large,
-                border: '1px solid #fde68a'
-              }}>
-                <div style={{
-                  fontSize: '1.75rem',
-                  marginBottom: SPACING.unit.xs
-                }}>⚡</div>
-                <h3 style={{
-                  fontSize: '1rem',
-                  fontWeight: '600',
-                  marginBottom: SPACING.unit.xs,
-                  color: COLORS.text.secondary
-                }}>
-                  Fast & Accurate
-                </h3>
-                <p style={{
-                  margin: 0,
-                  fontSize: '0.875rem',
-                  color: COLORS.text.secondary,
-                  lineHeight: '1.6'
-                }}>
-                  Get instant results with calculations that match industry standards. No waiting, no guessing.
-                </p>
-              </div>
-
-              <div style={{
-                padding: SPACING.card.compact,
-                background: '#ecfdf5',
-                borderRadius: BORDER_RADIUS.large,
-                border: '1px solid #d1fae5'
-              }}>
-                <div style={{
-                  fontSize: '1.75rem',
-                  marginBottom: SPACING.unit.xs
-                }}>✅</div>
-                <h3 style={{
-                  fontSize: '1rem',
-                  fontWeight: '600',
-                  marginBottom: SPACING.unit.xs,
-                  color: COLORS.text.secondary
-                }}>
-                  Court-Approved
-                </h3>
-                <p style={{
-                  margin: 0,
-                  fontSize: '0.875rem',
-                  color: COLORS.text.secondary,
-                  lineHeight: '1.6'
-                }}>
-                  We work with licensed brokers in all 50 states. Every transaction follows legal requirements.
-                </p>
-              </div>
-            </div>
           </div>
 
           {/* What This Means for You - Simplified */}
@@ -286,11 +176,13 @@ export function ContentSection() {
             marginBottom: SPACING.stack.lg
           }}>
             <h2 style={{
-              ...TEXT_PRESETS.h2,
+              ...TEXT_PRESETS.heroTitle,
               marginBottom: SPACING.stack.sm,
-              color: COLORS.text.secondary,
-              fontSize: '1.125rem',
-              fontWeight: '600'
+              color: COLORS.neutral.gray900,
+              background: COLORS.titleGradients.grayToGreen,
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text"
             }}>
               What This Means for You
             </h2>
@@ -301,29 +193,8 @@ export function ContentSection() {
               lineHeight: '1.7',
               fontSize: '1rem'
             }}>
-              Our rating on Google isn't just a number—it's your assurance that you're working with a reputable, trustworthy company:
+              Our rating reflects trusted service from a reputable company. You can count on accurate calculations, transparent pricing, and a modern, easy-to-use platform.
             </p>
-            
-            <ul style={{
-              margin: 0,
-              paddingLeft: SPACING.unit.lg,
-              color: COLORS.text.secondary,
-              lineHeight: '1.8',
-              fontSize: '1rem'
-            }}>
-              <li style={{ marginBottom: SPACING.stack.xs }}>
-                <strong style={{ color: COLORS.text.secondary }}>You can trust our calculations.</strong> Our tools are accurate and validated by our user community.
-              </li>
-              <li style={{ marginBottom: SPACING.stack.xs }}>
-                <strong style={{ color: COLORS.text.secondary }}>No scams, no tricks.</strong> The "Free" badge means we don't charge hidden fees or require subscriptions.
-              </li>
-              <li style={{ marginBottom: SPACING.stack.xs }}>
-                <strong style={{ color: COLORS.text.secondary }}>You're in good company.</strong> Our rating reflects positive feedback from users who trust our service.
-              </li>
-              <li>
-                <strong style={{ color: COLORS.text.secondary }}>Fast, modern experience.</strong> Our site loads quickly, works on any device, and is easy to use—designed with user experience in mind.
-              </li>
-            </ul>
           </div>
 
         </div>

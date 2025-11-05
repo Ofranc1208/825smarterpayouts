@@ -7,7 +7,7 @@ export default function ProcessDescription() {
       margin: '0 auto',
       lineHeight: '1.6'
     }}>
-      Our streamlined process ensures fast, compliant court approval with <strong>Mint AI guidance</strong> at every step.
+      Fast, compliant court approval with <strong>Mint AI guidance</strong> at every step.
     </p>
   );
 }

@@ -1,4 +1,6 @@
 import React from 'react';
+import { COLORS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 /**
  * Gallery Title Component for YouTube Channel
@@ -47,12 +49,12 @@ export default function GalleryTitle({
     <h2 
       id={id}
       style={{
-        fontSize: "clamp(1.5rem, 4vw, 2rem)",
-        fontWeight: "700",
-        color: "#1f2937",
+        ...TEXT_PRESETS.heroTitle,
+        fontSize: 'clamp(1.5rem, 3.5vw, 2rem)',
+        color: COLORS.neutral.gray900,
         marginBottom: "1rem",
         textAlign: "center",
-        background: "linear-gradient(135deg, #1f2937 0%, #059669 100%)",
+        background: COLORS.titleGradients.grayToGreen,
         WebkitBackgroundClip: "text",
         WebkitTextFillColor: "transparent",
         backgroundClip: "text"

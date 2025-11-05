@@ -14,6 +14,7 @@
 'use client';
 import Button from '@/src/components/shared/Button';
 import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 export default function CTASection() {
   return (
@@ -21,10 +22,11 @@ export default function CTASection() {
       width: '100%',
       maxWidth: SPACING.container.maxWidth,
       margin: '0 auto',
-      paddingTop: SPACING.unit.xxxl,
-      paddingBottom: SPACING.unit.xxxl,
+      paddingTop: SPACING.unit.xl,
+      paddingBottom: SPACING.unit.xl,
       paddingLeft: SPACING.unit.md,
-      paddingRight: SPACING.unit.md
+      paddingRight: SPACING.unit.md,
+      background: COLORS.backgrounds.white
     }}>
       <div style={{
         display: 'flex',
@@ -38,26 +40,30 @@ export default function CTASection() {
           <div style={{
             background: COLORS.backgrounds.white,
             borderRadius: BORDER_RADIUS.large,
-            padding: `${SPACING.unit.xxxl} ${SPACING.card.standard}`,
-            border: `2px solid ${COLORS.borders.light}`,
-            boxShadow: BOX_SHADOWS.large
+            padding: `${SPACING.unit.xl} ${SPACING.card.standard}`,
+            border: `1px solid ${COLORS.neutral.gray200}`,
+            boxShadow: BOX_SHADOWS.medium
           }}>
             <h2 style={{
-              fontSize: TYPOGRAPHY.fontSize.heading.h3,
-              fontWeight: TYPOGRAPHY.fontWeight.semibold,
+              ...TEXT_PRESETS.heroTitle,
+              fontSize: 'clamp(1.75rem, 4vw, 2.25rem)',
               marginBottom: SPACING.stack.md,
-              color: COLORS.text.primary
+              color: COLORS.neutral.gray900,
+              background: COLORS.titleGradients.grayToGreen,
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text"
             }}>
               Ready to Connect?
             </h2>
             <p style={{
-              fontSize: TYPOGRAPHY.fontSize.body.large,
-              marginBottom: SPACING.stack.xl,
+              fontSize: TYPOGRAPHY.fontSize.body.medium,
+              marginBottom: SPACING.stack.lg,
               color: COLORS.text.secondary,
               maxWidth: '600px',
-              margin: `0 auto ${SPACING.stack.xl}`
+              margin: `0 auto ${SPACING.stack.lg}`
             }}>
-              Follow us on your favorite platform and stay updated with the latest from SmarterPayouts. You can also chat with Mint AI for instant assistance anytime.
+              Get your instant quote or chat with Mint AI for 24/7 assistance.
             </p>
             <div style={{
               display: "flex",

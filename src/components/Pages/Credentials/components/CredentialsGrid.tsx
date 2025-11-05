@@ -14,6 +14,7 @@
 
 'use client';
 import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 /**
  * Interface for credential verification data
@@ -34,7 +35,7 @@ interface Credential {
 const credentials: Credential[] = [
   {
     title: 'Florida Corporation Registration',
-    description: 'SmarterPayouts is a fully registered legal entity in the State of Florida. This official record verifies our legal standing and corporate identity.',
+    description: 'Registered legal entity in Florida. Official record verifies our corporate identity and legal standing.',
     link: 'https://search.sunbiz.org/Inquiry/CorporationSearch/ByName',
     linkText: 'Verify on Sunbiz',
     color: '#059669',
@@ -42,8 +43,8 @@ const credentials: Credential[] = [
     icon: '📋'
   },
   {
-    title: 'SSL Certificate of Incorporation',
-    description: 'Our website and backend operations are secured with full SSL certification. This ensures secure, encrypted communication for all user activity.',
+    title: 'SSL Certificate',
+    description: 'Full SSL encryption secures all website and backend operations for safe, encrypted communication.',
     link: 'https://www.ssllabs.com/ssltest/analyze.html?d=smarterpayouts.com',
     linkText: 'Check SSL',
     color: '#059669',
@@ -58,10 +59,11 @@ export default function CredentialsGrid() {
       width: '100%',
       maxWidth: SPACING.container.maxWidth,
       margin: '0 auto',
-      paddingTop: SPACING.unit.xxxl,
-      paddingBottom: SPACING.unit.xxxl,
+      paddingTop: SPACING.unit.xl,
+      paddingBottom: SPACING.unit.xl,
       paddingLeft: SPACING.unit.md,
-      paddingRight: SPACING.unit.md
+      paddingRight: SPACING.unit.md,
+      background: COLORS.backgrounds.white
     }}>
         <div style={{
           display: 'grid',

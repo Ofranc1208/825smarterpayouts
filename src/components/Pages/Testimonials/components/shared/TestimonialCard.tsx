@@ -38,7 +38,7 @@ export default function TestimonialCard({ testimonial }: TestimonialCardProps) {
         border: '1px solid rgba(255,255,255,0.2)',
         height: "100%",
         position: "relative",
-        padding: '2rem',
+        padding: SPACING.card.standard,
         boxShadow: '0 8px 32px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.05)',
         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
         overflow: 'hidden'
@@ -90,14 +90,13 @@ export default function TestimonialCard({ testimonial }: TestimonialCardProps) {
 
       {/* Testimonial Text */}
       <p style={{
-        fontSize: TYPOGRAPHY.fontSize.body.large,
+        fontSize: TYPOGRAPHY.fontSize.body.medium,
         color: COLORS.text.primary,
         lineHeight: TYPOGRAPHY.lineHeight.relaxed,
-        marginBottom: SPACING.stack.lg,
-        fontWeight: TYPOGRAPHY.fontWeight.medium,
+        marginBottom: SPACING.stack.md,
+        fontWeight: TYPOGRAPHY.fontWeight.normal,
         position: 'relative',
-        zIndex: 1,
-        textShadow: '0 1px 2px rgba(0,0,0,0.05)'
+        zIndex: 1
       }}>
         "{testimonial.text}"
       </p>
@@ -141,9 +140,9 @@ export default function TestimonialCard({ testimonial }: TestimonialCardProps) {
         </div>
         <div>
           <div style={{
-            fontWeight: TYPOGRAPHY.fontWeight.bold,
+            fontWeight: TYPOGRAPHY.fontWeight.semibold,
             color: COLORS.text.primary,
-            fontSize: TYPOGRAPHY.fontSize.body.large,
+            fontSize: TYPOGRAPHY.fontSize.body.medium,
             marginBottom: '0.25rem'
           }}>
             {testimonial.name}

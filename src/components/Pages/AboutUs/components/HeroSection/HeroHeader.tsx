@@ -12,6 +12,8 @@
 
 'use client';
 import React from 'react';
+import { COLORS, TYPOGRAPHY } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 import type { HeroHeaderProps } from './types';
 
 /**
@@ -34,23 +36,25 @@ export default function HeroHeader({
     <>
       {/* Main Title */}
       <h1 id="hero-heading" style={{
-        fontSize: "clamp(2rem, 5vw, 3.5rem)",
-        fontWeight: "700",
-        color: "#1f2937",
+        ...TEXT_PRESETS.heroTitle,
+        color: COLORS.neutral.gray900,
         marginBottom: "1rem",
-        lineHeight: "1.2",
-        textAlign
+        textAlign,
+        background: COLORS.titleGradients.grayToGreen,
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        backgroundClip: "text"
       }}>
         {title}
       </h1>
 
       {/* Description */}
       <p style={{
-        fontSize: "1.125rem",
-        color: "#374151",
+        fontSize: TYPOGRAPHY.fontSize.body.medium,
+        color: COLORS.text.secondary,
         maxWidth: "600px",
         margin: textAlign === 'center' ? "0 auto 1.5rem" : "0 0 1.5rem",
-        lineHeight: "1.6",
+        lineHeight: TYPOGRAPHY.lineHeight.relaxed,
         textAlign
       }}>
         {description}

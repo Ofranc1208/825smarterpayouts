@@ -12,6 +12,7 @@
  */
 
 import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 const platforms = [
   {
@@ -45,14 +46,6 @@ const platforms = [
     gradient: 'linear-gradient(135deg, #E4405F 0%, #C13584 100%)',
     desc: 'Connect with us on Instagram for behind-the-scenes content and company highlights.',
     link: 'https://instagram.com/smarterpayouts'
-  },
-  {
-    name: 'LinkedIn',
-    icon: '💼',
-    color: '#0A66C2',
-    gradient: 'linear-gradient(135deg, #0A66C2 0%, #0077B5 100%)',
-    desc: 'Follow our LinkedIn page for professional updates and business news.',
-    link: 'https://linkedin.com/company/smarterpayouts'
   }
 ];
 
@@ -62,34 +55,12 @@ export default function PlatformsSection() {
       width: '100%',
       maxWidth: SPACING.container.maxWidth,
       margin: '0 auto',
-      paddingTop: SPACING.unit.xxxl,
-      paddingBottom: SPACING.unit.xxxl,
+      paddingTop: SPACING.unit.xl,
+      paddingBottom: SPACING.unit.xl,
       paddingLeft: SPACING.unit.md,
-      paddingRight: SPACING.unit.md
+      paddingRight: SPACING.unit.md,
+      background: COLORS.backgrounds.white
     }}>
-      {/* Section Header */}
-      <div style={{
-        textAlign: 'center',
-        marginBottom: SPACING.unit.xxxl
-      }}>
-        <h2 style={{
-          fontSize: TYPOGRAPHY.fontSize.heading.h2,
-          fontWeight: TYPOGRAPHY.fontWeight.semibold,
-          color: COLORS.text.primary,
-          marginBottom: SPACING.stack.md
-        }}>
-          Follow Us on Social Media
-        </h2>
-        <p style={{
-          fontSize: TYPOGRAPHY.fontSize.body.large,
-          color: COLORS.text.secondary,
-          maxWidth: "600px",
-          margin: "0 auto",
-          lineHeight: TYPOGRAPHY.lineHeight.relaxed
-        }}>
-          Connect with us across all platforms for the latest updates, tips, and community discussions.
-        </p>
-      </div>
 
       <div style={{
         display: 'grid',

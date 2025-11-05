@@ -14,31 +14,32 @@
 'use client';
 
 import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 const protectionFeatures = [
   {
     icon: '🔒',
     bgGradient: 'linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%)',
     title: 'No Personal Info Needed',
-    description: 'Get your quote instantly—no SSN, no credit check, no sensitive data required.'
+    description: 'Instant quotes—no SSN, no credit check required.'
   },
   {
     icon: '💻',
     bgGradient: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)',
     title: '100% Digital & Secure',
-    description: 'All quotes and documents are handled securely online. Your privacy is protected at every step.'
+    description: 'Secure online handling. Your privacy protected.'
   },
   {
     icon: '🛡️',
     bgGradient: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)',
     title: 'Confidential & Compliant',
-    description: 'We never sell or rent your information. All processes are state and federally compliant.'
+    description: 'We never sell your info. State and federally compliant.'
   },
   {
     icon: '🧑‍💻',
     bgGradient: 'linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%)',
     title: 'You Stay in Control',
-    description: 'Only you decide what to share. We\'re here to help, not to pressure or collect unnecessary data.'
+    description: 'You decide what to share. No pressure.'
   }
 ];
 
@@ -119,21 +120,24 @@ export default function PrivacyProtectionSection() {
       }}>
         <div style={{ textAlign: 'center', marginBottom: SPACING.stack.xl }}>
           <h2 style={{
-            fontSize: TYPOGRAPHY.fontSize.heading.h2,
-            fontWeight: TYPOGRAPHY.fontWeight.bold,
-            color: COLORS.text.primary,
-            marginBottom: SPACING.unit.md
+            ...TEXT_PRESETS.heroTitle,
+            color: COLORS.neutral.gray900,
+            marginBottom: SPACING.unit.md,
+            background: COLORS.titleGradients.grayToGreen,
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text"
           }}>
             How We Protect Your Privacy
           </h2>
           <p style={{
-            fontSize: TYPOGRAPHY.fontSize.body.large,
+            fontSize: TYPOGRAPHY.fontSize.body.medium,
             color: COLORS.text.secondary,
-            maxWidth: '600px',
+            maxWidth: '500px',
             margin: '0 auto',
             lineHeight: TYPOGRAPHY.lineHeight.relaxed
           }}>
-            Your privacy and security are our top priorities throughout the entire process.
+            Your privacy and security are our top priorities.
           </p>
         </div>
 

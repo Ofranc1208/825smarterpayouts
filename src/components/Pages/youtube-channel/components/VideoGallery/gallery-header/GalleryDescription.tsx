@@ -1,4 +1,5 @@
 import React from 'react';
+import { COLORS, TYPOGRAPHY } from '@/src/components/shared/styles';
 
 /**
  * Gallery Description Component for YouTube Channel
@@ -46,11 +47,11 @@ export default function GalleryDescription({
   return (
     <p 
       style={{
-        fontSize: "1rem",
-        color: "#6b7280",
+        fontSize: TYPOGRAPHY.fontSize.body.medium,
+        color: COLORS.text.secondary,
         maxWidth: maxWidth,
         margin: "0 auto 2rem",
-        lineHeight: "1.6",
+        lineHeight: TYPOGRAPHY.lineHeight.relaxed,
         textAlign: "center"
       }}
     >

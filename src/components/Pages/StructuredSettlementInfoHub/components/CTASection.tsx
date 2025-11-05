@@ -10,7 +10,8 @@
 'use client';
 import React from 'react';
 import Button from '@/src/components/shared/Button';
-import { COLORS } from '@/src/components/shared/styles';
+import { COLORS, TYPOGRAPHY, SPACING } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 import type { CTASectionProps } from '../types';
 
 export const CTASection: React.FC<CTASectionProps> = ({
@@ -19,32 +20,52 @@ export const CTASection: React.FC<CTASectionProps> = ({
 }) => {
   return (
     <section style={{
-      background: 'linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%)',
-      padding: '2rem 0',
+      background: COLORS.backgrounds.greenLight,
+      padding: `${SPACING.unit.xl} 0`,
       textAlign: 'center',
-      borderTop: '1px solid #e5e7eb'
+      borderTop: `1px solid ${COLORS.neutral.gray200}`,
+      position: 'relative',
+      overflow: 'hidden'
     }}>
       <div style={{
+        position: "absolute",
+        top: "0",
+        left: "0",
+        right: "0",
+        bottom: "0",
+        background: `${COLORS.radialGradients.greenLight}, ${COLORS.radialGradients.greenLighter}`,
+        backgroundPosition: '20% 80%, 80% 20%',
+        backgroundSize: '50% 50%',
+        backgroundRepeat: 'no-repeat',
+        pointerEvents: 'none'
+      }}></div>
+      <div style={{
         width: '100%',
-        maxWidth: '1200px',
+        maxWidth: SPACING.container.maxWidth,
         margin: '0 auto',
-        padding: '0 16px'
+        padding: `0 ${SPACING.unit.md}`,
+        position: 'relative',
+        zIndex: 1
       }}>
         <h2 style={{
-          fontSize: '2rem',
-          fontWeight: '700',
-          color: COLORS.text.primary,
-          marginBottom: '1rem'
+          ...TEXT_PRESETS.heroTitle,
+          fontSize: 'clamp(1.75rem, 4vw, 2.25rem)',
+          color: COLORS.neutral.gray900,
+          marginBottom: SPACING.stack.md,
+          background: COLORS.titleGradients.grayToGreen,
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          backgroundClip: "text"
         }}>
           {title}
         </h2>
         <p style={{
-          fontSize: '1.125rem',
-          color: COLORS.text.tertiary,
-          marginBottom: '1.5rem',
+          fontSize: TYPOGRAPHY.fontSize.body.medium,
+          color: COLORS.text.secondary,
+          marginBottom: SPACING.stack.lg,
           maxWidth: '600px',
-          margin: '0 auto 1.5rem',
-          lineHeight: '1.6'
+          margin: `0 auto ${SPACING.stack.lg}`,
+          lineHeight: TYPOGRAPHY.lineHeight.relaxed
         }}>
           {subtitle}
         </p>

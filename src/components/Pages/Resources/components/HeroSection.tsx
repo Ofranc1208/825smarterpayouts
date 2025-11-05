@@ -16,15 +16,16 @@
 import React from 'react';
 import Button from '@/src/components/shared/Button/Button';
 import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 export default function HeroSection() {
   return (
     <section
       aria-label="Insurance directory hero section"
       style={{
-        background: 'linear-gradient(135deg, #f8fafc 0%, #e9f9f1 50%, #f0fdf4 100%)',
-        paddingTop: SPACING.unit.xxxl,
-        paddingBottom: SPACING.unit.xxl,
+        background: COLORS.backgrounds.slateGradient,
+        paddingTop: SPACING.unit.xl,
+        paddingBottom: SPACING.unit.xl,
         paddingLeft: SPACING.unit.md,
         paddingRight: SPACING.unit.md,
         position: 'relative',
@@ -32,9 +33,21 @@ export default function HeroSection() {
       }}
     >
       <div style={{
+        position: "absolute",
+        top: "0",
+        left: "0",
+        right: "0",
+        bottom: "0",
+        background: `radial-gradient(circle at 20% 80%, rgba(34, 197, 94, 0.08) 0%, transparent 50%),
+                     radial-gradient(circle at 80% 20%, rgba(255, 180, 0, 0.06) 0%, transparent 50%)`,
+        pointerEvents: "none"
+      }}></div>
+      <div style={{
         width: '100%',
         maxWidth: SPACING.container.maxWidth,
-        margin: '0 auto'
+        margin: '0 auto',
+        position: 'relative',
+        zIndex: 1
       }}>
         <div style={{
           textAlign: 'center'
@@ -62,24 +75,26 @@ export default function HeroSection() {
           </div>
 
           <h1 style={{
-            fontSize: TYPOGRAPHY.fontSize.heading.h3,
-            fontWeight: TYPOGRAPHY.fontWeight.bold,
-            color: COLORS.text.primary,
-            marginBottom: SPACING.stack.sm,
-            lineHeight: TYPOGRAPHY.lineHeight.snug,
-            maxWidth: "600px",
-            margin: "0 auto"
+            ...TEXT_PRESETS.heroTitle,
+            color: COLORS.neutral.gray900,
+            marginBottom: SPACING.stack.lg,
+            lineHeight: "1.3",
+            maxWidth: "700px",
+            margin: "0 auto",
+            background: COLORS.titleGradients.grayToGreen,
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text"
           }}>
             Structured Settlement Insurance Companies
           </h1>
 
           <p style={{
-            fontSize: TYPOGRAPHY.fontSize.body.large,
+            fontSize: TYPOGRAPHY.fontSize.body.medium,
             color: COLORS.text.secondary,
             maxWidth: "600px",
             margin: `0 auto ${SPACING.stack.lg}`,
-            lineHeight: TYPOGRAPHY.lineHeight.relaxed,
-            fontWeight: TYPOGRAPHY.fontWeight.medium
+            lineHeight: TYPOGRAPHY.lineHeight.relaxed
           }}>
             Complete directory with contact information for insurance companies that provide structured settlement contracts. Search and verify payments instantly.
           </p>

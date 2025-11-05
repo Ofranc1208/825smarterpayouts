@@ -2,7 +2,6 @@ import {
   CourtApprovalHeroSection,
   CourtProcessSection,
   MintAISupportMainSection,
-  ComplianceSection,
   TestimonialSection,
   CourtApprovalFAQSection,
   CourtApprovalFinalCTA
@@ -40,8 +39,6 @@ export default function CourtApprovalPage() {
       {/* Mint AI Support Section */}
       <MintAISupportMainSection />
 
-      {/* Compliance Badge Section */}
-      <ComplianceSection />
 
       {/* Customer Testimonial Section */}
       <TestimonialSection />

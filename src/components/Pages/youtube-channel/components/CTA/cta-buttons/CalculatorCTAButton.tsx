@@ -87,7 +87,6 @@ export default function CalculatorCTAButton({
       onFocus={() => handleHover(true)}
       onBlur={() => handleHover(false)}
     >
-      <span role="img" aria-hidden="true">{icon}</span>
       {text}
     </a>
   );

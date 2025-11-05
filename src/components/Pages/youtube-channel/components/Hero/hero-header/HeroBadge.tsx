@@ -61,7 +61,6 @@ export default function HeroBadge({
       role="banner"
       aria-label={`${text} badge`}
     >
-      <span role="img" aria-hidden="true">{icon}</span>
       {text}
     </div>
   );

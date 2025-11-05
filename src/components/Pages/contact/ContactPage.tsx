@@ -82,13 +82,15 @@ export default function ContactPage({ className, style }: ContactPageProps) {
             margin: '0 auto',
             padding: '0 1rem',
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
             gap: '2rem',
-            alignItems: 'stretch',
+            alignItems: 'start',
             justifyContent: 'center'
           }}>
             <ContactForm onFormSubmit={handleFormSubmit} />
-            <ContactInfo onCardClick={handleContactMethodClick} />
+            <div style={{ width: '100%' }}>
+              <ContactInfo onCardClick={handleContactMethodClick} />
+            </div>
           </div>
         </section>
 

@@ -66,7 +66,7 @@ export default function HeroContent({
       {/* Header Section */}
       <HeroHeaderContainer
         badgeText={badgeText}
-        badgeIcon={badgeIcon}
+        badgeIcon=""
         title={title}
         description={description}
         titleId="hero-title"

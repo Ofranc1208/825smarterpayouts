@@ -15,6 +15,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 export default function NewsletterSection() {
   const [isWideScreen, setIsWideScreen] = useState(false);
@@ -53,18 +54,16 @@ export default function NewsletterSection() {
       }}
     >
       <div style={{ marginBottom: SPACING.stack.lg }}>
-        <span style={{ 
-          fontSize: '2rem', 
-          marginBottom: SPACING.unit.md, 
-          display: 'block' 
-        }} aria-hidden="true">
-          📬
-        </span>
         <h2 style={{
-          fontWeight: TYPOGRAPHY.fontWeight.bold,
-          color: COLORS.primary.main,
+          ...TEXT_PRESETS.heroTitle,
+          fontSize: 'clamp(1.75rem, 4vw, 2.25rem)',
+          color: COLORS.neutral.gray900,
           marginBottom: SPACING.stack.sm,
-          fontSize: TYPOGRAPHY.fontSize.heading.h3
+          background: COLORS.titleGradients.grayToGreen,
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          backgroundClip: "text",
+          textAlign: 'center'
         }}>
           Stay Updated with New Articles
         </h2>

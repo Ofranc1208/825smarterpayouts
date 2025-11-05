@@ -1,4 +1,5 @@
 import React from 'react';
+import { COLORS, TYPOGRAPHY } from '@/src/components/shared/styles';
 
 /**
  * CTA Description Component for YouTube Channel
@@ -46,12 +47,11 @@ export default function CTADescription({
   return (
     <p 
       style={{
-        color: '#4b5563',
-        fontSize: 'clamp(1rem, 3vw, 1.125rem)',
-        marginBottom: '2rem',
+        fontSize: TYPOGRAPHY.fontSize.body.medium,
+        color: COLORS.text.secondary,
         maxWidth: maxWidth,
         margin: '0 auto 2rem',
-        lineHeight: '1.6',
+        lineHeight: TYPOGRAPHY.lineHeight.relaxed,
         textAlign: 'center'
       }}
     >

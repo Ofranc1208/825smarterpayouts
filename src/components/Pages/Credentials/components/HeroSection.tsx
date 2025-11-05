@@ -14,24 +14,37 @@
 
 import Button from '@/src/components/shared/Button';
 import { COLORS, TYPOGRAPHY, SPACING } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 export default function HeroSection() {
   return (
     <section 
       aria-label="Credentials page hero section"
       style={{
-      background: "linear-gradient(135deg, #f8fafc 0%, #e9f9f1 50%, #f0fdf4 100%)",
-      paddingTop: SPACING.unit.xxxxl,
-      paddingBottom: SPACING.unit.xxxl,
+      background: COLORS.backgrounds.slateGradient,
+      paddingTop: SPACING.unit.xl,
+      paddingBottom: SPACING.unit.xl,
       paddingLeft: SPACING.unit.md,
       paddingRight: SPACING.unit.md,
       position: "relative",
       overflow: "hidden"
     }}>
       <div style={{
+        position: "absolute",
+        top: "0",
+        left: "0",
+        right: "0",
+        bottom: "0",
+        background: `radial-gradient(circle at 20% 80%, rgba(34, 197, 94, 0.08) 0%, transparent 50%),
+                     radial-gradient(circle at 80% 20%, rgba(255, 180, 0, 0.06) 0%, transparent 50%)`,
+        pointerEvents: "none"
+      }}></div>
+      <div style={{
         width: '100%',
         maxWidth: SPACING.container.maxWidth,
-        margin: '0 auto'
+        margin: '0 auto',
+        position: 'relative',
+        zIndex: 1
       }}>
         <div style={{
           display: 'flex',
@@ -42,23 +55,26 @@ export default function HeroSection() {
             textAlign: 'center'
           }}>
             <h1 style={{
-              fontSize: "clamp(2rem, 5vw, 3.5rem)",
-              fontWeight: TYPOGRAPHY.fontWeight.bold,
-              color: COLORS.text.primary,
+              ...TEXT_PRESETS.heroTitle,
+              color: COLORS.neutral.gray900,
               marginBottom: SPACING.stack.lg,
-              lineHeight: TYPOGRAPHY.lineHeight.tight
+              lineHeight: "1.3",
+              background: COLORS.titleGradients.grayToGreen,
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text"
             }}>
               Our Credentials
             </h1>
             <p style={{
-              fontSize: TYPOGRAPHY.fontSize.body.large,
+              fontSize: TYPOGRAPHY.fontSize.body.medium,
               color: COLORS.text.secondary,
               maxWidth: "600px",
               margin: "0 auto",
               lineHeight: TYPOGRAPHY.lineHeight.relaxed,
-              marginBottom: SPACING.stack.xl
+              marginBottom: SPACING.stack.lg
             }}>
-              SmarterPayouts is a transparent, trustworthy structured settlement company dedicated to providing clear, honest service to our clients nationwide.
+              Verified Florida corporation with full legal standing and SSL certification.
             </p>
 
             {/* CTA Buttons */}

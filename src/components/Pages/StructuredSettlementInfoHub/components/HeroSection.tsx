@@ -10,7 +10,8 @@
 'use client';
 import React from 'react';
 import Button from '@/src/components/shared/Button';
-import { COLORS } from '@/src/components/shared/styles';
+import { COLORS, TYPOGRAPHY, SPACING } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 interface HeroSectionProps {
   badge?: string;
@@ -27,44 +28,58 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 }) => {
   return (
     <section style={{
-      background: "linear-gradient(135deg, #f8fafc 0%, #e9f9f1 50%, #f0fdf4 100%)",
-      padding: "3rem 0 2rem",
+      background: COLORS.backgrounds.slateGradient,
+      padding: `${SPACING.unit.xl} 0`,
       position: "relative",
-      overflow: "hidden",
-      borderBottom: "1px solid #e5e7eb"
+      overflow: "hidden"
     }}>
       <div style={{
+        position: "absolute",
+        top: "0",
+        left: "0",
+        right: "0",
+        bottom: "0",
+        background: `radial-gradient(circle at 20% 80%, rgba(34, 197, 94, 0.08) 0%, transparent 50%),
+                     radial-gradient(circle at 80% 20%, rgba(255, 180, 0, 0.06) 0%, transparent 50%)`,
+        pointerEvents: "none"
+      }}></div>
+      <div style={{
         width: '100%',
-        maxWidth: '1200px',
+        maxWidth: SPACING.container.maxWidth,
         margin: '0 auto',
-        padding: '0 16px',
-        textAlign: 'center'
+        padding: `0 ${SPACING.unit.md}`,
+        textAlign: 'center',
+        position: 'relative',
+        zIndex: 1
       }}>
         <div style={{
-          fontSize: "0.875rem",
-          fontWeight: "600",
+          fontSize: TYPOGRAPHY.fontSize.body.small,
+          fontWeight: TYPOGRAPHY.fontWeight.semibold,
           color: COLORS.primary.main,
           textTransform: "uppercase",
           letterSpacing: "1px",
-          marginBottom: "1rem"
+          marginBottom: SPACING.stack.sm
         }}>
           {badge}
         </div>
         <h1 style={{
-          fontSize: "clamp(2rem, 5vw, 3.5rem)",
-          fontWeight: "700",
-          color: COLORS.text.primary,
-          marginBottom: "1.5rem",
-          lineHeight: "1.2"
+          ...TEXT_PRESETS.heroTitle,
+          color: COLORS.neutral.gray900,
+          marginBottom: SPACING.stack.lg,
+          lineHeight: "1.3",
+          background: COLORS.titleGradients.grayToGreen,
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          backgroundClip: "text"
         }}>
           {title}
         </h1>
         <p style={{
-          fontSize: "1.125rem",
-          color: COLORS.text.tertiary,
+          fontSize: TYPOGRAPHY.fontSize.body.medium,
+          color: COLORS.text.secondary,
           maxWidth: "600px",
-          margin: "0 auto 1.5rem",
-          lineHeight: "1.6"
+          margin: `0 auto ${SPACING.stack.lg}`,
+          lineHeight: TYPOGRAPHY.lineHeight.relaxed
         }}>
           {subtitle}
         </p>

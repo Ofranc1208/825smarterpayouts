@@ -1,12 +1,14 @@
+import { COLORS, SPACING, BORDER_RADIUS, BOX_SHADOWS, TYPOGRAPHY } from '@/src/components/shared/styles';
+
 export default function Step1Card() {
   return (
     <div>
       <div style={{
-        background: '#ffffff',
-        borderRadius: '20px',
-        padding: '2rem 1.5rem',
-        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
-        border: '1px solid #e5e7eb',
+        background: COLORS.backgrounds.white,
+        borderRadius: BORDER_RADIUS.xlarge,
+        padding: SPACING.card.compact,
+        boxShadow: BOX_SHADOWS.small,
+        border: `1px solid ${COLORS.borders.light}`,
         height: '100%',
         transition: 'transform 0.3s ease, box-shadow 0.3s ease',
         position: 'relative',
@@ -20,29 +22,46 @@ export default function Step1Card() {
           height: '4px',
           background: 'linear-gradient(90deg, #059669, #34d399)'
         }}></div>
-        <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📝</div>
+        <div style={{ fontSize: TYPOGRAPHY.fontSize.heading.h1, marginBottom: SPACING.unit.md }}>📝</div>
         <div style={{
-          background: 'linear-gradient(135deg, #059669, #047857)',
-          color: '#ffffff',
-          padding: '0.5rem 1rem',
-          borderRadius: '20px',
-          fontSize: '0.875rem',
-          fontWeight: 600,
-          marginBottom: '1rem',
+          background: COLORS.primary.gradient,
+          color: COLORS.text.white,
+          padding: `${SPACING.unit.xs} ${SPACING.unit.md}`,
+          borderRadius: BORDER_RADIUS.full,
+          fontSize: TYPOGRAPHY.fontSize.body.small,
+          fontWeight: TYPOGRAPHY.fontWeight.semibold,
+          marginBottom: SPACING.unit.md,
           display: 'inline-block'
         }}>Step 1</div>
-        <h5 style={{ color: '#047857', fontWeight: 700, marginBottom: '1rem' }}>File the Petition</h5>
-        <p style={{ color: '#6b7280', lineHeight: 1.6 }}>
+        <h5 style={{ 
+          color: COLORS.primary.dark, 
+          fontWeight: TYPOGRAPHY.fontWeight.bold, 
+          marginBottom: SPACING.unit.md,
+          fontSize: TYPOGRAPHY.fontSize.heading.h5
+        }}>File the Petition</h5>
+        <p style={{ 
+          color: COLORS.text.secondary, 
+          lineHeight: TYPOGRAPHY.lineHeight.relaxed,
+          fontSize: TYPOGRAPHY.fontSize.body.medium,
+          marginBottom: SPACING.unit.md
+        }}>
           Once you accept your offer, we file a legal petition with your state court to begin the approval process.
         </p>
         <div style={{
-          marginTop: '1rem',
-          padding: '0.75rem',
-          background: '#f0fdf4',
-          borderRadius: '12px',
-          border: '1px solid #bbf7d0'
+          marginTop: SPACING.unit.md,
+          padding: SPACING.unit.sm,
+          background: COLORS.backgrounds.greenPale,
+          borderRadius: BORDER_RADIUS.medium,
+          border: `1px solid ${COLORS.borders.green}`
         }}>
-          <div style={{ fontSize: '0.875rem', color: '#047857', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <div style={{ 
+            fontSize: TYPOGRAPHY.fontSize.body.small, 
+            color: COLORS.primary.dark, 
+            fontWeight: TYPOGRAPHY.fontWeight.semibold, 
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: SPACING.inline.xs 
+          }}>
             <img
               src="/assets/images/mint-mascot.png"
               alt="Mint AI"

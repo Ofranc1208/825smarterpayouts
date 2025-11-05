@@ -30,16 +30,19 @@ const styles = {
   } as React.CSSProperties,
   
   innerContainer: {
-    maxWidth: '800px',
+    maxWidth: '700px',
     width: '100%'
   } as React.CSSProperties,
   
   card: {
     background: COLORS.backgrounds.white,
-    borderRadius: BORDER_RADIUS.lg,
-    padding: SPACING.unit.xl,
-    boxShadow: BOX_SHADOWS.md,
-    border: `1px solid ${COLORS.borders.light}`
+    borderRadius: BORDER_RADIUS.large,
+    padding: SPACING.unit.lg,
+    boxShadow: BOX_SHADOWS.medium,
+    border: `1px solid ${COLORS.neutral.gray200}`,
+    display: 'flex',
+    flexDirection: 'column',
+    gap: SPACING.unit.sm
   } as React.CSSProperties,
 } as const;
 

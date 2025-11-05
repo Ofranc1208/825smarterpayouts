@@ -65,11 +65,13 @@ export default function CTASection() {
         }}>
           {/* Title with Gradient */}
           <h2 style={{
-            ...TEXT_PRESETS.sectionTitle,
+            ...TEXT_PRESETS.heroTitle,
+            color: COLORS.neutral.gray900,
+            marginBottom: SPACING.stack.sm,
             background: COLORS.titleGradients.grayToGreen,
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
-            marginBottom: SPACING.stack.sm
+            backgroundClip: 'text'
           }}>
             Ready to Get Your Private Quote?
           </h2>

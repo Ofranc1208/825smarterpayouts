@@ -1,21 +1,22 @@
 import Link from 'next/link';
+import { COLORS, SPACING, BORDER_RADIUS, TYPOGRAPHY } from '@/src/components/shared/styles';
 
 export default function LegalRequirementsFeature() {
   return (
     <Link href="/mint-intelligent-chat" style={{
       textDecoration: 'none',
       display: 'block',
-      padding: '1rem',
-      background: '#ffffff',
-      borderRadius: '16px',
-      border: '1px solid #0ea5e9',
-      color: '#0369a1',
+      padding: SPACING.card.compact,
+      background: COLORS.backgrounds.white,
+      borderRadius: BORDER_RADIUS.large,
+      border: `1px solid ${COLORS.borders.blue}`,
+      color: COLORS.accent.blue,
       transition: 'all 0.2s ease',
       width: '100%',
-      maxWidth: '250px'
+      textAlign: 'center'
     }}>
-      <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>⚖️</div>
-      <div style={{ fontWeight: 600 }}>Learn Legal Requirements</div>
+      <div style={{ fontSize: TYPOGRAPHY.fontSize.heading.h2, marginBottom: SPACING.unit.xs }}>⚖️</div>
+      <div style={{ fontWeight: TYPOGRAPHY.fontWeight.semibold, fontSize: TYPOGRAPHY.fontSize.body.medium }}>Learn Legal Requirements</div>
     </Link>
   );
 }

@@ -14,6 +14,7 @@
 
 'use client';
 import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 import type { FAQ } from '../types';
 
 /**
@@ -88,10 +89,15 @@ export default function FAQSection() {
       }}
     >
       <h2 style={{
-        fontWeight: TYPOGRAPHY.fontWeight.bold,
-        color: COLORS.primary.main,
+        ...TEXT_PRESETS.heroTitle,
+        fontSize: 'clamp(1.75rem, 4vw, 2.25rem)',
+        color: COLORS.neutral.gray900,
         marginBottom: SPACING.stack.lg,
-        fontSize: TYPOGRAPHY.fontSize.heading.h4
+        background: COLORS.titleGradients.grayToGreen,
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        backgroundClip: "text",
+        textAlign: 'center'
       }}>
         Articles FAQ
       </h2>

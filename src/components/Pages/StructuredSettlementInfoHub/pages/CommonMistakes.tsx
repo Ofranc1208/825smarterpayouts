@@ -7,7 +7,8 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
-import { COLORS } from '@/src/components/shared/styles';
+import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 import {
   HeroSection,
   Sidebar,
@@ -99,18 +100,18 @@ const CommonMistakes: React.FC = () => {
       }} />
 
       <HeroSection
-        title="⚠️ 8 Common Mistakes When Selling Your Settlement"
+        title="Common Mistakes When Selling Your Settlement"
         subtitle="Learn from others' errors—protect your money and get the best deal possible"
         showCTAs={true}
       />
 
-      <main style={{ background: '#f9fafb', minHeight: '100vh', padding: '3rem 1.5rem', boxSizing: 'border-box', width: '100%' }}>
+      <main style={{ background: COLORS.backgrounds.lightGray, minHeight: '100vh', padding: `${SPACING.unit.xl} ${SPACING.unit.md}`, boxSizing: 'border-box', width: '100%' }}>
         <div style={{
-          maxWidth: '1440px',
+          maxWidth: SPACING.container.maxWidth,
           margin: '0 auto',
           display: 'grid',
-          gridTemplateColumns: '1fr 360px',
-          gap: '2.5rem',
+          gridTemplateColumns: '1fr 300px',
+          gap: SPACING.unit.xl,
           boxSizing: 'border-box',
           width: '100%'
         }} className="content-grid">
@@ -118,210 +119,219 @@ const CommonMistakes: React.FC = () => {
           <div style={{ minWidth: 0, boxSizing: 'border-box' }}>
             {/* Introduction */}
             <section style={{
-              background: 'white',
-              borderRadius: '16px',
-              padding: '2.5rem',
-              marginBottom: '2rem',
-              boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+              background: COLORS.backgrounds.white,
+              borderRadius: BORDER_RADIUS.large,
+              padding: `${SPACING.unit.xl} ${SPACING.unit.lg}`,
+              marginBottom: SPACING.stack.lg,
+              boxShadow: BOX_SHADOWS.medium,
+              border: `1px solid ${COLORS.neutral.gray200}`
             }}>
-              <h2 style={{ fontSize: '2rem', fontWeight: '700', color: '#111827', marginBottom: '1.5rem' }}>
+              <h2 style={{
+                ...TEXT_PRESETS.heroTitle,
+                fontSize: 'clamp(1.5rem, 3.5vw, 2rem)',
+                color: COLORS.neutral.gray900,
+                marginBottom: SPACING.stack.md,
+                background: COLORS.titleGradients.grayToGreen,
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                textAlign: 'center'
+              }}>
                 Don't Leave Money on the Table
               </h2>
-              <p style={{ fontSize: '1.0625rem', lineHeight: '1.7', color: '#374151', marginBottom: '1.5rem' }}>
-                Selling a structured settlement is a <strong>one-time, irreversible decision</strong> that can cost or save you tens of thousands of dollars. The difference between a good deal and a bad one often comes down to avoiding these 8 critical mistakes.
+              <p style={{
+                fontSize: TYPOGRAPHY.fontSize.body.medium,
+                lineHeight: TYPOGRAPHY.lineHeight.relaxed,
+                color: COLORS.text.secondary,
+                marginBottom: SPACING.stack.md,
+                textAlign: 'center',
+                maxWidth: '700px',
+                margin: `0 auto ${SPACING.stack.md}`
+              }}>
+                Selling a structured settlement is a <strong>one-time, irreversible decision</strong> that can cost or save you tens of thousands of dollars. The difference between a good deal and a bad one often comes down to avoiding these critical mistakes.
               </p>
 
               <div style={{
-                background: '#fee2e2',
-                border: '2px solid #ef4444',
-                borderRadius: '12px',
-                padding: '1.5rem'
+                background: COLORS.backgrounds.greenLight,
+                border: `1px solid ${COLORS.borders.green}`,
+                borderRadius: BORDER_RADIUS.medium,
+                padding: SPACING.card.compact,
+                maxWidth: '600px',
+                margin: '0 auto',
+                textAlign: 'center'
               }}>
-                <h3 style={{ color: '#991b1b', fontSize: '1.125rem', fontWeight: '700', marginBottom: '0.75rem' }}>
-                  🚨 Average Cost: $15,000 - $50,000
+                <h3 style={{
+                  fontSize: TYPOGRAPHY.fontSize.heading.h5,
+                  fontWeight: TYPOGRAPHY.fontWeight.semibold,
+                  color: COLORS.primary.main,
+                  marginBottom: SPACING.stack.xs,
+                  textAlign: 'center'
+                }}>
+                  Average Cost: $15,000 - $50,000
                 </h3>
-                <p style={{ color: '#991b1b', lineHeight: '1.6', margin: 0 }}>
+                <p style={{
+                  fontSize: TYPOGRAPHY.fontSize.body.small,
+                  color: COLORS.text.secondary,
+                  lineHeight: TYPOGRAPHY.lineHeight.relaxed,
+                  margin: 0
+                }}>
                   These mistakes have cost settlement holders hundreds of thousands collectively. Learn from them.
                 </p>
               </div>
             </section>
 
-            {/* INLINE CTA #1 */}
-            <div style={{
-              background: 'linear-gradient(135deg, #059669 0%, #047857 100%)',
-              padding: '2.5rem',
-              borderRadius: '16px',
-              marginBottom: '2rem',
-              textAlign: 'center',
-              color: 'white'
-            }}>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '1rem' }}>
-                💡 Avoid Mistake #1: Get Multiple Quotes
-              </h3>
-              <p style={{ fontSize: '1.0625rem', lineHeight: '1.7', marginBottom: '1.5rem', opacity: 0.95 }}>
-                Compare offers from top-rated companies. See who gives you the best deal in 60 seconds.
-              </p>
-              <Link href="/mint-chat-active?type=calculate&source=info-hub-mistakes" style={{
-                display: 'inline-block',
-                background: 'white',
-                color: COLORS.primary.main,
-                padding: '1rem 2.5rem',
-                borderRadius: '12px',
-                textDecoration: 'none',
-                fontWeight: '700',
-                fontSize: '1.125rem',
-                boxShadow: '0 6px 20px rgba(0,0,0,0.15)'
-              }}>
-                🛒 Compare Quotes Now →
-              </Link>
-            </div>
-
             {/* Mistakes List */}
             <section style={{
-              background: 'white',
-              borderRadius: '16px',
-              padding: '2.5rem',
-              marginBottom: '2rem',
-              boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+              background: COLORS.backgrounds.white,
+              borderRadius: BORDER_RADIUS.large,
+              padding: `${SPACING.unit.xl} ${SPACING.unit.lg}`,
+              marginBottom: SPACING.stack.lg,
+              boxShadow: BOX_SHADOWS.medium,
+              border: `1px solid ${COLORS.neutral.gray200}`
             }}>
-              <h2 style={{ fontSize: '2rem', fontWeight: '700', color: '#111827', marginBottom: '2rem' }}>
-                The 8 Most Expensive Mistakes
+              <h2 style={{
+                ...TEXT_PRESETS.heroTitle,
+                fontSize: 'clamp(1.5rem, 3.5vw, 2rem)',
+                color: COLORS.neutral.gray900,
+                marginBottom: SPACING.stack.lg,
+                background: COLORS.titleGradients.grayToGreen,
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                textAlign: 'center'
+              }}>
+                The Most Expensive Mistakes
               </h2>
 
-              {mistakes.map((mistake, index) => (
-                <div key={index} style={{
-                  marginBottom: '2rem',
-                  paddingBottom: '2rem',
-                  borderBottom: index < mistakes.length - 1 ? '2px solid #e5e7eb' : 'none'
-                }}>
-                  <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem' }}>
-                    <div style={{
-                      background: '#fee2e2',
-                      color: '#991b1b',
-                      fontSize: '1.5rem',
-                      fontWeight: '800',
-                      width: '48px',
-                      height: '48px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      borderRadius: '50%',
-                      flexShrink: 0
-                    }}>
-                      {index + 1}
-                    </div>
-                    <div>
-                      <h3 style={{ fontSize: '1.5rem', fontWeight: '700', color: '#111827', marginBottom: '0.5rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: SPACING.unit.md }}>
+                {mistakes.map((mistake, index) => (
+                  <div key={index} style={{
+                    background: COLORS.backgrounds.lightGray,
+                    borderRadius: BORDER_RADIUS.medium,
+                    padding: SPACING.card.compact,
+                    border: `1px solid ${COLORS.neutral.gray200}`,
+                    overflow: 'hidden'
+                  }}>
+                    <div style={{ textAlign: 'center', marginBottom: SPACING.stack.xs }}>
+                      <h3 style={{
+                        fontSize: TYPOGRAPHY.fontSize.heading.h5,
+                        fontWeight: TYPOGRAPHY.fontWeight.semibold,
+                        color: COLORS.neutral.gray900,
+                        margin: 0,
+                        marginBottom: SPACING.unit.sm,
+                        textAlign: 'center',
+                        wordWrap: 'break-word',
+                        overflowWrap: 'break-word'
+                      }}>
                         {mistake.title}
                       </h3>
                       <span style={{
-                        background: '#fee2e2',
-                        color: '#991b1b',
-                        padding: '0.25rem 0.75rem',
-                        borderRadius: '6px',
-                        fontSize: '0.875rem',
-                        fontWeight: '700'
+                        display: 'inline-block',
+                        background: COLORS.primary.main,
+                        color: COLORS.backgrounds.white,
+                        padding: `${SPACING.unit.xs} ${SPACING.unit.sm}`,
+                        borderRadius: BORDER_RADIUS.small,
+                        fontSize: TYPOGRAPHY.fontSize.body.small,
+                        fontWeight: TYPOGRAPHY.fontWeight.semibold,
+                        wordWrap: 'break-word',
+                        overflowWrap: 'break-word',
+                        maxWidth: '100%',
+                        textAlign: 'center'
                       }}>
-                        💸 Cost: {mistake.cost}
+                        Cost: {mistake.cost}
                       </span>
                     </div>
-                  </div>
 
-                  <div style={{ marginLeft: '64px' }}>
-                    <p style={{ color: '#6b7280', lineHeight: '1.7', marginBottom: '1rem' }}>
-                      <strong>Why It Hurts:</strong> {mistake.why}
-                    </p>
-                    <div style={{
-                      background: '#f0fdf4',
-                      border: '2px solid #86efac',
-                      borderRadius: '8px',
-                      padding: '1rem'
-                    }}>
-                      <strong style={{ color: COLORS.primary.main }}>✓ Solution:</strong>{' '}
-                      <span style={{ color: '#166534' }}>{mistake.solution}</span>
+                    <div style={{ marginTop: SPACING.stack.sm }}>
+                      <p style={{
+                        fontSize: TYPOGRAPHY.fontSize.body.small,
+                        color: COLORS.text.secondary,
+                        lineHeight: TYPOGRAPHY.lineHeight.relaxed,
+                        marginBottom: SPACING.stack.xs
+                      }}>
+                        <strong>Why It Hurts:</strong> {mistake.why}
+                      </p>
+                      <div style={{
+                        background: COLORS.backgrounds.greenLight,
+                        border: `1px solid ${COLORS.borders.green}`,
+                        borderRadius: BORDER_RADIUS.small,
+                        padding: SPACING.unit.sm
+                      }}>
+                        <strong style={{ color: COLORS.primary.main }}>Solution:</strong>{' '}
+                        <span style={{ color: COLORS.text.secondary, fontSize: TYPOGRAPHY.fontSize.body.small }}>
+                          {mistake.solution}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </section>
-
-            {/* INLINE CTA #2 */}
-            <div style={{
-              background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
-              padding: '2.5rem',
-              borderRadius: '16px',
-              marginBottom: '2rem',
-              textAlign: 'center',
-              color: 'white'
-            }}>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
-                <img
-                  src="/assets/images/mint-mascot.png"
-                  alt="Mint AI"
-                  style={{
-                    width: '28px',
-                    height: '28px',
-                    objectFit: 'contain'
-                  }}
-                />
-                Have Questions About Your Specific Situation?
-              </h3>
-              <p style={{ fontSize: '1.0625rem', lineHeight: '1.7', marginBottom: '1.5rem', opacity: 0.95 }}>
-                Chat with Mint AI for personalized guidance on avoiding these mistakes. Get instant answers 24/7.
-              </p>
-              <Link href="/chat" style={{
-                display: 'inline-block',
-                background: 'white',
-                color: COLORS.accent.purple,
-                padding: '1rem 2.5rem',
-                borderRadius: '12px',
-                textDecoration: 'none',
-                fontWeight: '700',
-                fontSize: '1.125rem',
-                boxShadow: '0 6px 20px rgba(0,0,0,0.15)'
-              }}>
-                💬 Chat with Mint AI →
-              </Link>
-            </div>
 
             {/* Pre-Sale Checklist */}
             <section style={{
-              background: 'white',
-              borderRadius: '16px',
-              padding: '2.5rem',
-              marginBottom: '2rem',
-              boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+              background: COLORS.backgrounds.white,
+              borderRadius: BORDER_RADIUS.large,
+              padding: `${SPACING.unit.xl} ${SPACING.unit.lg}`,
+              marginBottom: SPACING.stack.lg,
+              boxShadow: BOX_SHADOWS.medium,
+              border: `1px solid ${COLORS.neutral.gray200}`
             }}>
-              <h2 style={{ fontSize: '2rem', fontWeight: '700', color: '#111827', marginBottom: '1.5rem' }}>
+              <h2 style={{
+                ...TEXT_PRESETS.heroTitle,
+                fontSize: 'clamp(1.5rem, 3.5vw, 2rem)',
+                color: COLORS.neutral.gray900,
+                marginBottom: SPACING.stack.md,
+                background: COLORS.titleGradients.grayToGreen,
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                textAlign: 'center'
+              }}>
                 Pre-Sale Checklist: Do This First
               </h2>
 
-              {[
-                'Get quotes from 3-5 companies',
-                'Compare discount rates in writing',
-                'Calculate exact cash need',
-                'Consider partial sale options',
-                'Explore all alternatives first',
-                'Consult CPA about taxes',
-                'Verify company licensing',
-                'Check company ratings and reviews',
-                'Read all contracts carefully',
-                'Create financial plan for lump sum',
-                'Prepare court approval docs',
-                'Understand all fees involved'
-              ].map((item, index) => (
-                <div key={index} style={{
-                  display: 'flex',
-                  gap: '1rem',
-                  padding: '0.75rem',
-                  marginBottom: '0.5rem',
-                  background: '#f9fafb',
-                  borderRadius: '8px'
-                }}>
-                  <span style={{ fontSize: '1.25rem', color: COLORS.primary.main }}>✓</span>
-                  <span style={{ color: '#374151', lineHeight: '1.6' }}>{item}</span>
-                </div>
-              ))}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: SPACING.unit.xs, maxWidth: '700px', margin: '0 auto' }}>
+                {[
+                  'Get quotes from 3-5 companies',
+                  'Compare discount rates in writing',
+                  'Calculate exact cash need',
+                  'Consider partial sale options',
+                  'Explore all alternatives first',
+                  'Consult CPA about taxes',
+                  'Verify company licensing',
+                  'Check company ratings and reviews',
+                  'Read all contracts carefully',
+                  'Create financial plan for lump sum',
+                  'Prepare court approval docs',
+                  'Understand all fees involved'
+                ].map((item, index) => (
+                  <div key={index} style={{
+                    display: 'flex',
+                    gap: SPACING.unit.sm,
+                    padding: SPACING.unit.sm,
+                    background: COLORS.backgrounds.lightGray,
+                    borderRadius: BORDER_RADIUS.small,
+                    alignItems: 'flex-start'
+                  }}>
+                    <span style={{
+                      fontSize: TYPOGRAPHY.fontSize.body.medium,
+                      color: COLORS.primary.main,
+                      flexShrink: 0,
+                      marginTop: '2px'
+                    }}>
+                      ✓
+                    </span>
+                    <span style={{
+                      fontSize: TYPOGRAPHY.fontSize.body.small,
+                      color: COLORS.text.secondary,
+                      lineHeight: TYPOGRAPHY.lineHeight.relaxed
+                    }}>
+                      {item}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </section>
 
             <RelatedResources resources={[

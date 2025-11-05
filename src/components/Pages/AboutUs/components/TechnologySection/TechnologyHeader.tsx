@@ -11,6 +11,8 @@
  */
 
 'use client';
+import { COLORS, TYPOGRAPHY } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 import type { SectionHeaderProps } from '../../types';
 
 /**
@@ -36,33 +38,12 @@ export default function TechnologyHeader({
       <div style={{
         maxWidth: maxWidth
       }}>
-        {/* Subtitle Badge */}
-        {subtitle && (
-          <div style={{
-            fontSize: "0.875rem",
-            fontWeight: "600",
-            color: "#059669",
-            textTransform: "uppercase",
-            letterSpacing: "1px",
-            marginBottom: "1rem",
-            background: "rgba(5, 150, 105, 0.1)",
-            padding: "0.5rem 1rem",
-            borderRadius: "20px",
-            border: "1px solid rgba(5, 150, 105, 0.2)",
-            display: "inline-block"
-          }}>
-            {subtitle}
-          </div>
-        )}
-
         {/* Main Title */}
         <h2 style={{
-          fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
-          fontWeight: "700",
-          color: "#1f2937",
-          marginBottom: description ? "1.5rem" : "0",
-          lineHeight: "1.2",
-          background: "linear-gradient(135deg, #1f2937 0%, #059669 100%)",
+          ...TEXT_PRESETS.heroTitle,
+          color: COLORS.neutral.gray900,
+          marginBottom: description ? "1.5rem" : "2rem",
+          background: COLORS.titleGradients.grayToGreen,
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
           backgroundClip: "text"
@@ -73,9 +54,9 @@ export default function TechnologyHeader({
         {/* Description */}
         {description && (
           <p style={{
-            fontSize: "clamp(1rem, 2.5vw, 1.125rem)",
-            color: "#374151",
-            lineHeight: "1.7",
+            fontSize: TYPOGRAPHY.fontSize.body.medium,
+            color: COLORS.text.secondary,
+            lineHeight: TYPOGRAPHY.lineHeight.relaxed,
             margin: "0"
           }}>
             {description}

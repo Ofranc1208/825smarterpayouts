@@ -13,35 +13,52 @@
 
 import Button from '@/src/components/shared/Button/Button';
 import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 export default function HeroSection() {
   return (
     <section
       aria-label="Review offer hero section"
       style={{
-        background: 'linear-gradient(135deg, #f8fafc 0%, #e9f9f1 50%, #f0fdf4 100%)',
-        paddingTop: SPACING.unit.xl,
-        paddingBottom: SPACING.unit.xl,
-        paddingLeft: SPACING.unit.md,
-        paddingRight: SPACING.unit.md,
+        background: COLORS.backgrounds.slateGradient,
+        padding: `${SPACING.unit.xl} 0`,
         position: 'relative',
         overflow: 'hidden'
       }}
     >
+      {/* Background Pattern (matching Main page) */}
+      <div style={{
+        position: "absolute",
+        top: "0",
+        left: "0",
+        right: "0",
+        bottom: "0",
+        background: "radial-gradient(circle at 20% 80%, rgba(5, 150, 105, 0.08) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.06) 0%, transparent 50%)",
+        pointerEvents: "none"
+      }}></div>
+      
       <div style={{
         width: '100%',
         maxWidth: SPACING.container.maxWidth,
         margin: '0 auto',
+        padding: SPACING.container.paddingX,
+        position: 'relative',
+        zIndex: 1,
         textAlign: 'center'
       }}>
-        <h1 style={{
-          fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-          fontWeight: TYPOGRAPHY.fontWeight.bold,
-          color: COLORS.text.primary,
-          marginBottom: SPACING.stack.md,
-          lineHeight: TYPOGRAPHY.lineHeight.tight
-        }}>
-          Review Your Offer with Complete Privacy
+        <h1
+          id="hero-heading"
+          style={{
+            ...TEXT_PRESETS.heroTitle,
+            color: COLORS.neutral.gray900,
+            marginBottom: SPACING.stack.sm,
+            background: COLORS.titleGradients.grayToGreen,
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text"
+          }}
+        >
+          Review Your Offer
         </h1>
 
         <p style={{
@@ -51,7 +68,7 @@ export default function HeroSection() {
           margin: `0 auto ${SPACING.stack.lg}`,
           lineHeight: TYPOGRAPHY.lineHeight.relaxed
         }}>
-          Get a quote without sharing personal information. Our process is fully digital, confidential, and secure.
+          Get a quote without sharing personal info. Fully digital, secure, and confidential.
         </p>
 
         {/* CTA Buttons */}
@@ -59,8 +76,7 @@ export default function HeroSection() {
           display: 'flex',
           gap: SPACING.inline.md,
           justifyContent: 'center',
-          flexWrap: 'wrap',
-          marginBottom: SPACING.stack.lg
+          flexWrap: 'wrap'
         }}>
           <Button
             as="a"
@@ -84,35 +100,6 @@ export default function HeroSection() {
           >
             💬 Chat with Mint AI
           </Button>
-        </div>
-
-        {/* Trust Indicators */}
-        <div style={{
-          fontSize: TYPOGRAPHY.fontSize.body.small,
-          color: COLORS.text.secondary,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: SPACING.inline.sm,
-          flexWrap: 'wrap'
-        }}>
-          <span style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: SPACING.inline.xs,
-            fontWeight: 'bold',
-            color: COLORS.primary.dark
-          }}>
-            ✅ No personal info required
-          </span>
-          <span style={{ color: COLORS.borders.medium }}>•</span>
-          <span style={{ display: 'flex', alignItems: 'center', gap: SPACING.inline.xs }}>
-            💻 100% digital
-          </span>
-          <span style={{ color: COLORS.borders.medium }}>•</span>
-          <span style={{ display: 'flex', alignItems: 'center', gap: SPACING.inline.xs }}>
-            🛡️ State compliant
-          </span>
         </div>
       </div>
     </section>

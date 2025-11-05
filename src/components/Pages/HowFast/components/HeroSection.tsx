@@ -14,25 +14,37 @@
 
 import Button from '@/src/components/shared/Button';
 import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 export default function HeroSection() {
   return (
     <section
       aria-label="How fast page hero section"
       style={{
-        background: 'linear-gradient(135deg, #f8fafc 0%, #e9f9f1 50%, #f0fdf4 100%)',
-        paddingTop: SPACING.unit.xl,
-        paddingBottom: SPACING.unit.xl,
-        paddingLeft: SPACING.unit.md,
-        paddingRight: SPACING.unit.md,
+        background: COLORS.backgrounds.slateGradient,
+        padding: `${SPACING.unit.xl} 0`,
         position: 'relative',
         overflow: 'hidden'
       }}
     >
+      {/* Background Pattern (matching Main page) */}
+      <div style={{
+        position: "absolute",
+        top: "0",
+        left: "0",
+        right: "0",
+        bottom: "0",
+        background: "radial-gradient(circle at 20% 80%, rgba(5, 150, 105, 0.08) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.06) 0%, transparent 50%)",
+        pointerEvents: "none"
+      }}></div>
+      
       <div style={{
         width: '100%',
         maxWidth: SPACING.container.maxWidth,
-        margin: '0 auto'
+        margin: '0 auto',
+        padding: SPACING.container.paddingX,
+        position: 'relative',
+        zIndex: 1
       }}>
         <div style={{
           display: 'flex',
@@ -42,13 +54,18 @@ export default function HeroSection() {
             maxWidth: '800px',
             textAlign: 'center'
           }}>
-            <h1 style={{
-              fontSize: "clamp(2rem, 5vw, 3.5rem)",
-              fontWeight: TYPOGRAPHY.fontWeight.bold,
-              color: COLORS.text.primary,
-              marginBottom: SPACING.stack.md,
-              lineHeight: TYPOGRAPHY.lineHeight.tight
-            }}>
+            <h1
+              id="hero-heading"
+              style={{
+                ...TEXT_PRESETS.heroTitle,
+                color: COLORS.neutral.gray900,
+                marginBottom: SPACING.stack.md,
+                background: COLORS.titleGradients.grayToGreen,
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text"
+              }}
+            >
               How Fast Can I Get My Money?
             </h1>
             <p style={{

@@ -16,8 +16,8 @@ import type { HeroConfig, HeroCTAButton } from '../../types';
  * Hero section configuration
  */
 export const HERO_CONFIG: HeroConfig = {
-  title: 'Revolutionizing Structured Settlements with AI',
-  description: "The first AI-powered platform for instant quotes with no personal info required.",
+  title: 'About Us',
+  description: "Learn about SmarterPayouts and our mission to provide transparent, instant settlement quotes.",
   background: {
     gradient: "linear-gradient(135deg, #f8fafc 0%, #e9f9f1 50%, #f0fdf4 100%)",
     padding: "3rem 0"

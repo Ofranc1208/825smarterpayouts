@@ -1,3 +1,4 @@
+import { SPACING } from '@/src/components/shared/styles';
 import Step1Card from './Step1Card';
 import Step2Card from './Step2Card';
 import Step3Card from './Step3Card';
@@ -8,9 +9,11 @@ export default function ProcessStepsGrid() {
     <div style={{
       display: 'grid',
       gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-      gap: '1rem',
+      gap: SPACING.grid.standard,
       textAlign: 'center',
-      marginBottom: '2rem'
+      marginTop: SPACING.stack.lg,
+      marginBottom: SPACING.stack.lg,
+      padding: `0 ${SPACING.container.paddingX}`
     }}>
       <Step1Card />
       <Step2Card />

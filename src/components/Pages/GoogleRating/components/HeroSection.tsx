@@ -35,14 +35,16 @@ export function HeroSection() {
             textAlign: 'center'
           }}>
             <h1 style={{
-              ...TEXT_PRESETS.h1,
+              ...TEXT_PRESETS.heroTitle,
               marginBottom: SPACING.unit.sm,
               lineHeight: "1.3",
-              color: COLORS.text.secondary,
-              fontSize: 'clamp(1.5rem, 3.5vw, 2rem)',
-              fontWeight: '700'
+              color: COLORS.neutral.gray900,
+              background: COLORS.titleGradients.grayToGreen,
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text"
             }}>
-              Smarter Payouts Rating on Google
+              Our Rating on Google
             </h1>
             <p style={{
               ...TEXT_PRESETS.bodyLarge,
@@ -50,10 +52,10 @@ export function HeroSection() {
               margin: `0 auto ${SPACING.unit.lg}`,
               color: COLORS.text.secondary,
               fontSize: 'clamp(1rem, 2vw, 1.125rem)',
-              fontWeight: '500',
+              fontWeight: '400',
               lineHeight: '1.6'
             }}>
-              Our rating on Google is based on user reviews and reflects publicly available data. Ratings are subject to change and are displayed for informational purposes only.
+              Our 4.9★ rating reflects user reviews and publicly available data on Google.
             </p>
             
             {/* Rating Badge Display */}

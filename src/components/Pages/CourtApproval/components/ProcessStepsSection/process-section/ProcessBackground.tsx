@@ -1,3 +1,5 @@
+import { COLORS, SPACING } from '@/src/components/shared/styles';
+
 interface ProcessBackgroundProps {
   children: React.ReactNode;
 }
@@ -5,8 +7,8 @@ interface ProcessBackgroundProps {
 export default function ProcessBackground({ children }: ProcessBackgroundProps) {
   return (
     <section style={{
-      background: '#f8fafc',
-      padding: '32px 16px'
+      background: COLORS.backgrounds.lightGray,
+      padding: `${SPACING.unit.lg} ${SPACING.container.paddingX}`
     }}>
       {children}
     </section>

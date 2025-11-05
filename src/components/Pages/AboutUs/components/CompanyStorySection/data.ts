@@ -18,22 +18,17 @@ import type { CompanyStoryConfig, StoryParagraph } from './types';
 export const STORY_PARAGRAPHS: StoryParagraph[] = [
   {
     id: 'founding',
-    text: 'Founded in 2017 with a focus on transparency and speed for structured settlement recipients.',
+    text: 'SmarterPayouts is a Florida corporation, founded in 2017 with a mission to provide transparent, instant settlement quotes without pressure or hidden fees.',
     emphasis: 'founding'
   },
   {
-    id: 'problem',
-    text: 'Our founders saw high-pressure sales and hidden fees in the industry. They built the first transparent, digital-first solution.',
-    emphasis: 'solution'
-  },
-  {
-    id: 'achievement',
-    text: "400+ clients served, $50M+ in payouts with 100% transparency.",
-    emphasis: 'stats'
+    id: 'innovation',
+    text: 'We pioneered the first AI-powered platform for structured settlements, delivering real-time quotes in under 60 seconds with no personal information required.',
+    emphasis: 'innovation'
   },
   {
     id: 'mission',
-    text: 'We provide honest quotes, clear processes, and respect during financial decisions.',
+    text: 'Our commitment is simple: honest quotes, clear processes, and respectful service during your financial decisions.',
     emphasis: 'mission'
   }
 ];
@@ -43,6 +38,7 @@ export const STORY_PARAGRAPHS: StoryParagraph[] = [
  */
 export const COMPANY_STORY_CONFIG: CompanyStoryConfig = {
   title: 'Our Story',
+  subtitle: 'A Florida corporation dedicated to transparency and innovation since 2017',
   background: {
     section: 'white',
     content: '#f9fafb',

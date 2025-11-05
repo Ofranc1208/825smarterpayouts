@@ -1,5 +1,7 @@
 'use client';
+import { useState } from 'react';
 import { Button } from '@/src/components/shared';
+import { COLORS, SPACING, BORDER_RADIUS, BOX_SHADOWS, TYPOGRAPHY } from '@/src/components/shared/styles';
 
 interface ContactCardProps {
   icon: string;
@@ -18,6 +20,8 @@ export default function ContactCard({
   actionLink,
   onClick 
 }: ContactCardProps) {
+  const [isHovered, setIsHovered] = useState(false);
+
   const handleClick = () => {
     if (onClick) {
       onClick(title.toLowerCase().replace(/\s+/g, '-'));
@@ -27,109 +31,149 @@ export default function ContactCard({
   return (
     <div
       style={{
-        background: "white",
-        padding: "1.5rem",
-        borderRadius: "12px",
-        boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-        border: "1px solid #e5e7eb",
+        background: COLORS.backgrounds.white,
+        padding: `${SPACING.unit.lg} ${SPACING.unit.md}`,
+        borderRadius: BORDER_RADIUS.large,
+        boxShadow: isHovered ? BOX_SHADOWS.large : BOX_SHADOWS.medium,
+        border: `1px solid ${COLORS.neutral.gray200}`,
         textAlign: "center",
-        transition: "all 0.2s ease",
+        transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
         cursor: "pointer",
         height: "100%",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        transform: isHovered ? "translateY(-4px)" : "translateY(0)",
+        position: "relative",
+        overflow: "hidden",
+        maxWidth: "100%"
       }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "translateY(-4px)";
-        e.currentTarget.style.boxShadow = "0 10px 15px -3px rgba(0, 0, 0, 0.1)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = "translateY(0)";
-        e.currentTarget.style.boxShadow = "0 4px 6px -1px rgba(0, 0, 0, 0.1)";
-      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       onClick={handleClick}
+      role="article"
+      aria-label={`${title} contact option`}
     >
-      <div>
+      {/* Subtle gradient overlay on hover */}
+      {isHovered && (
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: `linear-gradient(135deg, ${COLORS.primary.lightest}08 0%, ${COLORS.primary.light}08 100%)`,
+            pointerEvents: "none"
+          }}
+        />
+      )}
+      
+      <div style={{ position: "relative", zIndex: 1, flex: 1, display: "flex", flexDirection: "column" }}>
         <div style={{
           fontSize: "2.5rem",
-          marginBottom: "0.75rem"
+          marginBottom: SPACING.stack.sm,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          transition: "transform 0.3s ease",
+          transform: isHovered ? "scale(1.1)" : "scale(1)"
         }}>
           {icon}
         </div>
         <h3 style={{
-          fontSize: "1.25rem",
+          fontSize: TYPOGRAPHY.fontSize.heading.h4,
           fontWeight: "700",
-          color: "#1f2937",
-          marginBottom: "0.5rem"
+          color: COLORS.neutral.gray900,
+          marginBottom: SPACING.stack.xs,
+          lineHeight: TYPOGRAPHY.lineHeight.tight
         }}>
           {title}
         </h3>
         <div style={{
-          marginBottom: "1rem",
-          flex: 1
+          marginBottom: SPACING.stack.md,
+          flex: 1,
+          minHeight: "60px"
         }}>
           {/* Display address formatted exactly like Google Maps */}
           {title === "Visit Us" && description.includes('\n') ? (
             <address
               style={{
-                color: "#374151",
-                lineHeight: "1.8",
+                color: COLORS.text.secondary,
+                lineHeight: TYPOGRAPHY.lineHeight.relaxed,
                 fontStyle: "normal",
                 textAlign: "center",
                 display: "flex",
                 flexDirection: "column",
-                gap: "0.5rem"
+                gap: SPACING.unit.xs,
+                fontSize: TYPOGRAPHY.fontSize.body.small
               }}
               itemScope
               itemType="https://schema.org/PostalAddress"
             >
               {/* Street address - emphasized like Google Maps */}
-              <div itemProp="streetAddress" style={{ fontWeight: "600", color: "#1f2937", fontSize: "1rem" }}>
+              <div itemProp="streetAddress" style={{ 
+                fontWeight: "600", 
+                color: COLORS.neutral.gray900, 
+                fontSize: TYPOGRAPHY.fontSize.body.medium 
+              }}>
                 {description.split('\n')[0]}
               </div>
               {/* City, State ZIP - main line like Google Maps */}
-              <div style={{ color: "#6b7280", fontSize: "0.95rem" }}>
+              <div style={{ color: COLORS.text.secondary }}>
                 {description.split('\n')[1]}
               </div>
               {/* Country - subtle like Google Maps */}
-              <div itemProp="addressCountry" style={{ fontSize: "0.875rem", color: "#9ca3af" }}>
+              <div itemProp="addressCountry" style={{ 
+                fontSize: TYPOGRAPHY.fontSize.body.small, 
+                color: COLORS.text.tertiary 
+              }}>
                 {description.split('\n')[2]}
               </div>
             </address>
           ) : (
             <p style={{
-              color: "#6b7280",
-              lineHeight: "1.5"
+              color: COLORS.text.secondary,
+              lineHeight: TYPOGRAPHY.lineHeight.relaxed,
+              fontSize: TYPOGRAPHY.fontSize.body.medium
             }}>
               {description}
             </p>
           )}
         </div>
       </div>
-      <Button
-        as="a"
-        href={actionLink}
-        variant="outline"
-        size="sm"
-        enhancedHover={true}
-        style={{
-          marginTop: "auto",
-          borderColor: "#059669",
-          color: "#059669"
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.backgroundColor = "#059669";
-          e.currentTarget.style.color = "white";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.backgroundColor = "transparent";
-          e.currentTarget.style.color = "#059669";
-        }}
-        onClick={handleClick}
-      >
-        {actionText}
-      </Button>
+      <div style={{ 
+        position: "relative", 
+        zIndex: 1, 
+        marginTop: SPACING.stack.md,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%"
+      }}>
+        <Button
+          as="a"
+          href={actionLink}
+          variant="primary"
+          size="md"
+          enhancedHover={true}
+          style={{
+            minWidth: "160px",
+            maxWidth: "200px",
+            background: isHovered 
+              ? COLORS.primary.gradient 
+              : COLORS.primary.main,
+            borderColor: COLORS.primary.main,
+            color: COLORS.backgrounds.white,
+            transition: "all 0.3s ease",
+            textAlign: "center",
+            justifyContent: "center"
+          }}
+          onClick={handleClick}
+        >
+          {actionText}
+        </Button>
+      </div>
     </div>
   );
 }

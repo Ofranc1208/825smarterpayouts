@@ -1,5 +1,6 @@
 'use client';
 import ContactCard from './ContactCard';
+import { SPACING } from '@/src/components/shared/styles';
 
 interface ContactInfoProps {
   onCardClick?: (cardId: string) => void;
@@ -21,14 +22,14 @@ export default function ContactInfo({ onCardClick }: ContactInfoProps) {
     {
       icon: "📞",
       title: "Call Us",
-      description: "Available Monday-Friday, 9 AM - 6 PM EST.",
+      description: "Monday-Friday, 9 AM - 6 PM EST. Speak with our team directly for immediate assistance.",
       actionText: "Call Now",
       actionLink: "tel:+1-561-583-1280"
     },
     {
       icon: "✉️",
       title: "Email Us",
-      description: "We'll respond within 24 hours.",
+      description: "Send us a message anytime. We'll respond within 24 hours during business days.",
       actionText: "Send Email",
       actionLink: "mailto:info@smarterpayouts.com"
     },
@@ -45,9 +46,11 @@ export default function ContactInfo({ onCardClick }: ContactInfoProps) {
   return (
     <div style={{
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-      gap: '1.25rem',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+      gap: SPACING.unit.lg,
       width: '100%',
+      maxWidth: '900px',
+      margin: '0 auto',
       alignItems: 'stretch'
     }}>
       {contactMethods.map((method, index) => (

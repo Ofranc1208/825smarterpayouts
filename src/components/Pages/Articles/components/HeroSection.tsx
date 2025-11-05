@@ -15,6 +15,7 @@
 
 import Button from '@/src/components/shared/Button';
 import { COLORS, TYPOGRAPHY, SPACING } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 export default function HeroSection() {
   return (
@@ -44,13 +45,17 @@ export default function HeroSection() {
             textAlign: 'center'
           }}>
             <h1 style={{
-              fontSize: "clamp(2rem, 5vw, 3.5rem)",
-              fontWeight: TYPOGRAPHY.fontWeight.bold,
-              color: COLORS.text.primary,
+              ...TEXT_PRESETS.heroTitle,
+              fontSize: 'clamp(1.75rem, 4vw, 2.75rem)',
+              color: COLORS.neutral.gray900,
               marginBottom: SPACING.stack.lg,
-              lineHeight: TYPOGRAPHY.lineHeight.tight
+              lineHeight: TYPOGRAPHY.lineHeight.tight,
+              background: COLORS.titleGradients.grayToGreen,
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text"
             }}>
-              SmarterPayouts Resources
+              Smarter Payouts Resources
             </h1>
             <p style={{
               fontSize: TYPOGRAPHY.fontSize.body.large,
@@ -78,7 +83,7 @@ export default function HeroSection() {
                 enhancedHover={true}
                 shimmer={true}
               >
-                💰 Get Your Instant Quote
+                Get Your Instant Quote
               </Button>
 
               <Button
@@ -90,7 +95,7 @@ export default function HeroSection() {
                 shimmer={true}
                 shimmerDelay={1}
               >
-                💬 Chat with Mint AI
+                Chat with Mint AI
               </Button>
             </div>
           </div>

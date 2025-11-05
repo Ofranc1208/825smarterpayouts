@@ -33,31 +33,35 @@ export default function FAQSection() {
 
   return (
     <section style={{
-      padding: `${SPACING.unit.lg} 0`,
-      background: '#ffffff'
+      padding: `${SPACING.unit.xl} 0`,
+      background: COLORS.backgrounds.white
     }}>
       <div style={{
         width: '100%',
-        maxWidth: '800px',
+        maxWidth: '700px',
         margin: '0 auto',
-        padding: SPACING.container.paddingX
+        padding: `0 ${SPACING.unit.md}`
       }}>
         {/* Section Header */}
         <div style={{
           textAlign: 'center',
-          marginBottom: SPACING.stack.xl
+          marginBottom: SPACING.stack.lg
         }}>
           <h2 style={{
-            fontSize: '2rem',
-            fontWeight: 700,
-            color: '#111827',
-            marginBottom: SPACING.stack.sm
+            ...TEXT_PRESETS.heroTitle,
+            fontSize: 'clamp(1.75rem, 4vw, 2.25rem)',
+            color: COLORS.neutral.gray900,
+            marginBottom: SPACING.stack.xs,
+            background: COLORS.titleGradients.grayToGreen,
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text"
           }}>
             Frequently Asked Questions
           </h2>
           <p style={{
-            fontSize: '1rem',
-            color: '#6b7280',
+            fontSize: TYPOGRAPHY.fontSize.body.medium,
+            color: COLORS.text.secondary,
             maxWidth: '600px',
             margin: '0 auto'
           }}>
@@ -110,97 +114,104 @@ export default function FAQSection() {
           </div>
         </Link>
 
-        {/* FAQ Container */}
+        {/* FAQ Items */}
         <div style={{
-          background: 'white',
-          borderRadius: '16px',
-          border: '1px solid #e5e7eb',
-          overflow: 'hidden'
+          display: 'flex',
+          flexDirection: 'column',
+          gap: SPACING.unit.sm,
+          width: '100%'
         }}>
-
-          {/* FAQ Items */}
           {FAQ_DATA.map((faq, index) => {
             const isOpen = openIndex === index;
-            const isLast = index === FAQ_DATA.length - 1;
-            
             return (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 style={{
-                  borderBottom: isLast ? 'none' : '1px solid #f3f4f6'
+                  border: `1px solid ${COLORS.neutral.gray200}`,
+                  borderRadius: BORDER_RADIUS.medium,
+                  overflow: "hidden",
+                  background: COLORS.backgrounds.white,
+                  boxShadow: isOpen ? BOX_SHADOWS.small : BOX_SHADOWS.sm,
+                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
                 }}
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : index)}
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${index}`}
                   style={{
                     width: '100%',
-                    padding: '1.25rem 1.5rem',
-                    background: 'transparent',
-                    border: 'none',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    cursor: 'pointer',
-                    transition: 'background 0.2s ease',
-                    textAlign: 'left'
+                    padding: `${SPACING.unit.md} ${SPACING.unit.lg}`,
+                    background: isOpen ? COLORS.backgrounds.lightGray : COLORS.backgrounds.white,
+                    border: "none",
+                    textAlign: "left",
+                    fontSize: TYPOGRAPHY.fontSize.body.medium,
+                    fontWeight: "600",
+                    color: COLORS.neutral.gray900,
+                    cursor: "pointer",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    transition: "all 0.2s ease",
+                    gap: SPACING.unit.md
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background = '#f9fafb';
+                    if (!isOpen) {
+                      e.currentTarget.style.background = COLORS.backgrounds.lightGray;
+                    }
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = 'transparent';
+                    if (!isOpen) {
+                      e.currentTarget.style.background = COLORS.backgrounds.white;
+                    }
                   }}
                 >
-                  <h3 style={{
-                    margin: 0,
-                    fontSize: '1rem',
-                    fontWeight: 600,
-                    color: '#111827',
-                    flex: 1,
-                    paddingRight: '1rem',
-                    lineHeight: '1.5'
+                  <span style={{ 
+                    flex: 1, 
+                    textAlign: "left",
+                    lineHeight: TYPOGRAPHY.lineHeight.snug
                   }}>
                     {faq.question}
-                  </h3>
-                  <div style={{
-                    width: '28px',
-                    height: '28px',
-                    borderRadius: '50%',
-                    background: isOpen ? '#22c55e' : '#f3f4f6',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    transition: 'all 0.2s ease',
-                    flexShrink: 0
+                  </span>
+                  <span style={{
+                    fontSize: "1.25rem",
+                    fontWeight: "300",
+                    color: COLORS.primary.main,
+                    transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
+                    transition: "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                    flexShrink: 0,
+                    width: "20px",
+                    height: "20px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    lineHeight: "1"
                   }}>
-                    <span style={{
-                      color: isOpen ? 'white' : '#6b7280',
-                      fontSize: '1.125rem',
-                      fontWeight: 600,
-                      transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                      transition: 'transform 0.2s ease',
-                      display: 'inline-block'
-                    }}>
-                      {isOpen ? '−' : '+'}
-                    </span>
-                  </div>
+                    +
+                  </span>
                 </button>
-                
-                {isOpen && (
-                  <div style={{
-                    padding: '0 1.5rem 1.5rem 1.5rem',
-                    background: '#fafafa'
+                <div 
+                  id={`faq-answer-${index}`}
+                  style={{
+                    maxHeight: isOpen ? "1000px" : "0",
+                    overflow: "hidden",
+                    transition: "max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease",
+                    padding: isOpen ? `${SPACING.unit.md} ${SPACING.unit.lg} ${SPACING.unit.lg}` : "0",
+                    background: COLORS.backgrounds.lightGray,
+                    borderTop: isOpen ? `1px solid ${COLORS.neutral.gray200}` : "none",
+                    opacity: isOpen ? 1 : 0,
+                    transition: "max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease, opacity 0.3s ease, border-top 0.2s ease"
+                  }}
+                >
+                  <p style={{
+                    color: COLORS.text.secondary,
+                    lineHeight: TYPOGRAPHY.lineHeight.relaxed,
+                    margin: "0",
+                    fontSize: TYPOGRAPHY.fontSize.body.small
                   }}>
-                    <p style={{
-                      margin: 0,
-                      fontSize: '0.9375rem',
-                      color: '#6b7280',
-                      lineHeight: '1.7'
-                    }}>
-                      {faq.answer}
-                    </p>
-                  </div>
-                )}
+                    {faq.answer}
+                  </p>
+                </div>
               </div>
             );
           })}

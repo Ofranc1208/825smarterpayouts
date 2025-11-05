@@ -20,13 +20,13 @@ export default function CTASection() {
   const ctaButtons = [
     {
       id: "instant-offer",
-      text: "💰 Get Your Instant Quote",
+      text: "Get Your Instant Quote",
       href: "/pricing-calculator",
       variant: "technology-primary" as const
     },
     {
       id: "mint-ai",
-      text: "💬 Chat with Mint AI",
+      text: "Chat with Mint AI",
       href: "/mint-intelligent-chat?chat=open&feature=calculator",
       variant: "mint-chat" as const
     }
@@ -69,21 +69,26 @@ export default function CTASection() {
         }}>
           {/* Title with Gradient */}
           <h2 style={{
-            ...TEXT_PRESETS.sectionTitle,
+            ...TEXT_PRESETS.heroTitle,
+            fontSize: 'clamp(1.75rem, 4vw, 2.25rem)',
+            color: COLORS.neutral.gray900,
+            marginBottom: SPACING.stack.md,
             background: COLORS.titleGradients.grayToGreen,
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
-            marginBottom: SPACING.stack.md
+            backgroundClip: 'text',
+            textAlign: 'center'
           }}>
             Ready to Experience the Difference?
           </h2>
           
           {/* Subtitle */}
           <p style={{
-            ...TEXT_PRESETS.sectionSubtitle,
+            fontSize: TYPOGRAPHY.fontSize.body.medium,
             color: COLORS.text.secondary,
-            maxWidth: '650px',
-            margin: `0 auto ${SPACING.stack.xxl}`
+            maxWidth: '600px',
+            margin: `0 auto ${SPACING.stack.lg}`,
+            lineHeight: TYPOGRAPHY.lineHeight.relaxed
           }}>
             Join hundreds of satisfied clients who chose transparency and simplicity. Get your instant quote or reach out to our team today.
           </p>
@@ -112,17 +117,6 @@ export default function CTASection() {
               justifyContent: "center",
               gap: SPACING.inline.sm
             }}>
-              <span style={{ 
-                fontSize: TYPOGRAPHY.fontSize.heading.h5,
-                width: "24px",
-                height: "24px",
-                background: COLORS.primary.gradient,
-                borderRadius: BORDER_RADIUS.circle,
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: COLORS.text.white
-              }}>⚡</span>
               <strong>Trusted by 400+ satisfied clients</strong>
             </p>
           </div>

@@ -271,20 +271,6 @@ export default function VideoCard({
           {video.desc}
         </p>
 
-        {/* Video Stats */}
-        {video.views && (
-          <div 
-            style={{
-              fontSize: '0.75rem',
-              color: '#9ca3af',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem'
-            }}
-          >
-            <span>👁️ {video.views} views</span>
-          </div>
-        )}
       </div>
 
       {/* Focus indicator for accessibility */}

@@ -1,14 +1,15 @@
 import { SITE_STATS } from '../../../../../../../app/config/siteConfig';
+import { COLORS, SPACING, BORDER_RADIUS, BOX_SHADOWS, TYPOGRAPHY } from '@/src/components/shared/styles';
 
 export default function Step4Card() {
   return (
     <div>
       <div style={{
-        background: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)',
-        borderRadius: '20px',
-        padding: '2rem 1.5rem',
-        boxShadow: '0 12px 40px rgba(5, 150, 105, 0.15)',
-        border: '2px solid #bbf7d0',
+        background: COLORS.backgrounds.greenLight,
+        borderRadius: BORDER_RADIUS.xlarge,
+        padding: SPACING.card.compact,
+        boxShadow: BOX_SHADOWS.medium,
+        border: `2px solid ${COLORS.borders.green}`,
         height: '100%',
         transition: 'transform 0.3s ease, box-shadow 0.3s ease',
         position: 'relative',
@@ -22,29 +23,43 @@ export default function Step4Card() {
           height: '4px',
           background: 'linear-gradient(90deg, #059669, #34d399)'
         }}></div>
-        <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>✅</div>
+        <div style={{ fontSize: TYPOGRAPHY.fontSize.heading.h1, marginBottom: SPACING.unit.md }}>✅</div>
         <div style={{
-          background: 'linear-gradient(135deg, #059669, #047857)',
-          color: '#ffffff',
-          padding: '0.5rem 1rem',
-          borderRadius: '20px',
-          fontSize: '0.875rem',
-          fontWeight: 600,
-          marginBottom: '1rem',
+          background: COLORS.primary.gradient,
+          color: COLORS.text.white,
+          padding: `${SPACING.unit.xs} ${SPACING.unit.md}`,
+          borderRadius: BORDER_RADIUS.full,
+          fontSize: TYPOGRAPHY.fontSize.body.small,
+          fontWeight: TYPOGRAPHY.fontWeight.semibold,
+          marginBottom: SPACING.unit.md,
           display: 'inline-block'
         }}>Step 4</div>
-        <h5 style={{ color: '#047857', fontWeight: 700, marginBottom: '1rem' }}>Approval & Funding</h5>
-        <p style={{ color: '#065f46', lineHeight: 1.6 }}>
-          Once approved, your Early Payout is typically released within 5–7 business days. If requirements aren't met, it may take longer.
+        <h5 style={{ 
+          color: COLORS.primary.dark, 
+          fontWeight: TYPOGRAPHY.fontWeight.bold, 
+          marginBottom: SPACING.unit.md,
+          fontSize: TYPOGRAPHY.fontSize.heading.h5
+        }}>Approval & Funding</h5>
+        <p style={{ 
+          color: COLORS.text.greenDark, 
+          lineHeight: TYPOGRAPHY.lineHeight.relaxed,
+          fontSize: TYPOGRAPHY.fontSize.body.medium,
+          marginBottom: SPACING.unit.md
+        }}>
+          Once approved, your Early Payout is typically released within 5–7 business days.
         </p>
         <div style={{
-          marginTop: '1rem',
-          padding: '0.75rem',
-          background: '#ffffff',
-          borderRadius: '12px',
-          border: '1px solid #bbf7d0'
+          marginTop: SPACING.unit.md,
+          padding: SPACING.unit.sm,
+          background: COLORS.backgrounds.white,
+          borderRadius: BORDER_RADIUS.medium,
+          border: `1px solid ${COLORS.borders.green}`
         }}>
-          <div style={{ fontSize: '0.875rem', color: '#047857', fontWeight: 600 }}>
+          <div style={{ 
+            fontSize: TYPOGRAPHY.fontSize.body.small, 
+            color: COLORS.primary.dark, 
+            fontWeight: TYPOGRAPHY.fontWeight.semibold 
+          }}>
             💰 Average: {SITE_STATS.avgDays.value} days
           </div>
         </div>

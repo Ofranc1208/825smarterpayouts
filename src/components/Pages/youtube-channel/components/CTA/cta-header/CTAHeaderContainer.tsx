@@ -1,5 +1,4 @@
 import React from 'react';
-import CTAIcon from './CTAIcon';
 import CTATitle from './CTATitle';
 import CTADescription from './CTADescription';
 
@@ -63,9 +62,6 @@ export default function CTAHeaderContainer({
 }: CTAHeaderContainerProps) {
   return (
     <div style={{ position: 'relative', zIndex: 1 }}>
-      {/* Icon */}
-      <CTAIcon icon={icon} size="2.5rem" />
-
       {/* Title */}
       <CTATitle 
         title={title} 

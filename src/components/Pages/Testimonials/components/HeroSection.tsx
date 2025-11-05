@@ -23,13 +23,13 @@ export default function HeroSection() {
   const ctaButtons = [
     {
       id: "instant-offer",
-      text: "💰 Get Your Instant Quote",
+      text: "Get Your Instant Quote",
       href: "/pricing-calculator",
       variant: "technology-primary" as const
     },
     {
       id: "mint-ai",
-      text: "💬 Chat with Mint AI",
+      text: "Chat with Mint AI",
       href: "/mint-intelligent-chat?chat=open&feature=calculator",
       variant: "mint-chat" as const
     }
@@ -38,7 +38,7 @@ export default function HeroSection() {
   return (
     <section style={{
       background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%)',
-      padding: `${SPACING.unit.xxxxl} 0`,
+      padding: `${SPACING.unit.xl} 0`,
       position: "relative",
       overflow: "hidden"
     }}>
@@ -82,29 +82,29 @@ export default function HeroSection() {
           }}>
             {/* Modern Title */}
             <h1 style={{
-              fontSize: 'clamp(2.5rem, 6vw, 4rem)',
-              fontWeight: TYPOGRAPHY.fontWeight.bold,
-              background: 'linear-gradient(135deg, #1f2937 0%, #374151 50%, #22c55e 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
+              ...TEXT_PRESETS.heroTitle,
+              fontSize: 'clamp(1.75rem, 4vw, 2.75rem)',
+              color: COLORS.neutral.gray900,
               marginBottom: SPACING.stack.lg,
               lineHeight: TYPOGRAPHY.lineHeight.tight,
-              textShadow: '0 2px 4px rgba(0,0,0,0.1)'
+              background: COLORS.titleGradients.grayToGreen,
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text"
             }}>
-              Real Client Experiences
+              Our Client Experiences
             </h1>
 
             {/* Subtitle */}
             <p style={{
-              fontSize: TYPOGRAPHY.fontSize.body.xlarge,
+              fontSize: TYPOGRAPHY.fontSize.body.medium,
               color: COLORS.text.secondary,
-              maxWidth: "800px",
-              margin: `0 auto ${SPACING.stack.xl}`,
+              maxWidth: "700px",
+              margin: `0 auto ${SPACING.stack.lg}`,
               lineHeight: TYPOGRAPHY.lineHeight.relaxed,
-              fontWeight: TYPOGRAPHY.fontWeight.medium
+              fontWeight: TYPOGRAPHY.fontWeight.normal
             }}>
-              These testimonials were shared directly with us by clients who experienced our <strong style={{ color: '#22c55e' }}>transparent settlement process</strong>. Every story reflects genuine experiences from people who trusted us with their financial needs.
+              These testimonials were shared directly with us by clients who experienced our <strong style={{ color: '#22c55e' }}>transparent settlement process</strong>. Every story reflects genuine experiences from our clients.
             </p>
 
             {/* Enhanced Rating Display - 40% Smaller */}

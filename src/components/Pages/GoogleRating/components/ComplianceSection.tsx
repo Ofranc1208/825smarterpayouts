@@ -37,7 +37,7 @@ export function ComplianceSection() {
             textAlign: 'center'
           }}>
             <strong style={{ color: COLORS.text.secondary }}>Transparency Note:</strong>{' '}
-            This page displays our current rating on Google. Ratings are based on user reviews and are subject to change. SmarterPayouts does not claim endorsement or partnership with Google. This information reflects publicly available data on Google and is provided for informational purposes only. We do not modify or influence how our rating appears on Google.
+            Our rating on Google is based on user reviews and publicly available data. Ratings are subject to change and are displayed for informational purposes only.
           </p>
         </div>
       </div>

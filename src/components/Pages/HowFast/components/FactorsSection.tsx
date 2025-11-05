@@ -17,6 +17,7 @@
 import { useState } from 'react';
 import Button from '@/src/components/shared/Button';
 import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 import type { Factor } from '../types';
 
 const speedUpFactors: Factor[] = [
@@ -61,10 +62,13 @@ export default function FactorsSection() {
           marginBottom: SPACING.stack.lg
         }}>
           <h2 style={{
-            fontSize: TYPOGRAPHY.fontSize.heading.h3,
-            fontWeight: TYPOGRAPHY.fontWeight.bold,
-            color: COLORS.text.primary,
-            marginBottom: SPACING.stack.sm
+            ...TEXT_PRESETS.heroTitle,
+            color: COLORS.neutral.gray900,
+            marginBottom: SPACING.stack.sm,
+            background: COLORS.titleGradients.grayToGreen,
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text"
           }}>
             What Affects How Fast You Get Paid
           </h2>

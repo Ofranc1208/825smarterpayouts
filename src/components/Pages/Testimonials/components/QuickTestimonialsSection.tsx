@@ -9,12 +9,13 @@ import React from 'react';
 import { quickTestimonials } from '../data';
 import { QuickTestimonialCard } from './shared';
 import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 export default function QuickTestimonialsSection() {
   return (
     <section style={{
       background: 'linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%)',
-      padding: `${SPACING.unit.xxxxl} 0`,
+      padding: `${SPACING.unit.xl} 0`,
       position: 'relative',
       overflow: 'hidden'
     }}>
@@ -42,30 +43,34 @@ export default function QuickTestimonialsSection() {
         <div style={{
           display: 'flex',
           justifyContent: 'center',
-          marginBottom: SPACING.unit.xxxxl
+          marginBottom: SPACING.unit.xl
         }}>
           <div style={{
             maxWidth: '800px',
             textAlign: 'center'
           }}>
             <h2 style={{
-              fontSize: TYPOGRAPHY.fontSize.heading.h1,
-              fontWeight: TYPOGRAPHY.fontWeight.bold,
-              color: COLORS.text.primary,
+              ...TEXT_PRESETS.heroTitle,
+              fontSize: 'clamp(1.75rem, 4vw, 2.25rem)',
+              color: COLORS.neutral.gray900,
               marginBottom: SPACING.stack.md,
-              lineHeight: TYPOGRAPHY.lineHeight.tight
+              lineHeight: TYPOGRAPHY.lineHeight.tight,
+              background: COLORS.titleGradients.grayToGreen,
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text"
             }}>
               More Client Experiences
             </h2>
             <p style={{
-              fontSize: TYPOGRAPHY.fontSize.body.large,
+              fontSize: TYPOGRAPHY.fontSize.body.medium,
               color: COLORS.text.secondary,
               maxWidth: '600px',
               margin: '0 auto',
               lineHeight: TYPOGRAPHY.lineHeight.relaxed,
-              fontWeight: TYPOGRAPHY.fontWeight.medium
+              fontWeight: TYPOGRAPHY.fontWeight.normal
             }}>
-              These additional testimonials were shared directly with our team, showing the <strong style={{ color: '#22c55e' }}>consistent, transparent experience</strong> clients receive when working with SmarterPayouts.
+              These additional testimonials were shared directly with our team, showing the consistent, transparent experience our clients receive.
             </p>
           </div>
         </div>

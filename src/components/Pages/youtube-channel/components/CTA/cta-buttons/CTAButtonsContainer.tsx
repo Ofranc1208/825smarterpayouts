@@ -70,7 +70,6 @@ export default function CTAButtonsContainer({
       <MintChatCTAButton 
         mintChatUrl={mintChatUrl}
         text={mintChatText}
-        icon="💬"
         ariaLabel="Chat with Mint AI Assistant for personalized guidance"
       />
       
@@ -78,7 +77,6 @@ export default function CTAButtonsContainer({
       <CalculatorCTAButton 
         calculatorUrl={calculatorUrl}
         text={calculatorText}
-        icon="📊"
         ariaLabel="Use our calculator to estimate your settlement value"
       />
     </div>

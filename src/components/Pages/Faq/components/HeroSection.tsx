@@ -9,7 +9,8 @@
 
 import React from 'react';
 import HeroCTA from '@/src/components/Pages/AboutUs/components/HeroSection/HeroCTA';
-import { COLORS, SPACING, TEXT_PRESETS } from '@/src/components/shared/styles';
+import { COLORS, SPACING } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 export function HeroSection() {
   const ctaButtons = [
@@ -42,9 +43,14 @@ export function HeroSection() {
             textAlign: 'center'
           }}>
             <h1 style={{
-              ...TEXT_PRESETS.h1,
+              ...TEXT_PRESETS.heroTitle,
+              color: COLORS.neutral.gray900,
               marginBottom: SPACING.unit.lg,
-              lineHeight: "1.2"
+              lineHeight: "1.2",
+              background: COLORS.titleGradients.grayToGreen,
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text"
             }}>
               Frequently Asked Questions
             </h1>

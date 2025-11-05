@@ -143,32 +143,29 @@ export default function YouTubeChannelPage(): JSX.Element {
         }>
           <VideoGallerySection 
             videos={[
-  {
-    img: '/assets/images/Self.JPG',
-    alt: 'Self Calculate an Early Payout with Smarter Payouts! thumbnail',
-    title: 'Self Calculate an Early Payout with Smarter Payouts!',
-    desc: "Self-calculate a lump sum offer for your future settlement payments using our real-time tool. It's fast, accurate, and secure.",
-    url: 'https://youtu.be/TxFogK2R61o',
-    duration: '3:45',
-    views: '2.1K'
-  },
-  {
-    img: '/assets/images/why-wait.JPG',
-    alt: 'Why wait, see an Early Lump offer in 2 minutes thumbnail',
-    title: 'Why wait, see an Early Lump offer in 2 minutes',
-    desc: 'Understand the benefit of receiving a lump-sum today versus waiting for monthly checks. A 2-minute video that explains everything.',
-    url: 'https://youtu.be/AYFvqQCCSoY',
-    duration: '2:15',
-    views: '1.8K'
-  },
-  {
-    img: '/assets/images/debt.JPG',
-    alt: 'How does it feel to be debt free! thumbnail',
-    title: 'How does it feel to be debt free!',
-    desc: 'See how settlement payments can be used to pay off high-interest debt and regain financial peace of mind.',
-    url: 'https://youtu.be/ur9pB2-xkk4',
-    duration: '4:20',
-    views: '3.2K'
+              {
+                img: '/assets/images/Self.JPG',
+                alt: 'Self Calculate an Early Payout with Smarter Payouts! thumbnail',
+                title: 'Self Calculate an Early Payout with Smarter Payouts!',
+                desc: "Self-calculate a lump sum offer for your future settlement payments using our real-time tool. It's fast, accurate, and secure.",
+                url: 'https://youtu.be/TxFogK2R61o',
+                duration: '3:45'
+              },
+              {
+                img: '/assets/images/why-wait.JPG',
+                alt: 'Why wait, see an Early Lump offer in 2 minutes thumbnail',
+                title: 'Why wait, see an Early Lump offer in 2 minutes',
+                desc: 'Understand the benefit of receiving a lump-sum today versus waiting for monthly checks. A 2-minute video that explains everything.',
+                url: 'https://youtu.be/AYFvqQCCSoY',
+                duration: '2:15'
+              },
+              {
+                img: '/assets/images/debt.JPG',
+                alt: 'How does it feel to be debt free! thumbnail',
+                title: 'How does it feel to be debt free!',
+                desc: 'See how settlement payments can be used to pay off high-interest debt and regain financial peace of mind.',
+                url: 'https://youtu.be/ur9pB2-xkk4',
+                duration: '4:20'
               }
             ]}
             title="Featured Videos"
@@ -193,24 +190,6 @@ export default function YouTubeChannelPage(): JSX.Element {
         </ErrorBoundary>
       </Suspense>
 
-      {/* Development Performance Info */}
-      {process.env.NODE_ENV === 'development' && (
-        <div style={{
-          position: 'fixed',
-          bottom: '10px',
-          right: '10px',
-          background: 'rgba(0, 0, 0, 0.8)',
-          color: 'white',
-          padding: '0.5rem',
-          borderRadius: '4px',
-          fontSize: '0.75rem',
-          zIndex: 9999
-        }}>
-          <div>🚀 Performance: {metrics.mountTime?.toFixed(0)}ms</div>
-          <div>♿ A11y: {preferences.screenReader ? 'SR' : 'No SR'}</div>
-          <div>📊 Analytics: Active</div>
-        </div>
-      )}
     </ErrorBoundary>
   );
 }

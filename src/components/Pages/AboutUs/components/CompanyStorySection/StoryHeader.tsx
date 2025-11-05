@@ -11,6 +11,8 @@
  */
 
 'use client';
+import { COLORS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 import type { StoryHeaderProps } from './types';
 
 /**
@@ -28,31 +30,31 @@ export default function StoryHeader({
 
   return (
     <>
-      {/* Subtitle */}
-      {subtitle && (
-        <div style={{
-          fontSize: "0.875rem",
-          fontWeight: "600",
-          color: "#047857",
-          textTransform: "uppercase",
-          letterSpacing: "1px",
-          marginBottom: "0.5rem",
-          textAlign
-        }}>
-          {subtitle}
-        </div>
-      )}
-
       {/* Main Title */}
       <h2 style={{
-        fontSize: "2rem",
-        fontWeight: "600",
-        color: "#1f2937",
-        marginBottom: "2rem",
-        textAlign
+        ...TEXT_PRESETS.heroTitle,
+        color: COLORS.neutral.gray900,
+        marginBottom: subtitle ? "1rem" : "2rem",
+        textAlign,
+        background: COLORS.titleGradients.grayToGreen,
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        backgroundClip: "text"
       }}>
         {title}
       </h2>
+
+      {/* Subtitle */}
+      {subtitle && (
+        <p style={{
+          fontSize: "1rem",
+          color: COLORS.text.secondary,
+          marginBottom: "2rem",
+          textAlign
+        }}>
+          {subtitle}
+        </p>
+      )}
     </>
   );
 }

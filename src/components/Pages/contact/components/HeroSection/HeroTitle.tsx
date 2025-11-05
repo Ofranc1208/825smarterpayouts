@@ -1,4 +1,6 @@
 'use client';
+import { COLORS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 interface HeroTitleProps {
   title: string;
@@ -8,27 +10,26 @@ interface HeroTitleProps {
 export default function HeroTitle({ title, subtitle }: HeroTitleProps) {
   return (
     <>
-      {subtitle && (
-        <div style={{
-          fontSize: "0.875rem",
-          fontWeight: "600",
-          color: "#059669",
-          textTransform: "uppercase",
-          letterSpacing: "1px",
-          marginBottom: "0.75rem"
-        }}>
-          {subtitle}
-        </div>
-      )}
       <h1 style={{
-        fontSize: "clamp(2rem, 5vw, 3.5rem)",
-        fontWeight: "700",
-        color: "#1f2937",
+        ...TEXT_PRESETS.heroTitle,
+        color: COLORS.neutral.gray900,
         marginBottom: "1rem",
-        lineHeight: "1.2"
+        background: COLORS.titleGradients.grayToGreen,
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        backgroundClip: "text"
       }}>
         {title}
       </h1>
+      {subtitle && (
+        <p style={{
+          fontSize: "1rem",
+          color: COLORS.text.secondary,
+          marginBottom: "0.75rem"
+        }}>
+          {subtitle}
+        </p>
+      )}
     </>
   );
 }

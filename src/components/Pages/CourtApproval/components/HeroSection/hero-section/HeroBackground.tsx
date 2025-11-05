@@ -1,3 +1,5 @@
+import { COLORS, SPACING } from '@/src/components/shared/styles';
+
 interface HeroBackgroundProps {
   children: React.ReactNode;
 }
@@ -5,13 +7,13 @@ interface HeroBackgroundProps {
 export default function HeroBackground({ children }: HeroBackgroundProps) {
   return (
     <section style={{
-      background: "linear-gradient(135deg, #f8fafc 0%, #e9f9f1 50%, #f0fdf4 100%)",
-      padding: "1rem 0 1.5rem",
+      background: COLORS.backgrounds.slateGradient,
+      padding: `${SPACING.unit.xl} 0`,
       textAlign: 'center',
       position: 'relative',
       overflow: 'hidden'
     }}>
-      {/* Background Pattern - Subtle light green radial gradients */}
+      {/* Background Pattern (matching Main page) */}
       <div style={{
         position: "absolute",
         top: "0",

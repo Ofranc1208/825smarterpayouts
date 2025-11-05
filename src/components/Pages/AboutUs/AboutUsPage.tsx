@@ -73,19 +73,11 @@ export default function AboutUsPage() {
         </Suspense>
         
         <Suspense fallback={<SectionLoader />}>
-          <TechnologySection />
-        </Suspense>
-        
-        <Suspense fallback={<SectionLoader />}>
           <CompanyStorySection />
         </Suspense>
         
         <Suspense fallback={<SectionLoader />}>
-          <RecognitionSection />
-        </Suspense>
-        
-        <Suspense fallback={<SectionLoader />}>
-          <ValuesSection />
+          <TechnologySection />
         </Suspense>
         
         <Suspense fallback={<SectionLoader />}>

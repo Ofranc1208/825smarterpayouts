@@ -14,6 +14,7 @@
 
 import Button from '@/src/components/shared/Button';
 import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 export default function CTASection() {
   return (
@@ -23,10 +24,11 @@ export default function CTASection() {
       width: '100%',
       maxWidth: SPACING.container.maxWidth,
       margin: '0 auto',
-      paddingTop: SPACING.unit.xxxl,
-      paddingBottom: SPACING.unit.xxxl,
+      paddingTop: SPACING.unit.xl,
+      paddingBottom: SPACING.unit.xl,
       paddingLeft: SPACING.unit.md,
-      paddingRight: SPACING.unit.md
+      paddingRight: SPACING.unit.md,
+      background: COLORS.backgrounds.white
     }}>
       <div style={{
         display: 'flex',
@@ -40,26 +42,30 @@ export default function CTASection() {
           <div style={{
             background: COLORS.backgrounds.white,
             borderRadius: BORDER_RADIUS.large,
-            padding: `${SPACING.unit.xxxl} ${SPACING.card.standard}`,
-            border: `2px solid ${COLORS.borders.light}`,
-            boxShadow: BOX_SHADOWS.large
+            padding: `${SPACING.unit.xl} ${SPACING.card.standard}`,
+            border: `1px solid ${COLORS.neutral.gray200}`,
+            boxShadow: BOX_SHADOWS.medium
           }}>
             <h2 style={{
-              fontSize: TYPOGRAPHY.fontSize.heading.h3,
-              fontWeight: TYPOGRAPHY.fontWeight.semibold,
+              ...TEXT_PRESETS.heroTitle,
+              fontSize: 'clamp(1.75rem, 4vw, 2.25rem)',
               marginBottom: SPACING.stack.md,
-              color: COLORS.text.primary
+              color: COLORS.neutral.gray900,
+              background: COLORS.titleGradients.grayToGreen,
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text"
             }}>
               Ready to Get Started?
             </h2>
             <p style={{
-              fontSize: TYPOGRAPHY.fontSize.body.large,
-              marginBottom: SPACING.stack.xl,
+              fontSize: TYPOGRAPHY.fontSize.body.medium,
+              marginBottom: SPACING.stack.lg,
               color: COLORS.text.secondary,
               maxWidth: '600px',
-              margin: `0 auto ${SPACING.stack.xl}`
+              margin: `0 auto ${SPACING.stack.lg}`
             }}>
-              Experience the difference of working with a verified, trustworthy structured settlement company.
+              Get your instant quote from a verified, trustworthy structured settlement company.
             </p>
             <div style={{
               display: "flex",

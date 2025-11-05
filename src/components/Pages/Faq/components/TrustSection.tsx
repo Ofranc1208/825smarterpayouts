@@ -8,7 +8,8 @@
 
 import React from 'react';
 import { TestimonialQuote } from './shared';
-import { COLORS, SPACING, BORDER_RADIUS, BOX_SHADOWS, TEXT_PRESETS } from '@/src/components/shared/styles';
+import { COLORS, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 // Extracted style objects for better readability and maintainability
 const styles = {
@@ -50,11 +51,15 @@ const styles = {
   } as React.CSSProperties,
   
   heading: {
-    fontSize: "1.5rem",
-    fontWeight: "600",
-    color: COLORS.text.primary,
+    ...TEXT_PRESETS.heroTitle,
+    fontSize: 'clamp(1.75rem, 4vw, 2.25rem)',
+    color: COLORS.neutral.gray900,
     marginBottom: SPACING.unit.md,
-    lineHeight: "1.3"
+    lineHeight: "1.3",
+    background: COLORS.titleGradients.grayToGreen,
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    backgroundClip: "text"
   } as React.CSSProperties,
   
   description: {

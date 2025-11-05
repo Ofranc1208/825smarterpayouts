@@ -26,6 +26,8 @@ import {
   CTASection,
   SchemaMarkup
 } from './components';
+import { COLORS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 import {
   featuredCards,
   resourceCards,
@@ -95,7 +97,7 @@ const StructuredSettlementInfoHubPage: React.FC = () => {
       {/* Hero Section */}
       <HeroSection
         badge="Knowledge Center"
-        title="📚 Structured Settlement Info Hub"
+        title="Structured Settlement Info Hub"
         subtitle="Your comprehensive resource for understanding, selling, and maximizing your structured settlement payout."
         showCTAs={true}
       />
@@ -141,13 +143,17 @@ const StructuredSettlementInfoHubPage: React.FC = () => {
               {/* Explore Resources Section */}
               <section style={{ marginBottom: '2rem' }}>
                 <h2 style={{
-                  fontSize: '2rem',
-                  fontWeight: '600',
-                  color: '#1f2937',
+                  ...TEXT_PRESETS.heroTitle,
+                  fontSize: 'clamp(1.75rem, 4vw, 2.25rem)',
+                  color: COLORS.neutral.gray900,
                   marginBottom: '1.5rem',
-                  textAlign: 'center'
+                  textAlign: 'center',
+                  background: COLORS.titleGradients.grayToGreen,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text"
                 }}>
-                  📚 Explore Our Resources
+                  Explore Our Resources
                 </h2>
                 <ResourceGrid resources={resourceCards} />
               </section>

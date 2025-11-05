@@ -34,7 +34,7 @@ export default function HeroSection({ onCTAClick }: HeroSectionProps) {
             subtitle=""
           />
           <HeroDescription
-            description="We're here to help you get the most from your structured settlement. Reach out and our friendly team will respond within 24 hours."
+            description="We're here to help. Reach out and our team will respond within 24 hours."
           />
           <HeroCTAButtons onCTAClick={onCTAClick} />
         </div>

@@ -13,6 +13,7 @@
  */
 
 import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 /**
  * Interface for trust indicator data
@@ -52,8 +53,8 @@ export default function TrustIndicators() {
   return (
     <section style={{
       background: COLORS.backgrounds.lightGray,
-      paddingTop: SPACING.unit.xxxxl,
-      paddingBottom: SPACING.unit.xxxxl,
+      paddingTop: SPACING.unit.xl,
+      paddingBottom: SPACING.unit.xl,
       paddingLeft: SPACING.unit.md,
       paddingRight: SPACING.unit.md
     }}>
@@ -65,26 +66,30 @@ export default function TrustIndicators() {
         <div style={{
           display: 'flex',
           justifyContent: 'center',
-          marginBottom: SPACING.unit.xxxl
+          marginBottom: SPACING.unit.lg
         }}>
           <div style={{
             maxWidth: '800px',
             textAlign: 'center'
           }}>
             <h2 style={{
-              fontSize: TYPOGRAPHY.fontSize.heading.h3,
-              fontWeight: TYPOGRAPHY.fontWeight.semibold,
-              color: COLORS.text.primary,
-              marginBottom: SPACING.stack.md
+              ...TEXT_PRESETS.heroTitle,
+              fontSize: 'clamp(1.75rem, 4vw, 2.25rem)',
+              color: COLORS.neutral.gray900,
+              marginBottom: SPACING.stack.sm,
+              background: COLORS.titleGradients.grayToGreen,
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text"
             }}>
               Why Trust SmarterPayouts?
             </h2>
             <p style={{
-              fontSize: TYPOGRAPHY.fontSize.body.large,
+              fontSize: TYPOGRAPHY.fontSize.body.medium,
               color: COLORS.text.secondary,
-              marginBottom: SPACING.unit.xxxl
+              marginBottom: SPACING.unit.lg
             }}>
-              Our credentials demonstrate our commitment to transparency, security, and regulatory compliance.
+              Our credentials demonstrate transparency, security, and regulatory compliance.
             </p>
           </div>
         </div>

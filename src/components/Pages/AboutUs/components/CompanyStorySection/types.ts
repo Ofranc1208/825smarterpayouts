@@ -18,7 +18,7 @@ export interface StoryParagraph {
   /** Paragraph text content */
   text: string;
   /** Emphasis type for styling */
-  emphasis: 'founding' | 'solution' | 'stats' | 'mission';
+  emphasis: 'founding' | 'solution' | 'stats' | 'mission' | 'innovation';
 }
 
 /**

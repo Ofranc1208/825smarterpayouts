@@ -17,38 +17,22 @@ import type { TechnologyFeature } from '../../types';
  */
 export const TECHNOLOGY_FEATURES: TechnologyFeature[] = [
   {
-    title: "Instant Quote Engine",
-    description: "Real-time settlement valuations in under 60 seconds.",
+    title: "AI-Powered Calculator",
+    description: "Instant settlement quotes in under 60 seconds with no personal information required.",
     icon: "⚡",
-    link: "/pricing-calculator",
-    linkText: "Try Calculator",
-    color: "#3b82f6",
-    gradient: "linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)"
-  },
-  {
-    title: "Mint AI Assistant",
-    description: "24/7 AI support guides you through every step.",
-    icon: "/assets/images/mint-mascot.png",
-    link: "/mint-intelligent-chat",
-    linkText: "Chat with Mint",
-    color: "#8b5cf6",
-    gradient: "linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)"
-  },
-  {
-    title: "Digital-First Platform",
-    description: "Secure online experience with document upload and tracking.",
-    icon: "💻",
     link: "/get-a-quote",
-    linkText: "Get Started",
+    linkText: "Get Quote",
     color: "#059669",
     gradient: "linear-gradient(135deg, #059669 0%, #047857 100%)"
   },
   {
-    title: "Blockchain Security",
-    description: "Military-grade encryption protects your data.",
-    icon: "🔐",
-    color: "#dc2626",
-    gradient: "linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)"
+    title: "Mint AI Assistant",
+    description: "24/7 AI support that guides you through every step of the process.",
+    icon: "/assets/images/mint-mascot.png",
+    link: "/mint-intelligent-chat",
+    linkText: "Chat with Mint",
+    color: "#059669",
+    gradient: "linear-gradient(135deg, #059669 0%, #047857 100%)"
   }
 ];
 
@@ -56,9 +40,9 @@ export const TECHNOLOGY_FEATURES: TechnologyFeature[] = [
  * Section configuration
  */
 export const TECHNOLOGY_CONFIG = {
-  title: "Technology",
-  description: "AI-powered platform for instant quotes with no personal info required.",
+  title: "Our Innovations",
+  description: "Pioneering technology that makes settlement quotes fast, transparent, and accessible.",
   ctaText: "Get started today.",
-  ctaButtonText: "Get Started",
+  ctaButtonText: "Get Your Quote",
   ctaButtonLink: "/get-a-quote"
 } as const;
