@@ -42,31 +42,39 @@ export default function EmailPreviewPage({
         </div>
 
         <div className={styles.emailCard}>
-          {/* Logo Section with Website Link */}
+          {/* Logo Section */}
           <div className={styles.logoSection}>
-            <div className={styles.logoContainer}>
-              <img 
-                src="/favicon_without_text.ico" 
-                alt="SmarterPayouts Logo"
-                className={styles.logoImage}
-              />
-              <span className={styles.logoText}>SmarterPayouts</span>
-            </div>
-            <div className={styles.websiteLink}>
-              <a href="https://smarterpayouts.com" className={styles.websiteLinkAnchor}>smarterpayouts.com</a>
-            </div>
+            <img 
+              src="/assets/images/emailtemplate.png" 
+              alt="SmarterPayouts"
+              className={styles.logoImage}
+            />
           </div>
 
           {/* Congratulations Header with Offer Code */}
           <div className={styles.congratulationsHeader}>
-            <div className={styles.congratulationsTopRow}>
-              <h1 className={styles.congratulationsTitle}>Congratulations!</h1>
-              <div className={styles.offerCodeTop}>
-                <div className={styles.offerCodeLabelTop}>Offer Code</div>
-                <div className={styles.offerCodeValue}>{offerCode}</div>
-              </div>
+            <h1 className={styles.congratulationsTitle}>
+              <span style={{ color: '#22c55e' }}>C</span>
+              <span style={{ color: '#f59e0b' }}>o</span>
+              <span style={{ color: '#8b5cf6' }}>n</span>
+              <span style={{ color: '#22c55e' }}>g</span>
+              <span style={{ color: '#ec4899' }}>r</span>
+              <span style={{ color: '#f59e0b' }}>a</span>
+              <span style={{ color: '#22c55e' }}>t</span>
+              <span style={{ color: '#ec4899' }}>u</span>
+              <span style={{ color: '#8b5cf6' }}>l</span>
+              <span style={{ color: '#f59e0b' }}>a</span>
+              <span style={{ color: '#22c55e' }}>t</span>
+              <span style={{ color: '#ec4899' }}>i</span>
+              <span style={{ color: '#8b5cf6' }}>o</span>
+              <span style={{ color: '#22c55e' }}>n</span>
+              <span style={{ color: '#f59e0b' }}>s</span>
+              <span style={{ color: '#ec4899' }}>!</span>
+            </h1>
+            <div className={styles.offerCodeTop}>
+              <div className={styles.offerCodeLabelTop}>Offer Code</div>
+              <div className={styles.offerCodeValue}>{offerCode}</div>
             </div>
-            <p className={styles.congratulationsSubtitle}>You Qualify for an Early Payout Option</p>
           </div>
 
           {/* Email Content */}

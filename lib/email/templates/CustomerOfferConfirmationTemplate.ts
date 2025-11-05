@@ -27,33 +27,92 @@ export class CustomerOfferConfirmationTemplate extends BaseEmailTemplate {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Your Offer from SmarterPayouts</title>
+  <style>
+    @media only screen and (max-width: 600px) {
+      .header-container { padding: 20px 20px 15px !important; }
+      .header-title { font-size: 22px !important; }
+      .congrats-header { padding: 25px 20px !important; }
+      .congrats-title { font-size: 24px !important; margin-bottom: 18px !important; }
+      .offer-code-container { margin: 0 auto !important; display: block !important; }
+      .offer-code-label { font-size: 7px !important; }
+      .offer-code-value { font-size: 12px !important; padding: 3px 6px !important; }
+      .content-padding { padding: 25px 20px !important; }
+    }
+  </style>
 </head>
-<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background: #f3f4f6;">
-  <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
-    <!-- Logo Section -->
-    <div style="background: #ffffff; padding: 30px 30px 20px; text-align: center; border-bottom: 1px solid #e5e7eb;">
-      <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 12px;">
-        <span style="font-size: 24px; font-weight: 700; color: #1f2937;">SmarterPayouts</span>
-      </div>
-      <div style="margin-top: 8px;">
-        <a href="https://smarterpayouts.com" style="color: #22c55e; text-decoration: none; font-size: 21px; font-weight: 600;">smarterpayouts.com</a>
-      </div>
-    </div>
+<body style="margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; background: #f3f4f6; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;">
+  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: 0; padding: 0; background: #f3f4f6;">
+    <tr>
+      <td align="center" style="padding: 20px 10px;">
+        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="max-width: 600px; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
+          <!-- Logo Section -->
+          <tr>
+            <td class="header-container" style="background: #ffffff; padding: 30px 30px 20px; text-align: center; border-bottom: 1px solid #e5e7eb;">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td align="center">
+                    <img src="https://smarterpayouts.com/assets/images/emailtemplate.png" alt="SmarterPayouts" style="max-width: 230px; height: auto; display: block; margin: 0 auto;" />
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
 
-    <!-- Congratulations Header -->
-    <div style="background: #ffffff; color: #1f2937; padding: 35px 30px; text-align: center; border-bottom: 1px solid #e5e7eb;">
-      <div style="display: flex; align-items: center; justify-content: center; gap: 30px; margin-bottom: 12px; flex-wrap: wrap;">
-        <h1 style="font-size: 28px; margin: 0; font-weight: 700; letter-spacing: -0.5px; color: #1f2937;">Congratulations!</h1>
-        <div style="display: flex; align-items: center; gap: 12px; background: #f9fafb; padding: 10px 18px; border-radius: 8px; border: 1px solid #e5e7eb;">
-          <div style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #6b7280;">Offer Code</div>
-          <div style="font-size: 24px; font-weight: 700; font-family: 'Courier New', monospace; letter-spacing: 0.15em; background: #ffffff; padding: 6px 12px; border-radius: 6px; border: 2px solid #3b82f6; color: #1f2937;">${this.customerData.offerCode}</div>
-        </div>
-      </div>
-      <p style="font-size: 16px; color: #6b7280; margin: 0;">You Qualify for an Early Payout Option</p>
-    </div>
+          <!-- Congratulations Header -->
+          <tr>
+            <td class="congrats-header" style="background: #ffffff; color: #1f2937; padding: 35px 30px; text-align: center; border-bottom: 1px solid #e5e7eb;">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td align="center" style="padding-bottom: 20px;">
+                    <h1 class="congrats-title" style="font-size: 28px; margin: 0; font-weight: 700; letter-spacing: 0.5px; line-height: 1.2; font-family: 'Segoe UI', 'Comic Sans MS', 'Trebuchet MS', Arial, sans-serif;">
+                      <span style="color: #22c55e;">C</span>
+                      <span style="color: #f59e0b;">o</span>
+                      <span style="color: #8b5cf6;">n</span>
+                      <span style="color: #22c55e;">g</span>
+                      <span style="color: #ec4899;">r</span>
+                      <span style="color: #f59e0b;">a</span>
+                      <span style="color: #22c55e;">t</span>
+                      <span style="color: #ec4899;">u</span>
+                      <span style="color: #8b5cf6;">l</span>
+                      <span style="color: #f59e0b;">a</span>
+                      <span style="color: #22c55e;">t</span>
+                      <span style="color: #ec4899;">i</span>
+                      <span style="color: #8b5cf6;">o</span>
+                      <span style="color: #22c55e;">n</span>
+                      <span style="color: #f59e0b;">s</span>
+                      <span style="color: #ec4899;">!</span>
+                    </h1>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" style="padding-bottom: 0;">
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" class="offer-code-container" style="margin: 0 auto; background: #f9fafb; border-radius: 6px; border: 1px solid #e5e7eb;">
+                      <tr>
+                        <td style="padding: 6px 12px; text-align: center;">
+                          <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                            <tr>
+                              <td align="center" style="padding-bottom: 3px;">
+                                <div class="offer-code-label" style="font-size: 8px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #6b7280;">Offer Code</div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td align="center">
+                                <div class="offer-code-value" style="font-size: 14px; font-weight: 700; font-family: 'Courier New', Courier, monospace; letter-spacing: 0.08em; background: #ffffff; padding: 4px 8px; border-radius: 5px; border: 1.5px solid #3b82f6; color: #1f2937; display: inline-block;">${this.customerData.offerCode}</div>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
 
-    <!-- Email Content -->
-    <div style="padding: 35px 30px; background: #ffffff;">
+          <!-- Email Content -->
+          <tr>
+            <td class="content-padding" style="padding: 35px 30px; background: #ffffff;">
       <!-- Greeting -->
       <div style="font-size: 15px; color: #4b5563; margin-bottom: 35px; line-height: 1.7;">
         <p style="margin-bottom: 8px; color: #1f2937;">Dear Valued Client,</p>
@@ -112,10 +171,12 @@ export class CustomerOfferConfirmationTemplate extends BaseEmailTemplate {
         </div>
         <p style="font-size: 13px; color: #6b7280; margin: 0;">Monday - Friday, 9:00 AM - 6:00 PM EST</p>
       </div>
-    </div>
+            </td>
+          </tr>
 
-    <!-- Footer -->
-    <div style="background: #f9fafb; padding: 25px 30px; text-align: center; border-top: 1px solid #e5e7eb;">
+          <!-- Footer -->
+          <tr>
+            <td style="background: #f9fafb; padding: 25px 30px; text-align: center; border-top: 1px solid #e5e7eb;">
       <p style="color: #1f2937; font-size: 15px; margin: 5px 0; font-weight: 600;">SmarterPayouts</p>
       <p style="margin-top: 15px; font-size: 11px; color: #9ca3af; margin: 0;">
         This email was sent because you requested an offer quote from SmarterPayouts.
@@ -150,9 +211,12 @@ export class CustomerOfferConfirmationTemplate extends BaseEmailTemplate {
         <p style="font-size: 9px; color: #9ca3af; line-height: 1.6; margin: 0;">
           <strong style="color: #6b7280; font-weight: 600;">Licensed Services:</strong> SmarterPayouts works with licensed brokers in all 50 US states. Services are provided in accordance with applicable state and federal regulations governing structured settlement transfers.
         </p>
-      </div>
-    </div>
-  </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
 </body>
 </html>`;
   }

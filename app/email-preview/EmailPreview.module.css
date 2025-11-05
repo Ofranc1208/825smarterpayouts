@@ -76,39 +76,11 @@
   border-bottom: 1px solid #e5e7eb;
 }
 
-.logoContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-
-.websiteLink {
-  margin-top: 8px;
-}
-
-.websiteLinkAnchor {
-  color: #22c55e;
-  text-decoration: none;
-  font-size: 21px;
-  font-weight: 600;
-}
-
-.websiteLinkAnchor:hover {
-  text-decoration: underline;
-}
-
 .logoImage {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-}
-
-.logoText {
-  font-size: 24px;
-  font-weight: 700;
-  color: #1f2937;
+  max-width: 230px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 .congratulationsHeader {
@@ -119,57 +91,45 @@
   border-bottom: 1px solid #e5e7eb;
 }
 
-.congratulationsTopRow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-  margin-bottom: 12px;
-  flex-wrap: wrap;
-}
-
 .congratulationsTitle {
   font-size: 28px;
-  margin: 0;
+  margin: 0 0 20px 0;
   font-weight: 700;
-  letter-spacing: -0.5px;
-  color: #1f2937;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+  font-family: 'Segoe UI', 'Comic Sans MS', 'Trebuchet MS', Arial, sans-serif;
 }
 
 .offerCodeTop {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  display: inline-block;
   background: #f9fafb;
-  padding: 10px 18px;
-  border-radius: 8px;
+  padding: 6px 12px;
+  border-radius: 6px;
   border: 1px solid #e5e7eb;
+  margin: 0 auto;
 }
 
 .offerCodeLabelTop {
-  font-size: 11px;
+  font-size: 8px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: #6b7280;
+  margin-bottom: 3px;
+  display: block;
 }
 
 .offerCodeValue {
-  font-size: 24px;
+  font-size: 14px;
   font-weight: 700;
-  font-family: 'Courier New', monospace;
-  letter-spacing: 0.15em;
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 0.08em;
   background: #ffffff;
-  padding: 6px 12px;
-  border-radius: 6px;
-  border: 2px solid #3b82f6;
+  padding: 4px 8px;
+  border-radius: 5px;
+  border: 1.5px solid #3b82f6;
   color: #1f2937;
-}
-
-.congratulationsSubtitle {
-  font-size: 16px;
-  color: #6b7280;
-  margin: 0;
+  display: inline-block;
 }
 
 .emailContent {
