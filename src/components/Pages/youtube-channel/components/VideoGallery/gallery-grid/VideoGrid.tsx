@@ -130,19 +130,37 @@ export default function VideoGrid({
   // Handle loading state
   if (isLoading) {
     return (
-      <div 
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: '1.5rem',
-          padding: '0 1rem'
-        }}
-        aria-label="Loading videos..."
-      >
-        {Array.from({ length: maxVideos || 6 }).map((_, index) => (
-          <VideoCardSkeleton key={`skeleton-${index}`} />
-        ))}
-      </div>
+      <>
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            .video-grid-loading {
+              display: grid;
+              grid-template-columns: 1fr;
+              gap: 1.5rem;
+              width: 100%;
+              padding: 0;
+            }
+            @media (min-width: 640px) {
+              .video-grid-loading {
+                grid-template-columns: repeat(2, 1fr);
+              }
+            }
+            @media (min-width: 1024px) {
+              .video-grid-loading {
+                grid-template-columns: repeat(3, 1fr);
+              }
+            }
+          `
+        }} />
+        <div 
+          className="video-grid-loading"
+          aria-label="Loading videos..."
+        >
+          {Array.from({ length: maxVideos || 6 }).map((_, index) => (
+            <VideoCardSkeleton key={`skeleton-${index}`} />
+          ))}
+        </div>
+      </>
     );
   }
 
@@ -175,25 +193,43 @@ export default function VideoGrid({
   }
 
   return (
-    <div 
-      style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-        gap: '1.5rem',
-        padding: '0 1rem'
-      }}
-      role="grid"
-      aria-label={`Video gallery with ${displayVideos.length} videos`}
-    >
-      {displayVideos.map((video, index) => (
-        <div key={`video-${index}`} role="gridcell">
-          <VideoCard 
-            video={video}
-            onClick={onVideoClick}
-            isLoading={false}
-          />
-        </div>
-      ))}
-    </div>
+    <>
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          .video-grid-responsive {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            width: 100%;
+            padding: 0;
+          }
+          @media (min-width: 640px) {
+            .video-grid-responsive {
+              grid-template-columns: repeat(2, 1fr);
+            }
+          }
+          @media (min-width: 1024px) {
+            .video-grid-responsive {
+              grid-template-columns: repeat(3, 1fr);
+            }
+          }
+        `
+      }} />
+      <div 
+        className="video-grid-responsive"
+        role="grid"
+        aria-label={`Video gallery with ${displayVideos.length} videos`}
+      >
+        {displayVideos.map((video, index) => (
+          <div key={`video-${index}`} role="gridcell">
+            <VideoCard 
+              video={video}
+              onClick={onVideoClick}
+              isLoading={false}
+            />
+          </div>
+        ))}
+      </div>
+    </>
   );
 }

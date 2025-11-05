@@ -14,14 +14,15 @@
 
 import Button from '@/src/components/shared/Button/Button';
 import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 export default function HeroSection() {
   return (
     <section
       aria-label="Privacy page hero section"
       style={{
-        background: 'linear-gradient(135deg, #f8fafc 0%, #e9f9f1 50%, #f0fdf4 100%)',
-        paddingTop: SPACING.unit.xxxl,
+        background: COLORS.backgrounds.slateGradient,
+        paddingTop: SPACING.unit.md,
         paddingBottom: SPACING.unit.xxxl,
         paddingLeft: SPACING.unit.md,
         paddingRight: SPACING.unit.md,
@@ -47,42 +48,20 @@ export default function HeroSection() {
             border: `1px solid ${COLORS.borders.light}`,
             textAlign: 'center'
           }}>
-            {/* Privacy Badge */}
-            <div style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: SPACING.inline.sm,
-              background: 'linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%)',
-              paddingTop: SPACING.unit.xs,
-              paddingBottom: SPACING.unit.xs,
-              paddingLeft: SPACING.unit.xl,
-              paddingRight: SPACING.unit.xl,
-              borderRadius: BORDER_RADIUS.small,
-              marginBottom: SPACING.stack.lg,
-              border: `1px solid ${COLORS.borders.green}`
-            }}>
-              <span style={{ fontSize: TYPOGRAPHY.fontSize.heading.h5 }}>🛡️</span>
-              <span style={{
-                color: COLORS.primary.main,
-                fontWeight: TYPOGRAPHY.fontWeight.semibold,
-                fontSize: TYPOGRAPHY.fontSize.body.small
-              }}>
-                PRIVACY PROTECTION
-              </span>
-            </div>
-
             <h1 style={{
-              fontSize: "clamp(2rem, 5vw, 2.75rem)",
-              fontWeight: TYPOGRAPHY.fontWeight.bold,
-              color: COLORS.text.primary,
+              ...TEXT_PRESETS.heroTitle,
+              background: COLORS.titleGradients.grayToGreen,
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
               marginBottom: SPACING.stack.md,
-              lineHeight: TYPOGRAPHY.lineHeight.tight
+              fontSize: 'clamp(1.75rem, 4vw, 2.75rem)'
             }}>
               Your Privacy Matters
             </h1>
 
             <p style={{
-              fontSize: TYPOGRAPHY.fontSize.body.large,
+              fontSize: TYPOGRAPHY.fontSize.body.medium,
               color: COLORS.text.secondary,
               maxWidth: "600px",
               margin: `0 auto ${SPACING.stack.xl}`,
@@ -107,7 +86,7 @@ export default function HeroSection() {
                 enhancedHover={true}
                 shimmer={true}
               >
-                💰 Get Your Quote
+                Get Your Quote
               </Button>
 
               <Button
@@ -119,7 +98,7 @@ export default function HeroSection() {
                 shimmer={true}
                 shimmerDelay={1}
               >
-                💬 Ask Mint AI
+                Chat with Mint AI
               </Button>
             </div>
 
@@ -132,11 +111,11 @@ export default function HeroSection() {
               fontSize: TYPOGRAPHY.fontSize.body.small,
               color: COLORS.primary.main
             }}>
-              <span>🔒 Never Sold</span>
+              <span>Never Sold</span>
               <span>•</span>
-              <span>🛡️ Secure Storage</span>
+              <span>Secure Storage</span>
               <span>•</span>
-              <span>✅ Your Control</span>
+              <span>Your Control</span>
             </div>
           </div>
         </div>

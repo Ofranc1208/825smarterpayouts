@@ -2,6 +2,8 @@
 // Mix of internal and external links
 
 import Link from 'next/link';
+import { COLORS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 export default function ResourcesSection() {
   return (
@@ -14,15 +16,16 @@ export default function ResourcesSection() {
       border: '1px solid #e5e7eb'
     }}>
       <h2 style={{
-        fontSize: '1.5rem',
-        fontWeight: '600',
-        color: '#1f2937',
+        ...TEXT_PRESETS.heroTitle,
+        fontSize: 'clamp(1.5rem, 3.5vw, 2rem)',
+        color: COLORS.neutral.gray900,
         marginBottom: '1.5rem',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '0.5rem'
+        background: COLORS.titleGradients.grayToGreen,
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        backgroundClip: "text"
       }}>
-        🔗 Additional Resources
+        Additional Resources
       </h2>
       <ul style={{
         color: '#4b5563',

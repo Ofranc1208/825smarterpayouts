@@ -8,8 +8,8 @@ export default function ChatButton() {
     <Button
       as="a"
       href="/mint-intelligent-chat?chat=open&feature=calculator"
-      variant="golden"
-      size="xl"
+      variant="technology-secondary"
+      size="lg"
       enhancedHover={true}
       shimmer={true}
       shimmerDelay={1}

@@ -2,6 +2,8 @@
 // Official government resources and authoritative links
 
 import { settlementLawPageData } from '../../data';
+import { COLORS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 export default function GovernmentResourcesSection() {
   const { governmentResources } = settlementLawPageData;
@@ -40,15 +42,15 @@ export default function GovernmentResourcesSection() {
         borderBottom: '2px solid #f3f4f6'
       }}>
         <h2 style={{
-          fontSize: '1.25rem',
-          fontWeight: '600',
-          color: '#1f2937',
+          ...TEXT_PRESETS.heroTitle,
+          fontSize: 'clamp(1.5rem, 3.5vw, 2rem)',
+          color: COLORS.neutral.gray900,
           margin: '0 0 0.375rem 0',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.5rem'
+          background: COLORS.titleGradients.grayToGreen,
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          backgroundClip: "text"
         }}>
-          <span style={{ fontSize: '1.125rem' }}>🏛️</span>
           Official Government Resources
         </h2>
         <p style={{

@@ -2,6 +2,8 @@
 // How federal laws work in real-world scenarios
 
 import { settlementLawPageData } from '../../data';
+import { COLORS, TYPOGRAPHY } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 export default function PracticalApplicationsSection() {
   const { practicalApplications } = settlementLawPageData;
@@ -16,15 +18,16 @@ export default function PracticalApplicationsSection() {
       border: '1px solid #e5e7eb'
     }}>
       <h2 style={{
-        fontSize: '1.75rem',
-        fontWeight: '600',
-        color: '#1f2937',
+        ...TEXT_PRESETS.heroTitle,
+        fontSize: 'clamp(1.5rem, 3.5vw, 2rem)',
+        color: COLORS.neutral.gray900,
         marginBottom: '2rem',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '0.5rem'
+        background: COLORS.titleGradients.grayToGreen,
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        backgroundClip: "text"
       }}>
-        ⚙️ How Federal Laws Operate in Practice
+        How Federal Laws Operate in Practice
       </h2>
 
       <div style={{
@@ -39,15 +42,12 @@ export default function PracticalApplicationsSection() {
           border: '1px solid #bbf7d0'
         }}>
           <h3 style={{
-            fontSize: '1.25rem',
+            fontSize: TYPOGRAPHY.fontSize.heading.h4,
             fontWeight: '600',
-            color: '#166534',
-            marginBottom: '1rem',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem'
+            color: COLORS.neutral.gray900,
+            marginBottom: '1rem'
           }}>
-            💰 {practicalApplications.taxFreeTreatment.title}
+            {practicalApplications.taxFreeTreatment.title}
           </h3>
 
           <p style={{
@@ -81,15 +81,12 @@ export default function PracticalApplicationsSection() {
           border: '1px solid #fde68a'
         }}>
           <h3 style={{
-            fontSize: '1.25rem',
+            fontSize: TYPOGRAPHY.fontSize.heading.h4,
             fontWeight: '600',
-            color: '#92400e',
-            marginBottom: '1rem',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem'
+            color: COLORS.neutral.gray900,
+            marginBottom: '1rem'
           }}>
-            🔄 {practicalApplications.transfersAndSales.title}
+            {practicalApplications.transfersAndSales.title}
           </h3>
 
           <p style={{
@@ -123,15 +120,12 @@ export default function PracticalApplicationsSection() {
           border: '1px solid #bfdbfe'
         }}>
           <h3 style={{
-            fontSize: '1.25rem',
+            fontSize: TYPOGRAPHY.fontSize.heading.h4,
             fontWeight: '600',
-            color: '#1e40af',
-            marginBottom: '1rem',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem'
+            color: COLORS.neutral.gray900,
+            marginBottom: '1rem'
           }}>
-            ⚖️ {practicalApplications.courtApproval.title}
+            {practicalApplications.courtApproval.title}
           </h3>
 
           <p style={{

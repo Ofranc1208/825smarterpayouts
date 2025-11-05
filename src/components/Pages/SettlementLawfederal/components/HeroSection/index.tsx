@@ -4,13 +4,12 @@
 'use client';
 
 import { HeroBackground } from './hero-background';
-import { HeroBadge, HeroTitle, HeroDescription } from './hero-header';
+import { HeroTitle, HeroDescription } from './hero-header';
 import { HeroCTAButtons } from './hero-cta';
 
 export default function HeroSection() {
   return (
     <HeroBackground>
-      <HeroBadge />
       <HeroTitle />
       <HeroDescription />
       <HeroCTAButtons />

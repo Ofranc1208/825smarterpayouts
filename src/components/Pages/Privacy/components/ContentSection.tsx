@@ -12,6 +12,7 @@
  */
 
 import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 const privacySections = [
   {
@@ -96,15 +97,18 @@ export default function ContentSection() {
         }}>
           <div style={{ textAlign: 'center', marginBottom: SPACING.stack.xxxl }}>
             <h2 style={{
-              fontSize: TYPOGRAPHY.fontSize.heading.h3,
-              fontWeight: TYPOGRAPHY.fontWeight.bold,
-              color: COLORS.text.primary,
-              marginBottom: SPACING.stack.md
+              ...TEXT_PRESETS.heroTitle,
+              background: COLORS.titleGradients.grayToGreen,
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              marginBottom: SPACING.stack.md,
+              fontSize: 'clamp(1.5rem, 3.5vw, 2rem)'
             }}>
               Our Commitment to Your Privacy
             </h2>
             <p style={{
-              fontSize: TYPOGRAPHY.fontSize.body.large,
+              fontSize: TYPOGRAPHY.fontSize.body.medium,
               color: COLORS.text.secondary,
               lineHeight: TYPOGRAPHY.lineHeight.relaxed
             }}>
@@ -120,23 +124,8 @@ export default function ContentSection() {
                   fontSize: TYPOGRAPHY.fontSize.heading.h5,
                   fontWeight: TYPOGRAPHY.fontWeight.semibold,
                   color: COLORS.primary.main,
-                  marginBottom: SPACING.stack.md,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: SPACING.inline.sm
+                  marginBottom: SPACING.stack.md
                 }}>
-                  <span style={{
-                    background: COLORS.backgrounds.greenLight,
-                    borderRadius: BORDER_RADIUS.medium,
-                    width: '32px',
-                    height: '32px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: TYPOGRAPHY.fontSize.body.large
-                  }}>
-                    {section.icon}
-                  </span>
                   {section.title}
                 </h3>
 

@@ -14,6 +14,7 @@
 import Link from 'next/link';
 import Button from '@/src/components/shared/Button';
 import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 export default function FinalCTA() {
   return (
@@ -39,15 +40,18 @@ export default function FinalCTA() {
           boxShadow: BOX_SHADOWS.large
         }}>
           <h2 style={{
-            fontSize: TYPOGRAPHY.fontSize.heading.h2,
-            fontWeight: TYPOGRAPHY.fontWeight.bold,
+            ...TEXT_PRESETS.heroTitle,
+            background: COLORS.titleGradients.grayToGreen,
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
             marginBottom: SPACING.stack.md,
-            color: COLORS.text.primary
+            fontSize: 'clamp(1.5rem, 3.5vw, 2rem)'
           }}>
                 Ready to Get Started?
               </h2>
           <p style={{
-            fontSize: TYPOGRAPHY.fontSize.body.large,
+            fontSize: TYPOGRAPHY.fontSize.body.medium,
             marginBottom: SPACING.stack.xl,
             color: COLORS.text.secondary,
             maxWidth: '600px',
@@ -57,49 +61,32 @@ export default function FinalCTA() {
               </p>
           <div style={{
             display: 'flex',
-            gap: SPACING.inline.lg,
+            gap: SPACING.inline.md,
             justifyContent: 'center',
-            flexWrap: 'wrap',
-            marginBottom: SPACING.stack.lg
+            flexWrap: 'wrap'
           }}>
             <Button
               as="a"
               href="/mint-chat-active?type=calculate&source=state-laws-cta"
               variant="technology-primary"
-              size="xl"
+              size="lg"
               enhancedHover={true}
               shimmer={true}
             >
-              💰 Get Your Instant Quote
+              Get Your Instant Quote
             </Button>
             
             <Button
               as="a"
               href="/mint-intelligent-chat?chat=open&feature=calculator"
               variant="technology-secondary"
-              size="xl"
+              size="lg"
               enhancedHover={true}
               shimmer={true}
               shimmerDelay={1}
             >
-              💬 Chat with Mint AI
+              Chat with Mint AI
             </Button>
-              </div>
-          
-          <div style={{
-            padding: `${SPACING.unit.sm} ${SPACING.unit.lg}`,
-            background: 'linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%)',
-            border: `1px solid ${COLORS.borders.light}`,
-            borderRadius: BORDER_RADIUS.small,
-            display: 'inline-block'
-          }}>
-            <span style={{ 
-              fontSize: TYPOGRAPHY.fontSize.body.small, 
-              color: COLORS.text.secondary,
-              fontWeight: TYPOGRAPHY.fontWeight.medium
-            }}>
-              ✨ Get instant state-specific compliance guidance with Mint AI
-            </span>
           </div>
         </div>
       </div>

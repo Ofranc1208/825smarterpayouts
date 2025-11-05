@@ -12,15 +12,18 @@
  */
 
 import { TYPOGRAPHY, COLORS, SPACING } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 export default function HeroTitle() {
   return (
     <h1 style={{
-      fontSize: TYPOGRAPHY.fontSize.heading.h1,
-      fontWeight: TYPOGRAPHY.fontWeight.extrabold,
-      color: COLORS.text.primary,
+      ...TEXT_PRESETS.heroTitle,
+      background: COLORS.titleGradients.grayToGreen,
+      WebkitBackgroundClip: 'text',
+      WebkitTextFillColor: 'transparent',
+      backgroundClip: 'text',
       marginBottom: SPACING.stack.md,
-      lineHeight: TYPOGRAPHY.lineHeight.tight
+      fontSize: 'clamp(1.75rem, 4vw, 2.75rem)'
     }}>
       Structured Settlement Laws by State
     </h1>

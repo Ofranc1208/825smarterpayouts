@@ -9,7 +9,7 @@ export default function QuoteButton() {
       as="a"
       href="/mint-chat-active?type=calculate&source=federal-law-hero"
       variant="cta"
-      size="xl"
+      size="lg"
       enhancedHover={true}
       shimmer={true}
     >

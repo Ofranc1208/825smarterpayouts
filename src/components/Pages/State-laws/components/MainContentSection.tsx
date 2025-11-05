@@ -15,6 +15,7 @@
 'use client';
 import { useState } from 'react';
 import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 export default function MainContentSection() {
   const [isDisclaimerOpen, setIsDisclaimerOpen] = useState(false);
@@ -57,12 +58,8 @@ export default function MainContentSection() {
               fontWeight: TYPOGRAPHY.fontWeight.semibold,
               fontSize: TYPOGRAPHY.fontSize.body.small,
               color: COLORS.accent.goldDarker,
-              display: 'flex',
-              alignItems: 'center',
-              gap: SPACING.unit.xxs,
               margin: 0
             }}>
-              <span>⚠️</span>
               Legal Compliance Notice
             </h4>
             <span style={{
@@ -109,12 +106,15 @@ export default function MainContentSection() {
           marginBottom: SPACING.unit.xxxxl
         }}>
           <h2 style={{
-            fontSize: TYPOGRAPHY.fontSize.heading.h3,
-            fontWeight: TYPOGRAPHY.fontWeight.bold,
+            ...TEXT_PRESETS.heroTitle,
+            background: COLORS.titleGradients.grayToGreen,
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
             marginBottom: SPACING.stack.md,
-            color: COLORS.text.primary
+            fontSize: 'clamp(1.5rem, 3.5vw, 2rem)'
           }}>
-                🗺️ Key Facts About State Laws
+                Key Facts About State Laws
               </h2>
           <div style={{
             display: 'grid',
@@ -208,7 +208,7 @@ export default function MainContentSection() {
                 fontSize: TYPOGRAPHY.fontSize.body.large,
                 flexShrink: 0
               }}>
-                🤝
+                ✓
                     </div>
                     <div>
                 <h5 style={{
@@ -235,7 +235,7 @@ export default function MainContentSection() {
                 width: '40px',
                 height: '40px',
                 borderRadius: BORDER_RADIUS.full,
-                background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
+                background: 'linear-gradient(135deg, #059669 0%, #047857 100%)',
                 color: COLORS.backgrounds.white,
                 display: 'flex',
                 alignItems: 'center',
@@ -243,7 +243,7 @@ export default function MainContentSection() {
                 fontSize: TYPOGRAPHY.fontSize.body.large,
                 flexShrink: 0
               }}>
-                ⚡
+                ✓
                     </div>
                     <div>
                 <h5 style={{
@@ -300,8 +300,9 @@ export default function MainContentSection() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    fontSize: '1rem'
-                  }}>🚀</div>
+                    fontSize: '1rem',
+                    fontWeight: TYPOGRAPHY.fontWeight.bold
+                  }}>✓</div>
                   <div>
                     <h3 style={{
                       fontSize: TYPOGRAPHY.fontSize.body.medium,
@@ -429,8 +430,9 @@ export default function MainContentSection() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    fontSize: '1rem'
-                  }}>⚖️</div>
+                    fontSize: '1rem',
+                    fontWeight: TYPOGRAPHY.fontWeight.bold
+                  }}>✓</div>
                   <div>
                     <h3 style={{
                       fontSize: TYPOGRAPHY.fontSize.body.medium,
@@ -558,8 +560,9 @@ export default function MainContentSection() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    fontSize: '1rem'
-                  }}>📋</div>
+                    fontSize: '1rem',
+                    fontWeight: TYPOGRAPHY.fontWeight.bold
+                  }}>✓</div>
                   <div>
                     <h3 style={{
                       fontSize: TYPOGRAPHY.fontSize.body.medium,
@@ -668,10 +671,13 @@ export default function MainContentSection() {
           marginBottom: SPACING.unit.xxxxl
         }}>
           <h2 style={{
-            fontSize: TYPOGRAPHY.fontSize.heading.h3,
-            fontWeight: TYPOGRAPHY.fontWeight.bold,
+            ...TEXT_PRESETS.heroTitle,
+            background: COLORS.titleGradients.grayToGreen,
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
             marginBottom: SPACING.stack.md,
-            color: COLORS.text.primary
+            fontSize: 'clamp(1.5rem, 3.5vw, 2rem)'
           }}>
                 Common Requirements Across States
               </h2>

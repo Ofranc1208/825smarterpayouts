@@ -149,23 +149,23 @@ export default function YouTubeChannelPage(): JSX.Element {
                 title: 'Self Calculate an Early Payout with Smarter Payouts!',
                 desc: "Self-calculate a lump sum offer for your future settlement payments using our real-time tool. It's fast, accurate, and secure.",
                 url: 'https://youtu.be/TxFogK2R61o',
-                duration: '3:45'
+                duration: '1:45'
               },
               {
-                img: '/assets/images/why-wait.JPG',
+                img: '/assets/images/online.jpg',
                 alt: 'Why wait, see an Early Lump offer in 2 minutes thumbnail',
                 title: 'Why wait, see an Early Lump offer in 2 minutes',
                 desc: 'Understand the benefit of receiving a lump-sum today versus waiting for monthly checks. A 2-minute video that explains everything.',
                 url: 'https://youtu.be/AYFvqQCCSoY',
-                duration: '2:15'
+                duration: '1:25'
               },
               {
-                img: '/assets/images/debt.JPG',
+                img: '/assets/images/sell.jpg',
                 alt: 'How does it feel to be debt free! thumbnail',
                 title: 'How does it feel to be debt free!',
                 desc: 'See how settlement payments can be used to pay off high-interest debt and regain financial peace of mind.',
                 url: 'https://youtu.be/ur9pB2-xkk4',
-                duration: '4:20'
+                duration: '1:50'
               }
             ]}
             title="Featured Videos"

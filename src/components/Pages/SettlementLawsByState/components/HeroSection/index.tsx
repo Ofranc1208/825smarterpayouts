@@ -15,7 +15,6 @@ interface HeroSectionProps {
 export default function HeroSection({ onPhoneClick, onChatClick }: HeroSectionProps) {
   return (
     <HeroBackground>
-      <HeroBadge />
       <HeroTitle />
       <HeroDescription />
       <HeroCTAButtons 

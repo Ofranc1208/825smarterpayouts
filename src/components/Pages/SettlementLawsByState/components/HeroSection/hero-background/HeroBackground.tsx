@@ -29,8 +29,8 @@ interface HeroBackgroundProps {
 export default function HeroBackground({ children }: HeroBackgroundProps) {
   return (
     <section style={{
-      background: COLORS.backgrounds.greenLight,
-      padding: `${SPACING.unit.xxl} 0`,
+      background: COLORS.backgrounds.slateGradient,
+      padding: `${SPACING.unit.md} 0`,
       textAlign: 'center',
       borderBottom: `1px solid ${COLORS.borders.light}`
     }}>

@@ -12,7 +12,7 @@
  */
 
 'use client';
-import { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 
 /**
  * Video data interface
@@ -68,6 +68,35 @@ export default function VideoCard({
 }: VideoCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [imageError, setImageError] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const imgRef = React.useRef<HTMLImageElement>(null);
+
+  // Debug: Log image path on mount and reset states
+  useEffect(() => {
+    console.log('🖼️ [VideoCard] Loading image:', video.img, 'for video:', video.title);
+    // Reset states when image path changes
+    setImageError(false);
+    setImageLoaded(false);
+    
+    // Check if image is already loaded (cached images) - use setTimeout to ensure ref is set
+    const checkImage = () => {
+      if (imgRef.current) {
+        if (imgRef.current.complete && imgRef.current.naturalHeight !== 0) {
+          console.log('✅ [VideoCard] Image already loaded (cached):', video.img);
+          setImageLoaded(true);
+        } else if (imgRef.current.complete && imgRef.current.naturalHeight === 0) {
+          // Image failed to load
+          console.error('❌ [VideoCard] Image failed to load (cached error):', video.img);
+          setImageError(true);
+        }
+      }
+    };
+    
+    // Check immediately and after a short delay
+    checkImage();
+    const timer = setTimeout(checkImage, 100);
+    return () => clearTimeout(timer);
+  }, [video.img, video.title]);
 
   /**
    * Handle card hover state
@@ -91,9 +120,11 @@ export default function VideoCard({
   /**
    * Handle image load error
    */
-  const handleImageError = useCallback(() => {
+  const handleImageError = useCallback((e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    const target = e.target as HTMLImageElement;
+    console.error('❌ [VideoCard] Image failed to load:', video.img, 'Error:', target.src);
     setImageError(true);
-  }, []);
+  }, [video.img]);
 
   /**
    * Handle keyboard navigation
@@ -144,7 +175,10 @@ export default function VideoCard({
     transition: 'all 0.3s ease',
     cursor: 'pointer',
     border: '1px solid #e5e7eb',
-    position: 'relative'
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%'
   };
 
   return (
@@ -159,30 +193,43 @@ export default function VideoCard({
       aria-label={`Watch video: ${video.title}`}
     >
       {/* Video Thumbnail */}
-      <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
+      <div style={{ 
+        position: 'relative', 
+        width: '100%',
+        backgroundColor: '#f3f4f6',
+        overflow: 'hidden',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '200px',
+        maxHeight: '400px'
+      }}>
         {!imageError ? (
           <img
+            ref={imgRef}
             src={video.img}
             alt={video.alt}
             onError={handleImageError}
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover'
+            onLoad={() => {
+              console.log('✅ [VideoCard] Image loaded successfully:', video.img);
+              setImageLoaded(true);
             }}
-            loading="lazy"
+            style={{
+              width: '100%',
+              height: 'auto',
+              maxHeight: '400px',
+              objectFit: 'contain',
+              backgroundColor: '#ffffff',
+              display: 'block'
+            }}
+            loading="eager"
+            decoding="async"
           />
         ) : (
           <div 
             style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
               width: '100%',
-              height: '100%',
+              minHeight: '200px',
               background: 'linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%)',
               display: 'flex',
               alignItems: 'center',
@@ -193,33 +240,9 @@ export default function VideoCard({
             📺 Video Thumbnail
           </div>
         )}
-        
-        {/* Play Button Overlay */}
-        <div 
-          style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: '60px',
-            height: '60px',
-            background: 'rgba(0, 0, 0, 0.8)',
-            borderRadius: '50%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: 'white',
-            fontSize: '1.5rem',
-            opacity: isHovered ? 1 : 0.8,
-            transition: 'opacity 0.3s ease'
-          }}
-          aria-hidden="true"
-        >
-          ▶️
-        </div>
 
         {/* Duration Badge */}
-        {video.duration && (
+        {video.duration && !imageError && (
           <div 
             style={{
               position: 'absolute',
@@ -230,7 +253,8 @@ export default function VideoCard({
               padding: '2px 6px',
               borderRadius: '4px',
               fontSize: '0.75rem',
-              fontWeight: '600'
+              fontWeight: '600',
+              zIndex: 2
             }}
           >
             {video.duration}
@@ -239,13 +263,19 @@ export default function VideoCard({
       </div>
 
       {/* Video Info */}
-      <div style={{ padding: '1rem' }}>
+      <div style={{ 
+        padding: '1rem',
+        display: 'flex',
+        flexDirection: 'column',
+        flex: '1 1 auto'
+      }}>
         <h3 
           style={{
             fontSize: '1rem',
             fontWeight: '600',
             color: '#1f2937',
             marginBottom: '0.5rem',
+            marginTop: 0,
             lineHeight: '1.4',
             display: '-webkit-box',
             WebkitLineClamp: 2,
@@ -261,7 +291,8 @@ export default function VideoCard({
             fontSize: '0.875rem',
             color: '#6b7280',
             lineHeight: '1.4',
-            marginBottom: '0.5rem',
+            marginBottom: 0,
+            marginTop: 0,
             display: '-webkit-box',
             WebkitLineClamp: 2,
             WebkitBoxOrient: 'vertical',
@@ -270,7 +301,6 @@ export default function VideoCard({
         >
           {video.desc}
         </p>
-
       </div>
 
       {/* Focus indicator for accessibility */}

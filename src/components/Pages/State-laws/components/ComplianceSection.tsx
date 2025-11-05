@@ -14,6 +14,7 @@
 import Link from 'next/link';
 import Button from '@/src/components/shared/Button';
 import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 export default function ComplianceSection() {
   return (
@@ -44,12 +45,15 @@ export default function ComplianceSection() {
           }}>
             <div>
               <h2 style={{
-                fontSize: TYPOGRAPHY.fontSize.heading.h3,
-                fontWeight: TYPOGRAPHY.fontWeight.bold,
+                ...TEXT_PRESETS.heroTitle,
+                background: COLORS.titleGradients.grayToGreen,
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
                 marginBottom: SPACING.stack.md,
-                color: COLORS.text.primary
+                fontSize: 'clamp(1.5rem, 3.5vw, 2rem)'
               }}>
-                    🛡️ Full Compliance Through Affiliate Partners
+                    Full Compliance Through Affiliate Partners
                   </h2>
               <p style={{
                 marginBottom: SPACING.stack.md,
@@ -81,9 +85,10 @@ export default function ComplianceSection() {
                 display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontSize: '2.5rem'
+                fontSize: '2.5rem',
+                fontWeight: TYPOGRAPHY.fontWeight.bold
               }}>
-                🤝
+                ✓
                   </div>
                 </div>
               </div>
@@ -100,10 +105,13 @@ export default function ComplianceSection() {
           marginBottom: SPACING.unit.xxxxl
         }}>
           <h2 style={{
-            fontSize: TYPOGRAPHY.fontSize.heading.h3,
-            fontWeight: TYPOGRAPHY.fontWeight.bold,
-            color: COLORS.text.primary,
-            marginBottom: SPACING.stack.md
+            ...TEXT_PRESETS.heroTitle,
+            background: COLORS.titleGradients.grayToGreen,
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            marginBottom: SPACING.stack.md,
+            fontSize: 'clamp(1.5rem, 3.5vw, 2rem)'
           }}>
             Need State-Specific Guidance?
           </h2>
@@ -127,7 +135,7 @@ export default function ComplianceSection() {
             shimmer={true}
             shimmerDelay={1}
           >
-            💬 Chat with Mint AI
+            Chat with Mint AI
           </Button>
         </div>
       </div>

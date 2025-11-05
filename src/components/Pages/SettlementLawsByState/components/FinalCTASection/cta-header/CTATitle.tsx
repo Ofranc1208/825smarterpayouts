@@ -12,14 +12,18 @@
  */
 
 import { TYPOGRAPHY, COLORS, SPACING } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 export default function CTATitle() {
   return (
     <h2 style={{ 
-      fontSize: TYPOGRAPHY.fontSize.heading.h2, 
-      fontWeight: TYPOGRAPHY.fontWeight.bold, 
-      color: COLORS.text.primary,
-      marginBottom: SPACING.stack.md 
+      ...TEXT_PRESETS.heroTitle,
+      background: COLORS.titleGradients.grayToGreen,
+      WebkitBackgroundClip: 'text',
+      WebkitTextFillColor: 'transparent',
+      backgroundClip: 'text',
+      marginBottom: SPACING.stack.md,
+      fontSize: 'clamp(1.5rem, 3.5vw, 2rem)'
     }}>
       Ready to Sell Your Structured Settlement?
     </h2>

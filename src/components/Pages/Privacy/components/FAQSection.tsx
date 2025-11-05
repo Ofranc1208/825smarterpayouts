@@ -13,6 +13,7 @@
 
 import Button from '@/src/components/shared/Button/Button';
 import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 const faqs = [
   {
@@ -58,11 +59,14 @@ export default function FAQSection() {
           boxShadow: BOX_SHADOWS.small
         }}>
           <h2 style={{
-            fontSize: TYPOGRAPHY.fontSize.heading.h3,
-            fontWeight: TYPOGRAPHY.fontWeight.bold,
-            color: COLORS.text.primary,
+            ...TEXT_PRESETS.heroTitle,
+            background: COLORS.titleGradients.grayToGreen,
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
             marginBottom: SPACING.stack.xl,
-            textAlign: 'center'
+            textAlign: 'center',
+            fontSize: 'clamp(1.5rem, 3.5vw, 2rem)'
           }}>
             Privacy FAQ
           </h2>
@@ -129,7 +133,7 @@ export default function FAQSection() {
               fontSize: TYPOGRAPHY.fontSize.body.large,
               marginBottom: SPACING.unit.xs
             }}>
-              ✨ Have Privacy Questions?
+              Have Privacy Questions?
             </h3>
             <p style={{
               color: COLORS.text.secondary,
@@ -146,7 +150,7 @@ export default function FAQSection() {
               size="md"
               enhancedHover={true}
             >
-              💬 Chat with Mint AI
+              Chat with Mint AI
             </Button>
           </div>
 
@@ -160,13 +164,8 @@ export default function FAQSection() {
             textAlign: 'center'
           }}>
             <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: SPACING.inline.sm,
               marginBottom: SPACING.stack.sm
             }}>
-              <span style={{ fontSize: TYPOGRAPHY.fontSize.heading.h4 }}>🛡️</span>
               <span style={{
                 color: COLORS.primary.main,
                 fontWeight: TYPOGRAPHY.fontWeight.bold,

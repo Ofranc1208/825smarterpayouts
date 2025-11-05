@@ -13,12 +13,13 @@
 
 import Button from '@/src/components/shared/Button';
 import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 export default function HeroSection() {
   return (
     <section style={{
       background: COLORS.backgrounds.slateGradient,
-      padding: `${SPACING.card.standard} 0 ${SPACING.unit.xxxl}`
+      padding: `${SPACING.unit.md} 0 ${SPACING.unit.xxxl}`
     }}>
       <div style={{
         width: '100%',
@@ -31,38 +32,28 @@ export default function HeroSection() {
           margin: '0 auto',
           textAlign: 'center'
         }}>
-          <div style={{
-            fontSize: TYPOGRAPHY.fontSize.body.small,
-            fontWeight: TYPOGRAPHY.fontWeight.semibold,
-            color: COLORS.primary.main,
-            textTransform: "uppercase",
-            letterSpacing: TYPOGRAPHY.letterSpacing.wide,
-            marginBottom: SPACING.stack.md
-          }}>
-            Legal Compliance Guide
-          </div>
-
           <h1 style={{
-            fontSize: TYPOGRAPHY.fontSize.heading.h1,
-            fontWeight: TYPOGRAPHY.fontWeight.bold,
-            color: COLORS.text.primary,
+            ...TEXT_PRESETS.heroTitle,
+            background: COLORS.titleGradients.grayToGreen,
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
             marginBottom: SPACING.stack.md,
-            lineHeight: TYPOGRAPHY.lineHeight.tight
+            fontSize: 'clamp(1.75rem, 4vw, 2.75rem)'
           }}>
-              State Laws Overview
-            </h1>
+            State Laws Overview
+          </h1>
           
           <p style={{
-            fontSize: TYPOGRAPHY.fontSize.body.large,
-            color: COLORS.neutral.gray500,
+            fontSize: TYPOGRAPHY.fontSize.body.medium,
+            color: COLORS.text.secondary,
             marginBottom: SPACING.stack.xl,
             lineHeight: TYPOGRAPHY.lineHeight.relaxed,
             maxWidth: "700px",
             margin: `0 auto ${SPACING.stack.xl}`
           }}>
-              Structured settlement sales are legal across all 50+ states through our trusted affiliate partners. Each state has specific court requirements and approval processes. 
-              Our nationwide network of licensed partners ensures full compliance with local regulations.
-            </p>
+            Structured settlement sales are legal across all 50+ states through our trusted affiliate partners. Each state has specific court requirements and approval processes.
+          </p>
           
           {/* CTA Buttons */}
           <div style={{
@@ -79,7 +70,7 @@ export default function HeroSection() {
               enhancedHover={true}
               shimmer={true}
             >
-              💰 Get Your Instant Quote
+              Get Your Instant Quote
             </Button>
             
             <Button
@@ -91,7 +82,7 @@ export default function HeroSection() {
               shimmer={true}
               shimmerDelay={1}
             >
-              💬 Chat with Mint AI
+              Chat with Mint AI
             </Button>
           </div>
         </div>

@@ -65,11 +65,13 @@ export default function CTASection() {
         }}>
           {/* Title with Gradient */}
           <h2 style={{
-            ...TEXT_PRESETS.sectionTitle,
+            ...TEXT_PRESETS.heroTitle,
             background: COLORS.titleGradients.grayToGreen,
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
-            marginBottom: SPACING.stack.md
+            backgroundClip: 'text',
+            marginBottom: SPACING.stack.md,
+            fontSize: 'clamp(1.5rem, 3.5vw, 2rem)'
           }}>
             Ready to Get Started?
           </h2>
@@ -99,7 +101,7 @@ export default function CTASection() {
               enhancedHover={true}
               shimmer={true}
             >
-              💰 Get Your Quote
+              Get Your Quote
             </Button>
 
             <Button
@@ -111,7 +113,7 @@ export default function CTASection() {
               shimmer={true}
               shimmerDelay={1}
             >
-              💬 Chat with Mint AI
+              Chat with Mint AI
             </Button>
           </div>
         </div>

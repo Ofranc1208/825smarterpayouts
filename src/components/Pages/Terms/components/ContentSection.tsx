@@ -14,6 +14,7 @@
 'use client';
 import { useState } from 'react';
 import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS, BOX_SHADOWS } from '@/src/components/shared/styles';
+import { TEXT_PRESETS } from '@/src/components/shared/styles/typography';
 
 const termsSections = [
   {
@@ -121,15 +122,18 @@ export default function ContentSection() {
         }}>
           <div style={{ textAlign: 'center', marginBottom: SPACING.stack.xxl }}>
             <h2 style={{
-              fontSize: TYPOGRAPHY.fontSize.heading.h3,
-              fontWeight: TYPOGRAPHY.fontWeight.bold,
-              color: COLORS.text.primary,
-              marginBottom: SPACING.stack.md
+              ...TEXT_PRESETS.heroTitle,
+              background: COLORS.titleGradients.grayToGreen,
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              marginBottom: SPACING.stack.md,
+              fontSize: 'clamp(1.5rem, 3.5vw, 2rem)'
             }}>
               Our Terms of Service
             </h2>
             <p style={{
-              fontSize: TYPOGRAPHY.fontSize.body.large,
+              fontSize: TYPOGRAPHY.fontSize.body.medium,
               color: COLORS.text.secondary,
               lineHeight: TYPOGRAPHY.lineHeight.relaxed,
               marginBottom: SPACING.stack.lg
