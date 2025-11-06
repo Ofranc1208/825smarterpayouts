@@ -15,25 +15,24 @@
 
 .locationHeader {
   text-align: center;
-  margin-bottom: 0.25rem;
-}
-
-.locationIcon {
-  font-size: 2rem;
   margin-bottom: 0.5rem;
-  display: flex;
-  justify-content: center;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .locationTitle {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #1e293b;
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin: 0 0 0.25rem 0;
+  line-height: 1.4;
 }
 
 .locationSubtitle {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #64748b;
   margin: 0;
   font-weight: 400;

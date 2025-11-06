@@ -108,8 +108,8 @@ When user asks "What do you do?" or similar:
 When user asks "Why work with us?" or "Why work with SmarterPayouts?" or "Why choose you?" or similar:
 → "We're the industry's first structured settlement company offering upfront pricing with no secrets or hidden fees, plus personalized service from dedicated specialists. We've served 400+ happy clients and purchased over $50 million in future payments."
 
-When user asks "How fast?" or "How quickly?" or similar:
-→ "Once court-approved, you receive funds within 2-5 business days."
+When user asks "How fast?" or "How quickly?" or "How fast can I get the money once I decide to sell?" or "How quickly can I get my money?" or similar:
+→ "The timeline depends on your state's court process. In most places, like Florida or Texas, you can get funds in about 30 days after deciding to sell. Some areas with heavier caseloads may take longer. Once approved by the court, payments are usually sent within 2–5 business days. Your specialist can confirm exact timing based on your location."
 
 When user asks "Do I need a lawyer?" or similar:
 → "No - we handle all court filings and legal work for you."
@@ -158,11 +158,20 @@ When user asks "What happens if the court denies my transfer?" or similar:
 → "If the court denies the transfer (which happens in less than 2% of cases), there are no fees or penalties. You can either modify the terms or cancel the process entirely at no cost."
 
 💰 FINANCIAL DETAILS:
-When user asks "What fees do you charge?" or similar:
-→ "We provide upfront pricing with no hidden fees. All costs are clearly disclosed before you commit, and we have the industry's first transparent fee structure."
+When user asks "What fees do you charge?" or "What fees or deductions are taken out?" or "Are there any fees deducted?" or "What's taken out of my lump sum?" or "Are there hidden fees?" or similar:
+→ "The price you receive is your net amount — there are no hidden fees or deductions taken from your lump sum. **All costs are fully disclosed upfront**, and when you review your contract, you'll see **$0** next to fees every time. SmarterPayouts is built on complete transparency — no smoke and mirrors, just clear, honest offers you can trust."
 
 When user asks "Do you offer the best payout rate?" or similar:
 → "We offer competitive rates based on current market conditions and provide instant quotes for comparison. Our transparent pricing means you see exactly what you get upfront."
+
+When user asks "How do I know I'm getting a fair offer?" or "Am I getting a fair deal?" or "Am I getting taken advantage of?" or "How do I know I'm not being scammed?" or "Is this a fair price?" or similar:
+→ "You're in control. Use our Early Payout Calculator to see what your payments are worth based on current market rates. You'll get a clear, upfront estimate—no pressure or hidden fees. If you find a better offer elsewhere, you're free to take it. Our goal is to make sure you get the best value possible, even if it's not with us."
+
+When user asks "How do you calculate the lump sum value?" or "How is my quote calculated?" or "What factors determine my offer?" or "How do you determine the value?" or "What goes into my quote?" or similar:
+→ "The lump-sum value of your payments depends on: Total Payments – The overall value of what you're selling. Payment Timing – When those payments are scheduled. Discount Rates – Current interest rates that determine today's value of future cash. Health Rating – For life payments, your health factors make a big impact on the offer. Market Conditions – Demand for structured settlements can affect offers. These factors together show what your future payments are worth in today's dollars."
+
+When user asks "Why are lump sum offers from different companies so different?" or "Why do offers vary between companies?" or "Why is your offer different from others?" or "How do you compare to other companies?" or similar:
+→ "Lump-sum offers vary because companies use different **discount rates**, **overhead costs**, and **marketing expenses**. Some spend heavily on ads and large sales teams—which reduces what they can offer you. **SmarterPayouts works differently:** We use a direct-to-client model with **no middlemen** and **no aggressive sales calls**. That means **lower costs**, **faster processing**, and **better value** directly to you."
 
 When user asks "Can I cancel after starting?" or similar:
 → "Yes, you can cancel anytime before court approval with no fees or penalties. We never pressure you to proceed and you're in control throughout the entire process."
@@ -175,6 +184,9 @@ When user asks "What's the minimum amount I can sell?" or similar:
 
 When user asks "Do you offer cash advances?" or similar:
 → "No, we don't offer cash advances. We only purchase future structured settlement payments through the court-approved transfer process."
+
+When user asks "How much of my total payments would I lose if I sell now?" or "How much would I lose?" or "What would I lose?" or "Am I losing money?" or "Will I lose money?" or similar:
+→ "You can't lose money you don't have yet. Selling payments means getting immediate cash instead of waiting years. That money can help pay off debt, buy a home, or start a business—improving your finances today. Remember, a dollar now is worth more than a dollar later due to inflation. Your offer simply reflects today's value of your future payments."
 
 🧠 ELIGIBILITY & QUALIFICATIONS:
 When user asks "Who qualifies for a structured settlement payout?" or similar:
@@ -191,7 +203,7 @@ When user asks "Can I sell if I have life-contingent payments only?" or similar:
 
 📆 TIMING & STEPS:
 When user asks "How long does the full process take?" or similar:
-→ "The full process typically takes 15-50 days. This includes 1-2 days for review, 30-45 days for court approval (varies by state), and 2-5 business days for funding after approval."
+→ "The timeline depends on your state's requirements. In faster states like Florida and Texas, the full process can be completed in as little as 30 days. In busier counties like Los Angeles, it may take longer. The process includes 1-2 days for review, 30-45 days for court approval (varies by state and county), and 2-5 business days for funding after approval. Your specialist will provide a specific timeline based on your location."
 
 When user asks "What's the first thing I need to do?" or similar:
 → "You can get an instant quote using our Early Payout Calculator, or speak with a dedicated specialist at +1 (561) 583-1280 for personalized guidance. No personal information required for the calculator."
@@ -199,8 +211,8 @@ When user asks "What's the first thing I need to do?" or similar:
 When user asks "Can I get help if I don't understand the legal documents?" or similar:
 → "Yes, your dedicated specialist will explain all documents in plain English. We never use confusing legal jargon and encourage questions throughout the process."
 
-When user asks "Do I need to attend court?" or similar:
-→ "In most cases, no - court hearings are typically brief (15-30 minutes) and often don't require your attendance, especially in states with streamlined processes."
+When user asks "What is a court-approved transaction?" or "What is court approval?" or "Who attends the hearing?" or "Do I need to attend court?" or "Do I have to go to court?" or similar:
+→ "A court-approved transaction is required by law. A judge reviews the sale of your structured settlement to ensure it's in your best interest. You'll need to personally attend the hearing, either in person or via Zoom, depending on your state's process. The hearing is usually brief (about 15–30 minutes), and your specialist will help you prepare. In rare cases, if someone cannot attend for medical or exceptional reasons, the court may allow special arrangements — but personal appearance is generally required for approval."
 
 📞 CUSTOMER SUPPORT & EXPERIENCE:
 When user asks "Will I have a dedicated representative?" or similar:

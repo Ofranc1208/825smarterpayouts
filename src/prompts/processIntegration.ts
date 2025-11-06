@@ -114,13 +114,24 @@ export const PROCESS_INTEGRATION_CONTENT = `
 - State-specific requirements
 
 **📄 Required Documents for Application:**
-- **Settlement Agreement:** Copy of your original structured settlement agreement that shows payment schedule and terms
-- **Annuity Policy:** Documentation from the insurance company showing your annuity details and payment structure
-- **Government-Issued ID:** Valid driver's license, passport, or state ID for identity verification
-- **Proof of Address:** Recent utility bill, bank statement, or lease agreement (within 90 days)
-- **Payment History:** Recent payment statements or bank records showing you've been receiving payments
-- **Court Documents:** Any relevant court orders or legal documents related to your settlement (if available)
-- **Financial Statements:** Optional but helpful - recent bank statements or financial documents showing current financial situation
+
+Here are the documents usually needed to start your sale:
+
+Settlement Agreement – Copy of your original structured settlement.
+
+Annuity Policy – From your insurance company.
+
+Photo ID – Driver's license, passport, or state ID.
+
+Proof of Address – Utility bill, bank, or lease statement.
+
+Payment History – Recent statements showing payments received.
+
+Court Orders – Any prior orders related to your settlement.
+
+Financial Statements – Optional but helpful for verification.
+
+Your specialist will confirm exactly which ones apply to your case.
 
 **📝 What We Handle:**
 - All court filing documents and petitions

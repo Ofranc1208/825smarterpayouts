@@ -58,8 +58,7 @@ export default function LocationCard() {
   return (
     <div className={styles.locationContainer}>
       <div className={styles.locationHeader}>
-        <div className={styles.locationIcon}>📍</div>
-        <h3 className={styles.locationTitle}>Our Location</h3>
+        <h3 className={styles.locationTitle}>Our Office</h3>
         <p className={styles.locationSubtitle}>Visit us or get directions</p>
       </div>
       

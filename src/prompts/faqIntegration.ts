@@ -56,7 +56,7 @@ A: Court filing fees are typically $100-$500 depending on your state. At Smarter
 A: For most personal injury settlements, there are no tax implications. If your structured settlement comes from a personal physical injury, wrongful death, or workers' compensation case, payments are generally tax-free — and so is the lump sum when you sell. We recommend consulting with a tax professional for your specific situation, and we can connect you with qualified CPAs if needed.
 
 **Q: What factors determine the value of my quote?**
-A: Your quote is based on: (1) Total amount of future payments, (2) Timing of those payments, (3) Current interest rates and discount rates, (4) Market conditions. We calculate what your future payments are worth in today's dollars, providing a competitive lump sum offer.
+A: The lump-sum value of your payments depends on: (1) Total Payments – The overall value of what you're selling, (2) Payment Timing – When those payments are scheduled, (3) Discount Rates – Current interest rates that determine today's value of future cash, (4) Health Rating – For life payments, your health factors make a big impact on the offer, (5) Market Conditions – Demand for structured settlements can affect offers. These factors together show what your future payments are worth in today's dollars.
 
 ### Benefits & Education
 
