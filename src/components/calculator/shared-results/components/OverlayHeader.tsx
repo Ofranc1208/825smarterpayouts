@@ -11,8 +11,8 @@ export const OverlayHeader: React.FC = () => {
   return (
     <div className={styles.header}>
       <h3 className={styles.title}>Congratulations</h3>
-      <p className={styles.subtitle}>
-        You qualify for an early payout option
+      <p className={styles.guidanceText}>
+        Click Unlock My Offer button to see your offer.
       </p>
     </div>
   );

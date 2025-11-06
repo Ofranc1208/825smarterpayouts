@@ -108,11 +108,30 @@ export class CustomerOfferConfirmationTemplate extends BaseEmailTemplate {
 
       <!-- Contact Section -->
       <div style="text-align: center; margin: 40px 0 30px; padding: 30px 25px; background: #f9fafb; border-radius: 12px; border: 1px solid #e5e7eb;">
-        <p style="font-size: 17px; color: #1f2937; margin-bottom: 18px; font-weight: 600;">Ready to Get Started?</p>
-        <div style="font-size: 28px; font-weight: 700; color: #22c55e; margin-bottom: 12px; letter-spacing: -0.5px;">
-          <a href="tel:+15615831280" style="color: #22c55e; text-decoration: none;">+1-561-583-1280</a>
+        <p style="font-size: 17px; color: #1f2937; margin-bottom: 20px; font-weight: 600;">Ready to Get Started?</p>
+        
+        <div style="margin-bottom: 16px;">
+          <p style="font-size: 14px; color: #4b5563; margin: 0 0 8px 0; font-weight: 500;">Call our office at:</p>
+          <div style="font-size: 28px; font-weight: 700; color: #22c55e; margin-bottom: 12px; letter-spacing: -0.5px;">
+            <a href="tel:+15615831280" style="color: #22c55e; text-decoration: none;">561-583-1280</a>
+          </div>
+          <p style="font-size: 13px; color: #6b7280; margin: 0;">Monday - Friday, 9:00 AM - 6:00 PM EST</p>
         </div>
-        <p style="font-size: 13px; color: #6b7280; margin: 0;">Monday - Friday, 9:00 AM - 6:00 PM EST</p>
+
+        <div style="margin-bottom: 16px; padding-top: 16px; border-top: 1px solid #e5e7eb;">
+          <p style="font-size: 14px; color: #4b5563; margin: 0 0 8px 0; font-weight: 500;">Office Address:</p>
+          <p style="font-size: 13px; color: #6b7280; margin: 0; line-height: 1.6;">
+            15257 Amberly Dr Ste 233<br />
+            Tampa, FL 33647
+          </p>
+        </div>
+
+        <div style="padding-top: 16px; border-top: 1px solid #e5e7eb;">
+          <p style="font-size: 14px; color: #4b5563; margin: 0 0 8px 0; font-weight: 500;">Email us at:</p>
+          <p style="font-size: 14px; color: #22c55e; margin: 0; font-weight: 600;">
+            <a href="mailto:info@smarterpayouts.com" style="color: #22c55e; text-decoration: none;">info@smarterpayouts.com</a>
+          </p>
+        </div>
       </div>
             </td>
           </tr>
@@ -183,8 +202,13 @@ Offer Code: ${this.customerData.offerCode}
 You may qualify for up to $5,000 bonus towards closing your structured settlement!
 
 Ready to Get Started?
-Call us: +1-561-583-1280
+
+Call our office at: 561-583-1280
 Monday - Friday, 9:00 AM - 6:00 PM EST
+
+Office Address: 15257 Amberly Dr Ste 233, Tampa, FL 33647
+
+Email us at: info@smarterpayouts.com
 
 Visit us: smarterpayouts.com
 

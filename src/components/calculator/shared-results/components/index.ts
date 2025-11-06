@@ -13,4 +13,6 @@ export { BonusMessage } from './BonusMessage';
 export { OfferCodeAndBonus } from './OfferCodeAndBonus';
 export { CallToActionButton } from './CallToActionButton';
 export { SuccessState } from './SuccessState';
+export { EmailOverlay } from './EmailOverlay';
+export { MessageOverlay } from './MessageOverlay';
 

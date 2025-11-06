@@ -18,7 +18,7 @@ export const CallToActionButton: React.FC = () => {
           window.location.href = 'tel:+15615831280';
         }}
       >
-        📞 Call Now: (561) 583-1280
+        📞 Call Now to Claim Your Offer
       </a>
     </div>
   );

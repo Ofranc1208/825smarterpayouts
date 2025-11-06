@@ -8,11 +8,11 @@ import { useOfferCapture } from './hooks/useOfferCapture';
 import {
   OverlayHeader,
   ContactTabs,
-  ContactInput,
-  TermsCheckbox,
   OfferCodeDisplay,
   CallToActionButton,
   SuccessState,
+  EmailOverlay,
+  MessageOverlay,
 } from './components';
 
 interface OfferCaptureOverlayProps {
@@ -53,9 +53,10 @@ const OfferCaptureOverlay: React.FC<OfferCaptureOverlayProps> = ({
   // Main state
   const [isVisible, setIsVisible] = useState(false);
   const [activeTab, setActiveTab] = useState<'email' | 'sms'>('email');
-  const [agreeToTerms, setAgreeToTerms] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [offerCode, setOfferCode] = useState<string>('');
+  const [showEmailOverlay, setShowEmailOverlay] = useState(false);
+  const [showMessageOverlay, setShowMessageOverlay] = useState(false);
 
   // Custom hooks for form validation and API submission
   const formValidation = useFormValidation();
@@ -128,29 +129,49 @@ const OfferCaptureOverlay: React.FC<OfferCaptureOverlayProps> = ({
     formValidation.clearError();
   };
 
-  // Handle form submission
-  const handleSubmit = async (e: React.FormEvent) => {
+  // Handle email tab click - always opens email overlay
+  const handleEmailTabClick = () => {
+    setShowEmailOverlay(true);
+    setActiveTab('email');
+  };
+
+  // Handle email overlay close
+  const handleEmailOverlayClose = () => {
+    setShowEmailOverlay(false);
+    // Keep email tab active since it's the default
+    setActiveTab('email');
+  };
+
+  // Handle message tab click - always opens message overlay
+  const handleMessageTabClick = () => {
+    setShowMessageOverlay(true);
+    setActiveTab('sms');
+  };
+
+  // Handle message overlay close
+  const handleMessageOverlayClose = () => {
+    setShowMessageOverlay(false);
+    // Keep message tab active
+    setActiveTab('sms');
+  };
+
+  // Handle message form submission from overlay
+  const handleMessageSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validate form
-    if (!formValidation.validateForm(activeTab)) {
-      return;
-    }
-
-    // Validate terms agreement
-    if (!agreeToTerms) {
-      formValidation.setError('Please agree to the terms and conditions to continue');
+    // Validate message
+    if (!formValidation.message.trim()) {
+      formValidation.setError('Please enter a message with your phone number');
       return;
     }
 
     // Submit offer capture
-    console.log('🎯 [OfferCaptureOverlay] Calling submitOfferCapture...');
+    console.log('🎯 [OfferCaptureOverlay] Calling submitOfferCapture for SMS...');
     console.log('🎯 [OfferCaptureOverlay] Data:', {
       quoteData,
       calculatorType,
       offerCode,
-      deliveryMethod: activeTab,
-      email: formValidation.email,
+      deliveryMethod: 'sms',
       message: formValidation.message,
     });
 
@@ -158,9 +179,9 @@ const OfferCaptureOverlay: React.FC<OfferCaptureOverlayProps> = ({
       quoteData,
       calculatorType,
       offerCode,
-      deliveryMethod: activeTab,
+      deliveryMethod: 'sms',
       contactInfo: {
-        email: formValidation.email,
+        email: '',
         message: formValidation.message,
       },
     });
@@ -169,16 +190,73 @@ const OfferCaptureOverlay: React.FC<OfferCaptureOverlayProps> = ({
 
     if (result.success) {
       console.log('✅ [OfferCaptureOverlay] Success! Setting showSuccess to true');
+      setShowMessageOverlay(false);
       setShowSuccess(true);
       onSuccess?.({
-        email: activeTab === 'email' ? formValidation.email : undefined,
-        message: activeTab === 'sms' ? formValidation.message : undefined,
-        deliveryMethod: activeTab
+        email: undefined,
+        message: formValidation.message,
+        deliveryMethod: 'sms'
       });
     } else {
       console.error('❌ [OfferCaptureOverlay] Failed:', result.error);
       formValidation.setError(result.error || 'Failed to save offer. Please try again.');
     }
+  };
+
+  // Handle email form submission from overlay
+  const handleEmailSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Validate email
+    if (!formValidation.email.trim()) {
+      formValidation.setError('Please enter a valid email address');
+      return;
+    }
+
+    // Submit offer capture
+    console.log('🎯 [OfferCaptureOverlay] Calling submitOfferCapture for email...');
+    console.log('🎯 [OfferCaptureOverlay] Data:', {
+      quoteData,
+      calculatorType,
+      offerCode,
+      deliveryMethod: 'email',
+      email: formValidation.email,
+    });
+
+    const result = await offerCapture.submitOfferCapture({
+      quoteData,
+      calculatorType,
+      offerCode,
+      deliveryMethod: 'email',
+      contactInfo: {
+        email: formValidation.email,
+        message: '',
+      },
+    });
+
+    console.log('🎯 [OfferCaptureOverlay] Result:', result);
+
+    if (result.success) {
+      console.log('✅ [OfferCaptureOverlay] Success! Setting showSuccess to true');
+      setShowEmailOverlay(false);
+      setShowSuccess(true);
+      onSuccess?.({
+        email: formValidation.email,
+        message: undefined,
+        deliveryMethod: 'email'
+      });
+    } else {
+      console.error('❌ [OfferCaptureOverlay] Failed:', result.error);
+      formValidation.setError(result.error || 'Failed to save offer. Please try again.');
+    }
+  };
+
+
+  // Handle form submission - no longer needed since both email and message use overlays
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    // Form submission is now handled in respective overlays
+    return;
   };
 
   // Handle dismiss - works from both main form and success state
@@ -210,19 +288,15 @@ const OfferCaptureOverlay: React.FC<OfferCaptureOverlayProps> = ({
         ) : (
           <>
             <OverlayHeader />
-            <ContactTabs activeTab={activeTab} onTabChange={handleTabChange} />
+            <ContactTabs 
+              activeTab={activeTab} 
+              agreeToTerms={true}
+              onTabChange={handleTabChange}
+              onEmailTabClick={handleEmailTabClick}
+              onMessageTabClick={handleMessageTabClick}
+            />
             
-            <form onSubmit={handleSubmit} className={styles.form}>
-              <ContactInput
-                activeTab={activeTab}
-                email={formValidation.email}
-                message={formValidation.message}
-                onEmailChange={formValidation.handleEmailChange}
-                onMessageChange={formValidation.handleMessageChange}
-                agreeToTerms={agreeToTerms}
-                isSubmitting={offerCapture.isSubmitting}
-              />
-
+            <div className={styles.form}>
               {/* Error Message */}
               {formValidation.error && (
                 <div className={styles.errorMessage}>
@@ -230,31 +304,38 @@ const OfferCaptureOverlay: React.FC<OfferCaptureOverlayProps> = ({
                 </div>
               )}
 
-              <TermsCheckbox
-                agreeToTerms={agreeToTerms}
-                activeTab={activeTab}
-                onAgreeChange={setAgreeToTerms}
-              />
-
               <OfferCodeDisplay offerCode={offerCode} />
 
-              {/* Submit Button - Only show when input has value AND terms are agreed */}
-              {/* Positioned immediately after offer code for clear action flow */}
-              {(activeTab === 'email' ? formValidation.email.trim() : formValidation.message.trim()) && agreeToTerms && (
-                <button
-                  type="submit"
-                  className={styles.submitButton}
-                  disabled={offerCapture.isSubmitting}
-                >
-                  {offerCapture.isSubmitting ? 'Sending...' : `Send My Offer ${activeTab === 'email' ? 'via Email' : 'via Message'}`}
-                </button>
-              )}
-
               <CallToActionButton />
-            </form>
+            </div>
           </>
         )}
       </div>
+
+      {/* Email Overlay - Separate modal for email entry */}
+      {showEmailOverlay && (
+        <EmailOverlay
+          email={formValidation.email}
+          onEmailChange={formValidation.handleEmailChange}
+          onSubmit={handleEmailSubmit}
+          onClose={handleEmailOverlayClose}
+          isSubmitting={offerCapture.isSubmitting}
+          offerCode={offerCode}
+        />
+      )}
+
+      {/* Message Overlay - Hidden for now, will be used with Twilio later */}
+      {/* {showMessageOverlay && (
+        <MessageOverlay
+          message={formValidation.message}
+          onMessageChange={formValidation.handleMessageChange}
+          onSubmit={handleMessageSubmit}
+          onClose={handleMessageOverlayClose}
+          isSubmitting={offerCapture.isSubmitting}
+          offerCode={offerCode}
+        />
+      )} */}
+
     </div>
   );
 };

@@ -11,18 +11,20 @@ interface TermsCheckboxProps {
   agreeToTerms: boolean;
   activeTab: 'email' | 'sms';
   onAgreeChange: (checked: boolean) => void;
+  highlightRed?: boolean;
 }
 
 export const TermsCheckbox: React.FC<TermsCheckboxProps> = ({
   agreeToTerms,
   activeTab,
   onAgreeChange,
+  highlightRed = false,
 }) => {
   const [showTermsTooltip, setShowTermsTooltip] = useState(false);
 
   return (
     <div className={styles.termsContainer}>
-      <label className={styles.termsLabel}>
+      <label className={`${styles.termsLabel} ${highlightRed ? styles.termsLabelRed : ''}`}>
         <input
           type="checkbox"
           checked={agreeToTerms}
