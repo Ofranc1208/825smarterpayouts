@@ -62,6 +62,7 @@ export async function POST(request: NextRequest) {
     const emailResult = await sendAppointmentNotification({
       id: appointmentId,
       name: body.name,
+      email: body.email,
       phone: body.phone || 'Not provided',
       preferredDate: body.preferredDate,
       preferredTime: body.preferredTime || 'Any time',

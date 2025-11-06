@@ -51,34 +51,41 @@ export default function ContactForm({ onFormSubmit }: ContactFormProps) {
   return (
     <div style={{
       background: "white",
-      padding: "1.5rem",
+      padding: "1rem",
       borderRadius: "12px",
-      boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-      border: "1px solid #e5e7eb"
+      boxShadow: "0 2px 8px rgba(0, 0, 0, 0.06)",
+      border: "1px solid #e2e8f0"
     }}>
       <h3 style={{
-        fontSize: "1.5rem",
-        fontWeight: "700",
-        color: COLORS.neutral.gray900,
-        marginBottom: "1rem",
-        textAlign: "center",
-        background: COLORS.titleGradients.grayToGreen,
-        WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent",
-        backgroundClip: "text"
+        fontSize: "1.1rem",
+        fontWeight: "600",
+        color: "#1f2937",
+        marginBottom: "0.25rem",
+        marginTop: "0",
+        textAlign: "center"
       }}>
         Send us a Message
       </h3>
+      <p style={{
+        textAlign: "center",
+        color: "#6b7280",
+        fontSize: "0.75rem",
+        marginBottom: "1rem",
+        marginTop: "0"
+      }}>
+        We'll respond within 24 hours
+      </p>
 
       {submitStatus === 'success' && (
         <div style={{
           background: "#d1fae5",
           border: "1px solid #a7f3d0",
           color: "#065f46",
-          padding: "1rem",
-          borderRadius: "8px",
-          marginBottom: "1rem",
-          textAlign: "center"
+          padding: "0.75rem",
+          borderRadius: "6px",
+          marginBottom: "0.75rem",
+          textAlign: "center",
+          fontSize: "0.85rem"
         }}>
           ✅ Thank you! Your message has been sent successfully.
         </div>
@@ -89,10 +96,11 @@ export default function ContactForm({ onFormSubmit }: ContactFormProps) {
           background: "#fee2e2",
           border: "1px solid #fca5a5",
           color: "#991b1b",
-          padding: "1rem",
-          borderRadius: "8px",
-          marginBottom: "1rem",
-          textAlign: "center"
+          padding: "0.75rem",
+          borderRadius: "6px",
+          marginBottom: "0.75rem",
+          textAlign: "center",
+          fontSize: "0.85rem"
         }}>
           ❌ Sorry, there was an error sending your message. Please try again.
         </div>

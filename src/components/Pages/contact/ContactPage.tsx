@@ -73,7 +73,7 @@ export default function ContactPage({ className, style }: ContactPageProps) {
         <HeroSection onCTAClick={handleCTAClick} />
         
         <section style={{
-          padding: "3rem 0",
+          padding: "1rem 0",
           background: "#f9fafb"
         }}>
           <div style={{
@@ -82,8 +82,8 @@ export default function ContactPage({ className, style }: ContactPageProps) {
             margin: '0 auto',
             padding: '0 1rem',
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '2rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+            gap: '0.75rem',
             alignItems: 'start',
             justifyContent: 'center'
           }}>

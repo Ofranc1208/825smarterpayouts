@@ -1,12 +1,15 @@
 'use client';
 import ContactCard from './ContactCard';
-import { SPACING } from '@/src/components/shared/styles';
+import { useState } from 'react';
+import AppointmentModal from '@/src/components/chat/AppointmentModal/AppointmentModal';
 
 interface ContactInfoProps {
   onCardClick?: (cardId: string) => void;
 }
 
 export default function ContactInfo({ onCardClick }: ContactInfoProps) {
+  const [showAppointmentModal, setShowAppointmentModal] = useState(false);
+
   // Company address - formatted exactly like Google Maps displays it
   const companyAddress = {
     street: '15257 Amberly Dr Ste 233',
@@ -22,48 +25,69 @@ export default function ContactInfo({ onCardClick }: ContactInfoProps) {
     {
       icon: "📞",
       title: "Call Us",
-      description: "Monday-Friday, 9 AM - 6 PM EST. Speak with our team directly for immediate assistance.",
+      description: "+1 (561) 583-1280\nMon-Fri, 9AM-6PM EST",
       actionText: "Call Now",
       actionLink: "tel:+1-561-583-1280"
     },
     {
+      icon: "📅",
+      title: "Book Appointment",
+      description: "Free consultation",
+      actionText: "Schedule Now",
+      actionLink: "#",
+      isAppointment: true
+    },
+    {
       icon: "✉️",
       title: "Email Us",
-      description: "Send us a message anytime. We'll respond within 24 hours during business days.",
+      description: "Response within 24 hours",
       actionText: "Send Email",
       actionLink: "mailto:info@smarterpayouts.com"
     },
     {
       icon: "📍",
       title: "Visit Us",
-      description: companyAddress.fullAddress, // Show full formatted address
+      description: "15257 Amberly Dr Ste 233\nTampa, FL 33647",
       actionText: "Get Directions",
-      actionLink: `https://maps.google.com/maps?q=${encodeURIComponent(`${companyAddress.street}, ${companyAddress.city}, ${companyAddress.state} ${companyAddress.zip}`)}`,
-      address: companyAddress // Pass address object for structured display
+      actionLink: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${companyAddress.street}, ${companyAddress.city}, ${companyAddress.state} ${companyAddress.zip}`)}`,
+      address: companyAddress
     }
   ];
 
+  const handleCardClick = (method: typeof contactMethods[0]) => {
+    if (method.isAppointment) {
+      setShowAppointmentModal(true);
+    } else if (onCardClick) {
+      onCardClick(method.title.toLowerCase().replace(/\s+/g, '-'));
+    }
+  };
+
   return (
-    <div style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-      gap: SPACING.unit.lg,
-      width: '100%',
-      maxWidth: '900px',
-      margin: '0 auto',
-      alignItems: 'stretch'
-    }}>
-      {contactMethods.map((method, index) => (
-        <ContactCard
-          key={index}
-          icon={method.icon}
-          title={method.title}
-          description={method.description}
-          actionText={method.actionText}
-          actionLink={method.actionLink}
-          onClick={onCardClick}
-        />
-      ))}
-    </div>
+    <>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+        gap: '0.5rem',
+        width: '100%',
+        alignItems: 'stretch'
+      }}>
+        {contactMethods.map((method, index) => (
+          <ContactCard
+            key={index}
+            icon={method.icon}
+            title={method.title}
+            description={method.description}
+            actionText={method.actionText}
+            actionLink={method.actionLink}
+            onClick={() => handleCardClick(method)}
+            isAppointment={method.isAppointment}
+          />
+        ))}
+      </div>
+      <AppointmentModal
+        isOpen={showAppointmentModal}
+        onClose={() => setShowAppointmentModal(false)}
+      />
+    </>
   );
 }

@@ -13,6 +13,7 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
 }) => {
   const [formData, setFormData] = useState({
     firstName: '',
+    email: '',
     phone: '',
     preferredTime: '',
     reason: ''
@@ -76,13 +77,20 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formData.firstName || !formData.phone || !formData.preferredTime) {
+    if (!formData.firstName || !formData.email || !formData.phone || !formData.preferredTime) {
       alert('Please fill in all required fields');
       return;
     }
 
     setIsSubmitting(true);
     try {
+      // Format date in US format (MM/DD/YYYY)
+      const today = new Date();
+      const month = String(today.getMonth() + 1).padStart(2, '0');
+      const day = String(today.getDate()).padStart(2, '0');
+      const year = today.getFullYear();
+      const formattedDate = `${month}/${day}/${year}`;
+
       // Submit appointment request to our API
       const response = await fetch('/api/appointments', {
         method: 'POST',
@@ -90,10 +98,13 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          ...formData,
-          email: 'pending@smarterpayouts.com',
-          preferredDate: new Date().toISOString().split('T')[0], // Today's date
-          consultationType: 'General Consultation'
+          name: formData.firstName, // Map firstName to name for API
+          email: formData.email, // Use actual email from form
+          phone: formData.phone,
+          preferredDate: formattedDate, // Today's date in US format (MM/DD/YYYY)
+          preferredTime: formData.preferredTime,
+          consultationType: formData.reason || 'General Consultation', // Use reason or default
+          message: formData.reason ? `Reason: ${formData.reason}` : undefined
         }),
       });
 
@@ -101,11 +112,12 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
 
       if (response.ok && result.success) {
         // Success - show confirmation message
-        alert(`✅ Appointment Booked!\n\nHi ${formData.firstName}! We'll call you during your preferred time: ${formData.preferredTime}\n\n📞 ${formData.phone}\n\nA specialist will contact you within 24 hours to confirm.\n\nReference: ${result.appointmentId}`);
+        alert(`✅ Appointment Booked!\n\nHi ${formData.firstName}! We'll call you during your preferred time: ${formData.preferredTime}\n\n📞 ${formData.phone}\n📧 ${formData.email}\n\nA specialist will contact you within 24 hours to confirm.\n\nReference: ${result.appointmentId}`);
 
         // Reset form and close modal
         setFormData({
           firstName: '',
+          email: '',
           phone: '',
           preferredTime: '',
           reason: ''
@@ -151,6 +163,23 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
               onChange={handleInputChange}
               required
               placeholder="Enter your first name"
+              className={styles.input}
+            />
+          </div>
+
+          {/* Email */}
+          <div className={styles.formGroup}>
+            <label htmlFor="email" className={styles.label}>
+              Email *
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              required
+              placeholder="your.email@example.com"
               className={styles.input}
             />
           </div>

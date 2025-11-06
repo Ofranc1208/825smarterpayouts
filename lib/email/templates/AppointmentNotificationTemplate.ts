@@ -4,11 +4,12 @@
  */
 
 import { BaseEmailTemplate } from './base/BaseEmailTemplate';
-import { formatDate } from '../utils/formatters';
+import { formatDate, formatDateString } from '../utils/formatters';
 
 export interface AppointmentData {
   id: string;
   name: string;
+  email?: string;
   phone: string;
   preferredDate: string;
   preferredTime: string;
@@ -33,8 +34,9 @@ export class AppointmentNotificationTemplate extends BaseEmailTemplate {
         )}
         
         ${this.infoRow('👤 Name:', this.appointmentData.name)}
+        ${this.infoRow('📧 Email:', this.appointmentData.email || 'Not provided')}
         ${this.infoRow('📞 Phone:', this.appointmentData.phone)}
-        ${this.infoRow('📅 Preferred Date:', this.appointmentData.preferredDate)}
+        ${this.infoRow('📅 Preferred Date:', formatDateString(this.appointmentData.preferredDate))}
         ${this.infoRow('⏰ Preferred Time:', this.appointmentData.preferredTime)}
         ${this.infoRow('💬 Consultation Type:', this.appointmentData.consultationType)}
         
@@ -64,10 +66,11 @@ New Appointment Request
 
 Contact Information:
 - Name: ${this.appointmentData.name}
+- Email: ${this.appointmentData.email || 'Not provided'}
 - Phone: ${this.appointmentData.phone}
 
 Appointment Details:
-- Preferred Date: ${this.appointmentData.preferredDate}
+- Preferred Date: ${formatDateString(this.appointmentData.preferredDate)}
 - Preferred Time: ${this.appointmentData.preferredTime}
 - Consultation Type: ${this.appointmentData.consultationType}
 

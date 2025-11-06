@@ -40,6 +40,7 @@ class EmailServiceOrchestrator {
   async sendAppointmentNotification(appointmentData: {
     id: string;
     name: string;
+    email?: string;
     phone: string;
     preferredDate: string;
     preferredTime: string;
@@ -90,6 +91,7 @@ const emailService = new EmailServiceOrchestrator();
 export async function sendAppointmentNotification(appointmentData: {
   id: string;
   name: string;
+  email?: string;
   phone: string;
   preferredDate: string;
   preferredTime: string;

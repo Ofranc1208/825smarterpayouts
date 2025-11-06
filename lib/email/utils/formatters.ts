@@ -27,10 +27,34 @@ export function formatCurrency(
 }
 
 /**
- * Format date to locale string
+ * Format date to US format (MM/DD/YYYY)
  */
 export function formatDate(date: Date = new Date()): string {
-  return date.toLocaleString();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const year = date.getFullYear();
+  return `${month}/${day}/${year}`;
+}
+
+/**
+ * Format date string (YYYY-MM-DD) to US format (MM/DD/YYYY)
+ */
+export function formatDateString(dateString: string): string {
+  if (!dateString) return dateString;
+  
+  // Handle ISO format (YYYY-MM-DD)
+  if (dateString.includes('-')) {
+    const [year, month, day] = dateString.split('-');
+    return `${month}/${day}/${year}`;
+  }
+  
+  // If already in US format or other format, try to parse and reformat
+  const date = new Date(dateString);
+  if (!isNaN(date.getTime())) {
+    return formatDate(date);
+  }
+  
+  return dateString; // Return as-is if can't parse
 }
 
 /**

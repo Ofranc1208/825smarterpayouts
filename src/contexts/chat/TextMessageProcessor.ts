@@ -137,6 +137,24 @@ export class TextMessageProcessor {
           setIsTyping(false);
           setIsLoading(false);
           return;
+        } else if (partialText.includes('[PROCESS_STEPS_COMPONENT]')) {
+          // Replace the text message with a Process Steps component message
+          setVisibleMessages(prev => {
+            const filtered = prev.filter(m => m.id !== botMsgId);
+            return [
+              ...filtered,
+              { 
+                id: botMsgId, 
+                type: 'component', 
+                componentType: 'ProcessStepsCard',
+                componentData: {},
+                sender: 'bot' 
+              }
+            ];
+          });
+          setIsTyping(false);
+          setIsLoading(false);
+          return;
         }
 
         if (isFirstChunk) {
@@ -207,6 +225,20 @@ export class TextMessageProcessor {
                 id: botMsgId, 
                 type: 'component', 
                 componentType: 'QuoteButton',
+                componentData: {},
+                sender: 'bot' 
+              }
+            ];
+          });
+        } else if (completeText.includes('[PROCESS_STEPS_COMPONENT]')) {
+          setVisibleMessages(prev => {
+            const filtered = prev.filter(m => m.id !== botMsgId);
+            return [
+              ...filtered,
+              { 
+                id: botMsgId, 
+                type: 'component', 
+                componentType: 'ProcessStepsCard',
                 componentData: {},
                 sender: 'bot' 
               }
