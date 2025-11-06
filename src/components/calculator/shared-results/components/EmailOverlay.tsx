@@ -65,7 +65,7 @@ export const EmailOverlay: React.FC<EmailOverlayProps> = ({
         <div className={styles.emailOverlayHeader}>
           <h4 className={styles.emailOverlayTitle}>Enter Your Email</h4>
           <p className={styles.emailOverlaySubtitle}>
-            Enter your email address to unlock the offer and receive a free copy of the offer via email.
+            To get a free copy of your offer emailed to you with the offer code.
           </p>
         </div>
 
