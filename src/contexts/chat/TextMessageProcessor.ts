@@ -65,7 +65,25 @@ export class TextMessageProcessor {
       userMessage,
       onStream: (partialText: string) => {
         // Check if the response contains special component markers
-        if (partialText.includes('[CONTACT_COMPONENT]')) {
+        if (partialText.includes('[LOCATION_COMPONENT]')) {
+          // Replace the text message with a location component message
+          setVisibleMessages(prev => {
+            const filtered = prev.filter(m => m.id !== botMsgId);
+            return [
+              ...filtered,
+              { 
+                id: botMsgId, 
+                type: 'component', 
+                componentType: 'LocationCard',
+                componentData: {},
+                sender: 'bot' 
+              }
+            ];
+          });
+          setIsTyping(false);
+          setIsLoading(false);
+          return;
+        } else if (partialText.includes('[CONTACT_COMPONENT]')) {
           // Replace the text message with a contact component message
           setVisibleMessages(prev => {
             const filtered = prev.filter(m => m.id !== botMsgId);
@@ -174,7 +192,21 @@ export class TextMessageProcessor {
         finalText = completeText;
         
         // Final check for special component markers
-        if (completeText.includes('[CONTACT_COMPONENT]')) {
+        if (completeText.includes('[LOCATION_COMPONENT]')) {
+          setVisibleMessages(prev => {
+            const filtered = prev.filter(m => m.id !== botMsgId);
+            return [
+              ...filtered,
+              { 
+                id: botMsgId, 
+                type: 'component', 
+                componentType: 'LocationCard',
+                componentData: {},
+                sender: 'bot' 
+              }
+            ];
+          });
+        } else if (completeText.includes('[CONTACT_COMPONENT]')) {
           setVisibleMessages(prev => {
             const filtered = prev.filter(m => m.id !== botMsgId);
             return [

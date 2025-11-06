@@ -17,6 +17,8 @@ import { getTestimonialsContextHint } from '../../prompts/testimonialsIntegratio
 import { getProcessContextHint } from '../../prompts/processIntegration';
 import { getCompanyStatsContextHint } from '../../prompts/companyStatsIntegration';
 import { getCalculatorContextHint } from '../../prompts/calculatorIntegration';
+import { getStateLawsContextHint, detectStateInQuery, formatStateLawContent } from '../../prompts/stateLawsIntegration';
+import { getGlossaryContextHint } from '../../prompts/glossaryIntegration';
 
 // Safe vector manager import
 let vectorManager: any = null;
@@ -45,6 +47,8 @@ export interface ContextHints {
   process: string;
   companyStats: string;
   calculator: string;
+  stateLaws: string;
+  glossary: string;
 }
 
 /**
@@ -53,6 +57,18 @@ export interface ContextHints {
  */
 export async function retrieveVectorContext(userQuery: string): Promise<RetrievedContext> {
   try {
+    // Check for state-specific queries first (highest priority)
+    const detectedState = detectStateInQuery(userQuery);
+    if (detectedState) {
+      const stateContent = formatStateLawContent(detectedState);
+      if (stateContent) {
+        return { 
+          content: stateContent, 
+          source: `state_laws_${detectedState.toLowerCase().replace(/\s+/g, '_')}` 
+        };
+      }
+    }
+
     if (!isVectorAvailable || !vectorManager || !DEFAULT_FEATURE_FLAGS.enableVectorAI) {
       return { content: '', source: 'static' };
     }
@@ -92,7 +108,9 @@ export function generateContextHints(userQuery: string): ContextHints {
     testimonials: getTestimonialsContextHint(userQuery),
     process: getProcessContextHint(userQuery),
     companyStats: getCompanyStatsContextHint(userQuery),
-    calculator: getCalculatorContextHint(userQuery)
+    calculator: getCalculatorContextHint(userQuery),
+    stateLaws: getStateLawsContextHint(userQuery),
+    glossary: getGlossaryContextHint(userQuery)
   };
 }
 

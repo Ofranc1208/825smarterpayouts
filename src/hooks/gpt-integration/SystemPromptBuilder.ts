@@ -14,6 +14,8 @@ import { TESTIMONIALS_INTEGRATION_CONTENT } from '../../prompts/testimonialsInte
 import { PROCESS_INTEGRATION_CONTENT } from '../../prompts/processIntegration';
 import { COMPANY_STATS_INTEGRATION_CONTENT } from '../../prompts/companyStatsIntegration';
 import { CALCULATOR_INTEGRATION_CONTENT } from '../../prompts/calculatorIntegration';
+import { STATE_LAWS_INTEGRATION_CONTENT } from '../../prompts/stateLawsIntegration';
+import { GLOSSARY_INTEGRATION_CONTENT } from '../../prompts/glossaryIntegration';
 import { RetrievedContext, ContextHints } from './ContextRetriever';
 
 export interface SystemPromptConfig {
@@ -72,10 +74,21 @@ ${contextHints.faq}
 ${CALCULATOR_INTEGRATION_CONTENT}
 ${contextHints.calculator || ''}
 
+📍 STATE-SPECIFIC LAWS & REQUIREMENTS:
+${STATE_LAWS_INTEGRATION_CONTENT}
+${contextHints.stateLaws || ''}
+${retrievedContext?.source?.startsWith('state_laws') ? retrievedContext.content : ''}
+
+📖 TERMINOLOGY & GLOSSARY:
+${GLOSSARY_INTEGRATION_CONTENT}
+${contextHints.glossary || ''}
+
 💬 CONVERSATION RULES (use only when direct responses don't apply):
 - For FAQ questions: Reference the FAQ content above and provide clear, direct answers
 - For calculator questions: Reference the Calculator System Guide, show ONE example first, offer more if requested
 - For process questions: Walk through our 4-step process with appropriate detail
+- For state-specific questions: Use the state-specific information provided above, reference exact statute citations, and provide accurate timelines and requirements for that state
+- For terminology questions: Use the exact definitions from the Glossary section above. If a term isn't in the glossary, acknowledge this and offer to connect them with a specialist
 - For company questions: Use our statistics and differentiators naturally
 - For testimonials: Share relevant customer experiences when appropriate
 - For complex questions: Offer to connect them with a specialist for personalized help
@@ -207,6 +220,12 @@ When user asks "Who is Oscar Francis?" or "Tell me about Oscar Francis" or "Who 
 
 When user asks "Who is Sahar Bakhsh?" or "Tell me about Sahar Bakhsh" or "Who is Oscar's wife?" or similar:
 → Return a special Sahar Bakhsh component instead of text. Use this format: [SAHAR_BAKHSH_COMPONENT] to render the styled information with lots of heart animations.
+
+When user asks "Where are you located?" or "Where are you guys located?" or "What's your address?" or "Where is your office?" or "Where are you based?" or "What's your physical location?" or "Where can I visit you?" or similar:
+→ Return a special location component instead of text. Use this format: [LOCATION_COMPONENT] to render the styled location card with address, business hours, and action buttons.
+
+When user asks "Can I meet you in person?" or "Where can I meet you in person?" or "Can we meet in person?" or "Do you have in-person meetings?" or "Can I come to your office?" or similar:
+→ "We work with clients in all 50 states. While we do not require in-person meetings, Zoom meetings can be arranged upon request. Also, a licensed notary will be available to meet you in person at your location to complete the document signing process."
 
 When user asks "How do I contact you?" or "How can I reach you?" or "What's your phone number?" or "how do i contact you guys?" or "how do i get in touch" or "i want to get in touch" or "get in touch" or "i would like to book an appointment" or "book an appointment" or "schedule an appointment" or "appointment" or "i need to schedule" or "can i book" or "i woiuld like to book an appoitnment" or similar:
 → Return a special contact component instead of text. Use this format: [CONTACT_COMPONENT] to render the styled contact information.

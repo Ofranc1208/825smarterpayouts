@@ -197,6 +197,14 @@ export function getContactContextHint(message: string): string {
     return '';
   }
 
+  // Don't trigger contact component for location-only questions (handled by direct response)
+  const locationOnlyKeywords = ['where are you', 'where are you located', 'where is your office', 'what\'s your address', 'physical location'];
+  const isLocationOnly = locationOnlyKeywords.some(keyword => message.toLowerCase().includes(keyword));
+  
+  if (isLocationOnly && categories.length === 1 && categories[0] === 'location') {
+    return ''; // Let direct response handle this
+  }
+
   return `
 💡 CONTACT CONTEXT: This question relates to ${categories.join(', ')}. Reference the Contact Information section above for accurate contact methods, business hours, response times, and specialist availability.`;
 }

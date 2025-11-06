@@ -113,6 +113,29 @@ export const PROCESS_INTEGRATION_CONTENT = `
 - Affidavit of understanding
 - State-specific requirements
 
+**📄 Required Documents for Application:**
+- **Settlement Agreement:** Copy of your original structured settlement agreement that shows payment schedule and terms
+- **Annuity Policy:** Documentation from the insurance company showing your annuity details and payment structure
+- **Government-Issued ID:** Valid driver's license, passport, or state ID for identity verification
+- **Proof of Address:** Recent utility bill, bank statement, or lease agreement (within 90 days)
+- **Payment History:** Recent payment statements or bank records showing you've been receiving payments
+- **Court Documents:** Any relevant court orders or legal documents related to your settlement (if available)
+- **Financial Statements:** Optional but helpful - recent bank statements or financial documents showing current financial situation
+
+**📝 What We Handle:**
+- All court filing documents and petitions
+- Disclosure statements and required notices
+- Legal affidavits and sworn statements
+- State-specific compliance documents
+- Communication with court and insurance company
+- Document preparation and filing fees
+
+**⏱️ Document Collection Timeline:**
+- Initial document request: Sent within 24 hours of quote acceptance
+- Document submission: Typically 3-5 business days for you to gather and submit
+- Document review: 1-2 business days for our team to verify completeness
+- Court filing: Documents filed within 5-7 business days after approval
+
 #### Step 4: Receive Funds (2-5 business days)
 **🎯 What Happens:**
 - Court approval received and confirmed
