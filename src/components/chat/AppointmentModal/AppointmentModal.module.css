@@ -163,28 +163,106 @@
 @media (max-width: 640px) {
   .modalContent {
     margin: 0.5rem;
-    padding: 1rem;
+    padding: 0.875rem;
     border-radius: 10px;
     max-width: calc(100vw - 1rem);
+    max-height: 85vh;
   }
 
   .modalTitle {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    margin-bottom: 0.15rem;
   }
 
   .subtitle {
+    font-size: 0.65rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .appointmentForm {
+    gap: 0.5rem;
+  }
+
+  .formGroup {
+    gap: 0.2rem;
+  }
+
+  .label {
     font-size: 0.7rem;
+    margin-bottom: 0.1rem;
+  }
+
+  .input,
+  .select,
+  .dateInput,
+  .textarea {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+    min-height: 42px;
   }
 
   .formActions {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
   }
 
   .cancelButton,
   .submitButton {
     width: 100%;
-    padding: 0.625rem 1rem;
+    padding: 0.5rem 0.875rem;
+    font-size: 0.75rem;
+    min-height: 42px;
+  }
+}
+
+/* Additional optimization for iPhone 16 Pro and similar devices */
+@media (max-width: 430px) {
+  .modalContent {
+    padding: 0.75rem;
+    max-height: 82vh;
+  }
+
+  .modalTitle {
+    font-size: 0.9rem;
+    margin-bottom: 0.1rem;
+  }
+
+  .subtitle {
+    font-size: 0.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .appointmentForm {
+    gap: 0.4rem;
+  }
+
+  .formGroup {
+    gap: 0.15rem;
+  }
+
+  .label {
+    font-size: 0.65rem;
+  }
+
+  .input,
+  .select,
+  .dateInput,
+  .textarea {
+    padding: 0.45rem;
+    font-size: 0.75rem;
+    min-height: 40px;
+  }
+
+  .formActions {
+    margin-top: 0.4rem;
+  }
+
+  .cancelButton,
+  .submitButton {
+    padding: 0.45rem 0.75rem;
+    font-size: 0.7rem;
+    min-height: 40px;
   }
 }
 
