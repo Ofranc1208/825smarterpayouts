@@ -41,7 +41,7 @@ export const PROCESS_INTEGRATION_CONTENT = `
 - Based on current market rates and industry standards
 - Includes all fees and costs upfront
 - No hidden charges or surprise deductions
-- Valid for 30 days with no obligation
+- Valid for 10 days with no obligation
 
 **🛡️ Privacy Protection:**
 - No social security number required

@@ -57,7 +57,7 @@ export default function QuoteButton() {
           </div>
           <div className={styles.optionContent}>
             <div className={styles.optionTitle}>Speak with Specialist</div>
-            <div className={styles.optionDescription}>Call +1 (561) 583-1280 for personalized help</div>
+            <div className={styles.optionDescription}>Call (561) 583-1280 for personalized help</div>
           </div>
           <div className={styles.optionArrow}>→</div>
         </button>

@@ -101,6 +101,24 @@ export class TextMessageProcessor {
           setIsTyping(false);
           setIsLoading(false);
           return;
+        } else if (partialText.includes('[CALL_NOW_COMPONENT]')) {
+          // Replace the text message with a call now component message
+          setVisibleMessages(prev => {
+            const filtered = prev.filter(m => m.id !== botMsgId);
+            return [
+              ...filtered,
+              { 
+                id: botMsgId, 
+                type: 'component', 
+                componentType: 'CallNowCard',
+                componentData: {},
+                sender: 'bot' 
+              }
+            ];
+          });
+          setIsTyping(false);
+          setIsLoading(false);
+          return;
         } else if (partialText.includes('[OSCAR_FRANCIS_COMPONENT]')) {
           // Replace the text message with an Oscar Francis component message
           setVisibleMessages(prev => {
@@ -215,6 +233,20 @@ export class TextMessageProcessor {
                 id: botMsgId, 
                 type: 'component', 
                 componentType: 'ContactInfo',
+                componentData: {},
+                sender: 'bot' 
+              }
+            ];
+          });
+        } else if (completeText.includes('[CALL_NOW_COMPONENT]')) {
+          setVisibleMessages(prev => {
+            const filtered = prev.filter(m => m.id !== botMsgId);
+            return [
+              ...filtered,
+              { 
+                id: botMsgId, 
+                type: 'component', 
+                componentType: 'CallNowCard',
                 componentData: {},
                 sender: 'bot' 
               }

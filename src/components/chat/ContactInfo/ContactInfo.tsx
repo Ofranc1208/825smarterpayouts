@@ -25,14 +25,14 @@ export default function ContactInfo() {
       title: 'Text Us',
       description: 'SMS available 24/7',
       action: 'sms:+15615831280',
-      actionText: '+1 (561) 583-1280'
+      actionText: '(561) 583-1280'
     },
     {
       icon: '📞',
       title: 'Call Us',
       description: 'Monday-Friday, 9AM-6PM EST',
       action: 'tel:+15615831280',
-      actionText: '+1 (561) 583-1280'
+      actionText: '(561) 583-1280'
     },
     {
       icon: '✉️',

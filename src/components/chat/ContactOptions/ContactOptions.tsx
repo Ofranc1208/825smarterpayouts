@@ -48,7 +48,7 @@ const ContactOptions: React.FC<ContactOptionsProps> = ({ onContactClick }) => {
             <div className={styles.contactContent}>
               <div className={styles.contactTitle}>Text Us</div>
               <div className={styles.contactDescription}>SMS available 24/7</div>
-              <div className={styles.contactAction}>+1 (561) 583-1280</div>
+              <div className={styles.contactAction}>(561) 583-1280</div>
             </div>
           </button>
 
@@ -63,7 +63,7 @@ const ContactOptions: React.FC<ContactOptionsProps> = ({ onContactClick }) => {
             <div className={styles.contactContent}>
               <div className={styles.contactTitle}>Call Us</div>
               <div className={styles.contactDescription}>Monday-Friday, 9AM-6PM EST</div>
-              <div className={styles.contactAction}>+1 (561) 583-1280</div>
+              <div className={styles.contactAction}>(561) 583-1280</div>
             </div>
           </button>
 

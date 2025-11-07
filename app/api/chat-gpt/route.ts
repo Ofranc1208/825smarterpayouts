@@ -77,7 +77,7 @@ async function handleRegularResponse(messages: any[]) {
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o-mini', // Use gpt-4o-mini for cost efficiency
       messages,
-      max_tokens: 1000,
+      max_tokens: 200, // Limited to ~75 words (approximately 1.3-2 tokens per word)
       temperature: 0.7,
     });
 
@@ -101,7 +101,7 @@ async function handleStreamingResponse(messages: any[]) {
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages,
-      max_tokens: 1000,
+      max_tokens: 200, // Limited to ~75 words (approximately 1.3-2 tokens per word)
       temperature: 0.7,
       stream: true,
     });

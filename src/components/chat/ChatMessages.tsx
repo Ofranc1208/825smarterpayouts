@@ -14,6 +14,7 @@ import SaharBakhshCard from './SaharBakhshCard';
 import QuoteButton from './QuoteButton';
 import ProcessStepsCard from './ProcessStepsCard/ProcessStepsCard';
 import LocationCard from './LocationCard/LocationCard';
+import CallNowCard from './CallNowCard';
 import styles from './ChatBubble.module.css';
 // import { parseAIResponse } from '../../utils/parsing'; // No longer needed for text messages
 
@@ -88,6 +89,8 @@ const ChatMessages = () => {
         return <ProcessStepsCard {...componentData} />;
       case 'LocationCard':
         return <LocationCard {...componentData} />;
+      case 'CallNowCard':
+        return <CallNowCard {...componentData} />;
       // Add more component types here as needed
       default:
         console.warn(`Unknown component type: ${componentType}`);

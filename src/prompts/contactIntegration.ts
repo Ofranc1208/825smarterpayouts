@@ -20,8 +20,8 @@ export const CONTACT_INTEGRATION_CONTENT = `
 ### Multiple Ways to Reach Us
 
 **Primary Phone Number:**
-- **Phone:** +1 (561) 583-1280
-- **SMS/Text:** +1 (561) 583-1280 (same number)
+- **Phone:** (561) 583-1280
+- **SMS/Text:** (561) 583-1280 (same number)
 - **Available:** Monday-Friday, 9:00 AM - 6:00 PM EST
 - **Response Time:** Immediate during business hours
 - **Best For:** Urgent questions, complex situations, personalized guidance
@@ -32,16 +32,10 @@ export const CONTACT_INTEGRATION_CONTENT = `
 - **Available:** 24/7 for sending messages
 - **Best For:** Document sharing, detailed questions, non-urgent matters
 
-**Live Chat (Mint AI):**
-- **Access:** Available 24/7 through our website chat widget
-- **Response Time:** Instant responses
-- **Best For:** Quick questions, quotes, general information
-- **Features:** AI-powered with specialist escalation when needed
-
 **Physical Location:**
 - **Address:** 15257 Amberly Dr Ste 233, Tampa, FL 33647
 - **Business Hours:** Monday-Friday, 9:00 AM - 6:00 PM EST
-- **Phone:** +1 (561) 583-1280
+- **Phone:** (561) 583-1280
 - **Best For:** In-person consultations (by appointment only)
 
 ### Response Time Guarantees
@@ -55,11 +49,6 @@ export const CONTACT_INTEGRATION_CONTENT = `
 - Initial response within 24 hours (business days)
 - Average response time: 2-4 hours during business days
 - Complex inquiries: 24-48 hours with detailed response
-
-**Live Chat:**
-- Instant AI responses 24/7
-- Human specialist available during business hours
-- After-hours: AI handles or schedules specialist follow-up
 
 **Emergency Contact:**
 - For time-sensitive matters, call and press 1 for priority handling
@@ -96,7 +85,7 @@ export const CONTACT_INTEGRATION_CONTENT = `
 **After-Hours Support:**
 - **Urgent Matters:** Leave voicemail with "URGENT" for priority callback
 - **Emergency Line:** Available for court deadlines and time-sensitive matters
-- **AI Chat:** Available 24/7 for general questions and information
+- **Questions:** You can ask questions here anytime, and we'll respond during business hours
 
 **Holiday Schedule:**
 - New Year's Day, Memorial Day, July 4th, Labor Day
@@ -107,7 +96,7 @@ export const CONTACT_INTEGRATION_CONTENT = `
 
 **For Fastest Response:**
 1. **Phone Call:** Best for urgent matters and complex questions
-2. **Live Chat:** Best for quick questions and instant quotes
+2. **Book Appointment:** Best for consultations and personalized guidance
 3. **Email:** Best for detailed questions and document sharing
 
 **What to Include in Your Message:**
@@ -140,14 +129,14 @@ export const CONTACT_INTEGRATION_CONTENT = `
 ### Contact Information Summary
 
 **Quick Reference:**
-- **Call/Text:** +1 (561) 583-1280
+- **Call/Text:** (561) 583-1280
 - **Email:** info@smarterpayouts.com
-- **Live Chat:** 24/7 on website
+- **Book Appointment:** Schedule a free consultation
 - **Business Hours:** Mon-Fri 9AM-6PM EST
 - **Response Guarantee:** 24 hours max (typically much faster)
 
 **Emergency Contact:**
-- Call +1 (561) 583-1280 and press 1 for urgent matters
+- Call (561) 583-1280 and press 1 for urgent matters
 - Leave detailed message for immediate callback
 - Available for court deadlines and time-sensitive situations
 `;

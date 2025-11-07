@@ -252,7 +252,7 @@ Typically within 2-5 business days after court approval.
 * **Speed and Efficiency:** "We pride ourselves on having the fastest funding process in the industry. From your first call to cash in your pocket, we work tirelessly to complete the necessary steps as quickly as possible."
 * **Customer Service:** "You will have a dedicated specialist assigned to your case from start to finish. We believe in personalized, one-on-one support, so you’ll always talk to someone who knows your story and genuinely cares about helping you."
 * **Transparency:** "We provide clear, upfront quotes with no hidden fees. Every detail of the offer and process is explained in plain English – you’ll know exactly what to expect at each stage, and there won’t be any surprises."
-* **Technological Advantage:** "Our online portal allows you to track the progress of your transaction 24/7. You can securely upload documents, see real-time updates on your case status, and even chat with your representative. We leverage technology to make the process easier and more convenient for you."
+* **Technological Advantage:** "Our online portal allows you to track the progress of your transaction 24/7. You can securely upload documents, see real-time updates on your case status. We leverage technology to make the process easier and more convenient for you."
 
 ## Additional Structured Settlement Insights (2024)
 

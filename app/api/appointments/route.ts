@@ -12,7 +12,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { adminDb } from '../../../lib/firebase-admin';
 import admin from '../../../lib/firebase-admin';
-import { sendAppointmentNotification } from '../../../lib/email-service';
+import { sendAppointmentNotification, sendCustomerAppointmentConfirmation } from '../../../lib/email-service';
 
 interface AppointmentRequest {
   name: string;
@@ -58,7 +58,7 @@ export async function POST(request: NextRequest) {
     console.log('Date:', body.preferredDate);
     console.log('Type:', body.consultationType);
 
-    // Send email notification
+    // Send admin email notification
     const emailResult = await sendAppointmentNotification({
       id: appointmentId,
       name: body.name,
@@ -72,9 +72,33 @@ export async function POST(request: NextRequest) {
     });
 
     if (emailResult.success) {
-      console.log('✅ Email notification sent successfully');
+      console.log('✅ Admin email notification sent successfully');
     } else {
-      console.warn('⚠️ Email notification failed:', emailResult.reason || emailResult.error);
+      console.warn('⚠️ Admin email notification failed:', emailResult.reason || emailResult.error);
+    }
+
+    // Send customer confirmation email (only if email provided)
+    let customerEmailResult = null;
+    if (body.email) {
+      console.log('📧 [Appointment API] Sending customer confirmation email...');
+      customerEmailResult = await sendCustomerAppointmentConfirmation({
+        name: body.name,
+        email: body.email,
+        phone: body.phone,
+        preferredDate: body.preferredDate,
+        preferredTime: body.preferredTime || 'Any time',
+        consultationType: body.consultationType,
+        message: body.message,
+        appointmentId: appointmentId,
+      });
+
+      if (customerEmailResult.success) {
+        console.log('✅ Customer confirmation email sent successfully');
+      } else {
+        console.warn('⚠️ Customer confirmation email failed:', customerEmailResult.reason || customerEmailResult.error);
+      }
+    } else {
+      console.log('📧 [Appointment API] Skipping customer email (no email provided)');
     }
 
     // Return success response
@@ -84,7 +108,8 @@ export async function POST(request: NextRequest) {
       appointmentId: appointmentId,
       estimatedResponse: 'within 24 hours',
       nextSteps: 'We\'ll contact you within 24 hours to confirm your appointment details.',
-      emailSent: emailResult.success
+      emailSent: emailResult.success,
+      customerEmailSent: customerEmailResult?.success || false
     });
 
   } catch (error) {

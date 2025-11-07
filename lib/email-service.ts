@@ -25,6 +25,10 @@ export type {
   CustomerOfferData,
 } from './email/templates/CustomerOfferConfirmationTemplate';
 
+export type {
+  CustomerAppointmentData,
+} from './email/templates/CustomerAppointmentConfirmationTemplate';
+
 /**
  * Email Service Orchestrator
  * Coordinates all email operations
@@ -82,6 +86,22 @@ class EmailServiceOrchestrator {
   }) {
     return this.customerManager.sendCustomerOfferConfirmation(customerData);
   }
+
+  /**
+   * Send customer appointment confirmation email
+   */
+  async sendCustomerAppointmentConfirmation(appointmentData: {
+    name: string;
+    email: string;
+    phone?: string;
+    preferredDate: string;
+    preferredTime: string;
+    consultationType: string;
+    message?: string;
+    appointmentId: string;
+  }) {
+    return this.appointmentManager.sendCustomerAppointmentConfirmation(appointmentData);
+  }
 }
 
 // Create singleton instance
@@ -126,4 +146,17 @@ export async function sendCustomerOfferConfirmation(customerData: {
   familyProtectionValue?: number;
 }) {
   return emailService.sendCustomerOfferConfirmation(customerData);
+}
+
+export async function sendCustomerAppointmentConfirmation(appointmentData: {
+  name: string;
+  email: string;
+  phone?: string;
+  preferredDate: string;
+  preferredTime: string;
+  consultationType: string;
+  message?: string;
+  appointmentId: string;
+}) {
+  return emailService.sendCustomerAppointmentConfirmation(appointmentData);
 }
