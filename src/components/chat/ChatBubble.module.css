@@ -15,7 +15,7 @@
   padding: 14px 16px;
   margin-bottom: 0;
   font-size: 0.98rem;
-  line-height: 1.5;
+  line-height: 1.65; /* Increased from 1.5 for better readability and spacing */
   border-radius: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   text-align: left;

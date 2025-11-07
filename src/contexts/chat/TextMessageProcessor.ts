@@ -119,6 +119,24 @@ export class TextMessageProcessor {
           setIsTyping(false);
           setIsLoading(false);
           return;
+        } else if (partialText.includes('[BOOK_APPOINTMENT_COMPONENT]')) {
+          // Replace the text message with a book appointment component message
+          setVisibleMessages(prev => {
+            const filtered = prev.filter(m => m.id !== botMsgId);
+            return [
+              ...filtered,
+              { 
+                id: botMsgId, 
+                type: 'component', 
+                componentType: 'BookAppointmentCard',
+                componentData: {},
+                sender: 'bot' 
+              }
+            ];
+          });
+          setIsTyping(false);
+          setIsLoading(false);
+          return;
         } else if (partialText.includes('[OSCAR_FRANCIS_COMPONENT]')) {
           // Replace the text message with an Oscar Francis component message
           setVisibleMessages(prev => {
@@ -247,6 +265,20 @@ export class TextMessageProcessor {
                 id: botMsgId, 
                 type: 'component', 
                 componentType: 'CallNowCard',
+                componentData: {},
+                sender: 'bot' 
+              }
+            ];
+          });
+        } else if (completeText.includes('[BOOK_APPOINTMENT_COMPONENT]')) {
+          setVisibleMessages(prev => {
+            const filtered = prev.filter(m => m.id !== botMsgId);
+            return [
+              ...filtered,
+              { 
+                id: botMsgId, 
+                type: 'component', 
+                componentType: 'BookAppointmentCard',
                 componentData: {},
                 sender: 'bot' 
               }

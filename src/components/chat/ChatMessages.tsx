@@ -15,6 +15,7 @@ import QuoteButton from './QuoteButton';
 import ProcessStepsCard from './ProcessStepsCard/ProcessStepsCard';
 import LocationCard from './LocationCard/LocationCard';
 import CallNowCard from './CallNowCard';
+import BookAppointmentCard from './BookAppointmentCard';
 import styles from './ChatBubble.module.css';
 // import { parseAIResponse } from '../../utils/parsing'; // No longer needed for text messages
 
@@ -91,6 +92,8 @@ const ChatMessages = () => {
         return <LocationCard {...componentData} />;
       case 'CallNowCard':
         return <CallNowCard {...componentData} />;
+      case 'BookAppointmentCard':
+        return <BookAppointmentCard {...componentData} />;
       // Add more component types here as needed
       default:
         console.warn(`Unknown component type: ${componentType}`);

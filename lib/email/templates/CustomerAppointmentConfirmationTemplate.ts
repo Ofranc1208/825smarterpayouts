@@ -61,7 +61,7 @@ export class CustomerAppointmentConfirmationTemplate extends BaseEmailTemplate {
       <!-- Greeting -->
       <div style="font-size: 15px; color: #4b5563; margin-bottom: 35px; line-height: 1.7;">
         <p style="margin-bottom: 8px; color: #1f2937; font-size: 17px; font-weight: 600;">Dear ${this.appointmentData.name},</p>
-        <p style="margin: 0;">Thank you for scheduling a consultation with SmarterPayouts! We've received your appointment request and will contact you within 24 hours to confirm the details.</p>
+        <p style="margin: 0;">Thank you for scheduling a consultation with SmarterPayouts! We've received your appointment request and look forward to speaking with you.</p>
       </div>
 
       <!-- Confirmation Section -->
@@ -96,18 +96,12 @@ export class CustomerAppointmentConfirmationTemplate extends BaseEmailTemplate {
           <p style="font-size: 14px; color: #78350f; margin: 0; line-height: 1.6;">${this.appointmentData.message}</p>
         </div>
         ` : ''}
-
-        <!-- Reference Number -->
-        <div style="text-align: center; padding: 0.875rem 1rem; background: #f0fdf4; border-radius: 6px; border: 1px solid #22c55e;">
-          <p style="font-size: 0.75rem; color: #15803d; font-weight: 600; margin: 0 0 0.5rem 0; letter-spacing: 0.05em; text-transform: uppercase;">Reference Number</p>
-          <p style="font-size: 1rem; font-weight: 700; color: #15803d; margin: 0; font-family: monospace;">${this.appointmentData.appointmentId}</p>
-        </div>
       </div>
 
       <!-- Next Steps -->
       <div style="background: #eff6ff; border: 1px solid #3b82f6; border-radius: 10px; padding: 22px; margin: 30px 0; text-align: center;">
         <p style="font-size: 15px; color: #1e40af; margin: 0; font-weight: 600; line-height: 1.5;">
-          ⏱️ We'll contact you within 24 hours to confirm your appointment details and answer any questions you may have.
+          Our team will contact you within 24 hours to confirm your appointment details and answer any questions you may have.
         </p>
       </div>
 
@@ -117,7 +111,7 @@ export class CustomerAppointmentConfirmationTemplate extends BaseEmailTemplate {
         
         <div style="margin-bottom: 16px;">
           <p style="font-size: 14px; color: #4b5563; margin: 0 0 8px 0; font-weight: 500;">Call our office at:</p>
-          <div style="font-size: 28px; font-weight: 700; color: #22c55e; margin-bottom: 12px; letter-spacing: -0.5px;">
+          <div style="font-size: 22px; font-weight: 700; color: #22c55e; margin-bottom: 12px; letter-spacing: -0.5px;">
             <a href="tel:+15615831280" style="color: #22c55e; text-decoration: none;">561-583-1280</a>
           </div>
           <p style="font-size: 13px; color: #6b7280; margin: 0;">Monday - Friday, 9:00 AM - 6:00 PM EST</p>
@@ -164,7 +158,7 @@ Appointment Request Confirmed - SmarterPayouts
 
 Dear ${this.appointmentData.name},
 
-Thank you for scheduling a consultation with SmarterPayouts! We've received your appointment request and will contact you within 24 hours to confirm the details.
+Thank you for scheduling a consultation with SmarterPayouts! We've received your appointment request and look forward to speaking with you.
 
 APPOINTMENT DETAILS
 
@@ -173,9 +167,7 @@ Preferred Time: ${this.appointmentData.preferredTime}
 Consultation Type: ${this.appointmentData.consultationType}
 
 ${this.appointmentData.message ? `Your Message: ${this.appointmentData.message}\n` : ''}
-Reference Number: ${this.appointmentData.appointmentId}
-
-⏱️ We'll contact you within 24 hours to confirm your appointment details and answer any questions you may have.
+Our team will contact you within 24 hours to confirm your appointment details and answer any questions you may have.
 
 Need to Reach Us?
 
