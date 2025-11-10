@@ -36,12 +36,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'daily',
       priority: 0.9,
     },
-    {
-      url: `${baseUrl}/mint-chat-active`,
-      lastModified: currentDate,
-      changeFrequency: 'daily',
-      priority: 0.9,
-    },
 
     // ============================================================================
     // PRIORITY 0.85 - Process Flow Pages (Conversion Funnel)
@@ -264,12 +258,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // ============================================================================
     // PRIORITY 0.6 - Secondary Pages
     // ============================================================================
-    {
-      url: `${baseUrl}/mint-intelligent-chat`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
     {
       url: `${baseUrl}/connect-with-specialist`,
       lastModified: currentDate,

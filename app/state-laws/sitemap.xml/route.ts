@@ -1,29 +1,16 @@
-// State Laws Sitemap XML Route
-// Generates XML sitemap for all state law pages
-// This fixes the missing sitemap.xml route that Google Search Console is looking for
+// DEPRECATED: This route is redundant - all sitemap data is now in app/sitemap.ts
+// The main sitemap at /sitemap.xml already includes all state law pages
+// This route is kept for backward compatibility but returns 404 to avoid duplicate sitemaps
 
 import { NextResponse } from 'next/server';
-import sitemap from '../../sitemap';
-import type { MetadataRoute } from 'next';
 
 export async function GET() {
-  const sitemapEntries: MetadataRoute.Sitemap = sitemap();
-
-  // Generate XML sitemap
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${sitemapEntries.map((entry: MetadataRoute.Sitemap[number]) => `  <url>
-    <loc>${entry.url}</loc>
-    <lastmod>${entry.lastModified instanceof Date ? entry.lastModified.toISOString() : entry.lastModified ? new Date(entry.lastModified).toISOString() : new Date().toISOString()}</lastmod>
-    <changefreq>${entry.changeFrequency}</changefreq>
-    <priority>${entry.priority}</priority>
-  </url>`).join('\n')}
-</urlset>`;
-
-  return new NextResponse(xml, {
+  // Return 404 - this route is deprecated
+  // All sitemap data is available at /sitemap.xml
+  return new NextResponse('Not Found - Use /sitemap.xml instead', { 
+    status: 404,
     headers: {
-      'Content-Type': 'application/xml',
-      'Cache-Control': 'public, max-age=86400', // Cache for 24 hours
+      'Content-Type': 'text/plain',
     },
   });
 }
