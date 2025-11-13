@@ -10,6 +10,7 @@ import { buildBreadcrumbJsonLd, buildWebPageSchema, buildCountyJsonLd } from '@/
 import CTASection, { CountyPageCTA } from '@/src/state-laws/components/CTASection';
 import LegalDisclaimer, { CountyPageDisclaimer } from '@/src/state-laws/components/LegalDisclaimer';
 import Breadcrumbs, { CountyPageBreadcrumbs } from '@/src/state-laws/components/Breadcrumbs';
+import { generateCountyLawMetadata } from '@/lib/seo/metadata';
 import '../../../../src/state-laws/components/shared-styles.css';
 
 const LazyFABSpeedDial = dynamic(() => import('../../../components/FABSpeedDial'), { ssr: false });
@@ -23,8 +24,9 @@ export function generateMetadata({ params }: Props): Metadata {
 
   if (!stateData) {
     return {
-      title: 'State Not Found | SmarterPayouts',
-      description: 'The requested state could not be found in our structured settlement laws database.'
+      title: 'State Not Found | Smarter Payouts',
+      description: 'The requested state could not be found in our structured settlement laws database.',
+      robots: 'noindex, nofollow',
     };
   }
 
@@ -33,40 +35,21 @@ export function generateMetadata({ params }: Props): Metadata {
 
   if (!countyData) {
     return {
-      title: 'County Not Found | SmarterPayouts',
-      description: 'The requested county information could not be found.'
+      title: 'County Not Found | Smarter Payouts',
+      description: 'The requested county information could not be found.',
+      robots: 'noindex, nofollow',
     };
   }
 
   const description = `Structured settlement transfer requirements in ${countyData.court.name}, ${stateName}. Court procedures, filing requirements, and local rules for ${countyData.court.name}.`;
 
-  return {
-    title: `Structured Settlement Laws in ${stateName} - ${countyData.court.name} | SmarterPayouts`,
-    description,
-    robots: 'index, follow',
-    keywords: [
-      `${stateName} structured settlement laws`,
-      `${countyData.court.name}`,
-      `${stateName} court procedures`,
-      'structured settlement transfers',
-      'county court requirements'
-    ],
-    alternates: {
-      canonical: `https://smarterpayouts.com/state-laws/${stateInfo.slug}/${countyData.slug}`
-    },
-    openGraph: {
-      title: `Structured Settlement Laws in ${stateName} - ${countyData.court.name}`,
-      description,
-      url: `/state-laws/${stateInfo.slug}/${countyData.slug}`,
-      type: 'article',
-      siteName: 'SmarterPayouts'
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: `Structured Settlement Laws in ${stateName} - County Court`,
-      description
-    }
-  };
+  return generateCountyLawMetadata(
+    countyData.court.name,
+    stateName,
+    stateInfo.slug,
+    countyData.slug,
+    description
+  );
 }
 
 export default function CountyLawPage({ params }: Props) {

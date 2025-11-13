@@ -13,24 +13,16 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import GoogleRatingPage from '@/src/components/Pages/GoogleRating';
+import { generateMetadata } from '@/lib/seo/metadata';
 
 const LazyFABSpeedDial = dynamic(() => import('../components/FABSpeedDial'), { ssr: false });
 
-export const metadata: Metadata = {
-  title: 'SmarterPayouts Google 4.9 Rating | Transparency and Trust',
-  description: 'Learn how SmarterPayouts earned Google\'s 4.9★ Free · Finance recognition and what it means for users seeking structured settlement transparency.',
-  keywords: 'Google rating, SmarterPayouts rating, free finance calculator, structured settlement calculator, Google badge, 4.9 star rating, transparency',
-  alternates: {
-    canonical: 'https://smarterpayouts.com/google-rating',
-  },
-  robots: 'index, follow',
-  openGraph: {
-    title: 'SmarterPayouts Google 4.9 Rating | Transparency and Trust',
-    description: 'Learn how SmarterPayouts earned Google\'s 4.9★ Free · Finance recognition and what it means for users seeking structured settlement transparency.',
-    url: 'https://smarterpayouts.com/google-rating',
-    type: 'website',
-  },
-};
+export const metadata: Metadata = generateMetadata({
+  title: 'Google 4.9 Rating | Transparency and Trust',
+  description: 'Learn how Smarter Payouts earned Google\'s 4.9★ Free · Finance recognition and what it means for users seeking structured settlement transparency.',
+  path: '/google-rating',
+  ogType: 'website',
+});
 
 export default function GoogleRating() {
   return (

@@ -13,20 +13,15 @@ export function buildStateJsonLd(name: string, data: StateLaw) {
       "name": name,
       "addressCountry": "US"
     },
-    "url": `https://www.smarterpayouts.com/state-laws/${data.slug}`,
+    "url": `https://smarterpayouts.com/state-laws/${data.slug}`,
     "description": `Court approval requirements, ${data.statuteCitation}, and key provisions for structured settlement transfers in ${name}.`,
     "provider": {
       "@type": "Organization",
-      "name": "SmarterPayouts",
-      "url": "https://www.smarterpayouts.com",
+      "name": "Smarter Payouts",
+      "url": "https://smarterpayouts.com",
       "description": "Professional structured settlement purchasing services"
     },
     "serviceType": "Structured Settlement Transfer Services",
-    "areaServed": {
-      "@type": "State",
-      "name": name,
-      "addressCountry": "US"
-    },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Structured Settlement Services",
@@ -68,12 +63,12 @@ export function buildCountyJsonLd(
         "addressCountry": "US"
       }
     },
-    "url": `https://www.smarterpayouts.com/state-laws/${stateSlug}/${countyData.slug}`,
+    "url": `https://smarterpayouts.com/state-laws/${stateSlug}/${countyData.slug}`,
     "description": `Court procedures, filing requirements, and local rules for structured settlement transfers in ${countyData.court.name}, ${stateName}.`,
     "provider": {
       "@type": "Organization",
-      "name": "SmarterPayouts",
-      "url": "https://www.smarterpayouts.com"
+      "name": "Smarter Payouts",
+      "url": "https://smarterpayouts.com"
     },
     "serviceType": "Structured Settlement Transfer Legal Services",
     "address": countyData.court.address ? {
@@ -114,11 +109,11 @@ export function buildStateLawsIndexJsonLd() {
     "@type": "CollectionPage",
     "name": "Structured Settlement Laws by State",
     "description": "Comprehensive guide to structured settlement transfer laws in all 50 US states plus Washington DC. Court approval requirements, statutes, and legal resources.",
-    "url": "https://www.smarterpayouts.com/state-laws",
+    "url": "https://smarterpayouts.com/state-laws",
     "provider": {
       "@type": "Organization",
-      "name": "SmarterPayouts",
-      "url": "https://www.smarterpayouts.com"
+      "name": "Smarter Payouts",
+      "url": "https://smarterpayouts.com"
     },
     "mainEntity": {
       "@type": "ItemList",
@@ -139,7 +134,7 @@ export function buildBreadcrumbJsonLd(items: Array<{ name: string; url: string }
     "@type": "ListItem",
     "position": index + 1,
     "name": item.name,
-    "item": `https://www.smarterpayouts.com${item.url}`
+    "item": `https://smarterpayouts.com${item.url}`
   }));
 
   return {
@@ -176,11 +171,11 @@ export function buildWebPageSchema(
     "@type": "WebPage",
     "name": name,
     "description": description,
-    "url": `https://www.smarterpayouts.com${url}`,
+    "url": `https://smarterpayouts.com${url}`,
     "publisher": {
       "@type": "Organization",
-      "name": "SmarterPayouts",
-      "url": "https://www.smarterpayouts.com"
+      "name": "Smarter Payouts",
+      "url": "https://smarterpayouts.com"
     },
     "mainEntity": {
       "@type": "LegalService",
@@ -201,9 +196,9 @@ export function buildOrganizationSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "SmarterPayouts",
-    "url": "https://www.smarterpayouts.com",
-    "logo": "https://www.smarterpayouts.com/logo.png",
+    "name": "Smarter Payouts",
+    "url": "https://smarterpayouts.com",
+    "logo": "https://smarterpayouts.com/logo.png",
     "description": "Professional structured settlement purchasing company providing court-approved transfer services across all US states.",
     "foundingDate": "2010",
     "areaServed": {

@@ -157,6 +157,18 @@ export const STATE_LAWS_INTEGRATION_CONTENT = `
 - Processing times vary by state (typically 30-90 days)
 - Requirements include disclosure statements, notice periods, and independent professional advice in many states
 
+**⚠️ CRITICAL: When users ask "What are the legal requirements?" WITHOUT mentioning a specific state:**
+1. FIRST explain that legal requirements vary by state
+2. Provide 2-3 universal requirements that apply to ALL states:
+   - Court approval is required in every state
+   - Disclosure statements explaining all terms and fees
+   - Notice to all interested parties (insurance company, annuity issuer)
+3. THEN offer to provide state-specific examples
+4. Use diverse state examples (NOT just Alabama) such as:
+   - "For example, in **Texas** [explain], in **California** [explain], or in **New York** [explain]"
+   - Rotate through different states (Texas, California, Florida, New York) to provide variety
+5. Ask which state the user is in to provide specific information
+
 **When answering state-specific questions:**
 - Reference the exact statute citation for that state
 - Mention specific requirements (notice periods, independent counsel, etc.)

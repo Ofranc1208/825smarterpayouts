@@ -168,7 +168,6 @@ export default function FAQSection({ onFAQClick }: FAQSectionProps) {
                   style={{
                     maxHeight: isOpen ? "1000px" : "0",
                     overflow: "hidden",
-                    transition: "max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease",
                     padding: isOpen ? `${SPACING.unit.md} ${SPACING.unit.lg} ${SPACING.unit.lg}` : "0",
                     background: COLORS.backgrounds.lightGray,
                     borderTop: isOpen ? `1px solid ${COLORS.neutral.gray200}` : "none",

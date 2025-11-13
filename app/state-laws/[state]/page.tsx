@@ -9,6 +9,7 @@ import { getStateBySlug, getNeighboringStates, statesList, allStates } from '@/s
 import { buildStateJsonLd, buildBreadcrumbJsonLd, buildWebPageSchema } from '@/src/state-laws/lib/jsonld';
 import CTASection, { StatePageCTA } from '@/src/state-laws/components/CTASection';
 import LegalDisclaimer, { StatePageDisclaimer } from '@/src/state-laws/components/LegalDisclaimer';
+import { generateStateLawMetadata } from '@/lib/seo/metadata';
 import '../../../src/state-laws/components/shared-styles.css';
 
 const LazyFABSpeedDial = dynamic(() => import('../../components/FABSpeedDial'), { ssr: false });
@@ -22,54 +23,16 @@ export function generateMetadata({ params }: Props): Metadata {
 
   if (!found) {
     return {
-      title: 'State Not Found | SmarterPayouts',
-      description: 'The requested state could not be found in our structured settlement laws database.'
+      title: 'State Not Found | Smarter Payouts',
+      description: 'The requested state could not be found in our structured settlement laws database.',
+      robots: 'noindex, nofollow',
     };
   }
 
   const { name, data } = found;
   const description = `Learn how to sell structured settlement payments in ${name} under ${data.statuteCitation}. Court approval requirements, key provisions, and official state resources.`;
 
-  return {
-    title: `Structured Settlement Laws in ${name} | SmarterPayouts`,
-    description,
-    robots: 'index, follow',
-    keywords: [
-      `${name} structured settlement laws`,
-      `${name} court approval`,
-      `${data.statuteCitation}`,
-      'sell structured settlement',
-      'state transfer requirements'
-    ],
-    alternates: {
-      canonical: `https://smarterpayouts.com/state-laws/${data.slug}`
-    },
-    openGraph: {
-      title: `Structured Settlement Laws in ${name}`,
-      description,
-      url: `/state-laws/${data.slug}`,
-      type: 'article',
-      siteName: 'SmarterPayouts',
-      images: [
-        {
-          url: '/og-state-laws.jpg',
-          width: 1200,
-          height: 630,
-          alt: `Structured Settlement Laws in ${name}`
-        }
-      ]
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: `Structured Settlement Laws in ${name}`,
-      description
-    },
-    other: {
-      'article:author': 'SmarterPayouts',
-      'article:section': 'Legal Information',
-      'article:tag': [name, 'structured settlement', 'state laws']
-    }
-  };
+  return generateStateLawMetadata(name, data.slug, description);
 }
 
 export default function StateLawPage({ params }: Props) {

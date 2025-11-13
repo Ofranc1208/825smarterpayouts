@@ -20,8 +20,43 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Structured Settlement Early Payout Calculator | Smarter Payouts',
+  metadataBase: new URL('https://smarterpayouts.com'),
+  title: {
+    default: 'Structured Settlement Early Payout Calculator | Smarter Payouts',
+    template: '%s | Smarter Payouts',
+  },
   description: 'Instant, accurate, and private lump sum calculator. No calls, no salespeople, no personal data required. See the real value of your structured settlement — avoid flashy cash advance offers.',
+  authors: [{ name: 'Smarter Payouts' }],
+  creator: 'Smarter Payouts',
+  publisher: 'Smarter Payouts',
+  robots: 'index, follow',
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://smarterpayouts.com',
+    siteName: 'Smarter Payouts',
+    title: 'Structured Settlement Early Payout Calculator | Smarter Payouts',
+    description: 'Instant, accurate, and private lump sum calculator. No calls, no salespeople, no personal data required. See the real value of your structured settlement — avoid flashy cash advance offers.',
+    images: [
+      {
+        url: 'https://smarterpayouts.com/images/og-default.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Smarter Payouts - Structured Settlement Calculator',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@smarterpayouts',
+    creator: '@smarterpayouts',
+    title: 'Structured Settlement Early Payout Calculator | Smarter Payouts',
+    description: 'Instant, accurate, and private lump sum calculator. No calls, no salespeople, no personal data required.',
+    images: ['https://smarterpayouts.com/images/og-default.jpg'],
+  },
 }
 
 export default function RootLayout({
