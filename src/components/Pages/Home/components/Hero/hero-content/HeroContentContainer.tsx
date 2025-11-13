@@ -20,12 +20,13 @@ export default function HeroContentContainer() {
       <HeroTitle />
       <HeroSubtitle />
       
-      {/* Google Rating Badge - Increased spacing */}
+      {/* Google Rating Badge */}
       <div style={{ 
         marginTop: '1.6rem',
         marginBottom: '1.6rem',
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        alignItems: 'center'
       }}>
         <TrustBadge 
           rating="4.9"

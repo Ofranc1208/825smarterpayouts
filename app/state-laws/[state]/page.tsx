@@ -42,7 +42,7 @@ export function generateMetadata({ params }: Props): Metadata {
       'state transfer requirements'
     ],
     alternates: {
-      canonical: `https://www.smarterpayouts.com/state-laws/${data.slug}`
+      canonical: `https://smarterpayouts.com/state-laws/${data.slug}`
     },
     openGraph: {
       title: `Structured Settlement Laws in ${name}`,
