@@ -2,7 +2,8 @@
  * Quick Testimonials Data
  * 
  * Compact testimonials displayed in the quick testimonials section.
- * These are shorter reviews without profile images.
+ * These are shorter reviews without profile images - perfect for mini testimonials.
+ * Total: 5 testimonials for balance with the 5 featured carousel testimonials.
  */
 
 import { QuickTestimonial } from '../types/testimonialTypes';
@@ -36,12 +37,6 @@ export const quickTestimonials: QuickTestimonial[] = [
     name: 'Brian T.',
     location: 'TX',
     text: 'Emergency home repairs couldn\'t wait. Got multiple options within minutes and the court process was surprisingly fast.',
-    rating: 5,
-  },
-  {
-    name: 'Lisa M.',
-    location: 'OH',
-    text: 'My settlement was from years ago. Their tools helped me understand my options quickly - saved me so much time and stress.',
     rating: 5,
   },
 ];

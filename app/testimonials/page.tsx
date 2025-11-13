@@ -19,28 +19,36 @@ import TestimonialsPage from '@/src/components/Pages/Testimonials/page';
 
 const LazyFABSpeedDial = dynamic(() => import('../components/FABSpeedDial'), { ssr: false });
 
-export const metadata = {
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
   title: 'Authentic Client Testimonials | SmarterPayouts',
-  description: 'Read authentic testimonials shared directly with us by clients who experienced our transparent structured settlement process. Real experiences, honest feedback.',
-  keywords: 'structured settlement testimonials, authentic client reviews, settlement company experiences, client feedback',
+  description: 'Read authentic testimonials shared directly with us by clients who experienced our transparent structured settlement process. Real experiences, honest feedback from 400+ satisfied clients.',
+  alternates: {
+    canonical: 'https://smarterpayouts.com/testimonials'
+  },
   openGraph: {
-    title: 'Authentic Client Testimonials – SmarterPayouts',
+    title: 'Authentic Client Testimonials | SmarterPayouts',
     description: 'Read testimonials shared directly with us by clients who experienced our transparent settlement process.',
-    type: 'article',
+    type: 'website',
     url: 'https://smarterpayouts.com/testimonials',
+    siteName: 'SmarterPayouts',
+    locale: 'en_US',
     images: [
       {
         url: 'https://smarterpayouts.com/assets/images/social-preview.jpg',
         width: 1200,
         height: 630,
+        alt: 'SmarterPayouts Client Testimonials'
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Authentic Client Testimonials – SmarterPayouts',
-    description: 'Read testimonials shared directly with us by clients who experienced our transparent settlement process.',
     site: '@SmarterPayouts',
+    creator: '@SmarterPayouts',
+    title: 'Authentic Client Testimonials | SmarterPayouts',
+    description: 'Read testimonials shared directly with us by clients who experienced our transparent settlement process.',
     images: ['https://smarterpayouts.com/assets/images/social-preview.jpg'],
   },
 };

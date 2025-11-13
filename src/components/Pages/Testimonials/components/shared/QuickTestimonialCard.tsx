@@ -31,24 +31,25 @@ export default function QuickTestimonialCard({ testimonial }: QuickTestimonialCa
   return (
     <div
       style={{
-        background: 'linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(249,250,251,0.8) 100%)',
-        backdropFilter: 'blur(10px)',
-        borderRadius: BORDER_RADIUS.large,
+        background: 'linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.9) 100%)',
+        backdropFilter: 'blur(20px)',
+        borderRadius: '20px',
         border: '1px solid rgba(255,255,255,0.3)',
-        padding: SPACING.stack.lg,
-        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+        padding: '2rem',
+        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
         position: 'relative',
-        boxShadow: '0 4px 16px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04)',
-        overflow: 'hidden'
+        boxShadow: '0 10px 30px rgba(0,0,0,0.08), 0 4px 15px rgba(34,197,94,0.05), inset 0 1px 0 rgba(255,255,255,0.4)',
+        overflow: 'hidden',
+        cursor: 'pointer'
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.transform = hoverEffect.hover.transform;
-        e.currentTarget.style.boxShadow = '0 12px 24px rgba(0,0,0,0.12), 0 6px 12px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.4)';
-        e.currentTarget.style.border = '1px solid rgba(34, 197, 94, 0.25)';
+        e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)';
+        e.currentTarget.style.boxShadow = '0 20px 50px rgba(0,0,0,0.12), 0 8px 25px rgba(34,197,94,0.15), inset 0 1px 0 rgba(255,255,255,0.6)';
+        e.currentTarget.style.border = '1px solid rgba(34, 197, 94, 0.3)';
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.transform = hoverEffect.default.transform;
-        e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04)';
+        e.currentTarget.style.transform = 'translateY(0) scale(1)';
+        e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.08), 0 4px 15px rgba(34,197,94,0.05), inset 0 1px 0 rgba(255,255,255,0.4)';
         e.currentTarget.style.border = '1px solid rgba(255,255,255,0.3)';
       }}
     >
@@ -58,35 +59,60 @@ export default function QuickTestimonialCard({ testimonial }: QuickTestimonialCa
         top: 0,
         left: 0,
         right: 0,
-        height: '3px',
-        background: 'linear-gradient(90deg, #22c55e 0%, #16a34a 100%)',
-        borderRadius: `${BORDER_RADIUS.large} ${BORDER_RADIUS.large} 0 0`
+        height: '4px',
+        background: 'linear-gradient(90deg, #22c55e 0%, #3b82f6 50%, #a855f7 100%)',
+        borderRadius: '20px 20px 0 0'
       }} />
 
       {/* Quote mark */}
       <div style={{
         position: "absolute",
-        top: '0.75rem',
-        right: '1rem',
-        fontSize: "1.5rem",
-        color: 'rgba(34, 197, 94, 0.12)',
+        top: '1rem',
+        right: '1.25rem',
+        fontSize: "2.5rem",
+        color: 'rgba(34, 197, 94, 0.1)',
         fontFamily: "serif",
-        transform: 'rotate(180deg)',
-        userSelect: 'none'
+        fontWeight: 'bold',
+        transform: 'rotate(15deg)',
+        userSelect: 'none',
+        transition: 'all 0.4s ease'
       }}>
         "
       </div>
 
+      {/* Floating background elements */}
+      <div style={{
+        position: 'absolute',
+        top: '20%',
+        left: '10%',
+        width: '30px',
+        height: '30px',
+        background: 'radial-gradient(circle, rgba(34, 197, 94, 0.08) 0%, transparent 70%)',
+        borderRadius: '50%',
+        pointerEvents: 'none'
+      }} />
+      <div style={{
+        position: 'absolute',
+        bottom: '25%',
+        right: '15%',
+        width: '20px',
+        height: '20px',
+        background: 'radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, transparent 70%)',
+        borderRadius: '50%',
+        pointerEvents: 'none'
+      }} />
+
       {/* Testimonial Text */}
       <p style={{
-        fontSize: TYPOGRAPHY.fontSize.body.medium,
-        color: COLORS.text.primary,
-        lineHeight: TYPOGRAPHY.lineHeight.relaxed,
-        marginBottom: SPACING.stack.md,
-        fontWeight: TYPOGRAPHY.fontWeight.medium,
+        fontSize: '1rem',
+        color: '#475569',
+        lineHeight: 1.7,
+        marginBottom: '1.5rem',
+        fontWeight: 400,
         position: 'relative',
-        zIndex: 1,
-        textShadow: '0 1px 2px rgba(0,0,0,0.03)'
+        zIndex: 2,
+        fontStyle: 'italic',
+        letterSpacing: '0.2px'
       }}>
         "{testimonial.text}"
       </p>
@@ -106,37 +132,41 @@ export default function QuickTestimonialCard({ testimonial }: QuickTestimonialCa
         }}>
           {/* Avatar placeholder */}
           <div style={{
-            width: '32px',
-            height: '32px',
+            width: '40px',
+            height: '40px',
             borderRadius: '50%',
-            background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
+            background: 'linear-gradient(135deg, #22c55e 0%, #3b82f6 100%)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            fontSize: '0.75rem',
-            fontWeight: TYPOGRAPHY.fontWeight.bold,
+            fontSize: '0.9rem',
+            fontWeight: 700,
             color: 'white',
-            boxShadow: '0 2px 8px rgba(34, 197, 94, 0.3)'
+            boxShadow: '0 4px 12px rgba(34, 197, 94, 0.3), inset 0 1px 0 rgba(255,255,255,0.2)',
+            transition: 'all 0.3s ease'
           }}>
             {testimonial.name.charAt(0)}
           </div>
           <div>
             <div style={{
-              fontWeight: TYPOGRAPHY.fontWeight.bold,
-              color: COLORS.text.primary,
-              fontSize: TYPOGRAPHY.fontSize.body.small
+              fontWeight: 700,
+              color: '#0f172a',
+              fontSize: '0.95rem',
+              marginBottom: '0.25rem'
             }}>
               {testimonial.name}
             </div>
             <div style={{
-              color: COLORS.text.secondary,
-              fontSize: '0.75rem',
-              fontWeight: TYPOGRAPHY.fontWeight.medium,
+              color: '#22c55e',
+              fontSize: '0.8rem',
+              fontWeight: 600,
               display: 'flex',
               alignItems: 'center',
-              gap: '0.25rem'
+              gap: '0.25rem',
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em'
             }}>
-              <span>📍</span>
+              <span style={{ fontSize: '0.7rem' }}>📍</span>
               {testimonial.location}
             </div>
           </div>
@@ -144,13 +174,14 @@ export default function QuickTestimonialCard({ testimonial }: QuickTestimonialCa
         <div style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '0.25rem'
+          gap: '0.5rem'
         }}>
           <StarRating rating={testimonial.rating} size="small" />
           <span style={{
-            fontSize: '0.75rem',
+            fontSize: '0.8rem',
             color: '#22c55e',
-            fontWeight: TYPOGRAPHY.fontWeight.bold
+            fontWeight: 700,
+            textShadow: '0 1px 2px rgba(0,0,0,0.1)'
           }}>
             {testimonial.rating}.0
           </span>
