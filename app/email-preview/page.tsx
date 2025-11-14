@@ -107,7 +107,7 @@ export default function EmailPreviewPage({
             <div className={styles.contactSection}>
               <p className={styles.contactTitle}>Ready to Get Started?</p>
               <div className={styles.contactPhone}>
-                <a href="tel:+15615831280">+1-561-583-1280</a>
+                <a href="tel:+18552143510">+1-855-214-3510</a>
               </div>
               <p className={styles.contactHours}>Monday - Friday, 9:00 AM - 6:00 PM EST</p>
             </div>

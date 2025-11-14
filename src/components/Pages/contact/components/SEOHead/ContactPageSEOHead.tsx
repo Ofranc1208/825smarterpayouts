@@ -19,7 +19,7 @@ export default function ContactPageSEOHead() {
   const organizationData = {
     organizationName: "SmarterPayouts",
     url: "https://smarterpayouts.com",
-    phone: "+1-561-583-1280",
+    phone: "+1-855-214-3510",
     email: "info@smarterpayouts.com",
     address: {
       streetAddress: "15257 Amberly Dr Ste 233",

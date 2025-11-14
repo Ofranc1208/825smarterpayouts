@@ -19,7 +19,7 @@ const ContactOptions: React.FC<ContactOptionsProps> = ({ onContactClick }) => {
   };
 
   const handlePhoneClick = () => {
-    window.location.href = 'tel:+15615831280';
+    window.location.href = 'tel:+18552143510';
     onContactClick?.();
   };
 
@@ -63,7 +63,7 @@ const ContactOptions: React.FC<ContactOptionsProps> = ({ onContactClick }) => {
             <div className={styles.contactContent}>
               <div className={styles.contactTitle}>Call Us</div>
               <div className={styles.contactDescription}>Monday-Friday, 9AM-6PM EST</div>
-              <div className={styles.contactAction}>(561) 583-1280</div>
+              <div className={styles.contactAction}>(855) 214-3510</div>
             </div>
           </button>
 

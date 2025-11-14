@@ -11,11 +11,11 @@ export const CallToActionButton: React.FC = () => {
   return (
     <div className={styles.phoneCallContainer}>
       <a 
-        href="tel:+15615831280" 
+        href="tel:+18552143510" 
         className={styles.phoneLink}
         onClick={(e) => {
           e.stopPropagation();
-          window.location.href = 'tel:+15615831280';
+          window.location.href = 'tel:+18552143510';
         }}
       >
         📞 Call Now to Claim Your Offer

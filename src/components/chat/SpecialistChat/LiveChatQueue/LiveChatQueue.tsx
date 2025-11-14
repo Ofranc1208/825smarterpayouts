@@ -208,9 +208,9 @@ export const LiveChatQueue: React.FC<LiveChatQueueProps> = ({
                 <div className={styles.alternativesSection}>
                   <div className={styles.alternativesTitle}>Don't want to wait?</div>
                   <div className={styles.alternativesOptions}>
-                    <a href="tel:561-583-1280" className={styles.alternativeOption}>
+                    <a href="tel:855-214-3510" className={styles.alternativeOption}>
                       <span className={styles.optionIcon}>📞</span>
-                      <span className={styles.optionText}>Call us at <strong>561-583-1280</strong></span>
+                      <span className={styles.optionText}>Call us at <strong>855-214-3510</strong></span>
                     </a>
                     <a href="mailto:info@smarterpayouts.com" className={styles.alternativeOption}>
                       <span className={styles.optionIcon}>✉️</span>

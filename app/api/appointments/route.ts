@@ -121,7 +121,7 @@ export async function POST(request: NextRequest) {
       message: 'Appointment request received',
       appointmentId: `apt-${Date.now()}`,
       estimatedResponse: 'within 24 hours',
-      note: 'Please call us at +1-561-583-1280 if you don\'t hear from us within 24 hours.'
+      note: 'Please call us at +1-855-214-3510 if you don\'t hear from us within 24 hours.'
     });
   }
 }

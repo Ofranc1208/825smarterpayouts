@@ -85,7 +85,7 @@ export async function retrieveVectorContext(userQuery: string): Promise<Retrieve
       retrievedContent = `4-Step Process: 1) Get instant quote (no personal info), 2) Review transparent terms, 3) Legal process (we handle everything), 4) Receive funds in 2-5 days after court approval.`;
       contextSource = 'process_data';
     } else if (searchQuery.includes('contact') || searchQuery.includes('phone') || searchQuery.includes('email')) {
-      retrievedContent = `Contact Information: Phone: +1 (561) 583-1280, SMS: +1 (561) 583-1280, Email: info@smarterpayouts.com.`;
+      retrievedContent = `Contact Information: Phone: +1 (855) 214-3510, SMS: +1 (561) 583-1280, Email: info@smarterpayouts.com.`;
       contextSource = 'contact_data';
     }
 

@@ -37,7 +37,7 @@ export const CONTACT_SEO_CONFIG: SEOConfiguration = {
     '@type': 'Organization',
     name: 'SmarterPayouts',
     url: 'https://smarterpayouts.com',
-    telephone: '+1-561-583-1280',
+    telephone: '+1-855-214-3510',
     email: 'info@smarterpayouts.com',
     address: {
       '@type': 'PostalAddress',
@@ -49,7 +49,7 @@ export const CONTACT_SEO_CONFIG: SEOConfiguration = {
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+1-561-583-1280',
+      telephone: '+1-855-214-3510',
       contactType: 'customer service',
       availableLanguage: 'English'
     }

@@ -166,7 +166,7 @@ export const COMPLIANCE_CERTIFICATIONS = [
 export const ABOUT_US_CONSTANTS = {
   COMPANY_NAME: 'SmarterPayouts',
   TAGLINE: 'Your Trusted Settlement Partner',
-  PHONE: '+1-561-583-1280',
+  PHONE: '+1-855-214-3510',
   EMAIL: 'info@smarterpayouts.com',
   ADDRESS: {
     street: '15257 Amberly Dr Ste 233',

@@ -15,7 +15,7 @@ import styles from './CallNowCard.module.css';
  */
 export default function CallNowCard() {
   const handleCallClick = () => {
-    window.location.href = 'tel:+15615831280';
+    window.location.href = 'tel:+18552143510';
   };
 
   return (
@@ -28,12 +28,12 @@ export default function CallNowCard() {
           Great! You can call us anytime at
         </div>
         <div className={styles.phoneNumber}>
-          (561) 583-1280
+          (855) 214-3510
         </div>
         <button 
           className={styles.callButton}
           onClick={handleCallClick}
-          aria-label="Call (561) 583-1280"
+          aria-label="Call (855) 214-3510"
         >
           <span className={styles.callButtonIcon}>📞</span>
           <span className={styles.callButtonText}>Call Now</span>

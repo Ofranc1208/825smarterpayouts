@@ -7,7 +7,7 @@ export const CONTACT_METHODS: ContactMethod[] = [
     title: 'Call Us',
     description: 'Speak directly with our settlement experts. Available Monday-Friday, 9 AM - 6 PM EST.',
     actionText: 'Call Now',
-    actionLink: 'tel:+1-561-583-1280',
+    actionLink: 'tel:+1-855-214-3510',
     type: 'phone'
   },
   {
@@ -58,7 +58,7 @@ export const FAQ_DATA: FAQItem[] = [
 ];
 
 export const CONTACT_INFO: ContactInfo = {
-  phone: '+1-561-583-1280',
+  phone: '+1-855-214-3510',
   email: 'info@smarterpayouts.com',
   businessHours: {
     weekdays: 'Monday - Friday',

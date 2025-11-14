@@ -36,7 +36,7 @@ export const organizationSchema = {
   },
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: '+1-561-583-1280',
+    telephone: '+1-855-214-3510',
     contactType: 'customer service',
     areaServed: 'US',
     availableLanguage: ['English'],
@@ -474,7 +474,7 @@ export const contactPageSchema = {
     name: ORGANIZATION_NAME,
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+1-561-583-1280',
+      telephone: '+1-855-214-3510',
       contactType: 'customer service',
       areaServed: 'US',
       availableLanguage: 'English'

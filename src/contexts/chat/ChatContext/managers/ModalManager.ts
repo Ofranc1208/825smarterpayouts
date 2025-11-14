@@ -57,7 +57,7 @@ export class ModalManager {
   handlePhoneCall(): void {
     this.logUserChoiceAsMessage('📞 Phone Consultation');
     if (typeof window !== 'undefined') {
-      const phoneNumber = '+15615831280';
+      const phoneNumber = '+18552143510';
       const telUrl = `tel:${phoneNumber}`;
       console.log('[ModalManager] Initiating phone call with URL:', telUrl);
       window.location.href = telUrl;

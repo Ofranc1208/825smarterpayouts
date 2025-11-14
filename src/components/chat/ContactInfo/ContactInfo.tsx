@@ -31,8 +31,8 @@ export default function ContactInfo() {
       icon: '📞',
       title: 'Call Us',
       description: 'Monday-Friday, 9AM-6PM EST',
-      action: 'tel:+15615831280',
-      actionText: '(561) 583-1280'
+      action: 'tel:+18552143510',
+      actionText: '(855) 214-3510'
     },
     {
       icon: '✉️',

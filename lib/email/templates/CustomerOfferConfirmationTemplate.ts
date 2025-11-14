@@ -113,7 +113,7 @@ export class CustomerOfferConfirmationTemplate extends BaseEmailTemplate {
         <div style="margin-bottom: 16px;">
           <p style="font-size: 14px; color: #4b5563; margin: 0 0 8px 0; font-weight: 500;">Call our office at:</p>
           <div style="font-size: 28px; font-weight: 700; color: #22c55e; margin-bottom: 12px; letter-spacing: -0.5px;">
-            <a href="tel:+15615831280" style="color: #22c55e; text-decoration: none;">561-583-1280</a>
+            <a href="tel:+18552143510" style="color: #22c55e; text-decoration: none;">855-214-3510</a>
           </div>
           <p style="font-size: 13px; color: #6b7280; margin: 0;">Monday - Friday, 9:00 AM - 6:00 PM EST</p>
         </div>
@@ -203,7 +203,7 @@ You may qualify for up to $5,000 bonus towards closing your structured settlemen
 
 Ready to Get Started?
 
-Call our office at: 561-583-1280
+Call our office at: 855-214-3510
 Monday - Friday, 9:00 AM - 6:00 PM EST
 
 Office Address: 15257 Amberly Dr Ste 233, Tampa, FL 33647

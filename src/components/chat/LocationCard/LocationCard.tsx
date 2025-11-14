@@ -77,7 +77,7 @@ export default function LocationCard() {
         </div>
         <div className={styles.infoRow}>
           <span className={styles.infoLabel}>Phone:</span>
-          <span className={styles.infoValue}>(561) 583-1280</span>
+          <span className={styles.infoValue}>(855) 214-3510</span>
         </div>
         <div className={styles.infoNote}>
           In-person consultations available by appointment

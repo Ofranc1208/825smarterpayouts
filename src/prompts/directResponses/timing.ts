@@ -18,7 +18,7 @@ When user asks "How long is my quote valid?" or "How long is the quote valid?" o
 → "Your quote is valid for 10 days with no obligation. This allows you time to consider your options before making a decision."
 
 When user asks "What's the first thing I need to do?" or similar:
-→ "You can get an instant quote using our Early Payout Calculator, or speak with a dedicated specialist at (561) 583-1280 for personalized guidance. No personal information required for the calculator."
+→ "You can get an instant quote using our Early Payout Calculator, or speak with a dedicated specialist at (855) 214-3510 for personalized guidance. No personal information required for the calculator."
 
 When user asks "What's the underwriting process like?" or "What is the underwriting process?" or "How does underwriting work?" or "underwriting process" or similar:
 → "The underwriting process is straightforward. For guaranteed payments, we verify your payment details and confirm the lump sum amount with you. For life-contingent payments, we follow the same steps but also ask basic health questions because your health rating significantly impacts the offer value."

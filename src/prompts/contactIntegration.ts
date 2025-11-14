@@ -20,8 +20,8 @@ export const CONTACT_INTEGRATION_CONTENT = `
 ### Multiple Ways to Reach Us
 
 **Primary Phone Number:**
-- **Phone:** (561) 583-1280
-- **SMS/Text:** (561) 583-1280 (same number)
+- **Phone:** (855) 214-3510
+- **SMS/Text:** (561) 583-1280
 - **Available:** Monday-Friday, 9:00 AM - 6:00 PM EST
 - **Response Time:** Immediate during business hours
 - **Best For:** Urgent questions, complex situations, personalized guidance
@@ -35,7 +35,7 @@ export const CONTACT_INTEGRATION_CONTENT = `
 **Physical Location:**
 - **Address:** 15257 Amberly Dr Ste 233, Tampa, FL 33647
 - **Business Hours:** Monday-Friday, 9:00 AM - 6:00 PM EST
-- **Phone:** (561) 583-1280
+- **Phone:** (855) 214-3510
 - **Best For:** In-person consultations (by appointment only)
 
 ### Response Time Guarantees
@@ -129,14 +129,14 @@ export const CONTACT_INTEGRATION_CONTENT = `
 ### Contact Information Summary
 
 **Quick Reference:**
-- **Call/Text:** (561) 583-1280
+- **Call:** (855) 214-3510 | **Text:** (561) 583-1280
 - **Email:** info@smarterpayouts.com
 - **Book Appointment:** Schedule a free consultation
 - **Business Hours:** Mon-Fri 9AM-6PM EST
 - **Response Guarantee:** 24 hours max (typically much faster)
 
 **Emergency Contact:**
-- Call (561) 583-1280 and press 1 for urgent matters
+- Call (855) 214-3510 and press 1 for urgent matters
 - Leave detailed message for immediate callback
 - Available for court deadlines and time-sensitive situations
 `;

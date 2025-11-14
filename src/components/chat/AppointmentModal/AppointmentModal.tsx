@@ -125,11 +125,11 @@ const AppointmentModal: React.FC<AppointmentModalProps> = ({
         onClose();
       } else {
         // Error - show error message
-        alert(`❌ Failed to submit appointment:\n\n${result.message || result.error}\n\n📞 Call us: +1-561-583-1280`);
+        alert(`❌ Failed to submit appointment:\n\n${result.message || result.error}\n\n📞 Call us: +1-855-214-3510`);
       }
     } catch (error) {
       console.error('Error submitting appointment:', error);
-      alert(`❌ Network error. Please try again or call us: +1-561-583-1280`);
+      alert(`❌ Network error. Please try again or call us: +1-855-214-3510`);
     } finally {
       setIsSubmitting(false);
     }

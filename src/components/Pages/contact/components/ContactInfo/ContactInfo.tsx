@@ -25,9 +25,9 @@ export default function ContactInfo({ onCardClick }: ContactInfoProps) {
     {
       icon: "📞",
       title: "Call Us",
-      description: "+1 (561) 583-1280\nMon-Fri, 9AM-6PM EST",
+      description: "+1 (855) 214-3510\nMon-Fri, 9AM-6PM EST",
       actionText: "Call Now",
-      actionLink: "tel:+1-561-583-1280"
+      actionLink: "tel:+1-855-214-3510"
     },
     {
       icon: "📅",

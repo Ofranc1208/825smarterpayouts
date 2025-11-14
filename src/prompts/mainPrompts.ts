@@ -41,7 +41,7 @@ ${FAQ_INTEGRATION_CONTENT}
 - Always provide multiple contact options when relevant
 
 📞 CONTACT INFORMATION (mention when relevant):
-- Phone: +1 (561) 583-1280
+- Phone: +1 (855) 214-3510
 - SMS: +1 (561) 583-1280  
 - Email: info@smarterpayouts.com
 - Early Payout Calculator: Available on our website
@@ -93,7 +93,7 @@ export const getContextAwarePrompt = (_context: any) => {
 - Friendly and professional
 - Keep responses to 1-2 sentences maximum
 - Be helpful and informative
-- If unsure: "I'm unable to answer your question right now. If you would like to connect with us, please give us a call at +1 (561) 583-1280, text us at the same number, or email us at info@smarterpayouts.com. If you'd like to get a quote right now, please use our online Early Payout Calculator."
+- If unsure: "I'm unable to answer your question right now. If you would like to connect with us, please give us a call at +1 (855) 214-3510, text us at +1 (561) 583-1280, or email us at info@smarterpayouts.com. If you'd like to get a quote right now, please use our online Early Payout Calculator."
 
 Remember: You represent SmarterPayouts. Focus on early payout options, transparency, and our 4-step process.`;
 };
@@ -106,7 +106,7 @@ Remember: You represent SmarterPayouts. Focus on early payout options, transpare
 export const ERROR_RESPONSE_PROMPT = `I apologize, but I'm having a bit of trouble processing your request right now.
 
 Please try asking your question again, or if the issue persists, you can:
-- Give us a call at +1 (561) 583-1280
+- Give us a call at +1 (855) 214-3510
 - Text us at the same number
 - Email us at info@smarterpayouts.com
 - Use our online Early Payout Calculator for an instant quote
@@ -118,7 +118,7 @@ I'm here to help, and I want to make sure you get the accurate information you n
  * 
  * Used when users need specialized assistance
  */
-export const SPECIALIST_REDIRECTION_PROMPT = `I'm unable to answer your question right now. If you would like to connect with us, please give us a call at +1 (561) 583-1280, text us at the same number, or email us at info@smarterpayouts.com. If you'd like to get a quote right now, please use our online Early Payout Calculator.
+export const SPECIALIST_REDIRECTION_PROMPT = `I'm unable to answer your question right now. If you would like to connect with us, please give us a call at +1 (855) 214-3510, text us at +1 (561) 583-1280, or email us at info@smarterpayouts.com. If you'd like to get a quote right now, please use our online Early Payout Calculator.
 
 Our specialists provide:
 - Personalized analysis of your early payout options

@@ -18,7 +18,7 @@ export default function FAQSection({ onFAQClick }: FAQSectionProps) {
   const faqs: FAQItem[] = [
     {
       question: "How quickly can I get a response?",
-      answer: "We typically respond to emails and contact forms within 24 hours during business days (Monday-Friday). For urgent matters or immediate assistance, please call us at (561) 583-1280 during business hours (9 AM - 6 PM EST)."
+      answer: "We typically respond to emails and contact forms within 24 hours during business days (Monday-Friday). For urgent matters or immediate assistance, please call us at (855) 214-3510 during business hours (9 AM - 6 PM EST)."
     },
     {
       question: "What information should I include in my message?",
@@ -30,7 +30,7 @@ export default function FAQSection({ onFAQClick }: FAQSectionProps) {
     },
     {
       question: "Can I speak with someone immediately?",
-      answer: "Yes! Call us at (561) 583-1280 during business hours (Monday-Friday, 9 AM - 6 PM EST) to speak with our team directly. We're here to answer your questions and provide immediate assistance with your structured settlement needs."
+      answer: "Yes! Call us at (855) 214-3510 during business hours (Monday-Friday, 9 AM - 6 PM EST) to speak with our team directly. We're here to answer your questions and provide immediate assistance with your structured settlement needs."
     },
     {
       question: "What methods can I use to contact you?",

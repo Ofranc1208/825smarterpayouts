@@ -12,7 +12,7 @@
 export default function SecondaryCTAButton() {
   return (
     <a 
-      href="tel:+15615831280"
+      href="tel:+18552143510"
       style={{
         display: 'inline-block',
         padding: '12px 48px',

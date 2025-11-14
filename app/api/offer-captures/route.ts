@@ -205,7 +205,7 @@ export async function POST(request: NextRequest) {
       success: true,
       message: 'Offer capture received',
       captureId: `offer-${Date.now()}`,
-      note: 'Please call us at +1-561-583-1280 if you have any questions about your offer.'
+      note: 'Please call us at +1-855-214-3510 if you have any questions about your offer.'
     }, { status: 200 });
   }
 }

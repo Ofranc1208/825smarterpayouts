@@ -17,7 +17,7 @@ export default function OrganizationSchema() {
     "contactPoint": [
       {
         "@type": "ContactPoint",
-        "telephone": "+1-561-583-1280",
+        "telephone": "+1-855-214-3510",
         "contactType": "customer service",
         "areaServed": "US",
         "availableLanguage": "English"
