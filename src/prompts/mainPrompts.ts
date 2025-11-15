@@ -107,7 +107,7 @@ export const ERROR_RESPONSE_PROMPT = `I apologize, but I'm having a bit of troub
 
 Please try asking your question again, or if the issue persists, you can:
 - Give us a call at +1 (855) 214-3510
-- Text us at the same number
+- Text us at +1 (561) 583-1280
 - Email us at info@smarterpayouts.com
 - Use our online Early Payout Calculator for an instant quote
 
